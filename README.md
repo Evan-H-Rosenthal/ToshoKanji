@@ -1,11 +1,34 @@
 
-  # Kanji Dictionary App Design
+# ToshoKanji
 
-  This is a code bundle for Kanji Dictionary App Design. The original project is available at https://www.figma.com/design/2oZvSayfYzcQBdNLDGOxhJ/Kanji-Dictionary-App-Design.
+ToshoKanji is a kanji and radical learning app prototype generated from the original Figma design:
+https://www.figma.com/design/2oZvSayfYzcQBdNLDGOxhJ/Kanji-Dictionary-App-Design.
 
-  ## Running the code
+## Windows Setup
 
-  Run `npm i` to install the dependencies.
+Install Node.js for Windows from https://nodejs.org/. Use the LTS installer unless you have a reason to use another version.
 
-  Run `npm run dev` to start the development server.
+If PowerShell blocks `npm` with a script execution policy error, approve locally signed/remote-signed scripts for your Windows account:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+Close and reopen PowerShell after changing the execution policy.
+
+## Running The App
+
+From the project folder:
+
+```powershell
+npm install
+npm rebuild
+npm run dev
+```
+
+Then open the local URL printed by Vite, usually:
+
+```text
+http://localhost:5173/
+```
   
