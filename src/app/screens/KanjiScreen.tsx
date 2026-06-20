@@ -3,11 +3,13 @@ import { Search, Star, X } from "lucide-react";
 import { CAT_COLORS, KANJI } from "../data/kanjiData";
 import { CollectionCard } from "../components/CollectionCard";
 
-export function KanjiScreen({ unlockedKanji, favorites, customNames, onSelect, onToggleFav }: {
+export function KanjiScreen({ unlockedKanji, favorites, customNames, highlightedId, onSelect, onToggleFav, onClearHighlight }: {
   unlockedKanji: Set<string>; favorites: Set<string>;
   customNames: Record<string,string>;
+  highlightedId?: string | null;
   onSelect: (id:string) => void;
   onToggleFav: (key:string) => void;
+  onClearHighlight?: (id:string) => void;
 }) {
   const [query, setQuery] = useState("");
   const [favOnly, setFavOnly] = useState(false);
@@ -64,8 +66,12 @@ export function KanjiScreen({ unlockedKanji, favorites, customNames, onSelect, o
                   label={customNames[key] || k.meanings[0]}
                   color1={c1} color2={c2}
                   starred={favorites.has(key)}
+                  highlighted={highlightedId === k.id}
                   onStar={e=>{ e.stopPropagation(); onToggleFav(key); }}
-                  onClick={()=>onSelect(k.id)} />
+                  onClick={()=>{
+                    onClearHighlight?.(k.id);
+                    onSelect(k.id);
+                  }} />
               );
             })}
           </div>

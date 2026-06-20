@@ -3,11 +3,13 @@ import { Search, Star, X } from "lucide-react";
 import { RAD_COLORS, RADICALS } from "../data/kanjiData";
 import { CollectionCard } from "../components/CollectionCard";
 
-export function RadicalsScreen({ unlockedRadicals, favorites, customNames, onSelect, onToggleFav }: {
+export function RadicalsScreen({ unlockedRadicals, favorites, customNames, highlightedId, onSelect, onToggleFav, onClearHighlight }: {
   unlockedRadicals: Set<string>; favorites: Set<string>;
   customNames: Record<string,string>;
+  highlightedId?: string | null;
   onSelect: (id:string) => void;
   onToggleFav: (key:string) => void;
+  onClearHighlight?: (id:string) => void;
 }) {
   const [query, setQuery] = useState("");
   const [favOnly, setFavOnly] = useState(false);
@@ -54,17 +56,22 @@ export function RadicalsScreen({ unlockedRadicals, favorites, customNames, onSel
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-3">
-            {items.map((r,i) => {
+            {items.map((r) => {
               const key = `radical:${r.id}`;
-              const c = RAD_COLORS[i % RAD_COLORS.length];
-              const c2 = RAD_COLORS[(i + 4) % RAD_COLORS.length];
+              const colorIndex = Math.max(0, RADICALS.findIndex((radical) => radical.id === r.id));
+              const c = RAD_COLORS[colorIndex % RAD_COLORS.length];
+              const c2 = RAD_COLORS[(colorIndex + 4) % RAD_COLORS.length];
               return (
                 <CollectionCard key={r.id} char={r.char}
                   label={customNames[key] || r.meanings[0]}
                   color1={c} color2={c2}
                   starred={favorites.has(key)}
+                  highlighted={highlightedId === r.id}
                   onStar={e=>{ e.stopPropagation(); onToggleFav(key); }}
-                  onClick={()=>onSelect(r.id)} />
+                  onClick={()=>{
+                    onClearHighlight?.(r.id);
+                    onSelect(r.id);
+                  }} />
               );
             })}
           </div>

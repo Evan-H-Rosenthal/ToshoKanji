@@ -28,6 +28,7 @@ export default function App() {
   const [notes, setNotes] = useState<Record<string,string>>({});
   const [chatMsgs, setChatMsgs] = useState<Record<string,ChatMsg[]>>({});
   const [unlockPrompt, setUnlockPrompt] = useState<{type:"kanji"|"radical";id:string}|null>(null);
+  const [highlightedUnlock, setHighlightedUnlock] = useState<{type:"kanji"|"radical";id:string}|null>(null);
   const msgIdRef = useRef(0);
 
   const allUnlocked = unlockedKanji.size >= KANJI.length && unlockedRadicals.size >= RADICALS.length;
@@ -44,6 +45,8 @@ export default function App() {
   const handleUnlock = useCallback((type:"kanji"|"radical", id:string) => {
     if (type==="kanji") setUnlockedKanji(s=>new Set([...s, id]));
     else setUnlockedRadicals(s=>new Set([...s, id]));
+    setHighlightedUnlock({ type, id });
+    setActiveTab(type === "kanji" ? "kanji" : "radicals");
   }, []);
 
   const handleToggleFav = useCallback((key:string) => {
@@ -68,10 +71,12 @@ export default function App() {
   const popScreen = () => { const s=[...screenStack]; const prev=s.pop(); setScreenStack(s); setScreen(prev||{type:"main"}); };
 
   const handleNavKanji = (id:string) => {
+    if (highlightedUnlock?.type === "kanji" && highlightedUnlock.id === id) setHighlightedUnlock(null);
     if (!unlockedKanji.has(id)) { setUnlockPrompt({type:"kanji",id}); return; }
     pushScreen({type:"kanji-entry",id});
   };
   const handleNavRadical = (id:string) => {
+    if (highlightedUnlock?.type === "radical" && highlightedUnlock.id === id) setHighlightedUnlock(null);
     if (!unlockedRadicals.has(id)) { setUnlockPrompt({type:"radical",id}); return; }
     pushScreen({type:"radical-entry",id});
   };
@@ -160,12 +165,20 @@ export default function App() {
                     {activeTab === "kanji" && (
                       <KanjiScreen unlockedKanji={unlockedKanji} favorites={favorites}
                         customNames={customNames} onSelect={id=>pushScreen({type:"kanji-entry",id})}
-                        onToggleFav={handleToggleFav} />
+                        onToggleFav={handleToggleFav}
+                        highlightedId={highlightedUnlock?.type === "kanji" ? highlightedUnlock.id : null}
+                        onClearHighlight={id => {
+                          if (highlightedUnlock?.type === "kanji" && highlightedUnlock.id === id) setHighlightedUnlock(null);
+                        }} />
                     )}
                     {activeTab === "radicals" && (
                       <RadicalsScreen unlockedRadicals={unlockedRadicals} favorites={favorites}
                         customNames={customNames} onSelect={id=>pushScreen({type:"radical-entry",id})}
-                        onToggleFav={handleToggleFav} />
+                        onToggleFav={handleToggleFav}
+                        highlightedId={highlightedUnlock?.type === "radical" ? highlightedUnlock.id : null}
+                        onClearHighlight={id => {
+                          if (highlightedUnlock?.type === "radical" && highlightedUnlock.id === id) setHighlightedUnlock(null);
+                        }} />
                     )}
                   </motion.div>
                 </AnimatePresence>
