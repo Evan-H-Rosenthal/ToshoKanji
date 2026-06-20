@@ -2,42 +2,132 @@ import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { KANJI, RADICALS } from "../data/kanjiData";
 
-export const DOME_BALLS = [
-  {color:"#ff3d71",x:18,y:28},{color:"#00d2ff",x:52,y:50},{color:"#ffd700",x:88,y:20},
-  {color:"#7fff00",x:125,y:48},{color:"#a855f7",x:158,y:25},{color:"#ff8c00",x:34,y:68},
-  {color:"#00d2ff",x:105,y:72},{color:"#ff3d71",x:142,y:65},{color:"#ffd700",x:72,y:16},
+const BANK_CAPSULES = [
+  { color: "#ef4444", x: 8, y: 96, size: 42, rotate: -18 },
+  { color: "#2563eb", x: 42, y: 88, size: 39, rotate: 14 },
+  { color: "#f59e0b", x: 76, y: 102, size: 43, rotate: 28 },
+  { color: "#22c55e", x: 116, y: 91, size: 40, rotate: -31 },
+  { color: "#e11d48", x: 151, y: 100, size: 45, rotate: 9 },
+  { color: "#7c3aed", x: 30, y: 124, size: 46, rotate: 34 },
+  { color: "#06b6d4", x: 70, y: 122, size: 42, rotate: -8 },
+  { color: "#f97316", x: 108, y: 126, size: 44, rotate: 19 },
+  { color: "#ec4899", x: 149, y: 128, size: 39, rotate: -21 },
+  { color: "#84cc16", x: 178, y: 120, size: 41, rotate: 22 },
+  { color: "#fb7185", x: 5, y: 135, size: 42, rotate: -38 },
+  { color: "#38bdf8", x: 47, y: 143, size: 43, rotate: 11 },
+  { color: "#fbbf24", x: 91, y: 145, size: 45, rotate: -13 },
+  { color: "#a855f7", x: 136, y: 145, size: 42, rotate: 36 },
+  { color: "#10b981", x: 177, y: 143, size: 40, rotate: -16 },
 ];
 
-export function GachaMachine({ onUnlock, getItem, allUnlocked }: {
-  onUnlock: (type: "kanji"|"radical", id: string) => void;
-  getItem: () => { type:"kanji"|"radical"; id:string } | null;
+const SHUFFLE_CAPSULES = [
+  { color: "#ef4444", x: 39, y: 115, size: 39, rotate: 18, delay: 0 },
+  { color: "#06b6d4", x: 101, y: 108, size: 35, rotate: -23, delay: 0.12 },
+  { color: "#f59e0b", x: 154, y: 119, size: 37, rotate: 31, delay: 0.22 },
+];
+
+function CapsuleBall({ color, size, rotate = 0 }: { color: string; size: number; rotate?: number }) {
+  const halfHeight = Math.max(5, size * 0.48);
+
+  return (
+    <div
+      style={{
+        width: size,
+        height: size,
+        position: "relative",
+        transform: `rotate(${rotate}deg)`,
+        filter: "drop-shadow(0 5px 8px rgba(30,25,15,0.22))",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "50%",
+          background: "linear-gradient(145deg, rgba(255,255,255,0.88), rgba(222,226,232,0.92))",
+          border: "1px solid rgba(255,255,255,0.75)",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: halfHeight,
+            background: `linear-gradient(145deg, ${color}, ${color}bb)`,
+            borderRadius: `${size}px ${size}px 4px 4px`,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: halfHeight - 1,
+            left: 0,
+            right: 0,
+            height: 3,
+            background: "rgba(45,45,45,0.2)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: size * 0.14,
+            left: size * 0.18,
+            width: size * 0.26,
+            height: size * 0.12,
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.55)",
+            transform: "rotate(-25deg)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function GachaMachine({
+  onUnlock,
+  getItem,
+  allUnlocked,
+}: {
+  onUnlock: (type: "kanji" | "radical", id: string) => void;
+  getItem: () => { type: "kanji" | "radical"; id: string } | null;
   allUnlocked: boolean;
 }) {
   const [knobDeg, setKnobDeg] = useState(0);
   const [spinning, setSpinning] = useState(false);
-  const [capsule, setCapsule] = useState<{type:"kanji"|"radical";id:string}|null>(null);
+  const [capsule, setCapsule] = useState<{ type: "kanji" | "radical"; id: string } | null>(null);
   const [capsuleOpen, setCapsuleOpen] = useState(false);
   const [capsuleChar, setCapsuleChar] = useState("");
+  const [capsuleRotation, setCapsuleRotation] = useState(0);
 
   const handleSpin = useCallback(() => {
     if (spinning || capsule || allUnlocked) return;
+
     setSpinning(true);
-    setKnobDeg(d => d + 900);
+    setKnobDeg((degrees) => degrees + 360);
+
     setTimeout(() => {
       const item = getItem();
       if (item) {
-        const entry = item.type === "kanji"
-          ? KANJI.find(k => k.id === item.id)
-          : RADICALS.find(r => r.id === item.id);
+        const entry =
+          item.type === "kanji"
+            ? KANJI.find((kanji) => kanji.id === item.id)
+            : RADICALS.find((radical) => radical.id === item.id);
+
         setCapsuleChar(entry?.char ?? "?");
+        setCapsuleRotation(Math.round(Math.random() * 70 - 35));
         setCapsule(item);
       }
       setSpinning(false);
-    }, 1300);
+    }, 1350);
   }, [spinning, capsule, allUnlocked, getItem]);
 
   const handleCapsuleTap = () => {
     if (!capsule || capsuleOpen) return;
+
     setCapsuleOpen(true);
     setTimeout(() => {
       onUnlock(capsule.type, capsule.id);
@@ -47,200 +137,485 @@ export function GachaMachine({ onUnlock, getItem, allUnlocked }: {
     }, 1800);
   };
 
-  const capsuleColor = capsule?.type === "kanji" ? "#ff3d71" : "#00d2ff";
+  const capsuleColor = capsule?.type === "kanji" ? "#ef4444" : "#2563eb";
 
   return (
-    <div className="flex flex-col items-center select-none">
-      {/* Glass dome */}
-      <div className="relative" style={{ width: 224, height: 130 }}>
-        <div className="absolute inset-0 overflow-hidden" style={{
-          borderRadius: "112px 112px 0 0",
-          background: "linear-gradient(160deg, rgba(180,230,255,0.22) 0%, rgba(100,160,255,0.08) 100%)",
-          border: "2px solid rgba(130,200,255,0.35)",
-          borderBottom: "none",
-        }}>
-          {DOME_BALLS.map((b, i) => (
-            <motion.div key={i}
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 2 + i * 0.3, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
-              style={{ position:"absolute", left: b.x, top: b.y, width: 16, height: 20, borderRadius: "50%", background: b.color, boxShadow: `0 2px 8px ${b.color}88` }}
-            />
-          ))}
-          <div style={{ position:"absolute", inset:0, background:"linear-gradient(to bottom, rgba(255,255,255,0.08) 0%, transparent 60%)", borderRadius:"inherit", pointerEvents:"none" }} />
+    <div className="flex flex-col items-center select-none" style={{ width: 270 }}>
+      <motion.div
+        animate={spinning ? { y: [0, -7, 5, -6, 4, -4, 2, 0] } : { y: 0 }}
+        transition={spinning ? { duration: 0.72, repeat: 1, ease: "easeInOut" } : { duration: 0.2 }}
+        style={{
+          width: 244,
+          position: "relative",
+          filter: "drop-shadow(0 22px 36px rgba(0,0,0,0.34))",
+        }}
+      >
+        <div
+          style={{
+            height: 42,
+            borderRadius: "18px 18px 8px 8px",
+            background: "linear-gradient(180deg, #fffef7 0%, #eee9d9 100%)",
+            border: "1px solid rgba(80,74,62,0.16)",
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -5px 10px rgba(80,70,45,0.08)",
+            position: "relative",
+            zIndex: 3,
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 8,
+              left: 13,
+              width: 35,
+              height: 24,
+              borderRadius: 3,
+              background: "#c8102e",
+              color: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "Nunito,sans-serif",
+              fontWeight: 1000,
+              fontSize: 11,
+              lineHeight: 0.9,
+              letterSpacing: "0.02em",
+            }}
+          >
+            KAN<br />PON
+          </div>
+          <div
+            style={{
+              position: "absolute",
+              right: 15,
+              top: 10,
+              color: "#1d5f9f",
+              fontFamily: "Nunito,sans-serif",
+              fontSize: 15,
+              fontWeight: 1000,
+              letterSpacing: "0.02em",
+              textShadow: "0 1px 0 #fff",
+            }}
+          >
+            かんじ カプセル
+          </div>
         </div>
-        {/* dome base rim */}
-        <div style={{ position:"absolute", bottom:0, left:0, right:0, height:8, background:"linear-gradient(90deg,#cc2255,#ff6b35,#cc2255)", borderRadius:"0 0 4px 4px" }} />
-      </div>
 
-      {/* Machine body */}
-      <div className="relative" style={{
-        width: 224, minHeight: 180,
-        background: "linear-gradient(135deg, #ff4567 0%, #cc2255 50%, #e8362e 100%)",
-        borderRadius: "0 0 20px 20px",
-        boxShadow: "0 12px 40px rgba(255,61,113,0.45), inset 0 1px 0 rgba(255,255,255,0.2)",
-        padding: "16px 16px 20px",
-      }}>
-        {/* decorative stripes */}
-        <div style={{ position:"absolute", top:0, left:0, right:0, height:4, background:"linear-gradient(90deg,#ffd700,#ff8c00,#ffd700)", opacity:0.9 }} />
+        <div
+          style={{
+            height: 176,
+            marginTop: -2,
+            borderRadius: "8px 8px 14px 14px",
+            background: "linear-gradient(180deg, rgba(245,238,210,0.42), rgba(226,214,178,0.24))",
+            border: "2px solid rgba(53,48,40,0.34)",
+            borderTop: "1px solid rgba(53,48,40,0.18)",
+            boxShadow: "inset 0 0 32px rgba(255,255,255,0.36), inset 0 -22px 40px rgba(96,72,32,0.13)",
+            position: "relative",
+            overflow: "hidden",
+            zIndex: 2,
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              inset: "15px 17px 45px",
+              borderRadius: 4,
+              background: "linear-gradient(180deg, rgba(95,70,42,0.12), rgba(255,255,255,0.04))",
+              border: "1px solid rgba(255,255,255,0.2)",
+            }}
+          />
 
-        <div className="text-center mb-3">
-          <div style={{ fontFamily:"Nunito, sans-serif", fontWeight:900, fontSize:20, color:"#fff", letterSpacing:"0.1em", textShadow:"0 2px 8px rgba(0,0,0,0.3)" }}>TOSHO KANJI</div>
-          <div style={{ fontFamily:"Noto Serif JP, serif", fontWeight:700, fontSize:13, color:"#ffd700", letterSpacing:"0.15em" }}>ガチャ　¥100</div>
-        </div>
+          <AnimatePresence>
+            {spinning &&
+              SHUFFLE_CAPSULES.map((ball, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: [18, -72, 8, -46, 18], opacity: [0, 1, 1, 0.9, 0] }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.95, ease: "easeInOut", delay: ball.delay, repeat: 1 }}
+                  style={{ position: "absolute", left: ball.x, top: ball.y, zIndex: 1 }}
+                >
+                  <CapsuleBall color={ball.color} size={ball.size} rotate={ball.rotate} />
+                </motion.div>
+              ))}
+          </AnimatePresence>
 
-        {/* Display window showing ball count */}
-        <div style={{ background:"rgba(0,0,0,0.35)", borderRadius:8, padding:"6px 10px", marginBottom:12, textAlign:"center", border:"1px solid rgba(255,255,255,0.15)" }}>
-          <span style={{ fontFamily:"Nunito, sans-serif", fontSize:11, color:"rgba(255,255,255,0.7)", fontWeight:700 }}>
-            {allUnlocked ? "✓ ALL UNLOCKED" : `${KANJI.length + RADICALS.length} entries to discover`}
-          </span>
-        </div>
-
-        {/* Stars decoration */}
-        <div className="flex justify-center gap-1 mb-3">
-          {["★","★","★","★","★"].map((s, i) => (
-            <span key={i} style={{ fontSize:14, color:"#ffd700", opacity: spinning ? 1 : 0.7, textShadow: spinning ? "0 0 12px #ffd700" : "none", transition:"all 0.3s" }}>{s}</span>
-          ))}
-        </div>
-
-        {/* Knob section */}
-        <div className="flex items-center justify-between">
-          {/* Coin slot */}
-          <div style={{ display:"flex", flexDirection:"column", gap:4 }}>
-            <div style={{ width:8, height:28, background:"rgba(0,0,0,0.5)", borderRadius:4, border:"1px solid rgba(255,255,255,0.1)" }} />
-            <div style={{ width:24, height:5, background:"rgba(0,0,0,0.6)", borderRadius:3, border:"1px solid rgba(255,255,255,0.1)" }} />
+          <div
+            style={{
+              position: "absolute",
+              left: 18,
+              right: 18,
+              bottom: 20,
+              height: 62,
+              borderRadius: "8px 8px 12px 12px",
+              background: "linear-gradient(180deg, rgba(255,255,255,0.9), rgba(218,211,190,0.92))",
+              boxShadow: "0 -2px 0 rgba(255,255,255,0.55), inset 0 -9px 13px rgba(75,64,42,0.1)",
+              zIndex: 3,
+            }}
+          >
+            {[33, 79, 126, 172].map((left) => (
+              <div
+                key={left}
+                style={{
+                  position: "absolute",
+                  top: 4,
+                  bottom: 6,
+                  left,
+                  width: 2,
+                  background: "rgba(126,116,91,0.22)",
+                }}
+              />
+            ))}
           </div>
 
-          {/* Knob */}
-          <div className="relative flex items-center justify-center" style={{ width:72, height:72 }}>
-            <div style={{ position:"absolute", width:72, height:72, borderRadius:"50%", background:"rgba(0,0,0,0.3)", boxShadow:"0 4px 12px rgba(0,0,0,0.4)" }} />
+          <div style={{ position: "absolute", inset: 0, zIndex: 2 }}>
+            {BANK_CAPSULES.map((ball, index) => (
+              <div key={index} style={{ position: "absolute", left: ball.x, top: ball.y }}>
+                <CapsuleBall color={ball.color} size={ball.size} rotate={ball.rotate} />
+              </div>
+            ))}
+          </div>
+
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(105deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.08) 18%, transparent 24%, transparent 68%, rgba(255,255,255,0.2) 76%, transparent 88%)",
+              zIndex: 5,
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              left: 11,
+              top: 10,
+              bottom: 10,
+              width: 9,
+              borderRadius: 6,
+              background: "rgba(255,255,255,0.32)",
+              filter: "blur(1px)",
+              zIndex: 6,
+            }}
+          />
+        </div>
+
+        <div
+          style={{
+            height: 252,
+            marginTop: 0,
+            borderRadius: "8px 8px 22px 22px",
+            background: "linear-gradient(180deg, #fffdf2 0%, #f0ead9 67%, #dfd5bd 100%)",
+            border: "1px solid rgba(80,74,62,0.18)",
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -14px 25px rgba(76,63,38,0.11)",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 19,
+              left: 23,
+              width: 46,
+              height: 46,
+              borderRadius: "50%",
+              background: "linear-gradient(145deg,#fafafa,#d8d5cc)",
+              border: "2px solid rgba(128,110,86,0.45)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#c8102e",
+              fontFamily: "Nunito,sans-serif",
+              fontSize: 15,
+              fontWeight: 1000,
+            }}
+          >
+            ¥100
+          </div>
+
+          <div
+            style={{
+              position: "absolute",
+              top: 22,
+              right: 28,
+              width: 46,
+              height: 46,
+              borderRadius: "50%",
+              background:
+                "radial-gradient(circle at 32% 28%, #ffffff 0%, #efefef 22%, #9ca3af 52%, #f8fafc 67%, #64748b 100%)",
+              border: "2px solid rgba(90,88,80,0.36)",
+              boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.35)",
+            }}
+          >
+            <div style={{ position: "absolute", left: 19, top: 5, width: 4, height: 32, background: "#1f2937", borderRadius: 4 }} />
+          </div>
+
+          <div
+            style={{
+              position: "absolute",
+              top: 69,
+              left: 70,
+              width: 104,
+              height: 104,
+              borderRadius: "50%",
+              background: "#034fbb",
+              boxShadow: "inset 0 0 0 4px #f7e54a, inset 0 0 0 12px #034fbb, 0 8px 18px rgba(22,50,90,0.22)",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                inset: 14,
+                borderRadius: "50%",
+                background: "linear-gradient(145deg,#fffef5,#dcd4c2)",
+                boxShadow: "inset -9px -9px 18px rgba(97,84,62,0.16), inset 5px 5px 10px rgba(255,255,255,0.85)",
+              }}
+            />
             <motion.button
               onClick={handleSpin}
               disabled={spinning || !!capsule || allUnlocked}
               animate={{ rotate: knobDeg }}
-              transition={{ duration: 1.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.8, ease: [0.22, 0.9, 0.32, 1] }}
+              whileHover={!spinning && !capsule && !allUnlocked ? { scale: 1.03 } : {}}
+              whileTap={!spinning && !capsule && !allUnlocked ? { scale: 0.97 } : {}}
               style={{
-                width: 58, height: 58, borderRadius: "50%",
-                background: "linear-gradient(135deg, #ffd700, #ff8c00, #ffd700)",
-                boxShadow: spinning ? "0 0 24px rgba(255,215,0,0.8)" : "0 4px 16px rgba(255,140,0,0.4)",
-                cursor: (spinning || !!capsule || allUnlocked) ? "default" : "pointer",
-                border: "3px solid rgba(255,255,255,0.3)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                flexDirection: "column", gap: 3,
-                position: "relative", zIndex: 1,
-                transition: "box-shadow 0.3s",
+                position: "absolute",
+                inset: 22,
+                border: "none",
+                borderRadius: "50%",
+                cursor: spinning || capsule || allUnlocked ? "default" : "pointer",
+                background: "linear-gradient(145deg,#fffef7,#d5ccbb)",
+                boxShadow: "0 7px 12px rgba(55,45,30,0.26), inset 4px 4px 9px rgba(255,255,255,0.9), inset -6px -6px 12px rgba(90,75,52,0.14)",
               }}
-              whileHover={(!spinning && !capsule && !allUnlocked) ? { scale: 1.05 } : {}}
-              whileTap={(!spinning && !capsule && !allUnlocked) ? { scale: 0.95 } : {}}
             >
-              {[0,60,120].map(deg => (
-                <div key={deg} style={{ position:"absolute", width:4, height:18, background:"rgba(180,100,0,0.5)", borderRadius:2, transform:`rotate(${deg}deg)`, top:"50%", left:"50%", marginLeft:-2, marginTop:-9 }} />
-              ))}
-              <div style={{ width:12, height:12, borderRadius:"50%", background:"rgba(0,0,0,0.3)", border:"2px solid rgba(255,255,255,0.4)", position:"relative", zIndex:2 }} />
+              <div
+                style={{
+                  position: "absolute",
+                  left: 11,
+                  right: 11,
+                  top: "50%",
+                  height: 10,
+                  marginTop: -5,
+                  borderRadius: 20,
+                  background: "linear-gradient(180deg,#e7dfcd,#bfb49d)",
+                  transform: "rotate(26deg)",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.8)",
+                }}
+              />
             </motion.button>
           </div>
 
-          {/* Label */}
-          <div style={{ width:36, textAlign:"center" }}>
-            <div style={{ fontFamily:"Nunito, sans-serif", fontSize:9, fontWeight:800, color:"rgba(255,255,255,0.8)", lineHeight:1.2, letterSpacing:"0.05em" }}>
-              {spinning ? "..." : (capsule ? "TAP!" : "TURN")}
-            </div>
+          <div
+            style={{
+              position: "absolute",
+              top: 30,
+              left: 87,
+              width: 69,
+              height: 27,
+              borderRadius: 7,
+              background: "#064fae",
+              color: "#fff",
+              fontFamily: "Nunito,sans-serif",
+              fontSize: 10,
+              fontWeight: 900,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 4,
+            }}
+          >
+            COIN IN <span style={{ color: "#facc15" }}>{">"}</span>
           </div>
-        </div>
 
-        {/* Bottom rim */}
-        <div style={{ position:"absolute", bottom:0, left:0, right:0, height:6, background:"rgba(0,0,0,0.3)", borderRadius:"0 0 20px 20px" }} />
-      </div>
+          <div
+            style={{
+              position: "absolute",
+              left: 15,
+              bottom: 15,
+              width: 72,
+              height: 70,
+              borderRadius: "19px 19px 24px 24px",
+              background: "linear-gradient(145deg,#20242a,#060709)",
+              border: "5px solid #e8e0c8",
+              boxShadow: "inset 0 7px 14px rgba(0,0,0,0.62), 0 3px 0 rgba(80,67,45,0.18)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "rgba(255,255,255,0.08)",
+              fontFamily: "Nunito,sans-serif",
+              fontSize: 19,
+              fontWeight: 1000,
+            }}
+          >
+            KAN<br />PON
+            <div style={{ position: "absolute", bottom: -3, left: "50%", width: 28, height: 8, marginLeft: -14, borderRadius: "8px 8px 0 0", background: "#0a0b0d" }} />
+          </div>
 
-      {/* Capsule chute & tray */}
-      <div className="relative flex flex-col items-center" style={{ width:224 }}>
-        <div style={{ width:80, height:36, background:"linear-gradient(to bottom, #1a1040, #120c30)", borderRadius:"0 0 16px 16px", border:"2px solid rgba(100,80,160,0.4)", borderTop:"none", position:"relative", overflow:"hidden" }}>
-          <div style={{ position:"absolute", top:4, left:"50%", transform:"translateX(-50%)", width:40, height:28, background:"rgba(0,0,0,0.4)", borderRadius:10 }} />
-        </div>
+          <div
+            style={{
+              position: "absolute",
+              left: 10,
+              top: 70,
+              width: 50,
+              bottom: 100,
+              background: "linear-gradient(180deg, #fffdf2 0%, #f0ead9 67%, #dfd5bd 100%)",
+              pointerEvents: "none",
+              zIndex: 7,
+            }}
+          />
 
-        {/* Capsule */}
-        <AnimatePresence>
-          {capsule && (
-            <motion.div
-              key="capsule"
-              initial={{ y: -80, opacity: 0, scale: 0.6 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 18 }}
-              style={{ position:"absolute", top: 4 }}
-              onClick={handleCapsuleTap}
-            >
+          <div
+            style={{
+              position: "absolute",
+              right: 30,
+              bottom: 31,
+              width: 38,
+              height: 52,
+              borderRadius: "8px 8px 14px 14px",
+              background: "linear-gradient(180deg,#ded8c9,#a9a08d)",
+              border: "3px solid #f8f2df",
+              boxShadow: "inset 0 7px 13px rgba(60,50,35,0.26), 0 2px 0 rgba(90,75,50,0.2)",
+              overflow: "hidden",
+            }}
+          >
+            <div style={{ position: "absolute", top: -2, left: 12, width: 12, height: 9, borderRadius: "0 0 5px 5px", background: "#fff9e8" }} />
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 18, background: "rgba(70,60,45,0.16)" }} />
+          </div>
+
+          <AnimatePresence>
+            {capsule && (
               <motion.div
-                animate={!capsuleOpen ? { scale: [1, 1.04, 1] } : {}}
-                transition={{ duration: 1.2, repeat: Infinity }}
-                style={{ position:"relative", width:60, height:64, cursor:"pointer" }}
+                key="capsule"
+                initial={{ y: -128, rotate: capsuleRotation - 96 }}
+                animate={{
+                  y: [-128, 0, -22, 0, -9, 0],
+                  rotate: [
+                    capsuleRotation - 96,
+                    capsuleRotation - 34,
+                    capsuleRotation - 18,
+                    capsuleRotation + 9,
+                    capsuleRotation - 4,
+                    capsuleRotation,
+                  ],
+                }}
+                exit={{ opacity: 0, scale: 0.7 }}
+                transition={{
+                  y: { duration: 1.45, times: [0, 0.56, 0.72, 0.84, 0.93, 1], ease: ["easeIn", "easeOut", "easeIn", "easeOut", "easeIn"] },
+                  rotate: { duration: 1.45, times: [0, 0.56, 0.72, 0.84, 0.93, 1], ease: "easeOut" },
+                }}
+                onClick={handleCapsuleTap}
+                style={{
+                  position: "absolute",
+                  left: 31,
+                  bottom: 17,
+                  width: 40,
+                  height: 40,
+                  cursor: capsuleOpen ? "default" : "pointer",
+                  zIndex: 6,
+                }}
               >
-                {/* Top half */}
                 <motion.div
-                  animate={capsuleOpen ? { y: -30, opacity: 0 } : { y: 0, opacity: 1 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  style={{
-                    position:"absolute", top:0, left:0, right:0, height:"52%",
-                    borderRadius:"30px 30px 0 0",
-                    background: `linear-gradient(135deg, ${capsuleColor}dd, ${capsuleColor}99)`,
-                    boxShadow: capsuleOpen ? "none" : `0 0 20px ${capsuleColor}66`,
-                  }}
+                  style={{ position: "relative", width: 40, height: 40 }}
                 >
-                  <div style={{ position:"absolute", top:6, left:8, width:18, height:10, background:"rgba(255,255,255,0.35)", borderRadius:"50%", transform:"rotate(-20deg)" }} />
-                </motion.div>
-                {/* Bottom half */}
-                <motion.div
-                  animate={capsuleOpen ? { y: 30, opacity: 0 } : { y: 0, opacity: 1 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  style={{
-                    position:"absolute", bottom:0, left:0, right:0, height:"52%",
-                    borderRadius:"0 0 30px 30px",
-                    background: "linear-gradient(135deg, #f0f0f0, #d0d0d0)",
-                  }}
-                />
-                {/* Center seam */}
-                <div style={{ position:"absolute", top:"48%", left:0, right:0, height:3, background:"rgba(0,0,0,0.15)", zIndex:2 }} />
-                {/* Revealed char */}
-                <AnimatePresence>
-                  {capsuleOpen && (
-                    <motion.div
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.25, type:"spring", stiffness:500, damping:15 }}
-                      style={{ position:"absolute", inset:0, display:"flex", alignItems:"center", justifyContent:"center", zIndex:10 }}
-                    >
-                      <span style={{ fontFamily:"Noto Serif JP, serif", fontSize:32, fontWeight:700, color: capsuleColor, filter:"drop-shadow(0 0 12px " + capsuleColor + ")" }}>
-                        {capsuleChar}
-                      </span>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                {/* Glow ring */}
-                {!capsuleOpen && (
                   <motion.div
-                    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    style={{ position:"absolute", inset:-6, borderRadius:"50%", border:`2px solid ${capsuleColor}`, pointerEvents:"none" }}
-                  />
-                )}
+                    animate={capsuleOpen ? { y: -24, opacity: 0, rotate: -18 } : { y: 0, opacity: 1, rotate: 0 }}
+                    transition={{ duration: 0.42, ease: "easeOut" }}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      background: "linear-gradient(145deg,#f8fafc,#d6d6d6)",
+                      boxShadow: `0 3px 10px ${capsuleColor}66, 0 7px 12px rgba(0,0,0,0.22)`,
+                    }}
+                  >
+                    <div style={{ position: "absolute", inset: "0 0 19px", background: `linear-gradient(145deg, ${capsuleColor}, ${capsuleColor}bb)` }} />
+                    <div style={{ position: "absolute", top: 18, left: 0, right: 0, height: 3, background: "rgba(0,0,0,0.18)" }} />
+                    <div style={{ position: "absolute", top: 7, left: 8, width: 12, height: 6, borderRadius: "50%", background: "rgba(255,255,255,0.52)", transform: "rotate(-25deg)" }} />
+                  </motion.div>
+                  <AnimatePresence>
+                    {capsuleOpen && (
+                      <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.22, type: "spring", stiffness: 500, damping: 16 }}
+                        style={{
+                          position: "absolute",
+                          inset: -2,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Noto Serif JP,serif",
+                            fontSize: 31,
+                            fontWeight: 800,
+                            color: capsuleColor,
+                            filter: `drop-shadow(0 0 10px ${capsuleColor}88)`,
+                          }}
+                        >
+                          {capsuleChar}
+                        </span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+            )}
+          </AnimatePresence>
+        </div>
 
-      {/* Hint text */}
-      <div className="mt-6 text-center" style={{ minHeight:32 }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "0 26px",
+            marginTop: -1,
+          }}
+        >
+          {[0, 1].map((wheel) => (
+            <div
+              key={wheel}
+              style={{
+                width: 28,
+                height: 24,
+                borderRadius: "0 0 10px 10px",
+                background: "linear-gradient(180deg,#2f2f2f,#080808)",
+                boxShadow: "inset 0 -4px 7px rgba(255,255,255,0.12)",
+              }}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      <div className="mt-4 text-center" style={{ minHeight: 32 }}>
         {allUnlocked ? (
-          <p style={{ fontFamily:"Nunito", fontWeight:700, fontSize:13, color:"#ffd700" }}>You have unlocked everything! 🎉</p>
+          <p style={{ fontFamily: "Nunito,sans-serif", fontWeight: 800, fontSize: 13, color: "#ffd700" }}>
+            You have unlocked everything!
+          </p>
         ) : spinning ? (
-          <motion.p animate={{ opacity:[1,0.4,1] }} transition={{ duration:0.6, repeat:Infinity }} style={{ fontFamily:"Nunito", fontWeight:700, fontSize:13 }} className="text-muted-foreground">Spinning...</motion.p>
+          <motion.p
+            animate={{ opacity: [1, 0.45, 1] }}
+            transition={{ duration: 0.6, repeat: Infinity }}
+            style={{ fontFamily: "Nunito,sans-serif", fontWeight: 800, fontSize: 13 }}
+            className="text-muted-foreground"
+          >
+            Stirring capsules...
+          </motion.p>
         ) : capsule ? (
-          <p style={{ fontFamily:"Nunito", fontWeight:800, fontSize:13, color:"#ffd700" }}>Tap the capsule to reveal! ✨</p>
+          <p style={{ fontFamily: "Nunito,sans-serif", fontWeight: 900, fontSize: 13, color: "#ffd700" }}>
+            Tap the capsule to reveal!
+          </p>
         ) : (
-          <p style={{ fontFamily:"Nunito", fontWeight:700, fontSize:12 }} className="text-muted-foreground">Turn the knob to get a new kanji or radical</p>
+          <p style={{ fontFamily: "Nunito,sans-serif", fontWeight: 700, fontSize: 12 }} className="text-muted-foreground">
+            Turn the knob to get a new kanji or radical
+          </p>
         )}
       </div>
     </div>
   );
 }
-
-// ── Collection Card ────────────────────────────────────────────────────────────
