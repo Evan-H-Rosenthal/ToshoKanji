@@ -1,4 +1,6 @@
 export type Tab = "kanji" | "gacha" | "radicals";
+export type UiFontChoice = "nunito" | "system";
+export type CharacterFontChoice = "traditional" | "modern";
 export interface ScreenState { type: "main" | "kanji-entry" | "radical-entry" | "achievements" | "settings"; id?: string; }
 export interface Word { japanese: string; furigana: string; romaji: string; meaning: string; }
 export interface KanjiEntry { id: string; char: string; meanings: string[]; onyomi: string[]; kunyomi: string[]; radicalIds: string[]; words: Word[]; category: string; }

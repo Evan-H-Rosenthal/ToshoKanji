@@ -16,14 +16,14 @@ export function UnlockPrompt({ entryType, id, onConfirm, onCancel }: {
           padding:"24px 20px 32px", border:"1px solid var(--border)", borderBottom:"none",
         }}>
         <div className="flex flex-col items-center gap-4">
-          <span style={{ fontFamily:"Noto Serif JP,serif", fontSize:64, fontWeight:700, lineHeight:1, color:"var(--primary)" }}>{entry?.char}</span>
+          <span style={{ fontFamily:"var(--jp-font)", fontSize:64, fontWeight:700, lineHeight:1, color:"var(--primary)" }}>{entry?.char}</span>
           <div className="text-center">
-            <p style={{ fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:16 }} className="text-foreground">Unlock {entryType === "kanji" ? "Kanji" : "Radical"}?</p>
-            <p style={{ fontFamily:"Nunito,sans-serif", fontSize:13 }} className="text-muted-foreground">Add <strong>{entry?.char} ({entry && ("meanings" in entry ? entry.meanings[0] : entry.meanings[0])})</strong> to your collection</p>
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:16 }} className="text-foreground">Unlock {entryType === "kanji" ? "Kanji" : "Radical"}?</p>
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:13 }} className="text-muted-foreground">Add <strong>{entry?.char} ({entry && ("meanings" in entry ? entry.meanings[0] : entry.meanings[0])})</strong> to your collection</p>
           </div>
           <div className="flex gap-3 w-full">
-            <button onClick={onCancel} style={{ flex:1, padding:"12px", borderRadius:14, background:"var(--muted)", border:"none", fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:15, color:"var(--muted-foreground)", cursor:"pointer" }}>Cancel</button>
-            <button onClick={onConfirm} style={{ flex:1, padding:"12px", borderRadius:14, background:"var(--primary)", border:"none", fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:15, color:"#fff", cursor:"pointer" }}>Unlock ✨</button>
+            <button onClick={onCancel} style={{ flex:1, padding:"12px", borderRadius:14, background:"var(--muted)", border:"none", fontFamily:"var(--ui-font)", fontWeight:800, fontSize:15, color:"var(--muted-foreground)", cursor:"pointer" }}>Cancel</button>
+            <button onClick={onConfirm} style={{ flex:1, padding:"12px", borderRadius:14, background:"var(--primary)", border:"none", fontFamily:"var(--ui-font)", fontWeight:800, fontSize:15, color:"#fff", cursor:"pointer" }}>Unlock ✨</button>
           </div>
         </div>
       </motion.div>

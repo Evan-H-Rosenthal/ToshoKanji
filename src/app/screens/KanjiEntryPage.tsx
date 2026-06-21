@@ -5,11 +5,11 @@ import { CAT_COLORS, KANJI, RAD_COLORS, RADICALS } from "../data/kanjiData";
 import { ChatSection } from "../components/ChatSection";
 import type { ChatMsg } from "../types";
 
-export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavRadical }: {
+export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavRadical }: {
   id: string; unlockedKanji: Set<string>; unlockedRadicals: Set<string>;
   favorites: Set<string>; customNames: Record<string,string>; notes: Record<string,string>;
   chatMsgs: Record<string,ChatMsg[]>;
-  onBack: () => void; onToggleFav: (k:string)=>void; onSetName:(k:string,v:string)=>void;
+  onBack: () => void; onBackToGacha?: () => void; onToggleFav: (k:string)=>void; onSetName:(k:string,v:string)=>void;
   onSetNote:(k:string,v:string)=>void; onChat:(k:string,q:string,a:string)=>void;
   onNavKanji:(id:string)=>void; onNavRadical:(id:string)=>void;
 }) {
@@ -27,9 +27,30 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
     <div className="flex flex-col h-full overflow-y-auto">
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
-        <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"Nunito,sans-serif", fontWeight:700, fontSize:14 }}>
-          <ChevronLeft size={20} /> Back
-        </button>
+        <div className="flex flex-col items-start gap-1">
+          <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
+            <ChevronLeft size={20} /> Back
+          </button>
+          {onBackToGacha && (
+            <button
+              onClick={onBackToGacha}
+              style={{
+                marginLeft: 20,
+                padding: "4px 9px",
+                borderRadius: 10,
+                border: "1px solid var(--border)",
+                background: "var(--muted)",
+                color: "var(--muted-foreground)",
+                fontFamily: "var(--ui-font)",
+                fontSize: 11,
+                fontWeight: 800,
+                cursor: "pointer",
+              }}
+            >
+              Back to gacha
+            </button>
+          )}
+        </div>
         <button onClick={()=>onToggleFav(key)}>
           <Star size={22} fill={isFav?"#ffd700":"none"} color={isFav?"#ffd700":"var(--muted-foreground)"} />
         </button>
@@ -43,7 +64,7 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
           boxShadow: `0 12px 40px ${cat1}55, 0 0 0 6px ${cat1}22`,
           marginBottom:12,
         }}>
-          <span style={{ fontFamily:"Noto Serif JP, serif", fontSize:80, fontWeight:700, color:"rgba(255,255,255,0.95)", lineHeight:1 }}>{k.char}</span>
+          <span style={{ fontFamily:"var(--jp-font)", fontSize:80, fontWeight:700, color:"rgba(255,255,255,0.95)", lineHeight:1 }}>{k.char}</span>
         </div>
 
         {/* Name / edit */}
@@ -51,14 +72,14 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
           {editingName ? (
             <input ref={nameRef} value={nameVal} onChange={e=>setNameVal(e.target.value)}
               onBlur={saveName} onKeyDown={e=>{ if(e.key==="Enter") saveName(); if(e.key==="Escape"){ setEditingName(false); setNameVal(customNames[key]||k.meanings[0]); }}}
-              style={{ fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:20, textAlign:"center", background:"var(--input-background)", borderRadius:8, border:"2px solid var(--primary)", padding:"2px 8px", color:"var(--foreground)", outline:"none", maxWidth:200 }} />
+              style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:20, textAlign:"center", background:"var(--input-background)", borderRadius:8, border:"2px solid var(--primary)", padding:"2px 8px", color:"var(--foreground)", outline:"none", maxWidth:200 }} />
           ) : (
-            <h1 style={{ fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:22 }} className="text-foreground">{customNames[key] || k.meanings[0]}</h1>
+            <h1 style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:22 }} className="text-foreground">{customNames[key] || k.meanings[0]}</h1>
           )}
           <button onClick={()=>setEditingName(true)} className="text-muted-foreground"><Pencil size={15} /></button>
         </div>
         {customNames[key] && customNames[key] !== k.meanings[0] && (
-          <p style={{ fontFamily:"Nunito,sans-serif", fontSize:12 }} className="text-muted-foreground">{k.meanings.join(", ")}</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{k.meanings.join(", ")}</p>
         )}
       </div>
 
@@ -66,22 +87,22 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
       <div className="flex flex-col gap-4 px-4 pb-8">
         {/* Readings */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Readings</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Readings</p>
           <div className="flex flex-col gap-2">
             <div className="flex items-start gap-3">
-              <span style={{ fontFamily:"Nunito,sans-serif", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat1}22`, color:cat1 }}>On</span>
-              <span style={{ fontFamily:"Noto Serif JP,serif", fontSize:16 }} className="text-foreground">{k.onyomi.join("、")}</span>
+              <span style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat1}22`, color:cat1 }}>On</span>
+              <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }} className="text-foreground">{k.onyomi.join("、")}</span>
             </div>
             <div className="flex items-start gap-3">
-              <span style={{ fontFamily:"Nunito,sans-serif", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat2}22`, color:cat2 }}>Kun</span>
-              <span style={{ fontFamily:"Noto Serif JP,serif", fontSize:16 }} className="text-foreground">{k.kunyomi.join("、")}</span>
+              <span style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat2}22`, color:cat2 }}>Kun</span>
+              <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }} className="text-foreground">{k.kunyomi.join("、")}</span>
             </div>
           </div>
         </div>
 
         {/* Radicals */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Radicals in this kanji</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Radicals in this kanji</p>
           <div className="flex flex-wrap gap-2">
             {k.radicalIds.map((rid,i) => {
               const rad = RADICALS.find(r=>r.id===rid);
@@ -96,8 +117,8 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
                   cursor:"pointer",
                 }}>
                   {!isUnlocked && <Lock size={10} className="text-muted-foreground" />}
-                  <span style={{ fontFamily:"Noto Serif JP,serif", fontSize:20, color: isUnlocked ? c : "var(--muted-foreground)" }}>{rad.char}</span>
-                  <span style={{ fontFamily:"Nunito,sans-serif", fontSize:11, fontWeight:700, color: isUnlocked ? c : "var(--muted-foreground)" }}>{rad.meanings[0]}</span>
+                  <span style={{ fontFamily:"var(--jp-font)", fontSize:20, color: isUnlocked ? c : "var(--muted-foreground)" }}>{rad.char}</span>
+                  <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:700, color: isUnlocked ? c : "var(--muted-foreground)" }}>{rad.meanings[0]}</span>
                 </button>
               );
             })}
@@ -106,16 +127,16 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
 
         {/* Words */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Example Words</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Example Words</p>
           <div className="flex flex-col gap-2">
             {k.words.map((w,i) => (
               <div key={i} style={{ padding:"8px 10px", borderRadius:10, background:"var(--muted)" }}>
                 <div className="flex items-baseline gap-2">
-                  <span style={{ fontFamily:"Noto Serif JP,serif", fontSize:18, fontWeight:700 }} className="text-foreground">{w.japanese}</span>
-                  <span style={{ fontFamily:"Noto Serif JP,serif", fontSize:12 }} className="text-muted-foreground">({w.furigana})</span>
+                  <span style={{ fontFamily:"var(--jp-font)", fontSize:18, fontWeight:700 }} className="text-foreground">{w.japanese}</span>
+                  <span style={{ fontFamily:"var(--jp-font)", fontSize:12 }} className="text-muted-foreground">({w.furigana})</span>
                 </div>
-                <div style={{ fontFamily:"Nunito,sans-serif", fontSize:11, fontStyle:"italic" }} className="text-muted-foreground">{w.romaji}</div>
-                <div style={{ fontFamily:"Nunito,sans-serif", fontSize:13, fontWeight:600, marginTop:2 }} className="text-foreground">{w.meaning}</div>
+                <div style={{ fontFamily:"var(--ui-font)", fontSize:11, fontStyle:"italic" }} className="text-muted-foreground">{w.romaji}</div>
+                <div style={{ fontFamily:"var(--ui-font)", fontSize:13, fontWeight:600, marginTop:2 }} className="text-foreground">{w.meaning}</div>
               </div>
             ))}
           </div>
@@ -123,13 +144,13 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
 
         {/* Notes */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">My Notes</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">My Notes</p>
           <textarea value={notes[key]||""} onChange={e=>onSetNote(key,e.target.value)}
             placeholder="Add your personal notes, mnemonics, or reminders..."
             rows={3}
             style={{
               width:"100%", background:"var(--input-background)", borderRadius:10, border:"1px solid var(--border)",
-              padding:"8px 10px", fontFamily:"Nunito,sans-serif", fontSize:13, color:"var(--foreground)",
+              padding:"8px 10px", fontFamily:"var(--ui-font)", fontSize:13, color:"var(--foreground)",
               outline:"none", resize:"none", lineHeight:1.5,
             }} />
         </div>

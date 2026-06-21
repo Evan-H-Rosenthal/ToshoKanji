@@ -24,7 +24,7 @@ export function TabBar({ active, onChange }: { active: Tab; onChange:(t:Tab)=>vo
               <div style={{ color: isActive ? "var(--primary)" : "var(--muted-foreground)", transition:"color 0.2s" }}>{t.icon}</div>
             </motion.div>
             <span style={{
-              fontFamily:"Nunito,sans-serif", fontSize:10, fontWeight: isActive ? 800 : 600,
+              fontFamily:"var(--ui-font)", fontSize:10, fontWeight: isActive ? 800 : 600,
               color: isActive ? "var(--primary)" : "var(--muted-foreground)",
               transition:"color 0.2s",
             }}>{t.jp}</span>

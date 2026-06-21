@@ -12,8 +12,8 @@ export function AchievementsPage({ unlockedKanji, unlockedRadicals, favorites, n
       <div className="flex items-center gap-3 px-4 pt-3 pb-4 shrink-0">
         <button onClick={onBack} className="text-muted-foreground"><ChevronLeft size={22} /></button>
         <div>
-          <h2 style={{ fontFamily:"Nunito,sans-serif", fontWeight:900, fontSize:20 }} className="text-foreground">Achievements</h2>
-          <p style={{ fontFamily:"Nunito,sans-serif", fontSize:12 }} className="text-muted-foreground">{unlocked.length}/{ACHIEVEMENTS.length} unlocked</p>
+          <h2 style={{ fontFamily:"var(--ui-font)", fontWeight:900, fontSize:20 }} className="text-foreground">Achievements</h2>
+          <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{unlocked.length}/{ACHIEVEMENTS.length} unlocked</p>
         </div>
       </div>
 
@@ -45,8 +45,8 @@ export function AchievementsPage({ unlockedKanji, unlockedRadicals, favorites, n
                   filter: done ? "none" : "grayscale(1)",
                 }}>{a.icon}</div>
                 <div className="flex-1">
-                  <p style={{ fontFamily:"Nunito,sans-serif", fontWeight:800, fontSize:14 }} className="text-foreground">{a.name}</p>
-                  <p style={{ fontFamily:"Nunito,sans-serif", fontSize:12 }} className="text-muted-foreground">{a.desc}</p>
+                  <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:14 }} className="text-foreground">{a.name}</p>
+                  <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{a.desc}</p>
                 </div>
                 {done && <Check size={18} color="#ffd700" />}
               </motion.div>

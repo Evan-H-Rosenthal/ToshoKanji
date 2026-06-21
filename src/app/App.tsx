@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Settings, Trophy } from "lucide-react";
 import { KANJI, RADICALS } from "./data/kanjiData";
 import { GachaMachine } from "./components/GachaMachine";
+import { GachaStatsButton } from "./components/GachaStatsButton";
 import { PhoneFrame } from "./components/PhoneFrame";
 import { TabBar } from "./components/TabBar";
 import { UnlockPrompt } from "./components/UnlockPrompt";
@@ -12,11 +13,24 @@ import { KanjiScreen } from "./screens/KanjiScreen";
 import { RadicalEntryPage } from "./screens/RadicalEntryPage";
 import { RadicalsScreen } from "./screens/RadicalsScreen";
 import { SettingsPage } from "./screens/SettingsPage";
-import type { ChatMsg, ScreenState, Tab } from "./types";
+import type { CharacterFontChoice, ChatMsg, ScreenState, Tab, UiFontChoice } from "./types";
+
+const UI_FONT_STACKS: Record<UiFontChoice, string> = {
+  nunito: '"Nunito", sans-serif',
+  system: '"Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Nunito", sans-serif',
+};
+
+const CHARACTER_FONT_STACKS: Record<CharacterFontChoice, string> = {
+  traditional: '"Noto Serif JP", serif',
+  modern: '"Noto Sans Mono CJK JP", "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic ProN", ui-monospace, monospace',
+};
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [volume, setVolume] = useState(0.7);
+  const [disableAutoJump, setDisableAutoJump] = useState(false);
+  const [uiFontChoice, setUiFontChoice] = useState<UiFontChoice>("nunito");
+  const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>("traditional");
   const [activeTab, setActiveTab] = useState<Tab>("gacha");
   const [screen, setScreen] = useState<ScreenState>({ type:"main" });
   const [screenStack, setScreenStack] = useState<ScreenState[]>([]);
@@ -46,8 +60,8 @@ export default function App() {
     if (type==="kanji") setUnlockedKanji(s=>new Set([...s, id]));
     else setUnlockedRadicals(s=>new Set([...s, id]));
     setHighlightedUnlock({ type, id });
-    setActiveTab(type === "kanji" ? "kanji" : "radicals");
-  }, []);
+    if (!disableAutoJump) setActiveTab(type === "kanji" ? "kanji" : "radicals");
+  }, [disableAutoJump]);
 
   const handleToggleFav = useCallback((key:string) => {
     setFavorites(s=>{ const n=new Set(s); n.has(key)?n.delete(key):n.add(key); return n; });
@@ -69,6 +83,11 @@ export default function App() {
 
   const pushScreen = (s: ScreenState) => { setScreenStack(p=>[...p, screen]); setScreen(s); };
   const popScreen = () => { const s=[...screenStack]; const prev=s.pop(); setScreenStack(s); setScreen(prev||{type:"main"}); };
+  const handleBackToGacha = () => {
+    setScreenStack([]);
+    setScreen({ type:"main" });
+    setActiveTab("gacha");
+  };
 
   const handleNavKanji = (id:string) => {
     if (highlightedUnlock?.type === "kanji" && highlightedUnlock.id === id) setHighlightedUnlock(null);
@@ -99,6 +118,7 @@ export default function App() {
               favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs}
               onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
+              onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
               onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} />
           )}
           {screen.type === "radical-entry" && screen.id && (
@@ -106,6 +126,7 @@ export default function App() {
               favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs}
               onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
+              onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
               onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} />
           )}
           {screen.type === "achievements" && (
@@ -113,8 +134,8 @@ export default function App() {
               favorites={favorites} notes={notes} onBack={popScreen} />
           )}
           {screen.type === "settings" && (
-            <SettingsPage darkMode={darkMode} volume={volume}
-              onDark={setDarkMode} onVolume={setVolume}
+            <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
+              onDark={setDarkMode} onVolume={setVolume} onDisableAutoJump={setDisableAutoJump} onUiFontChoice={setUiFontChoice} onCharacterFontChoice={setCharacterFontChoice}
               onResetProgress={resetProgress} onResetAll={resetAll} onBack={popScreen} />
           )}
 
@@ -132,8 +153,8 @@ export default function App() {
                     <Trophy size={18} className="text-foreground" />
                   </button>
                   <div style={{ textAlign:"center" }}>
-                    <p style={{ fontFamily:"Noto Serif JP,serif", fontWeight:700, fontSize:16 }} className="text-foreground">図書漢字</p>
-                    <p style={{ fontFamily:"Nunito,sans-serif", fontSize:10, fontWeight:700 }} className="text-muted-foreground">ToshoKanji</p>
+                    <p style={{ fontFamily:"var(--jp-font)", fontWeight:700, fontSize:16 }} className="text-foreground">図書漢字</p>
+                    <p style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:700 }} className="text-muted-foreground">ToshoKanji</p>
                   </div>
                   <button onClick={()=>pushScreen({type:"settings"})}
                     style={{ width:38, height:38, borderRadius:12, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
@@ -158,8 +179,9 @@ export default function App() {
                     transition={{ duration:0.18 }} style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column" }}>
 
                     {activeTab === "gacha" && (
-                      <div style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"8px 0 16px" }}>
+                      <div style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:10, padding:"8px 0 16px", position:"relative" }}>
                         <GachaMachine onUnlock={handleUnlock} getItem={getGachaItem} allUnlocked={allUnlocked} />
+                        <GachaStatsButton unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals} />
                       </div>
                     )}
                     {activeTab === "kanji" && (
@@ -205,9 +227,13 @@ export default function App() {
   );
 
   return (
-    <div className={darkMode ? "dark" : ""} style={{ fontFamily:"Nunito, sans-serif", minHeight:"100vh" }}>
+    <div className={darkMode ? "dark" : ""} style={{ fontFamily:"var(--ui-font)", minHeight:"100vh" }}>
       <style>{`
         body { background: ${darkMode ? "#050411" : "#e8e0f0"}; }
+        :root {
+          --ui-font: ${UI_FONT_STACKS[uiFontChoice]};
+          --jp-font: ${CHARACTER_FONT_STACKS[characterFontChoice]};
+        }
         ::-webkit-scrollbar { width: 0; height: 0; }
         * { -webkit-tap-highlight-color: transparent; }
       `}</style>

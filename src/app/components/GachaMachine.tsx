@@ -26,6 +26,15 @@ const SHUFFLE_CAPSULES = [
   { color: "#f59e0b", x: 154, y: 119, size: 37, rotate: 31, delay: 0.22 },
 ];
 
+const REWARD_SPARKLES = [
+  { x: [18, 74, 31, 63], y: [20, 36, 103, 82], size: 18, delay: 0 },
+  { x: [79, 24, 69, 42], y: [97, 71, 23, 111], size: 22, delay: 0.18 },
+  { x: [46, 84, 18, 77], y: [14, 82, 94, 42], size: 15, delay: 0.34 },
+  { x: [13, 59, 86, 28], y: [75, 109, 68, 31], size: 20, delay: 0.5 },
+  { x: [66, 35, 91, 52], y: [16, 91, 103, 57], size: 16, delay: 0.66 },
+  { x: [31, 72, 47, 18], y: [116, 18, 77, 48], size: 19, delay: 0.82 },
+];
+
 function CapsuleBall({ color, size, rotate = 0 }: { color: string; size: number; rotate?: number }) {
   const halfHeight = Math.max(5, size * 0.48);
 
@@ -102,10 +111,15 @@ export function GachaMachine({
   const [capsuleOpen, setCapsuleOpen] = useState(false);
   const [capsuleChar, setCapsuleChar] = useState("");
   const [capsuleRotation, setCapsuleRotation] = useState(0);
+  const [capsulePressing, setCapsulePressing] = useState(false);
   const [rewardStage, setRewardStage] = useState<"idle" | "dispensed" | "center" | "opened" | "collecting">("idle");
 
   const handleSpin = useCallback(() => {
-    if (spinning || capsule || rewardStage !== "idle" || allUnlocked) return;
+    if (allUnlocked) {
+      setKnobDeg((degrees) => degrees + 0.01);
+      return;
+    }
+    if (spinning || capsule || rewardStage !== "idle") return;
 
     setSpinning(true);
     setKnobDeg((degrees) => degrees + 360);
@@ -130,9 +144,18 @@ export function GachaMachine({
     }, 1350);
   }, [spinning, capsule, rewardStage, allUnlocked, getItem]);
 
-  const handleCapsuleTap = () => {
+  const handleCapsulePressStart = () => {
     if (!capsule || capsuleOpen || rewardStage !== "center") return;
+    setCapsulePressing(true);
+  };
 
+  const handleCapsulePressEnd = () => {
+    if (!capsule || capsuleOpen || rewardStage !== "center") {
+      setCapsulePressing(false);
+      return;
+    }
+
+    setCapsulePressing(false);
     setCapsuleOpen(true);
     setRewardStage("opened");
   };
@@ -146,6 +169,7 @@ export function GachaMachine({
       setCapsule(null);
       setCapsuleOpen(false);
       setCapsuleChar("");
+      setCapsulePressing(false);
       setRewardStage("idle");
     }, 720);
   };
@@ -165,6 +189,13 @@ export function GachaMachine({
       secondary: RAD_COLORS[(index + 4) % RAD_COLORS.length],
     };
   })();
+  const isKanjiReward = capsule?.type === "kanji";
+  const capsuleTopBackground = isKanjiReward
+    ? "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(232,238,244,0.58) 56%, rgba(210,220,230,0.46))"
+    : `linear-gradient(145deg, ${rewardColors.primary}, ${rewardColors.primary}bb)`;
+  const capsuleBottomBackground = isKanjiReward
+    ? `linear-gradient(145deg, ${rewardColors.primary}, ${rewardColors.secondary})`
+    : `linear-gradient(145deg, ${rewardColors.secondary}, ${rewardColors.secondary}bb)`;
 
   return (
     <div className="flex flex-col items-center select-none" style={{ width: 270 }}>
@@ -201,7 +232,7 @@ export function GachaMachine({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "Nunito,sans-serif",
+              fontFamily: "var(--ui-font)",
               fontWeight: 1000,
               fontSize: 11,
               lineHeight: 0.9,
@@ -216,14 +247,14 @@ export function GachaMachine({
               right: 15,
               top: 10,
               color: "#1d5f9f",
-              fontFamily: "Nunito,sans-serif",
+              fontFamily: "var(--ui-font)",
               fontSize: 15,
               fontWeight: 1000,
               letterSpacing: "0.02em",
               textShadow: "0 1px 0 #fff",
             }}
           >
-            かんじ カプセル
+            漢字カプセル
           </div>
         </div>
 
@@ -252,7 +283,7 @@ export function GachaMachine({
           />
 
           <AnimatePresence>
-            {spinning &&
+            {spinning && !allUnlocked &&
               SHUFFLE_CAPSULES.map((ball, index) => (
                 <motion.div
                   key={index}
@@ -282,7 +313,7 @@ export function GachaMachine({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "Nunito, Noto Serif JP, sans-serif",
+              fontFamily: "var(--ui-font), var(--jp-font), sans-serif",
               fontSize: 13,
               fontWeight: 1000,
               letterSpacing: "0.02em",
@@ -294,12 +325,46 @@ export function GachaMachine({
           </div>
 
           <div style={{ position: "absolute", inset: 0, zIndex: 2 }}>
-            {BANK_CAPSULES.map((ball, index) => (
+            {!allUnlocked && BANK_CAPSULES.map((ball, index) => (
               <div key={index} style={{ position: "absolute", left: ball.x, top: ball.y }}>
                 <CapsuleBall color={ball.color} size={ball.size} rotate={ball.rotate} />
               </div>
             ))}
           </div>
+
+          {allUnlocked && (
+            <motion.div
+              initial={{ rotate: -2, scale: 0.96 }}
+              animate={{ rotate: -2, scale: 1 }}
+              transition={{ type: "spring", stiffness: 420, damping: 18 }}
+              style={{
+                position: "absolute",
+                left: 29,
+                right: 29,
+                bottom: 76,
+                minHeight: 43,
+                borderRadius: 8,
+                background: "linear-gradient(135deg, #d9152f, #a30f24)",
+                border: "2px solid rgba(255,255,255,0.82)",
+                boxShadow: "0 7px 14px rgba(80,0,16,0.28), inset 0 1px 0 rgba(255,255,255,0.25)",
+                color: "#fff",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                padding: "5px 8px",
+                zIndex: 4,
+              }}
+            >
+              <span style={{ fontFamily: "var(--ui-font)", fontSize: 13, fontWeight: 800, lineHeight: 1.05, opacity: 0.92 }}>
+                カプセルが売り切れです。
+              </span>
+              <span style={{ fontFamily: "var(--ui-font)", fontSize: 14, fontWeight: 1000, lineHeight: 1.05, textTransform: "uppercase", letterSpacing: "0.02em" }}>
+                Out of stock
+              </span>
+            </motion.div>
+          )}
 
           <div
             style={{
@@ -352,7 +417,7 @@ export function GachaMachine({
               alignItems: "center",
               justifyContent: "center",
               color: "#c8102e",
-              fontFamily: "Nunito,sans-serif",
+              fontFamily: "var(--ui-font)",
               fontSize: 15,
               fontWeight: 1000,
             }}
@@ -375,6 +440,38 @@ export function GachaMachine({
             }}
           >
             <div style={{ position: "absolute", left: 19, top: 5, width: 4, height: 32, background: "#1f2937", borderRadius: 4 }} />
+            {allUnlocked && (
+              <div style={{ position: "absolute", inset: -7, pointerEvents: "none" }}>
+                <div
+                  style={{
+                    position: "absolute",
+                    left: 3,
+                    right: 3,
+                    top: "50%",
+                    height: 8,
+                    marginTop: -4,
+                    borderRadius: 8,
+                    background: "#dc143c",
+                    boxShadow: "0 1px 0 rgba(255,255,255,0.4)",
+                    transform: "rotate(45deg)",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    left: 3,
+                    right: 3,
+                    top: "50%",
+                    height: 8,
+                    marginTop: -4,
+                    borderRadius: 8,
+                    background: "#dc143c",
+                    boxShadow: "0 1px 0 rgba(255,255,255,0.4)",
+                    transform: "rotate(-45deg)",
+                  }}
+                />
+              </div>
+            )}
           </div>
 
           <div
@@ -400,17 +497,17 @@ export function GachaMachine({
             />
             <motion.button
               onClick={handleSpin}
-              disabled={spinning || !!capsule || allUnlocked}
-              animate={{ rotate: knobDeg }}
-              transition={{ duration: 0.8, ease: [0.22, 0.9, 0.32, 1] }}
-              whileHover={!spinning && !capsule && !allUnlocked ? { scale: 1.03 } : {}}
-              whileTap={!spinning && !capsule && !allUnlocked ? { scale: 0.97 } : {}}
+              disabled={spinning || !!capsule}
+              animate={allUnlocked ? { rotate: [knobDeg, knobDeg + 28, knobDeg - 8, knobDeg] } : { rotate: knobDeg }}
+              transition={allUnlocked ? { duration: 0.42, ease: [0.2, 0.85, 0.2, 1] } : { duration: 0.8, ease: [0.22, 0.9, 0.32, 1] }}
+              whileHover={!spinning && !capsule ? { scale: 1.03 } : {}}
+              whileTap={!spinning && !capsule ? { scale: 0.97 } : {}}
               style={{
                 position: "absolute",
                 inset: 22,
                 border: "none",
                 borderRadius: "50%",
-                cursor: spinning || capsule || allUnlocked ? "default" : "pointer",
+                cursor: spinning || capsule ? "default" : "pointer",
                 background: "linear-gradient(145deg,#fffef7,#d5ccbb)",
                 boxShadow: "0 7px 12px rgba(55,45,30,0.26), inset 4px 4px 9px rgba(255,255,255,0.9), inset -6px -6px 12px rgba(90,75,52,0.14)",
               }}
@@ -442,7 +539,7 @@ export function GachaMachine({
               borderRadius: 7,
               background: "#064fae",
               color: "#fff",
-              fontFamily: "Nunito,sans-serif",
+              fontFamily: "var(--ui-font)",
               fontSize: 10,
               fontWeight: 900,
               display: "flex",
@@ -469,7 +566,7 @@ export function GachaMachine({
               alignItems: "center",
               justifyContent: "center",
               color: "rgba(255,255,255,0.08)",
-              fontFamily: "Nunito,sans-serif",
+              fontFamily: "var(--ui-font)",
               fontSize: 19,
               fontWeight: 1000,
               overflow: "hidden",
@@ -501,7 +598,6 @@ export function GachaMachine({
                     y: { duration: 1.45, times: [0, 0.56, 0.72, 0.84, 0.93, 1], ease: ["easeIn", "easeOut", "easeIn", "easeOut", "easeIn"] },
                     rotate: { duration: 1.45, times: [0, 0.56, 0.72, 0.84, 0.93, 1], ease: "easeOut" },
                   }}
-                  onClick={handleCapsuleTap}
                   style={{
                     position: "absolute",
                     left: 16,
@@ -521,11 +617,11 @@ export function GachaMachine({
                         inset: 0,
                         borderRadius: "50%",
                         overflow: "hidden",
-                        background: `linear-gradient(145deg, ${rewardColors.secondary}, ${rewardColors.secondary}bb)`,
+                        background: capsuleBottomBackground,
                         boxShadow: `0 3px 10px ${rewardColors.primary}66, 0 7px 12px rgba(0,0,0,0.22)`,
                       }}
                     >
-                      <div style={{ position: "absolute", inset: "0 0 19px", background: `linear-gradient(145deg, ${rewardColors.primary}, ${rewardColors.primary}bb)` }} />
+                      <div style={{ position: "absolute", inset: "0 0 19px", background: capsuleTopBackground }} />
                       <div style={{ position: "absolute", top: 18, left: 0, right: 0, height: 3, background: "rgba(0,0,0,0.18)" }} />
                       <div style={{ position: "absolute", top: 7, left: 8, width: 12, height: 6, borderRadius: "50%", background: "rgba(255,255,255,0.52)", transform: "rotate(-25deg)" }} />
                     </motion.div>
@@ -545,7 +641,7 @@ export function GachaMachine({
                         >
                           <span
                             style={{
-                              fontFamily: "Noto Serif JP,serif",
+                              fontFamily: "var(--jp-font)",
                               fontSize: 31,
                               fontWeight: 800,
                               color: rewardColors.primary,
@@ -607,29 +703,29 @@ export function GachaMachine({
 
       <div className="mt-4 text-center" style={{ minHeight: 32 }}>
         {allUnlocked ? (
-          <p style={{ fontFamily: "Nunito,sans-serif", fontWeight: 800, fontSize: 13, color: "#ffd700" }}>
-            You have unlocked everything!
+          <p style={{ fontFamily: "var(--ui-font)", fontWeight: 800, fontSize: 14, color: "#ffd700" }}>
+            Reset your collection progress in the settings, if you want.
           </p>
         ) : spinning ? (
           <motion.p
             animate={{ opacity: [1, 0.45, 1] }}
             transition={{ duration: 0.6, repeat: Infinity }}
-            style={{ fontFamily: "Nunito,sans-serif", fontWeight: 800, fontSize: 13 }}
+            style={{ fontFamily: "var(--ui-font)", fontWeight: 800, fontSize: 13 }}
             className="text-muted-foreground"
           >
             Stirring capsules...
           </motion.p>
         ) : rewardStage === "opened" ? (
-          <p style={{ fontFamily: "Nunito,sans-serif", fontWeight: 900, fontSize: 13, color: "#ffd700" }}>
+          <p style={{ fontFamily: "var(--ui-font)", fontWeight: 900, fontSize: 13, color: "#ffd700" }}>
             Tap the character to collect!
           </p>
         ) : capsule ? (
-          <p style={{ fontFamily: "Nunito,sans-serif", fontWeight: 900, fontSize: 13, color: "#ffd700" }}>
+          <p style={{ fontFamily: "var(--ui-font)", fontWeight: 900, fontSize: 13, color: "#ffd700" }}>
             Tap the capsule to reveal!
           </p>
         ) : (
-          <p style={{ fontFamily: "Nunito,sans-serif", fontWeight: 700, fontSize: 12 }} className="text-muted-foreground">
-            Turn the knob to get a new kanji or radical
+          <p style={{ fontFamily: "var(--ui-font)", fontWeight: 700, fontSize: 12 }} className="text-muted-foreground">
+            Click the handle to spin the machine!
           </p>
         )}
       </div>
@@ -670,7 +766,6 @@ export function GachaMachine({
                   ? { duration: 0.65, ease: [0.2, 0.9, 0.25, 1] }
                   : { duration: 0.72, ease: [0.19, 1, 0.22, 1] }
               }
-              onClick={rewardStage === "center" ? handleCapsuleTap : rewardStage === "opened" ? handleCollectReward : undefined}
               style={{
                 width: 146,
                 height: 146,
@@ -678,99 +773,60 @@ export function GachaMachine({
                 cursor: rewardStage === "center" || rewardStage === "opened" ? "pointer" : "default",
               }}
             >
-              <AnimatePresence>
-                {rewardStage === "center" && (
-                  <motion.div
-                    key="closed-reward-capsule"
-                    initial={{ scale: 0.94 }}
-                    animate={{ scale: [1, 1.03, 1] }}
-                    exit={{ scale: [1, 0.82, 1.18], opacity: 0 }}
-                    transition={{ duration: 0.38, ease: "easeInOut" }}
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      background: `linear-gradient(145deg, ${rewardColors.secondary}, ${rewardColors.secondary}bb)`,
-                      boxShadow: `0 22px 48px rgba(0,0,0,0.32), 0 0 34px ${rewardColors.primary}88`,
-                    }}
-                  >
-                    <div style={{ position: "absolute", inset: "0 0 70px", background: `linear-gradient(145deg, ${rewardColors.primary}, ${rewardColors.primary}bb)` }} />
-                    <div style={{ position: "absolute", top: 70, left: 0, right: 0, height: 7, background: "rgba(0,0,0,0.16)" }} />
-                    <div style={{ position: "absolute", top: 24, left: 28, width: 42, height: 18, borderRadius: "50%", background: "rgba(255,255,255,0.52)", transform: "rotate(-25deg)" }} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              <AnimatePresence>
-                {(rewardStage === "opened" || rewardStage === "collecting") && (
-                  <motion.div
-                    key="opened-reward"
-                    initial={{ scale: 0.72, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ type: "spring", stiffness: 450, damping: 18 }}
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
+              <motion.div
+                onPointerDown={rewardStage === "center" ? handleCapsulePressStart : undefined}
+                onPointerUp={rewardStage === "center" ? handleCapsulePressEnd : undefined}
+                onPointerCancel={() => setCapsulePressing(false)}
+                onPointerLeave={() => {
+                  if (rewardStage === "center") setCapsulePressing(false);
+                }}
+                initial={{ scale: 0.94, opacity: 1 }}
+                animate={
+                  rewardStage === "center"
+                    ? capsulePressing
+                      ? { x: 0, y: 0, rotate: 0, scaleX: 0.78, scaleY: 1 }
+                      : {
+                          x: [0, -2, 2, -1, 1, 0, 2, -2, 0],
+                          y: [0, 1, -2, 2, -1, 0, -1, 1, 0],
+                          rotate: [0, -1.4, 1.1, -0.7, 1.3, 0, -1, 0.8, 0],
+                          scaleX: [1, 1.018, 0.996, 1.012, 1],
+                          scaleY: [1, 0.994, 1.012, 0.998, 1],
+                        }
+                    : { x: 0, y: 0, rotate: 0, scaleX: 1, scaleY: 1, opacity: 1 }
+                }
+                transition={
+                  rewardStage === "center" && !capsulePressing
+                    ? {
+                        x: { duration: 0.42, repeat: Infinity, ease: "linear" },
+                        y: { duration: 0.42, repeat: Infinity, ease: "linear" },
+                        rotate: { duration: 0.42, repeat: Infinity, ease: "linear" },
+                        scaleX: { duration: 0.9, repeat: Infinity, ease: "easeInOut" },
+                        scaleY: { duration: 0.9, repeat: Infinity, ease: "easeInOut" },
+                      }
+                    : { duration: 0.2, ease: [0.22, 1, 0.36, 1] }
+                }
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  touchAction: "none",
+                }}
+              >
                     <motion.div
-                      initial={{ y: 0, rotate: 0 }}
-                      animate={{ y: -54, rotate: -18, opacity: 0.72 }}
-                      transition={{ duration: 0.42, ease: [0.2, 0.9, 0.25, 1] }}
-                      style={{
-                        position: "absolute",
-                        width: 144,
-                        height: 72,
-                        top: 0,
-                        borderRadius: "72px 72px 8px 8px",
-                        background: `linear-gradient(145deg, ${rewardColors.primary}, ${rewardColors.primary}bb)`,
-                        boxShadow: "0 12px 22px rgba(0,0,0,0.2)",
-                      }}
-                    />
-                    <motion.div
-                      initial={{ y: 0, rotate: 0 }}
-                      animate={{ y: 54, rotate: 16, opacity: 0.72 }}
-                      transition={{ duration: 0.42, ease: [0.2, 0.9, 0.25, 1] }}
-                      style={{
-                        position: "absolute",
-                        width: 144,
-                        height: 72,
-                        bottom: 0,
-                        borderRadius: "8px 8px 72px 72px",
-                        background: `linear-gradient(145deg, ${rewardColors.secondary}, ${rewardColors.secondary}bb)`,
-                        boxShadow: "0 12px 22px rgba(0,0,0,0.2)",
-                      }}
-                    />
-
-                    {[0, 1, 2, 3, 4, 5].map((sparkle) => (
-                      <motion.span
-                        key={sparkle}
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: [0, 1.2, 0.85], opacity: [0, 1, 0.6] }}
-                        transition={{ duration: 0.9, delay: 0.12 + sparkle * 0.06, repeat: Infinity, repeatDelay: 0.6 }}
-                        style={{
-                          position: "absolute",
-                          left: `${12 + (sparkle % 3) * 36}%`,
-                          top: sparkle < 3 ? 18 : 108,
-                          color: "#fff7a8",
-                          fontSize: 21,
-                          fontWeight: 1000,
-                        }}
-                      >
-                        *
-                      </motion.span>
-                    ))}
-
-                    <motion.div
-                      initial={{ scale: 0.4, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.18, type: "spring", stiffness: 520, damping: 18 }}
+                      animate={
+                        rewardStage === "opened" || rewardStage === "collecting"
+                          ? { scale: 1, opacity: 1 }
+                          : { scale: 0.72, opacity: 0.56 }
+                      }
+                      transition={
+                        rewardStage === "opened" || rewardStage === "collecting"
+                          ? { delay: 0.08, type: "spring", stiffness: 520, damping: 18 }
+                          : { duration: 0.18 }
+                      }
                       onClick={(event) => {
+                        if (rewardStage !== "opened") return;
                         event.stopPropagation();
                         handleCollectReward();
                       }}
@@ -783,14 +839,15 @@ export function GachaMachine({
                         alignItems: "center",
                         justifyContent: "center",
                         boxShadow: `0 16px 34px rgba(0,0,0,0.32), 0 0 34px ${rewardColors.primary}aa`,
-                        position: "relative",
-                        zIndex: 2,
-                        cursor: "pointer",
+                        position: "absolute",
+                        zIndex: 1,
+                        cursor: rewardStage === "opened" ? "pointer" : "default",
+                        pointerEvents: rewardStage === "opened" ? "auto" : "none",
                       }}
                     >
                       <span
                         style={{
-                          fontFamily: "Noto Serif JP,serif",
+                          fontFamily: "var(--jp-font)",
                           fontSize: 58,
                           fontWeight: 800,
                           color: "#fff",
@@ -800,9 +857,105 @@ export function GachaMachine({
                         {capsuleChar}
                       </span>
                     </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+
+                    <motion.div
+                      initial={{ y: 0, rotate: 0 }}
+                      animate={rewardStage === "opened" || rewardStage === "collecting" ? { y: -54, rotate: -18, opacity: 0.72 } : { y: 0, rotate: 0, opacity: 1 }}
+                      transition={{ duration: 0.58, ease: [0.2, 0.9, 0.25, 1] }}
+                      style={{
+                        position: "absolute",
+                        width: 144,
+                        height: 72,
+                        top: 0,
+                        borderRadius: "72px 72px 8px 8px",
+                        background: capsuleTopBackground,
+                        boxShadow: "0 12px 22px rgba(0,0,0,0.2)",
+                        zIndex: 2,
+                      }}
+                    />
+                    <motion.div
+                      initial={{ y: 0, rotate: 0 }}
+                      animate={rewardStage === "opened" || rewardStage === "collecting" ? { y: 54, rotate: 16, opacity: 0.72 } : { y: 0, rotate: 0, opacity: 1 }}
+                      transition={{ duration: 0.58, ease: [0.2, 0.9, 0.25, 1] }}
+                      style={{
+                        position: "absolute",
+                        width: 144,
+                        height: 72,
+                        bottom: 0,
+                        borderRadius: "8px 8px 72px 72px",
+                        background: capsuleBottomBackground,
+                        boxShadow: "0 12px 22px rgba(0,0,0,0.2)",
+                        zIndex: 2,
+                      }}
+                    />
+
+                    <motion.div
+                      animate={{ opacity: rewardStage === "center" ? 1 : 0 }}
+                      transition={{ duration: 0.18 }}
+                      style={{
+                        position: "absolute",
+                        left: 0,
+                        right: 0,
+                        top: 70,
+                        height: 7,
+                        background: "rgba(0,0,0,0.16)",
+                        pointerEvents: "none",
+                        zIndex: 3,
+                      }}
+                    />
+                    <motion.div
+                      animate={{ opacity: rewardStage === "center" ? 1 : 0 }}
+                      transition={{ duration: 0.18 }}
+                      style={{
+                        position: "absolute",
+                        top: 24,
+                        left: 28,
+                        width: 42,
+                        height: 18,
+                        borderRadius: "50%",
+                        background: "rgba(255,255,255,0.52)",
+                        transform: "rotate(-25deg)",
+                        pointerEvents: "none",
+                        zIndex: 3,
+                      }}
+                    />
+
+                    <AnimatePresence>
+                      {(rewardStage === "opened" || rewardStage === "collecting") && (
+                        <>
+                    {REWARD_SPARKLES.map((sparkle, index) =>
+                      sparkle.x.map((x, pointIndex) => (
+                        <motion.span
+                          key={`${index}-${pointIndex}`}
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: [0, 1.2, 0.85, 0], opacity: [0, 1, 0.7, 0], rotate: [0, 22, -10, 0] }}
+                          transition={{
+                            duration: 0.78,
+                            repeat: Infinity,
+                            repeatDelay: 2.62,
+                            delay: sparkle.delay + pointIndex * 0.85,
+                            ease: "easeInOut",
+                          }}
+                          style={{
+                            position: "absolute",
+                            left: `${x}%`,
+                            top: sparkle.y[pointIndex],
+                            color: "#fff7a8",
+                            fontSize: sparkle.size,
+                            fontWeight: 1000,
+                            pointerEvents: "none",
+                            zIndex: 4,
+                          }}
+                        >
+                          *
+                        </motion.span>
+                      ))
+                    )}
+
+                        </>
+                      )}
+                    </AnimatePresence>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}

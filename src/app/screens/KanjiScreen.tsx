@@ -30,15 +30,15 @@ export function KanjiScreen({ unlockedKanji, favorites, customNames, highlighted
     <div className="flex flex-col h-full">
       <div className="px-4 pt-3 pb-2 shrink-0">
         <div className="flex items-center justify-between mb-2">
-          <h2 style={{ fontFamily:"Nunito,sans-serif", fontWeight:900, fontSize:20 }} className="text-foreground">漢字 Collection</h2>
-          <span style={{ fontFamily:"Nunito,sans-serif", fontSize:12, fontWeight:700 }} className="text-muted-foreground">{unlockedKanji.size}/{KANJI.length}</span>
+          <h2 style={{ fontFamily:"var(--ui-font)", fontWeight:900, fontSize:20 }} className="text-foreground">漢字 Collection</h2>
+          <span style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:700 }} className="text-muted-foreground">{unlockedKanji.size}/{KANJI.length}</span>
         </div>
         <div className="flex gap-2">
           <div className="flex-1 flex items-center gap-2 rounded-xl px-3 py-2" style={{ background:"var(--input-background)" }}>
             <Search size={14} className="text-muted-foreground shrink-0" />
             <input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search kanji, meaning, reading..."
               className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground"
-              style={{ fontFamily:"Nunito,sans-serif" }} />
+              style={{ fontFamily:"var(--ui-font)" }} />
             {query && <button onClick={()=>setQuery("")}><X size={12} className="text-muted-foreground" /></button>}
           </div>
           <button onClick={()=>setFavOnly(f=>!f)}
@@ -48,11 +48,11 @@ export function KanjiScreen({ unlockedKanji, favorites, customNames, highlighted
           </button>
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto px-4 pb-4">
+      <div className="flex-1 overflow-y-auto px-4 pb-4" style={{ paddingTop: 34 }}>
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 py-16">
             <span style={{ fontSize:48 }}>{unlockedKanji.size === 0 ? "🎰" : "🔍"}</span>
-            <p style={{ fontFamily:"Nunito,sans-serif", fontWeight:700, fontSize:14 }} className="text-muted-foreground text-center">
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }} className="text-muted-foreground text-center">
               {unlockedKanji.size === 0 ? "Head to Gacha to unlock your first kanji!" : "No results found"}
             </p>
           </div>
