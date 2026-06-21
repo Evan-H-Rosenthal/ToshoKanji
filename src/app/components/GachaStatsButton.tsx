@@ -37,16 +37,16 @@ export function GachaStatsButton({
         whileTap={{ scale: 0.97 }}
         onClick={() => setOpen(true)}
         style={{
-          width: 244,
-          minHeight: 48,
-          borderRadius: 16,
+          width: "min(320px, calc(100vw - 64px))",
+          minHeight: 62,
+          borderRadius: 18,
           border: "1px solid rgba(255,255,255,0.28)",
           background:
             "linear-gradient(135deg, rgba(255,61,113,0.95), rgba(124,58,237,0.94) 54%, rgba(14,165,233,0.92))",
           boxShadow: "0 12px 26px rgba(13,10,30,0.28), inset 0 1px 0 rgba(255,255,255,0.34)",
           color: "#fff",
           cursor: "pointer",
-          padding: "8px 12px",
+          padding: "10px 14px",
           position: "relative",
           overflow: "hidden",
         }}
@@ -64,11 +64,11 @@ export function GachaStatsButton({
         />
         <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
           <div style={{ textAlign: "left" }}>
-            <p style={{ fontFamily: "var(--ui-font)", fontSize: 10, fontWeight: 900, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.82 }}>
+            <p style={{ fontFamily: "var(--ui-font)", fontSize: 12, fontWeight: 1000, letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.9 }}>
               Collection
             </p>
           </div>
-          <div style={{ display: "flex", gap: 8, transform: "translateY(-2px)" }}>
+          <div style={{ display: "flex", gap: 9, transform: "translateY(-1px)" }}>
             <StatPill label="Kanji" value={`${unlockedKanji.size}/${KANJI.length}`} />
             <StatPill label="Rad" value={`${unlockedRadicals.size}/${RADICALS.length}`} />
           </div>
@@ -192,17 +192,17 @@ function StatPill({ label, value }: { label: string; value: string }) {
   return (
     <div
       style={{
-        minWidth: 54,
-        borderRadius: 12,
+        minWidth: 64,
+        borderRadius: 14,
         background: "rgba(255,255,255,0.18)",
         border: "1px solid rgba(255,255,255,0.24)",
-        padding: "5px 7px",
+        padding: "7px 9px",
         textAlign: "center",
         boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2)",
       }}
     >
-      <p style={{ fontFamily: "var(--ui-font)", fontSize: 9, fontWeight: 900, lineHeight: 1, opacity: 0.8 }}>{label}</p>
-      <p style={{ fontFamily: "var(--ui-font)", fontSize: 14, fontWeight: 1000, lineHeight: 1.15 }}>{value}</p>
+      <p style={{ fontFamily: "var(--ui-font)", fontSize: 10, fontWeight: 900, lineHeight: 1, opacity: 0.84 }}>{label}</p>
+      <p style={{ fontFamily: "var(--ui-font)", fontSize: 17, fontWeight: 1000, lineHeight: 1.12 }}>{value}</p>
     </div>
   );
 }

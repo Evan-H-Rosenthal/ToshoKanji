@@ -31,4 +31,18 @@ Then open the local URL printed by Vite, usually:
 ```text
 http://localhost:5173/
 ```
+
+## Regenerating App Icons
+
+The source app icon lives at:
+
+```text
+public/icons/toshokanji-icon.svg
+```
+
+After replacing that SVG, regenerate the PWA, iOS, and favicon assets with:
+
+```powershell
+npm run icons
+```
   

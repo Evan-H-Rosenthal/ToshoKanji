@@ -196,18 +196,22 @@ export function GachaMachine({
   const capsuleBottomBackground = isKanjiReward
     ? `linear-gradient(145deg, ${rewardColors.primary}, ${rewardColors.secondary})`
     : `linear-gradient(145deg, ${rewardColors.secondary}, ${rewardColors.secondary}bb)`;
+  const machineScale = 1.10;
+  const machineVisualHeight = 490;
 
   return (
-    <div className="flex flex-col items-center select-none" style={{ width: 270 }}>
-      <motion.div
-        animate={spinning ? { y: [0, -7, 5, -6, 4, -4, 2, 0] } : { y: 0 }}
-        transition={spinning ? { duration: 0.72, repeat: 1, ease: "easeInOut" } : { duration: 0.2 }}
-        style={{
-          width: 244,
-          position: "relative",
-          filter: "drop-shadow(0 22px 36px rgba(0,0,0,0.34))",
-        }}
-      >
+    <div className="flex flex-col items-center select-none" style={{ width: 270 * machineScale }}>
+      <div style={{ width: 244 * machineScale, height: machineVisualHeight * machineScale, position: "relative" }}>
+        <div style={{ width: 244, margin: "0 auto", transform: `scale(${machineScale})`, transformOrigin: "top center" }}>
+          <motion.div
+            animate={spinning ? { y: [0, -7, 5, -6, 4, -4, 2, 0] } : { y: 0 }}
+            transition={spinning ? { duration: 0.72, repeat: 1, ease: "easeInOut" } : { duration: 0.2 }}
+            style={{
+              width: 244,
+              position: "relative",
+              filter: "drop-shadow(0 22px 36px rgba(0,0,0,0.34))",
+            }}
+          >
         <div
           style={{
             height: 42,
@@ -699,9 +703,11 @@ export function GachaMachine({
             />
           ))}
         </div>
-      </motion.div>
+          </motion.div>
+        </div>
+      </div>
 
-      <div className="mt-4 text-center" style={{ minHeight: 32 }}>
+      <div className="mt-2 text-center" style={{ minHeight: 30 }}>
         {allUnlocked ? (
           <p style={{ fontFamily: "var(--ui-font)", fontWeight: 800, fontSize: 14, color: "#ffd700" }}>
             Reset your collection progress in the settings, if you want.
