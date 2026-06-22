@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 export function PhoneFrame({ children, darkMode }: { children: ReactNode; darkMode: boolean }) {
   return (
     <div
+      className="app-shell-frame"
       style={{
         minHeight: "var(--app-height, 100dvh)",
         height: "var(--app-height, 100dvh)",

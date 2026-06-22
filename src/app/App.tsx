@@ -74,9 +74,12 @@ export default function App() {
 
   useEffect(() => {
     const updateViewportHeight = () => {
-      const viewportHeight = isStandalonePwa()
-        ? window.innerHeight
-        : window.visualViewport?.height ?? window.innerHeight;
+      if (isStandalonePwa()) {
+        document.documentElement.style.setProperty("--app-height", "100vh");
+        return;
+      }
+
+      const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
       document.documentElement.style.setProperty("--app-height", `${viewportHeight}px`);
     };
 
@@ -460,20 +463,51 @@ export default function App() {
   );
 
   return (
-    <div className={darkMode ? "dark" : ""} style={{ fontFamily:"var(--ui-font)", minHeight:"var(--app-height, 100dvh)" }}>
+    <div className={darkMode ? "dark" : ""} style={{ fontFamily:"var(--ui-font)", minHeight:"var(--app-height, 100dvh)", background: darkMode ? "#050411" : "#e8e0f0" }}>
       <style>{`
+        :root {
+          --app-height: 100dvh;
+          --app-bottom-safe: 0px;
+          --ui-font: ${UI_FONT_STACKS[uiFontChoice]};
+          --jp-font: ${CHARACTER_FONT_STACKS[characterFontChoice]};
+        }
         html, body, #root {
           width: 100%;
           height: 100%;
+          min-height: var(--app-height, 100dvh);
           overflow: hidden;
+          background: ${darkMode ? "#050411" : "#e8e0f0"};
         }
         body {
           background: ${darkMode ? "#050411" : "#e8e0f0"};
           overscroll-behavior: none;
         }
-        :root {
-          --ui-font: ${UI_FONT_STACKS[uiFontChoice]};
-          --jp-font: ${CHARACTER_FONT_STACKS[characterFontChoice]};
+        @media (display-mode: standalone) {
+          :root {
+            --app-height: 100vh;
+            --app-bottom-safe: max(env(safe-area-inset-bottom), 34px);
+          }
+          html, body, #root {
+            height: 100vh;
+            min-height: 100vh;
+            max-height: 100vh;
+          }
+          body {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+          }
+          .app-shell-frame::after {
+            content: "";
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: var(--app-bottom-safe);
+            background: ${darkMode ? "#050411" : "#e8e0f0"};
+            pointer-events: none;
+            z-index: 0;
+          }
         }
         ::-webkit-scrollbar { width: 0; height: 0; }
         * { -webkit-tap-highlight-color: transparent; }
