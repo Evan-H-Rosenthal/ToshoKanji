@@ -2,8 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Settings, Trophy } from "lucide-react";
 import { KANJI, RADICALS } from "./data/kanjiData";
-import { GachaMachine } from "./components/GachaMachine";
-import { GachaStatsButton } from "./components/GachaStatsButton";
+import { GachaPanel } from "./components/GachaPanel";
 import { PhoneFrame } from "./components/PhoneFrame";
 import { TabBar } from "./components/TabBar";
 import { UnlockPrompt } from "./components/UnlockPrompt";
@@ -56,6 +55,26 @@ export default function App() {
   const msgIdRef = useRef(0);
 
   const allUnlocked = unlockedKanji.size >= KANJI.length && unlockedRadicals.size >= RADICALS.length;
+
+  useEffect(() => {
+    const updateViewportHeight = () => {
+      const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+      document.documentElement.style.setProperty("--app-height", `${viewportHeight}px`);
+    };
+
+    updateViewportHeight();
+    window.visualViewport?.addEventListener("resize", updateViewportHeight);
+    window.visualViewport?.addEventListener("scroll", updateViewportHeight);
+    window.addEventListener("resize", updateViewportHeight);
+    window.addEventListener("orientationchange", updateViewportHeight);
+
+    return () => {
+      window.visualViewport?.removeEventListener("resize", updateViewportHeight);
+      window.visualViewport?.removeEventListener("scroll", updateViewportHeight);
+      window.removeEventListener("resize", updateViewportHeight);
+      window.removeEventListener("orientationchange", updateViewportHeight);
+    };
+  }, []);
 
   useEffect(() => {
     savePersistedAppState({
@@ -173,10 +192,13 @@ export default function App() {
     if (tab === "practice") return <PracticeScreen />;
 
     return (
-      <div style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:8, padding:"0 0 4px", position:"relative", transform:"translateY(-4px)" }}>
-        <GachaMachine onUnlock={handleUnlock} getItem={getGachaItem} allUnlocked={allUnlocked} />
-        <GachaStatsButton unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals} />
-      </div>
+      <GachaPanel
+        onUnlock={handleUnlock}
+        getItem={getGachaItem}
+        allUnlocked={allUnlocked}
+        unlockedKanji={unlockedKanji}
+        unlockedRadicals={unlockedRadicals}
+      />
     );
   };
 
@@ -258,7 +280,7 @@ export default function App() {
               {/* Tab content */}
               <div style={{ flex:1, minHeight:0, overflow:"hidden", display:"flex", flexDirection:"column", position:"relative" }}>
                 {improvePerformance ? (
-                  <AnimatePresence mode="wait" initial={false}>
+                  <AnimatePresence mode="wait">
                     <motion.div
                       key={activeTab}
                       initial={{ opacity:0, y:8 }}
@@ -309,7 +331,7 @@ export default function App() {
   );
 
   return (
-    <div className={darkMode ? "dark" : ""} style={{ fontFamily:"var(--ui-font)", minHeight:"100dvh" }}>
+    <div className={darkMode ? "dark" : ""} style={{ fontFamily:"var(--ui-font)", minHeight:"var(--app-height, 100dvh)" }}>
       <style>{`
         html, body, #root {
           width: 100%;

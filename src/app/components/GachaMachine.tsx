@@ -100,10 +100,12 @@ export function GachaMachine({
   onUnlock,
   getItem,
   allUnlocked,
+  scale = 1.02,
 }: {
   onUnlock: (type: "kanji" | "radical", id: string) => void;
   getItem: () => { type: "kanji" | "radical"; id: string } | null;
   allUnlocked: boolean;
+  scale?: number;
 }) {
   const [knobDeg, setKnobDeg] = useState(0);
   const [spinning, setSpinning] = useState(false);
@@ -196,7 +198,7 @@ export function GachaMachine({
   const capsuleBottomBackground = isKanjiReward
     ? `linear-gradient(145deg, ${rewardColors.primary}, ${rewardColors.secondary})`
     : `linear-gradient(145deg, ${rewardColors.secondary}, ${rewardColors.secondary}bb)`;
-  const machineScale = 1.02;
+  const machineScale = scale;
   const machineVisualHeight = 490;
 
   return (
