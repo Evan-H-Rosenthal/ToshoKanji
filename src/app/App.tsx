@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type PointerEvent } from "react";
+import { AnimatePresence, animate, motion, useMotionValue, type PanInfo } from "motion/react";
 import { Settings, Trophy } from "lucide-react";
 import { KANJI, RADICALS } from "./data/kanjiData";
 import { GachaPanel } from "./components/GachaPanel";
@@ -32,6 +32,10 @@ const TAB_ORDER: Record<Tab, number> = {
   practice: 2,
 };
 const TAB_SEQUENCE: Tab[] = ["collection", "gacha", "practice"];
+const getInitialPageWidth = () => {
+  if (typeof window === "undefined") return 0;
+  return Math.min(window.innerWidth, 480);
+};
 
 export default function App() {
   const initialPersistedState = useMemo(() => loadPersistedAppState(), []);
@@ -43,6 +47,7 @@ export default function App() {
   const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>(initialPersistedState.settings.characterFontChoice);
   const [activeTab, setActiveTab] = useState<Tab>("gacha");
   const [hasChangedTabs, setHasChangedTabs] = useState(false);
+  const [pageWidth, setPageWidth] = useState(getInitialPageWidth);
   const [screen, setScreen] = useState<ScreenState>({ type:"main" });
   const [screenStack, setScreenStack] = useState<ScreenState[]>([]);
 
@@ -56,6 +61,8 @@ export default function App() {
   const [highlightedUnlock, setHighlightedUnlock] = useState<{type:"kanji"|"radical";id:string}|null>(null);
   const msgIdRef = useRef(0);
   const swipeStartRef = useRef<{ x: number; y: number } | null>(null);
+  const pageViewportRef = useRef<HTMLDivElement>(null);
+  const pageX = useMotionValue(-TAB_ORDER.gacha * getInitialPageWidth());
 
   const allUnlocked = unlockedKanji.size >= KANJI.length && unlockedRadicals.size >= RADICALS.length;
 
@@ -78,6 +85,40 @@ export default function App() {
       window.removeEventListener("orientationchange", updateViewportHeight);
     };
   }, []);
+
+  useEffect(() => {
+    const viewport = pageViewportRef.current;
+    if (!viewport) return;
+
+    const updatePageWidth = () => setPageWidth(viewport.clientWidth);
+    updatePageWidth();
+
+    const observer = new ResizeObserver(updatePageWidth);
+    observer.observe(viewport);
+    window.visualViewport?.addEventListener("resize", updatePageWidth);
+    window.addEventListener("orientationchange", updatePageWidth);
+
+    return () => {
+      observer.disconnect();
+      window.visualViewport?.removeEventListener("resize", updatePageWidth);
+      window.removeEventListener("orientationchange", updatePageWidth);
+    };
+  }, [screen.type]);
+
+  useLayoutEffect(() => {
+    if (!pageWidth || improvePerformance || screen.type !== "main") return;
+    pageX.set(-TAB_ORDER[activeTab] * pageWidth);
+  }, [improvePerformance, pageWidth, pageX, screen.type]);
+
+  useEffect(() => {
+    if (!pageWidth || improvePerformance || screen.type !== "main") return;
+
+    const controls = animate(pageX, -TAB_ORDER[activeTab] * pageWidth, hasChangedTabs
+      ? { type: "spring", stiffness: 380, damping: 38, mass: 0.78 }
+      : { duration: 0 });
+
+    return () => controls.stop();
+  }, [activeTab, hasChangedTabs, improvePerformance, pageWidth, pageX, screen.type]);
 
   useEffect(() => {
     savePersistedAppState({
@@ -123,14 +164,14 @@ export default function App() {
   }, [activeTab, changeActiveTab]);
 
   const handleSwipeStart = useCallback((event: PointerEvent<HTMLDivElement>) => {
-    if (screen.type !== "main") return;
+    if (screen.type !== "main" || !improvePerformance) return;
     swipeStartRef.current = { x: event.clientX, y: event.clientY };
-  }, [screen.type]);
+  }, [improvePerformance, screen.type]);
 
   const handleSwipeEnd = useCallback((event: PointerEvent<HTMLDivElement>) => {
     const start = swipeStartRef.current;
     swipeStartRef.current = null;
-    if (!start || screen.type !== "main") return;
+    if (!start || screen.type !== "main" || !improvePerformance) return;
 
     const dx = event.clientX - start.x;
     const dy = event.clientY - start.y;
@@ -138,7 +179,30 @@ export default function App() {
     if (!isHorizontalSwipe) return;
 
     stepActiveTab(dx < 0 ? 1 : -1);
-  }, [screen.type, stepActiveTab]);
+  }, [improvePerformance, screen.type, stepActiveTab]);
+
+  const handleDragEnd = useCallback((_: MouseEvent | TouchEvent | globalThis.PointerEvent, info: PanInfo) => {
+    if (screen.type !== "main" || improvePerformance) return;
+
+    const currentIndex = TAB_SEQUENCE.indexOf(activeTab);
+    const currentX = -currentIndex * pageWidth;
+    const distanceThreshold = Math.max(54, pageWidth * 0.18);
+    const velocityThreshold = 420;
+    const shouldMoveForward = info.offset.x < -distanceThreshold || info.velocity.x < -velocityThreshold;
+    const shouldMoveBackward = info.offset.x > distanceThreshold || info.velocity.x > velocityThreshold;
+
+    if (shouldMoveForward && TAB_SEQUENCE[currentIndex + 1]) {
+      stepActiveTab(1);
+      return;
+    }
+
+    if (shouldMoveBackward && TAB_SEQUENCE[currentIndex - 1]) {
+      stepActiveTab(-1);
+      return;
+    }
+
+    animate(pageX, currentX, { type: "spring", stiffness: 420, damping: 34, mass: 0.74 });
+  }, [activeTab, improvePerformance, pageWidth, pageX, screen.type, stepActiveTab]);
 
   const getGachaItem = useCallback((): {type:"kanji"|"radical";id:string}|null => {
     const pool = [
@@ -174,13 +238,30 @@ export default function App() {
     setChatMsgs(p=>({...p,[key]:[...(p[key]||[]), userMsg, aiMsg]}));
   }, []);
 
-  const pushScreen = (s: ScreenState) => { setScreenStack(p=>[...p, screen]); setScreen(s); };
-  const popScreen = () => { const s=[...screenStack]; const prev=s.pop(); setScreenStack(s); setScreen(prev||{type:"main"}); };
+  const pushScreen = useCallback((nextScreen: ScreenState) => {
+    setScreenStack((stack) => [...stack, screen]);
+    setScreen(nextScreen);
+  }, [screen]);
+
+  const popScreen = useCallback(() => {
+    setScreenStack((stack) => {
+      const nextStack = [...stack];
+      const previousScreen = nextStack.pop() || { type: "main" };
+      setScreen(previousScreen);
+      return nextStack;
+    });
+  }, []);
   const handleBackToGacha = () => {
     setScreenStack([]);
     setScreen({ type:"main" });
     changeActiveTab("gacha");
   };
+  const openUtilityScreen = useCallback((nextScreen: ScreenState) => {
+    setScreen(nextScreen);
+  }, []);
+  const closeUtilityScreen = useCallback(() => {
+    setScreen({ type: "main" });
+  }, []);
 
   const handleNavKanji = (id:string) => {
     if (highlightedUnlock?.type === "kanji" && highlightedUnlock.id === id) setHighlightedUnlock(null);
@@ -255,12 +336,12 @@ export default function App() {
           )}
           {screen.type === "achievements" && (
             <AchievementsPage unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
-              favorites={favorites} notes={notes} onBack={popScreen} />
+              favorites={favorites} notes={notes} onBack={closeUtilityScreen} />
           )}
           {screen.type === "settings" && (
             <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} improvePerformance={improvePerformance} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
               onDark={setDarkMode} onVolume={setVolume} onDisableAutoJump={setDisableAutoJump} onImprovePerformance={setImprovePerformance} onUiFontChoice={setUiFontChoice} onCharacterFontChoice={setCharacterFontChoice}
-              onResetProgress={resetProgress} onResetAll={resetAll} onBack={popScreen} />
+              onResetProgress={resetProgress} onResetAll={resetAll} onBack={closeUtilityScreen} />
           )}
 
           {/* Main tabs */}
@@ -272,7 +353,7 @@ export default function App() {
                   display:"flex", alignItems:"center", justifyContent:"space-between",
                   padding:"14px 18px 8px",
                 }}>
-                  <button onClick={()=>pushScreen({type:"achievements"})}
+                  <button onClick={()=>openUtilityScreen({type:"achievements"})}
                     style={{ width:48, height:48, borderRadius:14, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
                     <Trophy size={23} className="text-foreground" />
                   </button>
@@ -280,7 +361,7 @@ export default function App() {
                     <p style={{ fontFamily:"var(--jp-font)", fontWeight:700, fontSize:16 }} className="text-foreground">図書漢字</p>
                     <p style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:700 }} className="text-muted-foreground">ToshoKanji</p>
                   </div>
-                  <button onClick={()=>pushScreen({type:"settings"})}
+                  <button onClick={()=>openUtilityScreen({type:"settings"})}
                     style={{ width:48, height:48, borderRadius:14, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
                     <Settings size={23} className="text-foreground" />
                   </button>
@@ -289,7 +370,7 @@ export default function App() {
               {/* Non-gacha headers show settings icon */}
               {activeTab !== "gacha" && (
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"14px 18px 8px" }}>
-                  <button onClick={()=>pushScreen({type:"achievements"})}
+                  <button onClick={()=>openUtilityScreen({type:"achievements"})}
                     style={{ width:48, height:48, borderRadius:14, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
                     <Trophy size={23} className="text-foreground" />
                   </button>
@@ -297,7 +378,7 @@ export default function App() {
                     <p style={{ fontFamily:"var(--jp-font)", fontWeight:700, fontSize:16 }} className="text-foreground">図書漢字</p>
                     <p style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:700 }} className="text-muted-foreground">ToshoKanji</p>
                   </div>
-                  <button onClick={()=>pushScreen({type:"settings"})}
+                  <button onClick={()=>openUtilityScreen({type:"settings"})}
                     style={{ width:48, height:48, borderRadius:14, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
                     <Settings size={23} className="text-foreground" />
                   </button>
@@ -306,6 +387,7 @@ export default function App() {
 
               {/* Tab content */}
               <div
+                ref={pageViewportRef}
                 onPointerDown={handleSwipeStart}
                 onPointerUp={handleSwipeEnd}
                 onPointerCancel={() => { swipeStartRef.current = null; }}
@@ -325,9 +407,13 @@ export default function App() {
                 ) : (
                   <motion.div
                     initial={false}
-                    animate={{ x: `${TAB_ORDER[activeTab] * -33.333333}%` }}
-                    transition={hasChangedTabs ? { duration:0.34, ease:[0.22, 1, 0.36, 1] } : { duration:0 }}
-                    style={{ width:"300%", height:"100%", display:"flex", willChange:"transform", transform:"translate3d(0,0,0)", backfaceVisibility:"hidden" }}>
+                    drag="x"
+                    dragDirectionLock
+                    dragElastic={0.08}
+                    dragMomentum={false}
+                    dragConstraints={{ left: pageWidth ? -pageWidth * 2 : 0, right: 0 }}
+                    onDragEnd={handleDragEnd}
+                    style={{ x: pageX, width:"300%", height:"100%", display:"flex", willChange:"transform", touchAction:"pan-y", backfaceVisibility:"hidden" }}>
                     <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "collection" ? "auto" : "none" }}>
                       {renderTabPanel("collection")}
                     </div>

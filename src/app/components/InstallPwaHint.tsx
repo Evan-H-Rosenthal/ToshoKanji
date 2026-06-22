@@ -22,7 +22,7 @@ export function InstallPwaHint() {
         position: "absolute",
         left: 14,
         right: 14,
-        bottom: "calc(34px + env(safe-area-inset-bottom))",
+        bottom: 34,
         zIndex: 35,
         borderRadius: 14,
         border: "1px solid rgba(255,255,255,0.2)",
