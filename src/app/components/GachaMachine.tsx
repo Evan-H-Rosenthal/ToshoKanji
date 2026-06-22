@@ -101,11 +101,13 @@ export function GachaMachine({
   getItem,
   allUnlocked,
   scale = 1.02,
+  reduceEffects = false,
 }: {
   onUnlock: (type: "kanji" | "radical", id: string) => void;
   getItem: () => { type: "kanji" | "radical"; id: string } | null;
   allUnlocked: boolean;
   scale?: number;
+  reduceEffects?: boolean;
 }) {
   const [knobDeg, setKnobDeg] = useState(0);
   const [spinning, setSpinning] = useState(false);
@@ -211,7 +213,7 @@ export function GachaMachine({
             style={{
               width: 244,
               position: "relative",
-              filter: "drop-shadow(0 22px 36px rgba(0,0,0,0.34))",
+              filter: reduceEffects ? "none" : "drop-shadow(0 22px 36px rgba(0,0,0,0.34))",
             }}
           >
         <div

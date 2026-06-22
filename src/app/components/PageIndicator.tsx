@@ -10,7 +10,8 @@ export function PageIndicator({ active }: { active: Tab }) {
   return (
     <div
       style={{
-        height: 24,
+        height: "calc(24px + env(safe-area-inset-bottom))",
+        paddingBottom: "env(safe-area-inset-bottom)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
