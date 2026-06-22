@@ -14,11 +14,11 @@ export function TabBar({ active, onChange }: { active: Tab; onChange: (t: Tab) =
     <div
       style={{
         display: "flex",
-        minHeight: 92,
-        height: "calc(92px + max(env(safe-area-inset-bottom), 14px))",
+        height: "calc(74px + max(env(safe-area-inset-bottom), 10px))",
         background: "var(--card)",
         borderTop: "1px solid var(--border)",
-        paddingBottom: "max(env(safe-area-inset-bottom), 14px)",
+        paddingTop: 4,
+        paddingBottom: "max(env(safe-area-inset-bottom), 10px)",
         flexShrink: 0,
       }}
     >
@@ -36,7 +36,7 @@ export function TabBar({ active, onChange }: { active: Tab; onChange: (t: Tab) =
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: 2,
+              gap: 1,
               cursor: "pointer",
               border: "none",
               background: "transparent",
@@ -52,7 +52,7 @@ export function TabBar({ active, onChange }: { active: Tab; onChange: (t: Tab) =
             <span
               style={{
                 fontFamily: "var(--jp-font)",
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: isActive ? 900 : 700,
                 color,
                 transition: "color 0.2s",
@@ -64,7 +64,7 @@ export function TabBar({ active, onChange }: { active: Tab; onChange: (t: Tab) =
             <span
               style={{
                 fontFamily: "var(--ui-font)",
-                fontSize: 9,
+                fontSize: 8,
                 fontWeight: isActive ? 850 : 700,
                 color,
                 opacity: isActive ? 0.9 : 0.76,

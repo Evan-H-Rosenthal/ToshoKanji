@@ -173,7 +173,7 @@ export default function App() {
     if (tab === "practice") return <PracticeScreen />;
 
     return (
-      <div style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:12, padding:"0 0 8px", position:"relative", transform:"translateY(-8px)" }}>
+      <div style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:8, padding:"0 0 4px", position:"relative", transform:"translateY(-4px)" }}>
         <GachaMachine onUnlock={handleUnlock} getItem={getGachaItem} allUnlocked={allUnlocked} />
         <GachaStatsButton unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals} />
       </div>

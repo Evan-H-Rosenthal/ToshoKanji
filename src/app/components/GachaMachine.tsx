@@ -196,7 +196,7 @@ export function GachaMachine({
   const capsuleBottomBackground = isKanjiReward
     ? `linear-gradient(145deg, ${rewardColors.primary}, ${rewardColors.secondary})`
     : `linear-gradient(145deg, ${rewardColors.secondary}, ${rewardColors.secondary}bb)`;
-  const machineScale = 1.10;
+  const machineScale = 1.02;
   const machineVisualHeight = 490;
 
   return (
