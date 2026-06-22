@@ -45,7 +45,6 @@ function CapsuleBall({ color, size, rotate = 0 }: { color: string; size: number;
         height: size,
         position: "relative",
         transform: `rotate(${rotate}deg)`,
-        filter: "drop-shadow(0 5px 8px rgba(30,25,15,0.22))",
       }}
     >
       <div
@@ -56,6 +55,7 @@ function CapsuleBall({ color, size, rotate = 0 }: { color: string; size: number;
           background: "linear-gradient(145deg, rgba(255,255,255,0.88), rgba(222,226,232,0.92))",
           border: "1px solid rgba(255,255,255,0.75)",
           overflow: "hidden",
+          boxShadow: "0 5px 8px rgba(30,25,15,0.2)",
         }}
       >
         <div
@@ -101,13 +101,11 @@ export function GachaMachine({
   getItem,
   allUnlocked,
   scale = 1.02,
-  reduceEffects = false,
 }: {
   onUnlock: (type: "kanji" | "radical", id: string) => void;
   getItem: () => { type: "kanji" | "radical"; id: string } | null;
   allUnlocked: boolean;
   scale?: number;
-  reduceEffects?: boolean;
 }) {
   const [knobDeg, setKnobDeg] = useState(0);
   const [spinning, setSpinning] = useState(false);
@@ -207,13 +205,27 @@ export function GachaMachine({
     <div className="flex flex-col items-center select-none" style={{ width: 270 * machineScale }}>
       <div style={{ width: 244 * machineScale, height: machineVisualHeight * machineScale, position: "relative" }}>
         <div style={{ width: 244, margin: "0 auto", transform: `scale(${machineScale})`, transformOrigin: "top center" }}>
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              left: 12,
+              right: 12,
+              top: 24,
+              bottom: 28,
+              borderRadius: 26,
+              boxShadow: "0 20px 34px rgba(0,0,0,0.3)",
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
           <motion.div
             animate={spinning ? { y: [0, -7, 5, -6, 4, -4, 2, 0] } : { y: 0 }}
             transition={spinning ? { duration: 0.72, repeat: 1, ease: "easeInOut" } : { duration: 0.2 }}
             style={{
               width: 244,
               position: "relative",
-              filter: reduceEffects ? "none" : "drop-shadow(0 22px 36px rgba(0,0,0,0.34))",
+              zIndex: 1,
             }}
           >
         <div
@@ -495,6 +507,16 @@ export function GachaMachine({
             }}
           >
             <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                inset: 22,
+                borderRadius: "50%",
+                boxShadow: "0 7px 12px rgba(55,45,30,0.26)",
+                pointerEvents: "none",
+              }}
+            />
+            <div
               style={{
                 position: "absolute",
                 inset: 14,
@@ -517,7 +539,7 @@ export function GachaMachine({
                 borderRadius: "50%",
                 cursor: spinning || capsule ? "default" : "pointer",
                 background: "linear-gradient(145deg,#fffef7,#d5ccbb)",
-                boxShadow: "0 7px 12px rgba(55,45,30,0.26), inset 4px 4px 9px rgba(255,255,255,0.9), inset -6px -6px 12px rgba(90,75,52,0.14)",
+                boxShadow: "inset 4px 4px 9px rgba(255,255,255,0.9), inset -6px -6px 12px rgba(90,75,52,0.14)",
               }}
             >
               <div

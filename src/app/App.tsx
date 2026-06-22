@@ -53,7 +53,6 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>("gacha");
   const [hasChangedTabs, setHasChangedTabs] = useState(false);
   const [pageWidth, setPageWidth] = useState(getInitialPageWidth);
-  const [isPageDragging, setIsPageDragging] = useState(false);
   const [screen, setScreen] = useState<ScreenState>({ type:"main" });
   const [screenStack, setScreenStack] = useState<ScreenState[]>([]);
 
@@ -194,7 +193,6 @@ export default function App() {
 
   const handleDragEnd = useCallback((_: MouseEvent | TouchEvent | globalThis.PointerEvent, info: PanInfo) => {
     if (screen.type !== "main" || improvePerformance) return;
-    setIsPageDragging(false);
 
     const currentIndex = TAB_SEQUENCE.indexOf(activeTab);
     const currentX = -currentIndex * pageWidth;
@@ -318,7 +316,6 @@ export default function App() {
         allUnlocked={allUnlocked}
         unlockedKanji={unlockedKanji}
         unlockedRadicals={unlockedRadicals}
-        reduceEffects={isPageDragging}
       />
     );
   };
@@ -425,16 +422,15 @@ export default function App() {
                     dragElastic={0.08}
                     dragMomentum={false}
                     dragConstraints={{ left: pageWidth ? -pageWidth * 2 : 0, right: 0 }}
-                    onDragStart={() => setIsPageDragging(true)}
                     onDragEnd={handleDragEnd}
                     style={{ x: pageX, width:"300%", height:"100%", display:"flex", willChange:"transform", touchAction:"pan-y", backfaceVisibility:"hidden" }}>
-                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "collection" ? "auto" : "none" }}>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "collection" ? "auto" : "none", contain:"layout paint" }}>
                       {renderTabPanel("collection")}
                     </div>
-                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "gacha" ? "auto" : "none" }}>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "gacha" ? "auto" : "none", contain:"layout paint" }}>
                       {renderTabPanel("gacha")}
                     </div>
-                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "practice" ? "auto" : "none" }}>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "practice" ? "auto" : "none", contain:"layout paint" }}>
                       {renderTabPanel("practice")}
                     </div>
                   </motion.div>
@@ -485,7 +481,7 @@ export default function App() {
         @media (display-mode: standalone) {
           :root {
             --app-height: 100vh;
-            --app-bottom-safe: max(env(safe-area-inset-bottom), 34px);
+            --app-bottom-safe: max(env(safe-area-inset-bottom), 20px);
           }
           html, body, #root {
             height: 100vh;
