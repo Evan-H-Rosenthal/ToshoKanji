@@ -149,7 +149,7 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
         {/* About */}
         <div className="rounded-2xl p-4 text-center" style={{ background:"var(--muted)" }}>
           <p style={{ fontFamily:"var(--jp-font)", fontSize:22, fontWeight:700 }} className="text-foreground">図書漢字</p>
-          <p style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:700 }} className="text-muted-foreground">ToshoKanji v1.0</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:700 }} className="text-muted-foreground">ToshoKanji v0.7</p>
           <p style={{ fontFamily:"var(--ui-font)", fontSize:11 }} className="text-muted-foreground">Discover kanji one capsule at a time</p>
         </div>
       </div>

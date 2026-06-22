@@ -56,6 +56,7 @@ export function GachaPanel({
     return Math.max(0.72, Math.min(1.08, widthLimit, heightLimit));
   }, [bounds.height, bounds.width]);
 
+  const isMeasured = bounds.width > 0 && bounds.height > 0;
   const justifyContent = bounds.height > 675 ? "center" : "flex-start";
 
   return (
@@ -72,6 +73,8 @@ export function GachaPanel({
         gap: PANEL_GAP,
         padding: `${PANEL_VERTICAL_PADDING}px 0`,
         position: "relative",
+        opacity: isMeasured ? 1 : 0,
+        transition: "opacity 0.2s ease",
       }}
     >
       <GachaMachine onUnlock={onUnlock} getItem={getItem} allUnlocked={allUnlocked} scale={machineScale} />

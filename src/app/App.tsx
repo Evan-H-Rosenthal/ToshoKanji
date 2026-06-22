@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Settings, Trophy } from "lucide-react";
 import { KANJI, RADICALS } from "./data/kanjiData";
 import { GachaPanel } from "./components/GachaPanel";
+import { InstallPwaHint } from "./components/InstallPwaHint";
+import { PageIndicator } from "./components/PageIndicator";
 import { PhoneFrame } from "./components/PhoneFrame";
-import { TabBar } from "./components/TabBar";
 import { UnlockPrompt } from "./components/UnlockPrompt";
 import { AchievementsPage } from "./screens/AchievementsPage";
 import { CollectionScreen } from "./screens/CollectionScreen";
@@ -30,6 +31,7 @@ const TAB_ORDER: Record<Tab, number> = {
   gacha: 1,
   practice: 2,
 };
+const TAB_SEQUENCE: Tab[] = ["collection", "gacha", "practice"];
 
 export default function App() {
   const initialPersistedState = useMemo(() => loadPersistedAppState(), []);
@@ -53,6 +55,7 @@ export default function App() {
   const [unlockPrompt, setUnlockPrompt] = useState<{type:"kanji"|"radical";id:string}|null>(null);
   const [highlightedUnlock, setHighlightedUnlock] = useState<{type:"kanji"|"radical";id:string}|null>(null);
   const msgIdRef = useRef(0);
+  const swipeStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const allUnlocked = unlockedKanji.size >= KANJI.length && unlockedRadicals.size >= RADICALS.length;
 
@@ -112,6 +115,30 @@ export default function App() {
       return nextTab;
     });
   }, []);
+
+  const stepActiveTab = useCallback((direction: -1 | 1) => {
+    const currentIndex = TAB_SEQUENCE.indexOf(activeTab);
+    const nextTab = TAB_SEQUENCE[currentIndex + direction];
+    if (nextTab) changeActiveTab(nextTab);
+  }, [activeTab, changeActiveTab]);
+
+  const handleSwipeStart = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    if (screen.type !== "main") return;
+    swipeStartRef.current = { x: event.clientX, y: event.clientY };
+  }, [screen.type]);
+
+  const handleSwipeEnd = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    const start = swipeStartRef.current;
+    swipeStartRef.current = null;
+    if (!start || screen.type !== "main") return;
+
+    const dx = event.clientX - start.x;
+    const dy = event.clientY - start.y;
+    const isHorizontalSwipe = Math.abs(dx) > 46 && Math.abs(dx) > Math.abs(dy) * 1.18;
+    if (!isHorizontalSwipe) return;
+
+    stepActiveTab(dx < 0 ? 1 : -1);
+  }, [screen.type, stepActiveTab]);
 
   const getGachaItem = useCallback((): {type:"kanji"|"radical";id:string}|null => {
     const pool = [
@@ -203,7 +230,7 @@ export default function App() {
   };
 
   const mainContent = (
-    <div style={{ display:"flex", flexDirection:"column", height:"100%" }}>
+    <div style={{ display:"flex", flexDirection:"column", height:"100%", position:"relative" }}>
       {/* Top chrome */}
       <AnimatePresence mode="popLayout">
         <motion.div key={screen.type} initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }}
@@ -278,15 +305,19 @@ export default function App() {
               )}
 
               {/* Tab content */}
-              <div style={{ flex:1, minHeight:0, overflow:"hidden", display:"flex", flexDirection:"column", position:"relative" }}>
+              <div
+                onPointerDown={handleSwipeStart}
+                onPointerUp={handleSwipeEnd}
+                onPointerCancel={() => { swipeStartRef.current = null; }}
+                style={{ flex:1, minHeight:0, overflow:"hidden", display:"flex", flexDirection:"column", position:"relative", touchAction:"pan-y" }}>
                 {improvePerformance ? (
                   <AnimatePresence mode="wait">
                     <motion.div
-                      key={activeTab}
+                      key={`fade-${activeTab}`}
                       initial={{ opacity:0, y:8 }}
                       animate={{ opacity:1, y:0 }}
                       exit={{ opacity:0, y:-8 }}
-                      transition={{ duration:0.18, ease:"easeOut" }}
+                      transition={{ duration:0.24, ease:"easeOut" }}
                       style={{ position:"absolute", inset:0, overflow:"hidden", display:"flex", flexDirection:"column" }}>
                       {renderTabPanel(activeTab)}
                     </motion.div>
@@ -314,8 +345,8 @@ export default function App() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Tab bar (hidden on sub-screens) */}
-      {screen.type === "main" && <TabBar active={activeTab} onChange={changeActiveTab} />}
+      {/* Page indicator (hidden on sub-screens) */}
+      {screen.type === "main" && <PageIndicator active={activeTab} />}
 
       {/* Unlock prompt overlay */}
       <AnimatePresence>
@@ -327,6 +358,7 @@ export default function App() {
             onCancel={()=>setUnlockPrompt(null)} />
         )}
       </AnimatePresence>
+      <InstallPwaHint />
     </div>
   );
 
