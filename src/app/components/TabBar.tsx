@@ -14,10 +14,12 @@ export function TabBar({ active, onChange }: { active: Tab; onChange: (t: Tab) =
     <div
       style={{
         display: "flex",
-        height: "calc(84px + env(safe-area-inset-bottom))",
+        minHeight: 92,
+        height: "calc(92px + max(env(safe-area-inset-bottom), 14px))",
         background: "var(--card)",
         borderTop: "1px solid var(--border)",
-        paddingBottom: "calc(10px + env(safe-area-inset-bottom))",
+        paddingBottom: "max(env(safe-area-inset-bottom), 14px)",
+        flexShrink: 0,
       }}
     >
       {tabs.map((tab) => {

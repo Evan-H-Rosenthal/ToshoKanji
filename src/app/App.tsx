@@ -37,6 +37,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(initialPersistedState.settings.darkMode);
   const [volume, setVolume] = useState(initialPersistedState.settings.volume);
   const [disableAutoJump, setDisableAutoJump] = useState(initialPersistedState.settings.disableAutoJump);
+  const [improvePerformance, setImprovePerformance] = useState(initialPersistedState.settings.improvePerformance);
   const [uiFontChoice, setUiFontChoice] = useState<UiFontChoice>(initialPersistedState.settings.uiFontChoice);
   const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>(initialPersistedState.settings.characterFontChoice);
   const [activeTab, setActiveTab] = useState<Tab>("gacha");
@@ -67,6 +68,7 @@ export default function App() {
         darkMode,
         volume,
         disableAutoJump,
+        improvePerformance,
         uiFontChoice,
         characterFontChoice,
       },
@@ -77,6 +79,7 @@ export default function App() {
     darkMode,
     disableAutoJump,
     favorites,
+    improvePerformance,
     notes,
     uiFontChoice,
     unlockedKanji,
@@ -148,6 +151,34 @@ export default function App() {
   const resetAll = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); setFavorites(new Set()); setCustomNames({}); setNotes({}); setChatMsgs({}); };
 
   const isSubScreen = screen.type !== "main";
+  const renderTabPanel = (tab: Tab) => {
+    if (tab === "collection") {
+      return (
+        <CollectionScreen
+          unlockedKanji={unlockedKanji}
+          unlockedRadicals={unlockedRadicals}
+          favorites={favorites}
+          customNames={customNames}
+          highlightedUnlock={highlightedUnlock}
+          onSelectKanji={id=>pushScreen({type:"kanji-entry",id})}
+          onSelectRadical={id=>pushScreen({type:"radical-entry",id})}
+          onToggleFav={handleToggleFav}
+          onClearHighlight={(type, id) => {
+            if (highlightedUnlock?.type === type && highlightedUnlock.id === id) setHighlightedUnlock(null);
+          }}
+        />
+      );
+    }
+
+    if (tab === "practice") return <PracticeScreen />;
+
+    return (
+      <div style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:12, padding:"0 0 8px", position:"relative", transform:"translateY(-8px)" }}>
+        <GachaMachine onUnlock={handleUnlock} getItem={getGachaItem} allUnlocked={allUnlocked} />
+        <GachaStatsButton unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals} />
+      </div>
+    );
+  };
 
   const mainContent = (
     <div style={{ display:"flex", flexDirection:"column", height:"100%" }}>
@@ -178,8 +209,8 @@ export default function App() {
               favorites={favorites} notes={notes} onBack={popScreen} />
           )}
           {screen.type === "settings" && (
-            <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
-              onDark={setDarkMode} onVolume={setVolume} onDisableAutoJump={setDisableAutoJump} onUiFontChoice={setUiFontChoice} onCharacterFontChoice={setCharacterFontChoice}
+            <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} improvePerformance={improvePerformance} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
+              onDark={setDarkMode} onVolume={setVolume} onDisableAutoJump={setDisableAutoJump} onImprovePerformance={setImprovePerformance} onUiFontChoice={setUiFontChoice} onCharacterFontChoice={setCharacterFontChoice}
               onResetProgress={resetProgress} onResetAll={resetAll} onBack={popScreen} />
           )}
 
@@ -226,36 +257,35 @@ export default function App() {
 
               {/* Tab content */}
               <div style={{ flex:1, minHeight:0, overflow:"hidden", display:"flex", flexDirection:"column", position:"relative" }}>
-                <motion.div
-                  initial={false}
-                  animate={{ x: `${TAB_ORDER[activeTab] * -33.333333}%` }}
-                  transition={hasChangedTabs ? { duration:0.38, ease:[0.22, 1, 0.36, 1] } : { duration:0 }}
-                  style={{ width:"300%", height:"100%", display:"flex", willChange:"transform", transform:"translateZ(0)", backfaceVisibility:"hidden" }}>
-                  <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "collection" ? "auto" : "none" }}>
-                    <CollectionScreen
-                      unlockedKanji={unlockedKanji}
-                      unlockedRadicals={unlockedRadicals}
-                      favorites={favorites}
-                      customNames={customNames}
-                      highlightedUnlock={highlightedUnlock}
-                      onSelectKanji={id=>pushScreen({type:"kanji-entry",id})}
-                      onSelectRadical={id=>pushScreen({type:"radical-entry",id})}
-                      onToggleFav={handleToggleFav}
-                      onClearHighlight={(type, id) => {
-                        if (highlightedUnlock?.type === type && highlightedUnlock.id === id) setHighlightedUnlock(null);
-                      }}
-                    />
-                  </div>
-                  <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "gacha" ? "auto" : "none" }}>
-                    <div style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:12, padding:"0 0 8px", position:"relative", transform:"translateY(-8px)" }}>
-                      <GachaMachine onUnlock={handleUnlock} getItem={getGachaItem} allUnlocked={allUnlocked} />
-                      <GachaStatsButton unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals} />
+                {improvePerformance ? (
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={activeTab}
+                      initial={{ opacity:0, y:8 }}
+                      animate={{ opacity:1, y:0 }}
+                      exit={{ opacity:0, y:-8 }}
+                      transition={{ duration:0.18, ease:"easeOut" }}
+                      style={{ position:"absolute", inset:0, overflow:"hidden", display:"flex", flexDirection:"column" }}>
+                      {renderTabPanel(activeTab)}
+                    </motion.div>
+                  </AnimatePresence>
+                ) : (
+                  <motion.div
+                    initial={false}
+                    animate={{ x: `${TAB_ORDER[activeTab] * -33.333333}%` }}
+                    transition={hasChangedTabs ? { duration:0.34, ease:[0.22, 1, 0.36, 1] } : { duration:0 }}
+                    style={{ width:"300%", height:"100%", display:"flex", willChange:"transform", transform:"translate3d(0,0,0)", backfaceVisibility:"hidden" }}>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "collection" ? "auto" : "none" }}>
+                      {renderTabPanel("collection")}
                     </div>
-                  </div>
-                  <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "practice" ? "auto" : "none" }}>
-                    <PracticeScreen />
-                  </div>
-                </motion.div>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "gacha" ? "auto" : "none" }}>
+                      {renderTabPanel("gacha")}
+                    </div>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "practice" ? "auto" : "none" }}>
+                      {renderTabPanel("practice")}
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </div>
           )}

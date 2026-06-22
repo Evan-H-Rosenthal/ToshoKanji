@@ -14,6 +14,7 @@ export interface PersistedAppState {
     darkMode: boolean;
     volume: number;
     disableAutoJump: boolean;
+    improvePerformance: boolean;
     uiFontChoice: UiFontChoice;
     characterFontChoice: CharacterFontChoice;
   };
@@ -32,6 +33,7 @@ const DEFAULT_SETTINGS: PersistedAppState["settings"] = {
   darkMode: true,
   volume: 0.7,
   disableAutoJump: false,
+  improvePerformance: false,
   uiFontChoice: "nunito",
   characterFontChoice: "traditional",
 };
@@ -58,6 +60,9 @@ export function loadPersistedAppState(): HydratedAppState {
         disableAutoJump: typeof parsed.settings?.disableAutoJump === "boolean"
           ? parsed.settings.disableAutoJump
           : DEFAULT_SETTINGS.disableAutoJump,
+        improvePerformance: typeof parsed.settings?.improvePerformance === "boolean"
+          ? parsed.settings.improvePerformance
+          : DEFAULT_SETTINGS.improvePerformance,
         uiFontChoice: readUiFontChoice(parsed.settings?.uiFontChoice),
         characterFontChoice: readCharacterFontChoice(parsed.settings?.characterFontChoice),
       },

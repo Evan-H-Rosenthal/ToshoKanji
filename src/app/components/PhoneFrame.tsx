@@ -4,8 +4,8 @@ export function PhoneFrame({ children, darkMode }: { children: ReactNode; darkMo
   return (
     <div
       style={{
-        minHeight: "100vh",
-        height: "100dvh",
+        minHeight: "100svh",
+        height: "100svh",
         width: "100vw",
         overflow: "hidden",
         background: darkMode ? "#050411" : "#e8e0f0",
