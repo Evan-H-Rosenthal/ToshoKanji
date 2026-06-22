@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Settings, Trophy } from "lucide-react";
 import { KANJI, RADICALS } from "./data/kanjiData";
@@ -8,11 +8,12 @@ import { PhoneFrame } from "./components/PhoneFrame";
 import { TabBar } from "./components/TabBar";
 import { UnlockPrompt } from "./components/UnlockPrompt";
 import { AchievementsPage } from "./screens/AchievementsPage";
+import { CollectionScreen } from "./screens/CollectionScreen";
 import { KanjiEntryPage } from "./screens/KanjiEntryPage";
-import { KanjiScreen } from "./screens/KanjiScreen";
+import { PracticeScreen } from "./screens/PracticeScreen";
 import { RadicalEntryPage } from "./screens/RadicalEntryPage";
-import { RadicalsScreen } from "./screens/RadicalsScreen";
 import { SettingsPage } from "./screens/SettingsPage";
+import { loadPersistedAppState, savePersistedAppState } from "./persistence";
 import type { CharacterFontChoice, ChatMsg, ScreenState, Tab, UiFontChoice } from "./types";
 
 const UI_FONT_STACKS: Record<UiFontChoice, string> = {
@@ -26,33 +27,62 @@ const CHARACTER_FONT_STACKS: Record<CharacterFontChoice, string> = {
 };
 
 const TAB_ORDER: Record<Tab, number> = {
-  kanji: 0,
+  collection: 0,
   gacha: 1,
-  radicals: 2,
+  practice: 2,
 };
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
-  const [volume, setVolume] = useState(0.7);
-  const [disableAutoJump, setDisableAutoJump] = useState(false);
-  const [uiFontChoice, setUiFontChoice] = useState<UiFontChoice>("nunito");
-  const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>("traditional");
+  const initialPersistedState = useMemo(() => loadPersistedAppState(), []);
+  const [darkMode, setDarkMode] = useState(initialPersistedState.settings.darkMode);
+  const [volume, setVolume] = useState(initialPersistedState.settings.volume);
+  const [disableAutoJump, setDisableAutoJump] = useState(initialPersistedState.settings.disableAutoJump);
+  const [uiFontChoice, setUiFontChoice] = useState<UiFontChoice>(initialPersistedState.settings.uiFontChoice);
+  const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>(initialPersistedState.settings.characterFontChoice);
   const [activeTab, setActiveTab] = useState<Tab>("gacha");
   const [hasChangedTabs, setHasChangedTabs] = useState(false);
   const [screen, setScreen] = useState<ScreenState>({ type:"main" });
   const [screenStack, setScreenStack] = useState<ScreenState[]>([]);
 
-  const [unlockedKanji, setUnlockedKanji] = useState<Set<string>>(new Set());
-  const [unlockedRadicals, setUnlockedRadicals] = useState<Set<string>>(new Set());
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
-  const [customNames, setCustomNames] = useState<Record<string,string>>({});
-  const [notes, setNotes] = useState<Record<string,string>>({});
+  const [unlockedKanji, setUnlockedKanji] = useState<Set<string>>(initialPersistedState.unlockedKanji);
+  const [unlockedRadicals, setUnlockedRadicals] = useState<Set<string>>(initialPersistedState.unlockedRadicals);
+  const [favorites, setFavorites] = useState<Set<string>>(initialPersistedState.favorites);
+  const [customNames, setCustomNames] = useState<Record<string,string>>(initialPersistedState.customNames);
+  const [notes, setNotes] = useState<Record<string,string>>(initialPersistedState.notes);
   const [chatMsgs, setChatMsgs] = useState<Record<string,ChatMsg[]>>({});
   const [unlockPrompt, setUnlockPrompt] = useState<{type:"kanji"|"radical";id:string}|null>(null);
   const [highlightedUnlock, setHighlightedUnlock] = useState<{type:"kanji"|"radical";id:string}|null>(null);
   const msgIdRef = useRef(0);
 
   const allUnlocked = unlockedKanji.size >= KANJI.length && unlockedRadicals.size >= RADICALS.length;
+
+  useEffect(() => {
+    savePersistedAppState({
+      unlockedKanji,
+      unlockedRadicals,
+      favorites,
+      customNames,
+      notes,
+      settings: {
+        darkMode,
+        volume,
+        disableAutoJump,
+        uiFontChoice,
+        characterFontChoice,
+      },
+    });
+  }, [
+    characterFontChoice,
+    customNames,
+    darkMode,
+    disableAutoJump,
+    favorites,
+    notes,
+    uiFontChoice,
+    unlockedKanji,
+    unlockedRadicals,
+    volume,
+  ]);
 
   const changeActiveTab = useCallback((nextTab: Tab) => {
     setActiveTab((currentTab) => {
@@ -74,7 +104,7 @@ export default function App() {
     if (type==="kanji") setUnlockedKanji(s=>new Set([...s, id]));
     else setUnlockedRadicals(s=>new Set([...s, id]));
     setHighlightedUnlock({ type, id });
-    if (!disableAutoJump) changeActiveTab(type === "kanji" ? "kanji" : "radicals");
+    if (!disableAutoJump) changeActiveTab("collection");
   }, [changeActiveTab, disableAutoJump]);
 
   const handleToggleFav = useCallback((key:string) => {
@@ -201,14 +231,20 @@ export default function App() {
                   animate={{ x: `${TAB_ORDER[activeTab] * -33.333333}%` }}
                   transition={hasChangedTabs ? { duration:0.38, ease:[0.22, 1, 0.36, 1] } : { duration:0 }}
                   style={{ width:"300%", height:"100%", display:"flex", willChange:"transform", transform:"translateZ(0)", backfaceVisibility:"hidden" }}>
-                  <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "kanji" ? "auto" : "none" }}>
-                      <KanjiScreen unlockedKanji={unlockedKanji} favorites={favorites}
-                        customNames={customNames} onSelect={id=>pushScreen({type:"kanji-entry",id})}
-                        onToggleFav={handleToggleFav}
-                        highlightedId={highlightedUnlock?.type === "kanji" ? highlightedUnlock.id : null}
-                        onClearHighlight={id => {
-                          if (highlightedUnlock?.type === "kanji" && highlightedUnlock.id === id) setHighlightedUnlock(null);
-                        }} />
+                  <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "collection" ? "auto" : "none" }}>
+                    <CollectionScreen
+                      unlockedKanji={unlockedKanji}
+                      unlockedRadicals={unlockedRadicals}
+                      favorites={favorites}
+                      customNames={customNames}
+                      highlightedUnlock={highlightedUnlock}
+                      onSelectKanji={id=>pushScreen({type:"kanji-entry",id})}
+                      onSelectRadical={id=>pushScreen({type:"radical-entry",id})}
+                      onToggleFav={handleToggleFav}
+                      onClearHighlight={(type, id) => {
+                        if (highlightedUnlock?.type === type && highlightedUnlock.id === id) setHighlightedUnlock(null);
+                      }}
+                    />
                   </div>
                   <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "gacha" ? "auto" : "none" }}>
                     <div style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:12, padding:"0 0 8px", position:"relative", transform:"translateY(-8px)" }}>
@@ -216,14 +252,8 @@ export default function App() {
                       <GachaStatsButton unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals} />
                     </div>
                   </div>
-                  <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "radicals" ? "auto" : "none" }}>
-                      <RadicalsScreen unlockedRadicals={unlockedRadicals} favorites={favorites}
-                        customNames={customNames} onSelect={id=>pushScreen({type:"radical-entry",id})}
-                        onToggleFav={handleToggleFav}
-                        highlightedId={highlightedUnlock?.type === "radical" ? highlightedUnlock.id : null}
-                        onClearHighlight={id => {
-                          if (highlightedUnlock?.type === "radical" && highlightedUnlock.id === id) setHighlightedUnlock(null);
-                        }} />
+                  <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "practice" ? "auto" : "none" }}>
+                    <PracticeScreen />
                   </div>
                 </motion.div>
               </div>

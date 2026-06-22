@@ -1,4 +1,4 @@
-export type Tab = "kanji" | "gacha" | "radicals";
+export type Tab = "collection" | "gacha" | "practice";
 export type UiFontChoice = "nunito" | "system";
 export type CharacterFontChoice = "traditional" | "modern";
 export interface ScreenState { type: "main" | "kanji-entry" | "radical-entry" | "achievements" | "settings"; id?: string; }

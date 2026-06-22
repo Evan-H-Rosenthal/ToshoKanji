@@ -759,7 +759,7 @@ export function GachaMachine({
               animate={
                 rewardStage === "collecting"
                   ? {
-                      x: capsule.type === "kanji" ? -118 : 118,
+                      x: -118,
                       y: 300,
                       scale: 0.28,
                       rotate: 0,

@@ -32,6 +32,23 @@ Then open the local URL printed by Vite, usually:
 http://localhost:5173/
 ```
 
+## Testing The PWA Build
+
+Service workers are generated for production builds. To test offline caching locally:
+
+```powershell
+npm run build
+npm run preview
+```
+
+Open the preview URL printed by Vite, usually:
+
+```text
+http://localhost:4173/
+```
+
+In Chrome DevTools, open Application > Service Workers to inspect the registered worker, and Application > Cache Storage to inspect cached app assets.
+
 ## Regenerating App Icons
 
 The source app icon lives at:

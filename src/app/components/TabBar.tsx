@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 import { motion } from "motion/react";
-import { BookOpen, Layers, Sparkles } from "lucide-react";
+import { BookOpen, Dumbbell, Sparkles } from "lucide-react";
 import type { Tab } from "../types";
 
 export function TabBar({ active, onChange }: { active: Tab; onChange: (t: Tab) => void }) {
   const tabs: { id: Tab; label: string; icon: ReactNode; jp: string }[] = [
-    { id: "kanji", label: "Kanji", jp: "漢字", icon: <BookOpen size={22} /> },
+    { id: "collection", label: "Collection", jp: "収集", icon: <BookOpen size={22} /> },
     { id: "gacha", label: "Gacha", jp: "ガチャ", icon: <Sparkles size={22} /> },
-    { id: "radicals", label: "Radicals", jp: "部首", icon: <Layers size={22} /> },
+    { id: "practice", label: "Practice", jp: "練習", icon: <Dumbbell size={22} /> },
   ];
 
   return (
