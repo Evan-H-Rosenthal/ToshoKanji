@@ -62,4 +62,20 @@ After replacing that SVG, regenerate the PWA, iOS, and favicon assets with:
 ```powershell
 npm run icons
 ```
+
+## Regenerating Kanji Data
+
+The current app dataset is generated from public dictionary sources instead of being hand-authored. To rebuild it:
+
+```powershell
+npm run data:kanji
+```
+
+The script downloads source files into `.cache/datasets/` and writes the generated TypeScript data to:
+
+```text
+src/app/data/kanjiData.ts
+```
+
+For this milestone, the generator creates a starter set of 100 kanji: all grade 1 kanji plus the most frequent grade 2 kanji needed to reach 100 total entries. It also generates the radical entries used by those kanji, visible component data from KRADFILE, and a small set of vocabulary examples from JMdict_e.
   

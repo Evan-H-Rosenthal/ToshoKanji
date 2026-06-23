@@ -13,10 +13,10 @@ const CHARACTER_FONT_OPTIONS: { value: CharacterFontChoice; label: string; sub: 
   { value: "modern", label: "Modern Mono/Sans", sub: "Cleaner element-reading style", preview: "図書漢字", fontFamily: '"Noto Sans Mono CJK JP", "Yu Gothic", "Meiryo", monospace' },
 ];
 
-export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerformance, uiFontChoice, characterFontChoice, onDark, onVolume, onDisableAutoJump, onImprovePerformance, onUiFontChoice, onCharacterFontChoice, onResetProgress, onResetAll, onBack }: {
+export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerformance, uiFontChoice, characterFontChoice, onDark, onVolume, onDisableAutoJump, onImprovePerformance, onUiFontChoice, onCharacterFontChoice, onResetProgress, onResetAll, onUnlockAll, onBack }: {
   darkMode:boolean; volume:number; disableAutoJump:boolean; improvePerformance:boolean; uiFontChoice:UiFontChoice; characterFontChoice:CharacterFontChoice;
   onDark:(v:boolean)=>void; onVolume:(v:number)=>void; onDisableAutoJump:(v:boolean)=>void; onImprovePerformance:(v:boolean)=>void; onUiFontChoice:(v:UiFontChoice)=>void; onCharacterFontChoice:(v:CharacterFontChoice)=>void;
-  onResetProgress:()=>void; onResetAll:()=>void; onBack:()=>void;
+  onResetProgress:()=>void; onResetAll:()=>void; onUnlockAll:()=>void; onBack:()=>void;
 }) {
   const [confirmReset, setConfirmReset] = useState<"progress"|"all"|null>(null);
   const [fontPicker, setFontPicker] = useState<"ui"|"character"|null>(null);
@@ -117,6 +117,16 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
         {/* Stats */}
         <div className="rounded-2xl overflow-hidden" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, textTransform:"uppercase", letterSpacing:"0.08em", padding:"12px 16px 4px" }} className="text-muted-foreground">Data</p>
+          <div className="flex items-center justify-between px-4 py-3 border-t border-border">
+            <div>
+              <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15, color:"#22c55e" }}>Debug: unlock everything</p>
+              <p style={{ fontFamily:"var(--ui-font)", fontSize:11 }} className="text-muted-foreground">Temporarily reveal every kanji and radical for review</p>
+            </div>
+            <button onClick={onUnlockAll}
+              style={{ padding:"7px 12px", borderRadius:10, background:"rgba(34,197,94,0.14)", color:"#22c55e", fontFamily:"var(--ui-font)", fontWeight:900, fontSize:11, border:"1px solid rgba(34,197,94,0.32)", cursor:"pointer" }}>
+              Unlock
+            </button>
+          </div>
           {[
             { label:"Reset unlock progress", sub:"Keeps notes & custom names", action:"progress" as const, color:"#f97316" },
             { label:"Reset all progress", sub:"Erases everything including notes", action:"all" as const, color:"var(--destructive)" },

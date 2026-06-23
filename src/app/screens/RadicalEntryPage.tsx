@@ -77,18 +77,52 @@ export function RadicalEntryPage({ id, unlockedKanji, unlockedRadicals, favorite
           <button onClick={()=>setEditingName(true)} className="text-muted-foreground"><Pencil size={15} /></button>
         </div>
         <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{r.strokes} strokes</p>
+        {(r.names?.length || r.variants?.length) && (
+          <div style={{ display:"flex", gap:6, flexWrap:"wrap", justifyContent:"center", marginTop:8 }}>
+            {r.names?.slice(0, 3).map((name) => (
+              <span key={name} style={{ padding:"3px 8px", borderRadius:999, background:`${c1}22`, color:c1, fontFamily:"var(--ui-font)", fontSize:10, fontWeight:900 }}>
+                {name}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-4 px-4 pb-8">
         {/* Meanings */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Meanings</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Radical Meanings</p>
           <div className="flex flex-wrap gap-2">
             {r.meanings.map(m=>(
               <span key={m} style={{ padding:"4px 10px", borderRadius:20, background:`${c1}22`, color:c1, fontFamily:"var(--ui-font)", fontWeight:700, fontSize:13 }}>{m}</span>
             ))}
           </div>
+          {r.kanjiMeanings && r.kanjiMeanings.length > 0 && (
+            <div style={{ marginTop:12, paddingTop:12, borderTop:"1px solid var(--border)" }}>
+              <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">As a kanji</p>
+              <div className="flex flex-wrap gap-2">
+                {r.kanjiMeanings.map(m=>(
+                  <span key={m} style={{ padding:"4px 10px", borderRadius:20, background:"var(--muted)", color:"var(--muted-foreground)", fontFamily:"var(--ui-font)", fontWeight:700, fontSize:12 }}>{m}</span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
+
+        {/* Variant forms */}
+        {r.variants && r.variants.length > 0 && (
+          <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Variant Forms</p>
+            <div className="flex flex-wrap gap-2">
+              {r.variants.map((variant) => (
+                <span key={variant} style={{ display:"flex", alignItems:"center", gap:7, padding:"6px 11px", borderRadius:14, background:`${c2}20`, border:`1px solid ${c2}44` }}>
+                  <span style={{ fontFamily:"var(--jp-font)", fontSize:24, color:c2 }}>{variant}</span>
+                  <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color:c2 }}>same radical</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Kanji using this radical */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>

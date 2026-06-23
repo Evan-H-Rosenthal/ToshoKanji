@@ -5,23 +5,26 @@ import { CAT_COLORS, KANJI, RAD_COLORS, RADICALS } from "../data/kanjiData";
 import { ChatSection } from "../components/ChatSection";
 import type { ChatMsg } from "../types";
 
-export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavRadical }: {
+export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavRadical, onNavWord }: {
   id: string; unlockedKanji: Set<string>; unlockedRadicals: Set<string>;
   favorites: Set<string>; customNames: Record<string,string>; notes: Record<string,string>;
   chatMsgs: Record<string,ChatMsg[]>;
   onBack: () => void; onBackToGacha?: () => void; onToggleFav: (k:string)=>void; onSetName:(k:string,v:string)=>void;
   onSetNote:(k:string,v:string)=>void; onChat:(k:string,q:string,a:string)=>void;
-  onNavKanji:(id:string)=>void; onNavRadical:(id:string)=>void;
+  onNavKanji:(id:string)=>void; onNavRadical:(id:string)=>void; onNavWord:(id:string)=>void;
 }) {
   const k = KANJI.find(x=>x.id===id)!;
   const key = `kanji:${id}`;
   const [editingName, setEditingName] = useState(false);
   const [nameVal, setNameVal] = useState(customNames[key] || k.meanings[0]);
+  const [showAllKunyomi, setShowAllKunyomi] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
   const saveName = () => { onSetName(key, nameVal || k.meanings[0]); setEditingName(false); };
   const isFav = favorites.has(key);
   const [cat1, cat2] = CAT_COLORS[k.category] ?? ["#6b7280","#4b5563"];
+  const visibleKunyomi = showAllKunyomi ? k.kunyomi : k.kunyomi.slice(0, 3);
+  const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
 
   return (
     <div className="flex flex-col h-full overflow-y-auto">
@@ -95,49 +98,133 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
             </div>
             <div className="flex items-start gap-3">
               <span style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat2}22`, color:cat2 }}>Kun</span>
-              <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }} className="text-foreground">{k.kunyomi.join("、")}</span>
+              <div style={{ display:"flex", alignItems:"center", gap:8, flexWrap:"wrap", flex:1 }}>
+                <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }} className="text-foreground">{visibleKunyomi.join("、")}</span>
+                {k.kunyomi.length > 3 && (
+                  <button
+                    onClick={() => setShowAllKunyomi((value) => !value)}
+                    style={{
+                      padding:"3px 8px",
+                      borderRadius:999,
+                      border:`1px solid ${cat2}44`,
+                      background:`${cat2}18`,
+                      color:cat2,
+                      fontFamily:"var(--ui-font)",
+                      fontSize:10,
+                      fontWeight:900,
+                      cursor:"pointer",
+                    }}
+                  >
+                    {showAllKunyomi ? "Show fewer" : `Show ${hiddenKunyomiCount} more`}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Radicals */}
+        {/* Official radical */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Radicals in this kanji</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Official Radical</p>
           <div className="flex flex-wrap gap-2">
             {k.radicalIds.map((rid,i) => {
               const rad = RADICALS.find(r=>r.id===rid);
               if (!rad) return null;
               const isUnlocked = unlockedRadicals.has(rid);
+              const radicalForm = k.radicalForms?.[rid] ?? rad.char;
+              const isVariant = radicalForm !== rad.char;
               const c = RAD_COLORS[i % RAD_COLORS.length];
               return (
                 <button key={rid} onClick={()=>onNavRadical(rid)} style={{
-                  display:"flex", alignItems:"center", gap:6, padding:"6px 12px", borderRadius:12,
+                  display:"flex", alignItems:"center", gap:7, padding:"6px 12px", borderRadius:12,
                   background: isUnlocked ? `${c}22` : "var(--muted)",
                   border: `1px solid ${isUnlocked ? c+"44" : "var(--border)"}`,
                   cursor:"pointer",
                 }}>
                   {!isUnlocked && <Lock size={10} className="text-muted-foreground" />}
-                  <span style={{ fontFamily:"var(--jp-font)", fontSize:20, color: isUnlocked ? c : "var(--muted-foreground)" }}>{rad.char}</span>
-                  <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:700, color: isUnlocked ? c : "var(--muted-foreground)" }}>{rad.meanings[0]}</span>
+                  <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color: isUnlocked ? c : "var(--muted-foreground)" }}>{radicalForm}</span>
+                  <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
+                    <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: isUnlocked ? c : "var(--muted-foreground)" }}>{rad.meanings[0]}</span>
+                    {isVariant && (
+                      <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color:"var(--muted-foreground)" }}>
+                        variant of {rad.char}
+                      </span>
+                    )}
+                  </span>
                 </button>
               );
             })}
           </div>
         </div>
 
+        {/* Components */}
+        {k.kanjiParts && k.kanjiParts.length > 0 && (
+          <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Visible Components</p>
+            <div className="flex flex-wrap gap-2">
+              {k.kanjiParts.map((part,i) => {
+                const rad = part.radicalId ? RADICALS.find(r=>r.id===part.radicalId) : undefined;
+                const isUnlocked = part.radicalId ? unlockedRadicals.has(part.radicalId) : true;
+                const c = RAD_COLORS[i % RAD_COLORS.length];
+                return (
+                  <button
+                    key={`${part.component}-${i}`}
+                    onClick={() => part.radicalId && onNavRadical(part.radicalId)}
+                    disabled={!part.radicalId}
+                    style={{
+                      display:"flex",
+                      alignItems:"center",
+                      gap:7,
+                      padding:"6px 12px",
+                      borderRadius:12,
+                      background: isUnlocked ? `${c}22` : "var(--muted)",
+                      border:`1px solid ${isUnlocked ? c+"44" : "var(--border)"}`,
+                      cursor: part.radicalId ? "pointer" : "default",
+                      opacity: part.radicalId ? 1 : 0.82,
+                    }}
+                  >
+                    {!isUnlocked && <Lock size={10} className="text-muted-foreground" />}
+                    <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color: isUnlocked ? c : "var(--muted-foreground)" }}>{part.component}</span>
+                    <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
+                      <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: isUnlocked ? c : "var(--muted-foreground)" }}>
+                        {rad?.meanings[0] ?? "component"}
+                      </span>
+                      <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color:"var(--muted-foreground)" }}>
+                        {part.role}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Words */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Example Words</p>
           <div className="flex flex-col gap-2">
             {k.words.map((w,i) => (
-              <div key={i} style={{ padding:"8px 10px", borderRadius:10, background:"var(--muted)" }}>
+              <button
+                key={w.id || `${w.japanese}-${i}`}
+                onClick={() => onNavWord(w.id || `w-${w.japanese}`)}
+                style={{
+                  width:"100%",
+                  padding:"9px 11px",
+                  borderRadius:12,
+                  background:"var(--muted)",
+                  border:"1px solid var(--border)",
+                  textAlign:"left",
+                  cursor:"pointer",
+                  boxShadow:"0 4px 12px rgba(0,0,0,0.05)",
+                }}>
                 <div className="flex items-baseline gap-2">
                   <span style={{ fontFamily:"var(--jp-font)", fontSize:18, fontWeight:700 }} className="text-foreground">{w.japanese}</span>
                   <span style={{ fontFamily:"var(--jp-font)", fontSize:12 }} className="text-muted-foreground">({w.furigana})</span>
                 </div>
                 <div style={{ fontFamily:"var(--ui-font)", fontSize:11, fontStyle:"italic" }} className="text-muted-foreground">{w.romaji}</div>
                 <div style={{ fontFamily:"var(--ui-font)", fontSize:13, fontWeight:600, marginTop:2 }} className="text-foreground">{w.meaning}</div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

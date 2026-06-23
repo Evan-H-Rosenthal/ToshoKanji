@@ -13,6 +13,7 @@ import { KanjiEntryPage } from "./screens/KanjiEntryPage";
 import { PracticeScreen } from "./screens/PracticeScreen";
 import { RadicalEntryPage } from "./screens/RadicalEntryPage";
 import { SettingsPage } from "./screens/SettingsPage";
+import { WordEntryPage } from "./screens/WordEntryPage";
 import { loadPersistedAppState, savePersistedAppState } from "./persistence";
 import type { CharacterFontChoice, ChatMsg, ScreenState, Tab, UiFontChoice } from "./types";
 
@@ -283,9 +284,16 @@ export default function App() {
     if (!unlockedRadicals.has(id)) { setUnlockPrompt({type:"radical",id}); return; }
     pushScreen({type:"radical-entry",id});
   };
+  const handleNavWord = (id:string) => {
+    pushScreen({type:"word-entry",id});
+  };
 
   const resetProgress = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); };
   const resetAll = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); setFavorites(new Set()); setCustomNames({}); setNotes({}); setChatMsgs({}); };
+  const unlockAll = () => {
+    setUnlockedKanji(new Set(KANJI.map((kanji) => kanji.id)));
+    setUnlockedRadicals(new Set(RADICALS.map((radical) => radical.id)));
+  };
 
   const isSubScreen = screen.type !== "main";
   const renderTabPanel = (tab: Tab) => {
@@ -334,7 +342,7 @@ export default function App() {
               onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
               onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
-              onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} />
+              onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} onNavWord={handleNavWord} />
           )}
           {screen.type === "radical-entry" && screen.id && (
             <RadicalEntryPage id={screen.id} unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
@@ -344,6 +352,12 @@ export default function App() {
               onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
               onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} />
           )}
+          {screen.type === "word-entry" && screen.id && (
+            <WordEntryPage id={screen.id} unlockedKanji={unlockedKanji}
+              favorites={favorites} onBack={popScreen} onToggleFav={handleToggleFav}
+              onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
+              onNavKanji={handleNavKanji} />
+          )}
           {screen.type === "achievements" && (
             <AchievementsPage unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
               favorites={favorites} notes={notes} onBack={closeUtilityScreen} />
@@ -351,7 +365,7 @@ export default function App() {
           {screen.type === "settings" && (
             <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} improvePerformance={improvePerformance} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
               onDark={setDarkMode} onVolume={setVolume} onDisableAutoJump={setDisableAutoJump} onImprovePerformance={setImprovePerformance} onUiFontChoice={setUiFontChoice} onCharacterFontChoice={setCharacterFontChoice}
-              onResetProgress={resetProgress} onResetAll={resetAll} onBack={closeUtilityScreen} />
+              onResetProgress={resetProgress} onResetAll={resetAll} onUnlockAll={unlockAll} onBack={closeUtilityScreen} />
           )}
 
           {/* Main tabs */}
