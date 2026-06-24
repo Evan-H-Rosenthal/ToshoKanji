@@ -1,22 +1,18 @@
 import { type ReactNode, useState } from "react";
 import { Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
-import { COMPONENTS } from "../data/generated/components.generated";
-import { RADICALS } from "../data/generated/radicals.generated";
-import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
+import { CAT_COLORS } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
-type CollectionFilter = "all" | "kanji" | "components";
+type CollectionFilter = "all" | "kanji";
 
 export function CollectionScreen({
   unlockedKanji,
-  unlockedRadicals,
   favorites,
   customNames,
   highlightedUnlock,
   onSelectKanji,
-  onSelectComponent,
   onToggleFav,
   onClearHighlight,
 }: {
@@ -37,7 +33,6 @@ export function CollectionScreen({
   const q = query.toLowerCase();
 
   const kanjiItems = KANJI.filter((kanji) => {
-    if (filter === "components") return false;
     if (!unlockedKanji.has(kanji.id)) return false;
     const key = `kanji:${kanji.id}`;
     if (favOnly && !favorites.has(key)) return false;
@@ -49,22 +44,9 @@ export function CollectionScreen({
       || getWordsForKanji(kanji.id).some((word) => word.meaning.toLowerCase().includes(q) || word.romaji.toLowerCase().includes(q));
   });
 
-  const componentItems = COMPONENTS.filter((component) => {
-    if (filter === "kanji") return false;
-    const key = `component:${component.id}`;
-    const radical = component.radicalId ? RADICALS.find((entry) => entry.id === component.radicalId) : undefined;
-    if (favOnly && !favorites.has(key)) return false;
-    if (!query) return true;
-    return component.char.includes(query)
-      || component.kind.toLowerCase().includes(q)
-      || (component.meanings ?? []).some((meaning) => meaning.toLowerCase().includes(q))
-      || (radical?.meanings ?? []).some((meaning) => meaning.toLowerCase().includes(q))
-      || (customNames[key] || "").toLowerCase().includes(q);
-  });
-
-  const hasResults = kanjiItems.length > 0 || componentItems.length > 0;
-  const unlockedTotal = unlockedKanji.size + unlockedRadicals.size;
-  const fullTotal = KANJI.length + RADICALS.length;
+  const hasResults = kanjiItems.length > 0;
+  const unlockedTotal = unlockedKanji.size;
+  const fullTotal = KANJI.length;
 
   return (
     <div className="flex flex-col h-full">
@@ -103,10 +85,9 @@ export function CollectionScreen({
             <Star size={14} fill={favOnly ? "#fff" : "none"} color={favOnly ? "#fff" : "var(--muted-foreground)"} />
           </button>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 7, marginTop: 9 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 7, marginTop: 9 }}>
           <FilterPill active={filter === "all"} label="All" onClick={() => setFilter("all")} />
           <FilterPill active={filter === "kanji"} label="Kanji" onClick={() => setFilter("kanji")} />
-          <FilterPill active={filter === "components"} label="Components" onClick={() => setFilter("components")} />
         </div>
       </div>
 
@@ -148,36 +129,6 @@ export function CollectionScreen({
               </CollectionSection>
             )}
 
-            {componentItems.length > 0 && (
-              <CollectionSection title="Components" count={`${COMPONENTS.length}`}>
-                {componentItems.map((component) => {
-                  const key = `component:${component.id}`;
-                  const radical = component.radicalId ? RADICALS.find((entry) => entry.id === component.radicalId) : undefined;
-                  const colorIndex = Math.max(0, COMPONENTS.findIndex((entry) => entry.id === component.id));
-                  const color1 = RAD_COLORS[colorIndex % RAD_COLORS.length];
-                  const color2 = RAD_COLORS[(colorIndex + 4) % RAD_COLORS.length];
-                  return (
-                    <CollectionCard
-                      key={component.id}
-                      char={component.char}
-                      label={customNames[key] || component.meanings?.[0] || radical?.meanings[0] || component.kind.replace("-", " ")}
-                      color1={color1}
-                      color2={color2}
-                      starred={favorites.has(key)}
-                      highlighted={highlightedUnlock?.type === "radical" && highlightedUnlock.id === component.radicalId}
-                      onStar={(event) => {
-                        event.stopPropagation();
-                        onToggleFav(key);
-                      }}
-                      onClick={() => {
-                        if (component.radicalId) onClearHighlight?.("radical", component.radicalId);
-                        onSelectComponent(component.id);
-                      }}
-                    />
-                  );
-                })}
-              </CollectionSection>
-            )}
           </div>
         )}
       </div>
