@@ -71,7 +71,7 @@ export default function App() {
   const pageViewportRef = useRef<HTMLDivElement>(null);
   const pageX = useMotionValue(-TAB_ORDER.gacha * getInitialPageWidth());
 
-  const allUnlocked = unlockedKanji.size >= KANJI.length && unlockedRadicals.size >= RADICALS.length;
+  const allUnlocked = unlockedKanji.size >= KANJI.length;
 
   useEffect(() => {
     const updateViewportHeight = () => {
@@ -219,11 +219,10 @@ export default function App() {
   const getGachaItem = useCallback((): {type:"kanji"|"radical";id:string}|null => {
     const pool = [
       ...KANJI.filter(k=>!unlockedKanji.has(k.id)).map(k=>({type:"kanji" as const, id:k.id})),
-      ...RADICALS.filter(r=>!unlockedRadicals.has(r.id)).map(r=>({type:"radical" as const, id:r.id})),
     ];
     if (!pool.length) return null;
     return pool[Math.floor(Math.random()*pool.length)];
-  }, [unlockedKanji, unlockedRadicals]);
+  }, [unlockedKanji]);
 
   const handleUnlock = useCallback((type:"kanji"|"radical", id:string) => {
     if (type==="kanji") setUnlockedKanji(s=>new Set([...s, id]));
@@ -300,12 +299,10 @@ export default function App() {
       return (
         <CollectionScreen
           unlockedKanji={unlockedKanji}
-          unlockedRadicals={unlockedRadicals}
           favorites={favorites}
           customNames={customNames}
           highlightedUnlock={highlightedUnlock}
           onSelectKanji={id=>pushScreen({type:"kanji-entry",id})}
-          onSelectComponent={id=>pushScreen({type:"component-entry",id})}
           onToggleFav={handleToggleFav}
           onClearHighlight={(type, id) => {
             if (highlightedUnlock?.type === type && highlightedUnlock.id === id) setHighlightedUnlock(null);
@@ -322,7 +319,6 @@ export default function App() {
         getItem={getGachaItem}
         allUnlocked={allUnlocked}
         unlockedKanji={unlockedKanji}
-        unlockedRadicals={unlockedRadicals}
       />
     );
   };
@@ -336,7 +332,7 @@ export default function App() {
 
           {/* Sub-screens */}
           {screen.type === "kanji-entry" && screen.id && (
-            <KanjiEntryPage id={screen.id} unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
+            <KanjiEntryPage id={screen.id} unlockedKanji={unlockedKanji}
               favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs}
               onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}

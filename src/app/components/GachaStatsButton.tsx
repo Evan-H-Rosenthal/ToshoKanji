@@ -2,15 +2,12 @@ import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { KANJI } from "../data/generated/kanji.generated";
-import { RADICALS } from "../data/generated/radicals.generated";
 import { CAT_COLORS } from "../data/ui/categoryColors";
 
 export function GachaStatsButton({
   unlockedKanji,
-  unlockedRadicals,
 }: {
   unlockedKanji: Set<string>;
-  unlockedRadicals: Set<string>;
 }) {
   const [open, setOpen] = useState(false);
   const categoryStats = useMemo(() => {
@@ -72,7 +69,6 @@ export function GachaStatsButton({
           </div>
           <div style={{ display: "flex", gap: 9, transform: "translateY(-1px)" }}>
             <StatPill label="Kanji" value={`${unlockedKanji.size}/${KANJI.length}`} />
-            <StatPill label="Rad" value={`${unlockedRadicals.size}/${RADICALS.length}`} />
           </div>
         </div>
       </motion.button>
@@ -140,12 +136,11 @@ export function GachaStatsButton({
                 Collection Stats
               </p>
               <p style={{ fontFamily: "var(--ui-font)", fontSize: 11, marginBottom: 14 }} className="text-muted-foreground">
-                Progress by entry type and kanji category
+                Progress by kanji category
               </p>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 8, marginBottom: 14 }}>
                 <SummaryCard label="Kanji" value={unlockedKanji.size} total={KANJI.length} />
-                <SummaryCard label="Radicals" value={unlockedRadicals.size} total={RADICALS.length} />
               </div>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

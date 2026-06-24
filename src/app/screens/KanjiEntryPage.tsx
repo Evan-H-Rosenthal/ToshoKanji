@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Check, ChevronLeft, Lock, Pencil, Star, Volume2, X } from "lucide-react";
+import { Check, ChevronLeft, Pencil, Star, Volume2, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
@@ -9,8 +9,8 @@ import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
 import type { ChatMsg } from "../types";
 
-export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
-  id: string; unlockedKanji: Set<string>; unlockedRadicals: Set<string>;
+export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
+  id: string; unlockedKanji: Set<string>;
   favorites: Set<string>; customNames: Record<string,string>; notes: Record<string,string>;
   chatMsgs: Record<string,ChatMsg[]>;
   onBack: () => void; onBackToGacha?: () => void; onToggleFav: (k:string)=>void; onSetName:(k:string,v:string)=>void;
@@ -128,40 +128,6 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
                 )}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Official radical */}
-        <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Official Radical</p>
-          <div className="flex flex-wrap gap-2">
-            {k.radicalIds.map((rid,i) => {
-              const rad = RADICALS.find(r=>r.id===rid);
-              if (!rad) return null;
-              const isUnlocked = unlockedRadicals.has(rid);
-              const radicalForm = k.radicalForms?.[rid] ?? rad.char;
-              const isVariant = radicalForm !== rad.char;
-              const c = RAD_COLORS[i % RAD_COLORS.length];
-              return (
-                <button key={rid} onClick={()=>rad.componentId && onNavComponent(rad.componentId)} style={{
-                  display:"flex", alignItems:"center", gap:7, padding:"6px 12px", borderRadius:12,
-                  background: isUnlocked ? `${c}22` : "var(--muted)",
-                  border: `1px solid ${isUnlocked ? c+"44" : "var(--border)"}`,
-                  cursor:"pointer",
-                }}>
-                  {!isUnlocked && <Lock size={10} className="text-muted-foreground" />}
-                  <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color: isUnlocked ? c : "var(--muted-foreground)" }}>{radicalForm}</span>
-                  <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
-                    <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: isUnlocked ? c : "var(--muted-foreground)" }}>{rad.meanings[0]}</span>
-                    {isVariant && (
-                      <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color:"var(--muted-foreground)" }}>
-                        variant of {rad.char}
-                      </span>
-                    )}
-                  </span>
-                </button>
-              );
-            })}
           </div>
         </div>
 

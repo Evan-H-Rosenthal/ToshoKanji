@@ -5,8 +5,6 @@ import { CAT_COLORS } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
-type CollectionFilter = "all" | "kanji";
-
 export function CollectionScreen({
   unlockedKanji,
   favorites,
@@ -17,18 +15,15 @@ export function CollectionScreen({
   onClearHighlight,
 }: {
   unlockedKanji: Set<string>;
-  unlockedRadicals: Set<string>;
   favorites: Set<string>;
   customNames: Record<string, string>;
   highlightedUnlock?: { type: "kanji" | "radical"; id: string } | null;
   onSelectKanji: (id: string) => void;
-  onSelectComponent: (id: string) => void;
   onToggleFav: (key: string) => void;
   onClearHighlight?: (type: "kanji" | "radical", id: string) => void;
 }) {
   const [query, setQuery] = useState("");
   const [favOnly, setFavOnly] = useState(false);
-  const [filter, setFilter] = useState<CollectionFilter>("all");
 
   const q = query.toLowerCase();
 
@@ -85,10 +80,6 @@ export function CollectionScreen({
             <Star size={14} fill={favOnly ? "#fff" : "none"} color={favOnly ? "#fff" : "var(--muted-foreground)"} />
           </button>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 7, marginTop: 9 }}>
-          <FilterPill active={filter === "all"} label="All" onClick={() => setFilter("all")} />
-          <FilterPill active={filter === "kanji"} label="Kanji" onClick={() => setFilter("kanji")} />
-        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto px-4 pb-4" style={{ paddingTop: 18 }}>
@@ -133,30 +124,6 @@ export function CollectionScreen({
         )}
       </div>
     </div>
-  );
-}
-
-function FilterPill({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      style={{
-        minHeight: 31,
-        borderRadius: 999,
-        border: active ? "1px solid var(--primary)" : "1px solid var(--border)",
-        background: active ? "linear-gradient(135deg, var(--primary), #0ea5e9)" : "var(--card)",
-        color: active ? "#fff" : "var(--muted-foreground)",
-        fontFamily: "var(--ui-font)",
-        fontSize: 12,
-        fontWeight: 900,
-        cursor: "pointer",
-        boxShadow: active ? "0 7px 16px rgba(255,61,113,0.22)" : "none",
-      }}
-    >
-      {label}
-    </button>
   );
 }
 

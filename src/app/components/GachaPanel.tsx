@@ -13,13 +13,11 @@ export function GachaPanel({
   getItem,
   allUnlocked,
   unlockedKanji,
-  unlockedRadicals,
 }: {
   onUnlock: (type: "kanji" | "radical", id: string) => void;
   getItem: () => { type: "kanji" | "radical"; id: string } | null;
   allUnlocked: boolean;
   unlockedKanji: Set<string>;
-  unlockedRadicals: Set<string>;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
   const [bounds, setBounds] = useState({ width: 0, height: 0 });
@@ -78,7 +76,7 @@ export function GachaPanel({
       }}
     >
       <GachaMachine onUnlock={onUnlock} getItem={getItem} allUnlocked={allUnlocked} scale={machineScale} />
-      <GachaStatsButton unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals} />
+      <GachaStatsButton unlockedKanji={unlockedKanji} />
     </div>
   );
 }
