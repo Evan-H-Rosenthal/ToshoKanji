@@ -1,10 +1,37 @@
 export type Tab = "collection" | "gacha" | "practice";
 export type UiFontChoice = "nunito" | "system";
 export type CharacterFontChoice = "traditional" | "modern";
-export interface ScreenState { type: "main" | "kanji-entry" | "radical-entry" | "component-entry" | "word-entry" | "achievements" | "settings"; id?: string; }
+export interface ScreenState { type: "main" | "kanji-entry" | "component-entry" | "word-entry" | "achievements" | "settings"; id?: string; }
 export interface Word { id?: string; japanese: string; furigana: string; romaji: string; meaning: string; common?: boolean; }
 export interface KanjiPart { component: string; role: string; componentId?: string; radicalId?: string; }
 export interface OfficialRadical { id: string; form: string; char: string; }
+export interface LearnerPart {
+  char: string;
+  label?: string;
+  role: "official-radical" | "semantic" | "phonetic" | "learner-component";
+  componentId?: string;
+  radicalId?: string;
+  source: "manual" | "radical-metadata" | "normalized-krad" | string;
+}
+export interface RawPart {
+  char: string;
+  role: "raw-fragment" | "source-component" | "source-radical";
+  radicalId?: string;
+  componentId?: string;
+  debugOnly: true;
+}
+export interface RawDecomposition {
+  source: "KRADFILE" | "KanjiVG" | string;
+  parts: RawPart[];
+  filteredParts: string[];
+  confidence: "low" | "medium" | "high" | string;
+}
+export interface EtymologyNote {
+  summary: string;
+  source?: string;
+  confidence?: "low" | "medium" | "high" | string;
+  notes?: string[];
+}
 export interface ComponentProvenance {
   source: string;
   extractionMethod: string;
@@ -27,6 +54,9 @@ export interface KanjiEntry {
   officialRadical?: OfficialRadical;
   radicalIds: string[];
   radicalForms?: Record<string, string>;
+  learnerParts?: LearnerPart[];
+  rawDecomposition?: RawDecomposition;
+  etymology?: EtymologyNote;
   visibleComponents?: KanjiPart[];
   rawComponents?: string[];
   componentProvenance?: ComponentProvenance;
@@ -53,10 +83,12 @@ export interface RadicalEntry {
 export interface ComponentEntry {
   id: string;
   char: string;
-  kind: "radical" | "radical-variant" | "component";
+  kind: "canonical-radical" | "radical-variant" | "learner-component" | "raw-fragment";
+  canonicalComponentId?: string;
   radicalId?: string;
   radicalNumber?: number;
   meanings?: string[];
+  forms?: string[];
   kanjiIds: string[];
   source: string;
 }

@@ -13,7 +13,6 @@ import { ComponentEntryPage } from "./screens/ComponentEntryPage";
 import { CollectionScreen } from "./screens/CollectionScreen";
 import { KanjiEntryPage } from "./screens/KanjiEntryPage";
 import { PracticeScreen } from "./screens/PracticeScreen";
-import { RadicalEntryPage } from "./screens/RadicalEntryPage";
 import { SettingsPage } from "./screens/SettingsPage";
 import { WordEntryPage } from "./screens/WordEntryPage";
 import { loadPersistedAppState, savePersistedAppState } from "./persistence";
@@ -281,11 +280,6 @@ export default function App() {
     if (!unlockedKanji.has(id)) { setUnlockPrompt({type:"kanji",id}); return; }
     pushScreen({type:"kanji-entry",id});
   };
-  const handleNavRadical = (id:string) => {
-    if (highlightedUnlock?.type === "radical" && highlightedUnlock.id === id) setHighlightedUnlock(null);
-    if (!unlockedRadicals.has(id)) { setUnlockPrompt({type:"radical",id}); return; }
-    pushScreen({type:"radical-entry",id});
-  };
   const handleNavComponent = (id:string) => {
     pushScreen({type:"component-entry",id});
   };
@@ -311,7 +305,7 @@ export default function App() {
           customNames={customNames}
           highlightedUnlock={highlightedUnlock}
           onSelectKanji={id=>pushScreen({type:"kanji-entry",id})}
-          onSelectRadical={id=>pushScreen({type:"radical-entry",id})}
+          onSelectComponent={id=>pushScreen({type:"component-entry",id})}
           onToggleFav={handleToggleFav}
           onClearHighlight={(type, id) => {
             if (highlightedUnlock?.type === type && highlightedUnlock.id === id) setHighlightedUnlock(null);
@@ -347,21 +341,13 @@ export default function App() {
               onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
               onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
-              onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} onNavComponent={handleNavComponent} onNavWord={handleNavWord} />
-          )}
-          {screen.type === "radical-entry" && screen.id && (
-            <RadicalEntryPage id={screen.id} unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
-              favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs}
-              onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
-              onSetNote={handleSetNote} onChat={handleChat}
-              onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
-              onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} />
+              onNavKanji={handleNavKanji} onNavComponent={handleNavComponent} onNavWord={handleNavWord} />
           )}
           {screen.type === "component-entry" && screen.id && (
-            <ComponentEntryPage id={screen.id} unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
+            <ComponentEntryPage id={screen.id} unlockedKanji={unlockedKanji}
               onBack={popScreen}
               onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
-              onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} />
+              onNavKanji={handleNavKanji} onNavComponent={handleNavComponent} />
           )}
           {screen.type === "word-entry" && screen.id && (
             <WordEntryPage id={screen.id} unlockedKanji={unlockedKanji}

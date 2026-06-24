@@ -4,14 +4,13 @@ import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
 import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
 
-export function ComponentEntryPage({ id, unlockedKanji, unlockedRadicals, onBack, onBackToGacha, onNavKanji, onNavRadical }: {
+export function ComponentEntryPage({ id, unlockedKanji, onBack, onBackToGacha, onNavKanji, onNavComponent }: {
   id: string;
   unlockedKanji: Set<string>;
-  unlockedRadicals: Set<string>;
   onBack: () => void;
   onBackToGacha?: () => void;
   onNavKanji: (id: string) => void;
-  onNavRadical: (id: string) => void;
+  onNavComponent: (id: string) => void;
 }) {
   const component = COMPONENTS.find((entry) => entry.id === id);
   const radical = component?.radicalId ? RADICALS.find((entry) => entry.id === component.radicalId) : undefined;
@@ -94,26 +93,49 @@ export function ComponentEntryPage({ id, unlockedKanji, unlockedRadicals, onBack
 
         {radical && (
           <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Linked Radical</p>
-            <button
-              onClick={() => onNavRadical(radical.id)}
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Official Radical</p>
+            <div
               style={{
                 display:"flex",
                 alignItems:"center",
+                justifyContent:"space-between",
                 gap:8,
                 padding:"7px 12px",
                 borderRadius:12,
-                background: unlockedRadicals.has(radical.id) ? `${c2}22` : "var(--muted)",
-                border:`1px solid ${unlockedRadicals.has(radical.id) ? c2+"44" : "var(--border)"}`,
-                cursor:"pointer",
+                background:`${c2}22`,
+                border:`1px solid ${c2}44`,
               }}
             >
-              {!unlockedRadicals.has(radical.id) && <Lock size={10} className="text-muted-foreground" />}
-              <span style={{ fontFamily:"var(--jp-font)", fontSize:24, color: unlockedRadicals.has(radical.id) ? c2 : "var(--muted-foreground)" }}>{radical.char}</span>
-              <span style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:800, color: unlockedRadicals.has(radical.id) ? c2 : "var(--muted-foreground)" }}>
-                {radical.meanings[0]}
+              <span style={{ display:"flex", alignItems:"center", gap:8 }}>
+                <span style={{ fontFamily:"var(--jp-font)", fontSize:24, color:c2 }}>{radical.char}</span>
+                <span style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:800, color:c2 }}>
+                  {radical.meanings[0]}
+                </span>
               </span>
-            </button>
+              {radical.componentId && radical.componentId !== component.id && (
+                <button
+                  onClick={() => onNavComponent(radical.componentId!)}
+                  style={{
+                    padding:"4px 8px",
+                    borderRadius:999,
+                    background:"var(--card)",
+                    border:"1px solid var(--border)",
+                    color:"var(--muted-foreground)",
+                    fontFamily:"var(--ui-font)",
+                    fontSize:10,
+                    fontWeight:900,
+                    cursor:"pointer",
+                  }}
+                >
+                  View component
+                </button>
+              )}
+            </div>
+            {radical.radicalNumber && (
+              <p style={{ fontFamily:"var(--ui-font)", fontSize:11, marginTop:8 }} className="text-muted-foreground">
+                Radical {radical.radicalNumber}
+              </p>
+            )}
           </div>
         )}
 

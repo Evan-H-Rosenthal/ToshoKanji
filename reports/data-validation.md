@@ -2,7 +2,7 @@
 
 - Kanji entries: 100
 - Radical entries: 77
-- Component entries: 100
+- Component entries: 89
 - Word entries: 287
 - Hard errors: 0
 - Warnings: 0

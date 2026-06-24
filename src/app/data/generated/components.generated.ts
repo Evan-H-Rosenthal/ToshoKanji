@@ -7,7 +7,7 @@ export const COMPONENTS: ComponentEntry[] = [
   {
     "id": "c-r-1",
     "char": "一",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-一",
       "k-年",
@@ -35,12 +35,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "one",
       "one radical (no.1)"
+    ],
+    "forms": [
+      "一"
     ]
   },
   {
     "id": "c-r-2",
     "char": "丨",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-中"
     ],
@@ -51,12 +54,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "number one",
       "line",
       "rod radical (no. 2)"
+    ],
+    "forms": [
+      "丨"
     ]
   },
   {
     "id": "c-r-3",
     "char": "丶",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-気",
       "k-玉",
@@ -69,12 +75,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "dot",
       "tick or dot radical (no. 3)"
+    ],
+    "forms": [
+      "丶"
     ]
   },
   {
     "id": "c-r-5",
     "char": "乙",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-九",
       "k-七"
@@ -86,12 +95,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "the latter",
       "duplicate",
       "strange"
+    ],
+    "forms": [
+      "乙"
     ]
   },
   {
     "id": "c-r-6",
     "char": "亅",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-町"
     ],
@@ -101,12 +113,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "feathered stick",
       "barb radical (no. 6)"
+    ],
+    "forms": [
+      "亅"
     ]
   },
   {
     "id": "c-r-7",
     "char": "二",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-二",
       "k-三",
@@ -121,12 +136,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "two",
       "two radical (no. 7)"
+    ],
+    "forms": [
+      "二"
     ]
   },
   {
     "id": "c-r-8",
     "char": "亠",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-円",
       "k-六",
@@ -139,12 +157,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 8,
     "meanings": [
       "kettle lid radical (no. 8)"
+    ],
+    "forms": [
+      "亠"
     ]
   },
   {
     "id": "c-r-9",
     "char": "人",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-人",
       "k-内"
@@ -154,12 +175,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 9,
     "meanings": [
       "person"
+    ],
+    "forms": [
+      "人",
+      "亻"
     ]
   },
   {
     "id": "c-r-10",
     "char": "儿",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-見",
       "k-四",
@@ -171,12 +196,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 10,
     "meanings": [
       "legs radical (no. 10)"
+    ],
+    "forms": [
+      "儿"
     ]
   },
   {
     "id": "c-r-11",
     "char": "入",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-入"
     ],
@@ -186,12 +214,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "enter",
       "insert"
+    ],
+    "forms": [
+      "入"
     ]
   },
   {
     "id": "c-r-12",
     "char": "八",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-八",
       "k-六"
@@ -202,12 +233,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "eight",
       "eight radical (no. 12)"
+    ],
+    "forms": [
+      "八"
     ]
   },
   {
     "id": "c-r-13",
     "char": "冂",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-円",
       "k-同",
@@ -218,12 +252,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 13,
     "meanings": [
       "upside-down box radical (no. 13)"
+    ],
+    "forms": [
+      "冂"
     ]
   },
   {
     "id": "c-r-14",
     "char": "冖",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-学"
     ],
@@ -232,12 +269,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 14,
     "meanings": [
       "wa-shaped crown radical (no. 14)"
+    ],
+    "forms": [
+      "冖"
     ]
   },
   {
     "id": "c-r-17",
     "char": "凵",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-出"
     ],
@@ -247,12 +287,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "open box enclosure",
       "open box radical (no. 17)"
+    ],
+    "forms": [
+      "凵"
     ]
   },
   {
     "id": "c-r-18",
     "char": "刀",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-分"
     ],
@@ -263,12 +306,16 @@ export const COMPONENTS: ComponentEntry[] = [
       "sword",
       "saber",
       "knife"
+    ],
+    "forms": [
+      "刀",
+      "刂"
     ]
   },
   {
     "id": "c-r-19",
     "char": "力",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-力",
       "k-男"
@@ -280,12 +327,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "power",
       "strength",
       "strong"
+    ],
+    "forms": [
+      "力"
     ]
   },
   {
     "id": "c-r-21",
     "char": "匕",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-七",
       "k-花"
@@ -296,12 +346,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "spoon",
       "spoon or katakana hi radical (no. 21)"
+    ],
+    "forms": [
+      "匕"
     ]
   },
   {
     "id": "c-r-24",
     "char": "十",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-十",
       "k-千",
@@ -313,12 +366,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 24,
     "meanings": [
       "ten"
+    ],
+    "forms": [
+      "十"
     ]
   },
   {
     "id": "c-r-25",
     "char": "卜",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-上",
       "k-下"
@@ -330,12 +386,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "divining",
       "fortune-telling",
       "divination or katakana to radical (no. 25)"
+    ],
+    "forms": [
+      "卜"
     ]
   },
   {
     "id": "c-r-28",
     "char": "厶",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-会"
     ],
@@ -346,12 +405,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "I",
       "myself",
       "katakana mu radical (no. 28)"
+    ],
+    "forms": [
+      "厶"
     ]
   },
   {
     "id": "c-r-30",
     "char": "口",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-中",
       "k-名",
@@ -368,12 +430,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 30,
     "meanings": [
       "mouth"
+    ],
+    "forms": [
+      "口"
     ]
   },
   {
     "id": "c-r-31",
     "char": "囗",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-四",
       "k-口",
@@ -386,12 +451,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "box",
       "box or enclosure radical (no. 31)"
+    ],
+    "forms": [
+      "囗"
     ]
   },
   {
     "id": "c-r-32",
     "char": "土",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-先",
       "k-土",
@@ -408,12 +476,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "soil",
       "earth",
       "ground"
+    ],
+    "forms": [
+      "土"
     ]
   },
   {
     "id": "c-r-34",
     "char": "夂",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-後"
     ],
@@ -424,12 +495,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "late",
       "delayed",
       "winter radical (no. 34)"
+    ],
+    "forms": [
+      "夂"
     ]
   },
   {
     "id": "c-r-36",
     "char": "夕",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-名",
       "k-夕"
@@ -439,12 +513,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 36,
     "meanings": [
       "evening"
+    ],
+    "forms": [
+      "夕"
     ]
   },
   {
     "id": "c-r-37",
     "char": "大",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-大",
       "k-天",
@@ -456,12 +533,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "large",
       "big"
+    ],
+    "forms": [
+      "大"
     ]
   },
   {
     "id": "c-r-38",
     "char": "女",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-女"
     ],
@@ -471,12 +551,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "woman",
       "female"
+    ],
+    "forms": [
+      "女"
     ]
   },
   {
     "id": "c-r-39",
     "char": "子",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-学",
       "k-子",
@@ -489,12 +572,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "child",
       "sign of the rat",
       "11PM-1AM"
+    ],
+    "forms": [
+      "子"
     ]
   },
   {
     "id": "c-r-40",
     "char": "宀",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-空",
       "k-字"
@@ -505,12 +591,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "shaped crown",
       "katakana u radical (no. 40)"
+    ],
+    "forms": [
+      "宀"
     ]
   },
   {
     "id": "c-r-41",
     "char": "寸",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-村",
       "k-時"
@@ -522,12 +611,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "measurement",
       "tenth of a shaku",
       "a little"
+    ],
+    "forms": [
+      "寸"
     ]
   },
   {
     "id": "c-r-42",
     "char": "小",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-小",
       "k-糸"
@@ -538,12 +630,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "little",
       "small"
+    ],
+    "forms": [
+      "小"
     ]
   },
   {
     "id": "c-r-46",
     "char": "山",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-出",
       "k-山"
@@ -553,12 +648,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 46,
     "meanings": [
       "mountain"
+    ],
+    "forms": [
+      "山"
     ]
   },
   {
     "id": "c-r-47",
     "char": "巛",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-川"
     ],
@@ -567,12 +665,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 47,
     "meanings": [
       "curving river radical (no.47)"
+    ],
+    "forms": [
+      "巛"
     ]
   },
   {
     "id": "c-r-48",
     "char": "工",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-空",
       "k-左"
@@ -584,12 +685,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "craft",
       "construction",
       "katakana e radical (no. 48)"
+    ],
+    "forms": [
+      "工"
     ]
   },
   {
     "id": "c-r-50",
     "char": "巾",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-市"
     ],
@@ -600,12 +704,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "towel",
       "hanging scroll",
       "width"
+    ],
+    "forms": [
+      "巾"
     ]
   },
   {
     "id": "c-r-51",
     "char": "干",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-年"
     ],
@@ -616,12 +723,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "dry",
       "parch",
       "ebb"
+    ],
+    "forms": [
+      "干"
     ]
   },
   {
     "id": "c-r-52",
     "char": "幺",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-糸",
       "k-後"
@@ -631,12 +741,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 52,
     "meanings": [
       "short thread radical (no. 52)"
+    ],
+    "forms": [
+      "幺"
     ]
   },
   {
     "id": "c-r-60",
     "char": "彳",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-行",
       "k-後"
@@ -648,12 +761,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "stop",
       "linger",
       "loiter"
+    ],
+    "forms": [
+      "彳"
     ]
   },
   {
     "id": "c-r-64",
     "char": "手",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-手"
     ],
@@ -662,12 +778,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 64,
     "meanings": [
       "hand"
+    ],
+    "forms": [
+      "手",
+      "扌"
     ]
   },
   {
     "id": "c-r-67",
     "char": "文",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-文"
     ],
@@ -678,12 +798,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "sentence",
       "literature",
       "style"
+    ],
+    "forms": [
+      "文"
     ]
   },
   {
     "id": "c-r-70",
     "char": "方",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-方"
     ],
@@ -694,12 +817,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "direction",
       "person",
       "alternative"
+    ],
+    "forms": [
+      "方"
     ]
   },
   {
     "id": "c-r-72",
     "char": "日",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-日",
       "k-早",
@@ -716,12 +842,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "day",
       "sun",
       "Japan"
+    ],
+    "forms": [
+      "日"
     ]
   },
   {
     "id": "c-r-74",
     "char": "月",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-月",
       "k-青",
@@ -733,12 +862,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "month",
       "moon"
+    ],
+    "forms": [
+      "月"
     ]
   },
   {
     "id": "c-r-75",
     "char": "木",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-本",
       "k-村",
@@ -755,12 +887,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "tree",
       "wood"
+    ],
+    "forms": [
+      "木"
     ]
   },
   {
     "id": "c-r-77",
     "char": "止",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-正",
       "k-足"
@@ -771,12 +906,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "stop",
       "halt"
+    ],
+    "forms": [
+      "止"
     ]
   },
   {
     "id": "c-r-84",
     "char": "气",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-気"
     ],
@@ -786,12 +924,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "spirit",
       "steam radical (no. 84)"
+    ],
+    "forms": [
+      "气"
     ]
   },
   {
     "id": "c-r-85",
     "char": "水",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-水"
     ],
@@ -800,12 +941,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 85,
     "meanings": [
       "water"
+    ],
+    "forms": [
+      "水",
+      "氵"
     ]
   },
   {
     "id": "c-r-86",
     "char": "火",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-火"
     ],
@@ -814,12 +959,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 86,
     "meanings": [
       "fire"
+    ],
+    "forms": [
+      "火",
+      "灬"
     ]
   },
   {
     "id": "c-r-88",
     "char": "父",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-校"
     ],
@@ -828,12 +977,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 88,
     "meanings": [
       "father"
+    ],
+    "forms": [
+      "父"
     ]
   },
   {
     "id": "c-r-94",
     "char": "犬",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-犬"
     ],
@@ -842,12 +994,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 94,
     "meanings": [
       "dog"
+    ],
+    "forms": [
+      "犬",
+      "犭"
     ]
   },
   {
     "id": "c-r-96",
     "char": "玉",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-王",
       "k-玉"
@@ -858,12 +1014,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "jewel",
       "ball"
+    ],
+    "forms": [
+      "玉",
+      "王"
     ]
   },
   {
     "id": "c-r-100",
     "char": "生",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-生"
     ],
@@ -874,12 +1034,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "life",
       "genuine",
       "birth"
+    ],
+    "forms": [
+      "生"
     ]
   },
   {
     "id": "c-r-102",
     "char": "田",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-田",
       "k-男",
@@ -892,12 +1055,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "rice field",
       "rice paddy"
+    ],
+    "forms": [
+      "田"
     ]
   },
   {
     "id": "c-r-106",
     "char": "白",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-百",
       "k-白"
@@ -907,12 +1073,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 106,
     "meanings": [
       "white"
+    ],
+    "forms": [
+      "白"
     ]
   },
   {
     "id": "c-r-109",
     "char": "目",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-見",
       "k-目",
@@ -926,12 +1095,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "eye",
       "class",
       "look"
+    ],
+    "forms": [
+      "目"
     ]
   },
   {
     "id": "c-r-112",
     "char": "石",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-石"
     ],
@@ -940,12 +1112,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 112,
     "meanings": [
       "stone"
+    ],
+    "forms": [
+      "石"
     ]
   },
   {
     "id": "c-r-113",
     "char": "示",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [],
     "source": "Kangxi radical",
     "radicalId": "r-113",
@@ -954,12 +1129,17 @@ export const COMPONENTS: ComponentEntry[] = [
       "altar",
       "festival",
       "religious service"
+    ],
+    "forms": [
+      "示",
+      "礻",
+      "⺭"
     ]
   },
   {
     "id": "c-r-116",
     "char": "穴",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-空"
     ],
@@ -970,12 +1150,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "hole",
       "aperture",
       "slit"
+    ],
+    "forms": [
+      "穴"
     ]
   },
   {
     "id": "c-r-117",
     "char": "立",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-立",
       "k-音"
@@ -987,12 +1170,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "stand up",
       "rise",
       "set up"
+    ],
+    "forms": [
+      "立"
     ]
   },
   {
     "id": "c-r-118",
     "char": "竹",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-竹"
     ],
@@ -1001,12 +1187,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 118,
     "meanings": [
       "bamboo"
+    ],
+    "forms": [
+      "竹",
+      "⺮"
     ]
   },
   {
     "id": "c-r-120",
     "char": "糸",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-糸"
     ],
@@ -1015,12 +1205,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 120,
     "meanings": [
       "thread"
+    ],
+    "forms": [
+      "糸",
+      "糹"
     ]
   },
   {
     "id": "c-r-128",
     "char": "耳",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-耳"
     ],
@@ -1029,12 +1223,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 128,
     "meanings": [
       "ear"
+    ],
+    "forms": [
+      "耳"
     ]
   },
   {
     "id": "c-r-132",
     "char": "自",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-自"
     ],
@@ -1043,12 +1240,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 132,
     "meanings": [
       "oneself"
+    ],
+    "forms": [
+      "自"
     ]
   },
   {
     "id": "c-r-140",
     "char": "艸",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [],
     "source": "Kangxi radical",
     "radicalId": "r-140",
@@ -1057,12 +1257,16 @@ export const COMPONENTS: ComponentEntry[] = [
       "grass",
       "plants",
       "grass radical (no. 140)"
+    ],
+    "forms": [
+      "艸",
+      "艹"
     ]
   },
   {
     "id": "c-r-142",
     "char": "虫",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-虫"
     ],
@@ -1073,12 +1277,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "insect",
       "bug",
       "temper"
+    ],
+    "forms": [
+      "虫"
     ]
   },
   {
     "id": "c-r-144",
     "char": "行",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-行"
     ],
@@ -1089,12 +1296,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "going",
       "journey",
       "carry out"
+    ],
+    "forms": [
+      "行"
     ]
   },
   {
     "id": "c-r-147",
     "char": "見",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-見"
     ],
@@ -1105,12 +1315,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "see",
       "hopes",
       "chances"
+    ],
+    "forms": [
+      "見"
     ]
   },
   {
     "id": "c-r-154",
     "char": "貝",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-貝"
     ],
@@ -1119,12 +1332,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 154,
     "meanings": [
       "shellfish"
+    ],
+    "forms": [
+      "貝"
     ]
   },
   {
     "id": "c-r-155",
     "char": "赤",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-赤"
     ],
@@ -1133,12 +1349,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 155,
     "meanings": [
       "red"
+    ],
+    "forms": [
+      "赤"
     ]
   },
   {
     "id": "c-r-157",
     "char": "足",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-足"
     ],
@@ -1149,12 +1368,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "leg",
       "foot",
       "be sufficient"
+    ],
+    "forms": [
+      "足"
     ]
   },
   {
     "id": "c-r-159",
     "char": "車",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-車"
     ],
@@ -1163,12 +1385,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 159,
     "meanings": [
       "car"
+    ],
+    "forms": [
+      "車"
     ]
   },
   {
     "id": "c-r-167",
     "char": "金",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-金"
     ],
@@ -1177,12 +1402,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 167,
     "meanings": [
       "gold"
+    ],
+    "forms": [
+      "金"
     ]
   },
   {
     "id": "c-r-168",
     "char": "長",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-長"
     ],
@@ -1193,12 +1421,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "long",
       "leader",
       "superior"
+    ],
+    "forms": [
+      "長"
     ]
   },
   {
     "id": "c-r-169",
     "char": "門",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-間"
     ],
@@ -1208,12 +1439,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "gate",
       "counter for cannons"
+    ],
+    "forms": [
+      "門"
     ]
   },
   {
     "id": "c-r-173",
     "char": "雨",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-雨"
     ],
@@ -1222,12 +1456,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 173,
     "meanings": [
       "rain"
+    ],
+    "forms": [
+      "雨"
     ]
   },
   {
     "id": "c-r-174",
     "char": "青",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-青"
     ],
@@ -1237,12 +1474,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "blue",
       "green"
+    ],
+    "forms": [
+      "青"
     ]
   },
   {
     "id": "c-r-180",
     "char": "音",
-    "kind": "radical",
+    "kind": "canonical-radical",
     "kanjiIds": [
       "k-音"
     ],
@@ -1252,10 +1492,13 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "sound",
       "noise"
+    ],
+    "forms": [
+      "音"
     ]
   },
   {
-    "id": "c-u4ebb",
+    "id": "c-r-9-v-u4ebb",
     "char": "亻",
     "kind": "radical-variant",
     "kanjiIds": [
@@ -1269,10 +1512,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 9,
     "meanings": [
       "person"
+    ],
+    "canonicalComponentId": "c-r-9",
+    "forms": [
+      "亻"
     ]
   },
   {
-    "id": "c-u5202",
+    "id": "c-r-18-v-u5202",
     "char": "刂",
     "kind": "radical-variant",
     "kanjiIds": [
@@ -1286,10 +1533,14 @@ export const COMPONENTS: ComponentEntry[] = [
       "sword",
       "saber",
       "knife"
+    ],
+    "canonicalComponentId": "c-r-18",
+    "forms": [
+      "刂"
     ]
   },
   {
-    "id": "c-u624c",
+    "id": "c-r-64-v-u624c",
     "char": "扌",
     "kind": "radical-variant",
     "kanjiIds": [],
@@ -1298,10 +1549,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 64,
     "meanings": [
       "hand"
+    ],
+    "canonicalComponentId": "c-r-64",
+    "forms": [
+      "扌"
     ]
   },
   {
-    "id": "c-u6c35",
+    "id": "c-r-85-v-u6c35",
     "char": "氵",
     "kind": "radical-variant",
     "kanjiIds": [],
@@ -1310,10 +1565,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 85,
     "meanings": [
       "water"
+    ],
+    "canonicalComponentId": "c-r-85",
+    "forms": [
+      "氵"
     ]
   },
   {
-    "id": "c-u706c",
+    "id": "c-r-86-v-u706c",
     "char": "灬",
     "kind": "radical-variant",
     "kanjiIds": [],
@@ -1322,10 +1581,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 86,
     "meanings": [
       "fire"
+    ],
+    "canonicalComponentId": "c-r-86",
+    "forms": [
+      "灬"
     ]
   },
   {
-    "id": "c-u72ad",
+    "id": "c-r-94-v-u72ad",
     "char": "犭",
     "kind": "radical-variant",
     "kanjiIds": [],
@@ -1334,10 +1597,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 94,
     "meanings": [
       "dog"
+    ],
+    "canonicalComponentId": "c-r-94",
+    "forms": [
+      "犭"
     ]
   },
   {
-    "id": "c-u738b",
+    "id": "c-r-96-v-u738b",
     "char": "王",
     "kind": "radical-variant",
     "kanjiIds": [
@@ -1352,10 +1619,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "meanings": [
       "jewel",
       "ball"
+    ],
+    "canonicalComponentId": "c-r-96",
+    "forms": [
+      "王"
     ]
   },
   {
-    "id": "c-u2ead",
+    "id": "c-r-113-v-u2ead",
     "char": "⺭",
     "kind": "radical-variant",
     "kanjiIds": [],
@@ -1366,10 +1637,14 @@ export const COMPONENTS: ComponentEntry[] = [
       "altar",
       "festival",
       "religious service"
+    ],
+    "canonicalComponentId": "c-r-113",
+    "forms": [
+      "⺭"
     ]
   },
   {
-    "id": "c-u793b",
+    "id": "c-r-113-v-u793b",
     "char": "礻",
     "kind": "radical-variant",
     "kanjiIds": [
@@ -1382,10 +1657,14 @@ export const COMPONENTS: ComponentEntry[] = [
       "altar",
       "festival",
       "religious service"
+    ],
+    "canonicalComponentId": "c-r-113",
+    "forms": [
+      "礻"
     ]
   },
   {
-    "id": "c-u2eae",
+    "id": "c-r-118-v-u2eae",
     "char": "⺮",
     "kind": "radical-variant",
     "kanjiIds": [
@@ -1396,10 +1675,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 118,
     "meanings": [
       "bamboo"
+    ],
+    "canonicalComponentId": "c-r-118",
+    "forms": [
+      "⺮"
     ]
   },
   {
-    "id": "c-u7cf9",
+    "id": "c-r-120-v-u7cf9",
     "char": "糹",
     "kind": "radical-variant",
     "kanjiIds": [],
@@ -1408,10 +1691,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "radicalNumber": 120,
     "meanings": [
       "thread"
+    ],
+    "canonicalComponentId": "c-r-120",
+    "forms": [
+      "糹"
     ]
   },
   {
-    "id": "c-u8279",
+    "id": "c-r-140-v-u8279",
     "char": "艹",
     "kind": "radical-variant",
     "kanjiIds": [
@@ -1425,125 +1712,10 @@ export const COMPONENTS: ComponentEntry[] = [
       "grass",
       "plants",
       "grass radical (no. 140)"
+    ],
+    "canonicalComponentId": "c-r-140",
+    "forms": [
+      "艹"
     ]
-  },
-  {
-    "id": "c-u30ce",
-    "char": "ノ",
-    "kind": "component",
-    "kanjiIds": [
-      "k-年",
-      "k-気",
-      "k-七",
-      "k-先",
-      "k-千",
-      "k-右",
-      "k-左"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u30cf",
-    "char": "ハ",
-    "kind": "component",
-    "kanjiIds": [
-      "k-金",
-      "k-八",
-      "k-六",
-      "k-貝",
-      "k-分"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u4e2a",
-    "char": "个",
-    "kind": "component",
-    "kanjiIds": [
-      "k-金",
-      "k-会",
-      "k-合",
-      "k-今"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u4e5d",
-    "char": "九",
-    "kind": "component",
-    "kanjiIds": [
-      "k-九"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u4e5e",
-    "char": "乞",
-    "kind": "component",
-    "kanjiIds": [
-      "k-年",
-      "k-気",
-      "k-竹"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u4e5f",
-    "char": "也",
-    "kind": "component",
-    "kanjiIds": [
-      "k-地"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u4e94",
-    "char": "五",
-    "kind": "component",
-    "kanjiIds": [
-      "k-五"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u5c1a",
-    "char": "尚",
-    "kind": "component",
-    "kanjiIds": [
-      "k-学"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u5ddd",
-    "char": "川",
-    "kind": "component",
-    "kanjiIds": [
-      "k-川"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-u5e76",
-    "char": "并",
-    "kind": "component",
-    "kanjiIds": [
-      "k-金",
-      "k-前"
-    ],
-    "source": "KRADFILE"
-  },
-  {
-    "id": "c-uff5c",
-    "char": "｜",
-    "kind": "component",
-    "kanjiIds": [
-      "k-中",
-      "k-出",
-      "k-円",
-      "k-下",
-      "k-東"
-    ],
-    "source": "KRADFILE"
   }
 ];

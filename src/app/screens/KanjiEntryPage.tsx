@@ -9,13 +9,13 @@ import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
 import type { ChatMsg } from "../types";
 
-export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavRadical, onNavComponent, onNavWord }: {
+export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
   id: string; unlockedKanji: Set<string>; unlockedRadicals: Set<string>;
   favorites: Set<string>; customNames: Record<string,string>; notes: Record<string,string>;
   chatMsgs: Record<string,ChatMsg[]>;
   onBack: () => void; onBackToGacha?: () => void; onToggleFav: (k:string)=>void; onSetName:(k:string,v:string)=>void;
   onSetNote:(k:string,v:string)=>void; onChat:(k:string,q:string,a:string)=>void;
-  onNavKanji:(id:string)=>void; onNavRadical:(id:string)=>void; onNavComponent:(id:string)=>void; onNavWord:(id:string)=>void;
+  onNavKanji:(id:string)=>void; onNavComponent:(id:string)=>void; onNavWord:(id:string)=>void;
 }) {
   const k = KANJI.find(x=>x.id===id)!;
   const key = `kanji:${id}`;
@@ -31,6 +31,8 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
   const visibleKunyomi = showAllKunyomi ? k.kunyomi : k.kunyomi.slice(0, 3);
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
   const words = getWordsForKanji(k.id);
+  const learnerParts = k.learnerParts ?? [];
+  const rawParts = k.rawDecomposition?.parts ?? [];
 
   return (
     <div className="flex flex-col h-full overflow-y-auto">
@@ -141,7 +143,7 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
               const isVariant = radicalForm !== rad.char;
               const c = RAD_COLORS[i % RAD_COLORS.length];
               return (
-                <button key={rid} onClick={()=>onNavRadical(rid)} style={{
+                <button key={rid} onClick={()=>rad.componentId && onNavComponent(rad.componentId)} style={{
                   display:"flex", alignItems:"center", gap:7, padding:"6px 12px", borderRadius:12,
                   background: isUnlocked ? `${c}22` : "var(--muted)",
                   border: `1px solid ${isUnlocked ? c+"44" : "var(--border)"}`,
@@ -164,11 +166,11 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
         </div>
 
         {/* Components */}
-        {k.kanjiParts && k.kanjiParts.length > 0 && (
+        {learnerParts.length > 0 && (
           <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
             <div className="flex items-center justify-between gap-3 mb-3">
               <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground">Visible Components</p>
-              {k.rawKanjiParts && k.rawKanjiParts.length > k.kanjiParts.length && (
+              {rawParts.length > learnerParts.length && (
                 <button
                   onClick={() => setShowRawComponents((value) => !value)}
                   style={{
@@ -189,13 +191,13 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
               )}
             </div>
             <div className="flex flex-wrap gap-2">
-              {k.kanjiParts.map((part,i) => {
+              {learnerParts.map((part,i) => {
                 const rad = part.radicalId ? RADICALS.find(r=>r.id===part.radicalId) : undefined;
                 const component = part.componentId ? COMPONENTS.find(c=>c.id===part.componentId) : undefined;
                 const c = RAD_COLORS[i % RAD_COLORS.length];
                 return (
                   <button
-                    key={`${part.component}-${i}`}
+                    key={`${part.char}-${i}`}
                     onClick={() => part.componentId && onNavComponent(part.componentId)}
                     disabled={!part.componentId}
                     style={{
@@ -210,7 +212,7 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
                       opacity: part.componentId ? 1 : 0.82,
                     }}
                   >
-                    <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color:c }}>{part.component}</span>
+                    <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color:c }}>{part.char}</span>
                     <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
                       <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color:c }}>
                         {rad?.meanings[0] ?? "component"}
@@ -223,12 +225,12 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
                 );
               })}
             </div>
-            {showRawComponents && k.rawKanjiParts && (
+            {showRawComponents && rawParts.length > 0 && (
               <div className="mt-3 pt-3" style={{ borderTop:"1px solid var(--border)" }}>
                 <div className="flex flex-wrap gap-2">
-                  {k.rawKanjiParts.map((part, i) => (
+                  {rawParts.map((part, i) => (
                     <span
-                      key={`raw-${part.component}-${i}`}
+                      key={`raw-${part.char}-${i}`}
                       style={{
                         display:"inline-flex",
                         alignItems:"center",
@@ -243,7 +245,7 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
                         fontWeight:800,
                       }}
                     >
-                      <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }}>{part.component}</span>
+                      <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }}>{part.char}</span>
                       {part.role}
                     </span>
                   ))}

@@ -1,12 +1,13 @@
 import { type ReactNode, useState } from "react";
 import { Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
+import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
 import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
-type CollectionFilter = "all" | "kanji" | "radicals";
+type CollectionFilter = "all" | "kanji" | "components";
 
 export function CollectionScreen({
   unlockedKanji,
@@ -15,7 +16,7 @@ export function CollectionScreen({
   customNames,
   highlightedUnlock,
   onSelectKanji,
-  onSelectRadical,
+  onSelectComponent,
   onToggleFav,
   onClearHighlight,
 }: {
@@ -25,7 +26,7 @@ export function CollectionScreen({
   customNames: Record<string, string>;
   highlightedUnlock?: { type: "kanji" | "radical"; id: string } | null;
   onSelectKanji: (id: string) => void;
-  onSelectRadical: (id: string) => void;
+  onSelectComponent: (id: string) => void;
   onToggleFav: (key: string) => void;
   onClearHighlight?: (type: "kanji" | "radical", id: string) => void;
 }) {
@@ -36,7 +37,7 @@ export function CollectionScreen({
   const q = query.toLowerCase();
 
   const kanjiItems = KANJI.filter((kanji) => {
-    if (filter === "radicals") return false;
+    if (filter === "components") return false;
     if (!unlockedKanji.has(kanji.id)) return false;
     const key = `kanji:${kanji.id}`;
     if (favOnly && !favorites.has(key)) return false;
@@ -48,17 +49,20 @@ export function CollectionScreen({
       || getWordsForKanji(kanji.id).some((word) => word.meaning.toLowerCase().includes(q) || word.romaji.toLowerCase().includes(q));
   });
 
-  const radicalItems = RADICALS.filter((radical) => {
+  const componentItems = COMPONENTS.filter((component) => {
     if (filter === "kanji") return false;
-    if (!unlockedRadicals.has(radical.id)) return false;
-    const key = `radical:${radical.id}`;
+    const key = `component:${component.id}`;
+    const radical = component.radicalId ? RADICALS.find((entry) => entry.id === component.radicalId) : undefined;
     if (favOnly && !favorites.has(key)) return false;
     if (!query) return true;
-    return radical.char.includes(query) || radical.meanings.some((meaning) => meaning.toLowerCase().includes(q))
+    return component.char.includes(query)
+      || component.kind.toLowerCase().includes(q)
+      || (component.meanings ?? []).some((meaning) => meaning.toLowerCase().includes(q))
+      || (radical?.meanings ?? []).some((meaning) => meaning.toLowerCase().includes(q))
       || (customNames[key] || "").toLowerCase().includes(q);
   });
 
-  const hasResults = kanjiItems.length > 0 || radicalItems.length > 0;
+  const hasResults = kanjiItems.length > 0 || componentItems.length > 0;
   const unlockedTotal = unlockedKanji.size + unlockedRadicals.size;
   const fullTotal = KANJI.length + RADICALS.length;
 
@@ -102,7 +106,7 @@ export function CollectionScreen({
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 7, marginTop: 9 }}>
           <FilterPill active={filter === "all"} label="All" onClick={() => setFilter("all")} />
           <FilterPill active={filter === "kanji"} label="Kanji" onClick={() => setFilter("kanji")} />
-          <FilterPill active={filter === "radicals"} label="Radicals" onClick={() => setFilter("radicals")} />
+          <FilterPill active={filter === "components"} label="Components" onClick={() => setFilter("components")} />
         </div>
       </div>
 
@@ -144,29 +148,30 @@ export function CollectionScreen({
               </CollectionSection>
             )}
 
-            {radicalItems.length > 0 && (
-              <CollectionSection title="Radicals" count={`${unlockedRadicals.size}/${RADICALS.length}`}>
-                {radicalItems.map((radical) => {
-                  const key = `radical:${radical.id}`;
-                  const colorIndex = Math.max(0, RADICALS.findIndex((entry) => entry.id === radical.id));
+            {componentItems.length > 0 && (
+              <CollectionSection title="Components" count={`${COMPONENTS.length}`}>
+                {componentItems.map((component) => {
+                  const key = `component:${component.id}`;
+                  const radical = component.radicalId ? RADICALS.find((entry) => entry.id === component.radicalId) : undefined;
+                  const colorIndex = Math.max(0, COMPONENTS.findIndex((entry) => entry.id === component.id));
                   const color1 = RAD_COLORS[colorIndex % RAD_COLORS.length];
                   const color2 = RAD_COLORS[(colorIndex + 4) % RAD_COLORS.length];
                   return (
                     <CollectionCard
-                      key={radical.id}
-                      char={radical.char}
-                      label={customNames[key] || radical.meanings[0]}
+                      key={component.id}
+                      char={component.char}
+                      label={customNames[key] || component.meanings?.[0] || radical?.meanings[0] || component.kind.replace("-", " ")}
                       color1={color1}
                       color2={color2}
                       starred={favorites.has(key)}
-                      highlighted={highlightedUnlock?.type === "radical" && highlightedUnlock.id === radical.id}
+                      highlighted={highlightedUnlock?.type === "radical" && highlightedUnlock.id === component.radicalId}
                       onStar={(event) => {
                         event.stopPropagation();
                         onToggleFav(key);
                       }}
                       onClick={() => {
-                        onClearHighlight?.("radical", radical.id);
-                        onSelectRadical(radical.id);
+                        if (component.radicalId) onClearHighlight?.("radical", component.radicalId);
+                        onSelectComponent(component.id);
                       }}
                     />
                   );

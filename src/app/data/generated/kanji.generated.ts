@@ -36,6 +36,29 @@ export const KANJI: KanjiEntry[] = [
       "r-72"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "日",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-72",
+        "radicalId": "r-72"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "日",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-72",
+          "radicalId": "r-72"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "日",
@@ -113,6 +136,29 @@ export const KANJI: KanjiEntry[] = [
       "r-1"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "一",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "一",
@@ -190,6 +236,29 @@ export const KANJI: KanjiEntry[] = [
       "r-9"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "人",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-9",
+        "radicalId": "r-9"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "人",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-9",
+          "radicalId": "r-9"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "人",
@@ -265,6 +334,56 @@ export const KANJI: KanjiEntry[] = [
       "r-51"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "干",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-51",
+        "radicalId": "r-51"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "干",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-51",
+          "radicalId": "r-51"
+        },
+        {
+          "char": "ノ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "乞",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "ノ",
+        "乞"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "干",
@@ -327,8 +446,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ノ",
-        "role": "component",
-        "componentId": "c-u30ce"
+        "role": "raw-fragment"
       },
       {
         "component": "一",
@@ -338,8 +456,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "乞",
-        "role": "component",
-        "componentId": "c-u4e5e"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -379,6 +496,29 @@ export const KANJI: KanjiEntry[] = [
       "r-37"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "大",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-37",
+        "radicalId": "r-37"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "大",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-37",
+          "radicalId": "r-37"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "大",
@@ -457,6 +597,29 @@ export const KANJI: KanjiEntry[] = [
       "r-24"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "十",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-24",
+        "radicalId": "r-24"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "十",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-24",
+          "radicalId": "r-24"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "十",
@@ -535,6 +698,29 @@ export const KANJI: KanjiEntry[] = [
       "r-7"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "二",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-7",
+        "radicalId": "r-7"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "二",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-7",
+          "radicalId": "r-7"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "二",
@@ -613,6 +799,43 @@ export const KANJI: KanjiEntry[] = [
       "r-75"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "木",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-75",
+        "radicalId": "r-75"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "木",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-75",
+          "radicalId": "r-75"
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "木",
@@ -714,6 +937,50 @@ export const KANJI: KanjiEntry[] = [
       "r-2"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "丨",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-2",
+        "radicalId": "r-2"
+      },
+      {
+        "char": "口",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "丨",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-2",
+          "radicalId": "r-2"
+        },
+        {
+          "char": "｜",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        }
+      ],
+      "filteredParts": [
+        "｜"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "丨",
@@ -774,8 +1041,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "｜",
-        "role": "component",
-        "componentId": "c-uff5c"
+        "role": "raw-fragment"
       },
       {
         "component": "口",
@@ -827,6 +1093,50 @@ export const KANJI: KanjiEntry[] = [
       "r-17"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "凵",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-17",
+        "radicalId": "r-17"
+      },
+      {
+        "char": "山",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-46",
+        "radicalId": "r-46"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "凵",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-17",
+          "radicalId": "r-17"
+        },
+        {
+          "char": "｜",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "山",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-46",
+          "radicalId": "r-46"
+        }
+      ],
+      "filteredParts": [
+        "｜"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "凵",
@@ -887,8 +1197,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "｜",
-        "role": "component",
-        "componentId": "c-uff5c"
+        "role": "raw-fragment"
       },
       {
         "component": "山",
@@ -933,6 +1242,43 @@ export const KANJI: KanjiEntry[] = [
       "r-1"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "一",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      },
+      {
+        "char": "二",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-7",
+        "radicalId": "r-7"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "二",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-7",
+          "radicalId": "r-7"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "一",
@@ -1034,6 +1380,57 @@ export const KANJI: KanjiEntry[] = [
       "r-147"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "見",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-147",
+        "radicalId": "r-147"
+      },
+      {
+        "char": "目",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-109",
+        "radicalId": "r-109"
+      },
+      {
+        "char": "儿",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-10",
+        "radicalId": "r-10"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "見",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-147",
+          "radicalId": "r-147"
+        },
+        {
+          "char": "目",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-109",
+          "radicalId": "r-109"
+        },
+        {
+          "char": "儿",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-10",
+          "radicalId": "r-10"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "見",
@@ -1152,6 +1549,29 @@ export const KANJI: KanjiEntry[] = [
       "r-74"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "月",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-74",
+        "radicalId": "r-74"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "月",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-74",
+          "radicalId": "r-74"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "月",
@@ -1246,6 +1666,29 @@ export const KANJI: KanjiEntry[] = [
       "r-100"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "生",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-100",
+        "radicalId": "r-100"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "生",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-100",
+          "radicalId": "r-100"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "生",
@@ -1321,6 +1764,39 @@ export const KANJI: KanjiEntry[] = [
       "r-7"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "二",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-7",
+        "radicalId": "r-7"
+      },
+      {
+        "char": "五",
+        "role": "learner-component",
+        "source": "normalized-krad"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "二",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-7",
+          "radicalId": "r-7"
+        },
+        {
+          "char": "五",
+          "role": "source-component",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "二",
@@ -1330,8 +1806,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "五",
-        "role": "component",
-        "componentId": "c-u4e94"
+        "role": "component"
       }
     ],
     "rawComponents": [
@@ -1351,8 +1826,7 @@ export const KANJI: KanjiEntry[] = [
       "五"
     ],
     "componentIds": [
-      "c-r-7",
-      "c-u4e94"
+      "c-r-7"
     ],
     "kanjiParts": [
       {
@@ -1363,8 +1837,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "五",
-        "role": "component",
-        "componentId": "c-u4e94"
+        "role": "component"
       }
     ],
     "rawKanjiParts": [
@@ -1376,8 +1849,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "五",
-        "role": "component",
-        "componentId": "c-u4e94"
+        "role": "component"
       }
     ],
     "wordIds": [
@@ -1430,6 +1902,43 @@ export const KANJI: KanjiEntry[] = [
       "r-1"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "一",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      },
+      {
+        "char": "卜",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-25",
+        "radicalId": "r-25"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "卜",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-25",
+          "radicalId": "r-25"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "一",
@@ -1528,6 +2037,43 @@ export const KANJI: KanjiEntry[] = [
       "r-31"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "囗",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-31",
+        "radicalId": "r-31"
+      },
+      {
+        "char": "儿",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-10",
+        "radicalId": "r-10"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "囗",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-31",
+          "radicalId": "r-31"
+        },
+        {
+          "char": "儿",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-10",
+          "radicalId": "r-10"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "囗",
@@ -1627,6 +2173,62 @@ export const KANJI: KanjiEntry[] = [
       "r-167"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "金",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-167",
+        "radicalId": "r-167"
+      },
+      {
+        "char": "王",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-96-v-u738b",
+        "radicalId": "r-96"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "金",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-167",
+          "radicalId": "r-167"
+        },
+        {
+          "char": "王",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-96-v-u738b",
+          "radicalId": "r-96"
+        },
+        {
+          "char": "ハ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "个",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "并",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "ハ",
+        "个",
+        "并"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "金",
@@ -1637,7 +2239,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -1666,7 +2268,7 @@ export const KANJI: KanjiEntry[] = [
     ],
     "componentIds": [
       "c-r-167",
-      "c-u738b"
+      "c-r-96-v-u738b"
     ],
     "kanjiParts": [
       {
@@ -1678,7 +2280,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -1692,23 +2294,20 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       },
       {
         "component": "ハ",
-        "role": "component",
-        "componentId": "c-u30cf"
+        "role": "raw-fragment"
       },
       {
         "component": "个",
-        "role": "component",
-        "componentId": "c-u4e2a"
+        "role": "raw-fragment"
       },
       {
         "component": "并",
-        "role": "component",
-        "componentId": "c-u5e76"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -1746,6 +2345,39 @@ export const KANJI: KanjiEntry[] = [
       "r-5"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "乙",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-5",
+        "radicalId": "r-5"
+      },
+      {
+        "char": "九",
+        "role": "learner-component",
+        "source": "normalized-krad"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "乙",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-5",
+          "radicalId": "r-5"
+        },
+        {
+          "char": "九",
+          "role": "source-component",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "乙",
@@ -1755,8 +2387,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "九",
-        "role": "component",
-        "componentId": "c-u4e5d"
+        "role": "component"
       }
     ],
     "rawComponents": [
@@ -1776,8 +2407,7 @@ export const KANJI: KanjiEntry[] = [
       "九"
     ],
     "componentIds": [
-      "c-r-5",
-      "c-u4e5d"
+      "c-r-5"
     ],
     "kanjiParts": [
       {
@@ -1788,8 +2418,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "九",
-        "role": "component",
-        "componentId": "c-u4e5d"
+        "role": "component"
       }
     ],
     "rawKanjiParts": [
@@ -1801,8 +2430,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "九",
-        "role": "component",
-        "componentId": "c-u4e5d"
+        "role": "component"
       }
     ],
     "wordIds": [
@@ -1845,6 +2473,29 @@ export const KANJI: KanjiEntry[] = [
       "r-11"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "入",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-11",
+        "radicalId": "r-11"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "入",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-11",
+          "radicalId": "r-11"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "入",
@@ -1933,6 +2584,29 @@ export const KANJI: KanjiEntry[] = [
       "r-117"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "立",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-117",
+        "radicalId": "r-117"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "立",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-117",
+          "radicalId": "r-117"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "立",
@@ -2011,6 +2685,29 @@ export const KANJI: KanjiEntry[] = [
       "r-64"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "手",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-64",
+        "radicalId": "r-64"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "手",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-64",
+          "radicalId": "r-64"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "手",
@@ -2091,6 +2788,29 @@ export const KANJI: KanjiEntry[] = [
       "r-19"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "力",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-19",
+        "radicalId": "r-19"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "力",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-19",
+          "radicalId": "r-19"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "力",
@@ -2167,6 +2887,53 @@ export const KANJI: KanjiEntry[] = [
       "r-39"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "子",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-39",
+        "radicalId": "r-39"
+      },
+      {
+        "char": "尚",
+        "role": "learner-component",
+        "source": "normalized-krad"
+      },
+      {
+        "char": "冖",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-14",
+        "radicalId": "r-14"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "子",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-39",
+          "radicalId": "r-39"
+        },
+        {
+          "char": "尚",
+          "role": "source-component",
+          "debugOnly": true
+        },
+        {
+          "char": "冖",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-14",
+          "radicalId": "r-14"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "子",
@@ -2176,8 +2943,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "尚",
-        "role": "component",
-        "componentId": "c-u5c1a"
+        "role": "component"
       },
       {
         "component": "冖",
@@ -2206,7 +2972,6 @@ export const KANJI: KanjiEntry[] = [
     ],
     "componentIds": [
       "c-r-39",
-      "c-u5c1a",
       "c-r-14"
     ],
     "kanjiParts": [
@@ -2218,8 +2983,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "尚",
-        "role": "component",
-        "componentId": "c-u5c1a"
+        "role": "component"
       },
       {
         "component": "冖",
@@ -2237,8 +3001,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "尚",
-        "role": "component",
-        "componentId": "c-u5c1a"
+        "role": "component"
       },
       {
         "component": "冖",
@@ -2286,6 +3049,64 @@ export const KANJI: KanjiEntry[] = [
       "r-13"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "冂",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-13",
+        "radicalId": "r-13"
+      },
+      {
+        "char": "亠",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-8",
+        "radicalId": "r-8"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "冂",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-13",
+          "radicalId": "r-13"
+        },
+        {
+          "char": "亠",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-8",
+          "radicalId": "r-8"
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "｜",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "｜"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "冂",
@@ -2373,8 +3194,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "｜",
-        "role": "component",
-        "componentId": "c-uff5c"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -2417,6 +3237,29 @@ export const KANJI: KanjiEntry[] = [
       "r-39"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "子",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-39",
+        "radicalId": "r-39"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "子",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-39",
+          "radicalId": "r-39"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "子",
@@ -2498,6 +3341,29 @@ export const KANJI: KanjiEntry[] = [
       "r-109"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "目",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-109",
+        "radicalId": "r-109"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "目",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-109",
+          "radicalId": "r-109"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "目",
@@ -2573,6 +3439,29 @@ export const KANJI: KanjiEntry[] = [
       "r-102"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "田",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-102",
+        "radicalId": "r-102"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "田",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-102",
+          "radicalId": "r-102"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "田",
@@ -2652,6 +3541,36 @@ export const KANJI: KanjiEntry[] = [
       "r-12"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "八",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-12",
+        "radicalId": "r-12"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "八",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-12",
+          "radicalId": "r-12"
+        },
+        {
+          "char": "ハ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "ハ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "八",
@@ -2697,8 +3616,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ハ",
-        "role": "component",
-        "componentId": "c-u30cf"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -2738,6 +3656,50 @@ export const KANJI: KanjiEntry[] = [
       "r-12"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "八",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-12",
+        "radicalId": "r-12"
+      },
+      {
+        "char": "亠",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-8",
+        "radicalId": "r-8"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "八",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-12",
+          "radicalId": "r-12"
+        },
+        {
+          "char": "ハ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "亠",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-8",
+          "radicalId": "r-8"
+        }
+      ],
+      "filteredParts": [
+        "ハ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "八",
@@ -2798,8 +3760,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ハ",
-        "role": "component",
-        "componentId": "c-u30cf"
+        "role": "raw-fragment"
       },
       {
         "component": "亠",
@@ -2857,6 +3818,50 @@ export const KANJI: KanjiEntry[] = [
       "r-1"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "一",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      },
+      {
+        "char": "卜",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-25",
+        "radicalId": "r-25"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "｜",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "卜",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-25",
+          "radicalId": "r-25"
+        }
+      ],
+      "filteredParts": [
+        "｜"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "一",
@@ -2917,8 +3922,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "｜",
-        "role": "component",
-        "componentId": "c-uff5c"
+        "role": "raw-fragment"
       },
       {
         "component": "卜",
@@ -2966,6 +3970,50 @@ export const KANJI: KanjiEntry[] = [
       "r-84"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "气",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-84",
+        "radicalId": "r-84"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "气",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-84",
+          "radicalId": "r-84"
+        },
+        {
+          "char": "丶",
+          "role": "raw-fragment",
+          "debugOnly": true,
+          "componentId": "c-r-3",
+          "radicalId": "r-3"
+        },
+        {
+          "char": "ノ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "乞",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "丶",
+        "ノ",
+        "乞"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "气",
@@ -3015,19 +4063,17 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "丶",
-        "role": "component",
+        "role": "raw-fragment",
         "componentId": "c-r-3",
         "radicalId": "r-3"
       },
       {
         "component": "ノ",
-        "role": "component",
-        "componentId": "c-u30ce"
+        "role": "raw-fragment"
       },
       {
         "component": "乞",
-        "role": "component",
-        "componentId": "c-u4e5e"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -3067,6 +4113,29 @@ export const KANJI: KanjiEntry[] = [
       "r-42"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "小",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-42",
+        "radicalId": "r-42"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "小",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-42",
+          "radicalId": "r-42"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "小",
@@ -3143,6 +4212,64 @@ export const KANJI: KanjiEntry[] = [
       "r-1"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "一",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      },
+      {
+        "char": "乙",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-5",
+        "radicalId": "r-5"
+      },
+      {
+        "char": "匕",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-21",
+        "radicalId": "r-21"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "乙",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-5",
+          "radicalId": "r-5"
+        },
+        {
+          "char": "匕",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-21",
+          "radicalId": "r-21"
+        },
+        {
+          "char": "ノ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "ノ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "一",
@@ -3230,8 +4357,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ノ",
-        "role": "component",
-        "componentId": "c-u30ce"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -3268,6 +4394,29 @@ export const KANJI: KanjiEntry[] = [
       "r-46"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "山",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-46",
+        "radicalId": "r-46"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "山",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-46",
+          "radicalId": "r-46"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "山",
@@ -3349,6 +4498,43 @@ export const KANJI: KanjiEntry[] = [
       "r-77"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "止",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-77",
+        "radicalId": "r-77"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "止",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-77",
+          "radicalId": "r-77"
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "止",
@@ -3448,6 +4634,29 @@ export const KANJI: KanjiEntry[] = [
       "r-38"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "女",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-38",
+        "radicalId": "r-38"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "女",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-38",
+          "radicalId": "r-38"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "女",
@@ -3523,6 +4732,43 @@ export const KANJI: KanjiEntry[] = [
       "r-106"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "白",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-106",
+        "radicalId": "r-106"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "白",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-106",
+          "radicalId": "r-106"
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "白",
@@ -3623,6 +4869,50 @@ export const KANJI: KanjiEntry[] = [
       "r-10"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "儿",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-10",
+        "radicalId": "r-10"
+      },
+      {
+        "char": "土",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-32",
+        "radicalId": "r-32"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "儿",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-10",
+          "radicalId": "r-10"
+        },
+        {
+          "char": "ノ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "土",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-32",
+          "radicalId": "r-32"
+        }
+      ],
+      "filteredParts": [
+        "ノ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "儿",
@@ -3683,8 +4973,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ノ",
-        "role": "component",
-        "componentId": "c-u30ce"
+        "role": "raw-fragment"
       },
       {
         "component": "土",
@@ -3731,6 +5020,43 @@ export const KANJI: KanjiEntry[] = [
       "r-30"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "口",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      },
+      {
+        "char": "夕",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-36",
+        "radicalId": "r-36"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        },
+        {
+          "char": "夕",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-36",
+          "radicalId": "r-36"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "口",
@@ -3828,6 +5154,39 @@ export const KANJI: KanjiEntry[] = [
       "r-47"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "巛",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-47",
+        "radicalId": "r-47"
+      },
+      {
+        "char": "川",
+        "role": "learner-component",
+        "source": "normalized-krad"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "巛",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-47",
+          "radicalId": "r-47"
+        },
+        {
+          "char": "川",
+          "role": "source-component",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "巛",
@@ -3837,8 +5196,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "川",
-        "role": "component",
-        "componentId": "c-u5ddd"
+        "role": "component"
       }
     ],
     "rawComponents": [
@@ -3858,8 +5216,7 @@ export const KANJI: KanjiEntry[] = [
       "川"
     ],
     "componentIds": [
-      "c-r-47",
-      "c-u5ddd"
+      "c-r-47"
     ],
     "kanjiParts": [
       {
@@ -3870,8 +5227,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "川",
-        "role": "component",
-        "componentId": "c-u5ddd"
+        "role": "component"
       }
     ],
     "rawKanjiParts": [
@@ -3883,8 +5239,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "川",
-        "role": "component",
-        "componentId": "c-u5ddd"
+        "role": "component"
       }
     ],
     "wordIds": [
@@ -3926,6 +5281,29 @@ export const KANJI: KanjiEntry[] = [
       "r-67"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "文",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-67",
+        "radicalId": "r-67"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "文",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-67",
+          "radicalId": "r-67"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "文",
@@ -4000,6 +5378,36 @@ export const KANJI: KanjiEntry[] = [
       "r-24"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "十",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-24",
+        "radicalId": "r-24"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "十",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-24",
+          "radicalId": "r-24"
+        },
+        {
+          "char": "ノ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "ノ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "十",
@@ -4045,8 +5453,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ノ",
-        "role": "component",
-        "componentId": "c-u30ce"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -4083,6 +5490,29 @@ export const KANJI: KanjiEntry[] = [
       "r-85"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "水",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-85",
+        "radicalId": "r-85"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "水",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-85",
+          "radicalId": "r-85"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "水",
@@ -4159,6 +5589,43 @@ export const KANJI: KanjiEntry[] = [
       "r-102"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "田",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-102",
+        "radicalId": "r-102"
+      },
+      {
+        "char": "力",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-19",
+        "radicalId": "r-19"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "田",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-102",
+          "radicalId": "r-102"
+        },
+        {
+          "char": "力",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-19",
+          "radicalId": "r-19"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "田",
@@ -4255,6 +5722,43 @@ export const KANJI: KanjiEntry[] = [
       "r-75"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "木",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-75",
+        "radicalId": "r-75"
+      },
+      {
+        "char": "寸",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-41",
+        "radicalId": "r-41"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "木",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-75",
+          "radicalId": "r-75"
+        },
+        {
+          "char": "寸",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-41",
+          "radicalId": "r-41"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "木",
@@ -4351,6 +5855,43 @@ export const KANJI: KanjiEntry[] = [
       "r-30"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "口",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      },
+      {
+        "char": "囗",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-31",
+        "radicalId": "r-31"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        },
+        {
+          "char": "囗",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-31",
+          "radicalId": "r-31"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "口",
@@ -4449,6 +5990,52 @@ export const KANJI: KanjiEntry[] = [
       "r-102"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "田",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-102",
+        "radicalId": "r-102"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "田",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-102",
+          "radicalId": "r-102"
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "亅",
+          "role": "raw-fragment",
+          "debugOnly": true,
+          "componentId": "c-r-6",
+          "radicalId": "r-6"
+        }
+      ],
+      "filteredParts": [
+        "亅"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "田",
@@ -4515,7 +6102,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "亅",
-        "role": "component",
+        "role": "raw-fragment",
         "componentId": "c-r-6",
         "radicalId": "r-6"
       }
@@ -4556,6 +6143,57 @@ export const KANJI: KanjiEntry[] = [
       "r-75"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "木",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-75",
+        "radicalId": "r-75"
+      },
+      {
+        "char": "父",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-88",
+        "radicalId": "r-88"
+      },
+      {
+        "char": "亠",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-8",
+        "radicalId": "r-8"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "木",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-75",
+          "radicalId": "r-75"
+        },
+        {
+          "char": "父",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-88",
+          "radicalId": "r-88"
+        },
+        {
+          "char": "亠",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-8",
+          "radicalId": "r-8"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "木",
@@ -4683,6 +6321,71 @@ export const KANJI: KanjiEntry[] = [
       "r-116"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "穴",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-116",
+        "radicalId": "r-116"
+      },
+      {
+        "char": "工",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-48",
+        "radicalId": "r-48"
+      },
+      {
+        "char": "儿",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-10",
+        "radicalId": "r-10"
+      },
+      {
+        "char": "宀",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-40",
+        "radicalId": "r-40"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "穴",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-116",
+          "radicalId": "r-116"
+        },
+        {
+          "char": "工",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-48",
+          "radicalId": "r-48"
+        },
+        {
+          "char": "儿",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-10",
+          "radicalId": "r-10"
+        },
+        {
+          "char": "宀",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-40",
+          "radicalId": "r-40"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "穴",
@@ -4824,6 +6527,29 @@ export const KANJI: KanjiEntry[] = [
       "r-32"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "土",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-32",
+        "radicalId": "r-32"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "土",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-32",
+          "radicalId": "r-32"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "土",
@@ -4901,6 +6627,29 @@ export const KANJI: KanjiEntry[] = [
       "r-75"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "木",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-75",
+        "radicalId": "r-75"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "木",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-75",
+          "radicalId": "r-75"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "木",
@@ -4975,6 +6724,29 @@ export const KANJI: KanjiEntry[] = [
       "r-159"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "車",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-159",
+        "radicalId": "r-159"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "車",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-159",
+          "radicalId": "r-159"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "車",
@@ -5051,6 +6823,43 @@ export const KANJI: KanjiEntry[] = [
       "r-112"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "石",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-112",
+        "radicalId": "r-112"
+      },
+      {
+        "char": "口",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "石",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-112",
+          "radicalId": "r-112"
+        },
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "石",
@@ -5152,6 +6961,57 @@ export const KANJI: KanjiEntry[] = [
       "r-157"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "足",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-157",
+        "radicalId": "r-157"
+      },
+      {
+        "char": "口",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      },
+      {
+        "char": "止",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-77",
+        "radicalId": "r-77"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "足",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-157",
+          "radicalId": "r-157"
+        },
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        },
+        {
+          "char": "止",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-77",
+          "radicalId": "r-77"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "足",
@@ -5275,6 +7135,43 @@ export const KANJI: KanjiEntry[] = [
       "r-72"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "日",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-72",
+        "radicalId": "r-72"
+      },
+      {
+        "char": "十",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-24",
+        "radicalId": "r-24"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "日",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-72",
+          "radicalId": "r-72"
+        },
+        {
+          "char": "十",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-24",
+          "radicalId": "r-24"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "日",
@@ -5373,6 +7270,29 @@ export const KANJI: KanjiEntry[] = [
       "r-106"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "白",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-106",
+        "radicalId": "r-106"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "白",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-106",
+          "radicalId": "r-106"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "白",
@@ -5452,6 +7372,43 @@ export const KANJI: KanjiEntry[] = [
       "r-39"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "子",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-39",
+        "radicalId": "r-39"
+      },
+      {
+        "char": "宀",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-40",
+        "radicalId": "r-40"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "子",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-39",
+          "radicalId": "r-39"
+        },
+        {
+          "char": "宀",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-40",
+          "radicalId": "r-40"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "子",
@@ -5551,6 +7508,57 @@ export const KANJI: KanjiEntry[] = [
       "r-180"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "音",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-180",
+        "radicalId": "r-180"
+      },
+      {
+        "char": "日",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-72",
+        "radicalId": "r-72"
+      },
+      {
+        "char": "立",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-117",
+        "radicalId": "r-117"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "音",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-180",
+          "radicalId": "r-180"
+        },
+        {
+          "char": "日",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-72",
+          "radicalId": "r-72"
+        },
+        {
+          "char": "立",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-117",
+          "radicalId": "r-117"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "音",
@@ -5671,6 +7679,57 @@ export const KANJI: KanjiEntry[] = [
       "r-37"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "大",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-37",
+        "radicalId": "r-37"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      },
+      {
+        "char": "二",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-7",
+        "radicalId": "r-7"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "大",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-37",
+          "radicalId": "r-37"
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "二",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-7",
+          "radicalId": "r-7"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "大",
@@ -5789,6 +7848,29 @@ export const KANJI: KanjiEntry[] = [
       "r-86"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "火",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-86",
+        "radicalId": "r-86"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "火",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-86",
+          "radicalId": "r-86"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "火",
@@ -5866,17 +7948,68 @@ export const KANJI: KanjiEntry[] = [
     "radicalForms": {
       "r-140": "艹"
     },
+    "learnerParts": [
+      {
+        "char": "艹",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-140-v-u8279",
+        "radicalId": "r-140"
+      },
+      {
+        "char": "亻",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-9-v-u4ebb",
+        "radicalId": "r-9"
+      },
+      {
+        "char": "匕",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-21",
+        "radicalId": "r-21"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "艹",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-140-v-u8279",
+          "radicalId": "r-140"
+        },
+        {
+          "char": "亻",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-9-v-u4ebb",
+          "radicalId": "r-9"
+        },
+        {
+          "char": "匕",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-21",
+          "radicalId": "r-21"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "艹",
         "role": "official",
-        "componentId": "c-u8279",
+        "componentId": "c-r-140-v-u8279",
         "radicalId": "r-140"
       },
       {
         "component": "亻",
         "role": "component",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -5905,21 +8038,21 @@ export const KANJI: KanjiEntry[] = [
       "匕"
     ],
     "componentIds": [
-      "c-u8279",
-      "c-u4ebb",
+      "c-r-140-v-u8279",
+      "c-r-9-v-u4ebb",
       "c-r-21"
     ],
     "kanjiParts": [
       {
         "component": "艹",
         "role": "official",
-        "componentId": "c-u8279",
+        "componentId": "c-r-140-v-u8279",
         "radicalId": "r-140"
       },
       {
         "component": "亻",
         "role": "component",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -5933,13 +8066,13 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "艹",
         "role": "official",
-        "componentId": "c-u8279",
+        "componentId": "c-r-140-v-u8279",
         "radicalId": "r-140"
       },
       {
         "component": "亻",
         "role": "component",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -5987,6 +8120,43 @@ export const KANJI: KanjiEntry[] = [
       "r-155"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "赤",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-155",
+        "radicalId": "r-155"
+      },
+      {
+        "char": "土",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-32",
+        "radicalId": "r-32"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "赤",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-155",
+          "radicalId": "r-155"
+        },
+        {
+          "char": "土",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-32",
+          "radicalId": "r-32"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "赤",
@@ -6086,6 +8256,85 @@ export const KANJI: KanjiEntry[] = [
       "r-174"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "青",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-174",
+        "radicalId": "r-174"
+      },
+      {
+        "char": "月",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-74",
+        "radicalId": "r-74"
+      },
+      {
+        "char": "土",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-32",
+        "radicalId": "r-32"
+      },
+      {
+        "char": "二",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-7",
+        "radicalId": "r-7"
+      },
+      {
+        "char": "亠",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-8",
+        "radicalId": "r-8"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "青",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-174",
+          "radicalId": "r-174"
+        },
+        {
+          "char": "月",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-74",
+          "radicalId": "r-74"
+        },
+        {
+          "char": "土",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-32",
+          "radicalId": "r-32"
+        },
+        {
+          "char": "二",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-7",
+          "radicalId": "r-7"
+        },
+        {
+          "char": "亠",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-8",
+          "radicalId": "r-8"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "青",
@@ -6244,6 +8493,50 @@ export const KANJI: KanjiEntry[] = [
       "r-118"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "竹",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-118",
+        "radicalId": "r-118"
+      },
+      {
+        "char": "⺮",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-118-v-u2eae",
+        "radicalId": "r-118"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "竹",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-118",
+          "radicalId": "r-118"
+        },
+        {
+          "char": "⺮",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-118-v-u2eae",
+          "radicalId": "r-118"
+        },
+        {
+          "char": "乞",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "乞"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "竹",
@@ -6254,7 +8547,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "⺮",
         "role": "component",
-        "componentId": "c-u2eae",
+        "componentId": "c-r-118-v-u2eae",
         "radicalId": "r-118"
       }
     ],
@@ -6279,7 +8572,7 @@ export const KANJI: KanjiEntry[] = [
     ],
     "componentIds": [
       "c-r-118",
-      "c-u2eae"
+      "c-r-118-v-u2eae"
     ],
     "kanjiParts": [
       {
@@ -6291,7 +8584,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "⺮",
         "role": "component",
-        "componentId": "c-u2eae",
+        "componentId": "c-r-118-v-u2eae",
         "radicalId": "r-118"
       }
     ],
@@ -6305,13 +8598,12 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "⺮",
         "role": "component",
-        "componentId": "c-u2eae",
+        "componentId": "c-r-118-v-u2eae",
         "radicalId": "r-118"
       },
       {
         "component": "乞",
-        "role": "component",
-        "componentId": "c-u4e5e"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -6348,6 +8640,50 @@ export const KANJI: KanjiEntry[] = [
       "r-30"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "口",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        },
+        {
+          "char": "ノ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [
+        "ノ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "口",
@@ -6408,8 +8744,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ノ",
-        "role": "component",
-        "componentId": "c-u30ce"
+        "role": "raw-fragment"
       },
       {
         "component": "一",
@@ -6452,6 +8787,29 @@ export const KANJI: KanjiEntry[] = [
       "r-75"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "木",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-75",
+        "radicalId": "r-75"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "木",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-75",
+          "radicalId": "r-75"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "木",
@@ -6527,6 +8885,50 @@ export const KANJI: KanjiEntry[] = [
       "r-48"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "工",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-48",
+        "radicalId": "r-48"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "工",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-48",
+          "radicalId": "r-48"
+        },
+        {
+          "char": "ノ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [
+        "ノ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "工",
@@ -6587,8 +8989,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ノ",
-        "role": "component",
-        "componentId": "c-u30ce"
+        "role": "raw-fragment"
       },
       {
         "component": "一",
@@ -6637,11 +9038,48 @@ export const KANJI: KanjiEntry[] = [
     "radicalForms": {
       "r-9": "亻"
     },
+    "learnerParts": [
+      {
+        "char": "亻",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-9-v-u4ebb",
+        "radicalId": "r-9"
+      },
+      {
+        "char": "木",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-75",
+        "radicalId": "r-75"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "亻",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-9-v-u4ebb",
+          "radicalId": "r-9"
+        },
+        {
+          "char": "木",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-75",
+          "radicalId": "r-75"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -6668,14 +9106,14 @@ export const KANJI: KanjiEntry[] = [
       "木"
     ],
     "componentIds": [
-      "c-u4ebb",
+      "c-r-9-v-u4ebb",
       "c-r-75"
     ],
     "kanjiParts": [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -6689,7 +9127,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -6733,6 +9171,29 @@ export const KANJI: KanjiEntry[] = [
       "r-75"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "木",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-75",
+        "radicalId": "r-75"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "木",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-75",
+          "radicalId": "r-75"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "木",
@@ -6808,6 +9269,43 @@ export const KANJI: KanjiEntry[] = [
       "r-96"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "玉",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-96",
+        "radicalId": "r-96"
+      },
+      {
+        "char": "王",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-96-v-u738b",
+        "radicalId": "r-96"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "玉",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-96",
+          "radicalId": "r-96"
+        },
+        {
+          "char": "王",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-96-v-u738b",
+          "radicalId": "r-96"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "玉",
@@ -6818,7 +9316,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -6840,7 +9338,7 @@ export const KANJI: KanjiEntry[] = [
     ],
     "componentIds": [
       "c-r-96",
-      "c-u738b"
+      "c-r-96-v-u738b"
     ],
     "kanjiParts": [
       {
@@ -6852,7 +9350,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -6866,7 +9364,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -6906,6 +9404,52 @@ export const KANJI: KanjiEntry[] = [
       "r-96"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "玉",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-96",
+        "radicalId": "r-96"
+      },
+      {
+        "char": "王",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-96-v-u738b",
+        "radicalId": "r-96"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "玉",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-96",
+          "radicalId": "r-96"
+        },
+        {
+          "char": "王",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-96-v-u738b",
+          "radicalId": "r-96"
+        },
+        {
+          "char": "丶",
+          "role": "raw-fragment",
+          "debugOnly": true,
+          "componentId": "c-r-3",
+          "radicalId": "r-3"
+        }
+      ],
+      "filteredParts": [
+        "丶"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "玉",
@@ -6916,7 +9460,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -6941,7 +9485,7 @@ export const KANJI: KanjiEntry[] = [
     ],
     "componentIds": [
       "c-r-96",
-      "c-u738b"
+      "c-r-96-v-u738b"
     ],
     "kanjiParts": [
       {
@@ -6953,7 +9497,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -6967,12 +9511,12 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       },
       {
         "component": "丶",
-        "role": "component",
+        "role": "raw-fragment",
         "componentId": "c-r-3",
         "radicalId": "r-3"
       }
@@ -7010,6 +9554,29 @@ export const KANJI: KanjiEntry[] = [
       "r-36"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "夕",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-36",
+        "radicalId": "r-36"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "夕",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-36",
+          "radicalId": "r-36"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "夕",
@@ -7086,6 +9653,29 @@ export const KANJI: KanjiEntry[] = [
       "r-173"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "雨",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-173",
+        "radicalId": "r-173"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "雨",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-173",
+          "radicalId": "r-173"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "雨",
@@ -7168,11 +9758,62 @@ export const KANJI: KanjiEntry[] = [
     "radicalForms": {
       "r-140": "艹"
     },
+    "learnerParts": [
+      {
+        "char": "艹",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-140-v-u8279",
+        "radicalId": "r-140"
+      },
+      {
+        "char": "十",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-24",
+        "radicalId": "r-24"
+      },
+      {
+        "char": "日",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-72",
+        "radicalId": "r-72"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "艹",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-140-v-u8279",
+          "radicalId": "r-140"
+        },
+        {
+          "char": "十",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-24",
+          "radicalId": "r-24"
+        },
+        {
+          "char": "日",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-72",
+          "radicalId": "r-72"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "艹",
         "role": "official",
-        "componentId": "c-u8279",
+        "componentId": "c-r-140-v-u8279",
         "radicalId": "r-140"
       },
       {
@@ -7207,7 +9848,7 @@ export const KANJI: KanjiEntry[] = [
       "日"
     ],
     "componentIds": [
-      "c-u8279",
+      "c-r-140-v-u8279",
       "c-r-24",
       "c-r-72"
     ],
@@ -7215,7 +9856,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "艹",
         "role": "official",
-        "componentId": "c-u8279",
+        "componentId": "c-r-140-v-u8279",
         "radicalId": "r-140"
       },
       {
@@ -7235,7 +9876,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "艹",
         "role": "official",
-        "componentId": "c-u8279",
+        "componentId": "c-r-140-v-u8279",
         "radicalId": "r-140"
       },
       {
@@ -7285,6 +9926,52 @@ export const KANJI: KanjiEntry[] = [
       "r-94"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "犬",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-94",
+        "radicalId": "r-94"
+      },
+      {
+        "char": "大",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-37",
+        "radicalId": "r-37"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "犬",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-94",
+          "radicalId": "r-94"
+        },
+        {
+          "char": "大",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-37",
+          "radicalId": "r-37"
+        },
+        {
+          "char": "丶",
+          "role": "raw-fragment",
+          "debugOnly": true,
+          "componentId": "c-r-3",
+          "radicalId": "r-3"
+        }
+      ],
+      "filteredParts": [
+        "丶"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "犬",
@@ -7351,7 +10038,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "丶",
-        "role": "component",
+        "role": "raw-fragment",
         "componentId": "c-r-3",
         "radicalId": "r-3"
       }
@@ -7389,6 +10076,29 @@ export const KANJI: KanjiEntry[] = [
       "r-128"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "耳",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-128",
+        "radicalId": "r-128"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "耳",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-128",
+          "radicalId": "r-128"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "耳",
@@ -7466,6 +10176,29 @@ export const KANJI: KanjiEntry[] = [
       "r-142"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "虫",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-142",
+        "radicalId": "r-142"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "虫",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-142",
+          "radicalId": "r-142"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "虫",
@@ -7540,6 +10273,57 @@ export const KANJI: KanjiEntry[] = [
       "r-120"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "糸",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-120",
+        "radicalId": "r-120"
+      },
+      {
+        "char": "幺",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-52",
+        "radicalId": "r-52"
+      },
+      {
+        "char": "小",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-42",
+        "radicalId": "r-42"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "糸",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-120",
+          "radicalId": "r-120"
+        },
+        {
+          "char": "幺",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-52",
+          "radicalId": "r-52"
+        },
+        {
+          "char": "小",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-42",
+          "radicalId": "r-42"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "糸",
@@ -7656,6 +10440,50 @@ export const KANJI: KanjiEntry[] = [
       "r-154"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "貝",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-154",
+        "radicalId": "r-154"
+      },
+      {
+        "char": "目",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-109",
+        "radicalId": "r-109"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "貝",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-154",
+          "radicalId": "r-154"
+        },
+        {
+          "char": "目",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-109",
+          "radicalId": "r-109"
+        },
+        {
+          "char": "ハ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "ハ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "貝",
@@ -7722,8 +10550,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ハ",
-        "role": "component",
-        "componentId": "c-u30cf"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -7759,6 +10586,52 @@ export const KANJI: KanjiEntry[] = [
       "r-31"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "囗",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-31",
+        "radicalId": "r-31"
+      },
+      {
+        "char": "王",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-96-v-u738b",
+        "radicalId": "r-96"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "囗",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-31",
+          "radicalId": "r-31"
+        },
+        {
+          "char": "王",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-96-v-u738b",
+          "radicalId": "r-96"
+        },
+        {
+          "char": "丶",
+          "role": "raw-fragment",
+          "debugOnly": true,
+          "componentId": "c-r-3",
+          "radicalId": "r-3"
+        }
+      ],
+      "filteredParts": [
+        "丶"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "囗",
@@ -7769,7 +10642,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -7794,7 +10667,7 @@ export const KANJI: KanjiEntry[] = [
     ],
     "componentIds": [
       "c-r-31",
-      "c-u738b"
+      "c-r-96-v-u738b"
     ],
     "kanjiParts": [
       {
@@ -7806,7 +10679,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       }
     ],
@@ -7820,12 +10693,12 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "王",
         "role": "component",
-        "componentId": "c-u738b",
+        "componentId": "c-r-96-v-u738b",
         "radicalId": "r-96"
       },
       {
         "component": "丶",
-        "role": "component",
+        "role": "raw-fragment",
         "componentId": "c-r-3",
         "radicalId": "r-3"
       }
@@ -7872,11 +10745,69 @@ export const KANJI: KanjiEntry[] = [
     "radicalForms": {
       "r-9": "亻"
     },
+    "learnerParts": [
+      {
+        "char": "亻",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-9-v-u4ebb",
+        "radicalId": "r-9"
+      },
+      {
+        "char": "二",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-7",
+        "radicalId": "r-7"
+      },
+      {
+        "char": "厶",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-28",
+        "radicalId": "r-28"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "亻",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-9-v-u4ebb",
+          "radicalId": "r-9"
+        },
+        {
+          "char": "二",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-7",
+          "radicalId": "r-7"
+        },
+        {
+          "char": "个",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "厶",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-28",
+          "radicalId": "r-28"
+        }
+      ],
+      "filteredParts": [
+        "个"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -7914,7 +10845,7 @@ export const KANJI: KanjiEntry[] = [
       "厶"
     ],
     "componentIds": [
-      "c-u4ebb",
+      "c-r-9-v-u4ebb",
       "c-r-7",
       "c-r-28"
     ],
@@ -7922,7 +10853,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -7942,7 +10873,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -7953,8 +10884,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "个",
-        "role": "component",
-        "componentId": "c-u4e2a"
+        "role": "raw-fragment"
       },
       {
         "component": "厶",
@@ -8000,6 +10930,29 @@ export const KANJI: KanjiEntry[] = [
       "r-168"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "長",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-168",
+        "radicalId": "r-168"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "長",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-168",
+          "radicalId": "r-168"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "長",
@@ -8076,6 +11029,57 @@ export const KANJI: KanjiEntry[] = [
       "r-30"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "口",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      },
+      {
+        "char": "冂",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-13",
+        "radicalId": "r-13"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        },
+        {
+          "char": "冂",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-13",
+          "radicalId": "r-13"
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "口",
@@ -8194,6 +11198,57 @@ export const KANJI: KanjiEntry[] = [
       "r-72"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "日",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-72",
+        "radicalId": "r-72"
+      },
+      {
+        "char": "寸",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-41",
+        "radicalId": "r-41"
+      },
+      {
+        "char": "土",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-32",
+        "radicalId": "r-32"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "日",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-72",
+          "radicalId": "r-72"
+        },
+        {
+          "char": "寸",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-41",
+          "radicalId": "r-41"
+        },
+        {
+          "char": "土",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-32",
+          "radicalId": "r-32"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "日",
@@ -8313,6 +11368,43 @@ export const KANJI: KanjiEntry[] = [
       "r-132"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "自",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-132",
+        "radicalId": "r-132"
+      },
+      {
+        "char": "目",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-109",
+        "radicalId": "r-109"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "自",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-132",
+          "radicalId": "r-132"
+        },
+        {
+          "char": "目",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-109",
+          "radicalId": "r-109"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "自",
@@ -8421,6 +11513,43 @@ export const KANJI: KanjiEntry[] = [
       "r-144"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "行",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-144",
+        "radicalId": "r-144"
+      },
+      {
+        "char": "彳",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-60",
+        "radicalId": "r-60"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "行",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-144",
+          "radicalId": "r-144"
+        },
+        {
+          "char": "彳",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-60",
+          "radicalId": "r-60"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "行",
@@ -8522,11 +11651,48 @@ export const KANJI: KanjiEntry[] = [
     "radicalForms": {
       "r-113": "礻"
     },
+    "learnerParts": [
+      {
+        "char": "礻",
+        "role": "semantic",
+        "source": "manual",
+        "componentId": "c-r-113-v-u793b",
+        "radicalId": "r-113"
+      },
+      {
+        "char": "土",
+        "role": "phonetic",
+        "source": "manual",
+        "componentId": "c-r-32",
+        "radicalId": "r-32"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "礻",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-113-v-u793b",
+          "radicalId": "r-113"
+        },
+        {
+          "char": "土",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-32",
+          "radicalId": "r-32"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "礻",
         "role": "semantic",
-        "componentId": "c-u793b",
+        "componentId": "c-r-113-v-u793b",
         "radicalId": "r-113"
       },
       {
@@ -8553,14 +11719,14 @@ export const KANJI: KanjiEntry[] = [
       "土"
     ],
     "componentIds": [
-      "c-u793b",
+      "c-r-113-v-u793b",
       "c-r-32"
     ],
     "kanjiParts": [
       {
         "component": "礻",
         "role": "semantic",
-        "componentId": "c-u793b",
+        "componentId": "c-r-113-v-u793b",
         "radicalId": "r-113"
       },
       {
@@ -8574,7 +11740,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "礻",
         "role": "semantic",
-        "componentId": "c-u793b",
+        "componentId": "c-r-113-v-u793b",
         "radicalId": "r-113"
       },
       {
@@ -8629,11 +11795,55 @@ export const KANJI: KanjiEntry[] = [
     "radicalForms": {
       "r-18": "刂"
     },
+    "learnerParts": [
+      {
+        "char": "刂",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-18-v-u5202",
+        "radicalId": "r-18"
+      },
+      {
+        "char": "刀",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-18",
+        "radicalId": "r-18"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "刂",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-18-v-u5202",
+          "radicalId": "r-18"
+        },
+        {
+          "char": "刀",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-18",
+          "radicalId": "r-18"
+        },
+        {
+          "char": "ハ",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "ハ"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "刂",
         "role": "official",
-        "componentId": "c-u5202",
+        "componentId": "c-r-18-v-u5202",
         "radicalId": "r-18"
       },
       {
@@ -8663,14 +11873,14 @@ export const KANJI: KanjiEntry[] = [
       "刀"
     ],
     "componentIds": [
-      "c-u5202",
+      "c-r-18-v-u5202",
       "c-r-18"
     ],
     "kanjiParts": [
       {
         "component": "刂",
         "role": "official",
-        "componentId": "c-u5202",
+        "componentId": "c-r-18-v-u5202",
         "radicalId": "r-18"
       },
       {
@@ -8684,7 +11894,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "刂",
         "role": "official",
-        "componentId": "c-u5202",
+        "componentId": "c-r-18-v-u5202",
         "radicalId": "r-18"
       },
       {
@@ -8695,8 +11905,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "ハ",
-        "role": "component",
-        "componentId": "c-u30cf"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -8739,6 +11948,57 @@ export const KANJI: KanjiEntry[] = [
       "r-60"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "彳",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-60",
+        "radicalId": "r-60"
+      },
+      {
+        "char": "夂",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-34",
+        "radicalId": "r-34"
+      },
+      {
+        "char": "幺",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-52",
+        "radicalId": "r-52"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "彳",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-60",
+          "radicalId": "r-60"
+        },
+        {
+          "char": "夂",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-34",
+          "radicalId": "r-34"
+        },
+        {
+          "char": "幺",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-52",
+          "radicalId": "r-52"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "彳",
@@ -8859,11 +12119,69 @@ export const KANJI: KanjiEntry[] = [
     "radicalForms": {
       "r-18": "刂"
     },
+    "learnerParts": [
+      {
+        "char": "刂",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-18-v-u5202",
+        "radicalId": "r-18"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      },
+      {
+        "char": "月",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-74",
+        "radicalId": "r-74"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "刂",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-18-v-u5202",
+          "radicalId": "r-18"
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "月",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-74",
+          "radicalId": "r-74"
+        },
+        {
+          "char": "并",
+          "role": "raw-fragment",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [
+        "并"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "刂",
         "role": "official",
-        "componentId": "c-u5202",
+        "componentId": "c-r-18-v-u5202",
         "radicalId": "r-18"
       },
       {
@@ -8901,7 +12219,7 @@ export const KANJI: KanjiEntry[] = [
       "月"
     ],
     "componentIds": [
-      "c-u5202",
+      "c-r-18-v-u5202",
       "c-r-1",
       "c-r-74"
     ],
@@ -8909,7 +12227,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "刂",
         "role": "official",
-        "componentId": "c-u5202",
+        "componentId": "c-r-18-v-u5202",
         "radicalId": "r-18"
       },
       {
@@ -8929,7 +12247,7 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "刂",
         "role": "official",
-        "componentId": "c-u5202",
+        "componentId": "c-r-18-v-u5202",
         "radicalId": "r-18"
       },
       {
@@ -8946,8 +12264,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "并",
-        "role": "component",
-        "componentId": "c-u5e76"
+        "role": "raw-fragment"
       }
     ],
     "wordIds": [
@@ -8987,6 +12304,43 @@ export const KANJI: KanjiEntry[] = [
       "r-169"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "門",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-169",
+        "radicalId": "r-169"
+      },
+      {
+        "char": "日",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-72",
+        "radicalId": "r-72"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "門",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-169",
+          "radicalId": "r-169"
+        },
+        {
+          "char": "日",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-72",
+          "radicalId": "r-72"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "門",
@@ -9082,6 +12436,78 @@ export const KANJI: KanjiEntry[] = [
       "r-75"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "木",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-75",
+        "radicalId": "r-75"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      },
+      {
+        "char": "日",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-72",
+        "radicalId": "r-72"
+      },
+      {
+        "char": "田",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-102",
+        "radicalId": "r-102"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "木",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-75",
+          "radicalId": "r-75"
+        },
+        {
+          "char": "｜",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        },
+        {
+          "char": "日",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-72",
+          "radicalId": "r-72"
+        },
+        {
+          "char": "田",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-102",
+          "radicalId": "r-102"
+        }
+      ],
+      "filteredParts": [
+        "｜"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "木",
@@ -9172,8 +12598,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "｜",
-        "role": "component",
-        "componentId": "c-uff5c"
+        "role": "raw-fragment"
       },
       {
         "component": "一",
@@ -9227,6 +12652,39 @@ export const KANJI: KanjiEntry[] = [
       "r-32"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "土",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-32",
+        "radicalId": "r-32"
+      },
+      {
+        "char": "也",
+        "role": "learner-component",
+        "source": "normalized-krad"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "土",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-32",
+          "radicalId": "r-32"
+        },
+        {
+          "char": "也",
+          "role": "source-component",
+          "debugOnly": true
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "土",
@@ -9236,8 +12694,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "也",
-        "role": "component",
-        "componentId": "c-u4e5f"
+        "role": "component"
       }
     ],
     "rawComponents": [
@@ -9257,8 +12714,7 @@ export const KANJI: KanjiEntry[] = [
       "也"
     ],
     "componentIds": [
-      "c-r-32",
-      "c-u4e5f"
+      "c-r-32"
     ],
     "kanjiParts": [
       {
@@ -9269,8 +12725,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "也",
-        "role": "component",
-        "componentId": "c-u4e5f"
+        "role": "component"
       }
     ],
     "rawKanjiParts": [
@@ -9282,8 +12737,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "也",
-        "role": "component",
-        "componentId": "c-u4e5f"
+        "role": "component"
       }
     ],
     "wordIds": [
@@ -9332,6 +12786,50 @@ export const KANJI: KanjiEntry[] = [
       "r-30"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "口",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        },
+        {
+          "char": "个",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [
+        "个"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "口",
@@ -9392,8 +12890,7 @@ export const KANJI: KanjiEntry[] = [
       },
       {
         "component": "个",
-        "role": "component",
-        "componentId": "c-u4e2a"
+        "role": "raw-fragment"
       },
       {
         "component": "一",
@@ -9437,6 +12934,43 @@ export const KANJI: KanjiEntry[] = [
       "r-50"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "巾",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-50",
+        "radicalId": "r-50"
+      },
+      {
+        "char": "亠",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-8",
+        "radicalId": "r-8"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "巾",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-50",
+          "radicalId": "r-50"
+        },
+        {
+          "char": "亠",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-8",
+          "radicalId": "r-8"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "巾",
@@ -9537,6 +13071,43 @@ export const KANJI: KanjiEntry[] = [
       "r-13"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "冂",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-13",
+        "radicalId": "r-13"
+      },
+      {
+        "char": "人",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-9",
+        "radicalId": "r-9"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "冂",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-13",
+          "radicalId": "r-13"
+        },
+        {
+          "char": "人",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-9",
+          "radicalId": "r-9"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "冂",
@@ -9636,6 +13207,29 @@ export const KANJI: KanjiEntry[] = [
       "r-70"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "方",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-70",
+        "radicalId": "r-70"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "方",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-70",
+          "radicalId": "r-70"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "方",
@@ -9713,11 +13307,55 @@ export const KANJI: KanjiEntry[] = [
     "radicalForms": {
       "r-9": "亻"
     },
+    "learnerParts": [
+      {
+        "char": "亻",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-9-v-u4ebb",
+        "radicalId": "r-9"
+      },
+      {
+        "char": "一",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-1",
+        "radicalId": "r-1"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "亻",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-9-v-u4ebb",
+          "radicalId": "r-9"
+        },
+        {
+          "char": "个",
+          "role": "raw-fragment",
+          "debugOnly": true
+        },
+        {
+          "char": "一",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-1",
+          "radicalId": "r-1"
+        }
+      ],
+      "filteredParts": [
+        "个"
+      ],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -9747,14 +13385,14 @@ export const KANJI: KanjiEntry[] = [
       "一"
     ],
     "componentIds": [
-      "c-u4ebb",
+      "c-r-9-v-u4ebb",
       "c-r-1"
     ],
     "kanjiParts": [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
@@ -9768,13 +13406,12 @@ export const KANJI: KanjiEntry[] = [
       {
         "component": "亻",
         "role": "official",
-        "componentId": "c-u4ebb",
+        "componentId": "c-r-9-v-u4ebb",
         "radicalId": "r-9"
       },
       {
         "component": "个",
-        "role": "component",
-        "componentId": "c-u4e2a"
+        "role": "raw-fragment"
       },
       {
         "component": "一",
@@ -9829,6 +13466,43 @@ export const KANJI: KanjiEntry[] = [
       "r-31"
     ],
     "radicalForms": {},
+    "learnerParts": [
+      {
+        "char": "囗",
+        "role": "official-radical",
+        "source": "radical-metadata",
+        "componentId": "c-r-31",
+        "radicalId": "r-31"
+      },
+      {
+        "char": "口",
+        "role": "learner-component",
+        "source": "normalized-krad",
+        "componentId": "c-r-30",
+        "radicalId": "r-30"
+      }
+    ],
+    "rawDecomposition": {
+      "source": "KRADFILE",
+      "parts": [
+        {
+          "char": "囗",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-31",
+          "radicalId": "r-31"
+        },
+        {
+          "char": "口",
+          "role": "source-radical",
+          "debugOnly": true,
+          "componentId": "c-r-30",
+          "radicalId": "r-30"
+        }
+      ],
+      "filteredParts": [],
+      "confidence": "medium"
+    },
     "visibleComponents": [
       {
         "component": "囗",

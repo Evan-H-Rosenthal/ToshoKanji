@@ -31,6 +31,32 @@ FORBIDDEN_VISIBLE_COMPONENTS = {
 
 VISIBLE_COMPONENT_ALLOWLIST: set[str] = set()
 
+VALID_COMPONENT_KINDS = {
+    "canonical-radical",
+    "radical-variant",
+    "learner-component",
+    "raw-fragment",
+}
+
+PAGE_COMPONENT_KINDS = {
+    "canonical-radical",
+    "radical-variant",
+    "learner-component",
+}
+
+VALID_LEARNER_PART_ROLES = {
+    "official-radical",
+    "semantic",
+    "phonetic",
+    "learner-component",
+}
+
+VALID_RAW_PART_ROLES = {
+    "raw-fragment",
+    "source-component",
+    "source-radical",
+}
+
 
 def read_exported_json(path: Path, export_name: str):
     text = path.read_text(encoding="utf-8")
@@ -73,6 +99,7 @@ def main() -> int:
     radical_id_set = set(radical_ids)
     component_id_set = set(component_ids)
     word_id_set = set(word_ids)
+    component_by_id = {entry["id"]: entry for entry in components}
 
     for duplicate in duplicate_values(kanji_ids):
         errors.append(f"Duplicate kanji id `{duplicate}`")
@@ -86,20 +113,26 @@ def main() -> int:
     for entry in kanji:
         label = f"{entry['id']} ({entry['char']})"
         official_radical = entry.get("officialRadical")
-        visible_components = entry.get("visibleComponents") or []
+        learner_parts = entry.get("learnerParts") or []
+        raw_decomposition = entry.get("rawDecomposition") or {}
+        raw_parts = raw_decomposition.get("parts") or []
         raw_components = entry.get("rawComponents") or []
         provenance = entry.get("componentProvenance") or {}
-        filtered_components = provenance.get("filteredComponents") or []
+        filtered_components = raw_decomposition.get("filteredParts") or provenance.get("filteredComponents") or []
 
         if "words" in entry:
             errors.append(f"{label} embeds word objects; generated kanji should reference words by `wordIds`")
+        if "learnerParts" not in entry:
+            errors.append(f"{label} is missing learnerParts")
+        if "rawDecomposition" not in entry:
+            errors.append(f"{label} is missing rawDecomposition")
 
         if not official_radical:
             errors.append(f"{label} has no official radical")
         elif official_radical.get("id") not in radical_id_set:
             errors.append(f"{label} references missing official radical `{official_radical.get('id')}`")
 
-        if not visible_components:
+        if not learner_parts:
             warnings.append(f"{label} has empty visible components")
 
         for radical_id in entry.get("radicalIds") or []:
@@ -110,19 +143,42 @@ def main() -> int:
             if component_id not in component_id_set:
                 errors.append(f"{label} references missing component `{component_id}`")
 
-        for part in [*visible_components, *(entry.get("rawKanjiParts") or [])]:
+        for part in learner_parts:
+            if part.get("role") not in VALID_LEARNER_PART_ROLES:
+                errors.append(f"{label} learner part `{part.get('char')}` has invalid role `{part.get('role')}`")
             component_id = part.get("componentId")
             if component_id and component_id not in component_id_set:
-                errors.append(f"{label} part `{part.get('component')}` references missing component `{component_id}`")
+                errors.append(f"{label} learner part `{part.get('char')}` references missing component `{component_id}`")
             radical_id = part.get("radicalId")
             if radical_id and radical_id not in radical_id_set:
-                errors.append(f"{label} component `{part.get('component')}` references missing radical `{radical_id}`")
+                errors.append(f"{label} learner part `{part.get('char')}` references missing radical `{radical_id}`")
 
-        for part in visible_components:
-            component = part.get("component")
+        for part in raw_parts:
+            if part.get("role") not in VALID_RAW_PART_ROLES:
+                errors.append(f"{label} raw decomposition part `{part.get('char')}` has invalid role `{part.get('role')}`")
+            if part.get("debugOnly") is not True:
+                errors.append(f"{label} raw decomposition part `{part.get('char')}` is not marked debugOnly")
+            component_id = part.get("componentId")
+            if component_id and component_id not in component_id_set:
+                errors.append(f"{label} raw decomposition part `{part.get('char')}` references missing component `{component_id}`")
+            radical_id = part.get("radicalId")
+            if radical_id and radical_id not in radical_id_set:
+                errors.append(f"{label} raw decomposition part `{part.get('char')}` references missing radical `{radical_id}`")
+
+        for part in learner_parts:
+            component = part.get("char")
+            component_entry = component_by_id.get(part.get("componentId"))
             official_form = official_radical.get("form") if official_radical else None
             if component in FORBIDDEN_VISIBLE_COMPONENTS and component != official_form and component not in VISIBLE_COMPONENT_ALLOWLIST:
-                errors.append(f"{label} displays forbidden raw stroke fragment `{component}`")
+                errors.append(f"{label} learnerParts displays forbidden raw stroke fragment `{component}`")
+            if part.get("role") == "raw-fragment":
+                errors.append(f"{label} learnerParts includes raw-fragment role for `{component}`")
+            if component_entry and component_entry.get("kind") == "raw-fragment":
+                errors.append(f"{label} learnerParts references raw-fragment component `{component_entry['id']}`")
+            if component_entry and not component_entry.get("meanings"):
+                warnings.append(
+                    f"{label} displays component `{component_entry['id']}` ({component_entry['char']}) with no meanings"
+                )
 
         for word_id in entry.get("wordIds") or []:
             if word_id not in word_id_set:
@@ -131,9 +187,9 @@ def main() -> int:
         if filtered_components:
             filtered_examples.append(f"{label}: filtered {', '.join(f'`{component}`' for component in filtered_components)}")
 
-        if len(raw_components) > len(visible_components):
+        if len(raw_parts or raw_components) > len(learner_parts):
             suspicious_decompositions.append(
-                f"{label}: raw {len(raw_components)} components, visible {len(visible_components)} components"
+                f"{label}: raw {len(raw_parts or raw_components)} components, visible {len(learner_parts)} components"
             )
 
     for radical in radicals:
@@ -149,8 +205,23 @@ def main() -> int:
     for component in components:
         component_id = component["id"]
         radical_id = component.get("radicalId")
-        if component.get("kind") == "radical" and not radical_id:
-            errors.append(f"{component_id} is a radical component with no radicalId")
+        component_kind = component.get("kind")
+        if component_kind not in VALID_COMPONENT_KINDS:
+            errors.append(f"{component_id} has invalid component kind `{component_kind}`")
+        if component_kind not in PAGE_COMPONENT_KINDS:
+            errors.append(f"{component_id} is a `{component_kind}` but generated components are learner-facing pages")
+        if component_kind == "canonical-radical" and not radical_id:
+            errors.append(f"{component_id} is a canonical radical component with no radicalId")
+        if component_kind == "radical-variant":
+            canonical_component_id = component.get("canonicalComponentId")
+            if not canonical_component_id:
+                errors.append(f"{component_id} is a radical variant with no canonicalComponentId")
+            elif canonical_component_id not in component_id_set:
+                errors.append(f"{component_id} points to missing canonical component `{canonical_component_id}`")
+            if not radical_id:
+                errors.append(f"{component_id} is a radical variant with no radicalId")
+        if component_kind in {"canonical-radical", "radical-variant", "learner-component"} and not component.get("meanings"):
+            warnings.append(f"{component_id} ({component.get('char')}) has no meanings")
         if radical_id and radical_id not in radical_id_set:
             errors.append(f"{component_id} points to missing radical `{radical_id}`")
         for kanji_id in component.get("kanjiIds") or []:

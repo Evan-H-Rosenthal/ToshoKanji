@@ -147,6 +147,8 @@ FORBIDDEN_VISIBLE_COMPONENTS = {
 
 VISIBLE_COMPONENT_ALLOWLIST: set[str] = set()
 
+APPROVED_LEARNER_COMPONENTS: dict[str, dict] = {}
+
 
 def download_if_missing(url: str, destination: Path) -> None:
     if destination.exists() and destination.stat().st_size > 0:
@@ -365,6 +367,11 @@ def radical_component_id(radical_id: str) -> str:
     return f"c-{radical_id}"
 
 
+def radical_variant_component_id(radical_id: str, variant: str) -> str:
+    codepoints = "-".join(f"{ord(char):x}" for char in variant)
+    return f"{radical_component_id(radical_id)}-v-u{codepoints}"
+
+
 def visible_radical_form(entry: dict, radical_char: str) -> str | None:
     for rad_name in entry["radNames"]:
         form = RAD_NAME_TO_FORM.get(rad_name)
@@ -397,10 +404,12 @@ def build_component_id_lookup() -> dict[str, str]:
         lookup[radical_char] = radical_component_id(radical_id)
         metadata = RADICAL_METADATA.get(index, {})
         for variant in metadata.get("variants", []):
-            lookup[variant] = component_id_for_char(variant)
+            lookup[variant] = radical_variant_component_id(radical_id, variant)
         preferred = PREFERRED_VISIBLE_VARIANT.get(index)
         if preferred:
-            lookup[preferred] = component_id_for_char(preferred)
+            lookup[preferred] = radical_variant_component_id(radical_id, preferred)
+    for component in APPROVED_LEARNER_COMPONENTS:
+        lookup[component] = component_id_for_char(component)
     return lookup
 
 
@@ -424,14 +433,21 @@ def build_kanji_parts(
     parts = []
     for component in components:
         radical_id = component_to_radical_id.get(component)
+        component_id = component_to_component_id.get(component)
         role = overrides.get(component)
         if not role:
-            role = "official" if radical_id == official_radical_id and component == official_radical_form else "component"
+            if radical_id == official_radical_id and component == official_radical_form:
+                role = "official"
+            elif component in FORBIDDEN_VISIBLE_COMPONENTS and component not in VISIBLE_COMPONENT_ALLOWLIST:
+                role = "raw-fragment"
+            else:
+                role = "component"
         part = {
             "component": component,
             "role": role,
-            "componentId": component_to_component_id.get(component, component_id_for_char(component)),
         }
+        if component_id:
+            part["componentId"] = component_id
         if radical_id:
             part["radicalId"] = radical_id
         parts.append(part)
@@ -454,6 +470,67 @@ def build_component_provenance(raw_components: list[str], visible_parts: list[di
         "rawComponentCount": len(raw_components),
         "visibleComponentCount": len(visible_parts),
         "filteredComponents": filtered_components,
+    }
+
+
+def build_learner_parts(literal: str, visible_parts: list[dict], official_radical_id: str, official_radical_form: str) -> list[dict]:
+    overrides = KANJI_PART_ROLE_OVERRIDES.get(literal, {})
+    learner_parts = []
+    for part in visible_parts:
+        old_role = part.get("role")
+        if old_role == "official":
+            role = "official-radical"
+        elif old_role in {"semantic", "phonetic"}:
+            role = old_role
+        else:
+            role = "learner-component"
+
+        if part.get("component") in overrides:
+            source = "manual"
+        elif part.get("radicalId") == official_radical_id and part.get("component") == official_radical_form:
+            source = "radical-metadata"
+        else:
+            source = "normalized-krad"
+
+        learner_part = {
+            "char": part["component"],
+            "role": role,
+            "source": source,
+        }
+        if part.get("componentId"):
+            learner_part["componentId"] = part["componentId"]
+        if part.get("radicalId"):
+            learner_part["radicalId"] = part["radicalId"]
+        learner_parts.append(learner_part)
+    return learner_parts
+
+
+def build_raw_decomposition(raw_parts: list[dict], filtered_components: list[str]) -> dict:
+    parts = []
+    for part in raw_parts:
+        if part.get("role") == "raw-fragment":
+            role = "raw-fragment"
+        elif part.get("radicalId"):
+            role = "source-radical"
+        else:
+            role = "source-component"
+
+        raw_part = {
+            "char": part["component"],
+            "role": role,
+            "debugOnly": True,
+        }
+        if part.get("componentId"):
+            raw_part["componentId"] = part["componentId"]
+        if part.get("radicalId"):
+            raw_part["radicalId"] = part["radicalId"]
+        parts.append(raw_part)
+
+    return {
+        "source": "KRADFILE",
+        "parts": parts,
+        "filteredParts": filtered_components,
+        "confidence": "medium",
     }
 
 
@@ -549,6 +626,8 @@ def build_kanji(selected_kanji: list[dict], words_by_literal: dict[str, list[dic
             "officialRadical": {"id": radical_id, "form": official_radical_form, "char": radical_char} if radical_char else None,
             "radicalIds": [radical_id],
             "radicalForms": {radical_id: visible_form} if visible_form else {},
+            "learnerParts": build_learner_parts(literal, visible_components, radical_id, official_radical_form),
+            "rawDecomposition": build_raw_decomposition(raw_component_parts, filtered_components),
             "visibleComponents": visible_components,
             "rawComponents": components,
             "componentProvenance": build_component_provenance(components, visible_components, filtered_components),
@@ -595,13 +674,28 @@ def build_words(kanji_entries: list[dict], words_by_literal: dict[str, list[dict
 def build_components(kanji_entries: list[dict], radical_entries: list[dict]) -> list[dict]:
     components_by_id: dict[str, dict] = {}
 
-    def ensure_component(component_id: str, char: str, kind: str, source: str, radical: dict | None = None) -> dict:
+    def ensure_component(
+        component_id: str,
+        char: str,
+        kind: str,
+        source: str,
+        radical: dict | None = None,
+        canonical_component_id: str | None = None,
+        forms: list[str] | None = None,
+        meanings: list[str] | None = None,
+    ) -> dict:
         existing = components_by_id.get(component_id)
         if existing:
             if radical and not existing.get("radicalId"):
                 existing["radicalId"] = radical["id"]
                 existing["radicalNumber"] = radical.get("radicalNumber")
                 existing["meanings"] = radical.get("meanings", [])
+            if canonical_component_id and not existing.get("canonicalComponentId"):
+                existing["canonicalComponentId"] = canonical_component_id
+            if forms:
+                existing["forms"] = unique_values([*(existing.get("forms") or []), *forms])
+            if meanings and not existing.get("meanings"):
+                existing["meanings"] = meanings
             return existing
 
         component = {
@@ -615,33 +709,62 @@ def build_components(kanji_entries: list[dict], radical_entries: list[dict]) -> 
             component["radicalId"] = radical["id"]
             component["radicalNumber"] = radical.get("radicalNumber")
             component["meanings"] = radical.get("meanings", [])
+        if canonical_component_id:
+            component["canonicalComponentId"] = canonical_component_id
+        if forms:
+            component["forms"] = unique_values(forms)
+        if meanings:
+            component["meanings"] = meanings
         components_by_id[component_id] = component
         return component
 
     for radical in radical_entries:
-        ensure_component(radical["componentId"], radical["char"], "radical", "Kangxi radical", radical)
+        radical_forms = unique_values([radical["char"], *(radical.get("variants") or [])])
+        ensure_component(
+            radical["componentId"],
+            radical["char"],
+            "canonical-radical",
+            "Kangxi radical",
+            radical,
+            forms=radical_forms,
+        )
         for variant in radical.get("variants", []):
-            ensure_component(component_id_for_char(variant), variant, "radical-variant", "Kangxi radical variant metadata", radical)
+            ensure_component(
+                radical_variant_component_id(radical["id"], variant),
+                variant,
+                "radical-variant",
+                "Kangxi radical variant metadata",
+                radical,
+                canonical_component_id=radical["componentId"],
+                forms=[variant],
+            )
 
-    radical_by_id = {radical["id"]: radical for radical in radical_entries}
+    for component_char, metadata in APPROVED_LEARNER_COMPONENTS.items():
+        ensure_component(
+            component_id_for_char(component_char),
+            component_char,
+            "learner-component",
+            metadata.get("source", "learner component metadata"),
+            forms=metadata.get("forms", [component_char]),
+            meanings=metadata.get("meanings", []),
+        )
+
     for kanji in kanji_entries:
         for part in kanji.get("rawKanjiParts", []):
-            radical = radical_by_id.get(part.get("radicalId"))
-            kind = "radical-variant" if radical and part.get("componentId") != radical.get("componentId") else "component"
-            if radical and part.get("componentId") == radical.get("componentId"):
-                kind = "radical"
-            component = ensure_component(
-                part["componentId"],
-                part["component"],
-                kind,
-                "KRADFILE",
-                radical,
-            )
+            component_id = part.get("componentId")
+            if not component_id or component_id not in components_by_id:
+                continue
+            component = components_by_id[component_id]
             component["kanjiIds"] = unique_values([*component["kanjiIds"], kanji["id"]])
 
     return sorted(
         components_by_id.values(),
-        key=lambda component: (component["kind"] != "radical", component.get("radicalNumber") or 999, component["char"], component["id"]),
+        key=lambda component: (
+            {"canonical-radical": 0, "radical-variant": 1, "learner-component": 2, "raw-fragment": 3}.get(component["kind"], 9),
+            component.get("radicalNumber") or 999,
+            component["char"],
+            component["id"],
+        ),
     )
 
 
