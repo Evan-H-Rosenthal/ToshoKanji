@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type PointerEvent } from "react";
 import { AnimatePresence, animate, motion, useMotionValue, type PanInfo } from "motion/react";
 import { Settings, Trophy } from "lucide-react";
-import { KANJI, RADICALS } from "./data/kanjiData";
+import { KANJI } from "./data/generated/kanji.generated";
+import { RADICALS } from "./data/generated/radicals.generated";
 import { GachaPanel } from "./components/GachaPanel";
 import { InstallPwaHint } from "./components/InstallPwaHint";
 import { PageIndicator } from "./components/PageIndicator";

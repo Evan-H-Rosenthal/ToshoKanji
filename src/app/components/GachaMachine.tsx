@@ -1,6 +1,8 @@
 import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { CAT_COLORS, KANJI, RAD_COLORS, RADICALS } from "../data/kanjiData";
+import { KANJI } from "../data/generated/kanji.generated";
+import { RADICALS } from "../data/generated/radicals.generated";
+import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
 
 const BANK_CAPSULES = [
   { color: "#ef4444", x: 8, y: 96, size: 42, rotate: -18 },

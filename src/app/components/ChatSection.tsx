@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { MessageCircle, Send } from "lucide-react";
-import { QUICK_PROMPTS, getAIReply } from "../data/kanjiData";
+import { QUICK_PROMPTS } from "../data/ui/aiPrompts";
+import { getAIReply } from "../data/ui/mockAiReplies";
 import type { ChatMsg } from "../types";
 
 export function ChatSection({ entryKey, msgs, onSend }: {

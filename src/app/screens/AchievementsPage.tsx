@@ -1,6 +1,6 @@
 import { Check, ChevronLeft, Trophy } from "lucide-react";
 import { motion } from "motion/react";
-import { ACHIEVEMENTS } from "../data/kanjiData";
+import { ACHIEVEMENTS } from "../data/ui/achievements";
 
 export function AchievementsPage({ unlockedKanji, unlockedRadicals, favorites, notes, onBack }: {
   unlockedKanji: Set<string>; unlockedRadicals: Set<string>;

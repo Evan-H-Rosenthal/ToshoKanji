@@ -1,7 +1,9 @@
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
-import { CAT_COLORS, KANJI, RADICALS } from "../data/kanjiData";
+import { KANJI } from "../data/generated/kanji.generated";
+import { RADICALS } from "../data/generated/radicals.generated";
+import { CAT_COLORS } from "../data/ui/categoryColors";
 
 export function GachaStatsButton({
   unlockedKanji,

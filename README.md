@@ -71,11 +71,11 @@ The current app dataset is generated from public dictionary sources instead of b
 npm run data:kanji
 ```
 
-The script downloads source files into `.cache/datasets/` and writes the generated TypeScript data to:
+The script downloads source files into `.cache/datasets/` and writes generated TypeScript data to:
 
 ```text
-src/app/data/kanjiData.ts
+src/app/data/generated/
 ```
 
-For this milestone, the generator creates a starter set of 100 kanji: all grade 1 kanji plus the most frequent grade 2 kanji needed to reach 100 total entries. It also generates the radical entries used by those kanji, visible component data from KRADFILE, and a small set of vocabulary examples from JMdict_e.
+For this milestone, the generator creates a starter set of 100 kanji: all grade 1 kanji plus the most frequent grade 2 kanji needed to reach 100 total entries. It also generates the radical entries used by those kanji, a distinct component catalog where every radical is also a component, learner-facing and raw component data from KRADFILE, and vocabulary examples from JMdict_e.
   

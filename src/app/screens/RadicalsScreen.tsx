@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Search, Star, X } from "lucide-react";
-import { RAD_COLORS, RADICALS } from "../data/kanjiData";
+import { RADICALS } from "../data/generated/radicals.generated";
+import { RAD_COLORS } from "../data/ui/categoryColors";
 import { CollectionCard } from "../components/CollectionCard";
 
 export function RadicalsScreen({ unlockedRadicals, favorites, customNames, highlightedId, onSelect, onToggleFav, onClearHighlight }: {

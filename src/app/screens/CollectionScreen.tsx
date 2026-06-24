@@ -1,6 +1,9 @@
 import { type ReactNode, useState } from "react";
 import { Search, Star, X } from "lucide-react";
-import { CAT_COLORS, KANJI, RAD_COLORS, RADICALS } from "../data/kanjiData";
+import { KANJI } from "../data/generated/kanji.generated";
+import { RADICALS } from "../data/generated/radicals.generated";
+import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
+import { getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
 type CollectionFilter = "all" | "kanji" | "radicals";
@@ -42,7 +45,7 @@ export function CollectionScreen({
       || kanji.onyomi.some((reading) => reading.includes(query))
       || kanji.kunyomi.some((reading) => reading.includes(query))
       || (customNames[key] || "").toLowerCase().includes(q)
-      || kanji.words.some((word) => word.meaning.toLowerCase().includes(q) || word.romaji.toLowerCase().includes(q));
+      || getWordsForKanji(kanji.id).some((word) => word.meaning.toLowerCase().includes(q) || word.romaji.toLowerCase().includes(q));
   });
 
   const radicalItems = RADICALS.filter((radical) => {

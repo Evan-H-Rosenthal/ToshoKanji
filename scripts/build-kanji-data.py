@@ -12,7 +12,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE_DIR = ROOT / ".cache" / "datasets"
-OUT_FILE = ROOT / "src" / "app" / "data" / "kanjiData.ts"
+DATA_DIR = ROOT / "src" / "app" / "data"
+GENERATED_DIR = DATA_DIR / "generated"
+KANJI_OUT_FILE = GENERATED_DIR / "kanji.generated.ts"
+RADICALS_OUT_FILE = GENERATED_DIR / "radicals.generated.ts"
+COMPONENTS_OUT_FILE = GENERATED_DIR / "components.generated.ts"
+WORDS_OUT_FILE = GENERATED_DIR / "words.generated.ts"
 
 KANJIDIC2_URL = "https://www.edrdg.org/kanjidic/kanjidic2.xml.gz"
 JMDICT_E_URL = "http://ftp.edrdg.org/pub/Nihongo/JMdict_e.gz"
@@ -36,17 +41,6 @@ GRADE_CATEGORY = {
     8: "joyo",
     9: "jinmeiyo",
     10: "jinmeiyo",
-}
-
-CAT_COLORS = {
-    "grade-1": ["#10b981", "#059669"],
-    "grade-2": ["#3b82f6", "#2563eb"],
-    "grade-3": ["#8b5cf6", "#7c3aed"],
-    "grade-4": ["#f97316", "#ea580c"],
-    "grade-5": ["#eab308", "#ca8a04"],
-    "grade-6": ["#ec4899", "#db2777"],
-    "joyo": ["#06b6d4", "#0891b2"],
-    "jinmeiyo": ["#64748b", "#475569"],
 }
 
 RADICAL_METADATA = {
@@ -133,6 +127,25 @@ KANJI_PART_ROLE_OVERRIDES = {
         "土": "phonetic",
     },
 }
+
+ROMAJI_PLACEHOLDER = "Romaji Placeholder"
+
+FORBIDDEN_VISIBLE_COMPONENTS = {
+    "\u4e36",
+    "\u30ce",
+    "\u4e3f",
+    "\u4e28",
+    "\uff5c",
+    "\u4e85",
+    "\u4e40",
+    "\u4e41",
+    "\u30cf",
+    "\u4e2a",
+    "\u5e76",
+    "\u4e5e",
+}
+
+VISIBLE_COMPONENT_ALLOWLIST: set[str] = set()
 
 
 def download_if_missing(url: str, destination: Path) -> None:
@@ -279,7 +292,7 @@ def parse_jmdict_words(target_literals: set[str]) -> dict[str, list[dict]]:
                     "id": f"w-{japanese}",
                     "japanese": japanese,
                     "furigana": furigana,
-                    "romaji": furigana,
+                    "romaji": ROMAJI_PLACEHOLDER,
                     "meaning": meaning,
                     "common": common,
                     "_score": score,
@@ -343,6 +356,15 @@ def unique_values(values: list[str]) -> list[str]:
     return unique
 
 
+def component_id_for_char(component: str) -> str:
+    codepoints = "-".join(f"{ord(char):x}" for char in component)
+    return f"c-u{codepoints}"
+
+
+def radical_component_id(radical_id: str) -> str:
+    return f"c-{radical_id}"
+
+
 def visible_radical_form(entry: dict, radical_char: str) -> str | None:
     for rad_name in entry["radNames"]:
         form = RAD_NAME_TO_FORM.get(rad_name)
@@ -368,6 +390,20 @@ def build_component_radical_lookup() -> dict[str, str]:
     return lookup
 
 
+def build_component_id_lookup() -> dict[str, str]:
+    lookup: dict[str, str] = {}
+    for index, radical_char in enumerate(KANGXI_RADICALS, start=1):
+        radical_id = f"r-{index}"
+        lookup[radical_char] = radical_component_id(radical_id)
+        metadata = RADICAL_METADATA.get(index, {})
+        for variant in metadata.get("variants", []):
+            lookup[variant] = component_id_for_char(variant)
+        preferred = PREFERRED_VISIBLE_VARIANT.get(index)
+        if preferred:
+            lookup[preferred] = component_id_for_char(preferred)
+    return lookup
+
+
 def radical_number_for_component(component: str) -> int | None:
     for index, radical_char in enumerate(KANGXI_RADICALS, start=1):
         metadata = RADICAL_METADATA.get(index, {})
@@ -376,7 +412,14 @@ def radical_number_for_component(component: str) -> int | None:
     return None
 
 
-def build_kanji_parts(literal: str, components: list[str], official_radical_id: str, official_radical_form: str, component_to_radical_id: dict[str, str]) -> list[dict]:
+def build_kanji_parts(
+    literal: str,
+    components: list[str],
+    official_radical_id: str,
+    official_radical_form: str,
+    component_to_radical_id: dict[str, str],
+    component_to_component_id: dict[str, str],
+) -> list[dict]:
     overrides = KANJI_PART_ROLE_OVERRIDES.get(literal, {})
     parts = []
     for component in components:
@@ -387,11 +430,31 @@ def build_kanji_parts(literal: str, components: list[str], official_radical_id: 
         part = {
             "component": component,
             "role": role,
+            "componentId": component_to_component_id.get(component, component_id_for_char(component)),
         }
         if radical_id:
             part["radicalId"] = radical_id
         parts.append(part)
     return parts
+
+
+def is_allowed_visible_component(component: str, official_radical_form: str) -> bool:
+    if component == official_radical_form:
+        return True
+    if component in VISIBLE_COMPONENT_ALLOWLIST:
+        return True
+    return component not in FORBIDDEN_VISIBLE_COMPONENTS
+
+
+def build_component_provenance(raw_components: list[str], visible_parts: list[dict], filtered_components: list[str]) -> dict:
+    return {
+        "source": "KRADFILE",
+        "extractionMethod": "kradfile components with radical alias normalization and learner-facing stroke-fragment filtering",
+        "confidence": "medium",
+        "rawComponentCount": len(raw_components),
+        "visibleComponentCount": len(visible_parts),
+        "filteredComponents": filtered_components,
+    }
 
 
 def build_radicals(selected_kanji: list[dict], all_entries: dict[str, dict], components_by_literal: dict[str, list[str]]) -> list[dict]:
@@ -425,6 +488,7 @@ def build_radicals(selected_kanji: list[dict], all_entries: dict[str, dict], com
 
         radical_entries.append({
             "id": f"r-{number}",
+            "componentId": radical_component_id(f"r-{number}"),
             "char": radical_char,
             "meanings": meanings,
             "kanjiMeanings": kanji_meanings,
@@ -441,6 +505,7 @@ def build_radicals(selected_kanji: list[dict], all_entries: dict[str, dict], com
 def build_kanji(selected_kanji: list[dict], words_by_literal: dict[str, list[dict]], components_by_literal: dict[str, list[str]]) -> list[dict]:
     kanji_entries = []
     component_to_radical_id = build_component_radical_lookup()
+    component_to_component_id = build_component_id_lookup()
     for entry in selected_kanji:
         literal = entry["literal"]
         radical_id = f"r-{entry['radicalNumber']}" if entry["radicalNumber"] else "r-unknown"
@@ -449,8 +514,25 @@ def build_kanji(selected_kanji: list[dict], words_by_literal: dict[str, list[dic
         official_radical_form = visible_form or radical_char
         krad_components = components_by_literal.get(literal, [])
         components = unique_values([official_radical_form, *krad_components]) if official_radical_form else krad_components
-        kanji_parts = build_kanji_parts(literal, components, radical_id, official_radical_form, component_to_radical_id)
-        component_ids = unique_values([part["radicalId"] for part in kanji_parts if part.get("radicalId")])
+        filtered_components = [component for component in components if not is_allowed_visible_component(component, official_radical_form)]
+        learner_components = [component for component in components if is_allowed_visible_component(component, official_radical_form)]
+        visible_components = build_kanji_parts(
+            literal,
+            learner_components,
+            radical_id,
+            official_radical_form,
+            component_to_radical_id,
+            component_to_component_id,
+        )
+        raw_component_parts = build_kanji_parts(
+            literal,
+            components,
+            radical_id,
+            official_radical_form,
+            component_to_radical_id,
+            component_to_component_id,
+        )
+        component_ids = unique_values([part["componentId"] for part in visible_components if part.get("componentId")])
         words = words_by_literal.get(literal, [])
 
         kanji_entries.append({
@@ -467,62 +549,146 @@ def build_kanji(selected_kanji: list[dict], words_by_literal: dict[str, list[dic
             "officialRadical": {"id": radical_id, "form": official_radical_form, "char": radical_char} if radical_char else None,
             "radicalIds": [radical_id],
             "radicalForms": {radical_id: visible_form} if visible_form else {},
-            "components": components,
+            "visibleComponents": visible_components,
+            "rawComponents": components,
+            "componentProvenance": build_component_provenance(components, visible_components, filtered_components),
+            "components": [part["component"] for part in visible_components],
             "componentIds": component_ids,
-            "kanjiParts": kanji_parts,
+            "kanjiParts": visible_components,
+            "rawKanjiParts": raw_component_parts,
             "wordIds": [word["id"] for word in words if word.get("id")],
-            "words": words,
             "category": GRADE_CATEGORY.get(entry["grade"], "joyo"),
         })
 
     return kanji_entries
 
 
+def build_words(kanji_entries: list[dict], words_by_literal: dict[str, list[dict]]) -> list[dict]:
+    kanji_by_literal = {entry["char"]: entry["id"] for entry in kanji_entries}
+    words_by_id: dict[str, dict] = {}
+
+    for kanji in kanji_entries:
+        for word in words_by_literal.get(kanji["char"], []):
+            word_id = word.get("id") or f"w-{word['japanese']}"
+            kanji_ids = [
+                kanji_id
+                for literal, kanji_id in kanji_by_literal.items()
+                if literal in word["japanese"]
+            ]
+            if not kanji_ids:
+                kanji_ids = [kanji["id"]]
+
+            existing = words_by_id.get(word_id)
+            if existing:
+                existing["kanjiIds"] = unique_values([*existing["kanjiIds"], *kanji_ids])
+                continue
+
+            words_by_id[word_id] = {
+                "id": word_id,
+                "word": {**word, "id": word_id},
+                "kanjiIds": kanji_ids,
+            }
+
+    return sorted(words_by_id.values(), key=lambda entry: entry["word"]["japanese"])
+
+
+def build_components(kanji_entries: list[dict], radical_entries: list[dict]) -> list[dict]:
+    components_by_id: dict[str, dict] = {}
+
+    def ensure_component(component_id: str, char: str, kind: str, source: str, radical: dict | None = None) -> dict:
+        existing = components_by_id.get(component_id)
+        if existing:
+            if radical and not existing.get("radicalId"):
+                existing["radicalId"] = radical["id"]
+                existing["radicalNumber"] = radical.get("radicalNumber")
+                existing["meanings"] = radical.get("meanings", [])
+            return existing
+
+        component = {
+            "id": component_id,
+            "char": char,
+            "kind": kind,
+            "kanjiIds": [],
+            "source": source,
+        }
+        if radical:
+            component["radicalId"] = radical["id"]
+            component["radicalNumber"] = radical.get("radicalNumber")
+            component["meanings"] = radical.get("meanings", [])
+        components_by_id[component_id] = component
+        return component
+
+    for radical in radical_entries:
+        ensure_component(radical["componentId"], radical["char"], "radical", "Kangxi radical", radical)
+        for variant in radical.get("variants", []):
+            ensure_component(component_id_for_char(variant), variant, "radical-variant", "Kangxi radical variant metadata", radical)
+
+    radical_by_id = {radical["id"]: radical for radical in radical_entries}
+    for kanji in kanji_entries:
+        for part in kanji.get("rawKanjiParts", []):
+            radical = radical_by_id.get(part.get("radicalId"))
+            kind = "radical-variant" if radical and part.get("componentId") != radical.get("componentId") else "component"
+            if radical and part.get("componentId") == radical.get("componentId"):
+                kind = "radical"
+            component = ensure_component(
+                part["componentId"],
+                part["component"],
+                kind,
+                "KRADFILE",
+                radical,
+            )
+            component["kanjiIds"] = unique_values([*component["kanjiIds"], kanji["id"]])
+
+    return sorted(
+        components_by_id.values(),
+        key=lambda component: (component["kind"] != "radical", component.get("radicalNumber") or 999, component["char"], component["id"]),
+    )
+
+
 def ts_literal(value) -> str:
     return json.dumps(value, ensure_ascii=False, indent=2)
 
 
-def write_data_file(kanji_entries: list[dict], radical_entries: list[dict]) -> None:
-    output = f"""import type {{ Achievement, KanjiEntry, RadicalEntry }} from "../types";
+def write_generated_files(kanji_entries: list[dict], radical_entries: list[dict], component_entries: list[dict], word_entries: list[dict]) -> None:
+    GENERATED_DIR.mkdir(parents=True, exist_ok=True)
 
-// Generated by scripts/build-kanji-data.py from KANJIDIC2 and JMdict_e.
-// Do not hand-edit KANJI/RADICALS directly; update the generator or source data instead.
+    kanji_output = f"""import type {{ KanjiEntry }} from "../../types";
 
-export const RADICALS: RadicalEntry[] = {ts_literal(radical_entries)};
+// Generated by scripts/build-kanji-data.py from KANJIDIC2, JMdict_e, and KRADFILE.
+// Do not hand-edit this file; update the generator or source data instead.
 
 export const KANJI: KanjiEntry[] = {ts_literal(kanji_entries)};
-
-export const ACHIEVEMENTS: Achievement[] = [
-  {{ id:"first-k", name:"First Steps",     desc:"Unlock your first kanji",           icon:"⭐", check:(uk)=>uk.size>=1 }},
-  {{ id:"first-r", name:"Radical Starter", desc:"Unlock your first radical",         icon:"🌱", check:(_,ur)=>ur.size>=1 }},
-  {{ id:"grade1",  name:"First Grade",     desc:"Unlock all grade 1 kanji",          icon:"🎒", check:(uk)=>KANJI.filter(k=>k.grade===1).every(k=>uk.has(k.id)) }},
-  {{ id:"half",    name:"Halfway There",   desc:`Unlock ${{Math.ceil(KANJI.length/2)}} kanji`, icon:"🎯", check:(uk)=>uk.size>=Math.ceil(KANJI.length/2) }},
-  {{ id:"all-k",   name:"Kanji Master",    desc:"Unlock every kanji",                icon:"🏆", check:(uk)=>uk.size>=KANJI.length }},
-  {{ id:"all-r",   name:"Radical Expert",  desc:"Unlock every radical",              icon:"💎", check:(_,ur)=>ur.size>=RADICALS.length }},
-  {{ id:"stars",   name:"Stargazer",       desc:"Favorite 10 items",                 icon:"✨", check:(_,__,fav)=>fav.size>=10 }},
-  {{ id:"scholar", name:"Scholar",         desc:"Write notes on 5 entries",          icon:"📚", check:(_,__,___,notes)=>Object.values(notes).filter(n=>n.trim().length>0).length>=5 }},
-];
-
-export const CAT_COLORS: Record<string,[string,string]> = {ts_literal(CAT_COLORS)};
-export const RAD_COLORS = ["#6366f1","#8b5cf6","#3b82f6","#06b6d4","#10b981","#f59e0b","#ef4444","#ec4899","#14b8a6","#f43f5e","#22c55e","#a855f7","#0ea5e9","#fb923c","#84cc16","#e879f9"];
-
-export const QUICK_PROMPTS = ["What does this mean?","Why these radicals?","How can I remember it?","Why does pronunciation change?"];
-export const AI_REPLIES = [
-  "This kanji evolved from older written forms, and its readings depend heavily on whether it appears alone, in compounds, or with okurigana.",
-  "The radical is the dictionary indexing component. Components and visual parts can differ from the official radical, which is why a kanji may feel like it contains more pieces than this section shows.",
-  "Try linking the meaning, the main reading, and the visible radical into one small story. Short vivid mnemonics are easier to recall than long explanations.",
-  "Japanese kanji usually have on'yomi readings from Chinese-derived vocabulary and kun'yomi readings from native Japanese words. Compound words often use on'yomi, but there are many exceptions.",
-  "This entry is generated from dictionary data. Treat it as a reliable base layer, then add your own notes and examples as you learn.",
-];
-export function getAIReply(p: string) {{
-  if (p.includes("mean")) return AI_REPLIES[0];
-  if (p.includes("radical")) return AI_REPLIES[1];
-  if (p.includes("remember")) return AI_REPLIES[2];
-  if (p.includes("pronoun") || p.includes("chang")) return AI_REPLIES[3];
-  return AI_REPLIES[Math.floor(Math.random() * AI_REPLIES.length)];
-}}
 """
-    OUT_FILE.write_text(output, encoding="utf-8")
+
+    radicals_output = f"""import type {{ RadicalEntry }} from "../../types";
+
+// Generated by scripts/build-kanji-data.py from KANJIDIC2 and KRADFILE.
+// Do not hand-edit this file; update the generator or source data instead.
+
+export const RADICALS: RadicalEntry[] = {ts_literal(radical_entries)};
+"""
+
+    components_output = f"""import type {{ ComponentEntry }} from "../../types";
+
+// Generated by scripts/build-kanji-data.py from Kangxi radical metadata and KRADFILE.
+// Do not hand-edit this file; update the generator or source data instead.
+
+export const COMPONENTS: ComponentEntry[] = {ts_literal(component_entries)};
+"""
+
+    words_output = f"""import type {{ WordEntry }} from "../../types";
+
+// Generated by scripts/build-kanji-data.py from JMdict_e and the current kanji milestone.
+// Do not hand-edit this file; update the generator or source data instead.
+
+export const WORDS: WordEntry[] = {ts_literal(word_entries)};
+"""
+
+    KANJI_OUT_FILE.write_text(kanji_output, encoding="utf-8")
+    RADICALS_OUT_FILE.write_text(radicals_output, encoding="utf-8")
+    COMPONENTS_OUT_FILE.write_text(components_output, encoding="utf-8")
+    WORDS_OUT_FILE.write_text(words_output, encoding="utf-8")
+
 
 
 def main() -> None:
@@ -538,9 +704,15 @@ def main() -> None:
 
     radicals = build_radicals(selected_kanji, all_entries, components_by_literal)
     kanji = build_kanji(selected_kanji, words_by_literal, components_by_literal)
+    components = build_components(kanji, radicals)
+    words = build_words(kanji, words_by_literal)
 
-    write_data_file(kanji, radicals)
-    print(f"Wrote {len(kanji)} kanji and {len(radicals)} radicals to {OUT_FILE.relative_to(ROOT)}")
+    write_generated_files(kanji, radicals, components, words)
+    print(
+        "Wrote "
+        f"{len(kanji)} kanji, {len(radicals)} radicals, {len(components)} components, and {len(words)} words to "
+        f"{GENERATED_DIR.relative_to(ROOT)}"
+    )
 
 
 if __name__ == "__main__":

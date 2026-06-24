@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vite build",
     "data:kanji": "python scripts/build-kanji-data.py",
+    "data:validate": "python scripts/validate-data.py",
     "dev": "vite",
     "icons": "node scripts/generate-icons.mjs",
     "preview": "vite preview"

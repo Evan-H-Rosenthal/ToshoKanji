@@ -1,5 +1,7 @@
-import { CAT_COLORS, KANJI } from "./kanjiData";
-import type { KanjiEntry, Word } from "../types";
+import { KANJI } from "./generated/kanji.generated";
+import { WORDS } from "./generated/words.generated";
+import { CAT_COLORS } from "./ui/categoryColors";
+import type { KanjiEntry, Word, WordEntry as GeneratedWordEntry } from "../types";
 
 export interface WordEntry {
   id: string;
@@ -7,32 +9,26 @@ export interface WordEntry {
   kanji: KanjiEntry[];
 }
 
-function buildWordEntries(): WordEntry[] {
-  const byId = new Map<string, WordEntry>();
+const kanjiById = new Map(KANJI.map((kanji) => [kanji.id, kanji]));
+const wordsByKanjiId = new Map<string, Word[]>();
 
-  for (const kanji of KANJI) {
-    for (const word of kanji.words) {
-      const id = word.id || `w-${word.japanese}`;
-      const existing = byId.get(id);
-      const kanjiInWord = KANJI.filter((entry) => word.japanese.includes(entry.char));
+function resolveWordEntry(entry: GeneratedWordEntry): WordEntry {
+  const kanji = entry.kanjiIds
+    .map((kanjiId) => kanjiById.get(kanjiId))
+    .filter((value): value is KanjiEntry => Boolean(value));
 
-      if (existing) {
-        for (const wordKanji of kanjiInWord) {
-          if (!existing.kanji.some((entry) => entry.id === wordKanji.id)) {
-            existing.kanji.push(wordKanji);
-          }
-        }
-        continue;
-      }
-
-      byId.set(id, { id, word: { ...word, id }, kanji: kanjiInWord.length ? kanjiInWord : [kanji] });
-    }
-  }
-
-  return Array.from(byId.values()).sort((a, b) => a.word.japanese.localeCompare(b.word.japanese, "ja"));
+  return { id: entry.id, word: entry.word, kanji };
 }
 
-export const WORD_ENTRIES = buildWordEntries();
+export const WORD_ENTRIES = WORDS.map(resolveWordEntry);
+
+for (const entry of WORDS) {
+  for (const kanjiId of entry.kanjiIds) {
+    const words = wordsByKanjiId.get(kanjiId) ?? [];
+    words.push(entry.word);
+    wordsByKanjiId.set(kanjiId, words);
+  }
+}
 
 export function getWordEntries(): WordEntry[] {
   return WORD_ENTRIES;
@@ -40,6 +36,10 @@ export function getWordEntries(): WordEntry[] {
 
 export function findWordEntry(id: string): WordEntry | undefined {
   return WORD_ENTRIES.find((entry) => entry.id === id);
+}
+
+export function getWordsForKanji(kanjiId: string): Word[] {
+  return wordsByKanjiId.get(kanjiId) ?? [];
 }
 
 export function getWordEntryColors(entry: WordEntry): [string, string] {

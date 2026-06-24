@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Check, ChevronLeft, Lock, Pencil, Star, Volume2, X } from "lucide-react";
-import { CAT_COLORS, KANJI, RAD_COLORS, RADICALS } from "../data/kanjiData";
+import { KANJI } from "../data/generated/kanji.generated";
+import { RADICALS } from "../data/generated/radicals.generated";
+import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
+import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
 import type { ChatMsg } from "../types";
 
@@ -18,6 +21,7 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
   const [editingName, setEditingName] = useState(false);
   const [nameVal, setNameVal] = useState(customNames[key] || k.meanings[0]);
   const [showAllKunyomi, setShowAllKunyomi] = useState(false);
+  const [showRawComponents, setShowRawComponents] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
   const saveName = () => { onSetName(key, nameVal || k.meanings[0]); setEditingName(false); };
@@ -25,6 +29,7 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
   const [cat1, cat2] = CAT_COLORS[k.category] ?? ["#6b7280","#4b5563"];
   const visibleKunyomi = showAllKunyomi ? k.kunyomi : k.kunyomi.slice(0, 3);
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
+  const words = getWordsForKanji(k.id);
 
   return (
     <div className="flex flex-col h-full overflow-y-auto">
@@ -160,7 +165,28 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
         {/* Components */}
         {k.kanjiParts && k.kanjiParts.length > 0 && (
           <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Visible Components</p>
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground">Visible Components</p>
+              {k.rawKanjiParts && k.rawKanjiParts.length > k.kanjiParts.length && (
+                <button
+                  onClick={() => setShowRawComponents((value) => !value)}
+                  style={{
+                    padding:"4px 9px",
+                    borderRadius:999,
+                    border:"1px solid var(--border)",
+                    background:"var(--muted)",
+                    color:"var(--muted-foreground)",
+                    fontFamily:"var(--ui-font)",
+                    fontSize:10,
+                    fontWeight:900,
+                    cursor:"pointer",
+                    whiteSpace:"nowrap",
+                  }}
+                >
+                  {showRawComponents ? "Hide raw" : "Show raw"}
+                </button>
+              )}
+            </div>
             <div className="flex flex-wrap gap-2">
               {k.kanjiParts.map((part,i) => {
                 const rad = part.radicalId ? RADICALS.find(r=>r.id===part.radicalId) : undefined;
@@ -197,6 +223,33 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
                 );
               })}
             </div>
+            {showRawComponents && k.rawKanjiParts && (
+              <div className="mt-3 pt-3" style={{ borderTop:"1px solid var(--border)" }}>
+                <div className="flex flex-wrap gap-2">
+                  {k.rawKanjiParts.map((part, i) => (
+                    <span
+                      key={`raw-${part.component}-${i}`}
+                      style={{
+                        display:"inline-flex",
+                        alignItems:"center",
+                        gap:6,
+                        padding:"4px 8px",
+                        borderRadius:10,
+                        background:"var(--muted)",
+                        border:"1px solid var(--border)",
+                        color:"var(--muted-foreground)",
+                        fontFamily:"var(--ui-font)",
+                        fontSize:11,
+                        fontWeight:800,
+                      }}
+                    >
+                      <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }}>{part.component}</span>
+                      {part.role}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -204,7 +257,7 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Example Words</p>
           <div className="flex flex-col gap-2">
-            {k.words.map((w,i) => (
+            {words.map((w,i) => (
               <button
                 key={w.id || `${w.japanese}-${i}`}
                 onClick={() => onNavWord(w.id || `w-${w.japanese}`)}

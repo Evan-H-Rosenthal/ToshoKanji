@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Search, Star, X } from "lucide-react";
-import { CAT_COLORS, KANJI } from "../data/kanjiData";
+import { KANJI } from "../data/generated/kanji.generated";
+import { CAT_COLORS } from "../data/ui/categoryColors";
+import { getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
 export function KanjiScreen({ unlockedKanji, favorites, customNames, highlightedId, onSelect, onToggleFav, onClearHighlight }: {
@@ -23,7 +25,7 @@ export function KanjiScreen({ unlockedKanji, favorites, customNames, highlighted
     return k.char.includes(query) || k.meanings.some(m=>m.toLowerCase().includes(q))
       || k.onyomi.some(o=>o.includes(query)) || k.kunyomi.some(ku=>ku.includes(query))
       || (customNames[key]||"").toLowerCase().includes(q)
-      || k.words.some(w=>w.meaning.toLowerCase().includes(q)||w.romaji.toLowerCase().includes(q));
+      || getWordsForKanji(k.id).some(w=>w.meaning.toLowerCase().includes(q)||w.romaji.toLowerCase().includes(q));
   });
 
   return (

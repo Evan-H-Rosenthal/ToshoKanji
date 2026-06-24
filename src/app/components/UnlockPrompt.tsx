@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
-import { KANJI, RADICALS } from "../data/kanjiData";
+import { KANJI } from "../data/generated/kanji.generated";
+import { RADICALS } from "../data/generated/radicals.generated";
 
 export function UnlockPrompt({ entryType, id, onConfirm, onCancel }: {
   entryType:"kanji"|"radical"; id:string; onConfirm:()=>void; onCancel:()=>void;

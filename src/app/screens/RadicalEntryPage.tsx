@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Check, ChevronLeft, Lock, Pencil, Star, Volume2, X } from "lucide-react";
-import { CAT_COLORS, KANJI, RAD_COLORS, RADICALS } from "../data/kanjiData";
+import { KANJI } from "../data/generated/kanji.generated";
+import { RADICALS } from "../data/generated/radicals.generated";
+import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
 import { ChatSection } from "../components/ChatSection";
 import type { ChatMsg } from "../types";
 

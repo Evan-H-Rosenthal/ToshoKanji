@@ -1,5 +1,5 @@
 import { ChevronLeft, Lock, Star } from "lucide-react";
-import { CAT_COLORS } from "../data/kanjiData";
+import { CAT_COLORS } from "../data/ui/categoryColors";
 import { findWordEntry, getWordEntryColors } from "../data/wordData";
 
 export function WordEntryPage({ id, unlockedKanji, favorites, onBack, onBackToGacha, onToggleFav, onNavKanji }: {
