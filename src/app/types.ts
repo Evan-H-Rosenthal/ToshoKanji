@@ -1,7 +1,7 @@
 export type Tab = "collection" | "gacha" | "practice";
 export type UiFontChoice = "nunito" | "system";
 export type CharacterFontChoice = "traditional" | "modern";
-export interface ScreenState { type: "main" | "kanji-entry" | "radical-entry" | "word-entry" | "achievements" | "settings"; id?: string; }
+export interface ScreenState { type: "main" | "kanji-entry" | "radical-entry" | "component-entry" | "word-entry" | "achievements" | "settings"; id?: string; }
 export interface Word { id?: string; japanese: string; furigana: string; romaji: string; meaning: string; common?: boolean; }
 export interface KanjiPart { component: string; role: string; componentId?: string; radicalId?: string; }
 export interface OfficialRadical { id: string; form: string; char: string; }

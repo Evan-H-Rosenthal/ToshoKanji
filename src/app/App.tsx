@@ -9,6 +9,7 @@ import { PageIndicator } from "./components/PageIndicator";
 import { PhoneFrame } from "./components/PhoneFrame";
 import { UnlockPrompt } from "./components/UnlockPrompt";
 import { AchievementsPage } from "./screens/AchievementsPage";
+import { ComponentEntryPage } from "./screens/ComponentEntryPage";
 import { CollectionScreen } from "./screens/CollectionScreen";
 import { KanjiEntryPage } from "./screens/KanjiEntryPage";
 import { PracticeScreen } from "./screens/PracticeScreen";
@@ -285,6 +286,9 @@ export default function App() {
     if (!unlockedRadicals.has(id)) { setUnlockPrompt({type:"radical",id}); return; }
     pushScreen({type:"radical-entry",id});
   };
+  const handleNavComponent = (id:string) => {
+    pushScreen({type:"component-entry",id});
+  };
   const handleNavWord = (id:string) => {
     pushScreen({type:"word-entry",id});
   };
@@ -343,13 +347,19 @@ export default function App() {
               onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
               onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
-              onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} onNavWord={handleNavWord} />
+              onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} onNavComponent={handleNavComponent} onNavWord={handleNavWord} />
           )}
           {screen.type === "radical-entry" && screen.id && (
             <RadicalEntryPage id={screen.id} unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
               favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs}
               onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
+              onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
+              onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} />
+          )}
+          {screen.type === "component-entry" && screen.id && (
+            <ComponentEntryPage id={screen.id} unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
+              onBack={popScreen}
               onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
               onNavKanji={handleNavKanji} onNavRadical={handleNavRadical} />
           )}

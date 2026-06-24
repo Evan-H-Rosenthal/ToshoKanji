@@ -2,19 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Check, ChevronLeft, Lock, Pencil, Star, Volume2, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
+import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
 import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
 import type { ChatMsg } from "../types";
 
-export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavRadical, onNavWord }: {
+export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavRadical, onNavComponent, onNavWord }: {
   id: string; unlockedKanji: Set<string>; unlockedRadicals: Set<string>;
   favorites: Set<string>; customNames: Record<string,string>; notes: Record<string,string>;
   chatMsgs: Record<string,ChatMsg[]>;
   onBack: () => void; onBackToGacha?: () => void; onToggleFav: (k:string)=>void; onSetName:(k:string,v:string)=>void;
   onSetNote:(k:string,v:string)=>void; onChat:(k:string,q:string,a:string)=>void;
-  onNavKanji:(id:string)=>void; onNavRadical:(id:string)=>void; onNavWord:(id:string)=>void;
+  onNavKanji:(id:string)=>void; onNavRadical:(id:string)=>void; onNavComponent:(id:string)=>void; onNavWord:(id:string)=>void;
 }) {
   const k = KANJI.find(x=>x.id===id)!;
   const key = `kanji:${id}`;
@@ -190,33 +191,32 @@ export function KanjiEntryPage({ id, unlockedKanji, unlockedRadicals, favorites,
             <div className="flex flex-wrap gap-2">
               {k.kanjiParts.map((part,i) => {
                 const rad = part.radicalId ? RADICALS.find(r=>r.id===part.radicalId) : undefined;
-                const isUnlocked = part.radicalId ? unlockedRadicals.has(part.radicalId) : true;
+                const component = part.componentId ? COMPONENTS.find(c=>c.id===part.componentId) : undefined;
                 const c = RAD_COLORS[i % RAD_COLORS.length];
                 return (
                   <button
                     key={`${part.component}-${i}`}
-                    onClick={() => part.radicalId && onNavRadical(part.radicalId)}
-                    disabled={!part.radicalId}
+                    onClick={() => part.componentId && onNavComponent(part.componentId)}
+                    disabled={!part.componentId}
                     style={{
                       display:"flex",
                       alignItems:"center",
                       gap:7,
                       padding:"6px 12px",
                       borderRadius:12,
-                      background: isUnlocked ? `${c}22` : "var(--muted)",
-                      border:`1px solid ${isUnlocked ? c+"44" : "var(--border)"}`,
-                      cursor: part.radicalId ? "pointer" : "default",
-                      opacity: part.radicalId ? 1 : 0.82,
+                      background: `${c}22`,
+                      border:`1px solid ${c}44`,
+                      cursor: part.componentId ? "pointer" : "default",
+                      opacity: part.componentId ? 1 : 0.82,
                     }}
                   >
-                    {!isUnlocked && <Lock size={10} className="text-muted-foreground" />}
-                    <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color: isUnlocked ? c : "var(--muted-foreground)" }}>{part.component}</span>
+                    <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color:c }}>{part.component}</span>
                     <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
-                      <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: isUnlocked ? c : "var(--muted-foreground)" }}>
+                      <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color:c }}>
                         {rad?.meanings[0] ?? "component"}
                       </span>
                       <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color:"var(--muted-foreground)" }}>
-                        {part.role}
+                        {component?.kind.replace("-", " ") ?? part.role}
                       </span>
                     </span>
                   </button>
