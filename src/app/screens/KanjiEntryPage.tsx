@@ -1,12 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Check, ChevronLeft, Pencil, Star, Volume2, X } from "lucide-react";
+import { ChevronLeft, Info, Pencil, Star } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
 import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../components/ui/dialog";
 import type { ChatMsg } from "../types";
 
 export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
@@ -135,7 +143,39 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
         {learnerParts.length > 0 && (
           <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
             <div className="flex items-center justify-between gap-3 mb-3">
-              <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground">Visible Components</p>
+              <div className="flex items-center gap-1.5">
+                <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground">Visible Components</p>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      aria-label="About component decompositions"
+                      className="text-muted-foreground"
+                      style={{
+                        width:24,
+                        height:24,
+                        display:"inline-flex",
+                        alignItems:"center",
+                        justifyContent:"center",
+                        borderRadius:999,
+                        border:"1px solid transparent",
+                        background:"transparent",
+                        cursor:"pointer",
+                      }}
+                    >
+                      <Info size={15} />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>About component decompositions</DialogTitle>
+                      <DialogDescription style={{ fontFamily:"var(--ui-font)", lineHeight:1.55 }}>
+                        The components shown here come from established dictionary datasets (such as KRADFILE) after light normalization to display modern component forms. These decompositions are useful for indexing and structural analysis, but they are not always the same decompositions used by teachers or language-learning resources. If a decomposition seems surprising, use the AI tutor and your notes to develop a mental model that works for you.
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
+              </div>
               {rawParts.length > learnerParts.length && (
                 <button
                   onClick={() => setShowRawComponents((value) => !value)}
