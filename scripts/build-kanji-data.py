@@ -121,13 +121,6 @@ KRAD_COMPONENT_ALIASES = {
     "阡": "阝",
 }
 
-KANJI_PART_ROLE_OVERRIDES = {
-    "社": {
-        "礻": "semantic",
-        "土": "phonetic",
-    },
-}
-
 ROMAJI_PLACEHOLDER = "Romaji Placeholder"
 
 FORBIDDEN_VISIBLE_COMPONENTS = {
@@ -429,19 +422,16 @@ def build_kanji_parts(
     component_to_radical_id: dict[str, str],
     component_to_component_id: dict[str, str],
 ) -> list[dict]:
-    overrides = KANJI_PART_ROLE_OVERRIDES.get(literal, {})
     parts = []
     for component in components:
         radical_id = component_to_radical_id.get(component)
         component_id = component_to_component_id.get(component)
-        role = overrides.get(component)
-        if not role:
-            if radical_id == official_radical_id and component == official_radical_form:
-                role = "official"
-            elif component in FORBIDDEN_VISIBLE_COMPONENTS and component not in VISIBLE_COMPONENT_ALLOWLIST:
-                role = "raw-fragment"
-            else:
-                role = "component"
+        if radical_id == official_radical_id and component == official_radical_form:
+            role = "official"
+        elif component in FORBIDDEN_VISIBLE_COMPONENTS and component not in VISIBLE_COMPONENT_ALLOWLIST:
+            role = "raw-fragment"
+        else:
+            role = "component"
         part = {
             "component": component,
             "role": role,
@@ -474,20 +464,15 @@ def build_component_provenance(raw_components: list[str], visible_parts: list[di
 
 
 def build_learner_parts(literal: str, visible_parts: list[dict], official_radical_id: str, official_radical_form: str) -> list[dict]:
-    overrides = KANJI_PART_ROLE_OVERRIDES.get(literal, {})
     learner_parts = []
     for part in visible_parts:
         old_role = part.get("role")
         if old_role == "official":
             role = "official-radical"
-        elif old_role in {"semantic", "phonetic"}:
-            role = old_role
         else:
             role = "learner-component"
 
-        if part.get("component") in overrides:
-            source = "manual"
-        elif part.get("radicalId") == official_radical_id and part.get("component") == official_radical_form:
+        if part.get("radicalId") == official_radical_id and part.get("component") == official_radical_form:
             source = "radical-metadata"
         else:
             source = "normalized-krad"

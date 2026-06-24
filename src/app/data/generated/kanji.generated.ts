@@ -11654,15 +11654,15 @@ export const KANJI: KanjiEntry[] = [
     "learnerParts": [
       {
         "char": "礻",
-        "role": "semantic",
-        "source": "manual",
+        "role": "official-radical",
+        "source": "radical-metadata",
         "componentId": "c-r-113-v-u793b",
         "radicalId": "r-113"
       },
       {
         "char": "土",
-        "role": "phonetic",
-        "source": "manual",
+        "role": "learner-component",
+        "source": "normalized-krad",
         "componentId": "c-r-32",
         "radicalId": "r-32"
       }
@@ -11691,13 +11691,13 @@ export const KANJI: KanjiEntry[] = [
     "visibleComponents": [
       {
         "component": "礻",
-        "role": "semantic",
+        "role": "official",
         "componentId": "c-r-113-v-u793b",
         "radicalId": "r-113"
       },
       {
         "component": "土",
-        "role": "phonetic",
+        "role": "component",
         "componentId": "c-r-32",
         "radicalId": "r-32"
       }
@@ -11725,13 +11725,13 @@ export const KANJI: KanjiEntry[] = [
     "kanjiParts": [
       {
         "component": "礻",
-        "role": "semantic",
+        "role": "official",
         "componentId": "c-r-113-v-u793b",
         "radicalId": "r-113"
       },
       {
         "component": "土",
-        "role": "phonetic",
+        "role": "component",
         "componentId": "c-r-32",
         "radicalId": "r-32"
       }
@@ -11739,13 +11739,13 @@ export const KANJI: KanjiEntry[] = [
     "rawKanjiParts": [
       {
         "component": "礻",
-        "role": "semantic",
+        "role": "official",
         "componentId": "c-r-113-v-u793b",
         "radicalId": "r-113"
       },
       {
         "component": "土",
-        "role": "phonetic",
+        "role": "component",
         "componentId": "c-r-32",
         "radicalId": "r-32"
       }
