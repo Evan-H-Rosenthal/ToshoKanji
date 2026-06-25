@@ -27,7 +27,78 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-前",
       "k-東",
       "k-合",
-      "k-今"
+      "k-今",
+      "k-場",
+      "k-体",
+      "k-作",
+      "k-画",
+      "k-組",
+      "k-直",
+      "k-何",
+      "k-万",
+      "k-形",
+      "k-答",
+      "k-歌",
+      "k-光",
+      "k-戸",
+      "k-春",
+      "k-友",
+      "k-夏",
+      "k-昼",
+      "k-雲",
+      "k-矢",
+      "k-才",
+      "k-事",
+      "k-業",
+      "k-開",
+      "k-動",
+      "k-度",
+      "k-世",
+      "k-予",
+      "k-重",
+      "k-使",
+      "k-所",
+      "k-死",
+      "k-両",
+      "k-真",
+      "k-有",
+      "k-送",
+      "k-研",
+      "k-乗",
+      "k-病",
+      "k-農",
+      "k-写",
+      "k-命",
+      "k-福",
+      "k-整",
+      "k-悪",
+      "k-速",
+      "k-央",
+      "k-号",
+      "k-具",
+      "k-君",
+      "k-陽",
+      "k-昔",
+      "k-荷",
+      "k-丁",
+      "k-湯",
+      "k-寒",
+      "k-拾",
+      "k-漢",
+      "k-議",
+      "k-関",
+      "k-最",
+      "k-不",
+      "k-共",
+      "k-参",
+      "k-求",
+      "k-争",
+      "k-無",
+      "k-置",
+      "k-井",
+      "k-副",
+      "k-席",
+      "k-念"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-1",
@@ -67,7 +138,28 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-気",
       "k-玉",
       "k-犬",
-      "k-国"
+      "k-国",
+      "k-丸",
+      "k-太",
+      "k-冬",
+      "k-昼",
+      "k-主",
+      "k-区",
+      "k-住",
+      "k-球",
+      "k-州",
+      "k-注",
+      "k-駅",
+      "k-柱",
+      "k-泳",
+      "k-氷",
+      "k-寒",
+      "k-約",
+      "k-不",
+      "k-的",
+      "k-以",
+      "k-機",
+      "k-求"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-3",
@@ -81,12 +173,31 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-4",
+    "char": "丿",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-乗"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-4",
+    "radicalNumber": 4,
+    "meanings": [
+      "katakana no radical (no. 4)"
+    ],
+    "forms": [
+      "丿"
+    ]
+  },
+  {
     "id": "c-r-5",
     "char": "乙",
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-九",
-      "k-七"
+      "k-七",
+      "k-電",
+      "k-礼"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-5",
@@ -105,7 +216,19 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "亅",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-町"
+      "k-町",
+      "k-野",
+      "k-何",
+      "k-歌",
+      "k-才",
+      "k-事",
+      "k-予",
+      "k-打",
+      "k-研",
+      "k-荷",
+      "k-丁",
+      "k-議",
+      "k-争"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-6",
@@ -128,7 +251,39 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-五",
       "k-天",
       "k-青",
-      "k-会"
+      "k-会",
+      "k-来",
+      "k-元",
+      "k-半",
+      "k-形",
+      "k-春",
+      "k-絵",
+      "k-晴",
+      "k-雲",
+      "k-妹",
+      "k-麦",
+      "k-発",
+      "k-開",
+      "k-決",
+      "k-表",
+      "k-院",
+      "k-勝",
+      "k-送",
+      "k-転",
+      "k-研",
+      "k-味",
+      "k-横",
+      "k-鉄",
+      "k-祭",
+      "k-昔",
+      "k-漢",
+      "k-選",
+      "k-関",
+      "k-共",
+      "k-夫",
+      "k-井",
+      "k-害",
+      "k-残"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-7",
@@ -150,7 +305,29 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-六",
       "k-校",
       "k-青",
-      "k-市"
+      "k-市",
+      "k-新",
+      "k-高",
+      "k-京",
+      "k-来",
+      "k-交",
+      "k-親",
+      "k-夜",
+      "k-顔",
+      "k-晴",
+      "k-妹",
+      "k-姉",
+      "k-麦",
+      "k-表",
+      "k-流",
+      "k-育",
+      "k-商",
+      "k-味",
+      "k-幸",
+      "k-産",
+      "k-変",
+      "k-夫",
+      "k-害"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-8",
@@ -168,7 +345,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-人",
-      "k-内"
+      "k-内",
+      "k-春",
+      "k-肉",
+      "k-決",
+      "k-勝",
+      "k-病",
+      "k-関",
+      "k-以",
+      "k-夫"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-9",
@@ -189,7 +374,21 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-見",
       "k-四",
       "k-先",
-      "k-空"
+      "k-空",
+      "k-元",
+      "k-売",
+      "k-光",
+      "k-読",
+      "k-兄",
+      "k-発",
+      "k-院",
+      "k-界",
+      "k-究",
+      "k-商",
+      "k-深",
+      "k-勉",
+      "k-続",
+      "k-説"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-10",
@@ -206,7 +405,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "入",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-入"
+      "k-入",
+      "k-全"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-11",
@@ -225,7 +425,10 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-八",
-      "k-六"
+      "k-六",
+      "k-公",
+      "k-具",
+      "k-共"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-12",
@@ -245,7 +448,17 @@ export const COMPONENTS: ComponentEntry[] = [
     "kanjiIds": [
       "k-円",
       "k-同",
-      "k-内"
+      "k-内",
+      "k-高",
+      "k-南",
+      "k-週",
+      "k-肉",
+      "k-調",
+      "k-向",
+      "k-両",
+      "k-病",
+      "k-商",
+      "k-橋"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-13",
@@ -262,7 +475,18 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "冖",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-学"
+      "k-学",
+      "k-売",
+      "k-帰",
+      "k-読",
+      "k-受",
+      "k-運",
+      "k-写",
+      "k-深",
+      "k-央",
+      "k-続",
+      "k-軍",
+      "k-労"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-14",
@@ -275,11 +499,59 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-15",
+    "char": "冫",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-楽",
+      "k-羽",
+      "k-弱",
+      "k-冬",
+      "k-次",
+      "k-薬",
+      "k-習"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-15",
+    "radicalNumber": 15,
+    "meanings": [
+      "two-stroke water radical or ice radical (no. 15)"
+    ],
+    "forms": [
+      "冫"
+    ]
+  },
+  {
+    "id": "c-r-16",
+    "char": "几",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-風",
+      "k-投",
+      "k-役"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-16",
+    "radicalNumber": 16,
+    "meanings": [
+      "table",
+      "table enclosure",
+      "table or windy radical (no. 16)"
+    ],
+    "forms": [
+      "几"
+    ]
+  },
+  {
     "id": "c-r-17",
     "char": "凵",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-画",
+      "k-度",
+      "k-歯",
+      "k-席"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-17",
@@ -297,7 +569,11 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "刀",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-切",
+      "k-刀",
+      "k-昭",
+      "k-初"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-18",
@@ -318,7 +594,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-力",
-      "k-男"
+      "k-男",
+      "k-動",
+      "k-勝",
+      "k-助",
+      "k-勉",
+      "k-協",
+      "k-加",
+      "k-別",
+      "k-労"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-19",
@@ -333,12 +617,47 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-20",
+    "char": "勹",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-考",
+      "k-色",
+      "k-角",
+      "k-物",
+      "k-急",
+      "k-負",
+      "k-写",
+      "k-号",
+      "k-勉",
+      "k-約",
+      "k-的",
+      "k-別",
+      "k-争"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-20",
+    "radicalNumber": 20,
+    "meanings": [
+      "wrapping enclosure",
+      "wrapping radical (no. 20)"
+    ],
+    "forms": [
+      "勹"
+    ]
+  },
+  {
     "id": "c-r-21",
     "char": "匕",
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-七",
-      "k-花"
+      "k-花",
+      "k-北",
+      "k-切",
+      "k-化",
+      "k-指",
+      "k-死"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-21",
@@ -352,6 +671,42 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-22",
+    "char": "匚",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-区",
+      "k-医"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-22",
+    "radicalNumber": 22,
+    "meanings": [
+      "box-on-side enclosure radical (no. 22)"
+    ],
+    "forms": [
+      "匚"
+    ]
+  },
+  {
+    "id": "c-r-23",
+    "char": "匸",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-区",
+      "k-医"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-23",
+    "radicalNumber": 23,
+    "meanings": [
+      "hiding enclosure radical (no. 23)"
+    ],
+    "forms": [
+      "匸"
+    ]
+  },
+  {
     "id": "c-r-24",
     "char": "十",
     "kind": "canonical-radical",
@@ -359,7 +714,24 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-十",
       "k-千",
       "k-早",
-      "k-草"
+      "k-草",
+      "k-午",
+      "k-活",
+      "k-半",
+      "k-計",
+      "k-直",
+      "k-朝",
+      "k-南",
+      "k-古",
+      "k-真",
+      "k-苦",
+      "k-植",
+      "k-幸",
+      "k-章",
+      "k-湖",
+      "k-戦",
+      "k-協",
+      "k-置"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-24",
@@ -377,7 +749,10 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-上",
-      "k-下"
+      "k-下",
+      "k-外",
+      "k-点",
+      "k-店"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-25",
@@ -392,11 +767,72 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-26",
+    "char": "卩",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-命",
+      "k-服"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-26",
+    "radicalNumber": 26,
+    "meanings": [
+      "seal radical (no. 26)"
+    ],
+    "forms": [
+      "卩"
+    ]
+  },
+  {
+    "id": "c-r-27",
+    "char": "厂",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-原",
+      "k-顔",
+      "k-反",
+      "k-農",
+      "k-岸",
+      "k-返",
+      "k-坂",
+      "k-板",
+      "k-炭",
+      "k-産"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-27",
+    "radicalNumber": 27,
+    "meanings": [
+      "wild goose",
+      "trailing cliff radical (no. 27)"
+    ],
+    "forms": [
+      "厂"
+    ]
+  },
+  {
     "id": "c-r-28",
     "char": "厶",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-会"
+      "k-会",
+      "k-強",
+      "k-公",
+      "k-台",
+      "k-広",
+      "k-室",
+      "k-絵",
+      "k-雲",
+      "k-始",
+      "k-流",
+      "k-転",
+      "k-育",
+      "k-去",
+      "k-屋",
+      "k-法",
+      "k-治",
+      "k-参"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-28",
@@ -408,6 +844,39 @@ export const COMPONENTS: ComponentEntry[] = [
     ],
     "forms": [
       "厶"
+    ]
+  },
+  {
+    "id": "c-r-29",
+    "char": "又",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-友",
+      "k-度",
+      "k-取",
+      "k-受",
+      "k-反",
+      "k-投",
+      "k-役",
+      "k-返",
+      "k-波",
+      "k-軽",
+      "k-坂",
+      "k-服",
+      "k-板",
+      "k-皮",
+      "k-最"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-29",
+    "radicalNumber": 29,
+    "meanings": [
+      "or again",
+      "furthermore",
+      "on the other hand"
+    ],
+    "forms": [
+      "又"
     ]
   },
   {
@@ -423,7 +892,78 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-右",
       "k-同",
       "k-合",
-      "k-回"
+      "k-回",
+      "k-高",
+      "k-京",
+      "k-話",
+      "k-点",
+      "k-活",
+      "k-知",
+      "k-台",
+      "k-語",
+      "k-何",
+      "k-店",
+      "k-頭",
+      "k-答",
+      "k-谷",
+      "k-古",
+      "k-歌",
+      "k-週",
+      "k-園",
+      "k-船",
+      "k-岩",
+      "k-遠",
+      "k-兄",
+      "k-鳴",
+      "k-事",
+      "k-部",
+      "k-員",
+      "k-問",
+      "k-調",
+      "k-和",
+      "k-向",
+      "k-使",
+      "k-品",
+      "k-感",
+      "k-始",
+      "k-局",
+      "k-研",
+      "k-宮",
+      "k-追",
+      "k-商",
+      "k-落",
+      "k-味",
+      "k-命",
+      "k-福",
+      "k-整",
+      "k-路",
+      "k-悪",
+      "k-橋",
+      "k-客",
+      "k-登",
+      "k-速",
+      "k-号",
+      "k-館",
+      "k-苦",
+      "k-短",
+      "k-昭",
+      "k-倍",
+      "k-君",
+      "k-荷",
+      "k-湖",
+      "k-豆",
+      "k-拾",
+      "k-漢",
+      "k-民",
+      "k-治",
+      "k-加",
+      "k-結",
+      "k-別",
+      "k-官",
+      "k-各",
+      "k-説",
+      "k-害",
+      "k-副"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-30",
@@ -443,7 +983,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-四",
       "k-口",
       "k-国",
-      "k-回"
+      "k-回",
+      "k-図",
+      "k-園"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-31",
@@ -467,7 +1009,30 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-青",
       "k-時",
       "k-社",
-      "k-地"
+      "k-地",
+      "k-場",
+      "k-週",
+      "k-室",
+      "k-走",
+      "k-園",
+      "k-寺",
+      "k-遠",
+      "k-晴",
+      "k-麦",
+      "k-表",
+      "k-調",
+      "k-持",
+      "k-起",
+      "k-待",
+      "k-去",
+      "k-屋",
+      "k-軽",
+      "k-等",
+      "k-坂",
+      "k-詩",
+      "k-法",
+      "k-特",
+      "k-害"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-32",
@@ -482,11 +1047,47 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-33",
+    "char": "士",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-売",
+      "k-声",
+      "k-読",
+      "k-実",
+      "k-表",
+      "k-仕",
+      "k-続",
+      "k-結"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-33",
+    "radicalNumber": 33,
+    "meanings": [
+      "gentleman",
+      "scholar",
+      "samurai"
+    ],
+    "forms": [
+      "士"
+    ]
+  },
+  {
     "id": "c-r-34",
     "char": "夂",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-後"
+      "k-後",
+      "k-数",
+      "k-夏",
+      "k-冬",
+      "k-麦",
+      "k-終",
+      "k-落",
+      "k-路",
+      "k-客",
+      "k-変",
+      "k-各"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-34",
@@ -501,12 +1102,33 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-35",
+    "char": "夊",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-夏"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-35",
+    "radicalNumber": 35,
+    "meanings": [
+      "winter variant radical (no. 34)"
+    ],
+    "forms": [
+      "夊"
+    ]
+  },
+  {
     "id": "c-r-36",
     "char": "夕",
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-名",
-      "k-夕"
+      "k-夕",
+      "k-外",
+      "k-多",
+      "k-夜",
+      "k-死"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-36",
@@ -525,7 +1147,20 @@ export const COMPONENTS: ComponentEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-天",
-      "k-犬"
+      "k-犬",
+      "k-太",
+      "k-春",
+      "k-矢",
+      "k-実",
+      "k-決",
+      "k-勝",
+      "k-送",
+      "k-美",
+      "k-央",
+      "k-鉄",
+      "k-漢",
+      "k-関",
+      "k-夫"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-37",
@@ -543,7 +1178,15 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "女",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-女"
+      "k-女",
+      "k-数",
+      "k-妹",
+      "k-姉",
+      "k-安",
+      "k-委",
+      "k-始",
+      "k-要",
+      "k-案"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-38",
@@ -563,7 +1206,9 @@ export const COMPONENTS: ComponentEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-子",
-      "k-字"
+      "k-字",
+      "k-教",
+      "k-遊"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-39",
@@ -583,7 +1228,23 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-空",
-      "k-字"
+      "k-字",
+      "k-家",
+      "k-室",
+      "k-定",
+      "k-実",
+      "k-安",
+      "k-院",
+      "k-宮",
+      "k-究",
+      "k-守",
+      "k-客",
+      "k-館",
+      "k-宿",
+      "k-寒",
+      "k-案",
+      "k-官",
+      "k-害"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-40",
@@ -602,7 +1263,17 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-村",
-      "k-時"
+      "k-時",
+      "k-寺",
+      "k-対",
+      "k-持",
+      "k-待",
+      "k-守",
+      "k-等",
+      "k-詩",
+      "k-府",
+      "k-特",
+      "k-付"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-41",
@@ -622,7 +1293,27 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-小",
-      "k-糸"
+      "k-糸",
+      "k-京",
+      "k-原",
+      "k-組",
+      "k-少",
+      "k-線",
+      "k-細",
+      "k-歩",
+      "k-紙",
+      "k-絵",
+      "k-県",
+      "k-係",
+      "k-終",
+      "k-級",
+      "k-練",
+      "k-秒",
+      "k-祭",
+      "k-緑",
+      "k-約",
+      "k-続",
+      "k-結"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-42",
@@ -636,12 +1327,43 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-44",
+    "char": "尸",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-声",
+      "k-戸",
+      "k-昼",
+      "k-所",
+      "k-局",
+      "k-屋",
+      "k-駅",
+      "k-民"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-44",
+    "radicalNumber": 44,
+    "meanings": [
+      "corpse",
+      "remains",
+      "flag radical (no. 44)"
+    ],
+    "forms": [
+      "尸"
+    ]
+  },
+  {
     "id": "c-r-46",
     "char": "山",
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-出",
-      "k-山"
+      "k-山",
+      "k-岩",
+      "k-島",
+      "k-両",
+      "k-岸",
+      "k-炭"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-46",
@@ -658,7 +1380,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "巛",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-川"
+      "k-川",
+      "k-州"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-47",
@@ -676,7 +1399,10 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-空",
-      "k-左"
+      "k-左",
+      "k-工",
+      "k-式",
+      "k-試"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-48",
@@ -695,7 +1421,11 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "巾",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-市"
+      "k-市",
+      "k-帰",
+      "k-姉",
+      "k-帳",
+      "k-席"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-50",
@@ -714,7 +1444,12 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "干",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-年"
+      "k-年",
+      "k-午",
+      "k-南",
+      "k-平",
+      "k-岸",
+      "k-幸"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-51",
@@ -734,7 +1469,21 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-糸",
-      "k-後"
+      "k-後",
+      "k-組",
+      "k-線",
+      "k-細",
+      "k-紙",
+      "k-絵",
+      "k-係",
+      "k-終",
+      "k-級",
+      "k-練",
+      "k-緑",
+      "k-約",
+      "k-機",
+      "k-続",
+      "k-結"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-52",
@@ -747,12 +1496,160 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-53",
+    "char": "广",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-広",
+      "k-店",
+      "k-度",
+      "k-庭",
+      "k-庫",
+      "k-府",
+      "k-席"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-53",
+    "radicalNumber": 53,
+    "meanings": [
+      "dotted cliff radical (no. 53)"
+    ],
+    "forms": [
+      "广"
+    ]
+  },
+  {
+    "id": "c-r-54",
+    "char": "廴",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-庭",
+      "k-建"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-54",
+    "radicalNumber": 54,
+    "meanings": [
+      "long stride or stretching radical (no. 54)"
+    ],
+    "forms": [
+      "廴"
+    ]
+  },
+  {
+    "id": "c-r-55",
+    "char": "廾",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-算",
+      "k-形",
+      "k-開",
+      "k-研",
+      "k-横",
+      "k-鼻"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-55",
+    "radicalNumber": 55,
+    "meanings": [
+      "twenty",
+      "twenty or letter H radical (no. 55)"
+    ],
+    "forms": [
+      "廾"
+    ]
+  },
+  {
+    "id": "c-r-56",
+    "char": "弋",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-代",
+      "k-式",
+      "k-試"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-56",
+    "radicalNumber": 56,
+    "meanings": [
+      "piling",
+      "ceremony radical (no. 56)"
+    ],
+    "forms": [
+      "弋"
+    ]
+  },
+  {
+    "id": "c-r-57",
+    "char": "弓",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-強",
+      "k-引",
+      "k-弱",
+      "k-弟",
+      "k-弓",
+      "k-第"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-57",
+    "radicalNumber": 57,
+    "meanings": [
+      "bow",
+      "bow (archery, violin)"
+    ],
+    "forms": [
+      "弓"
+    ]
+  },
+  {
+    "id": "c-r-58",
+    "char": "彐",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-当"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-58",
+    "radicalNumber": 58,
+    "meanings": [
+      "snout",
+      "pig's head radical (no. 58)"
+    ],
+    "forms": [
+      "彐"
+    ]
+  },
+  {
+    "id": "c-r-59",
+    "char": "彡",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-形",
+      "k-顔",
+      "k-参"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-59",
+    "radicalNumber": 59,
+    "meanings": [
+      "three",
+      "hair ornament",
+      "short hair or fur radical (no. 59)"
+    ],
+    "forms": [
+      "彡"
+    ]
+  },
+  {
     "id": "c-r-60",
     "char": "彳",
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-行",
-      "k-後"
+      "k-後",
+      "k-役",
+      "k-待"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-60",
@@ -767,11 +1664,88 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-61",
+    "char": "心",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-思",
+      "k-心",
+      "k-意",
+      "k-感",
+      "k-急",
+      "k-想",
+      "k-悪",
+      "k-息",
+      "k-悲",
+      "k-必",
+      "k-念"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-61",
+    "radicalNumber": 61,
+    "meanings": [
+      "heart",
+      "mind",
+      "spirit"
+    ],
+    "forms": [
+      "心",
+      "忄",
+      "㣺"
+    ]
+  },
+  {
+    "id": "c-r-62",
+    "char": "戈",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-感",
+      "k-議",
+      "k-戦",
+      "k-成",
+      "k-機",
+      "k-残"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-62",
+    "radicalNumber": 62,
+    "meanings": [
+      "halberd",
+      "arms",
+      "festival car"
+    ],
+    "forms": [
+      "戈"
+    ]
+  },
+  {
+    "id": "c-r-63",
+    "char": "戸",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-戸",
+      "k-所"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-63",
+    "radicalNumber": 63,
+    "meanings": [
+      "door",
+      "counter for houses",
+      "door radical (no. 63)"
+    ],
+    "forms": [
+      "戸"
+    ]
+  },
+  {
     "id": "c-r-64",
     "char": "手",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-手"
+      "k-手",
+      "k-議",
+      "k-挙"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-64",
@@ -785,11 +1759,35 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-66",
+    "char": "攴",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-数",
+      "k-教",
+      "k-放",
+      "k-整",
+      "k-改"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-66",
+    "radicalNumber": 66,
+    "meanings": [
+      "strike",
+      "hit",
+      "folding chair radical (no. 66)"
+    ],
+    "forms": [
+      "攴"
+    ]
+  },
+  {
     "id": "c-r-67",
     "char": "文",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-文"
+      "k-文",
+      "k-対"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-67",
@@ -804,11 +1802,57 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-68",
+    "char": "斗",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-科",
+      "k-図",
+      "k-料"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-68",
+    "radicalNumber": 68,
+    "meanings": [
+      "Big Dipper",
+      "ten sho (vol)",
+      "sake dipper"
+    ],
+    "forms": [
+      "斗"
+    ]
+  },
+  {
+    "id": "c-r-69",
+    "char": "斤",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-新",
+      "k-近",
+      "k-所"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-69",
+    "radicalNumber": 69,
+    "meanings": [
+      "axe",
+      "1.32 lb",
+      "catty"
+    ],
+    "forms": [
+      "斤"
+    ]
+  },
+  {
     "id": "c-r-70",
     "char": "方",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-方"
+      "k-方",
+      "k-放",
+      "k-族",
+      "k-旅",
+      "k-遊"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-70",
@@ -833,7 +1877,43 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-草",
       "k-時",
       "k-間",
-      "k-東"
+      "k-東",
+      "k-場",
+      "k-明",
+      "k-書",
+      "k-朝",
+      "k-春",
+      "k-星",
+      "k-曜",
+      "k-晴",
+      "k-昼",
+      "k-者",
+      "k-動",
+      "k-題",
+      "k-意",
+      "k-都",
+      "k-指",
+      "k-重",
+      "k-由",
+      "k-神",
+      "k-農",
+      "k-横",
+      "k-申",
+      "k-油",
+      "k-昭",
+      "k-薬",
+      "k-練",
+      "k-曲",
+      "k-温",
+      "k-章",
+      "k-暗",
+      "k-陽",
+      "k-昔",
+      "k-湯",
+      "k-暑",
+      "k-笛",
+      "k-最",
+      "k-昨"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-72",
@@ -848,13 +1928,45 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-73",
+    "char": "曰",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-書",
+      "k-曲",
+      "k-最"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-73",
+    "radicalNumber": 73,
+    "meanings": [
+      "say",
+      "reason",
+      "pretext"
+    ],
+    "forms": [
+      "曰"
+    ]
+  },
+  {
     "id": "c-r-74",
     "char": "月",
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-月",
       "k-青",
-      "k-前"
+      "k-前",
+      "k-明",
+      "k-朝",
+      "k-角",
+      "k-晴",
+      "k-期",
+      "k-勝",
+      "k-有",
+      "k-消",
+      "k-育",
+      "k-服",
+      "k-湖"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-74",
@@ -879,7 +1991,36 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-森",
       "k-休",
       "k-林",
-      "k-東"
+      "k-東",
+      "k-新",
+      "k-体",
+      "k-来",
+      "k-楽",
+      "k-親",
+      "k-茶",
+      "k-妹",
+      "k-業",
+      "k-相",
+      "k-集",
+      "k-想",
+      "k-葉",
+      "k-味",
+      "k-整",
+      "k-横",
+      "k-深",
+      "k-様",
+      "k-橋",
+      "k-速",
+      "k-根",
+      "k-植",
+      "k-薬",
+      "k-練",
+      "k-板",
+      "k-柱",
+      "k-箱",
+      "k-機",
+      "k-案",
+      "k-果"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-75",
@@ -893,12 +2034,38 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-76",
+    "char": "欠",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-歌",
+      "k-次",
+      "k-飲"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-76",
+    "radicalNumber": 76,
+    "meanings": [
+      "lack",
+      "gap",
+      "fail"
+    ],
+    "forms": [
+      "欠"
+    ]
+  },
+  {
     "id": "c-r-77",
     "char": "止",
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-正",
-      "k-足"
+      "k-足",
+      "k-止",
+      "k-歩",
+      "k-整",
+      "k-路",
+      "k-歯"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-77",
@@ -912,11 +2079,133 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-78",
+    "char": "歹",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-死",
+      "k-列",
+      "k-残",
+      "k-例"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-78",
+    "radicalNumber": 78,
+    "meanings": [
+      "bare bone",
+      "bad",
+      "wrong"
+    ],
+    "forms": [
+      "歹"
+    ]
+  },
+  {
+    "id": "c-r-79",
+    "char": "殳",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-投",
+      "k-役"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-79",
+    "radicalNumber": 79,
+    "meanings": [
+      "pike",
+      "windy-again radical (no. 79)"
+    ],
+    "forms": [
+      "殳"
+    ]
+  },
+  {
+    "id": "c-r-80",
+    "char": "毋",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-海",
+      "k-毎",
+      "k-母"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-80",
+    "radicalNumber": 80,
+    "meanings": [
+      "do not",
+      "must not",
+      "be not"
+    ],
+    "forms": [
+      "毋"
+    ]
+  },
+  {
+    "id": "c-r-81",
+    "char": "比",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-階"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-81",
+    "radicalNumber": 81,
+    "meanings": [
+      "compare",
+      "race",
+      "ratio"
+    ],
+    "forms": [
+      "比"
+    ]
+  },
+  {
+    "id": "c-r-82",
+    "char": "毛",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-毛"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-82",
+    "radicalNumber": 82,
+    "meanings": [
+      "fur",
+      "hair",
+      "feather"
+    ],
+    "forms": [
+      "毛"
+    ]
+  },
+  {
+    "id": "c-r-83",
+    "char": "氏",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-紙",
+      "k-民",
+      "k-氏"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-83",
+    "radicalNumber": 83,
+    "meanings": [
+      "family name",
+      "surname",
+      "clan"
+    ],
+    "forms": [
+      "氏"
+    ]
+  },
+  {
     "id": "c-r-84",
     "char": "气",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-気"
+      "k-気",
+      "k-汽"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-84",
@@ -934,7 +2223,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "水",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-水"
+      "k-水",
+      "k-線",
+      "k-球",
+      "k-様",
+      "k-緑",
+      "k-泳",
+      "k-氷",
+      "k-求"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-85",
@@ -952,7 +2248,11 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "火",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-火"
+      "k-火",
+      "k-秋",
+      "k-談",
+      "k-畑",
+      "k-炭"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-86",
@@ -966,11 +2266,32 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-87",
+    "char": "爪",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-受"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-87",
+    "radicalNumber": 87,
+    "meanings": [
+      "claw",
+      "nail",
+      "talon"
+    ],
+    "forms": [
+      "爪"
+    ]
+  },
+  {
     "id": "c-r-88",
     "char": "父",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-校"
+      "k-校",
+      "k-交",
+      "k-父"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-88",
@@ -980,6 +2301,42 @@ export const COMPONENTS: ComponentEntry[] = [
     ],
     "forms": [
       "父"
+    ]
+  },
+  {
+    "id": "c-r-90",
+    "char": "爿",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-北"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-90",
+    "radicalNumber": 90,
+    "meanings": [
+      "left-side kata radical (no. 90)"
+    ],
+    "forms": [
+      "爿"
+    ]
+  },
+  {
+    "id": "c-r-93",
+    "char": "牛",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-牛",
+      "k-物",
+      "k-特"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-93",
+    "radicalNumber": 93,
+    "meanings": [
+      "cow"
+    ],
+    "forms": [
+      "牛"
     ]
   },
   {
@@ -1006,7 +2363,9 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-王",
-      "k-玉"
+      "k-玉",
+      "k-理",
+      "k-球"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-96",
@@ -1021,11 +2380,32 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-99",
+    "char": "甘",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-期"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-99",
+    "radicalNumber": 99,
+    "meanings": [
+      "sweet",
+      "coax",
+      "pamper"
+    ],
+    "forms": [
+      "甘"
+    ]
+  },
+  {
     "id": "c-r-100",
     "char": "生",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-生"
+      "k-生",
+      "k-星",
+      "k-産"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-100",
@@ -1040,6 +2420,26 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-101",
+    "char": "用",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-通",
+      "k-用"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-101",
+    "radicalNumber": 101,
+    "meanings": [
+      "utilize",
+      "business",
+      "service"
+    ],
+    "forms": [
+      "用"
+    ]
+  },
+  {
     "id": "c-r-102",
     "char": "田",
     "kind": "canonical-radical",
@@ -1047,7 +2447,28 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-田",
       "k-男",
       "k-町",
-      "k-東"
+      "k-東",
+      "k-思",
+      "k-画",
+      "k-電",
+      "k-番",
+      "k-細",
+      "k-魚",
+      "k-黄",
+      "k-界",
+      "k-由",
+      "k-神",
+      "k-福",
+      "k-横",
+      "k-申",
+      "k-油",
+      "k-練",
+      "k-畑",
+      "k-鼻",
+      "k-笛",
+      "k-戦",
+      "k-果",
+      "k-副"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-102",
@@ -1061,12 +2482,76 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-103",
+    "char": "疋",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-定",
+      "k-題"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-103",
+    "radicalNumber": 103,
+    "meanings": [
+      "head",
+      "counter for animals"
+    ],
+    "forms": [
+      "疋"
+    ]
+  },
+  {
+    "id": "c-r-104",
+    "char": "疒",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-病"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-104",
+    "radicalNumber": 104,
+    "meanings": [
+      "trailing sickness",
+      "sick radical (no. 104)"
+    ],
+    "forms": [
+      "疒"
+    ]
+  },
+  {
+    "id": "c-r-105",
+    "char": "癶",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-発",
+      "k-登",
+      "k-祭"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-105",
+    "radicalNumber": 105,
+    "meanings": [
+      "dotted tent radical (no. 105)"
+    ],
+    "forms": [
+      "癶"
+    ]
+  },
+  {
     "id": "c-r-106",
     "char": "白",
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-百",
-      "k-白"
+      "k-白",
+      "k-原",
+      "k-楽",
+      "k-線",
+      "k-島",
+      "k-階",
+      "k-宿",
+      "k-習",
+      "k-的"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-106",
@@ -1079,6 +2564,47 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-107",
+    "char": "皮",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-波",
+      "k-皮"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-107",
+    "radicalNumber": 107,
+    "meanings": [
+      "pelt",
+      "skin",
+      "hide"
+    ],
+    "forms": [
+      "皮"
+    ]
+  },
+  {
+    "id": "c-r-108",
+    "char": "皿",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-血",
+      "k-温",
+      "k-皿"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-108",
+    "radicalNumber": 108,
+    "meanings": [
+      "dish",
+      "a helping",
+      "plate"
+    ],
+    "forms": [
+      "皿"
+    ]
+  },
+  {
     "id": "c-r-109",
     "char": "目",
     "kind": "canonical-radical",
@@ -1086,7 +2612,31 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-見",
       "k-目",
       "k-貝",
-      "k-自"
+      "k-自",
+      "k-首",
+      "k-組",
+      "k-直",
+      "k-算",
+      "k-頭",
+      "k-買",
+      "k-夏",
+      "k-顔",
+      "k-相",
+      "k-員",
+      "k-題",
+      "k-県",
+      "k-真",
+      "k-着",
+      "k-想",
+      "k-助",
+      "k-負",
+      "k-具",
+      "k-植",
+      "k-息",
+      "k-箱",
+      "k-鼻",
+      "k-側",
+      "k-置"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-109",
@@ -1101,11 +2651,55 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-110",
+    "char": "矛",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-野"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-110",
+    "radicalNumber": 110,
+    "meanings": [
+      "halberd",
+      "arms",
+      "festival float"
+    ],
+    "forms": [
+      "矛"
+    ]
+  },
+  {
+    "id": "c-r-111",
+    "char": "矢",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-知",
+      "k-矢",
+      "k-族",
+      "k-医",
+      "k-鉄",
+      "k-短"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-111",
+    "radicalNumber": 111,
+    "meanings": [
+      "dart",
+      "arrow"
+    ],
+    "forms": [
+      "矢"
+    ]
+  },
+  {
     "id": "c-r-112",
     "char": "石",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-石"
+      "k-石",
+      "k-岩",
+      "k-研"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-112",
@@ -1121,7 +2715,9 @@ export const COMPONENTS: ComponentEntry[] = [
     "id": "c-r-113",
     "char": "示",
     "kind": "canonical-radical",
-    "kanjiIds": [],
+    "kanjiIds": [
+      "k-祭"
+    ],
     "source": "Kangxi radical",
     "radicalId": "r-113",
     "radicalNumber": 113,
@@ -1137,11 +2733,35 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-115",
+    "char": "禾",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-科",
+      "k-秋",
+      "k-和",
+      "k-委",
+      "k-乗",
+      "k-秒",
+      "k-利"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-115",
+    "radicalNumber": 115,
+    "meanings": [
+      "two-branch tree radical (no. 115)"
+    ],
+    "forms": [
+      "禾"
+    ]
+  },
+  {
     "id": "c-r-116",
     "char": "穴",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-空"
+      "k-空",
+      "k-究"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-116",
@@ -1161,7 +2781,20 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-立",
-      "k-音"
+      "k-音",
+      "k-新",
+      "k-親",
+      "k-顔",
+      "k-部",
+      "k-意",
+      "k-商",
+      "k-倍",
+      "k-幸",
+      "k-章",
+      "k-暗",
+      "k-童",
+      "k-産",
+      "k-位"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-117",
@@ -1194,11 +2827,48 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-119",
+    "char": "米",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-米",
+      "k-来",
+      "k-数",
+      "k-番",
+      "k-歯",
+      "k-料"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-119",
+    "radicalNumber": 119,
+    "meanings": [
+      "rice",
+      "USA",
+      "metre"
+    ],
+    "forms": [
+      "米"
+    ]
+  },
+  {
     "id": "c-r-120",
     "char": "糸",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-糸"
+      "k-糸",
+      "k-組",
+      "k-線",
+      "k-細",
+      "k-紙",
+      "k-絵",
+      "k-係",
+      "k-終",
+      "k-級",
+      "k-練",
+      "k-緑",
+      "k-約",
+      "k-続",
+      "k-結"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-120",
@@ -1212,11 +2882,116 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-122",
+    "char": "网",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-置"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-122",
+    "radicalNumber": 122,
+    "meanings": [
+      "net",
+      "net or net crown radical (no. 122)"
+    ],
+    "forms": [
+      "网"
+    ]
+  },
+  {
+    "id": "c-r-123",
+    "char": "羊",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-業",
+      "k-着",
+      "k-美",
+      "k-様",
+      "k-洋",
+      "k-羊",
+      "k-議"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-123",
+    "radicalNumber": 123,
+    "meanings": [
+      "sheep"
+    ],
+    "forms": [
+      "羊"
+    ]
+  },
+  {
+    "id": "c-r-124",
+    "char": "羽",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-羽",
+      "k-習"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-124",
+    "radicalNumber": 124,
+    "meanings": [
+      "feathers",
+      "counter for birds, rabbits"
+    ],
+    "forms": [
+      "羽"
+    ]
+  },
+  {
+    "id": "c-r-125",
+    "char": "老",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-教",
+      "k-考",
+      "k-者",
+      "k-都",
+      "k-暑"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-125",
+    "radicalNumber": 125,
+    "meanings": [
+      "old man",
+      "old age",
+      "grow old"
+    ],
+    "forms": [
+      "老"
+    ]
+  },
+  {
+    "id": "c-r-127",
+    "char": "耒",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-業"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-127",
+    "radicalNumber": 127,
+    "meanings": [
+      "come",
+      "plough",
+      "three-branch tree radical (no. 127)"
+    ],
+    "forms": [
+      "耒"
+    ]
+  },
+  {
     "id": "c-r-128",
     "char": "耳",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-耳"
+      "k-耳",
+      "k-聞",
+      "k-取",
+      "k-最"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-128",
@@ -1229,11 +3004,55 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-129",
+    "char": "聿",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-書",
+      "k-筆",
+      "k-建"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-129",
+    "radicalNumber": 129,
+    "meanings": [
+      "brush",
+      "finally",
+      "self"
+    ],
+    "forms": [
+      "聿"
+    ]
+  },
+  {
+    "id": "c-r-130",
+    "char": "肉",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-肉",
+      "k-育"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-130",
+    "radicalNumber": 130,
+    "meanings": [
+      "meat"
+    ],
+    "forms": [
+      "肉"
+    ]
+  },
+  {
     "id": "c-r-132",
     "char": "自",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-自"
+      "k-自",
+      "k-首",
+      "k-道",
+      "k-夏",
+      "k-息",
+      "k-鼻"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-132",
@@ -1243,6 +3062,101 @@ export const COMPONENTS: ComponentEntry[] = [
     ],
     "forms": [
       "自"
+    ]
+  },
+  {
+    "id": "c-r-133",
+    "char": "至",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-室",
+      "k-屋"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-133",
+    "radicalNumber": 133,
+    "meanings": [
+      "climax",
+      "arrive",
+      "proceed"
+    ],
+    "forms": [
+      "至"
+    ]
+  },
+  {
+    "id": "c-r-135",
+    "char": "舌",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-話",
+      "k-活"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-135",
+    "radicalNumber": 135,
+    "meanings": [
+      "tongue",
+      "reed",
+      "clapper"
+    ],
+    "forms": [
+      "舌"
+    ]
+  },
+  {
+    "id": "c-r-137",
+    "char": "舟",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-船"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-137",
+    "radicalNumber": 137,
+    "meanings": [
+      "boat",
+      "ship"
+    ],
+    "forms": [
+      "舟"
+    ]
+  },
+  {
+    "id": "c-r-138",
+    "char": "艮",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-銀",
+      "k-根"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-138",
+    "radicalNumber": 138,
+    "meanings": [
+      "northeast (Oriental zodiac)",
+      "stopping",
+      "good radical (no. 138)"
+    ],
+    "forms": [
+      "艮"
+    ]
+  },
+  {
+    "id": "c-r-139",
+    "char": "色",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-色"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-139",
+    "radicalNumber": 139,
+    "meanings": [
+      "color"
+    ],
+    "forms": [
+      "色"
     ]
   },
   {
@@ -1268,7 +3182,9 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "虫",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-虫"
+      "k-虫",
+      "k-強",
+      "k-風"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-142",
@@ -1280,6 +3196,23 @@ export const COMPONENTS: ComponentEntry[] = [
     ],
     "forms": [
       "虫"
+    ]
+  },
+  {
+    "id": "c-r-143",
+    "char": "血",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-血"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-143",
+    "radicalNumber": 143,
+    "meanings": [
+      "blood"
+    ],
+    "forms": [
+      "血"
     ]
   },
   {
@@ -1302,11 +3235,55 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-145",
+    "char": "衣",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-園",
+      "k-遠",
+      "k-表",
+      "k-農"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-145",
+    "radicalNumber": 145,
+    "meanings": [
+      "garment",
+      "clothes",
+      "dressing"
+    ],
+    "forms": [
+      "衣",
+      "衤"
+    ]
+  },
+  {
+    "id": "c-r-146",
+    "char": "襾",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-西",
+      "k-要"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-146",
+    "radicalNumber": 146,
+    "meanings": [
+      "cover",
+      "place on top of",
+      "west radical variant (no. 146)"
+    ],
+    "forms": [
+      "襾"
+    ]
+  },
+  {
     "id": "c-r-147",
     "char": "見",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-見"
+      "k-見",
+      "k-親"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-147",
@@ -1321,11 +3298,126 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-148",
+    "char": "角",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-角"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-148",
+    "radicalNumber": 148,
+    "meanings": [
+      "angle",
+      "corner",
+      "square"
+    ],
+    "forms": [
+      "角"
+    ]
+  },
+  {
+    "id": "c-r-149",
+    "char": "言",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-言",
+      "k-話",
+      "k-記",
+      "k-計",
+      "k-語",
+      "k-読",
+      "k-調",
+      "k-談",
+      "k-詩",
+      "k-議",
+      "k-信",
+      "k-説",
+      "k-試"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-149",
+    "radicalNumber": 149,
+    "meanings": [
+      "say",
+      "word"
+    ],
+    "forms": [
+      "言",
+      "訁"
+    ]
+  },
+  {
+    "id": "c-r-150",
+    "char": "谷",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-谷"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-150",
+    "radicalNumber": 150,
+    "meanings": [
+      "valley"
+    ],
+    "forms": [
+      "谷"
+    ]
+  },
+  {
+    "id": "c-r-151",
+    "char": "豆",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-頭",
+      "k-登",
+      "k-短",
+      "k-豆"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-151",
+    "radicalNumber": 151,
+    "meanings": [
+      "beans",
+      "pea",
+      "midget"
+    ],
+    "forms": [
+      "豆"
+    ]
+  },
+  {
+    "id": "c-r-152",
+    "char": "豕",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-家"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-152",
+    "radicalNumber": 152,
+    "meanings": [
+      "pig",
+      "hog",
+      "pig radical (no. 152)"
+    ],
+    "forms": [
+      "豕"
+    ]
+  },
+  {
     "id": "c-r-154",
     "char": "貝",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-貝"
+      "k-貝",
+      "k-頭",
+      "k-買",
+      "k-顔",
+      "k-員",
+      "k-題",
+      "k-負",
+      "k-側"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-154",
@@ -1355,11 +3447,30 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-156",
+    "char": "走",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-走",
+      "k-起"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-156",
+    "radicalNumber": 156,
+    "meanings": [
+      "run"
+    ],
+    "forms": [
+      "走"
+    ]
+  },
+  {
     "id": "c-r-157",
     "char": "足",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-足"
+      "k-足",
+      "k-路"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-157",
@@ -1374,11 +3485,36 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-158",
+    "char": "身",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-身"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-158",
+    "radicalNumber": 158,
+    "meanings": [
+      "somebody",
+      "person",
+      "one's station in life"
+    ],
+    "forms": [
+      "身"
+    ]
+  },
+  {
     "id": "c-r-159",
     "char": "車",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-車"
+      "k-車",
+      "k-運",
+      "k-転",
+      "k-軽",
+      "k-庫",
+      "k-連",
+      "k-軍"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-159",
@@ -1391,11 +3527,157 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-160",
+    "char": "辛",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-新",
+      "k-親",
+      "k-幸"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-160",
+    "radicalNumber": 160,
+    "meanings": [
+      "spicy",
+      "bitter",
+      "hot"
+    ],
+    "forms": [
+      "辛"
+    ]
+  },
+  {
+    "id": "c-r-161",
+    "char": "辰",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-農"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-161",
+    "radicalNumber": 161,
+    "meanings": [
+      "sign of the dragon",
+      "7-9AM",
+      "fifth sign of Chinese zodiac"
+    ],
+    "forms": [
+      "辰"
+    ]
+  },
+  {
+    "id": "c-r-162",
+    "char": "辵",
+    "kind": "canonical-radical",
+    "kanjiIds": [],
+    "source": "Kangxi radical",
+    "radicalId": "r-162",
+    "radicalNumber": 162,
+    "meanings": [
+      "walk",
+      "walking",
+      "road radical (no. 162)"
+    ],
+    "forms": [
+      "辵",
+      "⻌",
+      "辶"
+    ]
+  },
+  {
+    "id": "c-r-163",
+    "char": "邑",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-部",
+      "k-都"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-163",
+    "radicalNumber": 163,
+    "meanings": [
+      "village",
+      "rural community",
+      "right village radical (no. 163)"
+    ],
+    "forms": [
+      "邑",
+      "阝"
+    ]
+  },
+  {
+    "id": "c-r-164",
+    "char": "酉",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-配",
+      "k-酒"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-164",
+    "radicalNumber": 164,
+    "meanings": [
+      "west",
+      "bird",
+      "sign of the bird"
+    ],
+    "forms": [
+      "酉"
+    ]
+  },
+  {
+    "id": "c-r-165",
+    "char": "釆",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-番"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-165",
+    "radicalNumber": 165,
+    "meanings": [
+      "separate",
+      "divide",
+      "topped rice radical (no. 165)"
+    ],
+    "forms": [
+      "釆"
+    ]
+  },
+  {
+    "id": "c-r-166",
+    "char": "里",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-理",
+      "k-野",
+      "k-黒",
+      "k-里",
+      "k-動",
+      "k-重",
+      "k-童"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-166",
+    "radicalNumber": 166,
+    "meanings": [
+      "ri",
+      "village",
+      "parent's home"
+    ],
+    "forms": [
+      "里"
+    ]
+  },
+  {
     "id": "c-r-167",
     "char": "金",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-金"
+      "k-金",
+      "k-銀",
+      "k-鉄"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-167",
@@ -1412,7 +3694,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "長",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-長"
+      "k-長",
+      "k-帳"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-168",
@@ -1431,7 +3714,12 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "門",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-間"
+      "k-間",
+      "k-聞",
+      "k-門",
+      "k-開",
+      "k-問",
+      "k-関"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-169",
@@ -1445,11 +3733,75 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-170",
+    "char": "阜",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-院",
+      "k-階",
+      "k-陽"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-170",
+    "radicalNumber": 170,
+    "meanings": [
+      "hill",
+      "mound",
+      "left village radical (no. 170)"
+    ],
+    "forms": [
+      "阜",
+      "阝"
+    ]
+  },
+  {
+    "id": "c-r-171",
+    "char": "隶",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-緑"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-171",
+    "radicalNumber": 171,
+    "meanings": [
+      "extend",
+      "give",
+      "cast"
+    ],
+    "forms": [
+      "隶"
+    ]
+  },
+  {
+    "id": "c-r-172",
+    "char": "隹",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-曜",
+      "k-進",
+      "k-集"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-172",
+    "radicalNumber": 172,
+    "meanings": [
+      "bird",
+      "old bird radical (no. 172)"
+    ],
+    "forms": [
+      "隹"
+    ]
+  },
+  {
     "id": "c-r-173",
     "char": "雨",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-雨"
+      "k-雨",
+      "k-電",
+      "k-雪",
+      "k-雲"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-173",
@@ -1466,7 +3818,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "青",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-青"
+      "k-青",
+      "k-晴"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-174",
@@ -1480,11 +3833,52 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-175",
+    "char": "非",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-悲"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-175",
+    "radicalNumber": 175,
+    "meanings": [
+      "un-",
+      "mistake",
+      "negative"
+    ],
+    "forms": [
+      "非"
+    ]
+  },
+  {
+    "id": "c-r-176",
+    "char": "面",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-面"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-176",
+    "radicalNumber": 176,
+    "meanings": [
+      "mask",
+      "face",
+      "features"
+    ],
+    "forms": [
+      "面"
+    ]
+  },
+  {
     "id": "c-r-180",
     "char": "音",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-音"
+      "k-音",
+      "k-意",
+      "k-章",
+      "k-暗"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-180",
@@ -1498,6 +3892,230 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-181",
+    "char": "頁",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-頭",
+      "k-顔",
+      "k-題"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-181",
+    "radicalNumber": 181,
+    "meanings": [
+      "page",
+      "leaf"
+    ],
+    "forms": [
+      "頁"
+    ]
+  },
+  {
+    "id": "c-r-182",
+    "char": "風",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-風"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-182",
+    "radicalNumber": 182,
+    "meanings": [
+      "wind",
+      "air",
+      "style"
+    ],
+    "forms": [
+      "風"
+    ]
+  },
+  {
+    "id": "c-r-184",
+    "char": "食",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-食",
+      "k-館",
+      "k-飲"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-184",
+    "radicalNumber": 184,
+    "meanings": [
+      "eat",
+      "food"
+    ],
+    "forms": [
+      "食"
+    ]
+  },
+  {
+    "id": "c-r-185",
+    "char": "首",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-首",
+      "k-道"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-185",
+    "radicalNumber": 185,
+    "meanings": [
+      "neck",
+      "counter for songs and poems"
+    ],
+    "forms": [
+      "首"
+    ]
+  },
+  {
+    "id": "c-r-187",
+    "char": "馬",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-馬",
+      "k-駅"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-187",
+    "radicalNumber": 187,
+    "meanings": [
+      "horse"
+    ],
+    "forms": [
+      "馬"
+    ]
+  },
+  {
+    "id": "c-r-189",
+    "char": "高",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-高"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-189",
+    "radicalNumber": 189,
+    "meanings": [
+      "tall",
+      "high",
+      "expensive"
+    ],
+    "forms": [
+      "高"
+    ]
+  },
+  {
+    "id": "c-r-195",
+    "char": "魚",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-魚"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-195",
+    "radicalNumber": 195,
+    "meanings": [
+      "fish"
+    ],
+    "forms": [
+      "魚"
+    ]
+  },
+  {
+    "id": "c-r-196",
+    "char": "鳥",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-鳥",
+      "k-鳴",
+      "k-島"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-196",
+    "radicalNumber": 196,
+    "meanings": [
+      "bird",
+      "chicken"
+    ],
+    "forms": [
+      "鳥"
+    ]
+  },
+  {
+    "id": "c-r-199",
+    "char": "麥",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-麦"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-199",
+    "radicalNumber": 199,
+    "meanings": [
+      "wheat"
+    ],
+    "forms": [
+      "麥"
+    ]
+  },
+  {
+    "id": "c-r-201",
+    "char": "黃",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-黄"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-201",
+    "radicalNumber": 201,
+    "meanings": [
+      "yellow",
+      "surname"
+    ],
+    "forms": [
+      "黃"
+    ]
+  },
+  {
+    "id": "c-r-203",
+    "char": "黑",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-黒"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-203",
+    "radicalNumber": 203,
+    "meanings": [
+      "black",
+      "dark",
+      "evil"
+    ],
+    "forms": [
+      "黑"
+    ]
+  },
+  {
+    "id": "c-r-209",
+    "char": "鼻",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-鼻"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-209",
+    "radicalNumber": 209,
+    "meanings": [
+      "nose",
+      "snout"
+    ],
+    "forms": [
+      "鼻"
+    ]
+  },
+  {
     "id": "c-r-9-v-u4ebb",
     "char": "亻",
     "kind": "radical-variant",
@@ -1505,7 +4123,28 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-花",
       "k-休",
       "k-会",
-      "k-今"
+      "k-今",
+      "k-体",
+      "k-作",
+      "k-何",
+      "k-夜",
+      "k-代",
+      "k-化",
+      "k-使",
+      "k-係",
+      "k-住",
+      "k-仕",
+      "k-他",
+      "k-宿",
+      "k-倍",
+      "k-荷",
+      "k-以",
+      "k-府",
+      "k-信",
+      "k-側",
+      "k-位",
+      "k-付",
+      "k-例"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-9",
@@ -1524,7 +4163,16 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "radical-variant",
     "kanjiIds": [
       "k-分",
-      "k-前"
+      "k-前",
+      "k-切",
+      "k-帰",
+      "k-列",
+      "k-初",
+      "k-利",
+      "k-別",
+      "k-側",
+      "k-副",
+      "k-例"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-18",
@@ -1540,10 +4188,66 @@ export const COMPONENTS: ComponentEntry[] = [
     ]
   },
   {
+    "id": "c-r-61-v-u38fa",
+    "char": "㣺",
+    "kind": "radical-variant",
+    "kanjiIds": [],
+    "source": "Kangxi radical variant metadata",
+    "radicalId": "r-61",
+    "radicalNumber": 61,
+    "meanings": [
+      "heart",
+      "mind",
+      "spirit"
+    ],
+    "canonicalComponentId": "c-r-61",
+    "forms": [
+      "㣺"
+    ]
+  },
+  {
+    "id": "c-r-61-v-u5fc4",
+    "char": "忄",
+    "kind": "radical-variant",
+    "kanjiIds": [
+      "k-思",
+      "k-心",
+      "k-意",
+      "k-感",
+      "k-急",
+      "k-想",
+      "k-悪",
+      "k-息",
+      "k-悲",
+      "k-必",
+      "k-念"
+    ],
+    "source": "Kangxi radical variant metadata",
+    "radicalId": "r-61",
+    "radicalNumber": 61,
+    "meanings": [
+      "heart",
+      "mind",
+      "spirit"
+    ],
+    "canonicalComponentId": "c-r-61",
+    "forms": [
+      "忄"
+    ]
+  },
+  {
     "id": "c-r-64-v-u624c",
     "char": "扌",
     "kind": "radical-variant",
-    "kanjiIds": [],
+    "kanjiIds": [
+      "k-才",
+      "k-持",
+      "k-指",
+      "k-投",
+      "k-打",
+      "k-拾",
+      "k-挙"
+    ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-64",
     "radicalNumber": 64,
@@ -1559,7 +4263,32 @@ export const COMPONENTS: ComponentEntry[] = [
     "id": "c-r-85-v-u6c35",
     "char": "氵",
     "kind": "radical-variant",
-    "kanjiIds": [],
+    "kanjiIds": [
+      "k-活",
+      "k-海",
+      "k-池",
+      "k-汽",
+      "k-決",
+      "k-流",
+      "k-消",
+      "k-落",
+      "k-深",
+      "k-港",
+      "k-注",
+      "k-油",
+      "k-波",
+      "k-洋",
+      "k-温",
+      "k-酒",
+      "k-泳",
+      "k-湖",
+      "k-湯",
+      "k-氷",
+      "k-漢",
+      "k-法",
+      "k-治",
+      "k-求"
+    ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-85",
     "radicalNumber": 85,
@@ -1575,7 +4304,17 @@ export const COMPONENTS: ComponentEntry[] = [
     "id": "c-r-86-v-u706c",
     "char": "灬",
     "kind": "radical-variant",
-    "kanjiIds": [],
+    "kanjiIds": [
+      "k-点",
+      "k-黒",
+      "k-馬",
+      "k-鳥",
+      "k-魚",
+      "k-鳴",
+      "k-駅",
+      "k-炭",
+      "k-無"
+    ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-86",
     "radicalNumber": 86,
@@ -1611,7 +4350,22 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-金",
       "k-王",
       "k-玉",
-      "k-国"
+      "k-国",
+      "k-理",
+      "k-業",
+      "k-全",
+      "k-主",
+      "k-住",
+      "k-球",
+      "k-着",
+      "k-美",
+      "k-様",
+      "k-注",
+      "k-洋",
+      "k-庭",
+      "k-柱",
+      "k-羊",
+      "k-議"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-96",
@@ -1648,7 +4402,11 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "礻",
     "kind": "radical-variant",
     "kanjiIds": [
-      "k-社"
+      "k-社",
+      "k-神",
+      "k-福",
+      "k-祭",
+      "k-礼"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-113",
@@ -1668,7 +4426,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "⺮",
     "kind": "radical-variant",
     "kanjiIds": [
-      "k-竹"
+      "k-竹",
+      "k-算",
+      "k-答",
+      "k-第",
+      "k-等",
+      "k-筆",
+      "k-箱",
+      "k-笛"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-118",
@@ -1685,7 +4450,20 @@ export const COMPONENTS: ComponentEntry[] = [
     "id": "c-r-120-v-u7cf9",
     "char": "糹",
     "kind": "radical-variant",
-    "kanjiIds": [],
+    "kanjiIds": [
+      "k-組",
+      "k-線",
+      "k-細",
+      "k-紙",
+      "k-絵",
+      "k-終",
+      "k-級",
+      "k-練",
+      "k-緑",
+      "k-約",
+      "k-続",
+      "k-結"
+    ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-120",
     "radicalNumber": 120,
@@ -1703,7 +4481,14 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "radical-variant",
     "kanjiIds": [
       "k-花",
-      "k-草"
+      "k-草",
+      "k-茶",
+      "k-葉",
+      "k-落",
+      "k-苦",
+      "k-薬",
+      "k-荷",
+      "k-漢"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-140",
@@ -1716,6 +4501,147 @@ export const COMPONENTS: ComponentEntry[] = [
     "canonicalComponentId": "c-r-140",
     "forms": [
       "艹"
+    ]
+  },
+  {
+    "id": "c-r-145-v-u8864",
+    "char": "衤",
+    "kind": "radical-variant",
+    "kanjiIds": [
+      "k-表",
+      "k-初"
+    ],
+    "source": "Kangxi radical variant metadata",
+    "radicalId": "r-145",
+    "radicalNumber": 145,
+    "meanings": [
+      "garment",
+      "clothes",
+      "dressing"
+    ],
+    "canonicalComponentId": "c-r-145",
+    "forms": [
+      "衤"
+    ]
+  },
+  {
+    "id": "c-r-149-v-u8a01",
+    "char": "訁",
+    "kind": "radical-variant",
+    "kanjiIds": [
+      "k-話",
+      "k-記",
+      "k-計",
+      "k-語",
+      "k-読",
+      "k-調",
+      "k-談",
+      "k-詩",
+      "k-議",
+      "k-説",
+      "k-試"
+    ],
+    "source": "Kangxi radical variant metadata",
+    "radicalId": "r-149",
+    "radicalNumber": 149,
+    "meanings": [
+      "say",
+      "word"
+    ],
+    "canonicalComponentId": "c-r-149",
+    "forms": [
+      "訁"
+    ]
+  },
+  {
+    "id": "c-r-162-v-u2ecc",
+    "char": "⻌",
+    "kind": "radical-variant",
+    "kanjiIds": [],
+    "source": "Kangxi radical variant metadata",
+    "radicalId": "r-162",
+    "radicalNumber": 162,
+    "meanings": [
+      "walk",
+      "walking",
+      "road radical (no. 162)"
+    ],
+    "canonicalComponentId": "c-r-162",
+    "forms": [
+      "⻌"
+    ]
+  },
+  {
+    "id": "c-r-162-v-u8fb6",
+    "char": "辶",
+    "kind": "radical-variant",
+    "kanjiIds": [
+      "k-通",
+      "k-近",
+      "k-道",
+      "k-週",
+      "k-遠",
+      "k-進",
+      "k-運",
+      "k-送",
+      "k-追",
+      "k-速",
+      "k-返",
+      "k-遊",
+      "k-連",
+      "k-選"
+    ],
+    "source": "Kangxi radical variant metadata",
+    "radicalId": "r-162",
+    "radicalNumber": 162,
+    "meanings": [
+      "walk",
+      "walking",
+      "road radical (no. 162)"
+    ],
+    "canonicalComponentId": "c-r-162",
+    "forms": [
+      "辶"
+    ]
+  },
+  {
+    "id": "c-r-163-v-u961d",
+    "char": "阝",
+    "kind": "radical-variant",
+    "kanjiIds": [],
+    "source": "Kangxi radical variant metadata",
+    "radicalId": "r-163",
+    "radicalNumber": 163,
+    "meanings": [
+      "village",
+      "rural community",
+      "right village radical (no. 163)"
+    ],
+    "canonicalComponentId": "c-r-163",
+    "forms": [
+      "阝"
+    ]
+  },
+  {
+    "id": "c-r-170-v-u961d",
+    "char": "阝",
+    "kind": "radical-variant",
+    "kanjiIds": [
+      "k-院",
+      "k-階",
+      "k-陽"
+    ],
+    "source": "Kangxi radical variant metadata",
+    "radicalId": "r-170",
+    "radicalNumber": 170,
+    "meanings": [
+      "hill",
+      "mound",
+      "left village radical (no. 170)"
+    ],
+    "canonicalComponentId": "c-r-170",
+    "forms": [
+      "阝"
     ]
   }
 ];

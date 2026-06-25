@@ -131,6 +131,14 @@ SMALL_YOON = {
     "\u3087": "yo",
 }
 
+SMALL_VOWELS = {
+    "\u3041": "a",
+    "\u3043": "i",
+    "\u3045": "u",
+    "\u3047": "e",
+    "\u3049": "o",
+}
+
 HEPBURN_BASE = {
     "\u3042": "a",
     "\u3044": "i",
@@ -205,6 +213,7 @@ HEPBURN_BASE = {
     "\u3077": "pu",
     "\u307a": "pe",
     "\u307d": "po",
+    "\u3094": "vu",
     "\u3041": "a",
     "\u3043": "i",
     "\u3045": "u",
@@ -220,12 +229,50 @@ HEPBURN_YOON_STEMS = {
     "\u3058": "j",
     "\u3061": "ch",
     "\u3062": "j",
+    "\u3067": "dy",
     "\u306b": "ny",
     "\u3072": "hy",
+    "\u3075": "fy",
     "\u3073": "by",
     "\u3074": "py",
     "\u307f": "my",
     "\u308a": "ry",
+}
+
+HEPBURN_FOREIGN_STEMS = {
+    "\u3046": "",
+    "\u3094": "v",
+    "\u304f": "kw",
+    "\u3050": "gw",
+    "\u3057": "sh",
+    "\u3058": "j",
+    "\u3061": "ch",
+    "\u3064": "ts",
+    "\u3066": "t",
+    "\u3067": "d",
+    "\u3068": "t",
+    "\u3069": "d",
+    "\u3075": "f",
+}
+
+ROMAJI_PUNCTUATION = {
+    "\u3001": ",",
+    "\u3002": ".",
+    "\u30fb": "-",
+    "\uff0c": ",",
+    "\uff0e": ".",
+    "\uff1a": ":",
+    "\uff1b": ";",
+    "\uff01": "!",
+    "\uff1f": "?",
+    "\u301c": "-",
+    "\uff5e": "-",
+    "\u300c": "",
+    "\u300d": "",
+    "\u300e": "",
+    "\u300f": "",
+    "\uff08": "(",
+    "\uff09": ")",
 }
 
 FORBIDDEN_VISIBLE_COMPONENTS = {
@@ -293,6 +340,10 @@ def romanize_kana_morae(value: str) -> list[str]:
 
     while index < len(kana):
         char = kana[index]
+        if char in ROMAJI_PUNCTUATION:
+            morae.append(ROMAJI_PUNCTUATION[char])
+            index += 1
+            continue
         if char == "\u3063":
             geminate = True
             index += 1
@@ -305,6 +356,9 @@ def romanize_kana_morae(value: str) -> list[str]:
         next_char = kana[index + 1] if index + 1 < len(kana) else ""
         if next_char in SMALL_YOON and char in HEPBURN_YOON_STEMS:
             romaji = HEPBURN_YOON_STEMS[char] + SMALL_YOON[next_char][1:]
+            index += 2
+        elif next_char in SMALL_VOWELS and char in HEPBURN_FOREIGN_STEMS:
+            romaji = HEPBURN_FOREIGN_STEMS[char] + SMALL_VOWELS[next_char]
             index += 2
         else:
             romaji = HEPBURN_BASE.get(char, char)
@@ -406,24 +460,71 @@ def parse_kanjidic2() -> dict[str, dict]:
     return entries
 
 
-def priority_score(entry: ET.Element) -> tuple[int, int]:
+def priority_score(entry: ET.Element) -> tuple[int, int, int]:
     priorities: list[str] = []
     for path in ("k_ele/ke_pri", "r_ele/re_pri"):
         priorities.extend(node.text or "" for node in entry.findall(path))
 
-    score = 100
+    bucket = 3
+    nf_rank = 999
     for pri in priorities:
         if pri in {"news1", "ichi1", "spec1", "gai1"}:
-            score = min(score, 0)
+            bucket = min(bucket, 0)
         elif pri in {"news2", "ichi2", "spec2", "gai2"}:
-            score = min(score, 1)
+            bucket = min(bucket, 1)
         elif pri.startswith("nf"):
             try:
-                score = min(score, 2 + int(pri[2:]))
+                bucket = min(bucket, 2)
+                nf_rank = min(nf_rank, int(pri[2:]))
             except ValueError:
-                score = min(score, 50)
+                bucket = min(bucket, 2)
 
-    return score, len(priorities)
+    return bucket, nf_rank, len(priorities)
+
+
+def jmdict_readings_for_entry(entry: ET.Element, japanese: str) -> list[str]:
+    readings: list[str] = []
+    for reading_elem in entry.findall("r_ele"):
+        reading = reading_elem.findtext("reb")
+        if not reading:
+            continue
+        restrictions = [node.text for node in reading_elem.findall("re_restr") if node.text]
+        if restrictions and japanese not in restrictions:
+            continue
+        readings.append(reading)
+    return readings
+
+
+def jmdict_texts(entry: ET.Element, paths: tuple[str, ...]) -> list[str]:
+    return [node.text or "" for path in paths for node in entry.findall(path) if node.text]
+
+
+def weirdness_penalty(entry: ET.Element, japanese: str, readings: list[str]) -> int:
+    texts = " ".join(jmdict_texts(entry, ("sense/misc", "sense/pos", "sense/field"))).lower()
+    penalty = 0
+    if re.fullmatch(r"[0-9０-９〇零一二三四五六七八九十百千万億兆]+", japanese):
+        penalty += 10
+    if not readings:
+        penalty += 6
+    for marker, value in (
+        ("archaic", 8),
+        ("archaism", 8),
+        ("obsolete", 8),
+        ("obscure", 7),
+        ("rare", 6),
+        ("numeric", 5),
+        ("surname", 6),
+        ("given name", 6),
+        ("person's name", 6),
+        ("place name", 6),
+        ("company name", 6),
+        ("organization name", 6),
+        ("product name", 6),
+        ("work of art", 5),
+    ):
+        if marker in texts:
+            penalty += value
+    return penalty
 
 
 def parse_jmdict_words(target_literals: set[str]) -> dict[str, list[dict]]:
@@ -445,21 +546,20 @@ def parse_jmdict_words(target_literals: set[str]) -> dict[str, list[dict]]:
                 elem.clear()
                 continue
 
-            readings = [node.text for node in elem.findall("r_ele/reb") if node.text]
             glosses = [node.text for node in elem.findall("sense/gloss") if node.text]
             if not glosses:
                 elem.clear()
                 continue
 
-            score, priority_count = priority_score(elem)
-            common = score < 12
+            priority_bucket, nf_rank, priority_count = priority_score(elem)
+            common = priority_count > 0
             meaning = "; ".join(glosses[:2])
 
             for literal in matched_literals:
                 japanese = next((keb for keb in kebs if literal in keb), kebs[0])
-                if len(japanese) > 6:
-                    continue
+                readings = jmdict_readings_for_entry(elem, japanese)
                 furigana = next((reading for reading in readings if kana_re.match(reading)), readings[0] if readings else "")
+                has_reading = bool(furigana)
                 words_by_literal[literal].append({
                     "id": f"w-{japanese}",
                     "japanese": japanese,
@@ -467,8 +567,11 @@ def parse_jmdict_words(target_literals: set[str]) -> dict[str, list[dict]]:
                     "romaji": kana_to_hepburn(furigana),
                     "meaning": meaning,
                     "common": common,
-                    "_score": score,
+                    "_priorityBucket": priority_bucket,
+                    "_nfRank": nf_rank,
                     "_priorityCount": priority_count,
+                    "_hasReading": has_reading,
+                    "_weirdnessPenalty": weirdness_penalty(elem, japanese, readings),
                 })
 
             elem.clear()
@@ -476,15 +579,29 @@ def parse_jmdict_words(target_literals: set[str]) -> dict[str, list[dict]]:
     for literal, words in words_by_literal.items():
         seen = set()
         unique = []
-        for word in sorted(words, key=lambda w: (w["_score"], len(w["japanese"]), -w["_priorityCount"], w["japanese"])):
+        for word in sorted(
+            words,
+            key=lambda w: (
+                w["_priorityBucket"],
+                w["_nfRank"],
+                not w["common"],
+                len(w["japanese"]),
+                not w["_hasReading"],
+                w["_weirdnessPenalty"],
+                -w["_priorityCount"],
+                w["japanese"],
+                w["furigana"],
+            ),
+        ):
             if word["japanese"] in seen:
                 continue
             seen.add(word["japanese"])
-            word.pop("_score", None)
+            word.pop("_priorityBucket", None)
+            word.pop("_nfRank", None)
             word.pop("_priorityCount", None)
+            word.pop("_hasReading", None)
+            word.pop("_weirdnessPenalty", None)
             unique.append(word)
-            if len(unique) == 3:
-                break
         words_by_literal[literal] = unique
 
     return words_by_literal
@@ -507,14 +624,27 @@ def parse_kradfile() -> dict[str, list[str]]:
 
 
 def pick_milestone_kanji(entries: dict[str, dict], count: int = 100) -> list[dict]:
-    grade_one = [entry for entry in entries.values() if entry["grade"] == 1]
-    grade_two = [entry for entry in entries.values() if entry["grade"] == 2]
+    def sort_key(entry: dict) -> tuple[bool, int, str]:
+        return (entry["frequency"] is None, entry["frequency"] or 99999, entry["literal"])
 
-    grade_one.sort(key=lambda e: (e["frequency"] is None, e["frequency"] or 99999, e["literal"]))
-    grade_two.sort(key=lambda e: (e["frequency"] is None, e["frequency"] or 99999, e["literal"]))
+    selected: list[dict] = []
+    seen_literals: set[str] = set()
 
-    selected = grade_one + grade_two[: max(0, count - len(grade_one))]
-    return selected[:count]
+    for grade in (1, 2, 3, 4, 5, 6, 8, 9, 10):
+        grade_entries = [entry for entry in entries.values() if entry["grade"] == grade]
+        grade_entries.sort(key=sort_key)
+        for entry in grade_entries:
+            if entry["literal"] in seen_literals:
+                continue
+            selected.append(entry)
+            seen_literals.add(entry["literal"])
+            if len(selected) >= count:
+                return selected
+
+    remaining = [entry for entry in entries.values() if entry["literal"] not in seen_literals]
+    remaining.sort(key=sort_key)
+    selected.extend(remaining[: max(0, count - len(selected))])
+    return selected
 
 
 def unique_values(values: list[str]) -> list[str]:
@@ -1013,7 +1143,7 @@ def main() -> None:
     download_if_missing(KRADFILE_URL, KRADFILE_GZ)
 
     all_entries = parse_kanjidic2()
-    selected_kanji = pick_milestone_kanji(all_entries, 100)
+    selected_kanji = pick_milestone_kanji(all_entries, 500)
     target_literals = {entry["literal"] for entry in selected_kanji}
     existing_learning_categories = read_existing_learning_categories()
     words_by_literal = parse_jmdict_words(target_literals)

@@ -10,7 +10,7 @@ export interface WordEntry {
 }
 
 const kanjiById = new Map(KANJI.map((kanji) => [kanji.id, kanji]));
-const wordsByKanjiId = new Map<string, Word[]>();
+const wordById = new Map(WORDS.map((entry) => [entry.id, entry.word]));
 
 function resolveWordEntry(entry: GeneratedWordEntry): WordEntry {
   const kanji = entry.kanjiIds
@@ -22,14 +22,6 @@ function resolveWordEntry(entry: GeneratedWordEntry): WordEntry {
 
 export const WORD_ENTRIES = WORDS.map(resolveWordEntry);
 
-for (const entry of WORDS) {
-  for (const kanjiId of entry.kanjiIds) {
-    const words = wordsByKanjiId.get(kanjiId) ?? [];
-    words.push(entry.word);
-    wordsByKanjiId.set(kanjiId, words);
-  }
-}
-
 export function getWordEntries(): WordEntry[] {
   return WORD_ENTRIES;
 }
@@ -39,7 +31,10 @@ export function findWordEntry(id: string): WordEntry | undefined {
 }
 
 export function getWordsForKanji(kanjiId: string): Word[] {
-  return wordsByKanjiId.get(kanjiId) ?? [];
+  const kanji = kanjiById.get(kanjiId);
+  return (kanji?.wordIds ?? [])
+    .map((wordId) => wordById.get(wordId))
+    .filter((value): value is Word => Boolean(value));
 }
 
 export function getWordEntryColors(entry: WordEntry): [string, string] {

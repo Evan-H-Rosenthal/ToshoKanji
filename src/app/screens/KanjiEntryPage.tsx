@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
-import { ChevronLeft, Info, Pencil, Star } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { Check, ChevronLeft, Info, Pencil, Search, Star, Tags, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
-import { getLearningCategoryColors, getLearningCategoryLabel, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
+import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
 import {
@@ -32,21 +32,61 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const [nameVal, setNameVal] = useState(customNames[key] || k.meanings[0]);
   const [showAllKunyomi, setShowAllKunyomi] = useState(false);
   const [showRawComponents, setShowRawComponents] = useState(false);
+  const [wordQuery, setWordQuery] = useState("");
+  const [categoryPickerOpen, setCategoryPickerOpen] = useState(false);
+  const [currentLearningCategory, setCurrentLearningCategory] = useState(k.learningCategory);
+  const [savingCategory, setSavingCategory] = useState<string | null>(null);
+  const [categorySaveError, setCategorySaveError] = useState("");
   const nameRef = useRef<HTMLInputElement>(null);
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
+  useEffect(() => {
+    setCurrentLearningCategory(k.learningCategory);
+    setCategoryPickerOpen(false);
+    setSavingCategory(null);
+    setCategorySaveError("");
+  }, [k.id, k.learningCategory]);
   const saveName = () => { onSetName(key, nameVal || k.meanings[0]); setEditingName(false); };
+  const canCategorize = import.meta.env.DEV;
+  const saveLearningCategory = async (learningCategory: string) => {
+    if (learningCategory === currentLearningCategory || savingCategory) return;
+    setSavingCategory(learningCategory);
+    setCategorySaveError("");
+    try {
+      const response = await fetch("/__tosho-kanji/category", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kanjiId: k.id, learningCategory }),
+      });
+      if (!response.ok) throw new Error(`Save failed (${response.status})`);
+      setCurrentLearningCategory(learningCategory);
+      setCategoryPickerOpen(false);
+    } catch (error) {
+      setCategorySaveError(error instanceof Error ? error.message : "Save failed");
+    } finally {
+      setSavingCategory(null);
+    }
+  };
   const isFav = favorites.has(key);
-  const [cat1, cat2] = getLearningCategoryColors(k.learningCategory);
-  const learningCategoryLabel = getLearningCategoryLabel(k.learningCategory);
+  const [cat1, cat2] = getLearningCategoryColors(currentLearningCategory);
+  const learningCategoryLabel = getLearningCategoryLabel(currentLearningCategory);
   const heroTextColor = getReadableTextColor(cat1, cat2);
   const visibleKunyomi = showAllKunyomi ? k.kunyomi : k.kunyomi.slice(0, 3);
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
   const words = getWordsForKanji(k.id);
+  const normalizedWordQuery = wordQuery.trim().toLowerCase();
+  const filteredWords = normalizedWordQuery
+    ? words.filter((word) => (
+      word.japanese.includes(normalizedWordQuery)
+      || word.furigana.includes(normalizedWordQuery)
+      || word.romaji.toLowerCase().includes(normalizedWordQuery)
+      || word.meaning.toLowerCase().includes(normalizedWordQuery)
+    ))
+    : words;
   const learnerParts = k.learnerParts ?? [];
   const rawParts = k.rawDecomposition?.parts ?? [];
 
   return (
-    <div className="flex flex-col h-full overflow-y-auto">
+    <div className="flex flex-col h-full overflow-y-auto" style={{ position:"relative" }}>
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
         <div className="flex flex-col items-start gap-1">
@@ -80,6 +120,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
 
       {/* Hero kanji */}
       <div className="flex flex-col items-center pb-4 pt-2 px-4 shrink-0">
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:12, width:"100%" }}>
         <div style={{
           width:140, height:140, borderRadius:28, display:"flex", alignItems:"center", justifyContent:"center",
           background:`linear-gradient(135deg, ${cat1}, ${cat2})`,
@@ -87,6 +128,30 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
           marginBottom:12,
         }}>
           <span style={{ fontFamily:"var(--jp-font)", fontSize:80, fontWeight:700, color:heroTextColor, lineHeight:1 }}>{k.char}</span>
+        </div>
+        {canCategorize && (
+          <button
+            type="button"
+            onClick={() => setCategoryPickerOpen(true)}
+            aria-label="Categorize kanji"
+            style={{
+              width:44,
+              height:44,
+              marginBottom:12,
+              borderRadius:14,
+              border:"1px solid var(--border)",
+              background:"var(--card)",
+              color:"var(--foreground)",
+              display:"flex",
+              alignItems:"center",
+              justifyContent:"center",
+              boxShadow:"0 8px 20px rgba(0,0,0,0.12)",
+              cursor:"pointer",
+            }}
+          >
+            <Tags size={19} />
+          </button>
+        )}
         </div>
 
         {/* Name / edit */}
@@ -120,6 +185,133 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
           {learningCategoryLabel}
         </span>
       </div>
+
+      <AnimatePresence>
+        {categoryPickerOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position:"absolute",
+              inset:0,
+              zIndex:50,
+              background:"rgba(5,4,17,0.48)",
+              backdropFilter:"blur(5px)",
+              display:"flex",
+              alignItems:"center",
+              justifyContent:"center",
+              padding:18,
+            }}
+            onClick={() => setCategoryPickerOpen(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.88, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 8 }}
+              transition={{ type:"spring", stiffness:430, damping:28 }}
+              onClick={(event) => event.stopPropagation()}
+              style={{
+                width:"100%",
+                maxWidth:300,
+                maxHeight:"min(560px, calc(100% - 24px))",
+                borderRadius:22,
+                background:"linear-gradient(180deg, var(--card), color-mix(in srgb, var(--card) 88%, var(--primary)))",
+                border:"1px solid var(--border)",
+                boxShadow:"0 24px 60px rgba(0,0,0,0.42)",
+                padding:16,
+                position:"relative",
+                overflow:"hidden",
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setCategoryPickerOpen(false)}
+                aria-label="Close categorizer"
+                style={{
+                  position:"absolute",
+                  top:12,
+                  right:12,
+                  width:28,
+                  height:28,
+                  borderRadius:10,
+                  border:"1px solid var(--border)",
+                  background:"var(--muted)",
+                  color:"var(--foreground)",
+                  display:"flex",
+                  alignItems:"center",
+                  justifyContent:"center",
+                  cursor:"pointer",
+                }}
+              >
+                <X size={16} />
+              </button>
+
+              <p style={{ fontFamily:"var(--ui-font)", fontSize:19, fontWeight:1000, marginBottom:4 }} className="text-foreground">
+                Categorize
+              </p>
+              <p style={{ fontFamily:"var(--jp-font)", fontSize:30, fontWeight:900, marginBottom:12, lineHeight:1 }} className="text-foreground">
+                {k.char}
+              </p>
+
+              <div style={{ display:"flex", flexDirection:"column", gap:8, maxHeight:420, overflowY:"auto", paddingRight:4 }}>
+                {LEARNING_CATEGORIES.map((category) => {
+                  const [color1, color2] = category.colors;
+                  const selected = currentLearningCategory === category.id;
+                  const saving = savingCategory === category.id;
+                  const textColor = getReadableTextColor(color1, color2);
+                  return (
+                    <button
+                      key={category.id}
+                      type="button"
+                      onClick={() => saveLearningCategory(category.id)}
+                      disabled={Boolean(savingCategory)}
+                      style={{
+                        minHeight:42,
+                        borderRadius:14,
+                        border:selected ? `2px solid ${color1}` : "1px solid var(--border)",
+                        background:selected ? `linear-gradient(135deg, ${color1}, ${color2})` : "var(--muted)",
+                        color:selected ? textColor : "var(--foreground)",
+                        display:"flex",
+                        alignItems:"center",
+                        justifyContent:"space-between",
+                        gap:10,
+                        padding:"8px 10px",
+                        cursor:savingCategory ? "default" : "pointer",
+                        opacity:savingCategory && !saving ? 0.62 : 1,
+                      }}
+                    >
+                      <span style={{ display:"flex", alignItems:"center", gap:9, minWidth:0 }}>
+                        <span
+                          aria-hidden
+                          style={{
+                            width:16,
+                            height:16,
+                            borderRadius:999,
+                            background:`linear-gradient(135deg, ${color1}, ${color2})`,
+                            border:"1px solid rgba(255,255,255,0.48)",
+                            flex:"0 0 auto",
+                          }}
+                        />
+                        <span style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:900, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>
+                          {category.label}
+                        </span>
+                      </span>
+                      {(selected || saving) && <Check size={15} />}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {categorySaveError && (
+                <p style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, marginTop:10, color:"#ef4444" }}>
+                  {categorySaveError}
+                </p>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Content sections */}
       <div className="flex flex-col gap-4 px-4 pb-8">
@@ -282,14 +474,59 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
 
         {/* Words */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Example Words</p>
-          <div className="flex flex-col gap-2">
-            {words.map((w,i) => (
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Words using this Kanji</p>
+          <div
+            style={{
+              position:"relative",
+              marginBottom:10,
+            }}
+          >
+            <Search
+              size={15}
+              className="text-muted-foreground"
+              style={{
+                position:"absolute",
+                left:10,
+                top:"50%",
+                transform:"translateY(-50%)",
+                pointerEvents:"none",
+              }}
+            />
+            <input
+              value={wordQuery}
+              onChange={(event) => setWordQuery(event.target.value)}
+              placeholder="Search words"
+              aria-label="Search words using this Kanji"
+              style={{
+                width:"100%",
+                height:34,
+                padding:"7px 10px 7px 32px",
+                borderRadius:10,
+                background:"var(--input-background)",
+                border:"1px solid var(--border)",
+                color:"var(--foreground)",
+                fontFamily:"var(--ui-font)",
+                fontSize:13,
+                fontWeight:700,
+                outline:"none",
+              }}
+            />
+          </div>
+          <div
+            className="flex flex-col gap-2"
+            style={{
+              maxHeight:282,
+              overflowY:"auto",
+              paddingRight:4,
+            }}
+          >
+            {filteredWords.map((w,i) => (
               <button
                 key={w.id || `${w.japanese}-${i}`}
                 onClick={() => onNavWord(w.id || `w-${w.japanese}`)}
                 style={{
                   width:"100%",
+                  minHeight:86,
                   padding:"9px 11px",
                   borderRadius:12,
                   background:"var(--muted)",
@@ -306,6 +543,25 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                 <div style={{ fontFamily:"var(--ui-font)", fontSize:13, fontWeight:600, marginTop:2 }} className="text-foreground">{w.meaning}</div>
               </button>
             ))}
+            {filteredWords.length === 0 && (
+              <div
+                style={{
+                  minHeight:86,
+                  display:"flex",
+                  alignItems:"center",
+                  justifyContent:"center",
+                  borderRadius:12,
+                  background:"var(--muted)",
+                  border:"1px solid var(--border)",
+                  color:"var(--muted-foreground)",
+                  fontFamily:"var(--ui-font)",
+                  fontSize:13,
+                  fontWeight:800,
+                }}
+              >
+                No matching words
+              </div>
+            )}
           </div>
         </div>
 
