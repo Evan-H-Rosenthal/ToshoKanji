@@ -13,6 +13,7 @@ GENERATED_DIR = ROOT / "src" / "app" / "data" / "generated"
 REPORT_FILE = ROOT / "reports" / "data-validation.md"
 
 ROMAJI_PLACEHOLDER = "Romaji Placeholder"
+ROMAJI_RE = re.compile(r"^[a-zA-Z0-9 '\-.,()/]+$")
 
 FORBIDDEN_VISIBLE_COMPONENTS = {
     "\u4e36",
@@ -232,8 +233,11 @@ def main() -> int:
         word_id = word["id"]
         word_payload = word.get("word", {})
         japanese = word_payload.get("japanese", "")
-        if word_payload.get("romaji") != ROMAJI_PLACEHOLDER:
-            errors.append(f"{word_id} uses non-placeholder romaji `{word_payload.get('romaji')}`")
+        romaji = word_payload.get("romaji", "")
+        if not romaji or romaji == ROMAJI_PLACEHOLDER:
+            errors.append(f"{word_id} is missing generated romaji")
+        elif not ROMAJI_RE.match(romaji):
+            errors.append(f"{word_id} has invalid romaji `{romaji}`")
         if not word_id.startswith("w-") or any(ch.isspace() for ch in word_id):
             suspicious_word_ids.append(f"`{word_id}`")
         for kanji_id in word.get("kanjiIds") or []:

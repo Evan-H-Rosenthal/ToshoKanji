@@ -1,14 +1,20 @@
 import { ChevronLeft, Lock, Star } from "lucide-react";
+import { ChatSection } from "../components/ChatSection";
 import { CAT_COLORS } from "../data/ui/categoryColors";
 import { findWordEntry, getWordEntryColors } from "../data/wordData";
+import type { ChatMsg } from "../types";
 
-export function WordEntryPage({ id, unlockedKanji, favorites, onBack, onBackToGacha, onToggleFav, onNavKanji }: {
+export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetNote, onChat, onNavKanji }: {
   id: string;
   unlockedKanji: Set<string>;
   favorites: Set<string>;
+  notes: Record<string, string>;
+  chatMsgs: Record<string, ChatMsg[]>;
   onBack: () => void;
   onBackToGacha?: () => void;
   onToggleFav: (key: string) => void;
+  onSetNote: (key: string, value: string) => void;
+  onChat: (key: string, question: string, answer: string) => void;
   onNavKanji: (id: string) => void;
 }) {
   const entry = findWordEntry(id);
@@ -138,6 +144,33 @@ export function WordEntryPage({ id, unlockedKanji, favorites, onBack, onBackToGa
               );
             })}
           </div>
+        </div>
+
+        <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">My Notes</p>
+          <textarea
+            value={notes[key] || ""}
+            onChange={(event) => onSetNote(key, event.target.value)}
+            placeholder="Add your personal notes, usage examples, or reminders..."
+            rows={3}
+            style={{
+              width:"100%",
+              background:"var(--input-background)",
+              borderRadius:10,
+              border:"1px solid var(--border)",
+              padding:"8px 10px",
+              fontFamily:"var(--ui-font)",
+              fontSize:13,
+              color:"var(--foreground)",
+              outline:"none",
+              resize:"none",
+              lineHeight:1.5,
+            }}
+          />
+        </div>
+
+        <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+          <ChatSection entryKey={key} msgs={chatMsgs[key] || []} onSend={onChat} contextLabel="word" />
         </div>
       </div>
     </div>

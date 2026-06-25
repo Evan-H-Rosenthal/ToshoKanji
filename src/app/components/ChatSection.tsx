@@ -5,8 +5,8 @@ import { QUICK_PROMPTS } from "../data/ui/aiPrompts";
 import { getAIReply } from "../data/ui/mockAiReplies";
 import type { ChatMsg } from "../types";
 
-export function ChatSection({ entryKey, msgs, onSend }: {
-  entryKey: string; msgs: ChatMsg[]; onSend: (key:string, text:string, reply:string) => void;
+export function ChatSection({ entryKey, msgs, onSend, contextLabel = "kanji" }: {
+  entryKey: string; msgs: ChatMsg[]; onSend: (key:string, text:string, reply:string) => void; contextLabel?: string;
 }) {
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
@@ -73,7 +73,7 @@ export function ChatSection({ entryKey, msgs, onSend }: {
       <div className="flex gap-2 items-center">
         <input value={input} onChange={e=>setInput(e.target.value)}
           onKeyDown={e=>e.key==="Enter" && send(input)}
-          placeholder="Ask anything about this kanji..."
+          placeholder={`Ask anything about this ${contextLabel}...`}
           disabled={thinking}
           style={{
             flex:1, background:"var(--input-background)", borderRadius:12,

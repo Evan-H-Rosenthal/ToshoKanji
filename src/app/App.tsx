@@ -347,7 +347,9 @@ export default function App() {
           )}
           {screen.type === "word-entry" && screen.id && (
             <WordEntryPage id={screen.id} unlockedKanji={unlockedKanji}
-              favorites={favorites} onBack={popScreen} onToggleFav={handleToggleFav}
+              favorites={favorites} notes={notes} chatMsgs={chatMsgs}
+              onBack={popScreen} onToggleFav={handleToggleFav}
+              onSetNote={handleSetNote} onChat={handleChat}
               onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
               onNavKanji={handleNavKanji} />
           )}

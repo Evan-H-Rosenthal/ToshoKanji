@@ -121,7 +121,108 @@ KRAD_COMPONENT_ALIASES = {
     "阡": "阝",
 }
 
-ROMAJI_PLACEHOLDER = "Romaji Placeholder"
+SMALL_YOON = {
+    "\u3083": "ya",
+    "\u3085": "yu",
+    "\u3087": "yo",
+}
+
+HEPBURN_BASE = {
+    "\u3042": "a",
+    "\u3044": "i",
+    "\u3046": "u",
+    "\u3048": "e",
+    "\u304a": "o",
+    "\u304b": "ka",
+    "\u304d": "ki",
+    "\u304f": "ku",
+    "\u3051": "ke",
+    "\u3053": "ko",
+    "\u3055": "sa",
+    "\u3057": "shi",
+    "\u3059": "su",
+    "\u305b": "se",
+    "\u305d": "so",
+    "\u305f": "ta",
+    "\u3061": "chi",
+    "\u3064": "tsu",
+    "\u3066": "te",
+    "\u3068": "to",
+    "\u306a": "na",
+    "\u306b": "ni",
+    "\u306c": "nu",
+    "\u306d": "ne",
+    "\u306e": "no",
+    "\u306f": "ha",
+    "\u3072": "hi",
+    "\u3075": "fu",
+    "\u3078": "he",
+    "\u307b": "ho",
+    "\u307e": "ma",
+    "\u307f": "mi",
+    "\u3080": "mu",
+    "\u3081": "me",
+    "\u3082": "mo",
+    "\u3084": "ya",
+    "\u3086": "yu",
+    "\u3088": "yo",
+    "\u3089": "ra",
+    "\u308a": "ri",
+    "\u308b": "ru",
+    "\u308c": "re",
+    "\u308d": "ro",
+    "\u308f": "wa",
+    "\u3090": "wi",
+    "\u3091": "we",
+    "\u3092": "o",
+    "\u3093": "n",
+    "\u304c": "ga",
+    "\u304e": "gi",
+    "\u3050": "gu",
+    "\u3052": "ge",
+    "\u3054": "go",
+    "\u3056": "za",
+    "\u3058": "ji",
+    "\u305a": "zu",
+    "\u305c": "ze",
+    "\u305e": "zo",
+    "\u3060": "da",
+    "\u3062": "ji",
+    "\u3065": "zu",
+    "\u3067": "de",
+    "\u3069": "do",
+    "\u3070": "ba",
+    "\u3073": "bi",
+    "\u3076": "bu",
+    "\u3079": "be",
+    "\u307c": "bo",
+    "\u3071": "pa",
+    "\u3074": "pi",
+    "\u3077": "pu",
+    "\u307a": "pe",
+    "\u307d": "po",
+    "\u3041": "a",
+    "\u3043": "i",
+    "\u3045": "u",
+    "\u3047": "e",
+    "\u3049": "o",
+    "\u308e": "wa",
+}
+
+HEPBURN_YOON_STEMS = {
+    "\u304d": "ky",
+    "\u304e": "gy",
+    "\u3057": "sh",
+    "\u3058": "j",
+    "\u3061": "ch",
+    "\u3062": "j",
+    "\u306b": "ny",
+    "\u3072": "hy",
+    "\u3073": "by",
+    "\u3074": "py",
+    "\u307f": "my",
+    "\u308a": "ry",
+}
 
 FORBIDDEN_VISIBLE_COMPONENTS = {
     "\u4e36",
@@ -160,6 +261,78 @@ def int_text(node: ET.Element | None) -> int | None:
         return int(node.text)
     except ValueError:
         return None
+
+
+def katakana_to_hiragana(value: str) -> str:
+    chars = []
+    for char in value:
+        codepoint = ord(char)
+        if 0x30A1 <= codepoint <= 0x30F6:
+            chars.append(chr(codepoint - 0x60))
+        else:
+            chars.append(char)
+    return "".join(chars)
+
+
+def previous_vowel(value: str) -> str:
+    for char in reversed(value):
+        if char in "aeiou":
+            return char
+    return ""
+
+
+def romanize_kana_morae(value: str) -> list[str]:
+    kana = katakana_to_hiragana(value)
+    morae: list[str] = []
+    geminate = False
+    index = 0
+
+    while index < len(kana):
+        char = kana[index]
+        if char == "\u3063":
+            geminate = True
+            index += 1
+            continue
+        if char == "\u30fc":
+            morae.append(previous_vowel("".join(morae)))
+            index += 1
+            continue
+
+        next_char = kana[index + 1] if index + 1 < len(kana) else ""
+        if next_char in SMALL_YOON and char in HEPBURN_YOON_STEMS:
+            romaji = HEPBURN_YOON_STEMS[char] + SMALL_YOON[next_char][1:]
+            index += 2
+        else:
+            romaji = HEPBURN_BASE.get(char, char)
+            index += 1
+
+        if geminate and romaji:
+            romaji = ("t" if romaji.startswith("ch") else romaji[0]) + romaji
+            geminate = False
+
+        morae.append(romaji)
+
+    if geminate:
+        morae.append("tsu")
+
+    return morae
+
+
+def kana_to_hepburn(value: str) -> str:
+    morae = romanize_kana_morae(value)
+    adjusted: list[str] = []
+    for index, mora in enumerate(morae):
+        if mora == "n":
+            next_mora = morae[index + 1] if index + 1 < len(morae) else ""
+            if next_mora.startswith(("b", "m", "p")):
+                adjusted.append("m")
+            elif next_mora.startswith(("a", "e", "i", "o", "u", "y")):
+                adjusted.append("n'")
+            else:
+                adjusted.append("n")
+        else:
+            adjusted.append(mora)
+    return "".join(adjusted)
 
 
 def parse_kanjidic2() -> dict[str, dict]:
@@ -287,7 +460,7 @@ def parse_jmdict_words(target_literals: set[str]) -> dict[str, list[dict]]:
                     "id": f"w-{japanese}",
                     "japanese": japanese,
                     "furigana": furigana,
-                    "romaji": ROMAJI_PLACEHOLDER,
+                    "romaji": kana_to_hepburn(furigana),
                     "meaning": meaning,
                     "common": common,
                     "_score": score,

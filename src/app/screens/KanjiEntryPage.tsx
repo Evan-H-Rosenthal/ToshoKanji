@@ -170,7 +170,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                     <DialogHeader>
                       <DialogTitle>About component decompositions</DialogTitle>
                       <DialogDescription style={{ fontFamily:"var(--ui-font)", lineHeight:1.55 }}>
-                        The components shown here come from established dictionary datasets (such as KRADFILE) after light normalization to display modern component forms. These decompositions are useful for indexing and structural analysis, but they are not always the same decompositions used by teachers or language-learning resources. If a decomposition seems surprising, use the AI tutor and your notes to develop a mental model that works for you.
+                        The components shown here come from a verified dataset (KRADFILE). However, these components might not be the ones that are the most useful for learning. I encourage you to use the notes section, as well as other methods such as speaking with a teacher, native speaker, or an AI to build your own understanding of this Kanji.
                       </DialogDescription>
                     </DialogHeader>
                   </DialogContent>

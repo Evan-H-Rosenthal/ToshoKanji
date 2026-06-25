@@ -10,7 +10,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-お金",
       "japanese": "お金",
       "furigana": "おかね",
-      "romaji": "Romaji Placeholder",
+      "romaji": "okane",
       "meaning": "money",
       "common": true
     },
@@ -24,7 +24,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-一",
       "japanese": "一",
       "furigana": "いち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ichi",
       "meaning": "one; 1",
       "common": true
     },
@@ -38,7 +38,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-一〇",
       "japanese": "一〇",
       "furigana": "じゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "juu",
       "meaning": "ten; 10",
       "common": true
     },
@@ -52,7 +52,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-一人",
       "japanese": "一人",
       "furigana": "ひとり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hitori",
       "meaning": "one person; being alone",
       "common": true
     },
@@ -67,7 +67,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-一千",
       "japanese": "一千",
       "furigana": "いっせん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "issen",
       "meaning": "1,000; one thousand",
       "common": true
     },
@@ -82,7 +82,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-一同",
       "japanese": "一同",
       "furigana": "いちどう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ichidou",
       "meaning": "all present; all concerned",
       "common": true
     },
@@ -97,7 +97,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-一方",
       "japanese": "一方",
       "furigana": "いっぽう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ippou",
       "meaning": "one (esp. of two); the other",
       "common": true
     },
@@ -112,7 +112,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-一時",
       "japanese": "一時",
       "furigana": "いちじ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ichiji",
       "meaning": "one o'clock; once",
       "common": true
     },
@@ -127,7 +127,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-一見",
       "japanese": "一見",
       "furigana": "いっけん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ikken",
       "meaning": "look; glimpse",
       "common": true
     },
@@ -142,7 +142,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-七",
       "japanese": "七",
       "furigana": "しち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shichi",
       "meaning": "seven",
       "common": true
     },
@@ -156,7 +156,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-七つ",
       "japanese": "七つ",
       "furigana": "ななつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nanatsu",
       "meaning": "seven; seven years of age",
       "common": true
     },
@@ -170,7 +170,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-七十",
       "japanese": "七十",
       "furigana": "ななじゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nanajuu",
       "meaning": "seventy; 70",
       "common": true
     },
@@ -185,7 +185,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-七夕",
       "japanese": "七夕",
       "furigana": "たなばた",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tanabata",
       "meaning": "Star Festival (held in July or August); Tanabata",
       "common": true
     },
@@ -200,7 +200,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-三",
       "japanese": "三",
       "furigana": "さん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "san",
       "meaning": "three; 3",
       "common": true
     },
@@ -214,7 +214,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-三つ",
       "japanese": "三つ",
       "furigana": "みっつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mittsu",
       "meaning": "three; three years of age",
       "common": true
     },
@@ -228,7 +228,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-三十",
       "japanese": "三十",
       "furigana": "さんじゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sanjuu",
       "meaning": "thirty; 30",
       "common": true
     },
@@ -243,7 +243,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-三千",
       "japanese": "三千",
       "furigana": "さんぜん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sanzen",
       "meaning": "3000; three thousand",
       "common": true
     },
@@ -258,7 +258,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-三百",
       "japanese": "三百",
       "furigana": "さんびゃく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sambyaku",
       "meaning": "300; three hundred",
       "common": true
     },
@@ -273,7 +273,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-上",
       "japanese": "上",
       "furigana": "うえ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ue",
       "meaning": "above; over",
       "common": true
     },
@@ -287,7 +287,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-上り",
       "japanese": "上り",
       "furigana": "のぼり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nobori",
       "meaning": "ascent; climbing",
       "common": true
     },
@@ -301,7 +301,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-上る",
       "japanese": "上る",
       "furigana": "のぼる",
-      "romaji": "Romaji Placeholder",
+      "romaji": "noboru",
       "meaning": "to ascend; to go up",
       "common": true
     },
@@ -315,7 +315,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-上下",
       "japanese": "上下",
       "furigana": "じょうげ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "jouge",
       "meaning": "top and bottom; high and low",
       "common": true
     },
@@ -330,7 +330,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-上手",
       "japanese": "上手",
       "furigana": "じょうず",
-      "romaji": "Romaji Placeholder",
+      "romaji": "jouzu",
       "meaning": "skillful; skilled",
       "common": true
     },
@@ -345,7 +345,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-上空",
       "japanese": "上空",
       "furigana": "じょうくう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "joukuu",
       "meaning": "sky; the skies",
       "common": true
     },
@@ -360,7 +360,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-下",
       "japanese": "下",
       "furigana": "もと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "moto",
       "meaning": "under (guidance, supervision, rules, the law, etc.); under (a flag, the sun, etc.)",
       "common": true
     },
@@ -374,7 +374,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-下水",
       "japanese": "下水",
       "furigana": "げすい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gesui",
       "meaning": "drainage; ditch",
       "common": true
     },
@@ -389,7 +389,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-下町",
       "japanese": "下町",
       "furigana": "したまち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shitamachi",
       "meaning": "low-lying part of a city (usu. containing shops, factories, etc.); Shitamachi (low-lying area of eastern Tokyo near Tokyo Bay, incl. Asakusa, Shitaya, Kanda, Fukugawa, Honjo, Nihonbashi, Kyobashi and surrounds)",
       "common": true
     },
@@ -404,7 +404,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-下車",
       "japanese": "下車",
       "furigana": "げしゃ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gesha",
       "meaning": "alighting (from a train, bus, etc.); getting off",
       "common": true
     },
@@ -419,7 +419,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-不正",
       "japanese": "不正",
       "furigana": "ふせい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "fusei",
       "meaning": "injustice; unfairness",
       "common": true
     },
@@ -433,7 +433,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-世間",
       "japanese": "世間",
       "furigana": "せけん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "seken",
       "meaning": "world; society",
       "common": true
     },
@@ -447,7 +447,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-両方",
       "japanese": "両方",
       "furigana": "りょうほう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ryouhou",
       "meaning": "both; both sides",
       "common": true
     },
@@ -461,7 +461,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-両立",
       "japanese": "両立",
       "furigana": "りょうりつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ryouritsu",
       "meaning": "compatibility; coexistence",
       "common": true
     },
@@ -475,7 +475,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-並木",
       "japanese": "並木",
       "furigana": "なみき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "namiki",
       "meaning": "roadside trees; row of trees",
       "common": true
     },
@@ -489,7 +489,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-並行",
       "japanese": "並行",
       "furigana": "へいこう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "heikou",
       "meaning": "going side-by-side; going abreast",
       "common": true
     },
@@ -503,7 +503,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-中",
       "japanese": "中",
       "furigana": "うち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "uchi",
       "meaning": "inside; within",
       "common": true
     },
@@ -517,7 +517,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-中ば",
       "japanese": "中ば",
       "furigana": "なかば",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nakaba",
       "meaning": "middle; halfway",
       "common": true
     },
@@ -531,7 +531,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-中り",
       "japanese": "中り",
       "furigana": "あたり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "atari",
       "meaning": "hit; success",
       "common": true
     },
@@ -545,7 +545,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-中学",
       "japanese": "中学",
       "furigana": "ちゅうがく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "chuugaku",
       "meaning": "junior high school; middle school",
       "common": true
     },
@@ -560,7 +560,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-中間",
       "japanese": "中間",
       "furigana": "ちゅうかん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "chuukan",
       "meaning": "middle; midway",
       "common": true
     },
@@ -575,7 +575,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-主人",
       "japanese": "主人",
       "furigana": "しゅじん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shujin",
       "meaning": "head (of a household); proprietor (of a store)",
       "common": true
     },
@@ -589,7 +589,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-九",
       "japanese": "九",
       "furigana": "きゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kyuu",
       "meaning": "nine; 9",
       "common": true
     },
@@ -603,7 +603,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-九つ",
       "japanese": "九つ",
       "furigana": "ここのつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kokonotsu",
       "meaning": "nine; nine years of age",
       "common": true
     },
@@ -617,7 +617,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-九十",
       "japanese": "九十",
       "furigana": "きゅうじゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kyuujuu",
       "meaning": "ninety; 90",
       "common": true
     },
@@ -632,7 +632,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-二",
       "japanese": "二",
       "furigana": "に",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ni",
       "meaning": "two; 2",
       "common": true
     },
@@ -646,7 +646,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-二つ",
       "japanese": "二つ",
       "furigana": "ふたつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "futatsu",
       "meaning": "two",
       "common": true
     },
@@ -660,7 +660,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-二百",
       "japanese": "二百",
       "furigana": "にひゃく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nihyaku",
       "meaning": "200; two hundred",
       "common": true
     },
@@ -675,7 +675,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-二重",
       "japanese": "二重",
       "furigana": "にじゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nijuu",
       "meaning": "double; two-fold",
       "common": true
     },
@@ -689,7 +689,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-五",
       "japanese": "五",
       "furigana": "ご",
-      "romaji": "Romaji Placeholder",
+      "romaji": "go",
       "meaning": "five; 5",
       "common": true
     },
@@ -703,7 +703,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-五つ",
       "japanese": "五つ",
       "furigana": "いつつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "itsutsu",
       "meaning": "five; five years of age",
       "common": true
     },
@@ -717,7 +717,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-五分",
       "japanese": "五分",
       "furigana": "ごぶ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gobu",
       "meaning": "half; 50%",
       "common": true
     },
@@ -732,7 +732,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-人",
       "japanese": "人",
       "furigana": "じん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "jin",
       "meaning": "-ian (e.g. Italian); -ite (e.g. Tokyoite)",
       "common": true
     },
@@ -746,7 +746,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-人前",
       "japanese": "人前",
       "furigana": "ひとまえ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hitomae",
       "meaning": "presence of other people; (in) public",
       "common": true
     },
@@ -761,7 +761,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-人気",
       "japanese": "人気",
       "furigana": "にんき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ninki",
       "meaning": "popularity; public favor",
       "common": true
     },
@@ -776,7 +776,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-今",
       "japanese": "今",
       "furigana": "いま",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ima",
       "meaning": "now; the present time",
       "common": true
     },
@@ -790,7 +790,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-今に",
       "japanese": "今に",
       "furigana": "いまに",
-      "romaji": "Romaji Placeholder",
+      "romaji": "imani",
       "meaning": "before long; even now",
       "common": true
     },
@@ -804,7 +804,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-今回",
       "japanese": "今回",
       "furigana": "こんかい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "konkai",
       "meaning": "this time; now",
       "common": true
     },
@@ -819,7 +819,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-今後",
       "japanese": "今後",
       "furigana": "こんご",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kongo",
       "meaning": "from now on; hereafter",
       "common": true
     },
@@ -834,7 +834,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-今日",
       "japanese": "今日",
       "furigana": "きょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kyou",
       "meaning": "today; this day",
       "common": true
     },
@@ -849,7 +849,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-今時",
       "japanese": "今時",
       "furigana": "いまどき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "imadoki",
       "meaning": "these days; nowadays",
       "common": true
     },
@@ -864,7 +864,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-以内",
       "japanese": "以内",
       "furigana": "いない",
-      "romaji": "Romaji Placeholder",
+      "romaji": "inai",
       "meaning": "within; inside of",
       "common": true
     },
@@ -878,7 +878,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-以後",
       "japanese": "以後",
       "furigana": "いご",
-      "romaji": "Romaji Placeholder",
+      "romaji": "igo",
       "meaning": "after this; from now on",
       "common": true
     },
@@ -892,7 +892,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-休み",
       "japanese": "休み",
       "furigana": "やすみ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yasumi",
       "meaning": "rest; recess",
       "common": true
     },
@@ -906,7 +906,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-休む",
       "japanese": "休む",
       "furigana": "やすむ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yasumu",
       "meaning": "to be absent; to take a day off",
       "common": true
     },
@@ -920,7 +920,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-休学",
       "japanese": "休学",
       "furigana": "きゅうがく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kyuugaku",
       "meaning": "temporary absence from school",
       "common": true
     },
@@ -935,7 +935,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-休校",
       "japanese": "休校",
       "furigana": "きゅうこう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kyuukou",
       "meaning": "(temporary) closure of school",
       "common": true
     },
@@ -950,7 +950,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-会",
       "japanese": "会",
       "furigana": "かい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kai",
       "meaning": "meeting; assembly",
       "common": true
     },
@@ -964,7 +964,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-会う",
       "japanese": "会う",
       "furigana": "あう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "au",
       "meaning": "to meet; to encounter",
       "common": true
     },
@@ -978,7 +978,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-会合",
       "japanese": "会合",
       "furigana": "かいごう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kaigou",
       "meaning": "meeting; assembly",
       "common": true
     },
@@ -993,7 +993,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-会社",
       "japanese": "会社",
       "furigana": "かいしゃ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kaisha",
       "meaning": "company; corporation",
       "common": true
     },
@@ -1008,7 +1008,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-会長",
       "japanese": "会長",
       "furigana": "かいちょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kaichou",
       "meaning": "president (of a society); chairman",
       "common": true
     },
@@ -1023,7 +1023,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-位地",
       "japanese": "位地",
       "furigana": "いち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ichi",
       "meaning": "place; position",
       "common": true
     },
@@ -1037,7 +1037,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-低音",
       "japanese": "低音",
       "furigana": "ていおん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "teion",
       "meaning": "low tone; bass",
       "common": true
     },
@@ -1051,7 +1051,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-体力",
       "japanese": "体力",
       "furigana": "たいりょく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tairyoku",
       "meaning": "physical strength; power",
       "common": true
     },
@@ -1065,7 +1065,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-体長",
       "japanese": "体長",
       "furigana": "たいちょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "taichou",
       "meaning": "length (of an animal); body length",
       "common": true
     },
@@ -1079,7 +1079,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-余地",
       "japanese": "余地",
       "furigana": "よち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yochi",
       "meaning": "place; room",
       "common": true
     },
@@ -1093,7 +1093,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-侵入",
       "japanese": "侵入",
       "furigana": "しんにゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shinnyuu",
       "meaning": "invasion; incursion",
       "common": true
     },
@@ -1107,7 +1107,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-修正",
       "japanese": "修正",
       "furigana": "しゅうせい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shuusei",
       "meaning": "amendment; correction",
       "common": true
     },
@@ -1121,7 +1121,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-優先",
       "japanese": "優先",
       "furigana": "ゆうせん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yuusen",
       "meaning": "preference; priority",
       "common": true
     },
@@ -1135,7 +1135,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-元気",
       "japanese": "元気",
       "furigana": "げんき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "genki",
       "meaning": "lively; full of spirit",
       "common": true
     },
@@ -1149,7 +1149,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-先",
       "japanese": "先",
       "furigana": "さき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "saki",
       "meaning": "point; tip",
       "common": true
     },
@@ -1163,7 +1163,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-先に",
       "japanese": "先に",
       "furigana": "さきに",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sakini",
       "meaning": "previously; before",
       "common": true
     },
@@ -1177,7 +1177,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-入る",
       "japanese": "入る",
       "furigana": "はいる",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hairu",
       "meaning": "to enter; to come in",
       "common": true
     },
@@ -1191,7 +1191,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-入力",
       "japanese": "入力",
       "furigana": "にゅうりょく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nyuuryoku",
       "meaning": "input; (data) entry",
       "common": true
     },
@@ -1206,7 +1206,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-入国",
       "japanese": "入国",
       "furigana": "にゅうこく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nyuukoku",
       "meaning": "entry into a country",
       "common": true
     },
@@ -1221,7 +1221,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-入社",
       "japanese": "入社",
       "furigana": "にゅうしゃ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nyuusha",
       "meaning": "joining a company; getting a job with a company",
       "common": true
     },
@@ -1236,7 +1236,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-全国",
       "japanese": "全国",
       "furigana": "ぜんこく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "zenkoku",
       "meaning": "the whole country",
       "common": true
     },
@@ -1250,7 +1250,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-八",
       "japanese": "八",
       "furigana": "はち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hachi",
       "meaning": "eight; 8",
       "common": true
     },
@@ -1264,7 +1264,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-八十",
       "japanese": "八十",
       "furigana": "はちじゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hachijuu",
       "meaning": "eighty; 80",
       "common": true
     },
@@ -1279,7 +1279,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-八月",
       "japanese": "八月",
       "furigana": "はちがつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hachigatsu",
       "meaning": "August; eighth month of the lunar calendar",
       "common": true
     },
@@ -1294,7 +1294,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-六",
       "japanese": "六",
       "furigana": "ろく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "roku",
       "meaning": "six; 6",
       "common": true
     },
@@ -1308,7 +1308,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-六十",
       "japanese": "六十",
       "furigana": "ろくじゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "rokujuu",
       "meaning": "sixty; 60",
       "common": true
     },
@@ -1323,7 +1323,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-六月",
       "japanese": "六月",
       "furigana": "ろくがつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "rokugatsu",
       "meaning": "June; sixth month of the lunar calendar",
       "common": true
     },
@@ -1338,7 +1338,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-共同",
       "japanese": "共同",
       "furigana": "きょうどう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kyoudou",
       "meaning": "cooperation; collaboration",
       "common": true
     },
@@ -1352,7 +1352,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-具合",
       "japanese": "具合",
       "furigana": "ぐあい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "guai",
       "meaning": "condition; state",
       "common": true
     },
@@ -1366,7 +1366,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-内",
       "japanese": "内",
       "furigana": "うち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "uchi",
       "meaning": "inside; within",
       "common": true
     },
@@ -1380,7 +1380,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-内側",
       "japanese": "内側",
       "furigana": "うちがわ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "uchigawa",
       "meaning": "inside; interior",
       "common": true
     },
@@ -1394,7 +1394,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-円",
       "japanese": "円",
       "furigana": "えん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "en",
       "meaning": "yen (currency of Japan); circle",
       "common": true
     },
@@ -1408,7 +1408,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-円い",
       "japanese": "円い",
       "furigana": "まるい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "marui",
       "meaning": "round; circular",
       "common": true
     },
@@ -1422,7 +1422,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-円味",
       "japanese": "円味",
       "furigana": "まるみ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "marumi",
       "meaning": "roundness; rotundity",
       "common": true
     },
@@ -1436,7 +1436,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-冷水",
       "japanese": "冷水",
       "furigana": "れいすい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "reisui",
       "meaning": "cold water",
       "common": true
     },
@@ -1450,7 +1450,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-処女",
       "japanese": "処女",
       "furigana": "しょじょ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shojo",
       "meaning": "virgin (usu. female); maiden",
       "common": true
     },
@@ -1464,7 +1464,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-出",
       "japanese": "出",
       "furigana": "で",
-      "romaji": "Romaji Placeholder",
+      "romaji": "de",
       "meaning": "coming out; going out",
       "common": true
     },
@@ -1478,7 +1478,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-出生",
       "japanese": "出生",
       "furigana": "しゅっしょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shusshou",
       "meaning": "birth",
       "common": true
     },
@@ -1493,7 +1493,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-出社",
       "japanese": "出社",
       "furigana": "しゅっしゃ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shussha",
       "meaning": "going to work (e.g. in the morning); coming to work",
       "common": true
     },
@@ -1508,7 +1508,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-分",
       "japanese": "分",
       "furigana": "ふん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "fun",
       "meaning": "minute (unit of time); fun (one tenth of a monme, 5.787 grains)",
       "common": true
     },
@@ -1522,7 +1522,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-分泌",
       "japanese": "分泌",
       "furigana": "ぶんぴつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "bumpitsu",
       "meaning": "secretion",
       "common": true
     },
@@ -1536,7 +1536,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-前",
       "japanese": "前",
       "furigana": "さき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "saki",
       "meaning": "point; tip",
       "common": true
     },
@@ -1550,7 +1550,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-力",
       "japanese": "力",
       "furigana": "ちから",
-      "romaji": "Romaji Placeholder",
+      "romaji": "chikara",
       "meaning": "force; strength",
       "common": true
     },
@@ -1564,7 +1564,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-化石",
       "japanese": "化石",
       "furigana": "かせき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kaseki",
       "meaning": "fossil; petrifaction",
       "common": true
     },
@@ -1578,7 +1578,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-北東",
       "japanese": "北東",
       "furigana": "ほくとう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hokutou",
       "meaning": "northeast",
       "common": true
     },
@@ -1592,7 +1592,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-十",
       "japanese": "十",
       "furigana": "じゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "juu",
       "meaning": "ten; 10",
       "common": true
     },
@@ -1606,7 +1606,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-十分",
       "japanese": "十分",
       "furigana": "じゅうぶん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "juubun",
       "meaning": "enough; sufficient",
       "common": true
     },
@@ -1621,7 +1621,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-千",
       "japanese": "千",
       "furigana": "せん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sen",
       "meaning": "thousand; 1,000",
       "common": true
     },
@@ -1635,7 +1635,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-半年",
       "japanese": "半年",
       "furigana": "はんとし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hantoshi",
       "meaning": "half a year; six months",
       "common": true
     },
@@ -1649,7 +1649,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-南東",
       "japanese": "南東",
       "furigana": "なんとう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nantou",
       "meaning": "southeast",
       "common": true
     },
@@ -1663,7 +1663,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-口",
       "japanese": "口",
       "furigana": "くち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kuchi",
       "meaning": "mouth; opening",
       "common": true
     },
@@ -1677,7 +1677,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-右",
       "japanese": "右",
       "furigana": "みぎ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "migi",
       "meaning": "right; right-hand side",
       "common": true
     },
@@ -1691,7 +1691,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-右側",
       "japanese": "右側",
       "furigana": "みぎがわ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "migigawa",
       "meaning": "right side; right-hand side",
       "common": true
     },
@@ -1705,7 +1705,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-右手",
       "japanese": "右手",
       "furigana": "みぎて",
-      "romaji": "Romaji Placeholder",
+      "romaji": "migite",
       "meaning": "right hand; right-hand side",
       "common": true
     },
@@ -1720,7 +1720,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-各自",
       "japanese": "各自",
       "furigana": "かくじ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kakuji",
       "meaning": "each (person); everyone",
       "common": true
     },
@@ -1734,7 +1734,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-合",
       "japanese": "合",
       "furigana": "ごう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gou",
       "meaning": "gō; traditional unit of volume, approx. 180 ml",
       "common": true
     },
@@ -1748,7 +1748,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-同",
       "japanese": "同",
       "furigana": "どう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "dou",
       "meaning": "the same; the said",
       "common": true
     },
@@ -1762,7 +1762,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-名",
       "japanese": "名",
       "furigana": "な",
-      "romaji": "Romaji Placeholder",
+      "romaji": "na",
       "meaning": "name; given name",
       "common": true
     },
@@ -1776,7 +1776,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-名字",
       "japanese": "名字",
       "furigana": "みょうじ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "myouji",
       "meaning": "surname; family name",
       "common": true
     },
@@ -1791,7 +1791,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-名月",
       "japanese": "名月",
       "furigana": "めいげつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "meigetsu",
       "meaning": "harvest moon (trad. 15th day of the 8th lunar month); bright moon",
       "common": true
     },
@@ -1806,7 +1806,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-告白",
       "japanese": "告白",
       "furigana": "こくはく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kokuhaku",
       "meaning": "confession (to a crime, wrongdoing, etc.); admission",
       "common": true
     },
@@ -1820,7 +1820,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-噴火",
       "japanese": "噴火",
       "furigana": "ふんか",
-      "romaji": "Romaji Placeholder",
+      "romaji": "funka",
       "meaning": "eruption; volcanic eruption",
       "common": true
     },
@@ -1834,7 +1834,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-四",
       "japanese": "四",
       "furigana": "し",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shi",
       "meaning": "four; 4",
       "common": true
     },
@@ -1848,7 +1848,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-四つ",
       "japanese": "四つ",
       "furigana": "よっつ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yottsu",
       "meaning": "four; 4",
       "common": true
     },
@@ -1862,7 +1862,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-四十",
       "japanese": "四十",
       "furigana": "よんじゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yonjuu",
       "meaning": "forty; 40",
       "common": true
     },
@@ -1877,7 +1877,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-回",
       "japanese": "回",
       "furigana": "かい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kai",
       "meaning": "counter for occurrences; a time",
       "common": true
     },
@@ -1891,7 +1891,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-回る",
       "japanese": "回る",
       "furigana": "まわる",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mawaru",
       "meaning": "to turn; to rotate",
       "common": true
     },
@@ -1905,7 +1905,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-国",
       "japanese": "国",
       "furigana": "くに",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kuni",
       "meaning": "country; state",
       "common": true
     },
@@ -1919,7 +1919,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-国土",
       "japanese": "国土",
       "furigana": "こくど",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kokudo",
       "meaning": "country; territory",
       "common": true
     },
@@ -1934,7 +1934,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-土",
       "japanese": "土",
       "furigana": "つち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tsuchi",
       "meaning": "earth; soil",
       "common": true
     },
@@ -1948,7 +1948,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-土台",
       "japanese": "土台",
       "furigana": "どだい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "dodai",
       "meaning": "foundation; base",
       "common": true
     },
@@ -1962,7 +1962,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-地",
       "japanese": "地",
       "furigana": "ち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "chi",
       "meaning": "earth; ground",
       "common": true
     },
@@ -1976,7 +1976,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-夕",
       "japanese": "夕",
       "furigana": "ゆう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yuu",
       "meaning": "evening",
       "common": true
     },
@@ -1990,7 +1990,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-夕飯",
       "japanese": "夕飯",
       "furigana": "ゆうはん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yuuhan",
       "meaning": "evening meal; dinner",
       "common": true
     },
@@ -2004,7 +2004,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-夜空",
       "japanese": "夜空",
       "furigana": "よぞら",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yozora",
       "meaning": "night sky",
       "common": true
     },
@@ -2018,7 +2018,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-大",
       "japanese": "大",
       "furigana": "おお",
-      "romaji": "Romaji Placeholder",
+      "romaji": "oo",
       "meaning": "large; big",
       "common": true
     },
@@ -2032,7 +2032,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-大分",
       "japanese": "大分",
       "furigana": "だいぶ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "daibu",
       "meaning": "considerably; greatly",
       "common": true
     },
@@ -2047,7 +2047,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-大家",
       "japanese": "大家",
       "furigana": "おおや",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ooya",
       "meaning": "landlord; landlady",
       "common": true
     },
@@ -2061,7 +2061,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-大森",
       "japanese": "大森",
       "furigana": "おおもり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "oomori",
       "meaning": "large forest",
       "common": false
     },
@@ -2076,7 +2076,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-天",
       "japanese": "天",
       "furigana": "てん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ten",
       "meaning": "sky; heaven",
       "common": true
     },
@@ -2090,7 +2090,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-天下",
       "japanese": "天下",
       "furigana": "てんか",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tenka",
       "meaning": "the whole world; the whole country",
       "common": true
     },
@@ -2105,7 +2105,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-天井",
       "japanese": "天井",
       "furigana": "てんじょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tenjou",
       "meaning": "ceiling; ceiling price",
       "common": true
     },
@@ -2119,7 +2119,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-女",
       "japanese": "女",
       "furigana": "おんな",
-      "romaji": "Romaji Placeholder",
+      "romaji": "onna",
       "meaning": "woman; female",
       "common": true
     },
@@ -2133,7 +2133,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-女優",
       "japanese": "女優",
       "furigana": "じょゆう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "joyuu",
       "meaning": "actress; female actor",
       "common": true
     },
@@ -2147,7 +2147,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-女王",
       "japanese": "女王",
       "furigana": "じょおう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "joou",
       "meaning": "queen; female champion",
       "common": true
     },
@@ -2162,7 +2162,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-子",
       "japanese": "子",
       "furigana": "こ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ko",
       "meaning": "child; kid",
       "common": true
     },
@@ -2176,7 +2176,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-子供",
       "japanese": "子供",
       "furigana": "こども",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kodomo",
       "meaning": "child; children",
       "common": true
     },
@@ -2190,7 +2190,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-子犬",
       "japanese": "子犬",
       "furigana": "こいぬ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "koinu",
       "meaning": "puppy; small dog",
       "common": true
     },
@@ -2205,7 +2205,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-字",
       "japanese": "字",
       "furigana": "あざ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "aza",
       "meaning": "section of village",
       "common": true
     },
@@ -2219,7 +2219,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-学",
       "japanese": "学",
       "furigana": "がく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gaku",
       "meaning": "learning; scholarship",
       "common": true
     },
@@ -2233,7 +2233,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-学校",
       "japanese": "学校",
       "furigana": "がっこう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gakkou",
       "meaning": "school",
       "common": true
     },
@@ -2248,7 +2248,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-害虫",
       "japanese": "害虫",
       "furigana": "がいちゅう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gaichuu",
       "meaning": "harmful insect; noxious insect",
       "common": true
     },
@@ -2262,7 +2262,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-小",
       "japanese": "小",
       "furigana": "しょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shou",
       "meaning": "smallness; small item",
       "common": true
     },
@@ -2276,7 +2276,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-小供",
       "japanese": "小供",
       "furigana": "こども",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kodomo",
       "meaning": "child; children",
       "common": true
     },
@@ -2290,7 +2290,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-小売",
       "japanese": "小売",
       "furigana": "こうり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kouri",
       "meaning": "retail",
       "common": true
     },
@@ -2304,7 +2304,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-小竹",
       "japanese": "小竹",
       "furigana": "ささ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sasa",
       "meaning": "bamboo grass; generally smaller species of running bamboo that do not shed their sheaths (e.g. Sasa spp.)",
       "common": true
     },
@@ -2319,7 +2319,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-山",
       "japanese": "山",
       "furigana": "やま",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yama",
       "meaning": "mountain; hill",
       "common": true
     },
@@ -2333,7 +2333,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-山林",
       "japanese": "山林",
       "furigana": "さんりん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sanrin",
       "meaning": "mountain forest; forest on a mountain",
       "common": true
     },
@@ -2348,7 +2348,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-山積",
       "japanese": "山積",
       "furigana": "さんせき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sanseki",
       "meaning": "piling up; accumulating",
       "common": true
     },
@@ -2362,7 +2362,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-川",
       "japanese": "川",
       "furigana": "かわ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kawa",
       "meaning": "river; stream",
       "common": true
     },
@@ -2376,7 +2376,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-川口",
       "japanese": "川口",
       "furigana": "かこう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kakou",
       "meaning": "mouth of river; estuary",
       "common": true
     },
@@ -2391,7 +2391,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-川岸",
       "japanese": "川岸",
       "furigana": "かわぎし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kawagishi",
       "meaning": "riverbank; riverside",
       "common": true
     },
@@ -2405,7 +2405,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-左",
       "japanese": "左",
       "furigana": "ひだり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hidari",
       "meaning": "left; left-hand side",
       "common": true
     },
@@ -2419,7 +2419,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-左側",
       "japanese": "左側",
       "furigana": "ひだりがわ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hidarigawa",
       "meaning": "left side; left-hand side",
       "common": true
     },
@@ -2433,7 +2433,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-左右",
       "japanese": "左右",
       "furigana": "さゆう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sayuu",
       "meaning": "left and right; right and left",
       "common": true
     },
@@ -2448,7 +2448,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-市",
       "japanese": "市",
       "furigana": "いち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ichi",
       "meaning": "market; fair",
       "common": true
     },
@@ -2462,7 +2462,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-市内",
       "japanese": "市内",
       "furigana": "しない",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shinai",
       "meaning": "in the city; within the city",
       "common": true
     },
@@ -2477,7 +2477,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-市場",
       "japanese": "市場",
       "furigana": "いちば",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ichiba",
       "meaning": "(town) market; (street) market",
       "common": true
     },
@@ -2491,7 +2491,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-年",
       "japanese": "年",
       "furigana": "とし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "toshi",
       "meaning": "year; age",
       "common": true
     },
@@ -2505,7 +2505,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-年月",
       "japanese": "年月",
       "furigana": "としつき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "toshitsuki",
       "meaning": "months and years",
       "common": true
     },
@@ -2520,7 +2520,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-建前",
       "japanese": "建前",
       "furigana": "たてまえ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tatemae",
       "meaning": "face; official stance",
       "common": true
     },
@@ -2534,7 +2534,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-弱虫",
       "japanese": "弱虫",
       "furigana": "よわむし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yowamushi",
       "meaning": "coward; weakling",
       "common": true
     },
@@ -2548,7 +2548,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-弱音",
       "japanese": "弱音",
       "furigana": "よわね",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yowane",
       "meaning": "feeble complaint; whine",
       "common": true
     },
@@ -2562,7 +2562,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-後",
       "japanese": "後",
       "furigana": "あと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ato",
       "meaning": "behind; rear",
       "common": true
     },
@@ -2576,7 +2576,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-悪口",
       "japanese": "悪口",
       "furigana": "わるぐち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "waruguchi",
       "meaning": "(verbal) abuse; speaking ill of people",
       "common": true
     },
@@ -2590,7 +2590,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-愛犬",
       "japanese": "愛犬",
       "furigana": "あいけん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "aiken",
       "meaning": "pet dog; beloved dog",
       "common": true
     },
@@ -2604,7 +2604,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-手",
       "japanese": "手",
       "furigana": "て",
-      "romaji": "Romaji Placeholder",
+      "romaji": "te",
       "meaning": "hand; arm",
       "common": true
     },
@@ -2618,7 +2618,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-手当",
       "japanese": "手当",
       "furigana": "てあて",
-      "romaji": "Romaji Placeholder",
+      "romaji": "teate",
       "meaning": "salary; pay",
       "common": true
     },
@@ -2632,7 +2632,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-数字",
       "japanese": "数字",
       "furigana": "すうじ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "suuji",
       "meaning": "numeral; digit",
       "common": true
     },
@@ -2646,7 +2646,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-文",
       "japanese": "文",
       "furigana": "ふみ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "fumi",
       "meaning": "letter; note",
       "common": true
     },
@@ -2660,7 +2660,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-文様",
       "japanese": "文様",
       "furigana": "もんよう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mon'you",
       "meaning": "pattern; design",
       "common": true
     },
@@ -2674,7 +2674,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-方",
       "japanese": "方",
       "furigana": "ほう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hou",
       "meaning": "direction; way",
       "common": true
     },
@@ -2688,7 +2688,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-日",
       "japanese": "日",
       "furigana": "ひ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hi",
       "meaning": "day; days",
       "common": true
     },
@@ -2702,7 +2702,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-日本",
       "japanese": "日本",
       "furigana": "にほん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nihon",
       "meaning": "Japan",
       "common": true
     },
@@ -2717,7 +2717,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-早",
       "japanese": "早",
       "furigana": "はや",
-      "romaji": "Romaji Placeholder",
+      "romaji": "haya",
       "meaning": "already; now",
       "common": true
     },
@@ -2731,7 +2731,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-早い",
       "japanese": "早い",
       "furigana": "はやい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hayai",
       "meaning": "fast; quick",
       "common": true
     },
@@ -2745,7 +2745,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-早さ",
       "japanese": "早さ",
       "furigana": "はやさ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hayasa",
       "meaning": "speed; velocity",
       "common": true
     },
@@ -2759,7 +2759,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-明日",
       "japanese": "明日",
       "furigana": "あした",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ashita",
       "meaning": "tomorrow; near future",
       "common": true
     },
@@ -2773,7 +2773,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-時",
       "japanese": "時",
       "furigana": "とき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "toki",
       "meaning": "time; hour",
       "common": true
     },
@@ -2787,7 +2787,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-月",
       "japanese": "月",
       "furigana": "つき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tsuki",
       "meaning": "Moon; month",
       "common": true
     },
@@ -2801,7 +2801,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-木",
       "japanese": "木",
       "furigana": "き",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ki",
       "meaning": "tree; shrub",
       "common": true
     },
@@ -2815,7 +2815,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-本",
       "japanese": "本",
       "furigana": "もと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "moto",
       "meaning": "origin; source",
       "common": true
     },
@@ -2829,7 +2829,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-本文",
       "japanese": "本文",
       "furigana": "ほんぶん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hombun",
       "meaning": "text (of a book, document, etc.); body (of a letter)",
       "common": true
     },
@@ -2844,7 +2844,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-本校",
       "japanese": "本校",
       "furigana": "ほんこう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "honkou",
       "meaning": "main school; principal school",
       "common": true
     },
@@ -2859,7 +2859,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-村",
       "japanese": "村",
       "furigana": "むら",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mura",
       "meaning": "village",
       "common": true
     },
@@ -2873,7 +2873,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-東",
       "japanese": "東",
       "furigana": "ひがし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "higashi",
       "meaning": "east",
       "common": true
     },
@@ -2887,7 +2887,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-林",
       "japanese": "林",
       "furigana": "はやし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hayashi",
       "meaning": "wood; woods",
       "common": true
     },
@@ -2901,7 +2901,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-林業",
       "japanese": "林業",
       "furigana": "りんぎょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ringyou",
       "meaning": "forestry",
       "common": true
     },
@@ -2915,7 +2915,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-柚子",
       "japanese": "柚子",
       "furigana": "ゆず",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yuzu",
       "meaning": "yuzu (Citrus ichangensis x C. reticulata)",
       "common": true
     },
@@ -2929,7 +2929,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-梅雨",
       "japanese": "梅雨",
       "furigana": "つゆ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tsuyu",
       "meaning": "(East Asian) rainy season (in Japan, usu. from early June to mid-July); rain during the rainy season",
       "common": true
     },
@@ -2943,7 +2943,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-森",
       "japanese": "森",
       "furigana": "もり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mori",
       "meaning": "forest; shrine grove",
       "common": true
     },
@@ -2957,7 +2957,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-森林",
       "japanese": "森林",
       "furigana": "しんりん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shinrin",
       "meaning": "forest; woods",
       "common": true
     },
@@ -2972,7 +2972,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-次男",
       "japanese": "次男",
       "furigana": "じなん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "jinan",
       "meaning": "second son",
       "common": true
     },
@@ -2986,7 +2986,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-正",
       "japanese": "正",
       "furigana": "せい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sei",
       "meaning": "(logical) true; regular",
       "common": true
     },
@@ -3000,7 +3000,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-毛糸",
       "japanese": "毛糸",
       "furigana": "けいと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "keito",
       "meaning": "knitting wool; woolen yarn",
       "common": true
     },
@@ -3014,7 +3014,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-気",
       "japanese": "気",
       "furigana": "き",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ki",
       "meaning": "spirit; mind",
       "common": true
     },
@@ -3028,7 +3028,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-水",
       "japanese": "水",
       "furigana": "みず",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mizu",
       "meaning": "water (esp. cool or cold); fluid (esp. in an animal tissue)",
       "common": true
     },
@@ -3042,7 +3042,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-水田",
       "japanese": "水田",
       "furigana": "すいでん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "suiden",
       "meaning": "(water-filled) paddy field",
       "common": true
     },
@@ -3057,7 +3057,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-河口",
       "japanese": "河口",
       "furigana": "かこう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kakou",
       "meaning": "mouth of river; estuary",
       "common": true
     },
@@ -3071,7 +3071,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-油田",
       "japanese": "油田",
       "furigana": "ゆでん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "yuden",
       "meaning": "oil field",
       "common": true
     },
@@ -3085,7 +3085,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-浪花",
       "japanese": "浪花",
       "furigana": "なにわ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "naniwa",
       "meaning": "Naniwa (former name for Osaka region)",
       "common": true
     },
@@ -3099,7 +3099,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-漁村",
       "japanese": "漁村",
       "furigana": "ぎょそん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gyoson",
       "meaning": "fishing village",
       "common": true
     },
@@ -3113,7 +3113,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-火",
       "japanese": "火",
       "furigana": "ひ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hi",
       "meaning": "fire; flame",
       "common": true
     },
@@ -3127,7 +3127,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-火花",
       "japanese": "火花",
       "furigana": "ひばな",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hibana",
       "meaning": "spark",
       "common": true
     },
@@ -3142,7 +3142,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-灯火",
       "japanese": "灯火",
       "furigana": "あかり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "akari",
       "meaning": "light; glow",
       "common": true
     },
@@ -3156,7 +3156,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-煙草",
       "japanese": "煙草",
       "furigana": "タバコ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tabako",
       "meaning": "tobacco; cigarette",
       "common": true
     },
@@ -3170,7 +3170,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-爆竹",
       "japanese": "爆竹",
       "furigana": "ばくちく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "bakuchiku",
       "meaning": "firecracker",
       "common": true
     },
@@ -3184,7 +3184,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-犬",
       "japanese": "犬",
       "furigana": "いぬ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "inu",
       "meaning": "dog (Canis (lupus) familiaris); canine",
       "common": true
     },
@@ -3198,7 +3198,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-独自",
       "japanese": "独自",
       "furigana": "どくじ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "dokuji",
       "meaning": "original; unique",
       "common": true
     },
@@ -3212,7 +3212,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-玉",
       "japanese": "玉",
       "furigana": "たま",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tama",
       "meaning": "ball; sphere",
       "common": true
     },
@@ -3226,7 +3226,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-玉子",
       "japanese": "玉子",
       "furigana": "たまご",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tamago",
       "meaning": "eggs; egg",
       "common": true
     },
@@ -3241,7 +3241,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-王",
       "japanese": "王",
       "furigana": "おう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ou",
       "meaning": "king; ruler",
       "common": true
     },
@@ -3255,7 +3255,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-王国",
       "japanese": "王国",
       "furigana": "おうこく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "oukoku",
       "meaning": "kingdom; monarchy",
       "common": true
     },
@@ -3270,7 +3270,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-生",
       "japanese": "生",
       "furigana": "なま",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nama",
       "meaning": "raw; uncooked",
       "common": true
     },
@@ -3284,7 +3284,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-生む",
       "japanese": "生む",
       "furigana": "うむ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "umu",
       "meaning": "to give birth; to bear (child)",
       "common": true
     },
@@ -3298,7 +3298,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-田",
       "japanese": "田",
       "furigana": "た",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ta",
       "meaning": "rice field",
       "common": true
     },
@@ -3312,7 +3312,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-男",
       "japanese": "男",
       "furigana": "おとこ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "otoko",
       "meaning": "man; male",
       "common": true
     },
@@ -3326,7 +3326,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-男前",
       "japanese": "男前",
       "furigana": "おとこまえ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "otokomae",
       "meaning": "handsome man; man's looks",
       "common": true
     },
@@ -3341,7 +3341,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-町",
       "japanese": "町",
       "furigana": "まち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "machi",
       "meaning": "town; block",
       "common": true
     },
@@ -3355,7 +3355,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-町角",
       "japanese": "町角",
       "furigana": "まちかど",
-      "romaji": "Romaji Placeholder",
+      "romaji": "machikado",
       "meaning": "street corner",
       "common": true
     },
@@ -3369,7 +3369,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-白",
       "japanese": "白",
       "furigana": "しろ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shiro",
       "meaning": "white; innocence",
       "common": true
     },
@@ -3383,7 +3383,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-白髪",
       "japanese": "白髪",
       "furigana": "しらが",
-      "romaji": "Romaji Placeholder",
+      "romaji": "shiraga",
       "meaning": "white hair; grey hair",
       "common": true
     },
@@ -3397,7 +3397,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-百",
       "japanese": "百",
       "furigana": "ひゃく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hyaku",
       "meaning": "hundred; 100",
       "common": true
     },
@@ -3411,7 +3411,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-目",
       "japanese": "目",
       "furigana": "め",
-      "romaji": "Romaji Placeholder",
+      "romaji": "me",
       "meaning": "eye; eyeball",
       "common": true
     },
@@ -3425,7 +3425,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-目玉",
       "japanese": "目玉",
       "furigana": "めだま",
-      "romaji": "Romaji Placeholder",
+      "romaji": "medama",
       "meaning": "eyeball; special feature",
       "common": true
     },
@@ -3440,7 +3440,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-石",
       "japanese": "石",
       "furigana": "こく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "koku",
       "meaning": "koku; traditional unit of volume, approx. 180.4 litres",
       "common": true
     },
@@ -3454,7 +3454,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-石鹸",
       "japanese": "石鹸",
       "furigana": "せっけん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sekken",
       "meaning": "soap",
       "common": true
     },
@@ -3468,7 +3468,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-科目",
       "japanese": "科目",
       "furigana": "かもく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kamoku",
       "meaning": "(school) subject; curriculum",
       "common": true
     },
@@ -3482,7 +3482,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-積立",
       "japanese": "積立",
       "furigana": "つみたて",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tsumitate",
       "meaning": "saving; savings",
       "common": true
     },
@@ -3496,7 +3496,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-空",
       "japanese": "空",
       "furigana": "から",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kara",
       "meaning": "emptiness; being empty",
       "common": true
     },
@@ -3510,7 +3510,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-立前",
       "japanese": "立前",
       "furigana": "たてまえ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "tatemae",
       "meaning": "face; official stance",
       "common": true
     },
@@ -3525,7 +3525,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-竹",
       "japanese": "竹",
       "furigana": "たけ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "take",
       "meaning": "bamboo (any grass of subfamily Bambusoideae); middle (of a three-tier ranking system)",
       "common": true
     },
@@ -3539,7 +3539,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-糸",
       "japanese": "糸",
       "furigana": "いと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ito",
       "meaning": "thread; yarn",
       "common": true
     },
@@ -3553,7 +3553,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-糸口",
       "japanese": "糸口",
       "furigana": "いとぐち",
-      "romaji": "Romaji Placeholder",
+      "romaji": "itoguchi",
       "meaning": "beginning; start",
       "common": true
     },
@@ -3568,7 +3568,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-耳",
       "japanese": "耳",
       "furigana": "みみ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mimi",
       "meaning": "ear; hearing",
       "common": true
     },
@@ -3582,7 +3582,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-耳元",
       "japanese": "耳元",
       "furigana": "みみもと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mimimoto",
       "meaning": "close to the ear",
       "common": true
     },
@@ -3596,7 +3596,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-耳障り",
       "japanese": "耳障り",
       "furigana": "みみざわり",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mimizawari",
       "meaning": "hard (on the ears); offensive (to the ear)",
       "common": true
     },
@@ -3610,7 +3610,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-自ら",
       "japanese": "自ら",
       "furigana": "みずから",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mizukara",
       "meaning": "oneself; oneself",
       "common": true
     },
@@ -3624,7 +3624,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-花",
       "japanese": "花",
       "furigana": "はな",
-      "romaji": "Romaji Placeholder",
+      "romaji": "hana",
       "meaning": "flower; blossom",
       "common": true
     },
@@ -3638,7 +3638,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-苗字",
       "japanese": "苗字",
       "furigana": "みょうじ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "myouji",
       "meaning": "surname; family name",
       "common": true
     },
@@ -3652,7 +3652,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-草",
       "japanese": "草",
       "furigana": "くさ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kusa",
       "meaning": "grass; weed",
       "common": true
     },
@@ -3666,7 +3666,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-草木",
       "japanese": "草木",
       "furigana": "くさき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kusaki",
       "meaning": "plants; vegetation",
       "common": true
     },
@@ -3681,7 +3681,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-虫",
       "japanese": "虫",
       "furigana": "むし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "mushi",
       "meaning": "insect; bug",
       "common": true
     },
@@ -3695,7 +3695,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-行",
       "japanese": "行",
       "furigana": "ぎょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gyou",
       "meaning": "line (of text); row",
       "common": true
     },
@@ -3709,7 +3709,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-行き",
       "japanese": "行き",
       "furigana": "いき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "iki",
       "meaning": "the way there; outbound leg",
       "common": true
     },
@@ -3723,7 +3723,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-見る",
       "japanese": "見る",
       "furigana": "みる",
-      "romaji": "Romaji Placeholder",
+      "romaji": "miru",
       "meaning": "to see; to look",
       "common": true
     },
@@ -3737,7 +3737,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-貝",
       "japanese": "貝",
       "furigana": "かい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kai",
       "meaning": "shellfish; seashell",
       "common": true
     },
@@ -3751,7 +3751,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-貝殻",
       "japanese": "貝殻",
       "furigana": "かいがら",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kaigara",
       "meaning": "seashell; shell",
       "common": true
     },
@@ -3765,7 +3765,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-貸出",
       "japanese": "貸出",
       "furigana": "かしだし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kashidashi",
       "meaning": "lending; loaning",
       "common": true
     },
@@ -3779,7 +3779,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-赤",
       "japanese": "赤",
       "furigana": "あか",
-      "romaji": "Romaji Placeholder",
+      "romaji": "aka",
       "meaning": "red; crimson",
       "common": true
     },
@@ -3793,7 +3793,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-赤い",
       "japanese": "赤い",
       "furigana": "あかい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "akai",
       "meaning": "red; crimson",
       "common": true
     },
@@ -3807,7 +3807,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-赤字",
       "japanese": "赤字",
       "furigana": "あかじ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "akaji",
       "meaning": "(being in) the red; deficit",
       "common": true
     },
@@ -3822,7 +3822,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-足",
       "japanese": "足",
       "furigana": "あし",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ashi",
       "meaning": "foot; paw",
       "common": true
     },
@@ -3836,7 +3836,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-足下",
       "japanese": "足下",
       "furigana": "あしもと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ashimoto",
       "meaning": "at one's feet; underfoot",
       "common": true
     },
@@ -3851,7 +3851,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-足元",
       "japanese": "足元",
       "furigana": "あしもと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ashimoto",
       "meaning": "at one's feet; underfoot",
       "common": true
     },
@@ -3865,7 +3865,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-足跡",
       "japanese": "足跡",
       "furigana": "あしあと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ashiato",
       "meaning": "footprints; record of page visitors (e.g. in social networking sites)",
       "common": true
     },
@@ -3879,7 +3879,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-車",
       "japanese": "車",
       "furigana": "くるま",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kuruma",
       "meaning": "car; automobile",
       "common": true
     },
@@ -3893,7 +3893,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-車両",
       "japanese": "車両",
       "furigana": "しゃりょう",
-      "romaji": "Romaji Placeholder",
+      "romaji": "sharyou",
       "meaning": "(wheeled) vehicle; car",
       "common": true
     },
@@ -3907,7 +3907,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-農村",
       "japanese": "農村",
       "furigana": "のうそん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "nouson",
       "meaning": "agricultural community; farm village",
       "common": true
     },
@@ -3921,7 +3921,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-金",
       "japanese": "金",
       "furigana": "かね",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kane",
       "meaning": "money; metal",
       "common": true
     },
@@ -3935,7 +3935,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-金色",
       "japanese": "金色",
       "furigana": "きんいろ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "kin'iro",
       "meaning": "gold (colour, color)",
       "common": true
     },
@@ -3949,7 +3949,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-長",
       "japanese": "長",
       "furigana": "たけ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "take",
       "meaning": "height; stature",
       "common": true
     },
@@ -3963,7 +3963,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-間",
       "japanese": "間",
       "furigana": "あいだ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "aida",
       "meaning": "space (between); gap",
       "common": true
     },
@@ -3977,7 +3977,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-雨",
       "japanese": "雨",
       "furigana": "あめ",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ame",
       "meaning": "rain; rainy day",
       "common": true
     },
@@ -3991,7 +3991,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-雨季",
       "japanese": "雨季",
       "furigana": "うき",
-      "romaji": "Romaji Placeholder",
+      "romaji": "uki",
       "meaning": "rainy season",
       "common": true
     },
@@ -4005,7 +4005,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-露見",
       "japanese": "露見",
       "furigana": "ろけん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "roken",
       "meaning": "discovery (of a plot, misdeed, etc.); detection",
       "common": true
     },
@@ -4019,7 +4019,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-青",
       "japanese": "青",
       "furigana": "あお",
-      "romaji": "Romaji Placeholder",
+      "romaji": "ao",
       "meaning": "blue; azure",
       "common": true
     },
@@ -4033,7 +4033,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-青い",
       "japanese": "青い",
       "furigana": "あおい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "aoi",
       "meaning": "blue; azure",
       "common": true
     },
@@ -4047,7 +4047,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-青年",
       "japanese": "青年",
       "furigana": "せいねん",
-      "romaji": "Romaji Placeholder",
+      "romaji": "seinen",
       "meaning": "youth; young man",
       "common": true
     },
@@ -4062,7 +4062,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-面目",
       "japanese": "面目",
       "furigana": "めんぼく",
-      "romaji": "Romaji Placeholder",
+      "romaji": "memboku",
       "meaning": "face; honour",
       "common": true
     },
@@ -4076,7 +4076,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-音",
       "japanese": "音",
       "furigana": "おと",
-      "romaji": "Romaji Placeholder",
+      "romaji": "oto",
       "meaning": "sound; noise",
       "common": true
     },
@@ -4090,7 +4090,7 @@ export const WORDS: WordEntry[] = [
       "id": "w-魚貝類",
       "japanese": "魚貝類",
       "furigana": "ぎょかいるい",
-      "romaji": "Romaji Placeholder",
+      "romaji": "gyokairui",
       "meaning": "marine products; seafood",
       "common": true
     },

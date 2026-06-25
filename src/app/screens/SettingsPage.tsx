@@ -13,6 +13,24 @@ const CHARACTER_FONT_OPTIONS: { value: CharacterFontChoice; label: string; sub: 
   { value: "modern", label: "Modern Mono/Sans", sub: "Cleaner element-reading style", preview: "図書漢字", fontFamily: '"Noto Sans Mono CJK JP", "Yu Gothic", "Meiryo", monospace' },
 ];
 
+const DATASET_ATTRIBUTIONS = [
+  {
+    name: "KANJIDIC2",
+    detail:
+      "Kanji data from the Electronic Dictionary Research and Development Group. Distributed under the EDRDG licence and CC BY-SA 4.0.",
+  },
+  {
+    name: "JMdict_e",
+    detail:
+      "Vocabulary examples from the Electronic Dictionary Research and Development Group. Distributed under the EDRDG licence.",
+  },
+  {
+    name: "KRADFILE",
+    detail:
+      "Visible kanji component data from Michael Raine, Jim Breen, and the Electronic Dictionary Research and Development Group. Distributed under the EDRDG licence.",
+  },
+];
+
 export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerformance, uiFontChoice, characterFontChoice, onDark, onVolume, onDisableAutoJump, onImprovePerformance, onUiFontChoice, onCharacterFontChoice, onResetProgress, onResetAll, onUnlockAll, onBack }: {
   darkMode:boolean; volume:number; disableAutoJump:boolean; improvePerformance:boolean; uiFontChoice:UiFontChoice; characterFontChoice:CharacterFontChoice;
   onDark:(v:boolean)=>void; onVolume:(v:number)=>void; onDisableAutoJump:(v:boolean)=>void; onImprovePerformance:(v:boolean)=>void; onUiFontChoice:(v:UiFontChoice)=>void; onCharacterFontChoice:(v:CharacterFontChoice)=>void;
@@ -154,6 +172,17 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
               )}
             </div>
           ))}
+          <div className="px-4 py-3 border-t border-border">
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:13, marginBottom:8 }} className="text-foreground">Dataset attributions</p>
+            <div className="flex flex-col gap-2">
+              {DATASET_ATTRIBUTIONS.map(source => (
+                <div key={source.name}>
+                  <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, lineHeight:1.25 }} className="text-foreground">{source.name}</p>
+                  <p style={{ fontFamily:"var(--ui-font)", fontSize:10, lineHeight:1.35 }} className="text-muted-foreground">{source.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* About */}
