@@ -4,7 +4,7 @@ import { ChevronLeft, Info, Pencil, Star } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
-import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
+import { getLearningCategoryColors, getLearningCategoryLabel, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
 import {
@@ -17,10 +17,11 @@ import {
 } from "../components/ui/dialog";
 import type { ChatMsg } from "../types";
 
-export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, onBack, backLabel, onBackToCollection, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
+export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, darkMode, onBack, backLabel, onBackToCollection, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
   id: string; unlockedKanji: Set<string>;
   favorites: Set<string>; customNames: Record<string,string>; notes: Record<string,string>;
   chatMsgs: Record<string,ChatMsg[]>;
+  darkMode: boolean;
   onBack: () => void; backLabel: string; onBackToCollection?: () => void; onToggleFav: (k:string)=>void; onSetName:(k:string,v:string)=>void;
   onSetNote:(k:string,v:string)=>void; onChat:(k:string,q:string,a:string)=>void;
   onNavKanji:(id:string)=>void; onNavComponent:(id:string)=>void; onNavWord:(id:string)=>void;
@@ -35,7 +36,9 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
   const saveName = () => { onSetName(key, nameVal || k.meanings[0]); setEditingName(false); };
   const isFav = favorites.has(key);
-  const [cat1, cat2] = CAT_COLORS[k.category] ?? ["#6b7280","#4b5563"];
+  const [cat1, cat2] = getLearningCategoryColors(k.learningCategory);
+  const learningCategoryLabel = getLearningCategoryLabel(k.learningCategory);
+  const heroTextColor = getReadableTextColor(cat1, cat2);
   const visibleKunyomi = showAllKunyomi ? k.kunyomi : k.kunyomi.slice(0, 3);
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
   const words = getWordsForKanji(k.id);
@@ -83,7 +86,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
           boxShadow: `0 12px 40px ${cat1}55, 0 0 0 6px ${cat1}22`,
           marginBottom:12,
         }}>
-          <span style={{ fontFamily:"var(--jp-font)", fontSize:80, fontWeight:700, color:"rgba(255,255,255,0.95)", lineHeight:1 }}>{k.char}</span>
+          <span style={{ fontFamily:"var(--jp-font)", fontSize:80, fontWeight:700, color:heroTextColor, lineHeight:1 }}>{k.char}</span>
         </div>
 
         {/* Name / edit */}
@@ -100,6 +103,22 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
         {customNames[key] && customNames[key] !== k.meanings[0] && (
           <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{k.meanings.join(", ")}</p>
         )}
+        <span
+          style={{
+            marginTop:8,
+            padding:"5px 11px",
+            borderRadius:999,
+            background:`${cat1}22`,
+            border:`1px solid ${cat1}44`,
+            color: darkMode ? cat1 : "#111827",
+            fontFamily:"var(--ui-font)",
+            fontSize:11,
+            fontWeight:900,
+            textTransform:"uppercase",
+          }}
+        >
+          {learningCategoryLabel}
+        </span>
       </div>
 
       {/* Content sections */}
@@ -109,11 +128,11 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Readings</p>
           <div className="flex flex-col gap-2">
             <div className="flex items-start gap-3">
-              <span style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat1}22`, color:cat1 }}>On</span>
+              <span style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat1}22`, color: darkMode ? cat1 : "#111827" }}>On</span>
               <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }} className="text-foreground">{k.onyomi.join("、")}</span>
             </div>
             <div className="flex items-start gap-3">
-              <span style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat2}22`, color:cat2 }}>Kun</span>
+              <span style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:11, padding:"2px 8px", borderRadius:20, background:`${cat2}22`, color: darkMode ? cat2 : "#111827" }}>Kun</span>
               <div style={{ display:"flex", alignItems:"center", gap:8, flexWrap:"wrap", flex:1 }}>
                 <span style={{ fontFamily:"var(--jp-font)", fontSize:16 }} className="text-foreground">{visibleKunyomi.join("、")}</span>
                 {k.kunyomi.length > 3 && (
@@ -220,10 +239,10 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                   >
                     <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color:c }}>{part.char}</span>
                     <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
-                      <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color:c }}>
+                      <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: darkMode ? c : "#111827" }}>
                         {rad?.meanings[0] ?? "component"}
                       </span>
-                      <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color:"var(--muted-foreground)" }}>
+                      <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color: darkMode ? "var(--muted-foreground)" : "#111827" }}>
                         {component?.kind.replace("-", " ") ?? part.role}
                       </span>
                     </span>

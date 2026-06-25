@@ -1,6 +1,6 @@
 import { KANJI } from "./generated/kanji.generated";
 import { WORDS } from "./generated/words.generated";
-import { CAT_COLORS } from "./ui/categoryColors";
+import { getLearningCategoryColors } from "./ui/categoryColors";
 import type { KanjiEntry, Word, WordEntry as GeneratedWordEntry } from "../types";
 
 export interface WordEntry {
@@ -43,7 +43,7 @@ export function getWordsForKanji(kanjiId: string): Word[] {
 }
 
 export function getWordEntryColors(entry: WordEntry): [string, string] {
-  const categoryColors = entry.kanji.map((kanji) => CAT_COLORS[kanji.category] ?? ["#6b7280", "#4b5563"]);
+  const categoryColors = entry.kanji.map((kanji) => getLearningCategoryColors(kanji.learningCategory));
   const uniqueColors = Array.from(new Set(categoryColors.flat()));
 
   if (uniqueColors.length === 0) return ["#6b7280", "#4b5563"];

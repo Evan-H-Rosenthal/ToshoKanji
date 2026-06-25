@@ -1,15 +1,16 @@
 import { ChevronLeft, Lock, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
-import { CAT_COLORS } from "../data/ui/categoryColors";
+import { getLearningCategoryColors, getLearningCategoryLabel, getReadableTextColor } from "../data/ui/categoryColors";
 import { findWordEntry, getWordEntryColors } from "../data/wordData";
 import type { ChatMsg } from "../types";
 
-export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
+export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, darkMode, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
   id: string;
   unlockedKanji: Set<string>;
   favorites: Set<string>;
   notes: Record<string, string>;
   chatMsgs: Record<string, ChatMsg[]>;
+  darkMode: boolean;
   onBack: () => void;
   backLabel: string;
   onBackToCollection?: () => void;
@@ -39,10 +40,11 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
   const key = `word:${entry.id}`;
   const isFav = favorites.has(key);
   const [c1, c2] = getWordEntryColors(entry);
-  const categories = Array.from(new Set(entry.kanji.map((kanji) => kanji.category)));
+  const categories = Array.from(new Set(entry.kanji.map((kanji) => kanji.learningCategory)));
   const background = c1 === c2
     ? c1
     : `linear-gradient(135deg, ${c1}, ${c2})`;
+  const heroTextColor = getReadableTextColor(c1, c2);
   const meaningParts = entry.word.meaning
     .split(";")
     .map((meaning) => meaning.trim())
@@ -105,17 +107,17 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
             marginBottom: 14,
           }}
         >
-          <span style={{ fontFamily:"var(--jp-font)", fontSize:15, fontWeight:700, color:"rgba(255,255,255,0.78)", marginBottom:6 }}>{entry.word.furigana}</span>
-          <span style={{ fontFamily:"var(--jp-font)", fontSize:42, fontWeight:800, color:"rgba(255,255,255,0.96)", lineHeight:1.1 }}>{entry.word.japanese}</span>
-          <span style={{ fontFamily:"var(--ui-font)", fontSize:14, fontWeight:800, color:"rgba(255,255,255,0.8)", marginTop:7 }}>{entry.word.romaji}</span>
+          <span style={{ fontFamily:"var(--jp-font)", fontSize:15, fontWeight:700, color:heroTextColor, marginBottom:6 }}>{entry.word.furigana}</span>
+          <span style={{ fontFamily:"var(--jp-font)", fontSize:42, fontWeight:800, color:heroTextColor, lineHeight:1.1 }}>{entry.word.japanese}</span>
+          <span style={{ fontFamily:"var(--ui-font)", fontSize:14, fontWeight:800, color:heroTextColor, marginTop:7 }}>{entry.word.romaji}</span>
         </div>
 
         <div style={{ display:"flex", gap:7, flexWrap:"wrap", justifyContent:"center" }}>
           {categories.map((category) => {
-            const [cat1] = CAT_COLORS[category] ?? ["#6b7280", "#4b5563"];
+            const [cat1] = getLearningCategoryColors(category);
             return (
-              <span key={category} style={{ padding:"4px 9px", borderRadius:999, background:`${cat1}22`, color:cat1, fontFamily:"var(--ui-font)", fontSize:11, fontWeight:900, textTransform:"uppercase" }}>
-                {category.replace("-", " ")}
+              <span key={category} style={{ padding:"4px 9px", borderRadius:999, background:`${cat1}22`, color: darkMode ? cat1 : "#111827", fontFamily:"var(--ui-font)", fontSize:11, fontWeight:900, textTransform:"uppercase" }}>
+                {getLearningCategoryLabel(category)}
               </span>
             );
           })}
@@ -135,7 +137,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
                   borderRadius:999,
                   background:meaningPillBackground,
                   border:`1px solid ${meaningPillBorder}`,
-                  color:meaningPillColor,
+                  color: darkMode ? meaningPillColor : "#111827",
                   fontFamily:"var(--ui-font)",
                   fontSize:14,
                   fontWeight:850,
@@ -155,7 +157,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Kanji in this word</p>
           <div className="flex flex-wrap gap-2">
             {entry.kanji.map((kanji) => {
-              const [kc1] = CAT_COLORS[kanji.category] ?? ["#6b7280", "#4b5563"];
+              const [kc1] = getLearningCategoryColors(kanji.learningCategory);
               const isUnlocked = unlockedKanji.has(kanji.id);
               return (
                 <button
@@ -171,10 +173,10 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
                     border:`1px solid ${isUnlocked ? kc1+"44" : "var(--border)"}`,
                     cursor:"pointer",
                   }}
-                >
+                  >
                   {!isUnlocked && <Lock size={11} className="text-muted-foreground" />}
-                  <span style={{ fontFamily:"var(--jp-font)", fontSize:23, color: isUnlocked ? kc1 : "var(--muted-foreground)" }}>{kanji.char}</span>
-                  <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: isUnlocked ? kc1 : "var(--muted-foreground)" }}>{kanji.meanings[0]}</span>
+                  <span style={{ fontFamily:"var(--jp-font)", fontSize:23, color: darkMode ? (isUnlocked ? kc1 : "var(--muted-foreground)") : "#111827" }}>{kanji.char}</span>
+                  <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: darkMode ? (isUnlocked ? kc1 : "var(--muted-foreground)") : "#111827" }}>{kanji.meanings[0]}</span>
                 </button>
               );
             })}

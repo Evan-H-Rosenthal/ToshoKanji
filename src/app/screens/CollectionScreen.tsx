@@ -1,8 +1,9 @@
 import { type ReactNode, useLayoutEffect, useRef } from "react";
 import { Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
-import { CAT_COLORS } from "../data/ui/categoryColors";
-import { getWordsForKanji } from "../data/wordData";
+import { RADICALS } from "../data/generated/radicals.generated";
+import { compareLearningCategories, getLearningCategoryColors } from "../data/ui/categoryColors";
+import { getWordEntries, getWordEntryColors, getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
 export function CollectionScreen({
@@ -17,6 +18,8 @@ export function CollectionScreen({
   onFavOnlyChange,
   onScrollTopChange,
   onSelectKanji,
+  onSelectRadical,
+  onSelectWord,
   onToggleFav,
   onClearHighlight,
 }: {
@@ -31,6 +34,8 @@ export function CollectionScreen({
   onFavOnlyChange: (favOnly: boolean) => void;
   onScrollTopChange: (scrollTop: number) => void;
   onSelectKanji: (id: string) => void;
+  onSelectRadical: (id: string) => void;
+  onSelectWord: (id: string) => void;
   onToggleFav: (key: string) => void;
   onClearHighlight?: (type: "kanji" | "radical", id: string) => void;
 }) {
@@ -54,9 +59,38 @@ export function CollectionScreen({
       || kanji.kunyomi.some((reading) => reading.includes(query))
       || (customNames[key] || "").toLowerCase().includes(q)
       || getWordsForKanji(kanji.id).some((word) => word.meaning.toLowerCase().includes(q) || word.romaji.toLowerCase().includes(q));
+  }).sort((a, b) => {
+    const categorySort = compareLearningCategories(a.learningCategory, b.learningCategory);
+    if (categorySort !== 0) return categorySort;
+    return (a.frequency ?? 99999) - (b.frequency ?? 99999) || a.char.localeCompare(b.char);
   });
 
-  const hasResults = kanjiItems.length > 0;
+  const wordItems = favOnly
+    ? getWordEntries().filter((entry) => {
+      const key = `word:${entry.id}`;
+      if (!favorites.has(key)) return false;
+      if (!query) return true;
+      return entry.word.japanese.includes(query)
+        || entry.word.furigana.includes(query)
+        || entry.word.romaji.toLowerCase().includes(q)
+        || entry.word.meaning.toLowerCase().includes(q)
+        || entry.kanji.some((kanji) => kanji.char.includes(query) || kanji.meanings.some((meaning) => meaning.toLowerCase().includes(q)));
+    })
+    : [];
+
+  const radicalItems = favOnly
+    ? RADICALS.filter((radical) => {
+      const key = `radical:${radical.id}`;
+      if (!favorites.has(key)) return false;
+      if (!query) return true;
+      return radical.char.includes(query)
+        || radical.meanings.some((meaning) => meaning.toLowerCase().includes(q))
+        || radical.names?.some((name) => name.includes(query) || name.toLowerCase().includes(q))
+        || String(radical.radicalNumber ?? "").includes(query);
+    })
+    : [];
+
+  const hasResults = kanjiItems.length > 0 || wordItems.length > 0 || radicalItems.length > 0;
   const unlockedTotal = unlockedKanji.size;
   const fullTotal = KANJI.length;
 
@@ -115,10 +149,10 @@ export function CollectionScreen({
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {kanjiItems.length > 0 && (
-              <CollectionSection title="Kanji" count={`${unlockedKanji.size}/${KANJI.length}`}>
+              <CollectionSection title="Kanji" count={favOnly ? `${kanjiItems.length}` : `${unlockedKanji.size}/${KANJI.length}`}>
                 {kanjiItems.map((kanji) => {
                   const key = `kanji:${kanji.id}`;
-                  const [color1, color2] = CAT_COLORS[kanji.category] ?? ["#6b7280", "#4b5563"];
+                  const [color1, color2] = getLearningCategoryColors(kanji.learningCategory);
                   return (
                     <CollectionCard
                       key={kanji.id}
@@ -142,6 +176,56 @@ export function CollectionScreen({
               </CollectionSection>
             )}
 
+            {radicalItems.length > 0 && (
+              <CollectionSection title="Radicals" count={`${radicalItems.length}`}>
+                {radicalItems.map((radical) => {
+                  const key = `radical:${radical.id}`;
+                  return (
+                    <CollectionCard
+                      key={radical.id}
+                      char={radical.char}
+                      label={radical.meanings[0] ?? "Radical"}
+                      color1="#6b7280"
+                      color2="#4b5563"
+                      starred={favorites.has(key)}
+                      highlighted={highlightedUnlock?.type === "radical" && highlightedUnlock.id === radical.id}
+                      onStar={(event) => {
+                        event.stopPropagation();
+                        onToggleFav(key);
+                      }}
+                      onClick={() => {
+                        onClearHighlight?.("radical", radical.id);
+                        if (radical.componentId) onSelectRadical(radical.componentId);
+                      }}
+                    />
+                  );
+                })}
+              </CollectionSection>
+            )}
+
+            {wordItems.length > 0 && (
+              <CollectionSection title="Words" count={`${wordItems.length}`}>
+                {wordItems.map((entry) => {
+                  const key = `word:${entry.id}`;
+                  const [color1, color2] = getWordEntryColors(entry);
+                  return (
+                    <CollectionCard
+                      key={entry.id}
+                      char={entry.word.japanese}
+                      label={entry.word.meaning.split(";")[0]?.trim() || entry.word.romaji}
+                      color1={color1}
+                      color2={color2}
+                      starred={favorites.has(key)}
+                      onStar={(event) => {
+                        event.stopPropagation();
+                        onToggleFav(key);
+                      }}
+                      onClick={() => onSelectWord(entry.id)}
+                    />
+                  );
+                })}
+              </CollectionSection>
+            )}
           </div>
         )}
       </div>

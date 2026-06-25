@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import { ChevronLeft, Lock, RefreshCw } from "lucide-react";
+import { ChevronLeft, Lock, RefreshCw, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
 import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
-import { CAT_COLORS } from "../data/ui/categoryColors";
+import { getLearningCategoryColors } from "../data/ui/categoryColors";
 import type { ChatMsg, ComponentEntry } from "../types";
 
 function uniqueValues(values: string[]) {
@@ -22,14 +22,16 @@ function getComponentGroup(component: ComponentEntry) {
   return { primary, forms, kanjiIds };
 }
 
-export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack, backLabel, onBackToCollection, onSetNote, onChat, onNavKanji }: {
+export function ComponentEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
   id: string;
   unlockedKanji: Set<string>;
+  favorites: Set<string>;
   notes: Record<string, string>;
   chatMsgs: Record<string, ChatMsg[]>;
   onBack: () => void;
   backLabel: string;
   onBackToCollection?: () => void;
+  onToggleFav: (key: string) => void;
   onSetNote: (key: string, value: string) => void;
   onChat: (key: string, question: string, answer: string) => void;
   onNavKanji: (id: string) => void;
@@ -65,6 +67,7 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
   const key = `component:${group.primary.id}`;
   const componentName = group.primary.meanings?.[0] ?? "Component";
   const isCanonicalRadical = group.primary.kind === "canonical-radical";
+  const radicalFavoriteKey = isCanonicalRadical && group.primary.radicalId ? `radical:${group.primary.radicalId}` : undefined;
 
   const cycleVariant = () => {
     if (variantForms.length > 1) {
@@ -99,6 +102,11 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
             </button>
           )}
         </div>
+        {radicalFavoriteKey && (
+          <button onClick={() => onToggleFav(radicalFavoriteKey)}>
+            <Star size={22} fill={favorites.has(radicalFavoriteKey) ? "#ffd700" : "none"} color={favorites.has(radicalFavoriteKey) ? "#ffd700" : "var(--muted-foreground)"} />
+          </button>
+        )}
       </div>
 
       <div className="flex flex-col items-center pb-4 pt-2 px-4 shrink-0">
@@ -210,7 +218,7 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
                 const kanji = KANJI.find((entry) => entry.id === kanjiId);
                 if (!kanji) return null;
                 const isUnlocked = unlockedKanji.has(kanjiId);
-                const [kc1] = CAT_COLORS[kanji.category] ?? ["#6b7280", "#4b5563"];
+                const [kc1] = getLearningCategoryColors(kanji.learningCategory);
                 return (
                   <button
                     key={kanjiId}

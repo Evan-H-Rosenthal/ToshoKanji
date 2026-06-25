@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
-import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
+import { getLearningCategoryColors, RAD_COLORS } from "../data/ui/categoryColors";
 
 const BANK_CAPSULES = [
   { color: "#ef4444", x: 8, y: 96, size: 42, rotate: -18 },
@@ -183,7 +183,7 @@ export function GachaMachine({
 
     if (capsule.type === "kanji") {
       const entry = KANJI.find((kanji) => kanji.id === capsule.id);
-      const [primary, secondary] = CAT_COLORS[entry?.category ?? "nature"] ?? ["#ef4444", "#f97316"];
+      const [primary, secondary] = getLearningCategoryColors(entry?.learningCategory);
       return { primary, secondary };
     }
 

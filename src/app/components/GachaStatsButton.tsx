@@ -2,7 +2,7 @@ import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { KANJI } from "../data/generated/kanji.generated";
-import { CAT_COLORS } from "../data/ui/categoryColors";
+import { LEARNING_CATEGORIES } from "../data/ui/categoryColors";
 
 export function GachaStatsButton({
   unlockedKanji,
@@ -11,15 +11,14 @@ export function GachaStatsButton({
 }) {
   const [open, setOpen] = useState(false);
   const categoryStats = useMemo(() => {
-    const categories = Array.from(new Set(KANJI.map((kanji) => kanji.category)));
-
-    return categories.map((category) => {
-      const entries = KANJI.filter((kanji) => kanji.category === category);
+    return LEARNING_CATEGORIES.map((category) => {
+      const entries = KANJI.filter((kanji) => kanji.learningCategory === category.id);
       const unlocked = entries.filter((kanji) => unlockedKanji.has(kanji.id)).length;
-      const [color1, color2] = CAT_COLORS[category] ?? ["#64748b", "#475569"];
+      const [color1, color2] = category.colors;
 
       return {
-        category,
+        category: category.id,
+        label: category.label,
         unlocked,
         total: entries.length,
         color1,
@@ -147,8 +146,8 @@ export function GachaStatsButton({
                 {categoryStats.map((stat) => (
                   <div key={stat.category}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontFamily: "var(--ui-font)", fontSize: 11, fontWeight: 900, textTransform: "capitalize" }} className="text-foreground">
-                        {stat.category}
+                      <span style={{ fontFamily: "var(--ui-font)", fontSize: 11, fontWeight: 900 }} className="text-foreground">
+                        {stat.label}
                       </span>
                       <span style={{ fontFamily: "var(--ui-font)", fontSize: 10, fontWeight: 800 }} className="text-muted-foreground">
                         {stat.unlocked}/{stat.total}

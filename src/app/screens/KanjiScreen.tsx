@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
-import { CAT_COLORS } from "../data/ui/categoryColors";
+import { compareLearningCategories, getLearningCategoryColors } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
@@ -26,6 +26,10 @@ export function KanjiScreen({ unlockedKanji, favorites, customNames, highlighted
       || k.onyomi.some(o=>o.includes(query)) || k.kunyomi.some(ku=>ku.includes(query))
       || (customNames[key]||"").toLowerCase().includes(q)
       || getWordsForKanji(k.id).some(w=>w.meaning.toLowerCase().includes(q)||w.romaji.toLowerCase().includes(q));
+  }).sort((a, b) => {
+    const categorySort = compareLearningCategories(a.learningCategory, b.learningCategory);
+    if (categorySort !== 0) return categorySort;
+    return (a.frequency ?? 99999) - (b.frequency ?? 99999) || a.char.localeCompare(b.char);
   });
 
   return (
@@ -62,7 +66,7 @@ export function KanjiScreen({ unlockedKanji, favorites, customNames, highlighted
           <div className="grid grid-cols-3 gap-3">
             {items.map(k => {
               const key = `kanji:${k.id}`;
-              const [c1, c2] = CAT_COLORS[k.category] ?? ["#6b7280","#4b5563"];
+              const [c1, c2] = getLearningCategoryColors(k.learningCategory);
               return (
                 <CollectionCard key={k.id} char={k.char}
                   label={customNames[key] || k.meanings[0]}

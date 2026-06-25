@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Lock, Star } from "lucide-react";
+import { getReadableTextColor } from "../data/ui/categoryColors";
 
 const CARD_SPARKLES = [
   { x: [15, 74, 42, 83], y: [12, 18, 76, 52], size: 12, delay: 0 },
@@ -8,8 +9,8 @@ const CARD_SPARKLES = [
   { x: [82, 48, 27, 72], y: [39, 86, 21, 77], size: 13, delay: 0.54 },
 ];
 
-export function CollectionCard({ char, label, color1, color2, starred, highlighted = false, onStar, onClick }: {
-  char: string; label: string; color1: string; color2: string;
+export function CollectionCard({ char, label, color1, color2, textColor = getReadableTextColor(color1, color2), starred, highlighted = false, onStar, onClick }: {
+  char: string; label: string; color1: string; color2: string; textColor?: string;
   starred: boolean; highlighted?: boolean; onStar: (e: React.MouseEvent) => void; onClick: () => void;
 }) {
   return (
@@ -71,8 +72,8 @@ export function CollectionCard({ char, label, color1, color2, starred, highlight
         </>
       )}
       <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"100%", padding:"8px 4px 4px" }}>
-        <span style={{ fontFamily:"var(--jp-font)", fontWeight:700, fontSize:36, color:"rgba(255,255,255,0.95)", lineHeight:1, textShadow:"0 2px 8px rgba(0,0,0,0.3)" }}>{char}</span>
-        <span style={{ fontFamily:"var(--ui-font)", fontSize:20, fontWeight:700, color:"rgba(255,255,255,0.8)", marginTop:4, textAlign:"center", lineHeight:1.1, padding:"0 4px" }}>{label}</span>
+        <span style={{ fontFamily:"var(--jp-font)", fontWeight:700, fontSize:36, color:textColor, lineHeight:1, textShadow: textColor === "#111827" ? "none" : "0 2px 8px rgba(0,0,0,0.3)" }}>{char}</span>
+        <span style={{ fontFamily:"var(--ui-font)", fontSize:20, fontWeight:700, color:textColor, marginTop:4, textAlign:"center", lineHeight:1.1, padding:"0 4px" }}>{label}</span>
       </div>
       <button
         onClick={onStar}

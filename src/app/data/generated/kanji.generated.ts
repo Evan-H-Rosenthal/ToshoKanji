@@ -105,7 +105,8 @@ export const KANJI: KanjiEntry[] = [
       "w-明日",
       "w-今日"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-一",
@@ -205,7 +206,8 @@ export const KANJI: KanjiEntry[] = [
       "w-一人",
       "w-一〇"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-人",
@@ -305,7 +307,8 @@ export const KANJI: KanjiEntry[] = [
       "w-一人",
       "w-主人"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-年",
@@ -464,7 +467,8 @@ export const KANJI: KanjiEntry[] = [
       "w-半年",
       "w-年月"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-大",
@@ -565,7 +569,8 @@ export const KANJI: KanjiEntry[] = [
       "w-大家",
       "w-大分"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-十",
@@ -666,7 +671,8 @@ export const KANJI: KanjiEntry[] = [
       "w-十分",
       "w-七十"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-二",
@@ -767,7 +773,8 @@ export const KANJI: KanjiEntry[] = [
       "w-二重",
       "w-二つ"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-本",
@@ -903,7 +910,8 @@ export const KANJI: KanjiEntry[] = [
       "w-日本",
       "w-本文"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ObjectsMaterials"
   },
   {
     "id": "k-中",
@@ -1055,7 +1063,8 @@ export const KANJI: KanjiEntry[] = [
       "w-中り",
       "w-中ば"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-出",
@@ -1211,7 +1220,8 @@ export const KANJI: KanjiEntry[] = [
       "w-貸出",
       "w-出生"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-三",
@@ -1346,7 +1356,8 @@ export const KANJI: KanjiEntry[] = [
       "w-三つ",
       "w-三十"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-見",
@@ -1519,7 +1530,8 @@ export const KANJI: KanjiEntry[] = [
       "w-露見",
       "w-一見"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ActionsMovements"
   },
   {
     "id": "k-月",
@@ -1618,7 +1630,8 @@ export const KANJI: KanjiEntry[] = [
       "w-名月",
       "w-年月"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-生",
@@ -1735,7 +1748,8 @@ export const KANJI: KanjiEntry[] = [
       "w-出生",
       "w-生む"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-五",
@@ -1857,7 +1871,8 @@ export const KANJI: KanjiEntry[] = [
       "w-五つ",
       "w-五分"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-上",
@@ -2006,7 +2021,8 @@ export const KANJI: KanjiEntry[] = [
       "w-上る",
       "w-上り"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-四",
@@ -2141,7 +2157,8 @@ export const KANJI: KanjiEntry[] = [
       "w-四つ",
       "w-四十"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-金",
@@ -2315,7 +2332,8 @@ export const KANJI: KanjiEntry[] = [
       "w-金色",
       "w-お金"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ObjectsMaterials"
   },
   {
     "id": "k-九",
@@ -2438,7 +2456,8 @@ export const KANJI: KanjiEntry[] = [
       "w-九つ",
       "w-九十"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-入",
@@ -2542,7 +2561,8 @@ export const KANJI: KanjiEntry[] = [
       "w-入る",
       "w-入力"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-立",
@@ -2653,7 +2673,8 @@ export const KANJI: KanjiEntry[] = [
       "w-立前",
       "w-両立"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ActionsMovements"
   },
   {
     "id": "k-手",
@@ -2754,7 +2775,8 @@ export const KANJI: KanjiEntry[] = [
       "w-手当",
       "w-上手"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "BodyHealth"
   },
   {
     "id": "k-力",
@@ -2857,7 +2879,8 @@ export const KANJI: KanjiEntry[] = [
       "w-体力",
       "w-入力"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-学",
@@ -3015,7 +3038,8 @@ export const KANJI: KanjiEntry[] = [
       "w-中学",
       "w-休学"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ActionsMovements"
   },
   {
     "id": "k-円",
@@ -3202,7 +3226,8 @@ export const KANJI: KanjiEntry[] = [
       "w-円い",
       "w-円味"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-子",
@@ -3306,7 +3331,8 @@ export const KANJI: KanjiEntry[] = [
       "w-子供",
       "w-柚子"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-目",
@@ -3410,7 +3436,8 @@ export const KANJI: KanjiEntry[] = [
       "w-科目",
       "w-面目"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "BodyHealth"
   },
   {
     "id": "k-田",
@@ -3508,7 +3535,8 @@ export const KANJI: KanjiEntry[] = [
       "w-水田",
       "w-油田"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-八",
@@ -3624,7 +3652,8 @@ export const KANJI: KanjiEntry[] = [
       "w-八十",
       "w-八月"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-六",
@@ -3774,7 +3803,8 @@ export const KANJI: KanjiEntry[] = [
       "w-六十",
       "w-六月"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-下",
@@ -3936,7 +3966,8 @@ export const KANJI: KanjiEntry[] = [
       "w-足下",
       "w-上下"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-気",
@@ -4081,7 +4112,8 @@ export const KANJI: KanjiEntry[] = [
       "w-人気",
       "w-元気"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-小",
@@ -4182,7 +4214,8 @@ export const KANJI: KanjiEntry[] = [
       "w-小供",
       "w-小売"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-七",
@@ -4365,7 +4398,8 @@ export const KANJI: KanjiEntry[] = [
       "w-七つ",
       "w-七十"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-山",
@@ -4463,7 +4497,8 @@ export const KANJI: KanjiEntry[] = [
       "w-山林",
       "w-山積"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-正",
@@ -4602,7 +4637,8 @@ export const KANJI: KanjiEntry[] = [
       "w-不正",
       "w-修正"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-女",
@@ -4703,7 +4739,8 @@ export const KANJI: KanjiEntry[] = [
       "w-処女",
       "w-女優"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-百",
@@ -4836,7 +4873,8 @@ export const KANJI: KanjiEntry[] = [
       "w-三百",
       "w-二百"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-先",
@@ -4987,7 +5025,8 @@ export const KANJI: KanjiEntry[] = [
       "w-優先",
       "w-先に"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-名",
@@ -5124,7 +5163,8 @@ export const KANJI: KanjiEntry[] = [
       "w-名月",
       "w-名字"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-川",
@@ -5247,7 +5287,8 @@ export const KANJI: KanjiEntry[] = [
       "w-川口",
       "w-川岸"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-文",
@@ -5350,7 +5391,8 @@ export const KANJI: KanjiEntry[] = [
       "w-文様",
       "w-本文"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "LanguageCommunication"
   },
   {
     "id": "k-千",
@@ -5461,7 +5503,8 @@ export const KANJI: KanjiEntry[] = [
       "w-一千",
       "w-三千"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-水",
@@ -5559,7 +5602,8 @@ export const KANJI: KanjiEntry[] = [
       "w-下水",
       "w-冷水"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-男",
@@ -5693,7 +5737,8 @@ export const KANJI: KanjiEntry[] = [
       "w-次男",
       "w-男前"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-村",
@@ -5826,7 +5871,8 @@ export const KANJI: KanjiEntry[] = [
       "w-漁村",
       "w-農村"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PlacesBuildings"
   },
   {
     "id": "k-口",
@@ -5959,7 +6005,8 @@ export const KANJI: KanjiEntry[] = [
       "w-河口",
       "w-悪口"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "BodyHealth"
   },
   {
     "id": "k-町",
@@ -6112,7 +6159,8 @@ export const KANJI: KanjiEntry[] = [
       "w-町角",
       "w-下町"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PlacesBuildings"
   },
   {
     "id": "k-校",
@@ -6282,7 +6330,8 @@ export const KANJI: KanjiEntry[] = [
       "w-学校",
       "w-本校"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-空",
@@ -6495,7 +6544,8 @@ export const KANJI: KanjiEntry[] = [
       "w-上空",
       "w-夜空"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-土",
@@ -6596,7 +6646,8 @@ export const KANJI: KanjiEntry[] = [
       "w-国土",
       "w-土台"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-木",
@@ -6696,7 +6747,8 @@ export const KANJI: KanjiEntry[] = [
       "w-草木",
       "w-並木"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-車",
@@ -6793,7 +6845,8 @@ export const KANJI: KanjiEntry[] = [
       "w-車両",
       "w-下車"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ObjectsMaterials"
   },
   {
     "id": "k-石",
@@ -6927,7 +6980,8 @@ export const KANJI: KanjiEntry[] = [
       "w-石鹸",
       "w-化石"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-足",
@@ -7100,7 +7154,8 @@ export const KANJI: KanjiEntry[] = [
       "w-足跡",
       "w-足元"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "BodyHealth"
   },
   {
     "id": "k-早",
@@ -7239,7 +7294,8 @@ export const KANJI: KanjiEntry[] = [
       "w-早い",
       "w-早さ"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-白",
@@ -7339,7 +7395,8 @@ export const KANJI: KanjiEntry[] = [
       "w-白髪",
       "w-告白"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Colors"
   },
   {
     "id": "k-字",
@@ -7476,7 +7533,8 @@ export const KANJI: KanjiEntry[] = [
       "w-苗字",
       "w-数字"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "LanguageCommunication"
   },
   {
     "id": "k-音",
@@ -7647,7 +7705,8 @@ export const KANJI: KanjiEntry[] = [
       "w-低音",
       "w-弱音"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-天",
@@ -7818,7 +7877,8 @@ export const KANJI: KanjiEntry[] = [
       "w-天下",
       "w-天井"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-火",
@@ -7917,7 +7977,8 @@ export const KANJI: KanjiEntry[] = [
       "w-灯火",
       "w-噴火"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-花",
@@ -8087,7 +8148,8 @@ export const KANJI: KanjiEntry[] = [
       "w-浪花",
       "w-火花"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-赤",
@@ -8224,7 +8286,8 @@ export const KANJI: KanjiEntry[] = [
       "w-赤い",
       "w-赤字"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Colors"
   },
   {
     "id": "k-青",
@@ -8465,7 +8528,8 @@ export const KANJI: KanjiEntry[] = [
       "w-青い",
       "w-青年"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Colors"
   },
   {
     "id": "k-竹",
@@ -8611,7 +8675,8 @@ export const KANJI: KanjiEntry[] = [
       "w-小竹",
       "w-爆竹"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-右",
@@ -8758,7 +8823,8 @@ export const KANJI: KanjiEntry[] = [
       "w-右側",
       "w-右手"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-森",
@@ -8856,7 +8922,8 @@ export const KANJI: KanjiEntry[] = [
       "w-森林",
       "w-大森"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-左",
@@ -9003,7 +9070,8 @@ export const KANJI: KanjiEntry[] = [
       "w-左側",
       "w-左右"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-休",
@@ -9142,7 +9210,8 @@ export const KANJI: KanjiEntry[] = [
       "w-休む",
       "w-休学"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ActionsMovements"
   },
   {
     "id": "k-林",
@@ -9240,7 +9309,8 @@ export const KANJI: KanjiEntry[] = [
       "w-山林",
       "w-林業"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-王",
@@ -9373,7 +9443,8 @@ export const KANJI: KanjiEntry[] = [
       "w-女王",
       "w-王国"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-玉",
@@ -9526,7 +9597,8 @@ export const KANJI: KanjiEntry[] = [
       "w-玉子",
       "w-目玉"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ObjectsMaterials"
   },
   {
     "id": "k-夕",
@@ -9623,7 +9695,8 @@ export const KANJI: KanjiEntry[] = [
       "w-夕飯",
       "w-七夕"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-雨",
@@ -9722,7 +9795,8 @@ export const KANJI: KanjiEntry[] = [
       "w-梅雨",
       "w-雨季"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-草",
@@ -9897,7 +9971,8 @@ export const KANJI: KanjiEntry[] = [
       "w-煙草",
       "w-草木"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-犬",
@@ -10048,7 +10123,8 @@ export const KANJI: KanjiEntry[] = [
       "w-愛犬",
       "w-子犬"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-耳",
@@ -10145,7 +10221,8 @@ export const KANJI: KanjiEntry[] = [
       "w-耳元",
       "w-耳障り"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "BodyHealth"
   },
   {
     "id": "k-虫",
@@ -10245,7 +10322,8 @@ export const KANJI: KanjiEntry[] = [
       "w-害虫",
       "w-弱虫"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-糸",
@@ -10412,7 +10490,8 @@ export const KANJI: KanjiEntry[] = [
       "w-毛糸",
       "w-糸口"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "ObjectsMaterials"
   },
   {
     "id": "k-貝",
@@ -10558,7 +10637,8 @@ export const KANJI: KanjiEntry[] = [
       "w-貝殻",
       "w-魚貝類"
     ],
-    "category": "grade-1"
+    "category": "grade-1",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-国",
@@ -10708,7 +10788,8 @@ export const KANJI: KanjiEntry[] = [
       "w-入国",
       "w-全国"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "PlacesBuildings"
   },
   {
     "id": "k-会",
@@ -10898,7 +10979,8 @@ export const KANJI: KanjiEntry[] = [
       "w-会う",
       "w-会合"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "ActionsMovements"
   },
   {
     "id": "k-長",
@@ -10999,7 +11081,8 @@ export const KANJI: KanjiEntry[] = [
       "w-会長",
       "w-体長"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-同",
@@ -11168,7 +11251,8 @@ export const KANJI: KanjiEntry[] = [
       "w-共同",
       "w-一同"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-時",
@@ -11337,7 +11421,8 @@ export const KANJI: KanjiEntry[] = [
       "w-一時",
       "w-今時"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-自",
@@ -11472,7 +11557,8 @@ export const KANJI: KanjiEntry[] = [
       "w-独自",
       "w-自ら"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-行",
@@ -11617,7 +11703,8 @@ export const KANJI: KanjiEntry[] = [
       "w-行き",
       "w-並行"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "ActionsMovements"
   },
   {
     "id": "k-社",
@@ -11755,7 +11842,8 @@ export const KANJI: KanjiEntry[] = [
       "w-入社",
       "w-出社"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "PeopleSociety"
   },
   {
     "id": "k-分",
@@ -11913,7 +12001,8 @@ export const KANJI: KanjiEntry[] = [
       "w-十分",
       "w-分泌"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-後",
@@ -12087,7 +12176,8 @@ export const KANJI: KanjiEntry[] = [
       "w-今後",
       "w-以後"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-前",
@@ -12272,7 +12362,8 @@ export const KANJI: KanjiEntry[] = [
       "w-建前",
       "w-人前"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-間",
@@ -12408,7 +12499,8 @@ export const KANJI: KanjiEntry[] = [
       "w-世間",
       "w-中間"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-東",
@@ -12624,7 +12716,8 @@ export const KANJI: KanjiEntry[] = [
       "w-北東",
       "w-南東"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-地",
@@ -12745,7 +12838,8 @@ export const KANJI: KanjiEntry[] = [
       "w-位地",
       "w-余地"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "Nature"
   },
   {
     "id": "k-合",
@@ -12904,7 +12998,8 @@ export const KANJI: KanjiEntry[] = [
       "w-会合",
       "w-具合"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-市",
@@ -13038,7 +13133,8 @@ export const KANJI: KanjiEntry[] = [
       "w-市内",
       "w-市場"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "PlacesBuildings"
   },
   {
     "id": "k-内",
@@ -13175,7 +13271,8 @@ export const KANJI: KanjiEntry[] = [
       "w-以内",
       "w-内側"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-方",
@@ -13276,7 +13373,8 @@ export const KANJI: KanjiEntry[] = [
       "w-一方",
       "w-両方"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   },
   {
     "id": "k-今",
@@ -13425,7 +13523,8 @@ export const KANJI: KanjiEntry[] = [
       "w-今日",
       "w-今に"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "NumbersTime"
   },
   {
     "id": "k-回",
@@ -13570,6 +13669,7 @@ export const KANJI: KanjiEntry[] = [
       "w-回る",
       "w-今回"
     ],
-    "category": "grade-2"
+    "category": "grade-2",
+    "learningCategory": "AbstractConcepts"
   }
 ];

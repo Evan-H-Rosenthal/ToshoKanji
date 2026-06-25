@@ -43,6 +43,10 @@ GRADE_CATEGORY = {
     10: "jinmeiyo",
 }
 
+DEFAULT_LEARNING_CATEGORY = "Misc"
+FALLBACK_LEARNING_CATEGORIES = {"", "Misc", "Fallback", "MiscFallback", "Misc & Fallback"}
+LEARNING_CATEGORY_ALIASES = {"WeatherEnvironment": "Colors", "Weather & Environment": "Colors"}
+
 RADICAL_METADATA = {
     9: {"variants": ["亻"], "names": ["ひと", "にんべん"]},
     18: {"variants": ["刂"], "names": ["かたな", "りっとう"]},
@@ -737,12 +741,42 @@ def build_radicals(selected_kanji: list[dict], all_entries: dict[str, dict], com
     return radical_entries
 
 
-def build_kanji(selected_kanji: list[dict], words_by_literal: dict[str, list[dict]], components_by_literal: dict[str, list[str]]) -> list[dict]:
+def read_existing_learning_categories() -> dict[str, str]:
+    if not KANJI_OUT_FILE.exists():
+        return {}
+
+    text = KANJI_OUT_FILE.read_text(encoding="utf-8")
+    match = re.search(r"export const KANJI: KanjiEntry\[\] = (\[.*\]);", text, re.DOTALL)
+    if not match:
+        return {}
+
+    try:
+        entries = json.loads(match.group(1))
+    except json.JSONDecodeError:
+        return {}
+
+    categories: dict[str, str] = {}
+    for entry in entries:
+        kanji_id = entry.get("id")
+        learning_category = entry.get("learningCategory")
+        if kanji_id and isinstance(learning_category, str) and learning_category not in FALLBACK_LEARNING_CATEGORIES:
+            categories[kanji_id] = LEARNING_CATEGORY_ALIASES.get(learning_category, learning_category)
+
+    return categories
+
+
+def build_kanji(
+    selected_kanji: list[dict],
+    words_by_literal: dict[str, list[dict]],
+    components_by_literal: dict[str, list[str]],
+    existing_learning_categories: dict[str, str],
+) -> list[dict]:
     kanji_entries = []
     component_to_radical_id = build_component_radical_lookup()
     component_to_component_id = build_component_id_lookup()
     for entry in selected_kanji:
         literal = entry["literal"]
+        kanji_id = f"k-{literal}"
         radical_id = f"r-{entry['radicalNumber']}" if entry["radicalNumber"] else "r-unknown"
         radical_char = KANGXI_RADICALS[entry["radicalNumber"] - 1] if entry["radicalNumber"] and 0 < entry["radicalNumber"] <= len(KANGXI_RADICALS) else ""
         visible_form = visible_radical_form(entry, radical_char) if radical_char else None
@@ -771,7 +805,7 @@ def build_kanji(selected_kanji: list[dict], words_by_literal: dict[str, list[dic
         words = words_by_literal.get(literal, [])
 
         kanji_entries.append({
-            "id": f"k-{literal}",
+            "id": kanji_id,
             "literal": literal,
             "char": literal,
             "meanings": entry["meanings"][:5] or [literal],
@@ -795,6 +829,7 @@ def build_kanji(selected_kanji: list[dict], words_by_literal: dict[str, list[dic
             "rawKanjiParts": raw_component_parts,
             "wordIds": [word["id"] for word in words if word.get("id")],
             "category": GRADE_CATEGORY.get(entry["grade"], "joyo"),
+            "learningCategory": existing_learning_categories.get(kanji_id, DEFAULT_LEARNING_CATEGORY),
         })
 
     return kanji_entries
@@ -980,11 +1015,12 @@ def main() -> None:
     all_entries = parse_kanjidic2()
     selected_kanji = pick_milestone_kanji(all_entries, 100)
     target_literals = {entry["literal"] for entry in selected_kanji}
+    existing_learning_categories = read_existing_learning_categories()
     words_by_literal = parse_jmdict_words(target_literals)
     components_by_literal = parse_kradfile()
 
     radicals = build_radicals(selected_kanji, all_entries, components_by_literal)
-    kanji = build_kanji(selected_kanji, words_by_literal, components_by_literal)
+    kanji = build_kanji(selected_kanji, words_by_literal, components_by_literal, existing_learning_categories)
     components = build_components(kanji, radicals)
     words = build_words(kanji, words_by_literal)
 

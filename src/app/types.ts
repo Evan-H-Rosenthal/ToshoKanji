@@ -67,6 +67,7 @@ export interface KanjiEntry {
   wordIds?: string[];
   words?: Word[];
   category: string;
+  learningCategory: string;
 }
 export interface RadicalEntry {
   id: string;

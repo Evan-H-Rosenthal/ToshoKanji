@@ -316,6 +316,8 @@ export default function App() {
             collectionScrollTopRef.current = scrollTop;
           }}
           onSelectKanji={id=>pushScreen({type:"kanji-entry",id})}
+          onSelectRadical={id=>pushScreen({type:"component-entry",id})}
+          onSelectWord={id=>pushScreen({type:"word-entry",id})}
           onToggleFav={handleToggleFav}
           onClearHighlight={(type, id) => {
             if (highlightedUnlock?.type === type && highlightedUnlock.id === id) setHighlightedUnlock(null);
@@ -346,7 +348,7 @@ export default function App() {
           {/* Sub-screens */}
           {screen.type === "kanji-entry" && screen.id && (
             <KanjiEntryPage id={screen.id} unlockedKanji={unlockedKanji}
-              favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs}
+              favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs} darkMode={darkMode}
               onBack={popScreen} backLabel={entryBackLabel} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
               onBackToCollection={showBackToCollection ? handleBackToCollection : undefined}
@@ -354,15 +356,16 @@ export default function App() {
           )}
           {screen.type === "component-entry" && screen.id && (
             <ComponentEntryPage id={screen.id} unlockedKanji={unlockedKanji}
-              notes={notes} chatMsgs={chatMsgs}
+              favorites={favorites} notes={notes} chatMsgs={chatMsgs}
               onBack={popScreen} backLabel={entryBackLabel}
+              onToggleFav={handleToggleFav}
               onSetNote={handleSetNote} onChat={handleChat}
               onBackToCollection={showBackToCollection ? handleBackToCollection : undefined}
               onNavKanji={handleNavKanji} onNavComponent={handleNavComponent} />
           )}
           {screen.type === "word-entry" && screen.id && (
             <WordEntryPage id={screen.id} unlockedKanji={unlockedKanji}
-              favorites={favorites} notes={notes} chatMsgs={chatMsgs}
+              favorites={favorites} notes={notes} chatMsgs={chatMsgs} darkMode={darkMode}
               onBack={popScreen} backLabel={entryBackLabel} onToggleFav={handleToggleFav}
               onSetNote={handleSetNote} onChat={handleChat}
               onBackToCollection={showBackToCollection ? handleBackToCollection : undefined}
