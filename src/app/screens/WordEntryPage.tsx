@@ -4,14 +4,15 @@ import { CAT_COLORS } from "../data/ui/categoryColors";
 import { findWordEntry, getWordEntryColors } from "../data/wordData";
 import type { ChatMsg } from "../types";
 
-export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, onBack, onBackToGacha, onToggleFav, onSetNote, onChat, onNavKanji }: {
+export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
   id: string;
   unlockedKanji: Set<string>;
   favorites: Set<string>;
   notes: Record<string, string>;
   chatMsgs: Record<string, ChatMsg[]>;
   onBack: () => void;
-  onBackToGacha?: () => void;
+  backLabel: string;
+  onBackToCollection?: () => void;
   onToggleFav: (key: string) => void;
   onSetNote: (key: string, value: string) => void;
   onChat: (key: string, question: string, answer: string) => void;
@@ -24,7 +25,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
       <div className="flex flex-col h-full overflow-y-auto">
         <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
           <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> Back
+            <ChevronLeft size={20} /> {backLabel}
           </button>
         </div>
         <div className="flex flex-col items-center justify-center flex-1 px-6 text-center">
@@ -61,11 +62,11 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
       <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
         <div className="flex flex-col items-start gap-1">
           <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> Back
+            <ChevronLeft size={20} /> {backLabel}
           </button>
-          {onBackToGacha && (
+          {onBackToCollection && (
             <button
-              onClick={onBackToGacha}
+              onClick={onBackToCollection}
               style={{
                 marginLeft: 20,
                 padding: "4px 9px",
@@ -79,7 +80,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
                 cursor: "pointer",
               }}
             >
-              Back to gacha
+              Back to Collection.
             </button>
           )}
         </div>

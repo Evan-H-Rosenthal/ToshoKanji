@@ -57,6 +57,9 @@ export default function App() {
   const [pageWidth, setPageWidth] = useState(getInitialPageWidth);
   const [screen, setScreen] = useState<ScreenState>({ type:"main" });
   const [screenStack, setScreenStack] = useState<ScreenState[]>([]);
+  const [collectionQuery, setCollectionQuery] = useState("");
+  const [collectionFavOnly, setCollectionFavOnly] = useState(false);
+  const collectionScrollTopRef = useRef(0);
 
   const [unlockedKanji, setUnlockedKanji] = useState<Set<string>>(initialPersistedState.unlockedKanji);
   const [unlockedRadicals, setUnlockedRadicals] = useState<Set<string>>(initialPersistedState.unlockedRadicals);
@@ -262,10 +265,10 @@ export default function App() {
       return nextStack;
     });
   }, []);
-  const handleBackToGacha = () => {
+  const handleBackToCollection = () => {
     setScreenStack([]);
     setScreen({ type:"main" });
-    changeActiveTab("gacha");
+    changeActiveTab("collection");
   };
   const openUtilityScreen = useCallback((nextScreen: ScreenState) => {
     setScreen(nextScreen);
@@ -293,7 +296,9 @@ export default function App() {
     setUnlockedRadicals(new Set(RADICALS.map((radical) => radical.id)));
   };
 
-  const isSubScreen = screen.type !== "main";
+  const previousScreen = screenStack[screenStack.length - 1];
+  const entryBackLabel = previousScreen?.type === "main" ? "Back to collection" : "Back one step";
+  const showBackToCollection = screenStack.length >= 2;
   const renderTabPanel = (tab: Tab) => {
     if (tab === "collection") {
       return (
@@ -302,6 +307,14 @@ export default function App() {
           favorites={favorites}
           customNames={customNames}
           highlightedUnlock={highlightedUnlock}
+          query={collectionQuery}
+          favOnly={collectionFavOnly}
+          scrollTop={collectionScrollTopRef.current}
+          onQueryChange={setCollectionQuery}
+          onFavOnlyChange={setCollectionFavOnly}
+          onScrollTopChange={(scrollTop) => {
+            collectionScrollTopRef.current = scrollTop;
+          }}
           onSelectKanji={id=>pushScreen({type:"kanji-entry",id})}
           onToggleFav={handleToggleFav}
           onClearHighlight={(type, id) => {
@@ -334,25 +347,25 @@ export default function App() {
           {screen.type === "kanji-entry" && screen.id && (
             <KanjiEntryPage id={screen.id} unlockedKanji={unlockedKanji}
               favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs}
-              onBack={popScreen} onToggleFav={handleToggleFav} onSetName={handleSetName}
+              onBack={popScreen} backLabel={entryBackLabel} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
-              onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
+              onBackToCollection={showBackToCollection ? handleBackToCollection : undefined}
               onNavKanji={handleNavKanji} onNavComponent={handleNavComponent} onNavWord={handleNavWord} />
           )}
           {screen.type === "component-entry" && screen.id && (
             <ComponentEntryPage id={screen.id} unlockedKanji={unlockedKanji}
               notes={notes} chatMsgs={chatMsgs}
-              onBack={popScreen}
+              onBack={popScreen} backLabel={entryBackLabel}
               onSetNote={handleSetNote} onChat={handleChat}
-              onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
+              onBackToCollection={showBackToCollection ? handleBackToCollection : undefined}
               onNavKanji={handleNavKanji} onNavComponent={handleNavComponent} />
           )}
           {screen.type === "word-entry" && screen.id && (
             <WordEntryPage id={screen.id} unlockedKanji={unlockedKanji}
               favorites={favorites} notes={notes} chatMsgs={chatMsgs}
-              onBack={popScreen} onToggleFav={handleToggleFav}
+              onBack={popScreen} backLabel={entryBackLabel} onToggleFav={handleToggleFav}
               onSetNote={handleSetNote} onChat={handleChat}
-              onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
+              onBackToCollection={showBackToCollection ? handleBackToCollection : undefined}
               onNavKanji={handleNavKanji} />
           )}
           {screen.type === "achievements" && (

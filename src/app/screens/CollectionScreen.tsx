@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useLayoutEffect, useRef } from "react";
 import { Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { CAT_COLORS } from "../data/ui/categoryColors";
@@ -10,6 +10,12 @@ export function CollectionScreen({
   favorites,
   customNames,
   highlightedUnlock,
+  query,
+  favOnly,
+  scrollTop,
+  onQueryChange,
+  onFavOnlyChange,
+  onScrollTopChange,
   onSelectKanji,
   onToggleFav,
   onClearHighlight,
@@ -18,12 +24,23 @@ export function CollectionScreen({
   favorites: Set<string>;
   customNames: Record<string, string>;
   highlightedUnlock?: { type: "kanji" | "radical"; id: string } | null;
+  query: string;
+  favOnly: boolean;
+  scrollTop: number;
+  onQueryChange: (query: string) => void;
+  onFavOnlyChange: (favOnly: boolean) => void;
+  onScrollTopChange: (scrollTop: number) => void;
   onSelectKanji: (id: string) => void;
   onToggleFav: (key: string) => void;
   onClearHighlight?: (type: "kanji" | "radical", id: string) => void;
 }) {
-  const [query, setQuery] = useState("");
-  const [favOnly, setFavOnly] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const scrollElement = scrollRef.current;
+    if (!scrollElement) return;
+    scrollElement.scrollTop = scrollTop;
+  }, []);
 
   const q = query.toLowerCase();
 
@@ -59,20 +76,20 @@ export function CollectionScreen({
             <Search size={14} className="text-muted-foreground shrink-0" />
             <input
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => onQueryChange(event.target.value)}
               placeholder="Search collection..."
               className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground"
               style={{ fontFamily: "var(--ui-font)" }}
             />
             {query && (
-              <button type="button" onClick={() => setQuery("")}>
+              <button type="button" onClick={() => onQueryChange("")}>
                 <X size={12} className="text-muted-foreground" />
               </button>
             )}
           </div>
           <button
             type="button"
-            onClick={() => setFavOnly((value) => !value)}
+            onClick={() => onFavOnlyChange(!favOnly)}
             className="rounded-xl px-3 py-2 flex items-center gap-1 transition-colors"
             style={{ background: favOnly ? "var(--primary)" : "var(--input-background)" }}
             aria-label="Show favorites only"
@@ -82,7 +99,12 @@ export function CollectionScreen({
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 pb-4" style={{ paddingTop: 18 }}>
+      <div
+        ref={scrollRef}
+        className="flex-1 overflow-y-auto px-4 pb-4"
+        onScroll={(event) => onScrollTopChange(event.currentTarget.scrollTop)}
+        style={{ paddingTop: 18 }}
+      >
         {!hasResults ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 py-16">
             <span style={{ fontSize: 48 }}>{unlockedTotal === 0 ? "🎰" : "🔍"}</span>

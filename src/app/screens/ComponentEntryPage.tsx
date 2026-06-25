@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Check, ChevronLeft, Copy, Lock } from "lucide-react";
+import { ChevronLeft, Lock, RefreshCw } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
 import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
@@ -22,13 +22,14 @@ function getComponentGroup(component: ComponentEntry) {
   return { primary, forms, kanjiIds };
 }
 
-export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack, onBackToGacha, onSetNote, onChat, onNavKanji }: {
+export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack, backLabel, onBackToCollection, onSetNote, onChat, onNavKanji }: {
   id: string;
   unlockedKanji: Set<string>;
   notes: Record<string, string>;
   chatMsgs: Record<string, ChatMsg[]>;
   onBack: () => void;
-  onBackToGacha?: () => void;
+  backLabel: string;
+  onBackToCollection?: () => void;
   onSetNote: (key: string, value: string) => void;
   onChat: (key: string, question: string, answer: string) => void;
   onNavKanji: (id: string) => void;
@@ -39,11 +40,9 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
   const initialForm = selectedComponent?.char ?? group?.primary.char ?? "";
   const initialVariantIndex = group ? Math.max(0, group.forms.indexOf(initialForm)) : 0;
   const [variantIndex, setVariantIndex] = useState(initialVariantIndex);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     setVariantIndex(initialVariantIndex);
-    setCopied(false);
   }, [initialVariantIndex, id]);
 
   if (!selectedComponent || !group) {
@@ -51,7 +50,7 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
       <div className="flex flex-col h-full overflow-y-auto">
         <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
           <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> Back
+            <ChevronLeft size={20} /> {backLabel}
           </button>
         </div>
         <div className="px-4 py-6">
@@ -73,26 +72,16 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
     }
   };
 
-  const copyVariant = async () => {
-    try {
-      await navigator.clipboard.writeText(currentVariant);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1200);
-    } catch {
-      setCopied(false);
-    }
-  };
-
   return (
     <div className="flex flex-col h-full overflow-y-auto">
       <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
         <div className="flex flex-col items-start gap-1">
           <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> Back
+            <ChevronLeft size={20} /> {backLabel}
           </button>
-          {onBackToGacha && (
+          {onBackToCollection && (
             <button
-              onClick={onBackToGacha}
+              onClick={onBackToCollection}
               style={{
                 marginLeft: 20,
                 padding: "4px 9px",
@@ -106,17 +95,14 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
                 cursor: "pointer",
               }}
             >
-              Back to gacha
+              Back to Collection.
             </button>
           )}
         </div>
       </div>
 
       <div className="flex flex-col items-center pb-4 pt-2 px-4 shrink-0">
-        <button
-          type="button"
-          onClick={cycleVariant}
-          aria-label={variantForms.length > 1 ? "Cycle component variant" : "Component form"}
+        <div
           style={{
             width: 140,
             height: 140,
@@ -128,31 +114,32 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
             border: "1px solid rgba(107,114,128,0.28)",
             boxShadow: "0 12px 34px rgba(107,114,128,0.24), 0 0 0 6px rgba(107,114,128,0.10)",
             marginBottom: 10,
-            cursor: variantForms.length > 1 ? "pointer" : "default",
           }}
         >
-          <span style={{ fontFamily:"var(--jp-font)", fontSize:80, fontWeight:700, color:"#374151", lineHeight:1 }}>{currentVariant}</span>
-        </button>
-        <button
-          type="button"
-          onClick={copyVariant}
-          aria-label={`Copy ${currentVariant}`}
-          className="text-muted-foreground"
-          style={{
-            width: 34,
-            height: 30,
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 999,
-            border: "1px solid var(--border)",
-            background: "var(--card)",
-            marginBottom: 9,
-            cursor: "pointer",
-          }}
-        >
-          {copied ? <Check size={16} /> : <Copy size={16} />}
-        </button>
+          <span style={{ fontFamily:"var(--jp-font)", fontSize:80, fontWeight:700, color:"#374151", lineHeight:1, userSelect:"text" }}>{currentVariant}</span>
+        </div>
+        {variantForms.length > 1 && (
+          <button
+            type="button"
+            onClick={cycleVariant}
+            aria-label="Cycle component variant"
+            className="text-muted-foreground"
+            style={{
+              width: 34,
+              height: 30,
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 999,
+              border: "1px solid var(--border)",
+              background: "var(--card)",
+              marginBottom: 9,
+              cursor: "pointer",
+            }}
+          >
+            <RefreshCw size={16} />
+          </button>
+        )}
         <div className="flex flex-col items-center gap-1 text-center">
           <div className="flex items-center justify-center gap-2 flex-wrap">
             <h1 style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:22 }} className="text-foreground">{componentName}</h1>
@@ -162,9 +149,6 @@ export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack,
               </span>
             )}
           </div>
-          {group.primary.meanings && group.primary.meanings.length > 1 && (
-            <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{group.primary.meanings.slice(1).join(", ")}</p>
-          )}
         </div>
       </div>
 
