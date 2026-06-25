@@ -1,24 +1,52 @@
-import { ChevronLeft, Lock } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Check, ChevronLeft, Copy, Lock } from "lucide-react";
+import { ChatSection } from "../components/ChatSection";
 import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
-import { RADICALS } from "../data/generated/radicals.generated";
-import { CAT_COLORS, RAD_COLORS } from "../data/ui/categoryColors";
+import { CAT_COLORS } from "../data/ui/categoryColors";
+import type { ChatMsg, ComponentEntry } from "../types";
 
-export function ComponentEntryPage({ id, unlockedKanji, onBack, onBackToGacha, onNavKanji, onNavComponent }: {
+function uniqueValues(values: string[]) {
+  return Array.from(new Set(values.filter(Boolean)));
+}
+
+function getComponentGroup(component: ComponentEntry) {
+  const primary = component.canonicalComponentId
+    ? COMPONENTS.find((entry) => entry.id === component.canonicalComponentId) ?? component
+    : component;
+  const variants = COMPONENTS.filter((entry) => entry.canonicalComponentId === primary.id);
+  const entries = [primary, ...variants];
+  const forms = uniqueValues(entries.flatMap((entry) => entry.forms?.length ? entry.forms : [entry.char]));
+  const kanjiIds = uniqueValues(entries.flatMap((entry) => entry.kanjiIds));
+
+  return { primary, forms, kanjiIds };
+}
+
+export function ComponentEntryPage({ id, unlockedKanji, notes, chatMsgs, onBack, onBackToGacha, onSetNote, onChat, onNavKanji }: {
   id: string;
   unlockedKanji: Set<string>;
+  notes: Record<string, string>;
+  chatMsgs: Record<string, ChatMsg[]>;
   onBack: () => void;
   onBackToGacha?: () => void;
+  onSetNote: (key: string, value: string) => void;
+  onChat: (key: string, question: string, answer: string) => void;
   onNavKanji: (id: string) => void;
   onNavComponent: (id: string) => void;
 }) {
-  const component = COMPONENTS.find((entry) => entry.id === id);
-  const radical = component?.radicalId ? RADICALS.find((entry) => entry.id === component.radicalId) : undefined;
-  const componentIndex = component ? Math.max(0, COMPONENTS.indexOf(component)) : 0;
-  const c1 = RAD_COLORS[componentIndex % RAD_COLORS.length];
-  const c2 = RAD_COLORS[(componentIndex + 4) % RAD_COLORS.length];
+  const selectedComponent = COMPONENTS.find((entry) => entry.id === id);
+  const group = useMemo(() => selectedComponent ? getComponentGroup(selectedComponent) : undefined, [selectedComponent]);
+  const initialForm = selectedComponent?.char ?? group?.primary.char ?? "";
+  const initialVariantIndex = group ? Math.max(0, group.forms.indexOf(initialForm)) : 0;
+  const [variantIndex, setVariantIndex] = useState(initialVariantIndex);
+  const [copied, setCopied] = useState(false);
 
-  if (!component) {
+  useEffect(() => {
+    setVariantIndex(initialVariantIndex);
+    setCopied(false);
+  }, [initialVariantIndex, id]);
+
+  if (!selectedComponent || !group) {
     return (
       <div className="flex flex-col h-full overflow-y-auto">
         <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
@@ -32,6 +60,28 @@ export function ComponentEntryPage({ id, unlockedKanji, onBack, onBackToGacha, o
       </div>
     );
   }
+
+  const variantForms = group.forms.length > 0 ? group.forms : [group.primary.char];
+  const currentVariant = variantForms[Math.min(variantIndex, variantForms.length - 1)];
+  const key = `component:${group.primary.id}`;
+  const componentName = group.primary.meanings?.[0] ?? "Component";
+  const isCanonicalRadical = group.primary.kind === "canonical-radical";
+
+  const cycleVariant = () => {
+    if (variantForms.length > 1) {
+      setVariantIndex((value) => (value + 1) % variantForms.length);
+    }
+  };
+
+  const copyVariant = async () => {
+    try {
+      await navigator.clipboard.writeText(currentVariant);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1200);
+    } catch {
+      setCopied(false);
+    }
+  };
 
   return (
     <div className="flex flex-col h-full overflow-y-auto">
@@ -63,25 +113,68 @@ export function ComponentEntryPage({ id, unlockedKanji, onBack, onBackToGacha, o
       </div>
 
       <div className="flex flex-col items-center pb-4 pt-2 px-4 shrink-0">
-        <div style={{
-          width:140, height:140, borderRadius:28, display:"flex", alignItems:"center", justifyContent:"center",
-          background:`linear-gradient(135deg, ${c1}, ${c2})`,
-          boxShadow:`0 12px 40px ${c1}55, 0 0 0 6px ${c1}22`,
-          marginBottom:12,
-        }}>
-          <span style={{ fontFamily:"var(--jp-font)", fontSize:80, fontWeight:700, color:"rgba(255,255,255,0.95)", lineHeight:1 }}>{component.char}</span>
+        <button
+          type="button"
+          onClick={cycleVariant}
+          aria-label={variantForms.length > 1 ? "Cycle component variant" : "Component form"}
+          style={{
+            width: 140,
+            height: 140,
+            borderRadius: 28,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "linear-gradient(135deg, #f3f4f6, #d1d5db)",
+            border: "1px solid rgba(107,114,128,0.28)",
+            boxShadow: "0 12px 34px rgba(107,114,128,0.24), 0 0 0 6px rgba(107,114,128,0.10)",
+            marginBottom: 10,
+            cursor: variantForms.length > 1 ? "pointer" : "default",
+          }}
+        >
+          <span style={{ fontFamily:"var(--jp-font)", fontSize:80, fontWeight:700, color:"#374151", lineHeight:1 }}>{currentVariant}</span>
+        </button>
+        <button
+          type="button"
+          onClick={copyVariant}
+          aria-label={`Copy ${currentVariant}`}
+          className="text-muted-foreground"
+          style={{
+            width: 34,
+            height: 30,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 999,
+            border: "1px solid var(--border)",
+            background: "var(--card)",
+            marginBottom: 9,
+            cursor: "pointer",
+          }}
+        >
+          {copied ? <Check size={16} /> : <Copy size={16} />}
+        </button>
+        <div className="flex flex-col items-center gap-1 text-center">
+          <div className="flex items-center justify-center gap-2 flex-wrap">
+            <h1 style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:22 }} className="text-foreground">{componentName}</h1>
+            {isCanonicalRadical && (
+              <span style={{ padding:"3px 8px", borderRadius:999, background:"var(--muted)", border:"1px solid var(--border)", fontFamily:"var(--ui-font)", fontSize:10, fontWeight:900, color:"var(--muted-foreground)", textTransform:"uppercase" }}>
+                {group.primary.radicalNumber ? `Radical ${group.primary.radicalNumber}` : "Canonical radical"}
+              </span>
+            )}
+          </div>
+          {group.primary.meanings && group.primary.meanings.length > 1 && (
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{group.primary.meanings.slice(1).join(", ")}</p>
+          )}
         </div>
-        <h1 style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:22 }} className="text-foreground">Component</h1>
-        <p style={{ fontFamily:"var(--ui-font)", fontSize:12, textTransform:"capitalize" }} className="text-muted-foreground">{component.kind.replace("-", " ")}</p>
       </div>
 
       <div className="flex flex-col gap-4 px-4 pb-8">
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Meanings</p>
-          {component.meanings && component.meanings.length > 0 ? (
+          {group.primary.meanings && group.primary.meanings.length > 0 ? (
             <div className="flex flex-wrap gap-2">
-              {component.meanings.map((meaning) => (
-                <span key={meaning} style={{ padding:"4px 10px", borderRadius:20, background:`${c1}22`, color:c1, fontFamily:"var(--ui-font)", fontWeight:700, fontSize:13 }}>
+              {group.primary.meanings.map((meaning) => (
+                <span key={meaning} style={{ padding:"4px 10px", borderRadius:20, background:"var(--muted)", border:"1px solid var(--border)", color:"var(--foreground)", fontFamily:"var(--ui-font)", fontWeight:700, fontSize:13 }}>
                   {meaning}
                 </span>
               ))}
@@ -91,61 +184,45 @@ export function ComponentEntryPage({ id, unlockedKanji, onBack, onBackToGacha, o
           )}
         </div>
 
-        {radical && (
-          <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Official Radical</p>
-            <div
-              style={{
-                display:"flex",
-                alignItems:"center",
-                justifyContent:"space-between",
-                gap:8,
-                padding:"7px 12px",
-                borderRadius:12,
-                background:`${c2}22`,
-                border:`1px solid ${c2}44`,
-              }}
-            >
-              <span style={{ display:"flex", alignItems:"center", gap:8 }}>
-                <span style={{ fontFamily:"var(--jp-font)", fontSize:24, color:c2 }}>{radical.char}</span>
-                <span style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:800, color:c2 }}>
-                  {radical.meanings[0]}
-                </span>
-              </span>
-              {radical.componentId && radical.componentId !== component.id && (
+        <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Variants</p>
+          <div className="flex flex-wrap gap-2">
+            {variantForms.map((form, index) => {
+              const isPrimary = form === group.primary.char;
+              const isSelected = form === currentVariant;
+              return (
                 <button
-                  onClick={() => onNavComponent(radical.componentId!)}
+                  key={`${form}-${index}`}
+                  type="button"
+                  onClick={() => setVariantIndex(index)}
                   style={{
-                    padding:"4px 8px",
-                    borderRadius:999,
-                    background:"var(--card)",
-                    border:"1px solid var(--border)",
-                    color:"var(--muted-foreground)",
-                    fontFamily:"var(--ui-font)",
-                    fontSize:10,
-                    fontWeight:900,
+                    display:"flex",
+                    alignItems:"center",
+                    gap:7,
+                    padding:"6px 11px",
+                    borderRadius:12,
+                    background: isSelected ? "rgba(107,114,128,0.18)" : "var(--muted)",
+                    border: isPrimary ? "2px solid #6b7280" : "1px solid var(--border)",
                     cursor:"pointer",
                   }}
                 >
-                  View component
+                  <span style={{ fontFamily:"var(--jp-font)", fontSize:23, color:"#374151" }}>{form}</span>
+                  <span style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:900, color:"var(--muted-foreground)", textTransform:"uppercase" }}>
+                    {isPrimary ? "Primary" : "Variant"}
+                  </span>
                 </button>
-              )}
-            </div>
-            {radical.radicalNumber && (
-              <p style={{ fontFamily:"var(--ui-font)", fontSize:11, marginTop:8 }} className="text-muted-foreground">
-                Radical {radical.radicalNumber}
-              </p>
-            )}
+              );
+            })}
           </div>
-        )}
+        </div>
 
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Related Kanji</p>
-          {component.kanjiIds.length === 0 ? (
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Kanji Using This Component</p>
+          {group.kanjiIds.length === 0 ? (
             <p style={{ fontFamily:"var(--ui-font)", fontSize:13 }} className="text-muted-foreground">No kanji entries yet.</p>
           ) : (
             <div className="flex flex-wrap gap-2">
-              {component.kanjiIds.map((kanjiId) => {
+              {group.kanjiIds.map((kanjiId) => {
                 const kanji = KANJI.find((entry) => entry.id === kanjiId);
                 if (!kanji) return null;
                 const isUnlocked = unlockedKanji.has(kanjiId);
@@ -173,6 +250,33 @@ export function ComponentEntryPage({ id, unlockedKanji, onBack, onBackToGacha, o
               })}
             </div>
           )}
+        </div>
+
+        <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">My Notes</p>
+          <textarea
+            value={notes[key] || ""}
+            onChange={(event) => onSetNote(key, event.target.value)}
+            placeholder="Add your personal notes, mnemonics, or reminders..."
+            rows={3}
+            style={{
+              width:"100%",
+              background:"var(--input-background)",
+              borderRadius:10,
+              border:"1px solid var(--border)",
+              padding:"8px 10px",
+              fontFamily:"var(--ui-font)",
+              fontSize:13,
+              color:"var(--foreground)",
+              outline:"none",
+              resize:"none",
+              lineHeight:1.5,
+            }}
+          />
+        </div>
+
+        <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+          <ChatSection entryKey={key} msgs={chatMsgs[key] || []} onSend={onChat} contextLabel="component" />
         </div>
       </div>
     </div>

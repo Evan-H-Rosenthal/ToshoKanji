@@ -42,6 +42,19 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
   const background = c1 === c2
     ? c1
     : `linear-gradient(135deg, ${c1}, ${c2})`;
+  const meaningParts = entry.word.meaning
+    .split(";")
+    .map((meaning) => meaning.trim())
+    .filter(Boolean);
+  const meaningPillBackground = c1 === c2
+    ? `${c1}24`
+    : `linear-gradient(135deg, ${c1}26, ${c2}26)`;
+  const meaningPillBorder = c1 === c2
+    ? `${c1}55`
+    : `color-mix(in srgb, ${c1} 50%, ${c2})`;
+  const meaningPillColor = c1 === c2
+    ? c1
+    : `color-mix(in srgb, ${c1} 42%, ${c2})`;
 
   return (
     <div className="flex flex-col h-full overflow-y-auto">
@@ -91,8 +104,9 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
             marginBottom: 14,
           }}
         >
+          <span style={{ fontFamily:"var(--jp-font)", fontSize:15, fontWeight:700, color:"rgba(255,255,255,0.78)", marginBottom:6 }}>{entry.word.furigana}</span>
           <span style={{ fontFamily:"var(--jp-font)", fontSize:42, fontWeight:800, color:"rgba(255,255,255,0.96)", lineHeight:1.1 }}>{entry.word.japanese}</span>
-          <span style={{ fontFamily:"var(--jp-font)", fontSize:15, fontWeight:700, color:"rgba(255,255,255,0.76)", marginTop:6 }}>{entry.word.furigana}</span>
+          <span style={{ fontFamily:"var(--ui-font)", fontSize:14, fontWeight:800, color:"rgba(255,255,255,0.8)", marginTop:7 }}>{entry.word.romaji}</span>
         </div>
 
         <div style={{ display:"flex", gap:7, flexWrap:"wrap", justifyContent:"center" }}>
@@ -110,7 +124,27 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, o
       <div className="flex flex-col gap-4 px-4 pb-8">
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Meaning</p>
-          <p style={{ fontFamily:"var(--ui-font)", fontSize:16, fontWeight:800, lineHeight:1.35 }} className="text-foreground">{entry.word.meaning}</p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
+            {meaningParts.map((meaning) => (
+              <span
+                key={meaning}
+                style={{
+                  maxWidth:"100%",
+                  padding:"7px 11px",
+                  borderRadius:999,
+                  background:meaningPillBackground,
+                  border:`1px solid ${meaningPillBorder}`,
+                  color:meaningPillColor,
+                  fontFamily:"var(--ui-font)",
+                  fontSize:14,
+                  fontWeight:850,
+                  lineHeight:1.25,
+                }}
+              >
+                {meaning}
+              </span>
+            ))}
+          </div>
           {entry.word.common && (
             <p style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:800, marginTop:10, color:c1 }}>Common word</p>
           )}

@@ -341,7 +341,9 @@ export default function App() {
           )}
           {screen.type === "component-entry" && screen.id && (
             <ComponentEntryPage id={screen.id} unlockedKanji={unlockedKanji}
+              notes={notes} chatMsgs={chatMsgs}
               onBack={popScreen}
+              onSetNote={handleSetNote} onChat={handleChat}
               onBackToGacha={screenStack.length >= 2 ? handleBackToGacha : undefined}
               onNavKanji={handleNavKanji} onNavComponent={handleNavComponent} />
           )}
