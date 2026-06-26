@@ -70,6 +70,20 @@ def read_exported_json(path: Path, export_name: str):
     return value
 
 
+def read_generated_words() -> list[dict]:
+    word_part_paths = sorted(
+        GENERATED_DIR.glob("words.part-*.generated.ts"),
+        key=lambda path: int(re.search(r"part-(\d+)", path.name).group(1)),
+    )
+    if not word_part_paths:
+        return read_exported_json(GENERATED_DIR / "words.generated.ts", "WORDS")
+
+    words: list[dict] = []
+    for index, path in enumerate(word_part_paths, start=1):
+        words.extend(read_exported_json(path, f"WORDS_PART_{index}"))
+    return words
+
+
 def duplicate_values(values: list[str]) -> list[str]:
     return sorted(value for value, count in Counter(values).items() if count > 1)
 
@@ -84,7 +98,7 @@ def main() -> int:
     kanji = read_exported_json(GENERATED_DIR / "kanji.generated.ts", "KANJI")
     radicals = read_exported_json(GENERATED_DIR / "radicals.generated.ts", "RADICALS")
     components = read_exported_json(GENERATED_DIR / "components.generated.ts", "COMPONENTS")
-    words = read_exported_json(GENERATED_DIR / "words.generated.ts", "WORDS")
+    words = read_generated_words()
 
     errors: list[str] = []
     warnings: list[str] = []

@@ -169,4 +169,16 @@ export default defineConfig({
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
+
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          const normalizedId = id.replace(/\\/g, '/')
+          const wordPartMatch = normalizedId.match(/\/words\.part-(\d+)\.generated\.ts$/)
+          if (wordPartMatch) return `words-part-${wordPartMatch[1]}`
+        },
+      },
+    },
+  },
 })
