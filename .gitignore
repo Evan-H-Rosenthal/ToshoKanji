@@ -1,3 +1,4 @@
 dist/
 node_modules/
 .cache/
+.tmp-vite-search-*.log

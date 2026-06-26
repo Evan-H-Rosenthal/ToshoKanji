@@ -9,10 +9,14 @@ const CARD_SPARKLES = [
   { x: [82, 48, 27, 72], y: [39, 86, 21, 77], size: 13, delay: 0.54 },
 ];
 
-export function CollectionCard({ char, label, color1, color2, textColor = getReadableTextColor(color1, color2), starred, highlighted = false, onStar, onClick }: {
+export function CollectionCard({ char, label, matchReason, color1, color2, textColor = getReadableTextColor(color1, color2), starred, highlighted = false, wordCard = false, onStar, onClick }: {
   char: string; label: string; color1: string; color2: string; textColor?: string;
-  starred: boolean; highlighted?: boolean; onStar: (e: React.MouseEvent) => void; onClick: () => void;
+  matchReason?: string; starred: boolean; highlighted?: boolean; wordCard?: boolean; onStar: (e: React.MouseEvent) => void; onClick: () => void;
 }) {
+  const charLength = Array.from(char).length;
+  const wordCharSize = charLength > 16 ? 14 : charLength > 10 ? 16 : charLength > 6 ? 20 : 28;
+  const labelSize = wordCard ? 12 : 20;
+
   return (
     <motion.div
       role="button"
@@ -71,9 +75,70 @@ export function CollectionCard({ char, label, color1, color2, textColor = getRea
           )}
         </>
       )}
-      <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"100%", padding:"8px 4px 4px" }}>
-        <span style={{ fontFamily:"var(--jp-font)", fontWeight:700, fontSize:36, color:textColor, lineHeight:1, textShadow: textColor === "#111827" ? "none" : "0 2px 8px rgba(0,0,0,0.3)" }}>{char}</span>
-        <span style={{ fontFamily:"var(--ui-font)", fontSize:20, fontWeight:700, color:textColor, marginTop:4, textAlign:"center", lineHeight:1.1, padding:"0 4px" }}>{label}</span>
+      <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"100%", padding: wordCard ? "20px 7px 7px" : "8px 4px 4px", minWidth:0 }}>
+        <span
+          title={char}
+          style={{
+            fontFamily:"var(--jp-font)",
+            fontWeight:700,
+            fontSize: wordCard ? wordCharSize : 36,
+            color:textColor,
+            lineHeight: wordCard ? 1.12 : 1,
+            textShadow: textColor === "#111827" ? "none" : "0 2px 8px rgba(0,0,0,0.3)",
+            maxWidth:"100%",
+            textAlign:"center",
+            overflow:"hidden",
+            display: wordCard ? "-webkit-box" : "block",
+            WebkitLineClamp: wordCard ? 3 : undefined,
+            WebkitBoxOrient: wordCard ? "vertical" : undefined,
+            overflowWrap:"anywhere",
+            wordBreak:"break-word",
+          }}
+        >
+          {char}
+        </span>
+        <span
+          title={label}
+          style={{
+            fontFamily:"var(--ui-font)",
+            fontSize:labelSize,
+            fontWeight:700,
+            color:textColor,
+            marginTop:4,
+            textAlign:"center",
+            lineHeight:1.1,
+            padding:"0 4px",
+            maxWidth:"100%",
+            overflow:"hidden",
+            display:"-webkit-box",
+            WebkitLineClamp: wordCard ? 2 : 1,
+            WebkitBoxOrient:"vertical",
+            overflowWrap:"anywhere",
+          }}
+        >
+          {label}
+        </span>
+        {matchReason && (
+          <span
+            title={matchReason}
+            style={{
+              maxWidth: "92%",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              fontFamily: "var(--ui-font)",
+              fontSize: 9,
+              fontWeight: 900,
+              color: textColor,
+              opacity: 0.86,
+              marginTop: 3,
+              textAlign: "center",
+              lineHeight: 1.1,
+            }}
+          >
+            {matchReason}
+          </span>
+        )}
       </div>
       <button
         onClick={onStar}

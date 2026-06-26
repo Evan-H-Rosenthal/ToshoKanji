@@ -58,6 +58,8 @@ export default function App() {
   const [screen, setScreen] = useState<ScreenState>({ type:"main" });
   const [screenStack, setScreenStack] = useState<ScreenState[]>([]);
   const [collectionQuery, setCollectionQuery] = useState("");
+  const [collectionIncludeWords, setCollectionIncludeWords] = useState(false);
+  const [collectionIncludeComponents, setCollectionIncludeComponents] = useState(false);
   const [collectionFavOnly, setCollectionFavOnly] = useState(false);
   const collectionScrollTopRef = useRef(0);
 
@@ -308,9 +310,13 @@ export default function App() {
           customNames={customNames}
           highlightedUnlock={highlightedUnlock}
           query={collectionQuery}
+          includeWords={collectionIncludeWords}
+          includeComponents={collectionIncludeComponents}
           favOnly={collectionFavOnly}
           scrollTop={collectionScrollTopRef.current}
           onQueryChange={setCollectionQuery}
+          onIncludeWordsChange={setCollectionIncludeWords}
+          onIncludeComponentsChange={setCollectionIncludeComponents}
           onFavOnlyChange={setCollectionFavOnly}
           onScrollTopChange={(scrollTop) => {
             collectionScrollTopRef.current = scrollTop;

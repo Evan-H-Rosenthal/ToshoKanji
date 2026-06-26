@@ -534,13 +534,71 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                   textAlign:"left",
                   cursor:"pointer",
                   boxShadow:"0 4px 12px rgba(0,0,0,0.05)",
+                  overflow:"hidden",
                 }}>
-                <div className="flex items-baseline gap-2">
-                  <span style={{ fontFamily:"var(--jp-font)", fontSize:18, fontWeight:700 }} className="text-foreground">{w.japanese}</span>
-                  <span style={{ fontFamily:"var(--jp-font)", fontSize:12 }} className="text-muted-foreground">({w.furigana})</span>
+                <div className="flex items-baseline gap-2" style={{ minWidth:0 }}>
+                  <span
+                    title={w.japanese}
+                    style={{
+                      fontFamily:"var(--jp-font)",
+                      fontSize:Array.from(w.japanese).length > 18 ? 14 : 18,
+                      fontWeight:700,
+                      lineHeight:1.18,
+                      minWidth:0,
+                      maxWidth:"100%",
+                      overflow:"hidden",
+                      display:"-webkit-box",
+                      WebkitLineClamp:2,
+                      WebkitBoxOrient:"vertical",
+                      overflowWrap:"anywhere",
+                      wordBreak:"break-word",
+                    }}
+                    className="text-foreground"
+                  >
+                    {w.japanese}
+                  </span>
+                  <span
+                    title={w.furigana}
+                    style={{
+                      fontFamily:"var(--jp-font)",
+                      fontSize:12,
+                      minWidth:0,
+                      maxWidth:"42%",
+                      overflow:"hidden",
+                      textOverflow:"ellipsis",
+                      whiteSpace:"nowrap",
+                      flex:"0 1 auto",
+                    }}
+                    className="text-muted-foreground"
+                  >
+                    ({w.furigana})
+                  </span>
                 </div>
-                <div style={{ fontFamily:"var(--ui-font)", fontSize:11, fontStyle:"italic" }} className="text-muted-foreground">{w.romaji}</div>
-                <div style={{ fontFamily:"var(--ui-font)", fontSize:13, fontWeight:600, marginTop:2 }} className="text-foreground">{w.meaning}</div>
+                <div
+                  title={w.romaji}
+                  style={{ fontFamily:"var(--ui-font)", fontSize:11, fontStyle:"italic", overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}
+                  className="text-muted-foreground"
+                >
+                  {w.romaji}
+                </div>
+                <div
+                  title={w.meaning}
+                  style={{
+                    fontFamily:"var(--ui-font)",
+                    fontSize:13,
+                    fontWeight:600,
+                    marginTop:2,
+                    lineHeight:1.22,
+                    overflow:"hidden",
+                    display:"-webkit-box",
+                    WebkitLineClamp:2,
+                    WebkitBoxOrient:"vertical",
+                    overflowWrap:"anywhere",
+                  }}
+                  className="text-foreground"
+                >
+                  {w.meaning}
+                </div>
               </button>
             ))}
             {filteredWords.length === 0 && (
