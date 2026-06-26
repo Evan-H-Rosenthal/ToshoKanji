@@ -15,6 +15,7 @@ import { KanjiEntryPage } from "./screens/KanjiEntryPage";
 import { PracticeScreen } from "./screens/PracticeScreen";
 import { SettingsPage } from "./screens/SettingsPage";
 import { WordEntryPage } from "./screens/WordEntryPage";
+import { KANJI_RARITIES, getKanjiRarity } from "./data/kanjiRarity";
 import { loadPersistedAppState, savePersistedAppState } from "./persistence";
 import type { CharacterFontChoice, ChatMsg, ScreenState, Tab, UiFontChoice } from "./types";
 
@@ -222,11 +223,30 @@ export default function App() {
   }, [activeTab, improvePerformance, pageWidth, pageX, screen.type, stepActiveTab]);
 
   const getGachaItem = useCallback((): {type:"kanji"|"radical";id:string}|null => {
-    const pool = [
-      ...KANJI.filter(k=>!unlockedKanji.has(k.id)).map(k=>({type:"kanji" as const, id:k.id})),
-    ];
+    const pool = KANJI.filter(k=>!unlockedKanji.has(k.id));
     if (!pool.length) return null;
-    return pool[Math.floor(Math.random()*pool.length)];
+
+    const kanjiByRarity = new Map(KANJI_RARITIES.map((rarity) => [rarity.id, [] as typeof pool]));
+    for (const kanji of pool) {
+      kanjiByRarity.get(getKanjiRarity(kanji))?.push(kanji);
+    }
+
+    const totalWeight = KANJI_RARITIES.reduce((sum, rarity) => sum + rarity.pullWeight, 0);
+    let roll = Math.random() * totalWeight;
+    let rolledRarity = KANJI_RARITIES[0].id;
+    for (const rarity of KANJI_RARITIES) {
+      roll -= rarity.pullWeight;
+      if (roll <= 0) {
+        rolledRarity = rarity.id;
+        break;
+      }
+    }
+
+    const selectedPool = kanjiByRarity.get(rolledRarity)?.length
+      ? kanjiByRarity.get(rolledRarity)!
+      : KANJI_RARITIES.map((rarity) => kanjiByRarity.get(rarity.id) ?? []).find((items) => items.length > 0) ?? pool;
+    const selected = selectedPool[Math.floor(Math.random() * selectedPool.length)];
+    return { type:"kanji", id:selected.id };
   }, [unlockedKanji]);
 
   const handleUnlock = useCallback((type:"kanji"|"radical", id:string) => {

@@ -5,6 +5,7 @@ import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
 import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
+import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
 import {
@@ -69,9 +70,11 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const isFav = favorites.has(key);
   const [cat1, cat2] = getLearningCategoryColors(currentLearningCategory);
   const learningCategoryLabel = getLearningCategoryLabel(currentLearningCategory);
+  const rarityInfo = getKanjiRarityInfo(k);
   const heroTextColor = getReadableTextColor(cat1, cat2);
   const visibleKunyomi = showAllKunyomi ? k.kunyomi : k.kunyomi.slice(0, 3);
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
+  const alternateMeanings = k.meanings.slice(1);
   const words = getWordsForKanji(k.id);
   const normalizedWordQuery = wordQuery.trim().toLowerCase();
   const filteredWords = normalizedWordQuery
@@ -165,25 +168,42 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
           )}
           <button onClick={()=>setEditingName(true)} className="text-muted-foreground"><Pencil size={15} /></button>
         </div>
-        {customNames[key] && customNames[key] !== k.meanings[0] && (
-          <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{k.meanings.join(", ")}</p>
+        {alternateMeanings.length > 0 && (
+          <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{alternateMeanings.join(", ")}</p>
         )}
-        <span
-          style={{
-            marginTop:8,
-            padding:"5px 11px",
-            borderRadius:999,
-            background:`${cat1}22`,
-            border:`1px solid ${cat1}44`,
-            color: darkMode ? cat1 : "#111827",
-            fontFamily:"var(--ui-font)",
-            fontSize:11,
-            fontWeight:900,
-            textTransform:"uppercase",
-          }}
-        >
-          {learningCategoryLabel}
-        </span>
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:7, flexWrap:"wrap", marginTop:8 }}>
+          <span
+            style={{
+              padding:"5px 11px",
+              borderRadius:999,
+              background:`${cat1}22`,
+              border:`1px solid ${cat1}44`,
+              color: darkMode ? cat1 : "#111827",
+              fontFamily:"var(--ui-font)",
+              fontSize:11,
+              fontWeight:900,
+              textTransform:"uppercase",
+            }}
+          >
+            {learningCategoryLabel}
+          </span>
+          <span
+            style={{
+              padding:"5px 11px",
+              borderRadius:999,
+              background:`linear-gradient(135deg, ${rarityInfo.color}, ${rarityInfo.color2})`,
+              border:`1px solid ${rarityInfo.color}`,
+              color:rarityInfo.textColor,
+              boxShadow:`0 0 18px ${rarityInfo.color}55`,
+              fontFamily:"var(--ui-font)",
+              fontSize:11,
+              fontWeight:1000,
+              textTransform:"uppercase",
+            }}
+          >
+            {rarityInfo.label}
+          </span>
+        </div>
       </div>
 
       <AnimatePresence>

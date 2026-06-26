@@ -2,6 +2,7 @@ import { type ReactNode, useCallback, useEffect, useLayoutEffect, useMemo, useRe
 import { Funnel, Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
+import { KANJI_RARITIES, getKanjiRarity, type KanjiRarity } from "../data/kanjiRarity";
 import { LEARNING_CATEGORIES, compareLearningCategories, getLearningCategoryColors } from "../data/ui/categoryColors";
 import { getWordEntries, getWordEntryColors } from "../data/wordData";
 import { buildKanjiSearchIndex, normalizeSearchText, searchKanjiIndex, type SearchMatchReason } from "../search/kanjiSearch";
@@ -62,6 +63,7 @@ export function CollectionScreen({
   const searchTimerRef = useRef<number | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
+  const [selectedRarities, setSelectedRarities] = useState<Set<KanjiRarity>>(new Set());
   const [selectedJlptLevels, setSelectedJlptLevels] = useState<Set<number>>(new Set());
   const [draftQuery, setDraftQuery] = useState(query);
   const [isSearching, setIsSearching] = useState(false);
@@ -135,7 +137,7 @@ export function CollectionScreen({
     setSearchResults(nextResults);
   }, []);
 
-  const activeFilterCount = selectedCategories.size + selectedJlptLevels.size;
+  const activeFilterCount = selectedCategories.size + selectedRarities.size + selectedJlptLevels.size;
   const hasActiveFilters = activeFilterCount > 0;
   const toggleCategory = (category: string) => {
     setSelectedCategories((current) => {
@@ -153,8 +155,17 @@ export function CollectionScreen({
       return next;
     });
   };
+  const toggleRarity = (rarity: KanjiRarity) => {
+    setSelectedRarities((current) => {
+      const next = new Set(current);
+      if (next.has(rarity)) next.delete(rarity);
+      else next.add(rarity);
+      return next;
+    });
+  };
   const clearFilters = () => {
     setSelectedCategories(new Set());
+    setSelectedRarities(new Set());
     setSelectedJlptLevels(new Set());
   };
 
@@ -165,6 +176,7 @@ export function CollectionScreen({
     const key = `kanji:${kanji.id}`;
     if (favOnly && !favorites.has(key)) return false;
     if (selectedCategories.size > 0 && !selectedCategories.has(kanji.learningCategory)) return false;
+    if (selectedRarities.size > 0 && !selectedRarities.has(getKanjiRarity(kanji))) return false;
     if (selectedJlptLevels.size > 0 && (kanji.jlptOld === undefined || !selectedJlptLevels.has(kanji.jlptOld))) return false;
     return true;
   }).sort((a, b) => {
@@ -420,6 +432,53 @@ export function CollectionScreen({
                       />
                       <span style={{ fontFamily: "var(--ui-font)", fontSize: 12, fontWeight: 900, textAlign: "center" }} className="text-foreground">
                         {category.label}
+                      </span>
+                    </label>
+                  );
+                })}
+              </FilterSection>
+
+              <FilterSection title="Rarity">
+                {KANJI_RARITIES.map((rarity) => {
+                  const checked = selectedRarities.has(rarity.id);
+                  return (
+                    <label
+                      key={rarity.id}
+                      style={{
+                        minHeight: 38,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: "7px 8px",
+                        borderRadius: 12,
+                        background: checked ? `${rarity.color}24` : "var(--muted)",
+                        border: `1px solid ${checked ? rarity.color + "88" : "var(--border)"}`,
+                        boxShadow: checked ? `0 0 16px ${rarity.color}33` : "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={() => toggleRarity(rarity.id)}
+                        style={{ display: "none" }}
+                      />
+                      <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, minWidth: 0 }}>
+                        <span
+                          aria-hidden
+                          style={{
+                            width: 13,
+                            height: 13,
+                            borderRadius: 999,
+                            background: `linear-gradient(135deg, ${rarity.color}, ${rarity.color2})`,
+                            border: "1px solid rgba(255,255,255,0.58)",
+                            boxShadow: `0 0 10px ${rarity.color}66`,
+                            flex: "0 0 auto",
+                          }}
+                        />
+                        <span style={{ fontFamily: "var(--ui-font)", fontSize: 12, fontWeight: 900, textAlign: "center" }} className="text-foreground">
+                          {rarity.label}
+                        </span>
                       </span>
                     </label>
                   );

@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
+import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getLearningCategoryColors, RAD_COLORS } from "../data/ui/categoryColors";
 
 const BANK_CAPSULES = [
@@ -193,6 +194,11 @@ export function GachaMachine({
       secondary: RAD_COLORS[(index + 4) % RAD_COLORS.length],
     };
   })();
+  const rarityInfo = capsule?.type === "kanji"
+    ? getKanjiRarityInfo(KANJI.find((kanji) => kanji.id === capsule.id))
+    : null;
+  const glowColor = rarityInfo?.color ?? rewardColors.primary;
+  const glowColor2 = rarityInfo?.color2 ?? rewardColors.secondary;
   const isKanjiReward = capsule?.type === "kanji";
   const capsuleTopBackground = isKanjiReward
     ? "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(232,238,244,0.58) 56%, rgba(210,220,230,0.46))"
@@ -808,6 +814,30 @@ export function GachaMachine({
               }}
             >
               <motion.div
+                aria-hidden
+                initial={{ opacity: 0, scale: 0.82 }}
+                animate={
+                  rewardStage === "opened" || rewardStage === "collecting"
+                    ? { opacity: 0.78, scale: 1.72 }
+                    : { opacity: 0.34, scale: 1 }
+                }
+                transition={
+                  rewardStage === "opened" || rewardStage === "collecting"
+                    ? { duration: 0.72, ease: [0.2, 0.9, 0.25, 1] }
+                    : { duration: 0.28 }
+                }
+                style={{
+                  position: "absolute",
+                  inset: 4,
+                  borderRadius: "50%",
+                  background: `radial-gradient(circle, ${glowColor}55 0%, ${glowColor2}30 42%, transparent 72%)`,
+                  boxShadow: `0 0 ${rewardStage === "opened" || rewardStage === "collecting" ? 54 : 24}px ${glowColor}aa`,
+                  filter: "blur(2px)",
+                  pointerEvents: "none",
+                  zIndex: 0,
+                }}
+              />
+              <motion.div
                 onPointerDown={rewardStage === "center" ? handleCapsulePressStart : undefined}
                 onPointerUp={rewardStage === "center" ? handleCapsulePressEnd : undefined}
                 onPointerCancel={() => setCapsulePressing(false)}
@@ -872,7 +902,7 @@ export function GachaMachine({
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        boxShadow: `0 16px 34px rgba(0,0,0,0.32), 0 0 34px ${rewardColors.primary}aa`,
+                        boxShadow: `0 16px 34px rgba(0,0,0,0.32), 0 0 48px ${glowColor}cc, 0 0 88px ${glowColor2}66`,
                         position: "absolute",
                         zIndex: 1,
                         cursor: rewardStage === "opened" ? "pointer" : "default",
