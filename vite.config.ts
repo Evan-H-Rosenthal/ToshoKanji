@@ -20,6 +20,8 @@ const VALID_LEARNING_CATEGORIES = new Set([
   'Misc',
 ])
 
+const WORKBOX_PRECACHE_LIMIT_BYTES = 50 * 1024 * 1024
+
 function figmaAssetResolver() {
   return {
     name: 'figma-asset-resolver',
@@ -151,7 +153,7 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         navigateFallback: '/index.html',
         globPatterns: ['**/*.{js,css,html,ico}'],
-        maximumFileSizeToCacheInBytes: 25 * 1024 * 1024,
+        maximumFileSizeToCacheInBytes: WORKBOX_PRECACHE_LIMIT_BYTES,
       },
       devOptions: {
         enabled: false,
