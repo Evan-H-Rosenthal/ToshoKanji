@@ -1,9 +1,9 @@
 # Data Validation Report
 
-- Kanji entries: 500
-- Radical entries: 170
-- Component entries: 190
-- Word entries: 145464
+- Kanji entries: 750
+- Radical entries: 180
+- Component entries: 200
+- Word entries: 159407
 - Hard errors: 0
 - Warnings: 0
 
@@ -193,6 +193,118 @@
 - k-説 (説): raw 5 components, visible 4 components
 - k-井 (井): raw 5 components, visible 3 components
 - k-念 (念): raw 5 components, visible 3 components
+- k-験 (験): raw 5 components, visible 4 components
+- k-働 (働): raw 6 components, visible 4 components
+- k-英 (英): raw 4 components, visible 3 components
+- k-失 (失): raw 4 components, visible 3 components
+- k-差 (差): raw 5 components, visible 3 components
+- k-末 (末): raw 5 components, visible 3 components
+- k-種 (種): raw 5 components, visible 3 components
+- k-岡 (岡): raw 5 components, visible 4 components
+- k-松 (松): raw 3 components, visible 2 components
+- k-佐 (佐): raw 4 components, visible 3 components
+- k-観 (観): raw 4 components, visible 3 components
+- k-察 (察): raw 6 components, visible 5 components
+- k-達 (達): raw 5 components, visible 4 components
+- k-候 (候): raw 5 components, visible 3 components
+- k-満 (満): raw 7 components, visible 6 components
+- k-敗 (敗): raw 6 components, visible 4 components
+- k-管 (管): raw 5 components, visible 3 components
+- k-兵 (兵): raw 4 components, visible 3 components
+- k-崎 (崎): raw 5 components, visible 4 components
+- k-積 (積): raw 7 components, visible 6 components
+- k-省 (省): raw 3 components, visible 2 components
+- k-材 (材): raw 4 components, visible 2 components
+- k-隊 (隊): raw 4 components, visible 3 components
+- k-給 (給): raw 7 components, visible 6 components
+- k-未 (未): raw 5 components, visible 3 components
+- k-冷 (冷): raw 4 components, visible 3 components
+- k-類 (類): raw 6 components, visible 5 components
+- k-児 (児): raw 3 components, visible 2 components
+- k-印 (印): raw 2 components, visible 1 components
+- k-輪 (輪): raw 6 components, visible 4 components
+- k-熱 (熱): raw 5 components, visible 4 components
+- k-便 (便): raw 6 components, visible 4 components
+- k-帯 (帯): raw 4 components, visible 3 components
+- k-散 (散): raw 6 components, visible 5 components
+- k-司 (司): raw 3 components, visible 2 components
+- k-静 (静): raw 8 components, visible 7 components
+- k-順 (順): raw 5 components, visible 4 components
+- k-博 (博): raw 4 components, visible 3 components
+- k-城 (城): raw 3 components, visible 2 components
+- k-令 (令): raw 4 components, visible 3 components
+- k-貨 (貨): raw 5 components, visible 4 components
+- k-養 (養): raw 4 components, visible 3 components
+- k-願 (願): raw 7 components, visible 6 components
+- k-希 (希): raw 3 components, visible 2 components
+- k-笑 (笑): raw 4 components, visible 3 components
+- k-束 (束): raw 5 components, visible 3 components
+- k-仲 (仲): raw 3 components, visible 2 components
+- k-沖 (沖): raw 3 components, visible 2 components
+- k-節 (節): raw 4 components, visible 3 components
+- k-郡 (郡): raw 6 components, visible 5 components
+- k-埼 (埼): raw 5 components, visible 4 components
+- k-群 (群): raw 7 components, visible 5 components
+- k-典 (典): raw 5 components, visible 3 components
+- k-賀 (賀): raw 5 components, visible 4 components
+- k-倉 (倉): raw 6 components, visible 4 components
+- k-浴 (浴): raw 5 components, visible 3 components
+- k-塩 (塩): raw 7 components, visible 5 components
+- k-旗 (旗): raw 4 components, visible 2 components
+- k-梅 (梅): raw 4 components, visible 3 components
+- k-牧 (牧): raw 3 components, visible 2 components
+- k-孫 (孫): raw 5 components, visible 4 components
+- k-阜 (阜): raw 5 components, visible 4 components
+- k-滋 (滋): raw 4 components, visible 3 components
+- k-灯 (灯): raw 4 components, visible 3 components
+- k-媛 (媛): raw 4 components, visible 3 components
+- k-政 (政): raw 5 components, visible 4 components
+- k-制 (制): raw 5 components, visible 4 components
+- k-総 (総): raw 7 components, visible 6 components
+- k-領 (領): raw 7 components, visible 5 components
+- k-資 (資): raw 5 components, visible 4 components
+- k-際 (際): raw 7 components, visible 6 components
+- k-告 (告): raw 3 components, visible 2 components
+- k-判 (判): raw 5 components, visible 3 components
+- k-在 (在): raw 4 components, visible 2 components
+- k-任 (任): raw 4 components, visible 3 components
+- k-増 (増): raw 4 components, visible 3 components
+- k-基 (基): raw 4 components, visible 3 components
+- k-勢 (勢): raw 5 components, visible 4 components
+- k-減 (減): raw 4 components, visible 3 components
+- k-容 (容): raw 6 components, visible 4 components
+- k-演 (演): raw 5 components, visible 4 components
+- k-再 (再): raw 4 components, visible 3 components
+- k-税 (税): raw 4 components, visible 3 components
+- k-検 (検): raw 4 components, visible 3 components
+- k-営 (営): raw 4 components, visible 3 components
+- k-可 (可): raw 3 components, visible 2 components
+- k-費 (費): raw 5 components, visible 3 components
+- k-断 (断): raw 4 components, visible 3 components
+- k-術 (術): raw 5 components, visible 4 components
+- k-導 (導): raw 5 components, visible 4 components
+- k-幹 (幹): raw 4 components, visible 3 components
+- k-輸 (輸): raw 5 components, visible 4 components
+- k-述 (述): raw 4 components, visible 3 components
+- k-質 (質): raw 4 components, visible 3 components
+- k-額 (額): raw 7 components, visible 6 components
+- k-義 (義): raw 7 components, visible 5 components
+- k-賞 (賞): raw 6 components, visible 5 components
+- k-造 (造): raw 4 components, visible 3 components
+- k-復 (復): raw 7 components, visible 5 components
+- k-評 (評): raw 6 components, visible 4 components
+- k-型 (型): raw 6 components, visible 5 components
+- k-財 (財): raw 6 components, visible 3 components
+- k-史 (史): raw 2 components, visible 1 components
+- k-旧 (旧): raw 2 components, visible 1 components
+- k-師 (師): raw 4 components, visible 3 components
+- k-易 (易): raw 4 components, visible 3 components
+- k-殺 (殺): raw 6 components, visible 4 components
+- k-編 (編): raw 11 components, visible 10 components
+- k-責 (責): raw 6 components, visible 5 components
+- k-修 (修): raw 5 components, visible 3 components
+- k-故 (故): raw 5 components, visible 4 components
+- k-貿 (貿): raw 5 components, visible 4 components
 
 ## Words With Suspicious IDs
 - None
@@ -377,3 +489,115 @@
 - k-説 (説): filtered `并`
 - k-井 (井): filtered `｜`, `ノ`
 - k-念 (念): filtered `｜`, `个`
+- k-験 (験): filtered `个`
+- k-働 (働): filtered `｜`, `ノ`
+- k-英 (英): filtered `ノ`
+- k-失 (失): filtered `ノ`
+- k-差 (差): filtered `ノ`, `并`
+- k-末 (末): filtered `｜`, `ハ`
+- k-種 (種): filtered `｜`, `ノ`
+- k-岡 (岡): filtered `并`
+- k-松 (松): filtered `ハ`
+- k-佐 (佐): filtered `ノ`
+- k-観 (観): filtered `乞`
+- k-察 (察): filtered `ノ`
+- k-達 (達): filtered `并`
+- k-候 (候): filtered `｜`, `乞`
+- k-満 (満): filtered `｜`
+- k-敗 (敗): filtered `ハ`, `乞`
+- k-管 (管): filtered `｜`, `乞`
+- k-兵 (兵): filtered `ハ`
+- k-崎 (崎): filtered `｜`
+- k-積 (積): filtered `ハ`
+- k-省 (省): filtered `ノ`
+- k-材 (材): filtered `ノ`, `亅`
+- k-隊 (隊): filtered `并`
+- k-給 (給): filtered `个`
+- k-未 (未): filtered `｜`, `ハ`
+- k-冷 (冷): filtered `个`
+- k-類 (類): filtered `ハ`
+- k-児 (児): filtered `｜`
+- k-印 (印): filtered `｜`
+- k-輪 (輪): filtered `｜`, `个`
+- k-熱 (熱): filtered `丶`
+- k-便 (便): filtered `｜`, `ノ`
+- k-帯 (帯): filtered `｜`
+- k-散 (散): filtered `乞`
+- k-司 (司): filtered `亅`
+- k-静 (静): filtered `亅`
+- k-順 (順): filtered `ハ`
+- k-博 (博): filtered `丶`
+- k-城 (城): filtered `ノ`
+- k-令 (令): filtered `个`
+- k-貨 (貨): filtered `ハ`
+- k-養 (養): filtered `并`
+- k-願 (願): filtered `ハ`
+- k-希 (希): filtered `ノ`
+- k-笑 (笑): filtered `乞`
+- k-束 (束): filtered `｜`, `ハ`
+- k-仲 (仲): filtered `｜`
+- k-沖 (沖): filtered `｜`
+- k-節 (節): filtered `乞`
+- k-郡 (郡): filtered `ノ`
+- k-埼 (埼): filtered `｜`
+- k-群 (群): filtered `并`, `ノ`
+- k-典 (典): filtered `｜`, `ハ`
+- k-賀 (賀): filtered `ハ`
+- k-倉 (倉): filtered `ノ`, `个`
+- k-浴 (浴): filtered `ハ`, `个`
+- k-塩 (塩): filtered `ノ`, `乞`
+- k-旗 (旗): filtered `ハ`, `乞`
+- k-梅 (梅): filtered `乞`
+- k-牧 (牧): filtered `乞`
+- k-孫 (孫): filtered `ノ`
+- k-阜 (阜): filtered `｜`
+- k-滋 (滋): filtered `并`
+- k-灯 (灯): filtered `亅`
+- k-媛 (媛): filtered `ノ`
+- k-政 (政): filtered `乞`
+- k-制 (制): filtered `ノ`
+- k-総 (総): filtered `ハ`
+- k-領 (領): filtered `ハ`, `个`
+- k-資 (資): filtered `ハ`
+- k-際 (際): filtered `ノ`
+- k-告 (告): filtered `ノ`
+- k-判 (判): filtered `｜`, `并`
+- k-在 (在): filtered `｜`, `ノ`
+- k-任 (任): filtered `ノ`
+- k-増 (増): filtered `并`
+- k-基 (基): filtered `ハ`
+- k-勢 (勢): filtered `丶`
+- k-減 (減): filtered `亅`
+- k-容 (容): filtered `ハ`, `个`
+- k-演 (演): filtered `ハ`
+- k-再 (再): filtered `｜`
+- k-税 (税): filtered `并`
+- k-検 (検): filtered `个`
+- k-営 (営): filtered `ノ`
+- k-可 (可): filtered `亅`
+- k-費 (費): filtered `｜`, `ハ`
+- k-断 (断): filtered `｜`
+- k-術 (術): filtered `丶`
+- k-導 (導): filtered `并`
+- k-幹 (幹): filtered `个`
+- k-輸 (輸): filtered `个`
+- k-述 (述): filtered `丶`
+- k-質 (質): filtered `ハ`
+- k-額 (額): filtered `ハ`
+- k-義 (義): filtered `并`, `亅`
+- k-賞 (賞): filtered `ハ`
+- k-造 (造): filtered `ノ`
+- k-復 (復): filtered `ノ`, `乞`
+- k-評 (評): filtered `｜`, `并`
+- k-型 (型): filtered `ノ`
+- k-財 (財): filtered `ノ`, `ハ`, `亅`
+- k-史 (史): filtered `ノ`
+- k-旧 (旧): filtered `｜`
+- k-師 (師): filtered `｜`
+- k-易 (易): filtered `ノ`
+- k-殺 (殺): filtered `ノ`, `丶`
+- k-編 (編): filtered `｜`
+- k-責 (責): filtered `ハ`
+- k-修 (修): filtered `｜`, `乞`
+- k-故 (故): filtered `乞`
+- k-貿 (貿): filtered `ハ`

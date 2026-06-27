@@ -2,7 +2,7 @@ import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { KANJI } from "../data/generated/kanji.generated";
-import { LEARNING_CATEGORIES } from "../data/ui/categoryColors";
+import { LEARNING_CATEGORIES, getReadableTextColor } from "../data/ui/categoryColors";
 
 export function GachaStatsButton({
   unlockedKanji,
@@ -19,13 +19,14 @@ export function GachaStatsButton({
       return {
         category: category.id,
         label: category.label,
+        emoji: category.emoji,
         unlocked,
         total: entries.length,
         color1,
         color2,
         percent: entries.length ? (unlocked / entries.length) * 100 : 0,
       };
-    });
+    }).filter((stat) => stat.total > 0);
   }, [unlockedKanji]);
 
   return (
@@ -99,13 +100,15 @@ export function GachaStatsButton({
               onClick={(event) => event.stopPropagation()}
               style={{
                 width: "100%",
-                maxWidth: 286,
+                maxWidth: 312,
+                maxHeight: "min(620px, calc(100% - 24px))",
                 borderRadius: 22,
                 background: "linear-gradient(180deg, var(--card), color-mix(in srgb, var(--card) 88%, var(--primary)))",
                 border: "1px solid var(--border)",
                 boxShadow: "0 24px 60px rgba(0,0,0,0.42)",
                 padding: 16,
                 position: "relative",
+                overflow: "hidden",
               }}
             >
               <button
@@ -142,45 +145,122 @@ export function GachaStatsButton({
                 <SummaryCard label="Kanji" value={unlockedKanji.size} total={KANJI.length} />
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {categoryStats.map((stat) => (
-                  <div key={stat.category}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontFamily: "var(--ui-font)", fontSize: 11, fontWeight: 900 }} className="text-foreground">
-                        {stat.label}
-                      </span>
-                      <span style={{ fontFamily: "var(--ui-font)", fontSize: 10, fontWeight: 800 }} className="text-muted-foreground">
-                        {stat.unlocked}/{stat.total}
-                      </span>
-                    </div>
-                    <div
-                      style={{
-                        height: 9,
-                        borderRadius: 999,
-                        background: "var(--muted)",
-                        overflow: "hidden",
-                        border: "1px solid var(--border)",
-                      }}
-                    >
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${stat.percent}%` }}
-                        transition={{ duration: 0.55, ease: "easeOut" }}
+              <div style={{ maxHeight: 388, overflowY: "auto", paddingRight: 4 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10 }}>
+                  {categoryStats.map((stat) => (
+                    <div key={stat.category} style={{ minWidth: 0 }}>
+                      <CategoryProgressBox {...stat} />
+                      <p
+                        title={stat.label}
                         style={{
-                          height: "100%",
-                          borderRadius: 999,
-                          background: `linear-gradient(90deg, ${stat.color1}, ${stat.color2})`,
+                          minHeight: 24,
+                          marginTop: 5,
+                          padding: "0 3px",
+                          fontFamily: "var(--ui-font)",
+                          fontSize: 10,
+                          fontWeight: 900,
+                          lineHeight: 1.15,
+                          textAlign: "center",
+                          color: "var(--foreground)",
+                          overflow: "hidden",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflowWrap: "anywhere",
                         }}
-                      />
+                      >
+                        {stat.label}
+                      </p>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+function CategoryProgressBox({
+  label,
+  emoji,
+  unlocked,
+  total,
+  color1,
+  color2,
+  percent,
+}: {
+  label: string;
+  emoji: string;
+  unlocked: number;
+  total: number;
+  color1: string;
+  color2: string;
+  percent: number;
+}) {
+  const textColor = getReadableTextColor(color1, color2);
+  const complete = unlocked >= total;
+
+  return (
+    <div
+      title={`${label}: ${unlocked}/${total}`}
+      aria-label={`${label}: ${unlocked} of ${total}`}
+      style={{
+        aspectRatio: "1",
+        borderRadius: 18,
+        border: `2px ${complete ? "solid" : "dotted"} ${color1}`,
+        background: "var(--muted)",
+        boxShadow: unlocked > 0 ? `0 8px 20px ${color1}33` : "inset 0 0 0 1px rgba(255,255,255,0.1)",
+        overflow: "hidden",
+        position: "relative",
+      }}
+    >
+      <motion.div
+        initial={{ height: 0 }}
+        animate={{ height: `${percent}%` }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `linear-gradient(135deg, ${color1}, ${color2})`,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 32,
+          textShadow: percent > 42 && textColor !== "#111827" ? "0 2px 8px rgba(0,0,0,0.32)" : "none",
+        }}
+      >
+        {emoji}
+      </div>
+      <span
+        style={{
+          position: "absolute",
+          right: 7,
+          bottom: 6,
+          padding: "2px 5px",
+          borderRadius: 999,
+          background: percent > 52 ? "rgba(0,0,0,0.22)" : "color-mix(in srgb, var(--card) 84%, transparent)",
+          border: "1px solid rgba(255,255,255,0.2)",
+          color: percent > 52 ? textColor : "var(--muted-foreground)",
+          fontFamily: "var(--ui-font)",
+          fontSize: 9,
+          fontWeight: 1000,
+          lineHeight: 1,
+        }}
+      >
+        {unlocked}/{total}
+      </span>
+    </div>
   );
 }
 

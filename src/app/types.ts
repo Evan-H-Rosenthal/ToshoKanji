@@ -2,7 +2,8 @@ export type Tab = "collection" | "gacha" | "practice";
 export type UiFontChoice = "nunito" | "system";
 export type CharacterFontChoice = "traditional" | "modern";
 export interface ScreenState { type: "main" | "kanji-entry" | "component-entry" | "word-entry" | "achievements" | "settings"; id?: string; }
-export interface Word { id?: string; japanese: string; furigana: string; romaji: string; meaning: string; common?: boolean; }
+export type WordMetadataTag = "ateji" | "gikun" | "iK" | "ik" | "io" | "oK" | "ok" | "rK" | "rk" | "sk";
+export interface Word { id?: string; japanese: string; furigana: string; romaji: string; meaning: string; common?: boolean; wordTags?: WordMetadataTag[]; }
 export interface KanjiPart { component: string; role: string; componentId?: string; radicalId?: string; }
 export interface OfficialRadical { id: string; form: string; char: string; }
 export interface LearnerPart {

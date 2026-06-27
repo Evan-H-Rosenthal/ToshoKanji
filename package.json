@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "data:kanji": "python scripts/build-kanji-data.py",
-    "data:validate": "python scripts/validate-data.py",
+    "data:kanji": "node scripts/run-python-script.mjs scripts/build-kanji-data.py",
+    "data:validate": "node scripts/run-python-script.mjs scripts/validate-data.py",
     "dev": "vite",
     "icons": "node scripts/generate-icons.mjs",
     "preview": "vite preview"

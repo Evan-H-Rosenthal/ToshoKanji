@@ -1,8 +1,40 @@
-import { ChevronLeft, Lock, Star } from "lucide-react";
+import { ChevronLeft, HelpCircle, Lock, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
+import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import { getLearningCategoryColors, getLearningCategoryLabel, getReadableTextColor } from "../data/ui/categoryColors";
 import { findWordEntry, getWordEntryColors } from "../data/wordData";
-import type { ChatMsg } from "../types";
+import type { ChatMsg, WordMetadataTag } from "../types";
+
+const WORD_CLASSIFICATIONS: {
+  tags: WordMetadataTag[];
+  label: string;
+  description: string;
+}[] = [
+  {
+    tags: ["ateji"],
+    label: "🔊 Ateji",
+    description: "This word's Kanji may not necessarily be used for their meaning, but rather for their sound.",
+  },
+  {
+    tags: ["gikun"],
+    label: "📖 Special Reading",
+    description: "This word has a reading that may not be able to be discerned from its Kanji. The true reading of the word can be found by reading its Furigana or Romaji.",
+  },
+  {
+    tags: ["iK", "ik", "io"],
+    label: "⚠️ Irregular Usage",
+    description: "This word may use its Kanji or Kana in a way that is not consistent with how those Kanji are used in other words.",
+  },
+  {
+    tags: ["oK", "ok", "rK", "rk"],
+    label: "🕰️ Rare/Old Form",
+    description: "This spelling is rare or historical, and may not be commonly used in modern Japanese anymore.",
+  },
+];
+
+function getWordClassification(wordTags: WordMetadataTag[] = []) {
+  return WORD_CLASSIFICATIONS.find((classification) => classification.tags.some((tag) => wordTags.includes(tag)));
+}
 
 export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, darkMode, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
   id: string;
@@ -41,6 +73,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, d
   const isFav = favorites.has(key);
   const [c1, c2] = getWordEntryColors(entry);
   const categories = Array.from(new Set(entry.kanji.map((kanji) => kanji.learningCategory)));
+  const wordClassification = getWordClassification(entry.word.wordTags);
   const background = c1 === c2
     ? c1
     : `linear-gradient(135deg, ${c1}, ${c2})`;
@@ -122,6 +155,55 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, d
             );
           })}
         </div>
+        {wordClassification && (
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:6, marginTop:9 }}>
+            <span
+              style={{
+                padding:"5px 11px",
+                borderRadius:999,
+                background:"var(--muted)",
+                border:"1px solid var(--border)",
+                color:"var(--foreground)",
+                fontFamily:"var(--ui-font)",
+                fontSize:12,
+                fontWeight:900,
+                lineHeight:1.15,
+              }}
+            >
+              {wordClassification.label}
+            </span>
+            <Popover>
+              <PopoverTrigger asChild>
+                <button
+                  aria-label={`About ${wordClassification.label}`}
+                  style={{
+                    width:24,
+                    height:24,
+                    borderRadius:999,
+                    display:"inline-flex",
+                    alignItems:"center",
+                    justifyContent:"center",
+                    border:"1px solid var(--border)",
+                    background:"var(--card)",
+                    color:"var(--muted-foreground)",
+                    boxShadow:"0 2px 8px rgba(15, 23, 42, 0.12)",
+                    cursor:"pointer",
+                  }}
+                >
+                  <HelpCircle size={15} strokeWidth={2.4} />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="center" sideOffset={8} style={{ width:260, borderRadius:14, padding:12 }}>
+                <p style={{ fontFamily:"var(--ui-font)", fontSize:13, fontWeight:900, color:"var(--foreground)", marginBottom:5 }}>
+                  {wordClassification.label}
+                </p>
+                <p style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:650, color:"var(--muted-foreground)", lineHeight:1.45 }}>
+                  {wordClassification.description}
+                </p>
+              </PopoverContent>
+            </Popover>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-4 px-4 pb-8">

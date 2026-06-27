@@ -17,6 +17,10 @@ const VALID_LEARNING_CATEGORIES = new Set([
   'LanguageCommunication',
   'BodyHealth',
   'Colors',
+  'PositionMeasurement',
+  'EmotionsFeelings',
+  'MindKnowledge',
+  'QualitiesStates',
   'Misc',
 ])
 

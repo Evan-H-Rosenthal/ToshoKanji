@@ -1,18 +1,22 @@
 export const FALLBACK_LEARNING_CATEGORY = "Misc";
 
 export const LEARNING_CATEGORIES = [
-  { id: "Nature", label: "Nature", colors: ["#22c55e", "#16a34a"] },
-  { id: "PeopleSociety", label: "People & Society", colors: ["#3b82f6", "#2563eb"] },
-  { id: "PlacesBuildings", label: "Places & Buildings", colors: ["#f97316", "#ea580c"] },
-  { id: "ActionsMovements", label: "Actions & Movements", colors: ["#ef4444", "#dc2626"] },
-  { id: "AbstractConcepts", label: "Abstract Concepts", colors: ["#a855f7", "#7c3aed"] },
-  { id: "NumbersTime", label: "Numbers & Time", colors: ["#f59e0b", "#d97706"] },
-  { id: "ObjectsMaterials", label: "Objects & Materials", colors: ["#14b8a6", "#0d9488"] },
-  { id: "FoodLiving", label: "Food & Living", colors: ["#eab308", "#ca8a04"] },
-  { id: "LanguageCommunication", label: "Language & Communication", colors: ["#ec4899", "#db2777"] },
-  { id: "BodyHealth", label: "Body & Health", colors: ["#f43f5e", "#e11d48"] },
-  { id: "Colors", label: "Colors", colors: ["#f8fafc", "#cbd5e1"] },
-  { id: FALLBACK_LEARNING_CATEGORY, label: "Misc & Fallback", colors: ["#6b7280", "#4b5563"] },
+  { id: "Nature", label: "Nature", emoji: "🌱", colors: ["#22c55e", "#16a34a"] },
+  { id: "PeopleSociety", label: "People & Society", emoji: "👤", colors: ["#3b82f6", "#2563eb"] },
+  { id: "PlacesBuildings", label: "Places & Buildings", emoji: "🏢", colors: ["#f97316", "#ea580c"] },
+  { id: "ActionsMovements", label: "Actions & Movements", emoji: "🏃", colors: ["#ef4444", "#dc2626"] },
+  { id: "AbstractConcepts", label: "Abstract Concepts", emoji: "🌀", colors: ["#a855f7", "#7c3aed"] },
+  { id: "NumbersTime", label: "Numbers & Time", emoji: "🧮", colors: ["#f59e0b", "#d97706"] },
+  { id: "ObjectsMaterials", label: "Objects & Materials", emoji: "⚙️", colors: ["#14b8a6", "#0d9488"] },
+  { id: "FoodLiving", label: "Food & Living", emoji: "🍚", colors: ["#eab308", "#ca8a04"] },
+  { id: "LanguageCommunication", label: "Language & Communication", emoji: "📚", colors: ["#ec4899", "#db2777"] },
+  { id: "BodyHealth", label: "Body & Health", emoji: "🩺", colors: ["#f43f5e", "#e11d48"] },
+  { id: "Colors", label: "Colors", emoji: "🌈", colors: ["#f8fafc", "#cbd5e1"] },
+  { id: "PositionMeasurement", label: "Position & Measurement", emoji: "📐", colors: ["#6366f1", "#4f46e5"] },
+  { id: "EmotionsFeelings", label: "Emotions & Feelings", emoji: "❤️", colors: ["#fbcfe8", "#f9a8d4"] },
+  { id: "MindKnowledge", label: "Mind & Knowledge", emoji: "🧠", colors: ["#38bdf8", "#0284c7"] },
+  { id: "QualitiesStates", label: "Qualities & States", emoji: "⚖️", colors: ["#fde047", "#facc15"] },
+  { id: FALLBACK_LEARNING_CATEGORY, label: "Misc & Fallback", emoji: "❓", colors: ["#6b7280", "#4b5563"] },
 ] as const;
 
 export const LEARNING_CATEGORY_ORDER = new Map(LEARNING_CATEGORIES.map((category, index) => [category.id, index]));

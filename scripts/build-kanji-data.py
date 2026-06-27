@@ -19,6 +19,20 @@ RADICALS_OUT_FILE = GENERATED_DIR / "radicals.generated.ts"
 COMPONENTS_OUT_FILE = GENERATED_DIR / "components.generated.ts"
 WORDS_OUT_FILE = GENERATED_DIR / "words.generated.ts"
 WORD_PART_COUNT = 5
+WORD_METADATA_TAGS = {"ateji", "gikun", "iK", "ik", "io", "oK", "ok", "rK", "rk", "sk"}
+WORD_METADATA_TAG_ALIASES = {
+    "ateji (phonetic) reading": "ateji",
+    "gikun (meaning as reading) or jukujikun (special kanji reading)": "gikun",
+    "word containing irregular kanji usage": "iK",
+    "word containing irregular kana usage": "ik",
+    "irregular okurigana usage": "io",
+    "word containing out-dated kanji or kanji usage": "oK",
+    "out-dated or obsolete kana usage": "ok",
+    "rarely used kanji form": "rK",
+    "rarely used kana form": "rk",
+    "search-only kanji form": "sk",
+    "search-only kana form": "sk",
+}
 
 KANJIDIC2_URL = "https://www.edrdg.org/kanjidic/kanjidic2.xml.gz"
 JMDICT_E_URL = "http://ftp.edrdg.org/pub/Nihongo/JMdict_e.gz"
@@ -496,6 +510,34 @@ def jmdict_readings_for_entry(entry: ET.Element, japanese: str) -> list[str]:
     return readings
 
 
+def normalize_word_metadata_tag(value: str | None) -> str | None:
+    if not value:
+        return None
+    if value in WORD_METADATA_TAGS:
+        return value
+    return WORD_METADATA_TAG_ALIASES.get(value)
+
+
+def jmdict_word_tags(entry: ET.Element, japanese: str, furigana: str) -> list[str]:
+    tags: set[str] = set()
+
+    for kanji_elem in entry.findall("k_ele"):
+        if kanji_elem.findtext("keb") != japanese:
+            continue
+        tags.update(tag for tag in (normalize_word_metadata_tag(node.text) for node in kanji_elem.findall("ke_inf")) if tag)
+
+    for reading_elem in entry.findall("r_ele"):
+        reading = reading_elem.findtext("reb")
+        if reading != furigana:
+            continue
+        restrictions = [node.text for node in reading_elem.findall("re_restr") if node.text]
+        if restrictions and japanese not in restrictions:
+            continue
+        tags.update(tag for tag in (normalize_word_metadata_tag(node.text) for node in reading_elem.findall("re_inf")) if tag)
+
+    return [tag for tag in ("ateji", "gikun", "iK", "ik", "io", "oK", "ok", "rK", "rk", "sk") if tag in tags]
+
+
 def jmdict_texts(entry: ET.Element, paths: tuple[str, ...]) -> list[str]:
     return [node.text or "" for path in paths for node in entry.findall(path) if node.text]
 
@@ -561,6 +603,7 @@ def parse_jmdict_words(target_literals: set[str]) -> dict[str, list[dict]]:
                 readings = jmdict_readings_for_entry(elem, japanese)
                 furigana = next((reading for reading in readings if kana_re.match(reading)), readings[0] if readings else "")
                 has_reading = bool(furigana)
+                word_tags = jmdict_word_tags(elem, japanese, furigana)
                 words_by_literal[literal].append({
                     "id": f"w-{japanese}",
                     "japanese": japanese,
@@ -568,6 +611,7 @@ def parse_jmdict_words(target_literals: set[str]) -> dict[str, list[dict]]:
                     "romaji": kana_to_hepburn(furigana),
                     "meaning": meaning,
                     "common": common,
+                    **({"wordTags": word_tags} if word_tags else {}),
                     "_priorityBucket": priority_bucket,
                     "_nfRank": nf_rank,
                     "_priorityCount": priority_count,
@@ -1172,7 +1216,7 @@ def main() -> None:
     download_if_missing(KRADFILE_URL, KRADFILE_GZ)
 
     all_entries = parse_kanjidic2()
-    selected_kanji = pick_milestone_kanji(all_entries, 500)
+    selected_kanji = pick_milestone_kanji(all_entries, 750)
     target_literals = {entry["literal"] for entry in selected_kanji}
     existing_learning_categories = read_existing_learning_categories()
     words_by_literal = parse_jmdict_words(target_literals)
