@@ -1,7 +1,7 @@
 import { ChevronLeft, HelpCircle, Lock, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
-import { getLearningCategoryColors, getLearningCategoryLabel, getReadableTextColor } from "../data/ui/categoryColors";
+import { getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor } from "../data/ui/categoryColors";
 import { findWordEntry, getWordEntryColors } from "../data/wordData";
 import type { ChatMsg, WordMetadataTag } from "../types";
 
@@ -77,7 +77,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, d
   const background = c1 === c2
     ? c1
     : `linear-gradient(135deg, ${c1}, ${c2})`;
-  const heroTextColor = getReadableTextColor(c1, c2);
+  const heroTextColor = categories.length === 1 ? getLearningCategoryTextColor(categories[0]) : getReadableTextColor(c1, c2);
   const meaningParts = entry.word.meaning
     .split(";")
     .map((meaning) => meaning.trim())

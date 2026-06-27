@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
-import { compareLearningCategories, getLearningCategoryColors } from "../data/ui/categoryColors";
+import { compareLearningCategories, getLearningCategoryColors, getLearningCategoryTextColor } from "../data/ui/categoryColors";
 import { getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
@@ -71,6 +71,7 @@ export function KanjiScreen({ unlockedKanji, favorites, customNames, highlighted
                 <CollectionCard key={k.id} char={k.char}
                   label={customNames[key] || k.meanings[0]}
                   color1={c1} color2={c2}
+                  textColor={getLearningCategoryTextColor(k.learningCategory)}
                   starred={favorites.has(key)}
                   highlighted={highlightedId === k.id}
                   onStar={e=>{ e.stopPropagation(); onToggleFav(key); }}

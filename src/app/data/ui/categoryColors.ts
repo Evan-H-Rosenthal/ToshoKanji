@@ -11,17 +11,20 @@ export const LEARNING_CATEGORIES = [
   { id: "FoodLiving", label: "Food & Living", emoji: "🍚", colors: ["#eab308", "#ca8a04"] },
   { id: "LanguageCommunication", label: "Language & Communication", emoji: "📚", colors: ["#ec4899", "#db2777"] },
   { id: "BodyHealth", label: "Body & Health", emoji: "🩺", colors: ["#f43f5e", "#e11d48"] },
-  { id: "Colors", label: "Colors", emoji: "🌈", colors: ["#f8fafc", "#cbd5e1"] },
-  { id: "PositionMeasurement", label: "Position & Measurement", emoji: "📐", colors: ["#6366f1", "#4f46e5"] },
-  { id: "EmotionsFeelings", label: "Emotions & Feelings", emoji: "❤️", colors: ["#fbcfe8", "#f9a8d4"] },
+  { id: "Colors", label: "Colors", emoji: "🌈", colors: ["#f8fafc", "#cbd5e1"], textColor: "#111827" },
+  { id: "PositionMeasurement", label: "Positions & Space", emoji: "📐", colors: ["#6366f1", "#4f46e5"] },
+  { id: "EmotionsFeelings", label: "Emotions & Feelings", emoji: "❤️", colors: ["#fbcfe8", "#f9a8d4"], textColor: "#111827" },
   { id: "MindKnowledge", label: "Mind & Knowledge", emoji: "🧠", colors: ["#38bdf8", "#0284c7"] },
-  { id: "QualitiesStates", label: "Qualities & States", emoji: "⚖️", colors: ["#fde047", "#facc15"] },
+  { id: "QualitiesStates", label: "Qualities & States", emoji: "⚖️", colors: ["#fde047", "#facc15"], textColor: "#111827" },
   { id: FALLBACK_LEARNING_CATEGORY, label: "Misc & Fallback", emoji: "❓", colors: ["#6b7280", "#4b5563"] },
 ] as const;
 
 export const LEARNING_CATEGORY_ORDER = new Map(LEARNING_CATEGORIES.map((category, index) => [category.id, index]));
 export const LEARNING_CATEGORY_LABELS = Object.fromEntries(LEARNING_CATEGORIES.map((category) => [category.id, category.label]));
 export const CAT_COLORS = Object.fromEntries(LEARNING_CATEGORIES.map((category) => [category.id, category.colors])) as Record<string, [string, string]>;
+export const CAT_TEXT_COLORS = Object.fromEntries(
+  LEARNING_CATEGORIES.flatMap((category) => "textColor" in category ? [[category.id, category.textColor]] : [])
+) as Record<string, string>;
 
 export function getLearningCategory(value?: string) {
   return value && value in LEARNING_CATEGORY_LABELS ? value : FALLBACK_LEARNING_CATEGORY;
@@ -34,6 +37,14 @@ export function getLearningCategoryLabel(value?: string) {
 
 export function getLearningCategoryColors(value?: string): [string, string] {
   return CAT_COLORS[getLearningCategory(value)] ?? CAT_COLORS[FALLBACK_LEARNING_CATEGORY];
+}
+
+export function getLearningCategoryTextColor(value?: string) {
+  const category = getLearningCategory(value);
+  const configuredTextColor = CAT_TEXT_COLORS[category];
+  if (configuredTextColor) return configuredTextColor;
+  const [primary, secondary] = getLearningCategoryColors(category);
+  return getReadableTextColor(primary, secondary);
 }
 
 export function compareLearningCategories(a?: string, b?: string) {

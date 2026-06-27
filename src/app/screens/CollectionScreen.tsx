@@ -3,7 +3,7 @@ import { Funnel, Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
 import { KANJI_RARITIES, getKanjiRarity, type KanjiRarity } from "../data/kanjiRarity";
-import { LEARNING_CATEGORIES, compareLearningCategories, getLearningCategoryColors } from "../data/ui/categoryColors";
+import { LEARNING_CATEGORIES, compareLearningCategories, getLearningCategoryColors, getLearningCategoryTextColor } from "../data/ui/categoryColors";
 import { getWordEntries, getWordEntryColors } from "../data/wordData";
 import { buildKanjiSearchIndex, normalizeSearchText, searchKanjiIndex, type SearchMatchReason } from "../search/kanjiSearch";
 import { CollectionCard } from "../components/CollectionCard";
@@ -556,6 +556,7 @@ export function CollectionScreen({
                       matchReason={hasQuery ? formatMatchReason(reason) : undefined}
                       color1={color1}
                       color2={color2}
+                      textColor={getLearningCategoryTextColor(kanji.learningCategory)}
                       starred={favorites.has(key)}
                       highlighted={highlightedUnlock?.type === "kanji" && highlightedUnlock.id === kanji.id}
                       onStar={(event) => {

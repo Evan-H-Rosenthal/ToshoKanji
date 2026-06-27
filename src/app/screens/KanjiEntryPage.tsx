@@ -4,7 +4,7 @@ import { Check, ChevronLeft, Info, Pencil, Search, Star, Tags, X } from "lucide-
 import { KANJI } from "../data/generated/kanji.generated";
 import { COMPONENTS } from "../data/generated/components.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
-import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
+import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
 import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
@@ -71,7 +71,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const [cat1, cat2] = getLearningCategoryColors(currentLearningCategory);
   const learningCategoryLabel = getLearningCategoryLabel(currentLearningCategory);
   const rarityInfo = getKanjiRarityInfo(k);
-  const heroTextColor = getReadableTextColor(cat1, cat2);
+  const heroTextColor = getLearningCategoryTextColor(currentLearningCategory);
   const visibleKunyomi = showAllKunyomi ? k.kunyomi : k.kunyomi.slice(0, 3);
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
   const alternateMeanings = k.meanings.slice(1);
@@ -279,7 +279,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                   const [color1, color2] = category.colors;
                   const selected = currentLearningCategory === category.id;
                   const saving = savingCategory === category.id;
-                  const textColor = getReadableTextColor(color1, color2);
+                  const textColor = getLearningCategoryTextColor(category.id);
                   return (
                     <button
                       key={category.id}
