@@ -157,7 +157,21 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         navigateFallback: '/index.html',
         globPatterns: ['**/*.{js,css,html,ico}'],
+        globIgnores: ['**/words.part-*.generated-*.js'],
         maximumFileSizeToCacheInBytes: WORKBOX_PRECACHE_LIMIT_BYTES,
+        runtimeCaching: [
+          {
+            urlPattern: /\/assets\/words\.part-\d+\.generated-.*\.js$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'word-data-chunks',
+              expiration: {
+                maxEntries: 5,
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+              },
+            },
+          },
+        ],
       },
       devOptions: {
         enabled: false,
@@ -181,6 +195,9 @@ export default defineConfig({
           const normalizedId = id.replace(/\\/g, '/')
           const wordPartMatch = normalizedId.match(/\/words\.part-(\d+)\.generated\.ts$/)
           if (wordPartMatch) return `words-part-${wordPartMatch[1]}`
+          if (normalizedId.endsWith('/kanji.generated.ts')) return 'kanji-data'
+          if (normalizedId.endsWith('/components.generated.ts')) return 'component-data'
+          if (normalizedId.endsWith('/radicals.generated.ts')) return 'radical-data'
         },
       },
     },

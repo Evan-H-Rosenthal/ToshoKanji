@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
 import { ChevronLeft, HelpCircle, Lock, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import { getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor } from "../data/ui/categoryColors";
-import { findWordEntry, getWordEntryColors } from "../data/wordData";
+import { findWordEntry, getWordEntryColors, type WordEntry } from "../data/wordData";
 import type { ChatMsg, WordMetadataTag } from "../types";
 
 const WORD_CLASSIFICATIONS: {
@@ -51,9 +52,30 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, d
   onChat: (key: string, question: string, answer: string) => void;
   onNavKanji: (id: string) => void;
 }) {
-  const entry = findWordEntry(id);
+  const [entry, setEntry] = useState<WordEntry | undefined>();
+  const [loading, setLoading] = useState(true);
 
-  if (!entry) {
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setEntry(undefined);
+    findWordEntry(id)
+      .then((nextEntry) => {
+        if (!cancelled) setEntry(nextEntry);
+      })
+      .catch(() => {
+        if (!cancelled) setEntry(undefined);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+
+  if (loading || !entry) {
     return (
       <div className="flex flex-col h-full overflow-y-auto">
         <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
@@ -62,8 +84,10 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, d
           </button>
         </div>
         <div className="flex flex-col items-center justify-center flex-1 px-6 text-center">
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:18 }} className="text-foreground">Word not found</p>
-          <p style={{ fontFamily:"var(--ui-font)", fontSize:13, marginTop:6 }} className="text-muted-foreground">This vocabulary entry is not available in the current dataset.</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:18 }} className="text-foreground">{loading ? "Loading word..." : "Word not found"}</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontSize:13, marginTop:6 }} className="text-muted-foreground">
+            {loading ? "Preparing this vocabulary entry." : "This vocabulary entry is not available in the current dataset."}
+          </p>
         </div>
       </div>
     );

@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, ChevronLeft, Info, Pencil, Search, Star, Tags, X } from "lucide-react";
-import { KANJI } from "../data/generated/kanji.generated";
-import { COMPONENTS } from "../data/generated/components.generated";
-import { RADICALS } from "../data/generated/radicals.generated";
+import { COMPONENT_BY_ID, KANJI_BY_ID, RADICAL_BY_ID } from "../data/entryIndexes";
 import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
 import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getWordsForKanji } from "../data/wordData";
@@ -16,7 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../components/ui/dialog";
-import type { ChatMsg } from "../types";
+import type { ChatMsg, Word } from "../types";
 
 export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, darkMode, onBack, backLabel, onBackToCollection, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
   id: string; unlockedKanji: Set<string>;
@@ -27,7 +25,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   onSetNote:(k:string,v:string)=>void; onChat:(k:string,q:string,a:string)=>void;
   onNavKanji:(id:string)=>void; onNavComponent:(id:string)=>void; onNavWord:(id:string)=>void;
 }) {
-  const k = KANJI.find(x=>x.id===id)!;
+  const k = KANJI_BY_ID.get(id)!;
   const key = `kanji:${id}`;
   const [editingName, setEditingName] = useState(false);
   const [nameVal, setNameVal] = useState(customNames[key] || k.meanings[0]);
@@ -38,8 +36,28 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const [currentLearningCategory, setCurrentLearningCategory] = useState(k.learningCategory);
   const [savingCategory, setSavingCategory] = useState<string | null>(null);
   const [categorySaveError, setCategorySaveError] = useState("");
+  const [words, setWords] = useState<Word[]>([]);
+  const [loadingWords, setLoadingWords] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
+  useEffect(() => {
+    let cancelled = false;
+    setLoadingWords(true);
+    getWordsForKanji(k.id)
+      .then((nextWords) => {
+        if (!cancelled) setWords(nextWords);
+      })
+      .catch(() => {
+        if (!cancelled) setWords([]);
+      })
+      .finally(() => {
+        if (!cancelled) setLoadingWords(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [k.id]);
   useEffect(() => {
     setCurrentLearningCategory(k.learningCategory);
     setCategoryPickerOpen(false);
@@ -75,7 +93,6 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const visibleKunyomi = showAllKunyomi ? k.kunyomi : k.kunyomi.slice(0, 3);
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
   const alternateMeanings = k.meanings.slice(1);
-  const words = getWordsForKanji(k.id);
   const normalizedWordQuery = wordQuery.trim().toLowerCase();
   const filteredWords = normalizedWordQuery
     ? words.filter((word) => (
@@ -429,8 +446,8 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
             </div>
             <div className="flex flex-wrap gap-2">
               {learnerParts.map((part,i) => {
-                const rad = part.radicalId ? RADICALS.find(r=>r.id===part.radicalId) : undefined;
-                const component = part.componentId ? COMPONENTS.find(c=>c.id===part.componentId) : undefined;
+                const rad = part.radicalId ? RADICAL_BY_ID.get(part.radicalId) : undefined;
+                const component = part.componentId ? COMPONENT_BY_ID.get(part.componentId) : undefined;
                 const c = RAD_COLORS[i % RAD_COLORS.length];
                 return (
                   <button
@@ -540,7 +557,26 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
               paddingRight:4,
             }}
           >
-            {filteredWords.map((w,i) => (
+            {loadingWords ? (
+              <div
+                style={{
+                  width:"100%",
+                  minHeight:86,
+                  padding:"9px 11px",
+                  borderRadius:12,
+                  background:"var(--muted)",
+                  border:"1px solid var(--border)",
+                  display:"flex",
+                  alignItems:"center",
+                  color:"var(--muted-foreground)",
+                  fontFamily:"var(--ui-font)",
+                  fontSize:13,
+                  fontWeight:800,
+                }}
+              >
+                Loading words...
+              </div>
+            ) : filteredWords.map((w,i) => (
               <button
                 key={w.id || `${w.japanese}-${i}`}
                 onClick={() => onNavWord(w.id || `w-${w.japanese}`)}
@@ -621,7 +657,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                 </div>
               </button>
             ))}
-            {filteredWords.length === 0 && (
+            {!loadingWords && filteredWords.length === 0 && (
               <div
                 style={{
                   minHeight:86,

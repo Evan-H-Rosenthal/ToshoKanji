@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type PointerEvent } from "react";
 import { AnimatePresence, animate, motion, useMotionValue, type PanInfo } from "motion/react";
 import { Settings, Trophy } from "lucide-react";
-import { KANJI } from "./data/generated/kanji.generated";
-import { RADICALS } from "./data/generated/radicals.generated";
+import { KANJI_BY_RARITY, KANJI_IDS, RADICAL_IDS } from "./data/entryIndexes";
 import { GachaPanel } from "./components/GachaPanel";
 import { InstallPwaHint } from "./components/InstallPwaHint";
 import { PageIndicator } from "./components/PageIndicator";
@@ -15,8 +14,8 @@ import { KanjiEntryPage } from "./screens/KanjiEntryPage";
 import { PracticeScreen } from "./screens/PracticeScreen";
 import { SettingsPage } from "./screens/SettingsPage";
 import { WordEntryPage } from "./screens/WordEntryPage";
-import { KANJI_RARITIES, getKanjiRarity } from "./data/kanjiRarity";
-import { loadPersistedAppState, savePersistedAppState } from "./persistence";
+import { KANJI_RARITIES } from "./data/kanjiRarity";
+import { flushPersistedAppStateSave, loadPersistedAppState, schedulePersistedAppStateSave } from "./persistence";
 import type { CharacterFontChoice, ChatMsg, ScreenState, Tab, UiFontChoice } from "./types";
 
 const UI_FONT_STACKS: Record<UiFontChoice, string> = {
@@ -77,7 +76,7 @@ export default function App() {
   const pageViewportRef = useRef<HTMLDivElement>(null);
   const pageX = useMotionValue(-TAB_ORDER.gacha * getInitialPageWidth());
 
-  const allUnlocked = unlockedKanji.size >= KANJI.length;
+  const allUnlocked = unlockedKanji.size >= KANJI_IDS.length;
 
   useEffect(() => {
     const updateViewportHeight = () => {
@@ -139,7 +138,7 @@ export default function App() {
   }, [activeTab, hasChangedTabs, improvePerformance, pageWidth, pageX, screen.type]);
 
   useEffect(() => {
-    savePersistedAppState({
+    schedulePersistedAppStateSave({
       unlockedKanji,
       unlockedRadicals,
       favorites,
@@ -167,6 +166,14 @@ export default function App() {
     unlockedRadicals,
     volume,
   ]);
+
+  useEffect(() => {
+    window.addEventListener("pagehide", flushPersistedAppStateSave);
+    return () => {
+      window.removeEventListener("pagehide", flushPersistedAppStateSave);
+      flushPersistedAppStateSave();
+    };
+  }, []);
 
   const changeActiveTab = useCallback((nextTab: Tab) => {
     setActiveTab((currentTab) => {
@@ -222,14 +229,24 @@ export default function App() {
     animate(pageX, currentX, { type: "spring", stiffness: 420, damping: 34, mass: 0.74 });
   }, [activeTab, improvePerformance, pageWidth, pageX, screen.type, stepActiveTab]);
 
-  const getGachaItem = useCallback((): {type:"kanji"|"radical";id:string}|null => {
-    const pool = KANJI.filter(k=>!unlockedKanji.has(k.id));
-    if (!pool.length) return null;
-
-    const kanjiByRarity = new Map(KANJI_RARITIES.map((rarity) => [rarity.id, [] as typeof pool]));
-    for (const kanji of pool) {
-      kanjiByRarity.get(getKanjiRarity(kanji))?.push(kanji);
+  const availableKanjiByRarity = useMemo(() => {
+    const next = new Map(KANJI_RARITIES.map((rarity) => [rarity.id, [] as string[]]));
+    let total = 0;
+    for (const rarity of KANJI_RARITIES) {
+      const entries = KANJI_BY_RARITY.get(rarity.id) ?? [];
+      const availableIds = next.get(rarity.id)!;
+      for (const entry of entries) {
+        if (!unlockedKanji.has(entry.id)) {
+          availableIds.push(entry.id);
+          total += 1;
+        }
+      }
     }
+    return { byRarity: next, total };
+  }, [unlockedKanji]);
+
+  const getGachaItem = useCallback((): {type:"kanji"|"radical";id:string}|null => {
+    if (!availableKanjiByRarity.total) return null;
 
     const totalWeight = KANJI_RARITIES.reduce((sum, rarity) => sum + rarity.pullWeight, 0);
     let roll = Math.random() * totalWeight;
@@ -242,12 +259,14 @@ export default function App() {
       }
     }
 
-    const selectedPool = kanjiByRarity.get(rolledRarity)?.length
-      ? kanjiByRarity.get(rolledRarity)!
-      : KANJI_RARITIES.map((rarity) => kanjiByRarity.get(rarity.id) ?? []).find((items) => items.length > 0) ?? pool;
-    const selected = selectedPool[Math.floor(Math.random() * selectedPool.length)];
-    return { type:"kanji", id:selected.id };
-  }, [unlockedKanji]);
+    const selectedPool = availableKanjiByRarity.byRarity.get(rolledRarity)?.length
+      ? availableKanjiByRarity.byRarity.get(rolledRarity)!
+      : KANJI_RARITIES.map((rarity) => availableKanjiByRarity.byRarity.get(rarity.id) ?? []).find((items) => items.length > 0);
+    if (!selectedPool?.length) return null;
+
+    const selectedId = selectedPool[Math.floor(Math.random() * selectedPool.length)];
+    return { type:"kanji", id:selectedId };
+  }, [availableKanjiByRarity]);
 
   const handleUnlock = useCallback((type:"kanji"|"radical", id:string) => {
     if (type==="kanji") setUnlockedKanji(s=>new Set([...s, id]));
@@ -314,8 +333,8 @@ export default function App() {
   const resetProgress = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); };
   const resetAll = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); setFavorites(new Set()); setCustomNames({}); setNotes({}); setChatMsgs({}); };
   const unlockAll = () => {
-    setUnlockedKanji(new Set(KANJI.map((kanji) => kanji.id)));
-    setUnlockedRadicals(new Set(RADICALS.map((radical) => radical.id)));
+    setUnlockedKanji(new Set(KANJI_IDS));
+    setUnlockedRadicals(new Set(RADICAL_IDS));
   };
 
   const previousScreen = screenStack[screenStack.length - 1];

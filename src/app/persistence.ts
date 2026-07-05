@@ -2,6 +2,9 @@ import type { CharacterFontChoice, UiFontChoice } from "./types";
 
 const STORAGE_KEY = "toshokanji:app-state";
 const CURRENT_VERSION = 1;
+const SAVE_DEBOUNCE_MS = 250;
+let pendingSaveTimer: number | null = null;
+let pendingSaveState: HydratedAppState | null = null;
 
 export interface PersistedAppState {
   version: 1;
@@ -90,6 +93,29 @@ export function savePersistedAppState(state: HydratedAppState) {
   } catch {
     // Ignore quota/private-mode failures. The app can still run without persistence.
   }
+}
+
+export function schedulePersistedAppStateSave(state: HydratedAppState) {
+  if (typeof window === "undefined") return;
+
+  pendingSaveState = state;
+  if (pendingSaveTimer !== null) window.clearTimeout(pendingSaveTimer);
+
+  pendingSaveTimer = window.setTimeout(() => {
+    flushPersistedAppStateSave();
+  }, SAVE_DEBOUNCE_MS);
+}
+
+export function flushPersistedAppStateSave() {
+  if (!pendingSaveState) return;
+
+  const state = pendingSaveState;
+  pendingSaveState = null;
+  if (pendingSaveTimer !== null && typeof window !== "undefined") {
+    window.clearTimeout(pendingSaveTimer);
+  }
+  pendingSaveTimer = null;
+  savePersistedAppState(state);
 }
 
 function emptyHydratedState(): HydratedAppState {

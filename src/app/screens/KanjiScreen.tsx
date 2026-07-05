@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Search, Star, X } from "lucide-react";
 import { KANJI } from "../data/generated/kanji.generated";
 import { compareLearningCategories, getLearningCategoryColors, getLearningCategoryTextColor } from "../data/ui/categoryColors";
-import { getWordsForKanji } from "../data/wordData";
 import { CollectionCard } from "../components/CollectionCard";
 
 export function KanjiScreen({ unlockedKanji, favorites, customNames, highlightedId, onSelect, onToggleFav, onClearHighlight }: {
@@ -24,8 +23,7 @@ export function KanjiScreen({ unlockedKanji, favorites, customNames, highlighted
     const q = query.toLowerCase();
     return k.char.includes(query) || k.meanings.some(m=>m.toLowerCase().includes(q))
       || k.onyomi.some(o=>o.includes(query)) || k.kunyomi.some(ku=>ku.includes(query))
-      || (customNames[key]||"").toLowerCase().includes(q)
-      || getWordsForKanji(k.id).some(w=>w.meaning.toLowerCase().includes(q)||w.romaji.toLowerCase().includes(q));
+      || (customNames[key]||"").toLowerCase().includes(q);
   }).sort((a, b) => {
     const categorySort = compareLearningCategories(a.learningCategory, b.learningCategory);
     if (categorySort !== 0) return categorySort;

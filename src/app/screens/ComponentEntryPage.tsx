@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, Lock, RefreshCw, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
-import { KANJI } from "../data/generated/kanji.generated";
-import { COMPONENTS } from "../data/generated/components.generated";
+import { COMPONENT_BY_ID, COMPONENT_VARIANTS_BY_CANONICAL_ID, KANJI_BY_ID } from "../data/entryIndexes";
 import { getLearningCategoryColors } from "../data/ui/categoryColors";
 import type { ChatMsg, ComponentEntry } from "../types";
 
@@ -12,9 +11,9 @@ function uniqueValues(values: string[]) {
 
 function getComponentGroup(component: ComponentEntry) {
   const primary = component.canonicalComponentId
-    ? COMPONENTS.find((entry) => entry.id === component.canonicalComponentId) ?? component
+    ? COMPONENT_BY_ID.get(component.canonicalComponentId) ?? component
     : component;
-  const variants = COMPONENTS.filter((entry) => entry.canonicalComponentId === primary.id);
+  const variants = COMPONENT_VARIANTS_BY_CANONICAL_ID.get(primary.id) ?? [];
   const entries = [primary, ...variants];
   const forms = uniqueValues(entries.flatMap((entry) => entry.forms?.length ? entry.forms : [entry.char]));
   const kanjiIds = uniqueValues(entries.flatMap((entry) => entry.kanjiIds));
@@ -37,7 +36,7 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, notes, chatMs
   onNavKanji: (id: string) => void;
   onNavComponent: (id: string) => void;
 }) {
-  const selectedComponent = COMPONENTS.find((entry) => entry.id === id);
+  const selectedComponent = COMPONENT_BY_ID.get(id);
   const group = useMemo(() => selectedComponent ? getComponentGroup(selectedComponent) : undefined, [selectedComponent]);
   const initialForm = selectedComponent?.char ?? group?.primary.char ?? "";
   const initialVariantIndex = group ? Math.max(0, group.forms.indexOf(initialForm)) : 0;
@@ -215,7 +214,7 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, notes, chatMs
           ) : (
             <div className="flex flex-wrap gap-2">
               {group.kanjiIds.map((kanjiId) => {
-                const kanji = KANJI.find((entry) => entry.id === kanjiId);
+                const kanji = KANJI_BY_ID.get(kanjiId);
                 if (!kanji) return null;
                 const isUnlocked = unlockedKanji.has(kanjiId);
                 const [kc1] = getLearningCategoryColors(kanji.learningCategory);

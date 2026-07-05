@@ -1,11 +1,10 @@
 import { motion } from "motion/react";
-import { KANJI } from "../data/generated/kanji.generated";
-import { RADICALS } from "../data/generated/radicals.generated";
+import { KANJI_BY_ID, RADICAL_BY_ID } from "../data/entryIndexes";
 
 export function UnlockPrompt({ entryType, id, onConfirm, onCancel }: {
   entryType:"kanji"|"radical"; id:string; onConfirm:()=>void; onCancel:()=>void;
 }) {
-  const entry = entryType === "kanji" ? KANJI.find(k=>k.id===id) : RADICALS.find(r=>r.id===id);
+  const entry = entryType === "kanji" ? KANJI_BY_ID.get(id) : RADICAL_BY_ID.get(id);
   return (
     <motion.div initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }}
       style={{ position:"absolute", inset:0, background:"rgba(0,0,0,0.6)", display:"flex", alignItems:"flex-end", justifyContent:"center", zIndex:100 }}

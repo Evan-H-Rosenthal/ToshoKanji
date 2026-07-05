@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { KANJI } from "../data/generated/kanji.generated";
-import { RADICALS } from "../data/generated/radicals.generated";
+import { KANJI_BY_ID, RADICAL_BY_ID, RADICAL_INDEX_BY_ID } from "../data/entryIndexes";
 import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getLearningCategoryColors, RAD_COLORS } from "../data/ui/categoryColors";
 
@@ -134,8 +133,8 @@ export function GachaMachine({
       if (item) {
         const entry =
           item.type === "kanji"
-            ? KANJI.find((kanji) => kanji.id === item.id)
-            : RADICALS.find((radical) => radical.id === item.id);
+            ? KANJI_BY_ID.get(item.id)
+            : RADICAL_BY_ID.get(item.id);
 
         setCapsuleChar(entry?.char ?? "?");
         setCapsuleRotation(Math.round(Math.random() * 70 - 35));
@@ -183,19 +182,19 @@ export function GachaMachine({
     if (!capsule) return { primary: "#ef4444", secondary: "#f97316" };
 
     if (capsule.type === "kanji") {
-      const entry = KANJI.find((kanji) => kanji.id === capsule.id);
+      const entry = KANJI_BY_ID.get(capsule.id);
       const [primary, secondary] = getLearningCategoryColors(entry?.learningCategory);
       return { primary, secondary };
     }
 
-    const index = Math.max(0, RADICALS.findIndex((radical) => radical.id === capsule.id));
+    const index = Math.max(0, RADICAL_INDEX_BY_ID.get(capsule.id) ?? 0);
     return {
       primary: RAD_COLORS[index % RAD_COLORS.length],
       secondary: RAD_COLORS[(index + 4) % RAD_COLORS.length],
     };
   })();
   const rarityInfo = capsule?.type === "kanji"
-    ? getKanjiRarityInfo(KANJI.find((kanji) => kanji.id === capsule.id))
+    ? getKanjiRarityInfo(KANJI_BY_ID.get(capsule.id))
     : null;
   const glowColor = rarityInfo?.color ?? rewardColors.primary;
   const glowColor2 = rarityInfo?.color2 ?? rewardColors.secondary;

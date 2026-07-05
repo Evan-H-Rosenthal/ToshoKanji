@@ -1,8 +1,17 @@
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
-import { KANJI } from "../data/generated/kanji.generated";
+import { KANJI_IDS, KANJI_IDS_BY_CATEGORY } from "../data/entryIndexes";
 import { LEARNING_CATEGORIES, getReadableTextColor } from "../data/ui/categoryColors";
+
+const CATEGORY_TOTALS = LEARNING_CATEGORIES.map((category) => ({
+  category: category.id,
+  label: category.label,
+  emoji: category.emoji,
+  kanjiIds: KANJI_IDS_BY_CATEGORY.get(category.id) ?? [],
+  color1: category.colors[0],
+  color2: category.colors[1],
+})).filter((stat) => stat.kanjiIds.length > 0);
 
 export function GachaStatsButton({
   unlockedKanji,
@@ -11,22 +20,19 @@ export function GachaStatsButton({
 }) {
   const [open, setOpen] = useState(false);
   const categoryStats = useMemo(() => {
-    return LEARNING_CATEGORIES.map((category) => {
-      const entries = KANJI.filter((kanji) => kanji.learningCategory === category.id);
-      const unlocked = entries.filter((kanji) => unlockedKanji.has(kanji.id)).length;
-      const [color1, color2] = category.colors;
-
+    return CATEGORY_TOTALS.map((category) => {
+      const unlocked = category.kanjiIds.reduce((count, kanjiId) => count + (unlockedKanji.has(kanjiId) ? 1 : 0), 0);
       return {
-        category: category.id,
+        category: category.category,
         label: category.label,
         emoji: category.emoji,
         unlocked,
-        total: entries.length,
-        color1,
-        color2,
-        percent: entries.length ? (unlocked / entries.length) * 100 : 0,
+        total: category.kanjiIds.length,
+        color1: category.color1,
+        color2: category.color2,
+        percent: category.kanjiIds.length ? (unlocked / category.kanjiIds.length) * 100 : 0,
       };
-    }).filter((stat) => stat.total > 0);
+    });
   }, [unlockedKanji]);
 
   return (
@@ -68,7 +74,7 @@ export function GachaStatsButton({
             </p>
           </div>
           <div style={{ display: "flex", gap: 9, transform: "translateY(-1px)" }}>
-            <StatPill label="Kanji" value={`${unlockedKanji.size}/${KANJI.length}`} />
+            <StatPill label="Kanji" value={`${unlockedKanji.size}/${KANJI_IDS.length}`} />
           </div>
         </div>
       </motion.button>
@@ -142,7 +148,7 @@ export function GachaStatsButton({
               </p>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 8, marginBottom: 14 }}>
-                <SummaryCard label="Kanji" value={unlockedKanji.size} total={KANJI.length} />
+                <SummaryCard label="Kanji" value={unlockedKanji.size} total={KANJI_IDS.length} />
               </div>
 
               <div style={{ maxHeight: 388, overflowY: "auto", paddingRight: 4 }}>

@@ -4,7 +4,7 @@ import { KANJI } from "../data/generated/kanji.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
 import { KANJI_RARITIES, getKanjiRarity, type KanjiRarity } from "../data/kanjiRarity";
 import { LEARNING_CATEGORIES, compareLearningCategories, getLearningCategoryColors, getLearningCategoryTextColor } from "../data/ui/categoryColors";
-import { getWordEntries, getWordEntryColors } from "../data/wordData";
+import { getFavoriteWordEntries, getWordEntries, getWordEntryColors, type WordEntry } from "../data/wordData";
 import { buildKanjiSearchIndex, normalizeSearchText, searchKanjiIndex, type SearchMatchReason } from "../search/kanjiSearch";
 import { CollectionCard } from "../components/CollectionCard";
 
@@ -68,6 +68,11 @@ export function CollectionScreen({
   const [draftQuery, setDraftQuery] = useState(query);
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState(() => ({ kanjiResults: [], wordResults: [] } as ReturnType<typeof searchKanjiIndex>));
+  const [wordEntries, setWordEntries] = useState<WordEntry[]>([]);
+  const [loadingWords, setLoadingWords] = useState(false);
+  const [favoriteWordEntries, setFavoriteWordEntries] = useState<WordEntry[]>([]);
+  const searchRunIdRef = useRef(0);
+  const favoriteWordRunIdRef = useRef(0);
 
   useLayoutEffect(() => {
     const scrollElement = scrollRef.current;
@@ -77,7 +82,7 @@ export function CollectionScreen({
 
   const normalizedQuery = normalizeSearchText(query);
   const hasQuery = normalizedQuery.length > 0;
-  const searchIndex = useMemo(() => buildKanjiSearchIndex(KANJI, getWordEntries()), []);
+  const searchIndex = useMemo(() => buildKanjiSearchIndex(KANJI, wordEntries), [wordEntries]);
 
   useEffect(() => {
     setDraftQuery(query);
@@ -87,9 +92,23 @@ export function CollectionScreen({
     if (searchTimerRef.current !== null) window.clearTimeout(searchTimerRef.current);
   }, []);
 
+  const loadWordsForSearch = useCallback(async () => {
+    if (wordEntries.length > 0) return wordEntries;
+
+    setLoadingWords(true);
+    try {
+      const entries = await getWordEntries();
+      setWordEntries(entries);
+      return entries;
+    } finally {
+      setLoadingWords(false);
+    }
+  }, [wordEntries]);
+
   const runSearch = useCallback((nextQuery: string) => {
     const trimmedQuery = nextQuery.trim();
     if (searchTimerRef.current !== null) window.clearTimeout(searchTimerRef.current);
+    const runId = ++searchRunIdRef.current;
 
     if (!trimmedQuery) {
       setSearchResults({ kanjiResults: [], wordResults: [] });
@@ -99,24 +118,36 @@ export function CollectionScreen({
     }
 
     setIsSearching(true);
-    searchTimerRef.current = window.setTimeout(() => {
-      const normalizedNextQuery = normalizeSearchText(trimmedQuery);
-      const nextResults = searchKanjiIndex(searchIndex, trimmedQuery, {
-        unlockedKanji,
-        favorites,
-        customNames,
-        includeWords,
-        includeComponents,
-        maxKanjiResults: 120,
-        maxWordResults: 60,
-      });
+    searchTimerRef.current = window.setTimeout(async () => {
+      try {
+        const normalizedNextQuery = normalizeSearchText(trimmedQuery);
+        const nextWordEntries = includeWords ? await loadWordsForSearch() : wordEntries;
+        if (runId !== searchRunIdRef.current) return;
+        const nextSearchIndex = includeWords && nextWordEntries !== wordEntries
+          ? buildKanjiSearchIndex(KANJI, nextWordEntries)
+          : searchIndex;
+        const nextResults = searchKanjiIndex(nextSearchIndex, trimmedQuery, {
+          unlockedKanji,
+          favorites,
+          customNames,
+          includeWords,
+          includeComponents,
+          maxKanjiResults: 120,
+          maxWordResults: 60,
+        });
 
-      setSearchResults(nextResults);
-      onQueryChange(normalizedNextQuery ? trimmedQuery : "");
-      setIsSearching(false);
-      searchTimerRef.current = null;
+        setSearchResults(nextResults);
+        onQueryChange(normalizedNextQuery ? trimmedQuery : "");
+      } catch {
+        if (runId === searchRunIdRef.current) setSearchResults({ kanjiResults: [], wordResults: [] });
+      } finally {
+        if (runId === searchRunIdRef.current) {
+          setIsSearching(false);
+          searchTimerRef.current = null;
+        }
+      }
     }, 90);
-  }, [customNames, favorites, includeComponents, includeWords, onQueryChange, searchIndex, unlockedKanji]);
+  }, [customNames, favorites, includeComponents, includeWords, loadWordsForSearch, onQueryChange, searchIndex, unlockedKanji, wordEntries]);
 
   useEffect(() => {
     if (!query) return;
@@ -125,17 +156,31 @@ export function CollectionScreen({
 
   useEffect(() => {
     if (!query) return;
-    const nextResults = searchKanjiIndex(searchIndex, query, {
-      unlockedKanji,
-      favorites,
-      customNames,
-      includeWords,
-      includeComponents,
-      maxKanjiResults: 120,
-      maxWordResults: 60,
-    });
-    setSearchResults(nextResults);
+    runSearch(query);
   }, []);
+
+  useEffect(() => {
+    const favoriteWordKeys = Array.from(favorites).filter((key) => key.startsWith("word:"));
+    const needsFavoriteWords = favOnly && !hasQuery && favoriteWordKeys.length > 0;
+    const runId = ++favoriteWordRunIdRef.current;
+
+    if (!needsFavoriteWords) {
+      setFavoriteWordEntries([]);
+      return;
+    }
+
+    setLoadingWords(true);
+    getFavoriteWordEntries(favorites)
+      .then((entries) => {
+        if (runId === favoriteWordRunIdRef.current) setFavoriteWordEntries(entries);
+      })
+      .catch(() => {
+        if (runId === favoriteWordRunIdRef.current) setFavoriteWordEntries([]);
+      })
+      .finally(() => {
+        if (runId === favoriteWordRunIdRef.current) setLoadingWords(false);
+      });
+  }, [favorites, favOnly, hasQuery]);
 
   const activeFilterCount = selectedCategories.size + selectedRarities.size + selectedJlptLevels.size;
   const hasActiveFilters = activeFilterCount > 0;
@@ -191,11 +236,7 @@ export function CollectionScreen({
   const wordItems = hasQuery
     ? searchResults.wordResults.filter((result) => !favOnly || favorites.has(`word:${result.entry.id}`))
     : favOnly
-      ? getWordEntries().filter((entry) => {
-      const key = `word:${entry.id}`;
-      if (!favorites.has(key)) return false;
-      return true;
-    }).map((entry) => ({ entry, score: 0, reason: undefined }))
+      ? favoriteWordEntries.map((entry) => ({ entry, score: 0, reason: undefined }))
       : [];
 
   const radicalItems = favOnly
@@ -527,7 +568,7 @@ export function CollectionScreen({
         onScroll={(event) => onScrollTopChange(event.currentTarget.scrollTop)}
         style={{ paddingTop: 18 }}
       >
-        {isSearching ? (
+        {isSearching || loadingWords ? (
           <SearchLoadingState />
         ) : !hasResults ? (
           <div className="flex flex-col items-center justify-center h-full gap-3 py-16">
