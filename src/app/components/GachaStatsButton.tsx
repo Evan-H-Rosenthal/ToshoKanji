@@ -2,7 +2,7 @@ import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { KANJI_IDS, KANJI_IDS_BY_CATEGORY } from "../data/entryIndexes";
-import { LEARNING_CATEGORIES, getReadableTextColor } from "../data/ui/categoryColors";
+import { LEARNING_CATEGORIES } from "../data/ui/categoryColors";
 
 const CATEGORY_TOTALS = LEARNING_CATEGORIES.map((category) => ({
   category: category.id,
@@ -206,66 +206,166 @@ function CategoryProgressBox({
   color2: string;
   percent: number;
 }) {
-  const textColor = getReadableTextColor(color1, color2);
   const complete = unlocked >= total;
+  const capsuleSize = 96;
+  const halfSize = capsuleSize / 2;
+  const bottomFillHeight = Math.min(halfSize, percent / 50 * halfSize);
+  const topTintOpacity = Math.min(0.38, 0.08 + percent / 100 * 0.26);
+  const colorAlpha = Math.round(topTintOpacity * 255).toString(16).padStart(2, "0");
+  const grayTop = "linear-gradient(145deg, rgba(255,255,255,0.38), rgba(226,232,240,0.18))";
+  const grayBottom = "linear-gradient(145deg, rgba(148,163,184,0.98), rgba(71,85,105,0.98))";
+  const colorFill = `linear-gradient(145deg, ${color1}, ${color2})`;
 
   return (
     <div
       title={`${label}: ${unlocked}/${total}`}
       aria-label={`${label}: ${unlocked} of ${total}`}
       style={{
-        aspectRatio: "1",
-        borderRadius: 18,
-        border: `2px ${complete ? "solid" : "dotted"} ${color1}`,
-        background: "var(--muted)",
-        boxShadow: unlocked > 0 ? `0 8px 20px ${color1}33` : "inset 0 0 0 1px rgba(255,255,255,0.1)",
-        overflow: "hidden",
+        width: "100%",
+        height: 112,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         position: "relative",
       }}
     >
       <motion.div
-        initial={{ height: 0 }}
-        animate={{ height: `${percent}%` }}
-        transition={{ duration: 0.55, ease: "easeOut" }}
+        initial={{ y: 6, rotate: -3, scale: 0.96 }}
+        animate={{ y: 0, rotate: complete ? 3 : -3, scale: complete ? 1.03 : 1 }}
+        transition={{ type: "spring", stiffness: 360, damping: 22 }}
         style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `linear-gradient(135deg, ${color1}, ${color2})`,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 32,
-          textShadow: percent > 42 && textColor !== "#111827" ? "0 2px 8px rgba(0,0,0,0.32)" : "none",
+          width: capsuleSize,
+          height: capsuleSize,
+          borderRadius: "50%",
+          boxShadow: unlocked > 0
+            ? `0 13px 28px ${color1}38, 0 0 18px ${color1}38`
+            : "0 10px 22px rgba(15,23,42,0.18)",
+          position: "relative",
         }}
       >
-        {emoji}
-      </div>
-      <span
-        style={{
-          position: "absolute",
-          right: 7,
-          bottom: 6,
-          padding: "2px 5px",
-          borderRadius: 999,
-          background: percent > 52 ? "rgba(0,0,0,0.22)" : "color-mix(in srgb, var(--card) 84%, transparent)",
-          border: "1px solid rgba(255,255,255,0.2)",
-          color: percent > 52 ? textColor : "var(--muted-foreground)",
-          fontFamily: "var(--ui-font)",
-          fontSize: 9,
-          fontWeight: 1000,
-          lineHeight: 1,
-        }}
-      >
-        {unlocked}/{total}
-      </span>
+        <motion.div
+          initial={{ scale: 0.84, opacity: 0.7 }}
+          animate={{ scale: complete ? 1.08 : 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 420, damping: 18 }}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            width: 56,
+            height: 56,
+            marginTop: -28,
+            marginLeft: -28,
+            borderRadius: "50%",
+            background: `radial-gradient(circle at 32% 24%, rgba(255,255,255,0.96), ${color1} 54%, ${color2} 100%)`,
+            border: "1px solid rgba(255,255,255,0.72)",
+            boxShadow: `0 12px 22px rgba(15,23,42,0.3), 0 0 24px ${color1}66`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 31,
+            textShadow: "0 2px 8px rgba(0,0,0,0.24)",
+            zIndex: 1,
+          }}
+        >
+          {emoji}
+        </motion.div>
+
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: capsuleSize,
+            height: halfSize,
+            borderRadius: `${halfSize}px ${halfSize}px 8px 8px`,
+            background: `${grayTop}, linear-gradient(145deg, ${color1}${colorAlpha}, ${color2}22)`,
+            border: `2px solid ${complete ? color1 : "rgba(255,255,255,0.72)"}`,
+            borderBottom: "none",
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.72), 0 10px 20px rgba(15,23,42,0.16)",
+            overflow: "hidden",
+            zIndex: 2,
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 12,
+              left: 19,
+              width: 28,
+              height: 11,
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.58)",
+              transform: "rotate(-24deg)",
+            }}
+          />
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            width: capsuleSize,
+            bottom: 0,
+            height: halfSize,
+            borderRadius: `8px 8px ${halfSize}px ${halfSize}px`,
+            background: grayBottom,
+            border: `2px solid ${complete ? color1 : "rgba(255,255,255,0.72)"}`,
+            borderTop: "none",
+            boxShadow: "inset 0 -1px 0 rgba(255,255,255,0.18), 0 10px 20px rgba(15,23,42,0.18)",
+            overflow: "hidden",
+            zIndex: 2,
+          }}
+        >
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: bottomFillHeight }}
+            transition={{ duration: 0.62, ease: "easeOut" }}
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: colorFill,
+            }}
+          />
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: halfSize - 3,
+            height: 7,
+            background: "rgba(30,41,59,0.26)",
+            boxShadow: "0 -1px 0 rgba(255,255,255,0.28), 0 1px 0 rgba(255,255,255,0.16)",
+            zIndex: 3,
+          }}
+        />
+        <span
+          style={{
+            position: "absolute",
+            left: "50%",
+            bottom: 10,
+            transform: "translateX(-50%)",
+            minWidth: 42,
+            padding: "3px 6px",
+            borderRadius: 999,
+            background: "rgba(15,23,42,0.28)",
+            border: "1px solid rgba(255,255,255,0.28)",
+            color: "#fff",
+            fontFamily: "var(--ui-font)",
+            fontSize: 9,
+            fontWeight: 1000,
+            lineHeight: 1,
+            textAlign: "center",
+            textShadow: "0 1px 3px rgba(0,0,0,0.35)",
+            zIndex: 4,
+          }}
+        >
+          {unlocked}/{total}
+        </span>
+      </motion.div>
     </div>
   );
 }
