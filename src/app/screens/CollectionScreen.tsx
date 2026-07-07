@@ -600,6 +600,7 @@ export function CollectionScreen({
                       textColor={getLearningCategoryTextColor(kanji.learningCategory)}
                       starred={favorites.has(key)}
                       highlighted={highlightedUnlock?.type === "kanji" && highlightedUnlock.id === kanji.id}
+                      sparkleRarity={getKanjiRarity(kanji)}
                       onStar={(event) => {
                         event.stopPropagation();
                         onToggleFav(key);

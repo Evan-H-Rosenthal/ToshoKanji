@@ -10,7 +10,23 @@ export function AchievementsPage({ unlockedKanji, unlockedRadicals, favorites, n
   return (
     <div className="flex flex-col h-full">
       <div className="flex items-center gap-3 px-4 pt-3 pb-4 shrink-0">
-        <button onClick={onBack} className="text-muted-foreground"><ChevronLeft size={22} /></button>
+        <button
+          onClick={onBack}
+          aria-label="Back"
+          className="text-muted-foreground"
+          style={{
+            width: 44,
+            height: 44,
+            marginLeft: -8,
+            borderRadius: 999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+          }}
+        >
+          <ChevronLeft size={24} />
+        </button>
         <div>
           <h2 style={{ fontFamily:"var(--ui-font)", fontWeight:900, fontSize:20 }} className="text-foreground">Achievements</h2>
           <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground">{unlocked.length}/{ACHIEVEMENTS.length} unlocked</p>

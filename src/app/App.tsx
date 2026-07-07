@@ -16,7 +16,7 @@ import { SettingsPage } from "./screens/SettingsPage";
 import { WordEntryPage } from "./screens/WordEntryPage";
 import { KANJI_RARITIES } from "./data/kanjiRarity";
 import { flushPersistedAppStateSave, loadPersistedAppState, schedulePersistedAppStateSave } from "./persistence";
-import type { CharacterFontChoice, ChatMsg, ScreenState, Tab, UiFontChoice } from "./types";
+import type { CharacterFontChoice, ChatMsg, KanjiEntryViewState, ScreenState, Tab, UiFontChoice } from "./types";
 
 const UI_FONT_STACKS: Record<UiFontChoice, string> = {
   nunito: '"Nunito", sans-serif',
@@ -54,6 +54,7 @@ export default function App() {
   const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>(initialPersistedState.settings.characterFontChoice);
   const [activeTab, setActiveTab] = useState<Tab>("gacha");
   const [hasChangedTabs, setHasChangedTabs] = useState(false);
+  const [gachaInteractionLocked, setGachaInteractionLocked] = useState(false);
   const [pageWidth, setPageWidth] = useState(getInitialPageWidth);
   const [screen, setScreen] = useState<ScreenState>({ type:"main" });
   const [screenStack, setScreenStack] = useState<ScreenState[]>([]);
@@ -62,6 +63,7 @@ export default function App() {
   const [collectionIncludeComponents, setCollectionIncludeComponents] = useState(false);
   const [collectionFavOnly, setCollectionFavOnly] = useState(false);
   const collectionScrollTopRef = useRef(0);
+  const kanjiEntryViewStateRef = useRef<Record<string, KanjiEntryViewState>>({});
 
   const [unlockedKanji, setUnlockedKanji] = useState<Set<string>>(initialPersistedState.unlockedKanji);
   const [unlockedRadicals, setUnlockedRadicals] = useState<Set<string>>(initialPersistedState.unlockedRadicals);
@@ -189,14 +191,14 @@ export default function App() {
   }, [activeTab, changeActiveTab]);
 
   const handleSwipeStart = useCallback((event: PointerEvent<HTMLDivElement>) => {
-    if (screen.type !== "main" || !improvePerformance) return;
+    if (screen.type !== "main" || !improvePerformance || gachaInteractionLocked) return;
     swipeStartRef.current = { x: event.clientX, y: event.clientY };
-  }, [improvePerformance, screen.type]);
+  }, [gachaInteractionLocked, improvePerformance, screen.type]);
 
   const handleSwipeEnd = useCallback((event: PointerEvent<HTMLDivElement>) => {
     const start = swipeStartRef.current;
     swipeStartRef.current = null;
-    if (!start || screen.type !== "main" || !improvePerformance) return;
+    if (!start || screen.type !== "main" || !improvePerformance || gachaInteractionLocked) return;
 
     const dx = event.clientX - start.x;
     const dy = event.clientY - start.y;
@@ -204,10 +206,10 @@ export default function App() {
     if (!isHorizontalSwipe) return;
 
     stepActiveTab(dx < 0 ? 1 : -1);
-  }, [improvePerformance, screen.type, stepActiveTab]);
+  }, [gachaInteractionLocked, improvePerformance, screen.type, stepActiveTab]);
 
   const handleDragEnd = useCallback((_: MouseEvent | TouchEvent | globalThis.PointerEvent, info: PanInfo) => {
-    if (screen.type !== "main" || improvePerformance) return;
+    if (screen.type !== "main" || improvePerformance || gachaInteractionLocked) return;
 
     const currentIndex = TAB_SEQUENCE.indexOf(activeTab);
     const currentX = -currentIndex * pageWidth;
@@ -227,7 +229,7 @@ export default function App() {
     }
 
     animate(pageX, currentX, { type: "spring", stiffness: 420, damping: 34, mass: 0.74 });
-  }, [activeTab, improvePerformance, pageWidth, pageX, screen.type, stepActiveTab]);
+  }, [activeTab, gachaInteractionLocked, improvePerformance, pageWidth, pageX, screen.type, stepActiveTab]);
 
   const availableKanjiByRarity = useMemo(() => {
     const next = new Map(KANJI_RARITIES.map((rarity) => [rarity.id, [] as string[]]));
@@ -275,6 +277,13 @@ export default function App() {
     if (!disableAutoJump) changeActiveTab("collection");
   }, [changeActiveTab, disableAutoJump]);
 
+  const handleGachaSpinStart = useCallback(() => {
+    swipeStartRef.current = null;
+    setGachaInteractionLocked(true);
+    changeActiveTab("gacha");
+    if (pageWidth) pageX.set(-TAB_ORDER.gacha * pageWidth);
+  }, [changeActiveTab, pageWidth, pageX]);
+
   const handleToggleFav = useCallback((key:string) => {
     setFavorites(s=>{ const n=new Set(s); n.has(key)?n.delete(key):n.add(key); return n; });
   }, []);
@@ -291,6 +300,10 @@ export default function App() {
     const userMsg: ChatMsg = { role:"user", text:q, id:++msgIdRef.current };
     const aiMsg: ChatMsg = { role:"ai", text:a, id:++msgIdRef.current };
     setChatMsgs(p=>({...p,[key]:[...(p[key]||[]), userMsg, aiMsg]}));
+  }, []);
+
+  const handleKanjiEntryViewStateChange = useCallback((id: string, viewState: KanjiEntryViewState) => {
+    kanjiEntryViewStateRef.current[id] = viewState;
   }, []);
 
   const pushScreen = useCallback((nextScreen: ScreenState) => {
@@ -379,6 +392,8 @@ export default function App() {
         getItem={getGachaItem}
         allUnlocked={allUnlocked}
         unlockedKanji={unlockedKanji}
+        onInteractionLockChange={setGachaInteractionLocked}
+        onSpinStart={handleGachaSpinStart}
       />
     );
   };
@@ -396,6 +411,8 @@ export default function App() {
               favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs} darkMode={darkMode}
               onBack={popScreen} backLabel={entryBackLabel} onToggleFav={handleToggleFav} onSetName={handleSetName}
               onSetNote={handleSetNote} onChat={handleChat}
+              initialViewState={kanjiEntryViewStateRef.current[screen.id]}
+              onViewStateChange={handleKanjiEntryViewStateChange}
               onBackToCollection={showBackToCollection ? handleBackToCollection : undefined}
               onNavKanji={handleNavKanji} onNavComponent={handleNavComponent} onNavWord={handleNavWord} />
           )}
@@ -473,7 +490,7 @@ export default function App() {
                 onPointerDown={handleSwipeStart}
                 onPointerUp={handleSwipeEnd}
                 onPointerCancel={() => { swipeStartRef.current = null; }}
-                style={{ flex:1, minHeight:0, overflow:"hidden", display:"flex", flexDirection:"column", position:"relative", touchAction:"pan-y" }}>
+                style={{ flex:1, minHeight:0, overflow:"hidden", display:"flex", flexDirection:"column", position:"relative", touchAction:gachaInteractionLocked ? "none" : "pan-y" }}>
                 {improvePerformance ? (
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -489,13 +506,13 @@ export default function App() {
                 ) : (
                   <motion.div
                     initial={false}
-                    drag="x"
+                    drag={gachaInteractionLocked ? false : "x"}
                     dragDirectionLock
                     dragElastic={0.08}
                     dragMomentum={false}
                     dragConstraints={{ left: pageWidth ? -pageWidth * 2 : 0, right: 0 }}
                     onDragEnd={handleDragEnd}
-                    style={{ x: pageX, width:"300%", height:"100%", display:"flex", willChange:"transform", touchAction:"pan-y", backfaceVisibility:"hidden" }}>
+                    style={{ x: pageX, width:"300%", height:"100%", display:"flex", willChange:"transform", touchAction:gachaInteractionLocked ? "none" : "pan-y", backfaceVisibility:"hidden" }}>
                     <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "collection" ? "auto" : "none", contain:"layout paint" }}>
                       {renderTabPanel("collection")}
                     </div>

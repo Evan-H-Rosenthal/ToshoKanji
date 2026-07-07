@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { KANJI_BY_ID, RADICAL_BY_ID, RADICAL_INDEX_BY_ID } from "../data/entryIndexes";
-import { getKanjiRarityInfo } from "../data/kanjiRarity";
+import { getKanjiRarityInfo, type KanjiRarity } from "../data/kanjiRarity";
 import { getLearningCategoryColors, RAD_COLORS } from "../data/ui/categoryColors";
 
 const BANK_CAPSULES = [
@@ -36,6 +36,204 @@ const REWARD_SPARKLES = [
   { x: [66, 35, 91, 52], y: [16, 91, 103, 57], size: 16, delay: 0.66 },
   { x: [31, 72, 47, 18], y: [116, 18, 77, 48], size: 19, delay: 0.82 },
 ];
+
+const SPARKLE_CHARACTERS = ["·", "+", "∗", "∘"];
+const RARITY_SPARKLE_TIMING: Record<KanjiRarity, { minPauseMs: number; maxPauseMs: number; stepMs: number }> = {
+  common: { minPauseMs: 1350, maxPauseMs: 2500, stepMs: 115 },
+  uncommon: { minPauseMs: 980, maxPauseMs: 1850, stepMs: 105 },
+  rare: { minPauseMs: 700, maxPauseMs: 1350, stepMs: 96 },
+  epic: { minPauseMs: 460, maxPauseMs: 920, stepMs: 88 },
+  legendary: { minPauseMs: 250, maxPauseMs: 620, stepMs: 78 },
+};
+const RARITY_SPARKLE_COUNTS: Record<KanjiRarity, number> = {
+  common: 2,
+  uncommon: 3,
+  rare: 4,
+  epic: 5,
+  legendary: 6,
+};
+const KNOB_SPIN_TRANSITION_SECONDS = 1.05;
+const COLLECT_TAP_GRACE_MS = 420;
+const RARITY_RING_LABELS: Record<KanjiRarity, { japanese: string; english: string }> = {
+  common: { japanese: "コモン", english: "COMMON" },
+  uncommon: { japanese: "アンコモン", english: "UNCOMMON" },
+  rare: { japanese: "レア", english: "RARE" },
+  epic: { japanese: "エピック", english: "EPIC" },
+  legendary: { japanese: "レジェンダリ", english: "LEGENDARY" },
+};
+const RARITY_RING_TEXT_COPIES: Record<KanjiRarity, { inner: number; outer: number }> = {
+  common: { inner: 3, outer: 4 },
+  uncommon: { inner: 2, outer: 3 },
+  rare: { inner: 3, outer: 4 },
+  epic: { inner: 3, outer: 4 },
+  legendary: { inner: 2, outer: 3 },
+};
+
+function randomBetween(min: number, max: number) {
+  return min + Math.random() * (max - min);
+}
+
+function RewardSparkle({
+  sparkle,
+  timing,
+}: {
+  sparkle: { x: number[]; y: number[]; size: number; delay: number };
+  timing: { minPauseMs: number; maxPauseMs: number; stepMs: number };
+}) {
+  const [locationIndex, setLocationIndex] = useState(0);
+  const [characterIndex, setCharacterIndex] = useState(-1);
+
+  useEffect(() => {
+    let timeoutId: number;
+    const startDelay = sparkle.delay * 1000 + randomBetween(timing.minPauseMs * 0.25, timing.maxPauseMs * 0.5);
+
+    const runStep = (nextCharacterIndex: number, nextLocationIndex: number) => {
+      setLocationIndex(nextLocationIndex);
+      setCharacterIndex(nextCharacterIndex);
+
+      if (nextCharacterIndex < SPARKLE_CHARACTERS.length - 1) {
+        timeoutId = window.setTimeout(() => runStep(nextCharacterIndex + 1, nextLocationIndex), timing.stepMs);
+        return;
+      }
+
+      timeoutId = window.setTimeout(() => {
+        setCharacterIndex(-1);
+        const nextPause = randomBetween(timing.minPauseMs, timing.maxPauseMs);
+        timeoutId = window.setTimeout(
+          () => runStep(0, (nextLocationIndex + 1) % sparkle.x.length),
+          nextPause
+        );
+      }, timing.stepMs);
+    };
+
+    timeoutId = window.setTimeout(() => runStep(0, 0), startDelay);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [sparkle.delay, sparkle.x.length, timing.maxPauseMs, timing.minPauseMs, timing.stepMs]);
+
+  const character = characterIndex >= 0 ? SPARKLE_CHARACTERS[characterIndex] : "";
+
+  return (
+    <span
+      aria-hidden
+      style={{
+        position: "absolute",
+        left: `${sparkle.x[locationIndex]}%`,
+        top: sparkle.y[locationIndex],
+        color: "#fff7a8",
+        fontSize: sparkle.size,
+        fontWeight: 1000,
+        lineHeight: 1,
+        opacity: character ? 1 : 0,
+        pointerEvents: "none",
+        textShadow: "0 1px 5px rgba(120,74,20,0.38)",
+        transform: "translate(-50%, -50%)",
+        zIndex: 4,
+      }}
+    >
+      {character}
+    </span>
+  );
+}
+
+function CircularRarityText({
+  labels,
+  color,
+  textColor,
+  radius,
+  copyCount,
+  visible,
+  reverse = false,
+  delay = 0,
+  duration,
+}: {
+  labels: { japanese: string; english: string };
+  color: string;
+  textColor: string;
+  radius: number;
+  copyCount: number;
+  visible: boolean;
+  reverse?: boolean;
+  delay?: number;
+  duration: number;
+}) {
+  const ringWidth = radius > 90 ? 20 : 18;
+  const orbitRadius = radius - ringWidth / 2;
+  const ringCharacters = Array.from({ length: copyCount }, () => [
+    ...Array.from(labels.japanese),
+    "・",
+    ...Array.from(labels.english),
+    "・",
+  ]).flat();
+
+  return (
+    <motion.div
+      aria-hidden
+      initial={false}
+      animate={
+        visible
+          ? { opacity: [0, 1, 1], scale: [0.42, 1.1, 1] }
+          : { opacity: 0, scale: 0.42 }
+      }
+      transition={
+        visible
+          ? { duration: 0.64, delay, times: [0, 0.74, 1], ease: [0.19, 1, 0.22, 1] }
+          : { duration: 0.18 }
+      }
+      style={{
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        width: radius * 2,
+        height: radius * 2,
+        marginLeft: -radius,
+        marginTop: -radius,
+        borderRadius: "50%",
+        border: `${ringWidth}px solid ${color}`,
+        boxSizing: "border-box",
+        boxShadow: `0 0 18px ${color}66, inset 0 0 12px rgba(255,255,255,0.32), inset 0 0 20px rgba(0,0,0,0.18)`,
+        pointerEvents: "none",
+      }}
+    >
+      <motion.div
+        animate={{ rotate: reverse ? -360 : 360 }}
+        transition={{ duration, repeat: Infinity, ease: "linear" }}
+        style={{ position: "absolute", inset: 0, borderRadius: "50%" }}
+      >
+        {ringCharacters.map((character, index) => {
+          const angle = (360 / ringCharacters.length) * index;
+          return (
+            <span
+              key={`${character}-${index}`}
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                width: 18,
+                height: 18,
+                marginLeft: -9,
+                marginTop: -9,
+                transform: `rotate(${angle}deg) translateY(${-orbitRadius}px)`,
+                transformOrigin: "center",
+                color: textColor,
+                fontFamily: "var(--ui-font)",
+                fontSize: radius > 90 ? 10 : 9,
+                fontWeight: 1000,
+                lineHeight: "18px",
+                textAlign: "center",
+                textShadow: textColor === "#111827" ? "0 1px 2px rgba(255,255,255,0.38)" : "0 1px 3px rgba(0,0,0,0.45)",
+              }}
+            >
+              {character}
+            </span>
+          );
+        })}
+      </motion.div>
+    </motion.div>
+  );
+}
 
 function CapsuleBall({ color, size, rotate = 0 }: { color: string; size: number; rotate?: number }) {
   const halfHeight = Math.max(5, size * 0.48);
@@ -102,11 +300,15 @@ export function GachaMachine({
   onUnlock,
   getItem,
   allUnlocked,
+  onInteractionLockChange,
+  onSpinStart,
   scale = 1.02,
 }: {
   onUnlock: (type: "kanji" | "radical", id: string) => void;
   getItem: () => { type: "kanji" | "radical"; id: string } | null;
   allUnlocked: boolean;
+  onInteractionLockChange?: (locked: boolean) => void;
+  onSpinStart?: () => void;
   scale?: number;
 }) {
   const [knobDeg, setKnobDeg] = useState(0);
@@ -117,6 +319,17 @@ export function GachaMachine({
   const [capsuleRotation, setCapsuleRotation] = useState(0);
   const [capsulePressing, setCapsulePressing] = useState(false);
   const [rewardStage, setRewardStage] = useState<"idle" | "dispensed" | "center" | "opened" | "collecting">("idle");
+  const capsuleOpenedAtRef = useRef(0);
+
+  useEffect(() => {
+    onInteractionLockChange?.(spinning || Boolean(capsule) || rewardStage !== "idle");
+  }, [capsule, onInteractionLockChange, rewardStage, spinning]);
+
+  useEffect(() => {
+    return () => {
+      onInteractionLockChange?.(false);
+    };
+  }, [onInteractionLockChange]);
 
   const handleSpin = useCallback(() => {
     if (allUnlocked) {
@@ -125,6 +338,8 @@ export function GachaMachine({
     }
     if (spinning || capsule || rewardStage !== "idle") return;
 
+    onSpinStart?.();
+    onInteractionLockChange?.(true);
     setSpinning(true);
     setKnobDeg((degrees) => degrees + 360);
 
@@ -146,26 +361,38 @@ export function GachaMachine({
       }
       setSpinning(false);
     }, 1350);
-  }, [spinning, capsule, rewardStage, allUnlocked, getItem]);
+  }, [spinning, capsule, rewardStage, allUnlocked, getItem, onInteractionLockChange, onSpinStart]);
 
-  const handleCapsulePressStart = () => {
+  const releaseCapsulePointer = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  };
+
+  const handleCapsulePressStart = (event: PointerEvent<HTMLDivElement>) => {
+    event.stopPropagation();
     if (!capsule || capsuleOpen || rewardStage !== "center") return;
+    event.currentTarget.setPointerCapture?.(event.pointerId);
     setCapsulePressing(true);
   };
 
-  const handleCapsulePressEnd = () => {
+  const handleCapsulePressEnd = (event: PointerEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    releaseCapsulePointer(event);
     if (!capsule || capsuleOpen || rewardStage !== "center") {
       setCapsulePressing(false);
       return;
     }
 
     setCapsulePressing(false);
+    capsuleOpenedAtRef.current = window.performance.now();
     setCapsuleOpen(true);
     setRewardStage("opened");
   };
 
   const handleCollectReward = () => {
     if (!capsule || rewardStage !== "opened") return;
+    if (window.performance.now() - capsuleOpenedAtRef.current < COLLECT_TAP_GRACE_MS) return;
 
     setRewardStage("collecting");
     setTimeout(() => {
@@ -198,6 +425,11 @@ export function GachaMachine({
     : null;
   const glowColor = rarityInfo?.color ?? rewardColors.primary;
   const glowColor2 = rarityInfo?.color2 ?? rewardColors.secondary;
+  const rarityRingLabels = rarityInfo ? RARITY_RING_LABELS[rarityInfo.id] : { japanese: "リワード", english: "REWARD" };
+  const rarityRingTextCopies = rarityInfo ? RARITY_RING_TEXT_COPIES[rarityInfo.id] : { inner: 5, outer: 6 };
+  const rarityRingTextColor = rarityInfo?.id === "common" ? "#111827" : "#ffffff";
+  const sparkleTiming = RARITY_SPARKLE_TIMING[rarityInfo?.id ?? "common"];
+  const sparkleCount = RARITY_SPARKLE_COUNTS[rarityInfo?.id ?? "common"];
   const isKanjiReward = capsule?.type === "kanji";
   const capsuleTopBackground = isKanjiReward
     ? "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(232,238,244,0.58) 56%, rgba(210,220,230,0.46))"
@@ -536,7 +768,7 @@ export function GachaMachine({
               onClick={handleSpin}
               disabled={spinning || !!capsule}
               animate={allUnlocked ? { rotate: [knobDeg, knobDeg + 28, knobDeg - 8, knobDeg] } : { rotate: knobDeg }}
-              transition={allUnlocked ? { duration: 0.42, ease: [0.2, 0.85, 0.2, 1] } : { duration: 0.8, ease: [0.22, 0.9, 0.32, 1] }}
+              transition={allUnlocked ? { duration: 0.42, ease: [0.2, 0.85, 0.2, 1] } : { duration: KNOB_SPIN_TRANSITION_SECONDS, ease: [0.22, 0.9, 0.32, 1] }}
               whileHover={!spinning && !capsule ? { scale: 1.03 } : {}}
               whileTap={!spinning && !capsule ? { scale: 0.97 } : {}}
               style={{
@@ -812,35 +1044,47 @@ export function GachaMachine({
                 cursor: rewardStage === "center" || rewardStage === "opened" ? "pointer" : "default",
               }}
             >
-              <motion.div
+              <div
                 aria-hidden
-                initial={{ opacity: 0, scale: 0.82 }}
-                animate={
-                  rewardStage === "opened" || rewardStage === "collecting"
-                    ? { opacity: 0.78, scale: 1.72 }
-                    : { opacity: 0.34, scale: 1 }
-                }
-                transition={
-                  rewardStage === "opened" || rewardStage === "collecting"
-                    ? { duration: 0.72, ease: [0.2, 0.9, 0.25, 1] }
-                    : { duration: 0.28 }
-                }
                 style={{
                   position: "absolute",
-                  inset: 4,
-                  borderRadius: "50%",
-                  background: `radial-gradient(circle, ${glowColor}55 0%, ${glowColor2}30 42%, transparent 72%)`,
-                  boxShadow: `0 0 ${rewardStage === "opened" || rewardStage === "collecting" ? 54 : 24}px ${glowColor}aa`,
-                  filter: "blur(2px)",
+                  inset: -42,
                   pointerEvents: "none",
-                  zIndex: 0,
+                  zIndex: 4,
                 }}
-              />
+              >
+                <CircularRarityText
+                  labels={rarityRingLabels}
+                  color={glowColor}
+                  textColor={rarityRingTextColor}
+                  radius={108}
+                  copyCount={rarityRingTextCopies.outer}
+                  visible={rewardStage === "opened" || rewardStage === "collecting"}
+                  delay={0.18}
+                  duration={18}
+                />
+                <CircularRarityText
+                  labels={rarityRingLabels}
+                  color={glowColor2}
+                  textColor={rarityRingTextColor}
+                  radius={80}
+                  copyCount={rarityRingTextCopies.inner}
+                  visible={rewardStage === "opened" || rewardStage === "collecting"}
+                  reverse
+                  delay={0.04}
+                  duration={13}
+                />
+              </div>
               <motion.div
                 onPointerDown={rewardStage === "center" ? handleCapsulePressStart : undefined}
                 onPointerUp={rewardStage === "center" ? handleCapsulePressEnd : undefined}
-                onPointerCancel={() => setCapsulePressing(false)}
-                onPointerLeave={() => {
+                onPointerCancel={(event) => {
+                  event.stopPropagation();
+                  releaseCapsulePointer(event);
+                  setCapsulePressing(false);
+                }}
+                onPointerLeave={(event) => {
+                  releaseCapsulePointer(event);
                   if (rewardStage === "center") setCapsulePressing(false);
                 }}
                 initial={{ scale: 0.94, opacity: 1 }}
@@ -875,6 +1119,7 @@ export function GachaMachine({
                   alignItems: "center",
                   justifyContent: "center",
                   touchAction: "none",
+                  zIndex: 2,
                 }}
               >
                     <motion.div
@@ -986,34 +1231,9 @@ export function GachaMachine({
                     <AnimatePresence>
                       {(rewardStage === "opened" || rewardStage === "collecting") && (
                         <>
-                    {REWARD_SPARKLES.map((sparkle, index) =>
-                      sparkle.x.map((x, pointIndex) => (
-                        <motion.span
-                          key={`${index}-${pointIndex}`}
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{ scale: [0, 1.2, 0.85, 0], opacity: [0, 1, 0.7, 0], rotate: [0, 22, -10, 0] }}
-                          transition={{
-                            duration: 0.78,
-                            repeat: Infinity,
-                            repeatDelay: 2.62,
-                            delay: sparkle.delay + pointIndex * 0.85,
-                            ease: "easeInOut",
-                          }}
-                          style={{
-                            position: "absolute",
-                            left: `${x}%`,
-                            top: sparkle.y[pointIndex],
-                            color: "#fff7a8",
-                            fontSize: sparkle.size,
-                            fontWeight: 1000,
-                            pointerEvents: "none",
-                            zIndex: 4,
-                          }}
-                        >
-                          *
-                        </motion.span>
-                      ))
-                    )}
+                    {REWARD_SPARKLES.slice(0, sparkleCount).map((sparkle, index) => (
+                      <RewardSparkle key={index} sparkle={sparkle} timing={sparkleTiming} />
+                    ))}
 
                         </>
                       )}

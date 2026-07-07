@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, ChevronLeft, Info, Pencil, Search, Star, Tags, X } from "lucide-react";
 import { COMPONENT_BY_ID, KANJI_BY_ID, RADICAL_BY_ID } from "../data/entryIndexes";
@@ -14,14 +14,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../components/ui/dialog";
-import type { ChatMsg, Word } from "../types";
+import type { ChatMsg, KanjiEntryViewState, Word } from "../types";
 
-export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, darkMode, onBack, backLabel, onBackToCollection, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
+export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, darkMode, onBack, backLabel, initialViewState, onViewStateChange, onBackToCollection, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
   id: string; unlockedKanji: Set<string>;
   favorites: Set<string>; customNames: Record<string,string>; notes: Record<string,string>;
   chatMsgs: Record<string,ChatMsg[]>;
   darkMode: boolean;
   onBack: () => void; backLabel: string; onBackToCollection?: () => void; onToggleFav: (k:string)=>void; onSetName:(k:string,v:string)=>void;
+  initialViewState?: KanjiEntryViewState;
+  onViewStateChange?: (id: string, viewState: KanjiEntryViewState) => void;
   onSetNote:(k:string,v:string)=>void; onChat:(k:string,q:string,a:string)=>void;
   onNavKanji:(id:string)=>void; onNavComponent:(id:string)=>void; onNavWord:(id:string)=>void;
 }) {
@@ -31,7 +33,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const [nameVal, setNameVal] = useState(customNames[key] || k.meanings[0]);
   const [showAllKunyomi, setShowAllKunyomi] = useState(false);
   const [showRawComponents, setShowRawComponents] = useState(false);
-  const [wordQuery, setWordQuery] = useState("");
+  const [wordQuery, setWordQuery] = useState(initialViewState?.wordQuery ?? "");
   const [categoryPickerOpen, setCategoryPickerOpen] = useState(false);
   const [currentLearningCategory, setCurrentLearningCategory] = useState(k.learningCategory);
   const [savingCategory, setSavingCategory] = useState<string | null>(null);
@@ -39,7 +41,58 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const [words, setWords] = useState<Word[]>([]);
   const [loadingWords, setLoadingWords] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
+  const pageScrollRef = useRef<HTMLDivElement>(null);
+  const wordBrowserScrollRef = useRef<HTMLDivElement>(null);
+  const restoredWordBrowserScrollRef = useRef(false);
+  const latestViewStateRef = useRef<KanjiEntryViewState>({
+    scrollTop: initialViewState?.scrollTop ?? 0,
+    wordBrowserScrollTop: initialViewState?.wordBrowserScrollTop ?? 0,
+    wordQuery: initialViewState?.wordQuery ?? "",
+  });
+  const wordQueryRef = useRef(wordQuery);
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
+  const emitViewState = useCallback((overrides: Partial<KanjiEntryViewState> = {}) => {
+    const previous = latestViewStateRef.current;
+    const next = {
+      scrollTop: pageScrollRef.current?.scrollTop ?? previous.scrollTop,
+      wordBrowserScrollTop: restoredWordBrowserScrollRef.current
+        ? wordBrowserScrollRef.current?.scrollTop ?? previous.wordBrowserScrollTop
+        : previous.wordBrowserScrollTop,
+      wordQuery: wordQueryRef.current,
+      ...overrides,
+    };
+    latestViewStateRef.current = next;
+    onViewStateChange?.(id, next);
+  }, [id, onViewStateChange]);
+
+  useLayoutEffect(() => {
+    latestViewStateRef.current = {
+      scrollTop: initialViewState?.scrollTop ?? 0,
+      wordBrowserScrollTop: initialViewState?.wordBrowserScrollTop ?? 0,
+      wordQuery: initialViewState?.wordQuery ?? "",
+    };
+    const pageScroll = pageScrollRef.current;
+    if (!pageScroll) return;
+    pageScroll.scrollTop = initialViewState?.scrollTop ?? 0;
+  }, [id, initialViewState]);
+
+  useEffect(() => {
+    const nextWordQuery = initialViewState?.wordQuery ?? "";
+    wordQueryRef.current = nextWordQuery;
+    setWordQuery(nextWordQuery);
+  }, [id, initialViewState]);
+
+  useEffect(() => {
+    wordQueryRef.current = wordQuery;
+    emitViewState({ wordQuery });
+  }, [emitViewState, wordQuery]);
+
+  useEffect(() => {
+    return () => {
+      emitViewState();
+    };
+  }, [emitViewState]);
+
   useEffect(() => {
     let cancelled = false;
     setLoadingWords(true);
@@ -63,6 +116,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
     setCategoryPickerOpen(false);
     setSavingCategory(null);
     setCategorySaveError("");
+    restoredWordBrowserScrollRef.current = false;
   }, [k.id, k.learningCategory]);
   const saveName = () => { onSetName(key, nameVal || k.meanings[0]); setEditingName(false); };
   const canCategorize = import.meta.env.DEV;
@@ -102,11 +156,23 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
       || word.meaning.toLowerCase().includes(normalizedWordQuery)
     ))
     : words;
+  useLayoutEffect(() => {
+    const wordBrowser = wordBrowserScrollRef.current;
+    if (!wordBrowser || restoredWordBrowserScrollRef.current || loadingWords) return;
+    wordBrowser.scrollTop = initialViewState?.wordBrowserScrollTop ?? 0;
+    restoredWordBrowserScrollRef.current = true;
+    emitViewState({ wordBrowserScrollTop: wordBrowser.scrollTop });
+  }, [filteredWords.length, id, initialViewState, loadingWords]);
   const learnerParts = k.learnerParts ?? [];
   const rawParts = k.rawDecomposition?.parts ?? [];
 
   return (
-    <div className="flex flex-col h-full overflow-y-auto" style={{ position:"relative" }}>
+    <div
+      ref={pageScrollRef}
+      className="flex flex-col h-full overflow-y-auto"
+      onScroll={() => emitViewState()}
+      style={{ position:"relative" }}
+    >
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
         <div className="flex flex-col items-start gap-1">
@@ -118,18 +184,22 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
               onClick={onBackToCollection}
               style={{
                 marginLeft: 20,
-                padding: "4px 9px",
-                borderRadius: 10,
+                padding: "7px 11px 7px 8px",
+                borderRadius: 999,
                 border: "1px solid var(--border)",
                 background: "var(--muted)",
                 color: "var(--muted-foreground)",
                 fontFamily: "var(--ui-font)",
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 800,
                 cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 3,
+                minHeight: 34,
               }}
             >
-              Back to Collection.
+              <ChevronLeft size={16} /> Back to Collection
             </button>
           )}
         </div>
@@ -531,7 +601,12 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
             />
             <input
               value={wordQuery}
-              onChange={(event) => setWordQuery(event.target.value)}
+              onChange={(event) => {
+                const nextWordQuery = event.target.value;
+                wordQueryRef.current = nextWordQuery;
+                setWordQuery(nextWordQuery);
+                emitViewState({ wordQuery: nextWordQuery });
+              }}
               placeholder="Search words"
               aria-label="Search words using this Kanji"
               style={{
@@ -550,7 +625,9 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
             />
           </div>
           <div
+            ref={wordBrowserScrollRef}
             className="flex flex-col gap-2"
+            onScroll={() => emitViewState()}
             style={{
               maxHeight:282,
               overflowY:"auto",
@@ -579,7 +656,10 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
             ) : filteredWords.map((w,i) => (
               <button
                 key={w.id || `${w.japanese}-${i}`}
-                onClick={() => onNavWord(w.id || `w-${w.japanese}`)}
+                onClick={() => {
+                  emitViewState();
+                  onNavWord(w.id || `w-${w.japanese}`);
+                }}
                 style={{
                   width:"100%",
                   minHeight:86,

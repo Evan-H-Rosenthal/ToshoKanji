@@ -86,18 +86,22 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, notes, chatMs
               onClick={onBackToCollection}
               style={{
                 marginLeft: 20,
-                padding: "4px 9px",
-                borderRadius: 10,
+                padding: "7px 11px 7px 8px",
+                borderRadius: 999,
                 border: "1px solid var(--border)",
                 background: "var(--muted)",
                 color: "var(--muted-foreground)",
                 fontFamily: "var(--ui-font)",
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 800,
                 cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 3,
+                minHeight: 34,
               }}
             >
-              Back to Collection.
+              <ChevronLeft size={16} /> Back to Collection
             </button>
           )}
         </div>

@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Lock, Star } from "lucide-react";
+import type { KanjiRarity } from "../data/kanjiRarity";
 import { getReadableTextColor } from "../data/ui/categoryColors";
 
 const CARD_SPARKLES = [
@@ -9,13 +11,100 @@ const CARD_SPARKLES = [
   { x: [82, 48, 27, 72], y: [39, 86, 21, 77], size: 13, delay: 0.54 },
 ];
 
-export function CollectionCard({ char, label, matchReason, color1, color2, textColor = getReadableTextColor(color1, color2), starred, highlighted = false, wordCard = false, onStar, onClick }: {
+const CARD_SPARKLE_CHARACTERS = ["·", "+", "∗", "∘"];
+const CARD_SPARKLE_TIMING: Record<KanjiRarity, { minPauseMs: number; maxPauseMs: number; stepMs: number }> = {
+  common: { minPauseMs: 1350, maxPauseMs: 2500, stepMs: 115 },
+  uncommon: { minPauseMs: 980, maxPauseMs: 1850, stepMs: 105 },
+  rare: { minPauseMs: 700, maxPauseMs: 1350, stepMs: 96 },
+  epic: { minPauseMs: 460, maxPauseMs: 920, stepMs: 88 },
+  legendary: { minPauseMs: 250, maxPauseMs: 620, stepMs: 78 },
+};
+const CARD_SPARKLE_COUNTS: Record<KanjiRarity, number> = {
+  common: 1,
+  uncommon: 2,
+  rare: 3,
+  epic: 4,
+  legendary: 4,
+};
+
+function randomBetween(min: number, max: number) {
+  return min + Math.random() * (max - min);
+}
+
+function CardSparkle({
+  sparkle,
+  timing,
+}: {
+  sparkle: { x: number[]; y: number[]; size: number; delay: number };
+  timing: { minPauseMs: number; maxPauseMs: number; stepMs: number };
+}) {
+  const [locationIndex, setLocationIndex] = useState(0);
+  const [characterIndex, setCharacterIndex] = useState(-1);
+
+  useEffect(() => {
+    let timeoutId: number;
+    const startDelay = sparkle.delay * 1000 + randomBetween(timing.minPauseMs * 0.25, timing.maxPauseMs * 0.5);
+
+    const runStep = (nextCharacterIndex: number, nextLocationIndex: number) => {
+      setLocationIndex(nextLocationIndex);
+      setCharacterIndex(nextCharacterIndex);
+
+      if (nextCharacterIndex < CARD_SPARKLE_CHARACTERS.length - 1) {
+        timeoutId = window.setTimeout(() => runStep(nextCharacterIndex + 1, nextLocationIndex), timing.stepMs);
+        return;
+      }
+
+      timeoutId = window.setTimeout(() => {
+        setCharacterIndex(-1);
+        const nextPause = randomBetween(timing.minPauseMs, timing.maxPauseMs);
+        timeoutId = window.setTimeout(
+          () => runStep(0, (nextLocationIndex + 1) % sparkle.x.length),
+          nextPause
+        );
+      }, timing.stepMs);
+    };
+
+    timeoutId = window.setTimeout(() => runStep(0, 0), startDelay);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [sparkle.delay, sparkle.x.length, timing.maxPauseMs, timing.minPauseMs, timing.stepMs]);
+
+  const character = characterIndex >= 0 ? CARD_SPARKLE_CHARACTERS[characterIndex] : "";
+
+  return (
+    <span
+      aria-hidden
+      style={{
+        position: "absolute",
+        left: `${sparkle.x[locationIndex]}%`,
+        top: `${sparkle.y[locationIndex]}%`,
+        color: "#fff7a8",
+        fontSize: sparkle.size,
+        fontWeight: 1000,
+        lineHeight: 1,
+        opacity: character ? 1 : 0,
+        pointerEvents: "none",
+        textShadow: "0 1px 5px rgba(120,74,20,0.38)",
+        transform: "translate(-50%, -50%)",
+        zIndex: 2,
+      }}
+    >
+      {character}
+    </span>
+  );
+}
+
+export function CollectionCard({ char, label, matchReason, color1, color2, textColor = getReadableTextColor(color1, color2), starred, highlighted = false, sparkleRarity = "common", wordCard = false, onStar, onClick }: {
   char: string; label: string; color1: string; color2: string; textColor?: string;
-  matchReason?: string; starred: boolean; highlighted?: boolean; wordCard?: boolean; onStar: (e: React.MouseEvent) => void; onClick: () => void;
+  matchReason?: string; starred: boolean; highlighted?: boolean; sparkleRarity?: KanjiRarity; wordCard?: boolean; onStar: (e: React.MouseEvent) => void; onClick: () => void;
 }) {
   const charLength = Array.from(char).length;
   const wordCharSize = charLength > 16 ? 14 : charLength > 10 ? 16 : charLength > 6 ? 20 : 28;
   const labelSize = wordCard ? 12 : 20;
+  const sparkleTiming = CARD_SPARKLE_TIMING[sparkleRarity];
+  const sparkleCount = CARD_SPARKLE_COUNTS[sparkleRarity];
 
   return (
     <motion.div
@@ -43,36 +132,9 @@ export function CollectionCard({ char, label, matchReason, color1, color2, textC
     >
       {highlighted && (
         <>
-          {CARD_SPARKLES.map((sparkle, index) =>
-            sparkle.x.map((x, pointIndex) => (
-              <motion.span
-                key={`${index}-${pointIndex}`}
-                animate={{
-                  opacity: [0, 1, 0.6, 0],
-                  scale: [0, 1.25, 0.84, 0],
-                  rotate: [0, 24, -8, 0],
-                }}
-                transition={{
-                  duration: 0.68,
-                  repeat: Infinity,
-                  repeatDelay: 2.32,
-                  delay: sparkle.delay + pointIndex * 0.75,
-                  ease: "easeInOut",
-                }}
-                style={{
-                  position: "absolute",
-                  left: `${x}%`,
-                  top: `${sparkle.y[pointIndex]}%`,
-                  color: "#fff7a8",
-                  fontSize: sparkle.size,
-                  zIndex: 2,
-                  pointerEvents: "none",
-                }}
-              >
-                *
-              </motion.span>
-            ))
-          )}
+          {CARD_SPARKLES.slice(0, sparkleCount).map((sparkle, index) => (
+            <CardSparkle key={index} sparkle={sparkle} timing={sparkleTiming} />
+          ))}
         </>
       )}
       <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"100%", padding: wordCard ? "20px 7px 7px" : "8px 4px 4px", minWidth:0 }}>
