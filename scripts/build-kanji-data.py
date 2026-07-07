@@ -1216,7 +1216,7 @@ def main() -> None:
     download_if_missing(KRADFILE_URL, KRADFILE_GZ)
 
     all_entries = parse_kanjidic2()
-    selected_kanji = pick_milestone_kanji(all_entries, 750)
+    selected_kanji = pick_milestone_kanji(all_entries, 800)
     target_literals = {entry["literal"] for entry in selected_kanji}
     existing_learning_categories = read_existing_learning_categories()
     words_by_literal = parse_jmdict_words(target_literals)

@@ -5,6 +5,1764 @@ import type { WordEntry } from "../../types";
 
 export const WORDS_PART_2: WordEntry[] = [
   {
+    "id": "w-再割当",
+    "word": {
+      "id": "w-再割当",
+      "japanese": "再割当",
+      "furigana": "さいわりあて",
+      "romaji": "saiwariate",
+      "meaning": "reassignment",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-当",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再創造",
+    "word": {
+      "id": "w-再創造",
+      "japanese": "再創造",
+      "furigana": "さいそうぞう",
+      "romaji": "saisouzou",
+      "meaning": "creating anew; recreation",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-造"
+    ]
+  },
+  {
+    "id": "w-再加工",
+    "word": {
+      "id": "w-再加工",
+      "japanese": "再加工",
+      "furigana": "さいかこう",
+      "romaji": "saikakou",
+      "meaning": "reprocessing",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-工",
+      "k-加",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再加熱",
+    "word": {
+      "id": "w-再加熱",
+      "japanese": "再加熱",
+      "furigana": "さいかねつ",
+      "romaji": "saikanetsu",
+      "meaning": "reheating",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-加",
+      "k-熱",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再加速",
+    "word": {
+      "id": "w-再加速",
+      "japanese": "再加速",
+      "furigana": "さいかそく",
+      "romaji": "saikasoku",
+      "meaning": "reacceleration; reaccelerating",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-速",
+      "k-加",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再勝",
+    "word": {
+      "id": "w-再勝",
+      "japanese": "再勝",
+      "furigana": "さいしょう",
+      "romaji": "saishou",
+      "meaning": "another victory",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-勝",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再勤",
+    "word": {
+      "id": "w-再勤",
+      "japanese": "再勤",
+      "furigana": "さいきん",
+      "romaji": "saikin",
+      "meaning": "reappointment",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再十両",
+    "word": {
+      "id": "w-再十両",
+      "japanese": "再十両",
+      "furigana": "さいじゅうりょう",
+      "romaji": "saijuuryou",
+      "meaning": "wrestler re-promoted to juryo division",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-十",
+      "k-両",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再協議",
+    "word": {
+      "id": "w-再協議",
+      "japanese": "再協議",
+      "furigana": "さいきょうぎ",
+      "romaji": "saikyougi",
+      "meaning": "repeated discussion",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-議",
+      "k-協",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再受浸",
+    "word": {
+      "id": "w-再受浸",
+      "japanese": "再受浸",
+      "furigana": "さいじゅしん",
+      "romaji": "saijushin",
+      "meaning": "rebaptism by immersion",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-受",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再吟味",
+    "word": {
+      "id": "w-再吟味",
+      "japanese": "再吟味",
+      "furigana": "さいぎんみ",
+      "romaji": "saigimmi",
+      "meaning": "re-examination; review",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-味",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再告",
+    "word": {
+      "id": "w-再告",
+      "japanese": "再告",
+      "furigana": "さいこく",
+      "romaji": "saikoku",
+      "meaning": "renotification",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-告",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再命名",
+    "word": {
+      "id": "w-再命名",
+      "japanese": "再命名",
+      "furigana": "さいめいめい",
+      "romaji": "saimeimei",
+      "meaning": "retronym; rebaptism",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-名",
+      "k-命",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再商品化",
+    "word": {
+      "id": "w-再商品化",
+      "japanese": "再商品化",
+      "furigana": "さいしょうひんか",
+      "romaji": "saishouhinka",
+      "meaning": "recycling (into products)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-化",
+      "k-品",
+      "k-商",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再商品化料金",
+    "word": {
+      "id": "w-再商品化料金",
+      "japanese": "再商品化料金",
+      "furigana": "さいしょうひんかりょうきん",
+      "romaji": "saishouhinkaryoukin",
+      "meaning": "recycling fee",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-金",
+      "k-化",
+      "k-品",
+      "k-商",
+      "k-料",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再国営化",
+    "word": {
+      "id": "w-再国営化",
+      "japanese": "再国営化",
+      "furigana": "さいこくえいか",
+      "romaji": "saikokueika",
+      "meaning": "re-nationalisation",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-国",
+      "k-化",
+      "k-再",
+      "k-営"
+    ]
+  },
+  {
+    "id": "w-再国有化",
+    "word": {
+      "id": "w-再国有化",
+      "japanese": "再国有化",
+      "furigana": "さいこくゆうか",
+      "romaji": "saikokuyuuka",
+      "meaning": "re-nationalisation",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-国",
+      "k-化",
+      "k-有",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再変",
+    "word": {
+      "id": "w-再変",
+      "japanese": "再変",
+      "furigana": "さいへん",
+      "romaji": "saihen",
+      "meaning": "second change; second calamity",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-変",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再変換",
+    "word": {
+      "id": "w-再変換",
+      "japanese": "再変換",
+      "furigana": "さいへんかん",
+      "romaji": "saihenkan",
+      "meaning": "reconversion (of typed characters)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-変",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再始動",
+    "word": {
+      "id": "w-再始動",
+      "japanese": "再始動",
+      "furigana": "さいしどう",
+      "romaji": "saishidou",
+      "meaning": "restarting (a machine, engine, project, etc.); resuming",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-動",
+      "k-始",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再委託",
+    "word": {
+      "id": "w-再委託",
+      "japanese": "再委託",
+      "furigana": "さいいたく",
+      "romaji": "saiitaku",
+      "meaning": "reconsignment (of goods); recommissioning (of a task)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-委",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再婚",
+    "word": {
+      "id": "w-再婚",
+      "japanese": "再婚",
+      "furigana": "さいこん",
+      "romaji": "saikon",
+      "meaning": "second marriage; remarriage",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再婚家庭",
+    "word": {
+      "id": "w-再婚家庭",
+      "japanese": "再婚家庭",
+      "furigana": "さいこんかてい",
+      "romaji": "saikonkatei",
+      "meaning": "stepfamily",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-家",
+      "k-庭",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再婚禁止期間",
+    "word": {
+      "id": "w-再婚禁止期間",
+      "japanese": "再婚禁止期間",
+      "furigana": "さいこんきんしきかん",
+      "romaji": "saikonkinshikikan",
+      "meaning": "period of prohibition of remarriage; period after the cessation of a marriage in which the woman is prohibited from remarrying (100 days)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-間",
+      "k-止",
+      "k-期",
+      "k-再",
+      "k-禁"
+    ]
+  },
+  {
+    "id": "w-再嫁",
+    "word": {
+      "id": "w-再嫁",
+      "japanese": "再嫁",
+      "furigana": "さいか",
+      "romaji": "saika",
+      "meaning": "remarriage (of a woman)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再定義",
+    "word": {
+      "id": "w-再定義",
+      "japanese": "再定義",
+      "furigana": "さいていぎ",
+      "romaji": "saiteigi",
+      "meaning": "redefinition; redefining",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-定",
+      "k-再",
+      "k-義"
+    ]
+  },
+  {
+    "id": "w-再実行",
+    "word": {
+      "id": "w-再実行",
+      "japanese": "再実行",
+      "furigana": "さいじっこう",
+      "romaji": "saijikkou",
+      "meaning": "re-execute",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-行",
+      "k-実",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再実行時間",
+    "word": {
+      "id": "w-再実行時間",
+      "japanese": "再実行時間",
+      "furigana": "さいじっこうじかん",
+      "romaji": "saijikkoujikan",
+      "meaning": "rerun time",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-時",
+      "k-行",
+      "k-間",
+      "k-実",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再宣言",
+    "word": {
+      "id": "w-再宣言",
+      "japanese": "再宣言",
+      "furigana": "さいせんげん",
+      "romaji": "saisengen",
+      "meaning": "redeclaration",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-言",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再審",
+    "word": {
+      "id": "w-再審",
+      "japanese": "再審",
+      "furigana": "さいしん",
+      "romaji": "saishin",
+      "meaning": "retrial; reopening of a case",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再審査",
+    "word": {
+      "id": "w-再審査",
+      "japanese": "再審査",
+      "furigana": "さいしんさ",
+      "romaji": "saishinsa",
+      "meaning": "re-examination",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-査",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再審裁判",
+    "word": {
+      "id": "w-再審裁判",
+      "japanese": "再審裁判",
+      "furigana": "さいしんさいばん",
+      "romaji": "saishinsaiban",
+      "meaning": "retrial",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-判",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再審裁判所",
+    "word": {
+      "id": "w-再審裁判所",
+      "japanese": "再審裁判所",
+      "furigana": "さいしんさいばんしょ",
+      "romaji": "saishinsaibansho",
+      "meaning": "court of review; retrial court",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-所",
+      "k-判",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再審請求",
+    "word": {
+      "id": "w-再審請求",
+      "japanese": "再審請求",
+      "furigana": "さいしんせいきゅう",
+      "romaji": "saishinseikyuu",
+      "meaning": "petition for retrial; appeal for retrial",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-求",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再封鎖",
+    "word": {
+      "id": "w-再封鎖",
+      "japanese": "再封鎖",
+      "furigana": "さいふうさ",
+      "romaji": "saifuusa",
+      "meaning": "reblocking; refreeze",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再尋問",
+    "word": {
+      "id": "w-再尋問",
+      "japanese": "再尋問",
+      "furigana": "さいじんもん",
+      "romaji": "saijimmon",
+      "meaning": "re-examination",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-問",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再導入",
+    "word": {
+      "id": "w-再導入",
+      "japanese": "再導入",
+      "furigana": "さいどうにゅう",
+      "romaji": "saidounyuu",
+      "meaning": "reintroduction",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-入",
+      "k-再",
+      "k-導"
+    ]
+  },
+  {
+    "id": "w-再就職",
+    "word": {
+      "id": "w-再就職",
+      "japanese": "再就職",
+      "furigana": "さいしゅうしょく",
+      "romaji": "saishuushoku",
+      "meaning": "reemployment",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-職"
+    ]
+  },
+  {
+    "id": "w-再就職支援",
+    "word": {
+      "id": "w-再就職支援",
+      "japanese": "再就職支援",
+      "furigana": "さいしゅうしょくしえん",
+      "romaji": "saishuushokushien",
+      "meaning": "outplacement",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-支",
+      "k-再",
+      "k-職"
+    ]
+  },
+  {
+    "id": "w-再履",
+    "word": {
+      "id": "w-再履",
+      "japanese": "再履",
+      "furigana": "さいり",
+      "romaji": "sairi",
+      "meaning": "repeating a course; taking a course again",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再履修",
+    "word": {
+      "id": "w-再履修",
+      "japanese": "再履修",
+      "furigana": "さいりしゅう",
+      "romaji": "sairishuu",
+      "meaning": "repeating a course; taking a course again",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-修"
+    ]
+  },
+  {
+    "id": "w-再工事",
+    "word": {
+      "id": "w-再工事",
+      "japanese": "再工事",
+      "furigana": "さいこうじ",
+      "romaji": "saikouji",
+      "meaning": "reconstruction",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-工",
+      "k-事",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰",
+    "word": {
+      "id": "w-再帰",
+      "japanese": "再帰",
+      "furigana": "さいき",
+      "romaji": "saiki",
+      "meaning": "returning again; recurrence",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-帰",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰代名詞",
+    "word": {
+      "id": "w-再帰代名詞",
+      "japanese": "再帰代名詞",
+      "furigana": "さいきだいめいし",
+      "romaji": "saikidaimeishi",
+      "meaning": "reflexive pronoun",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-名",
+      "k-帰",
+      "k-代",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰動詞",
+    "word": {
+      "id": "w-再帰動詞",
+      "japanese": "再帰動詞",
+      "furigana": "さいきどうし",
+      "romaji": "saikidoushi",
+      "meaning": "reflexive verb",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-帰",
+      "k-動",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰反射",
+    "word": {
+      "id": "w-再帰反射",
+      "japanese": "再帰反射",
+      "furigana": "さいきはんしゃ",
+      "romaji": "saikihansha",
+      "meaning": "retroreflection",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-帰",
+      "k-反",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰呼び出し",
+    "word": {
+      "id": "w-再帰呼び出し",
+      "japanese": "再帰呼び出し",
+      "furigana": "さいきよびだし",
+      "romaji": "saikiyobidashi",
+      "meaning": "recursive call",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-出",
+      "k-帰",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰熱",
+    "word": {
+      "id": "w-再帰熱",
+      "japanese": "再帰熱",
+      "furigana": "さいきねつ",
+      "romaji": "saikinetsu",
+      "meaning": "recurrent fever",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-帰",
+      "k-熱",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰用法",
+    "word": {
+      "id": "w-再帰用法",
+      "japanese": "再帰用法",
+      "furigana": "さいきようほう",
+      "romaji": "saikiyouhou",
+      "meaning": "(the) reflexive; reflexive usage",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-用",
+      "k-帰",
+      "k-法",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰的",
+    "word": {
+      "id": "w-再帰的",
+      "japanese": "再帰的",
+      "furigana": "さいきてき",
+      "romaji": "saikiteki",
+      "meaning": "recursive; reflexive",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-帰",
+      "k-的",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰的に呼ぶ",
+    "word": {
+      "id": "w-再帰的に呼ぶ",
+      "japanese": "再帰的に呼ぶ",
+      "furigana": "さいきてきによぶ",
+      "romaji": "saikitekiniyobu",
+      "meaning": "to call recursively",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-帰",
+      "k-的",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰的サブルーチン",
+    "word": {
+      "id": "w-再帰的サブルーチン",
+      "japanese": "再帰的サブルーチン",
+      "furigana": "さいきてきサブルーチン",
+      "romaji": "saikitekisaburuuchin",
+      "meaning": "recursive subroutine",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-帰",
+      "k-的",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰的定義",
+    "word": {
+      "id": "w-再帰的定義",
+      "japanese": "再帰的定義",
+      "furigana": "さいきてきていぎ",
+      "romaji": "saikitekiteigi",
+      "meaning": "recursive definitions",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-帰",
+      "k-定",
+      "k-的",
+      "k-再",
+      "k-義"
+    ]
+  },
+  {
+    "id": "w-再帰的頭字語",
+    "word": {
+      "id": "w-再帰的頭字語",
+      "japanese": "再帰的頭字語",
+      "furigana": "さいきてきとうじご",
+      "romaji": "saikitekitoujigo",
+      "meaning": "recursive acronym",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-字",
+      "k-語",
+      "k-頭",
+      "k-帰",
+      "k-的",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再帰関数",
+    "word": {
+      "id": "w-再帰関数",
+      "japanese": "再帰関数",
+      "furigana": "さいきかんすう",
+      "romaji": "saikikansuu",
+      "meaning": "recursive function",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-数",
+      "k-帰",
+      "k-関",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再度",
+    "word": {
+      "id": "w-再度",
+      "japanese": "再度",
+      "furigana": "さいど",
+      "romaji": "saido",
+      "meaning": "a second time; again",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-度",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再度協議",
+    "word": {
+      "id": "w-再度協議",
+      "japanese": "再度協議",
+      "furigana": "さいどきょうぎ",
+      "romaji": "saidokyougi",
+      "meaning": "renegotiation",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-度",
+      "k-議",
+      "k-協",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再度弁論",
+    "word": {
+      "id": "w-再度弁論",
+      "japanese": "再度弁論",
+      "furigana": "さいどべんろん",
+      "romaji": "saidobenron",
+      "meaning": "repleading; pleading again",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-度",
+      "k-再",
+      "k-弁"
+    ]
+  },
+  {
+    "id": "w-再度確認",
+    "word": {
+      "id": "w-再度確認",
+      "japanese": "再度確認",
+      "furigana": "さいどかくにん",
+      "romaji": "saidokakunin",
+      "meaning": "reconfirmation; double check",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-度",
+      "k-確",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再度組み立て",
+    "word": {
+      "id": "w-再度組み立て",
+      "japanese": "再度組み立て",
+      "furigana": "さいどくみたて",
+      "romaji": "saidokumitate",
+      "meaning": "reassemble",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-立",
+      "k-組",
+      "k-度",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再建",
+    "word": {
+      "id": "w-再建",
+      "japanese": "再建",
+      "furigana": "さいけん",
+      "romaji": "saiken",
+      "meaning": "rebuilding; reconstruction",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-建",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再建外科",
+    "word": {
+      "id": "w-再建外科",
+      "japanese": "再建外科",
+      "furigana": "さいけんげか",
+      "romaji": "saikengeka",
+      "meaning": "reconstructive surgery",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-外",
+      "k-科",
+      "k-建",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再建手術",
+    "word": {
+      "id": "w-再建手術",
+      "japanese": "再建手術",
+      "furigana": "さいけんしゅじゅつ",
+      "romaji": "saikenshujutsu",
+      "meaning": "reconstructive operation; reconstructive surgery",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-手",
+      "k-建",
+      "k-再",
+      "k-術"
+    ]
+  },
+  {
+    "id": "w-再建築",
+    "word": {
+      "id": "w-再建築",
+      "japanese": "再建築",
+      "furigana": "さいけんちく",
+      "romaji": "saikenchiku",
+      "meaning": "reconstruction; rebuilding",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-建",
+      "k-再",
+      "k-築"
+    ]
+  },
+  {
+    "id": "w-再建築不可物件",
+    "word": {
+      "id": "w-再建築不可物件",
+      "japanese": "再建築不可物件",
+      "furigana": "さいけんちくふかぶっけん",
+      "romaji": "saikenchikufukabukken",
+      "meaning": "non-rebuildable property; property on which new buildings cannot legally be erected because it lacks access to a road that is at least 4 meters wide",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-物",
+      "k-不",
+      "k-建",
+      "k-件",
+      "k-再",
+      "k-可",
+      "k-築"
+    ]
+  },
+  {
+    "id": "w-再建計画",
+    "word": {
+      "id": "w-再建計画",
+      "japanese": "再建計画",
+      "furigana": "さいけんけいかく",
+      "romaji": "saikenkeikaku",
+      "meaning": "reorganization plan; reorganisation plan",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-画",
+      "k-計",
+      "k-建",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再征",
+    "word": {
+      "id": "w-再征",
+      "japanese": "再征",
+      "furigana": "さいせい",
+      "romaji": "saisei",
+      "meaning": "second punitive expedition",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再従兄",
+    "word": {
+      "id": "w-再従兄",
+      "japanese": "再従兄",
+      "furigana": "さいじゅうけい",
+      "romaji": "saijuukei",
+      "meaning": "elder second cousin",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-兄",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再従兄弟",
+    "word": {
+      "id": "w-再従兄弟",
+      "japanese": "再従兄弟",
+      "furigana": "はとこ",
+      "romaji": "hatoko",
+      "meaning": "second cousin",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-弟",
+      "k-兄",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再従姉妹",
+    "word": {
+      "id": "w-再従姉妹",
+      "japanese": "再従姉妹",
+      "furigana": "はとこ",
+      "romaji": "hatoko",
+      "meaning": "second cousin",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妹",
+      "k-姉",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再従弟",
+    "word": {
+      "id": "w-再従弟",
+      "japanese": "再従弟",
+      "furigana": "さいじゅうてい",
+      "romaji": "saijuutei",
+      "meaning": "younger second cousin",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-弟",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再循環",
+    "word": {
+      "id": "w-再循環",
+      "japanese": "再循環",
+      "furigana": "さいじゅんかん",
+      "romaji": "saijunkan",
+      "meaning": "recycle",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再思",
+    "word": {
+      "id": "w-再思",
+      "japanese": "再思",
+      "furigana": "さいし",
+      "romaji": "saishi",
+      "meaning": "reconsideration",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-思",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再感染",
+    "word": {
+      "id": "w-再感染",
+      "japanese": "再感染",
+      "furigana": "さいかんせん",
+      "romaji": "saikansen",
+      "meaning": "reinfection",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-感",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再戦",
+    "word": {
+      "id": "w-再戦",
+      "japanese": "再戦",
+      "furigana": "さいせん",
+      "romaji": "saisen",
+      "meaning": "rematch",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-戦",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再手術",
+    "word": {
+      "id": "w-再手術",
+      "japanese": "再手術",
+      "furigana": "さいしゅじゅつ",
+      "romaji": "saishujutsu",
+      "meaning": "reoperation; repeat surgery",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-手",
+      "k-再",
+      "k-術"
+    ]
+  },
+  {
+    "id": "w-再投票",
+    "word": {
+      "id": "w-再投票",
+      "japanese": "再投票",
+      "furigana": "さいとうひょう",
+      "romaji": "saitouhyou",
+      "meaning": "revoting",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-投",
+      "k-票",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再投稿",
+    "word": {
+      "id": "w-再投稿",
+      "japanese": "再投稿",
+      "furigana": "さいとうこう",
+      "romaji": "saitoukou",
+      "meaning": "repost (e.g. of an online article); resubmission",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-投",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再投資",
+    "word": {
+      "id": "w-再投資",
+      "japanese": "再投資",
+      "furigana": "さいとうし",
+      "romaji": "saitoushi",
+      "meaning": "reinvestment",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-投",
+      "k-資",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再抗弁",
+    "word": {
+      "id": "w-再抗弁",
+      "japanese": "再抗弁",
+      "furigana": "さいこうべん",
+      "romaji": "saikouben",
+      "meaning": "pleading",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-弁"
+    ]
+  },
+  {
+    "id": "w-再拘留",
+    "word": {
+      "id": "w-再拘留",
+      "japanese": "再拘留",
+      "furigana": "さいこうりゅう",
+      "romaji": "saikouryuu",
+      "meaning": "(a) remand",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-留"
+    ]
+  },
+  {
+    "id": "w-再拝",
+    "word": {
+      "id": "w-再拝",
+      "japanese": "再拝",
+      "furigana": "さいはい",
+      "romaji": "saihai",
+      "meaning": "bowing twice; worshipping again",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再挑戦",
+    "word": {
+      "id": "w-再挑戦",
+      "japanese": "再挑戦",
+      "furigana": "さいちょうせん",
+      "romaji": "saichousen",
+      "meaning": "retry; another try",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-戦",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再挙",
+    "word": {
+      "id": "w-再挙",
+      "japanese": "再挙",
+      "furigana": "さいきょ",
+      "romaji": "saikyo",
+      "meaning": "another attempt; another try",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-挙",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再接続",
+    "word": {
+      "id": "w-再接続",
+      "japanese": "再接続",
+      "furigana": "さいせつぞく",
+      "romaji": "saisetsuzoku",
+      "meaning": "reconnect",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-続",
+      "k-再",
+      "k-接"
+    ]
+  },
+  {
+    "id": "w-再掲",
+    "word": {
+      "id": "w-再掲",
+      "japanese": "再掲",
+      "furigana": "さいけい",
+      "romaji": "saikei",
+      "meaning": "redisplaying; republishing",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再描画",
+    "word": {
+      "id": "w-再描画",
+      "japanese": "再描画",
+      "furigana": "さいびょうが",
+      "romaji": "saibyouga",
+      "meaning": "redraw",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-画",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再提案",
+    "word": {
+      "id": "w-再提案",
+      "japanese": "再提案",
+      "furigana": "さいていあん",
+      "romaji": "saiteian",
+      "meaning": "proposing again",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-案",
+      "k-提",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再放送",
+    "word": {
+      "id": "w-再放送",
+      "japanese": "再放送",
+      "furigana": "さいほうそう",
+      "romaji": "saihousou",
+      "meaning": "rebroadcasting; rerun",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-放",
+      "k-送",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再敗",
+    "word": {
+      "id": "w-再敗",
+      "japanese": "再敗",
+      "furigana": "さいはい",
+      "romaji": "saihai",
+      "meaning": "second defeat",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-敗",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再教育",
+    "word": {
+      "id": "w-再教育",
+      "japanese": "再教育",
+      "furigana": "さいきょういく",
+      "romaji": "saikyouiku",
+      "meaning": "re-education; retraining",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-教",
+      "k-育",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再整理",
+    "word": {
+      "id": "w-再整理",
+      "japanese": "再整理",
+      "furigana": "さいせいり",
+      "romaji": "saiseiri",
+      "meaning": "rearrangement; reorganization",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-理",
+      "k-整",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再映",
+    "word": {
+      "id": "w-再映",
+      "japanese": "再映",
+      "furigana": "さいえい",
+      "romaji": "saiei",
+      "meaning": "rerun; reshow",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再服役",
+    "word": {
+      "id": "w-再服役",
+      "japanese": "再服役",
+      "furigana": "さいふくえき",
+      "romaji": "saifukueki",
+      "meaning": "re-enlistment; second imprisonment",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-役",
+      "k-服",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再来",
+    "word": {
+      "id": "w-再来",
+      "japanese": "再来",
+      "furigana": "さいらい",
+      "romaji": "sairai",
+      "meaning": "return; coming back",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-来",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再来年",
+    "word": {
+      "id": "w-再来年",
+      "japanese": "再来年",
+      "furigana": "さらいねん",
+      "romaji": "sarainen",
+      "meaning": "year after next",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-年",
+      "k-来",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再来月",
+    "word": {
+      "id": "w-再来月",
+      "japanese": "再来月",
+      "furigana": "さらいげつ",
+      "romaji": "saraigetsu",
+      "meaning": "month after next",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-月",
+      "k-来",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再来週",
+    "word": {
+      "id": "w-再来週",
+      "japanese": "再来週",
+      "furigana": "さらいしゅう",
+      "romaji": "saraishuu",
+      "meaning": "week after next",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-来",
+      "k-週",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再校",
+    "word": {
+      "id": "w-再校",
+      "japanese": "再校",
+      "furigana": "さいこう",
+      "romaji": "saikou",
+      "meaning": "second proof; second revision",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-校",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再案",
+    "word": {
+      "id": "w-再案",
+      "japanese": "再案",
+      "furigana": "さいあん",
+      "romaji": "saian",
+      "meaning": "revised plan; revised draft",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-案",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再梱包",
+    "word": {
+      "id": "w-再梱包",
+      "japanese": "再梱包",
+      "furigana": "さいこんぽう",
+      "romaji": "saikompou",
+      "meaning": "repackaging",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-包",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再検",
+    "word": {
+      "id": "w-再検",
+      "japanese": "再検",
+      "furigana": "さいけん",
+      "romaji": "saiken",
+      "meaning": "re-examination; reinspection",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-検"
+    ]
+  },
+  {
+    "id": "w-再検査",
+    "word": {
+      "id": "w-再検査",
+      "japanese": "再検査",
+      "furigana": "さいけんさ",
+      "romaji": "saikensa",
+      "meaning": "reexamination; reinspection",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-査",
+      "k-再",
+      "k-検"
+    ]
+  },
+  {
+    "id": "w-再検討",
+    "word": {
+      "id": "w-再検討",
+      "japanese": "再検討",
+      "furigana": "さいけんとう",
+      "romaji": "saikentou",
+      "meaning": "re-examination; review",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-検"
+    ]
+  },
+  {
+    "id": "w-再構",
+    "word": {
+      "id": "w-再構",
+      "japanese": "再構",
+      "furigana": "さいこう",
+      "romaji": "saikou",
+      "meaning": "rebuilding; reconstructing",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-構"
+    ]
+  },
+  {
+    "id": "w-再構成",
+    "word": {
+      "id": "w-再構成",
+      "japanese": "再構成",
+      "furigana": "さいこうせい",
+      "romaji": "saikousei",
+      "meaning": "reconstruction; reorganization",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-成",
+      "k-再",
+      "k-構"
+    ]
+  },
+  {
+    "id": "w-再構成肉",
+    "word": {
+      "id": "w-再構成肉",
+      "japanese": "再構成肉",
+      "furigana": "さいこうせいにく",
+      "romaji": "saikouseiniku",
+      "meaning": "reconstituted meat; meat slurry",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-肉",
+      "k-成",
+      "k-再",
+      "k-構"
+    ]
+  },
+  {
+    "id": "w-再構築",
+    "word": {
+      "id": "w-再構築",
+      "japanese": "再構築",
+      "furigana": "さいこうちく",
+      "romaji": "saikouchiku",
+      "meaning": "reconstruction; rebuilding",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-構",
+      "k-築"
+    ]
+  },
+  {
+    "id": "w-再武装",
+    "word": {
+      "id": "w-再武装",
+      "japanese": "再武装",
+      "furigana": "さいぶそう",
+      "romaji": "saibusou",
+      "meaning": "rearmament",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-再",
+      "k-武"
+    ]
+  },
+  {
+    "id": "w-再注",
+    "word": {
+      "id": "w-再注",
+      "japanese": "再注",
+      "furigana": "さいちゅう",
+      "romaji": "saichuu",
+      "meaning": "repeat order",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-注",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再注文",
+    "word": {
+      "id": "w-再注文",
+      "japanese": "再注文",
+      "furigana": "さいちゅうもん",
+      "romaji": "saichuumon",
+      "meaning": "repeat order; reorder",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-文",
+      "k-注",
+      "k-再"
+    ]
+  },
+  {
+    "id": "w-再注目",
+    "word": {
+      "id": "w-再注目",
+      "japanese": "再注目",
+      "furigana": "さいちゅうもく",
+      "romaji": "saichuumoku",
+      "meaning": "being in the center of attention again; coming back into the limelight",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-目",
+      "k-注",
+      "k-再"
+    ]
+  },
+  {
     "id": "w-再洗礼",
     "word": {
       "id": "w-再洗礼",
@@ -107,7 +1865,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-量",
-      "k-再"
+      "k-再",
+      "k-測"
     ]
   },
   {
@@ -150,7 +1909,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-再"
+      "k-再",
+      "k-版"
     ]
   },
   {
@@ -164,7 +1924,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-再"
+      "k-再",
+      "k-犯"
     ]
   },
   {
@@ -179,7 +1940,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-再"
+      "k-再",
+      "k-犯"
     ]
   },
   {
@@ -195,7 +1957,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-止",
       "k-再",
-      "k-防"
+      "k-防",
+      "k-犯"
     ]
   },
   {
@@ -838,7 +2601,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-止",
-      "k-再"
+      "k-再",
+      "k-禁"
     ]
   },
   {
@@ -897,7 +2661,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-再"
+      "k-再",
+      "k-築"
     ]
   },
   {
@@ -1126,7 +2891,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-再"
+      "k-再",
+      "k-興"
     ]
   },
   {
@@ -1141,7 +2907,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-感",
-      "k-再"
+      "k-再",
+      "k-興"
     ]
   },
   {
@@ -1261,7 +3028,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-再"
+      "k-再",
+      "k-版"
     ]
   },
   {
@@ -1910,7 +3678,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-転",
-      "k-再"
+      "k-再",
+      "k-逆"
     ]
   },
   {
@@ -2001,7 +3770,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-配",
-      "k-再"
+      "k-再",
+      "k-布"
     ]
   },
   {
@@ -2256,6 +4026,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-冒険",
+    "word": {
+      "id": "w-冒険",
+      "japanese": "冒険",
+      "furigana": "ぼうけん",
+      "romaji": "bouken",
+      "meaning": "adventure; venture",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-険"
+    ]
+  },
+  {
     "id": "w-冒険団",
     "word": {
       "id": "w-冒険団",
@@ -2266,7 +4050,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-団"
+      "k-団",
+      "k-険"
     ]
   },
   {
@@ -2280,7 +4065,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-家"
+      "k-家",
+      "k-険"
     ]
   },
   {
@@ -2295,7 +4081,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-小",
-      "k-説"
+      "k-説",
+      "k-険"
     ]
   },
   {
@@ -2309,7 +4096,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-心"
+      "k-心",
+      "k-険"
     ]
   },
   {
@@ -2324,7 +4112,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-行",
-      "k-旅"
+      "k-旅",
+      "k-険"
     ]
   },
   {
@@ -2338,7 +4127,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-的"
+      "k-的",
+      "k-険"
     ]
   },
   {
@@ -2352,7 +4142,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-者"
+      "k-者",
+      "k-険"
     ]
   },
   {
@@ -2366,7 +4157,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-談"
+      "k-談",
+      "k-険"
     ]
   },
   {
@@ -2381,7 +4173,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-本",
-      "k-資"
+      "k-資",
+      "k-険"
     ]
   },
   {
@@ -2395,7 +4188,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-野"
+      "k-野",
+      "k-険"
     ]
   },
   {
@@ -3119,7 +4913,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-写"
+      "k-写",
+      "k-仏"
     ]
   },
   {
@@ -3133,7 +4928,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-写"
+      "k-写",
+      "k-像"
     ]
   },
   {
@@ -3598,7 +5394,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-真",
-      "k-写"
+      "k-写",
+      "k-版"
     ]
   },
   {
@@ -3981,7 +5778,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-真",
       "k-写",
-      "k-量"
+      "k-量",
+      "k-測"
     ]
   },
   {
@@ -3998,7 +5796,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-真",
       "k-写",
       "k-法",
-      "k-量"
+      "k-量",
+      "k-測"
     ]
   },
   {
@@ -4029,7 +5828,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-真",
-      "k-写"
+      "k-写",
+      "k-版"
     ]
   },
   {
@@ -4093,7 +5893,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-石",
       "k-真",
-      "k-写"
+      "k-写",
+      "k-版"
     ]
   },
   {
@@ -4190,7 +5991,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-真",
       "k-写",
-      "k-製"
+      "k-製",
+      "k-版"
     ]
   },
   {
@@ -4255,7 +6057,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-週",
       "k-真",
-      "k-写"
+      "k-写",
+      "k-刊"
     ]
   },
   {
@@ -4763,6 +6566,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-冠絶",
+    "word": {
+      "id": "w-冠絶",
+      "japanese": "冠絶",
+      "furigana": "かんぜつ",
+      "romaji": "kanzetsu",
+      "meaning": "unique; unsurpassed",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-絶"
+    ]
+  },
+  {
     "id": "w-冠羽",
     "word": {
       "id": "w-冠羽",
@@ -4867,6 +6684,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-冤罪",
+    "word": {
+      "id": "w-冤罪",
+      "japanese": "冤罪",
+      "furigana": "えんざい",
+      "romaji": "enzai",
+      "meaning": "false charge; false accusation",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-罪"
+    ]
+  },
+  {
     "id": "w-冥利",
     "word": {
       "id": "w-冥利",
@@ -4919,7 +6750,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-加"
+      "k-加",
+      "k-余"
     ]
   },
   {
@@ -5522,7 +7354,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-冬"
+      "k-冬",
+      "k-囲"
     ]
   },
   {
@@ -5555,7 +7388,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-冬",
       "k-配",
       "k-置",
-      "k-型"
+      "k-型",
+      "k-圧"
     ]
   },
   {
@@ -5693,7 +7527,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-冬",
-      "k-安"
+      "k-安",
+      "k-居"
     ]
   },
   {
@@ -8543,7 +10378,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-止",
       "k-温",
-      "k-冷"
+      "k-冷",
+      "k-停"
     ]
   },
   {
@@ -8557,7 +10393,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-冷"
+      "k-冷",
+      "k-布"
     ]
   },
   {
@@ -9405,6 +11242,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-凄絶",
+    "word": {
+      "id": "w-凄絶",
+      "japanese": "凄絶",
+      "furigana": "せいぜつ",
+      "romaji": "seizetsu",
+      "meaning": "extremely gruesome; lurid",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-絶"
+    ]
+  },
+  {
     "id": "w-准士官",
     "word": {
       "id": "w-准士官",
@@ -9475,7 +11326,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-護"
+      "k-護",
+      "k-婦"
     ]
   },
   {
@@ -9520,6 +11372,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-音",
       "k-観"
+    ]
+  },
+  {
+    "id": "w-准許",
+    "word": {
+      "id": "w-准許",
+      "japanese": "准許",
+      "furigana": "じゅんきょ",
+      "romaji": "junkyo",
+      "meaning": "approval; sanction",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-許"
     ]
   },
   {
@@ -10635,7 +12501,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-集"
+      "k-集",
+      "k-素"
     ]
   },
   {
@@ -11080,7 +12947,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-保"
+      "k-保",
+      "k-留"
     ]
   },
   {
@@ -11361,7 +13229,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-女",
-      "k-海"
+      "k-海",
+      "k-航"
     ]
   },
   {
@@ -12184,7 +14053,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-集",
       "k-器",
       "k-備",
-      "k-準"
+      "k-準",
+      "k-罪"
     ]
   },
   {
@@ -12297,7 +14167,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-悪"
+      "k-悪",
+      "k-犯"
     ]
   },
   {
@@ -12312,7 +14183,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-悪"
+      "k-悪",
+      "k-犯"
     ]
   },
   {
@@ -12326,7 +14198,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-悪"
+      "k-悪",
+      "k-罪",
+      "k-犯"
     ]
   },
   {
@@ -12372,6 +14246,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-凶暴",
+    "word": {
+      "id": "w-凶暴",
+      "japanese": "凶暴",
+      "furigana": "きょうぼう",
+      "romaji": "kyoubou",
+      "meaning": "ferocious; brutal",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-暴"
+    ]
+  },
+  {
     "id": "w-凶暴性",
     "word": {
       "id": "w-凶暴性",
@@ -12382,7 +14270,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-暴"
     ]
   },
   {
@@ -12653,7 +14542,22 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-化",
-      "k-最"
+      "k-最",
+      "k-適"
+    ]
+  },
+  {
+    "id": "w-凸版",
+    "word": {
+      "id": "w-凸版",
+      "japanese": "凸版",
+      "furigana": "とっぱん",
+      "romaji": "toppan",
+      "meaning": "letterpress; relief printing",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-版"
     ]
   },
   {
@@ -12668,7 +14572,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-印",
-      "k-刷"
+      "k-刷",
+      "k-版"
     ]
   },
   {
@@ -12831,6 +14736,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-凹版",
+    "word": {
+      "id": "w-凹版",
+      "japanese": "凹版",
+      "furigana": "おうはん",
+      "romaji": "ouhan",
+      "meaning": "intaglio plate",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-版"
+    ]
+  },
+  {
     "id": "w-凹版印刷",
     "word": {
       "id": "w-凹版印刷",
@@ -12842,7 +14761,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-印",
-      "k-刷"
+      "k-刷",
+      "k-版"
     ]
   },
   {
@@ -14207,7 +16127,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-不"
+      "k-不",
+      "k-精"
     ]
   },
   {
@@ -14731,7 +16652,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-光",
-      "k-産"
+      "k-産",
+      "k-興"
     ]
   },
   {
@@ -14810,7 +16732,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-入",
-      "k-止"
+      "k-止",
+      "k-禁"
     ]
   },
   {
@@ -14845,7 +16768,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-理",
       "k-管",
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -15088,7 +17012,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-前",
-      "k-師"
+      "k-師",
+      "k-講"
     ]
   },
   {
@@ -15305,7 +17230,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-出",
       "k-力",
       "k-要",
-      "k-基"
+      "k-基",
+      "k-素"
     ]
   },
   {
@@ -15576,7 +17502,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-口",
-      "k-戦"
+      "k-戦",
+      "k-略"
     ]
   },
   {
@@ -16402,7 +18329,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-居"
     ]
   },
   {
@@ -16927,7 +18855,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-張"
+      "k-張",
+      "k-版"
     ]
   },
   {
@@ -17267,7 +19196,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-損"
     ]
   },
   {
@@ -17983,7 +19913,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-来"
+      "k-来",
+      "k-損"
     ]
   },
   {
@@ -17998,7 +19929,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-来"
+      "k-来",
+      "k-損"
     ]
   },
   {
@@ -18539,7 +20471,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-止",
-      "k-港"
+      "k-港",
+      "k-停"
     ]
   },
   {
@@ -18738,7 +20671,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-無"
+      "k-無",
+      "k-精"
     ]
   },
   {
@@ -18752,7 +20686,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-版"
     ]
   },
   {
@@ -18768,7 +20703,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-自",
-      "k-由"
+      "k-由",
+      "k-版"
     ]
   },
   {
@@ -18783,7 +20719,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-不"
+      "k-不",
+      "k-版"
     ]
   },
   {
@@ -18798,7 +20735,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-元"
+      "k-元",
+      "k-版"
     ]
   },
   {
@@ -18813,7 +20751,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-地"
+      "k-地",
+      "k-版"
     ]
   },
   {
@@ -18830,7 +20769,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-出",
       "k-地",
       "k-明",
-      "k-不"
+      "k-不",
+      "k-版"
     ]
   },
   {
@@ -18845,7 +20785,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-屋"
+      "k-屋",
+      "k-版"
     ]
   },
   {
@@ -18860,7 +20801,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-年",
-      "k-出"
+      "k-出",
+      "k-版"
     ]
   },
   {
@@ -18875,7 +20817,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-所"
+      "k-所",
+      "k-版"
     ]
   },
   {
@@ -18890,7 +20833,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-業"
+      "k-業",
+      "k-版"
     ]
   },
   {
@@ -18906,7 +20850,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-者",
-      "k-業"
+      "k-業",
+      "k-版"
     ]
   },
   {
@@ -18920,7 +20865,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-版"
     ]
   },
   {
@@ -18935,7 +20881,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-法"
+      "k-法",
+      "k-版"
     ]
   },
   {
@@ -18950,7 +20897,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-物"
+      "k-物",
+      "k-版"
     ]
   },
   {
@@ -18965,7 +20913,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-界"
+      "k-界",
+      "k-版"
     ]
   },
   {
@@ -18981,7 +20930,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-目",
-      "k-録"
+      "k-録",
+      "k-版"
     ]
   },
   {
@@ -18996,7 +20946,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-社"
+      "k-社",
+      "k-版"
     ]
   },
   {
@@ -19015,7 +20966,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-科",
       "k-所",
       "k-研",
-      "k-究"
+      "k-究",
+      "k-版"
     ]
   },
   {
@@ -19030,7 +20982,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-者"
+      "k-者",
+      "k-版"
     ]
   },
   {
@@ -19046,7 +20999,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-記",
-      "k-念"
+      "k-念",
+      "k-版"
     ]
   },
   {
@@ -19061,7 +21015,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-可"
+      "k-可",
+      "k-許",
+      "k-版"
     ]
   },
   {
@@ -19076,7 +21032,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-費"
+      "k-費",
+      "k-版"
     ]
   },
   {
@@ -19091,7 +21048,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-部"
+      "k-部",
+      "k-版"
     ]
   },
   {
@@ -19107,7 +21065,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-数",
-      "k-部"
+      "k-部",
+      "k-版"
     ]
   },
   {
@@ -19926,7 +21885,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-禁"
     ]
   },
   {
@@ -20102,7 +22062,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-精"
     ]
   },
   {
@@ -20117,7 +22078,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-引"
+      "k-引",
+      "k-精"
     ]
   },
   {
@@ -20314,7 +22276,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-航"
     ]
   },
   {
@@ -20452,7 +22415,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-止",
-      "k-荷"
+      "k-荷",
+      "k-停"
     ]
   },
   {
@@ -20793,7 +22757,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-講"
     ]
   },
   {
@@ -21515,7 +23480,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-題"
+      "k-題",
+      "k-囲"
     ]
   },
   {
@@ -22085,7 +24051,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-刀"
+      "k-刀",
+      "k-布"
     ]
   },
   {
@@ -23725,7 +25692,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-光"
+      "k-光",
+      "k-測"
     ]
   },
   {
@@ -23741,7 +25709,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-光",
-      "k-定"
+      "k-定",
+      "k-測"
     ]
   },
   {
@@ -23958,7 +25927,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-別"
+      "k-別",
+      "k-留"
     ]
   },
   {
@@ -24224,7 +26194,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-厚"
     ]
   },
   {
@@ -24238,7 +26209,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-厚"
     ]
   },
   {
@@ -24376,7 +26348,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-圧"
     ]
   },
   {
@@ -24391,7 +26364,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-器"
+      "k-器",
+      "k-圧"
     ]
   },
   {
@@ -24730,7 +26704,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-分",
-      "k-状"
+      "k-状",
+      "k-素"
     ]
   },
   {
@@ -25118,7 +27093,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-予",
-      "k-岐"
+      "k-岐",
+      "k-測"
     ]
   },
   {
@@ -25308,7 +27284,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-布"
     ]
   },
   {
@@ -25324,7 +27301,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-数",
-      "k-係"
+      "k-係",
+      "k-布"
     ]
   },
   {
@@ -25339,7 +27317,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-図"
+      "k-図",
+      "k-布"
     ]
   },
   {
@@ -25353,7 +27332,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-布"
     ]
   },
   {
@@ -25369,7 +27349,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-線",
-      "k-曲"
+      "k-曲",
+      "k-布"
     ]
   },
   {
@@ -25385,7 +27366,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-重",
-      "k-荷"
+      "k-荷",
+      "k-布"
     ]
   },
   {
@@ -25401,7 +27383,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-数",
-      "k-関"
+      "k-関",
+      "k-布"
     ]
   },
   {
@@ -27181,7 +29164,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-留"
     ]
   },
   {
@@ -27195,7 +29179,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-留"
     ]
   },
   {
@@ -27211,7 +29196,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-小",
       "k-分",
-      "k-作"
+      "k-作",
+      "k-益"
     ]
   },
   {
@@ -27941,7 +29927,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-解"
+      "k-解",
+      "k-留"
     ]
   },
   {
@@ -27957,7 +29944,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-電",
-      "k-解"
+      "k-解",
+      "k-圧"
     ]
   },
   {
@@ -28207,7 +30195,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-配",
-      "k-法"
+      "k-法",
+      "k-則"
     ]
   },
   {
@@ -28449,7 +30438,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-法"
+      "k-法",
+      "k-則"
     ]
   },
   {
@@ -32286,7 +34276,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-切",
       "k-取",
       "k-配",
-      "k-列"
+      "k-列",
+      "k-素"
     ]
   },
   {
@@ -32315,7 +34306,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-切"
+      "k-切",
+      "k-妻"
     ]
   },
   {
@@ -32331,7 +34323,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-切",
       "k-屋",
-      "k-根"
+      "k-根",
+      "k-妻"
     ]
   },
   {
@@ -32346,7 +34339,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-切",
-      "k-造"
+      "k-造",
+      "k-妻"
     ]
   },
   {
@@ -33294,7 +35288,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-切",
       "k-失",
-      "k-性"
+      "k-性",
+      "k-禁"
     ]
   },
   {
@@ -33662,6 +35657,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-刊",
+    "word": {
+      "id": "w-刊",
+      "japanese": "刊",
+      "furigana": "かん",
+      "romaji": "kan",
+      "meaning": "publication; edition (e.g. morning, evening, special)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-刊"
+    ]
+  },
+  {
     "id": "w-刊本",
     "word": {
       "id": "w-刊本",
@@ -33672,7 +35681,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-本"
+      "k-本",
+      "k-刊"
     ]
   },
   {
@@ -33686,7 +35696,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-行"
+      "k-行",
+      "k-刊"
     ]
   },
   {
@@ -33701,7 +35712,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-会",
-      "k-行"
+      "k-行",
+      "k-刊"
     ]
   },
   {
@@ -33716,7 +35728,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-行",
-      "k-物"
+      "k-物",
+      "k-刊"
     ]
   },
   {
@@ -33730,7 +35743,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-記"
+      "k-記",
+      "k-刊"
     ]
   },
   {
@@ -33986,7 +36000,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-事"
+      "k-事",
+      "k-犯"
     ]
   },
   {
@@ -34104,7 +36119,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-事",
-      "k-規"
+      "k-規",
+      "k-則"
     ]
   },
   {
@@ -34154,6 +36170,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-刑余",
+    "word": {
+      "id": "w-刑余",
+      "japanese": "刑余",
+      "furigana": "けいよ",
+      "romaji": "keiyo",
+      "meaning": "having served time in prison; ex-convict",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-余"
+    ]
+  },
+  {
     "id": "w-刑余者",
     "word": {
       "id": "w-刑余者",
@@ -34164,7 +36194,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-者"
+      "k-者",
+      "k-余"
     ]
   },
   {
@@ -34268,7 +36299,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-動",
       "k-所",
-      "k-務"
+      "k-務",
+      "k-暴"
     ]
   },
   {
@@ -34428,7 +36460,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-法"
+      "k-法",
+      "k-犯"
     ]
   },
   {
@@ -35951,7 +37984,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-初"
+      "k-初",
+      "k-刊"
     ]
   },
   {
@@ -36686,7 +38720,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-用",
       "k-度",
-      "k-初"
+      "k-初",
+      "k-適"
     ]
   },
   {
@@ -36891,7 +38926,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-初"
+      "k-初",
+      "k-志"
     ]
   },
   {
@@ -36905,7 +38941,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-初"
+      "k-初",
+      "k-志"
     ]
   },
   {
@@ -37320,7 +39357,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-本",
       "k-期",
-      "k-初"
+      "k-初",
+      "k-刊"
     ]
   },
   {
@@ -37858,7 +39896,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-初"
+      "k-初",
+      "k-版"
     ]
   },
   {
@@ -37873,7 +39912,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-本",
-      "k-初"
+      "k-初",
+      "k-版"
     ]
   },
   {
@@ -37902,7 +39942,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-初"
+      "k-初",
+      "k-犯"
     ]
   },
   {
@@ -37917,7 +39958,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-初"
+      "k-初",
+      "k-犯"
     ]
   },
   {
@@ -38040,7 +40082,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-初",
-      "k-産"
+      "k-産",
+      "k-婦"
     ]
   },
   {
@@ -38499,7 +40542,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-海",
-      "k-初"
+      "k-初",
+      "k-航"
     ]
   },
   {
@@ -41361,7 +43405,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-別"
+      "k-別",
+      "k-居"
     ]
   },
   {
@@ -41375,7 +43420,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-別"
+      "k-別",
+      "k-居"
     ]
   },
   {
@@ -41391,7 +43437,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-間",
       "k-期",
-      "k-別"
+      "k-別",
+      "k-居"
     ]
   },
   {
@@ -41406,7 +43453,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-結",
-      "k-別"
+      "k-別",
+      "k-居"
     ]
   },
   {
@@ -41662,7 +43710,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-時",
       "k-別",
-      "k-念"
+      "k-念",
+      "k-仏"
     ]
   },
   {
@@ -43041,6 +45090,22 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-利久色",
+    "word": {
+      "id": "w-利久色",
+      "japanese": "利久色",
+      "furigana": "りきゅういろ",
+      "romaji": "rikyuuiro",
+      "meaning": "greenish gray; greenish grey",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-色",
+      "k-利",
+      "k-久"
+    ]
+  },
+  {
     "id": "w-利他",
     "word": {
       "id": "w-利他",
@@ -43590,7 +45655,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-利"
+      "k-利",
+      "k-布"
     ]
   },
   {
@@ -44864,7 +46930,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-利"
+      "k-利",
+      "k-益"
     ]
   },
   {
@@ -44880,7 +46947,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-者",
       "k-受",
-      "k-利"
+      "k-利",
+      "k-益"
     ]
   },
   {
@@ -44894,7 +46962,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-利"
+      "k-利",
+      "k-益"
     ]
   },
   {
@@ -44908,7 +46977,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-利"
+      "k-利",
+      "k-益"
     ]
   },
   {
@@ -44923,7 +46993,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-利",
-      "k-率"
+      "k-率",
+      "k-益"
     ]
   },
   {
@@ -44939,7 +47010,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-相",
       "k-反",
-      "k-利"
+      "k-利",
+      "k-益"
     ]
   },
   {
@@ -44955,7 +47027,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-利",
-      "k-確"
+      "k-確",
+      "k-益"
     ]
   },
   {
@@ -44971,7 +47044,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-会",
       "k-社",
-      "k-利"
+      "k-利",
+      "k-益"
     ]
   },
   {
@@ -44987,7 +47061,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-理",
       "k-利",
-      "k-管"
+      "k-管",
+      "k-益"
     ]
   },
   {
@@ -45004,7 +47079,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-上",
       "k-主",
       "k-利",
-      "k-義"
+      "k-義",
+      "k-益"
     ]
   },
   {
@@ -45019,7 +47095,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-利",
-      "k-導"
+      "k-導",
+      "k-益"
     ]
   },
   {
@@ -45034,7 +47111,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-元",
-      "k-利"
+      "k-利",
+      "k-益"
     ]
   },
   {
@@ -45050,7 +47128,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-当",
       "k-配",
-      "k-利"
+      "k-利",
+      "k-益"
     ]
   },
   {
@@ -45844,7 +47923,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-制"
+      "k-制",
+      "k-圧"
     ]
   },
   {
@@ -46593,7 +48673,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-要",
-      "k-制"
+      "k-制",
+      "k-素"
     ]
   },
   {
@@ -46609,7 +48690,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-点",
       "k-観",
-      "k-制"
+      "k-制",
+      "k-測"
     ]
   },
   {
@@ -47543,7 +49625,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-制",
-      "k-限"
+      "k-限",
+      "k-素"
     ]
   },
   {
@@ -47705,7 +49788,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-刷"
+      "k-刷",
+      "k-損"
     ]
   },
   {
@@ -47986,7 +50070,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-刷"
+      "k-刷",
+      "k-版"
     ]
   },
   {
@@ -48566,6 +50651,21 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-刺身の妻",
+    "word": {
+      "id": "w-刺身の妻",
+      "japanese": "刺身の妻",
+      "furigana": "さしみのつま",
+      "romaji": "sashiminotsuma",
+      "meaning": "sashimi garnish; something of no significance",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-身",
+      "k-妻"
+    ]
+  },
+  {
     "id": "w-刺身包丁",
     "word": {
       "id": "w-刺身包丁",
@@ -48924,7 +51024,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-苦"
+      "k-苦",
+      "k-精"
     ]
   },
   {
@@ -48939,7 +51040,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-進",
-      "k-苦"
+      "k-苦",
+      "k-精"
     ]
   },
   {
@@ -49144,6 +51246,65 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-則",
+    "word": {
+      "id": "w-則",
+      "japanese": "則",
+      "furigana": "のり",
+      "romaji": "nori",
+      "meaning": "rule; law",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-則"
+    ]
+  },
+  {
+    "id": "w-則する",
+    "word": {
+      "id": "w-則する",
+      "japanese": "則する",
+      "furigana": "そくする",
+      "romaji": "sokusuru",
+      "meaning": "to conform to; to agree with",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-則"
+    ]
+  },
+  {
+    "id": "w-則ち",
+    "word": {
+      "id": "w-則ち",
+      "japanese": "則ち",
+      "furigana": "すなわち",
+      "romaji": "sunawachi",
+      "meaning": "that is (to say); namely",
+      "common": true,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-則"
+    ]
+  },
+  {
+    "id": "w-則る",
+    "word": {
+      "id": "w-則る",
+      "japanese": "則る",
+      "furigana": "のっとる",
+      "romaji": "nottoru",
+      "meaning": "to follow (a rule, precedent, style, etc.); to conform to",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-則"
+    ]
+  },
+  {
     "id": "w-則天去私",
     "word": {
       "id": "w-則天去私",
@@ -49155,7 +51316,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-天",
-      "k-去"
+      "k-去",
+      "k-則"
     ]
   },
   {
@@ -49880,7 +52042,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-前",
-      "k-世"
+      "k-世",
+      "k-紀"
     ]
   },
   {
@@ -49896,7 +52059,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-前",
       "k-世",
-      "k-物"
+      "k-物",
+      "k-紀"
     ]
   },
   {
@@ -49973,7 +52137,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-前"
+      "k-前",
+      "k-仏"
     ]
   },
   {
@@ -50576,7 +52741,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-前",
-      "k-受"
+      "k-受",
+      "k-益"
     ]
   },
   {
@@ -51090,7 +53256,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-前"
+      "k-前",
+      "k-妻"
     ]
   },
   {
@@ -51118,7 +53285,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-前"
+      "k-前",
+      "k-婦"
     ]
   },
   {
@@ -52486,7 +54654,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-前",
       "k-画",
-      "k-景"
+      "k-景",
+      "k-像"
     ]
   },
   {
@@ -52994,7 +55163,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-前"
+      "k-前",
+      "k-略"
     ]
   },
   {
@@ -53450,7 +55620,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-前"
+      "k-前",
+      "k-罪"
     ]
   },
   {
@@ -58373,6 +60544,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-剰余",
+    "word": {
+      "id": "w-剰余",
+      "japanese": "剰余",
+      "furigana": "じょうよ",
+      "romaji": "jouyo",
+      "meaning": "surplus; balance",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-余"
+    ]
+  },
+  {
     "id": "w-剰余価値",
     "word": {
       "id": "w-剰余価値",
@@ -58383,7 +60568,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-価"
+      "k-価",
+      "k-余"
     ]
   },
   {
@@ -58398,7 +60584,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-労",
-      "k-働"
+      "k-働",
+      "k-余"
     ]
   },
   {
@@ -58413,7 +60600,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-査",
-      "k-検"
+      "k-検",
+      "k-余"
     ]
   },
   {
@@ -58427,7 +60615,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-金"
+      "k-金",
+      "k-余"
     ]
   },
   {
@@ -58441,7 +60630,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-類"
+      "k-類",
+      "k-余"
     ]
   },
   {
@@ -60077,6 +62267,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-割興",
+    "word": {
+      "id": "w-割興",
+      "japanese": "割興",
+      "furigana": "わりこう",
+      "romaji": "warikou",
+      "meaning": "discount industrial bank bond",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-興"
+    ]
+  },
+  {
     "id": "w-割薬",
     "word": {
       "id": "w-割薬",
@@ -60427,7 +62631,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-作",
-      "k-画"
+      "k-画",
+      "k-版"
     ]
   },
   {
@@ -60610,6 +62815,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-創刊",
+    "word": {
+      "id": "w-創刊",
+      "japanese": "創刊",
+      "furigana": "そうかん",
+      "romaji": "soukan",
+      "meaning": "foundation (of a newspaper, magazine, etc.); starting",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-刊"
+    ]
+  },
+  {
     "id": "w-創刊号",
     "word": {
       "id": "w-創刊号",
@@ -60620,7 +62839,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-号"
+      "k-号",
+      "k-刊"
     ]
   },
   {
@@ -61621,7 +63841,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-場",
-      "k-型"
+      "k-型",
+      "k-罪",
+      "k-犯"
     ]
   },
   {
@@ -61635,7 +63857,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-場"
+      "k-場",
+      "k-版"
     ]
   },
   {
@@ -62219,7 +64442,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-意"
+      "k-意",
+      "k-志"
     ]
   },
   {
@@ -62703,7 +64927,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-学",
       "k-動",
       "k-神",
-      "k-医"
+      "k-医",
+      "k-精"
     ]
   },
   {
@@ -64025,7 +66250,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-功"
+      "k-功",
+      "k-績"
     ]
   },
   {
@@ -64039,7 +66265,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-功"
+      "k-功",
+      "k-罪"
     ]
   },
   {
@@ -64054,7 +66281,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-相",
-      "k-功"
+      "k-功",
+      "k-罪"
     ]
   },
   {
@@ -64581,7 +66809,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-加"
+      "k-加",
+      "k-圧"
     ]
   },
   {
@@ -64596,7 +66825,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-加"
+      "k-加",
+      "k-圧"
     ]
   },
   {
@@ -64611,7 +66841,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-加",
-      "k-器"
+      "k-器",
+      "k-圧"
     ]
   },
   {
@@ -64629,7 +66860,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-水",
       "k-原",
       "k-加",
-      "k-型"
+      "k-型",
+      "k-圧"
     ]
   },
   {
@@ -64646,7 +66878,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-水",
       "k-軽",
       "k-加",
-      "k-型"
+      "k-型",
+      "k-圧"
     ]
   },
   {
@@ -64661,7 +66894,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-水",
-      "k-加"
+      "k-加",
+      "k-圧"
     ]
   },
   {
@@ -65406,7 +67640,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-水",
       "k-分",
       "k-加",
-      "k-解"
+      "k-解",
+      "k-素"
     ]
   },
   {
@@ -65472,7 +67707,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-色",
       "k-法",
       "k-加",
-      "k-性"
+      "k-性",
+      "k-雑"
     ]
   },
   {
@@ -65488,7 +67724,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-色",
       "k-法",
-      "k-加"
+      "k-加",
+      "k-混"
     ]
   },
   {
@@ -65521,7 +67758,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-写",
       "k-法",
       "k-的",
-      "k-加"
+      "k-加",
+      "k-像"
     ]
   },
   {
@@ -65585,7 +67823,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-作",
       "k-用",
       "k-加",
-      "k-減"
+      "k-減",
+      "k-素"
     ]
   },
   {
@@ -65986,7 +68225,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-多",
-      "k-加"
+      "k-加",
+      "k-留"
     ]
   },
   {
@@ -66978,7 +69218,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-平",
       "k-重",
-      "k-加"
+      "k-加",
+      "k-均"
     ]
   },
   {
@@ -66993,7 +69234,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-重",
-      "k-加"
+      "k-加",
+      "k-犯"
     ]
   },
   {
@@ -67051,7 +69293,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-電",
-      "k-加"
+      "k-加",
+      "k-圧"
     ]
   },
   {
@@ -67317,7 +69560,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-化"
+      "k-化",
+      "k-版"
     ]
   },
   {
@@ -68559,7 +70803,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-助",
-      "k-産"
+      "k-産",
+      "k-婦"
     ]
   },
   {
@@ -68769,7 +71014,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-助"
+      "k-助",
+      "k-素"
     ]
   },
   {
@@ -69001,6 +71247,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-劫略",
+    "word": {
+      "id": "w-劫略",
+      "japanese": "劫略",
+      "furigana": "きょうりゃく",
+      "romaji": "kyouryaku",
+      "meaning": "pillage; plunder",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-略"
+    ]
+  },
+  {
     "id": "w-劫立て",
     "word": {
       "id": "w-劫立て",
@@ -69139,7 +71399,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-子"
+      "k-子",
+      "k-素"
+    ]
+  },
+  {
+    "id": "w-励磁損",
+    "word": {
+      "id": "w-励磁損",
+      "japanese": "励磁損",
+      "furigana": "れいじそん",
+      "romaji": "reijison",
+      "meaning": "excitation loss",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-損"
     ]
   },
   {
@@ -69169,6 +71444,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-電",
       "k-流"
+    ]
+  },
+  {
+    "id": "w-励精",
+    "word": {
+      "id": "w-励精",
+      "japanese": "励精",
+      "furigana": "れいせい",
+      "romaji": "reisei",
+      "meaning": "diligence; assiduity",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-精"
     ]
   },
   {
@@ -70157,7 +72446,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-労",
-      "k-働"
+      "k-働",
+      "k-寄"
     ]
   },
   {
@@ -70708,7 +72998,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-害",
       "k-労",
       "k-働",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -70727,7 +73018,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-害",
       "k-労",
       "k-働",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -70797,7 +73089,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-労",
       "k-働",
       "k-証",
-      "k-可"
+      "k-可",
+      "k-許"
     ]
   },
   {
@@ -71296,7 +73589,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-労",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -71718,7 +74012,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-法",
       "k-果",
-      "k-効"
+      "k-効",
+      "k-則"
     ]
   },
   {
@@ -72038,6 +74333,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-勃興",
+    "word": {
+      "id": "w-勃興",
+      "japanese": "勃興",
+      "furigana": "ぼっこう",
+      "romaji": "bokkou",
+      "meaning": "sudden rise to power; sudden rise in prosperity",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-興"
+    ]
+  },
+  {
     "id": "w-勃起",
     "word": {
       "id": "w-勃起",
@@ -72309,6 +74618,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-答"
+    ]
+  },
+  {
+    "id": "w-勅許",
+    "word": {
+      "id": "w-勅許",
+      "japanese": "勅許",
+      "furigana": "ちょっきょ",
+      "romaji": "chokkyo",
+      "meaning": "imperial sanction; royal charter",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-許"
     ]
   },
   {
@@ -72672,7 +74995,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-勇"
+      "k-勇",
+      "k-婦"
     ]
   },
   {
@@ -73147,7 +75471,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-進",
-      "k-勇"
+      "k-勇",
+      "k-精"
     ]
   },
   {
@@ -74344,7 +76669,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-作",
       "k-電",
-      "k-動"
+      "k-動",
+      "k-圧"
     ]
   },
   {
@@ -74775,7 +77101,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-動"
+      "k-動",
+      "k-圧"
     ]
   },
   {
@@ -76155,7 +78482,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-動",
       "k-産",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -76215,7 +78543,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-画",
-      "k-動"
+      "k-動",
+      "k-像"
     ]
   },
   {
@@ -76643,7 +78972,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-合",
       "k-動",
       "k-的",
-      "k-性"
+      "k-性",
+      "k-適"
     ]
   },
   {
@@ -76662,7 +78992,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-的",
       "k-要",
       "k-性",
-      "k-件"
+      "k-件",
+      "k-適"
     ]
   },
   {
@@ -79292,7 +81623,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-勝"
+      "k-勝",
+      "k-絶"
     ]
   },
   {
@@ -79978,7 +82310,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-勢"
+      "k-勢",
+      "k-余"
     ]
   },
   {
@@ -80195,7 +82528,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-勢"
+      "k-勢",
+      "k-均"
     ]
   },
   {
@@ -80242,7 +82576,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-勢"
+      "k-勢",
+      "k-囲"
     ]
   },
   {
@@ -80948,7 +83283,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-実",
-      "k-務"
+      "k-務",
+      "k-績"
     ]
   },
   {
@@ -80979,7 +83315,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-成",
-      "k-務"
+      "k-務",
+      "k-績"
     ]
   },
   {
@@ -81754,6 +84091,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-勾留",
+    "word": {
+      "id": "w-勾留",
+      "japanese": "勾留",
+      "furigana": "こうりゅう",
+      "romaji": "kouryuu",
+      "meaning": "detention pending trial; confinement",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-留"
+    ]
+  },
+  {
     "id": "w-勾留状",
     "word": {
       "id": "w-勾留状",
@@ -81764,7 +84115,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-状"
+      "k-状",
+      "k-留"
     ]
   },
   {
@@ -82366,7 +84718,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-包"
+      "k-包",
+      "k-囲"
     ]
   },
   {
@@ -82381,7 +84734,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-戦",
-      "k-包"
+      "k-包",
+      "k-囲"
     ]
   },
   {
@@ -82395,7 +84749,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-包"
+      "k-包",
+      "k-囲"
     ]
   },
   {
@@ -82568,7 +84923,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-的",
       "k-験",
       "k-包",
-      "k-条"
+      "k-条",
+      "k-禁"
     ]
   },
   {
@@ -83293,7 +85649,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-化"
+      "k-化",
+      "k-仏"
     ]
   },
   {
@@ -83561,7 +85918,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-元",
-      "k-化"
+      "k-化",
+      "k-素"
     ]
   },
   {
@@ -83598,7 +85956,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-約",
       "k-兵",
       "k-器",
-      "k-条"
+      "k-条",
+      "k-禁"
     ]
   },
   {
@@ -83618,7 +85977,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-関",
       "k-機",
       "k-兵",
-      "k-器"
+      "k-器",
+      "k-禁"
     ]
   },
   {
@@ -84203,7 +86563,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-化",
-      "k-説"
+      "k-説",
+      "k-圧"
     ]
   },
   {
@@ -84428,7 +86789,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-的",
       "k-要",
       "k-求",
-      "k-量"
+      "k-量",
+      "k-素"
     ]
   },
   {
@@ -85367,7 +87729,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-化"
+      "k-化",
+      "k-河"
     ]
   },
   {
@@ -86962,7 +89325,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-北",
       "k-太",
       "k-平",
-      "k-洋"
+      "k-洋",
+      "k-圧"
     ]
   },
   {
@@ -87005,7 +89369,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-北"
+      "k-北",
+      "k-寄"
     ]
   },
   {
@@ -87020,7 +89385,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-北",
-      "k-風"
+      "k-風",
+      "k-寄"
     ]
   },
   {
@@ -87035,7 +89401,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-貝",
-      "k-北"
+      "k-北",
+      "k-寄"
     ]
   },
   {
@@ -87329,7 +89696,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-方",
       "k-北",
-      "k-教"
+      "k-教",
+      "k-仏"
     ]
   },
   {
@@ -87627,7 +89995,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-北",
       "k-朝",
       "k-民",
-      "k-基"
+      "k-基",
+      "k-救"
     ]
   },
   {
@@ -87688,7 +90057,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-東",
       "k-北",
-      "k-路"
+      "k-路",
+      "k-航"
     ]
   },
   {
@@ -89125,7 +91495,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-北"
+      "k-北",
+      "k-航"
     ]
   },
   {
@@ -89171,7 +91542,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-北",
       "k-西",
-      "k-路"
+      "k-路",
+      "k-航"
     ]
   },
   {
@@ -89792,6 +92164,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-匡救",
+    "word": {
+      "id": "w-匡救",
+      "japanese": "匡救",
+      "furigana": "きょうきゅう",
+      "romaji": "kyoukyuu",
+      "meaning": "delivering from sin; succor",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-救"
+    ]
+  },
+  {
     "id": "w-匡正",
     "word": {
       "id": "w-匡正",
@@ -89902,7 +92288,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-志"
     ]
   },
   {
@@ -89916,7 +92303,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-婦"
+    ]
+  },
+  {
+    "id": "w-匹婦",
+    "word": {
+      "id": "w-匹婦",
+      "japanese": "匹婦",
+      "furigana": "ひっぷ",
+      "romaji": "hippu",
+      "meaning": "coarse woman; country woman",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-婦"
     ]
   },
   {
@@ -91748,7 +94150,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-学",
-      "k-医"
+      "k-医",
+      "k-雑"
     ]
   },
   {
@@ -91839,7 +94242,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-医",
-      "k-師"
+      "k-師",
+      "k-許"
     ]
   },
   {
@@ -91855,7 +94259,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-医",
       "k-証",
-      "k-師"
+      "k-師",
+      "k-許"
     ]
   },
   {
@@ -92118,7 +94523,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-画",
       "k-医",
       "k-報",
-      "k-情"
+      "k-情",
+      "k-像"
     ]
   },
   {
@@ -92344,7 +94750,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-医",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -92361,7 +94768,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-度",
       "k-医",
       "k-制",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -92391,7 +94799,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-医",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -92950,7 +95359,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-用",
       "k-医",
       "k-保",
-      "k-費"
+      "k-費",
+      "k-険"
     ]
   },
   {
@@ -94041,7 +96451,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-十",
-      "k-三"
+      "k-三",
+      "k-仏"
     ]
   },
   {
@@ -95075,7 +97486,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-十",
-      "k-八"
+      "k-八",
+      "k-禁"
     ]
   },
   {
@@ -95887,7 +98299,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-十",
-      "k-字"
+      "k-字",
+      "k-像"
     ]
   },
   {
@@ -96298,7 +98711,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-十",
-      "k-指"
+      "k-指",
+      "k-余"
     ]
   },
   {
@@ -97165,7 +99579,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-十",
-      "k-重"
+      "k-重",
+      "k-禁"
     ]
   },
   {
@@ -97648,7 +100063,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-火",
       "k-海",
       "k-代",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -97667,7 +100083,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-千",
       "k-代",
       "k-命",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -98487,7 +100904,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-年",
-      "k-千"
+      "k-千",
+      "k-紀"
     ]
   },
   {
@@ -98987,7 +101405,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-本",
       "k-千",
-      "k-鳥"
+      "k-鳥",
+      "k-居"
     ]
   },
   {
@@ -100922,7 +103341,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-半",
-      "k-世"
+      "k-世",
+      "k-紀"
     ]
   },
   {
@@ -102072,7 +104492,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-子",
       "k-体",
       "k-半",
-      "k-導"
+      "k-導",
+      "k-素"
     ]
   },
   {
@@ -102611,7 +105032,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-月",
-      "k-半"
+      "k-半",
+      "k-刊"
     ]
   },
   {
@@ -102795,7 +105217,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-半"
+      "k-半",
+      "k-久",
+      "k-永"
     ]
   },
   {
@@ -102810,7 +105234,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-半",
-      "k-的"
+      "k-的",
+      "k-久",
+      "k-永"
     ]
   },
   {
@@ -104350,7 +106776,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-思",
-      "k-半"
+      "k-半",
+      "k-像"
     ]
   },
   {
@@ -104410,7 +106837,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-半",
-      "k-身"
+      "k-身",
+      "k-像"
     ]
   },
   {
@@ -104792,7 +107220,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-金",
-      "k-半"
+      "k-半",
+      "k-属"
     ]
   },
   {
@@ -105335,6 +107764,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-卑属",
+    "word": {
+      "id": "w-卑属",
+      "japanese": "卑属",
+      "furigana": "ひぞく",
+      "romaji": "hizoku",
+      "meaning": "lineal descendants",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-属"
+    ]
+  },
+  {
     "id": "w-卑怯な手を使う",
     "word": {
       "id": "w-卑怯な手を使う",
@@ -105445,7 +107888,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-金"
+      "k-金",
+      "k-属"
     ]
   },
   {
@@ -106296,6 +108740,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-卓を囲む",
+    "word": {
+      "id": "w-卓を囲む",
+      "japanese": "卓を囲む",
+      "furigana": "たくをかこむ",
+      "romaji": "takuokakomu",
+      "meaning": "to have a meal together; to sit at table",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
     "id": "w-卓上",
     "word": {
       "id": "w-卓上",
@@ -106321,7 +108779,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-出",
-      "k-上"
+      "k-上",
+      "k-版"
     ]
   },
   {
@@ -106558,6 +109017,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-筆"
+    ]
+  },
+  {
+    "id": "w-卓絶",
+    "word": {
+      "id": "w-卓絶",
+      "japanese": "卓絶",
+      "furigana": "たくぜつ",
+      "romaji": "takuzetsu",
+      "meaning": "excellence",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-絶"
     ]
   },
   {
@@ -107265,7 +109738,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-命",
       "k-協",
       "k-栄",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -107647,7 +110121,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-協"
+      "k-協",
+      "k-賛"
     ]
   },
   {
@@ -107662,7 +110137,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-金",
-      "k-協"
+      "k-協",
+      "k-賛"
     ]
   },
   {
@@ -107884,7 +110360,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-空",
-      "k-南"
+      "k-南",
+      "k-航"
     ]
   },
   {
@@ -108615,7 +111092,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-南"
+      "k-南",
+      "k-仏"
     ]
   },
   {
@@ -108631,7 +111109,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-教",
       "k-南",
-      "k-伝"
+      "k-伝",
+      "k-仏"
     ]
   },
   {
@@ -109205,7 +111684,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-南"
+      "k-南",
+      "k-寄"
     ]
   },
   {
@@ -109508,7 +111988,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-方",
       "k-教",
-      "k-南"
+      "k-南",
+      "k-仏"
     ]
   },
   {
@@ -109727,7 +112208,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-南",
       "k-極",
       "k-観",
-      "k-隊"
+      "k-隊",
+      "k-測"
     ]
   },
   {
@@ -109923,7 +112405,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-南",
       "k-極",
-      "k-観"
+      "k-観",
+      "k-測"
     ]
   },
   {
@@ -109941,7 +112424,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-南",
       "k-極",
       "k-観",
-      "k-基"
+      "k-基",
+      "k-測"
     ]
   },
   {
@@ -110421,7 +112905,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-南",
-      "k-無"
+      "k-無",
+      "k-仏"
     ]
   },
   {
@@ -110706,7 +113191,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-南"
+      "k-南",
+      "k-航"
     ]
   },
   {
@@ -111570,7 +114056,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-一",
       "k-単",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -114123,7 +116610,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-正",
       "k-単",
-      "k-独"
+      "k-独",
+      "k-犯"
     ]
   },
   {
@@ -114156,7 +116644,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-海",
       "k-単",
-      "k-独"
+      "k-独",
+      "k-損"
     ]
   },
   {
@@ -114171,7 +116660,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-単",
-      "k-独"
+      "k-独",
+      "k-犯"
     ]
   },
   {
@@ -114271,7 +116761,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-和",
       "k-単",
-      "k-独"
+      "k-独",
+      "k-講"
     ]
   },
   {
@@ -114654,7 +117145,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-度",
-      "k-単"
+      "k-単",
+      "k-精"
     ]
   },
   {
@@ -114673,7 +117165,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-点",
       "k-動",
       "k-度",
-      "k-単"
+      "k-単",
+      "k-精"
     ]
   },
   {
@@ -114931,7 +117424,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-平",
-      "k-単"
+      "k-単",
+      "k-均"
     ]
   },
   {
@@ -115083,7 +117577,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-単"
+      "k-単",
+      "k-素"
     ]
   },
   {
@@ -115629,7 +118124,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-出",
       "k-行",
       "k-物",
-      "k-単"
+      "k-単",
+      "k-版"
     ]
   },
   {
@@ -116009,7 +118505,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-調",
       "k-写",
-      "k-単"
+      "k-単",
+      "k-像"
     ]
   },
   {
@@ -116308,7 +118805,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-定",
       "k-決",
       "k-表",
-      "k-単"
+      "k-単",
+      "k-適"
     ]
   },
   {
@@ -117660,6 +120158,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-卜居",
+    "word": {
+      "id": "w-卜居",
+      "japanese": "卜居",
+      "furigana": "ぼっきょ",
+      "romaji": "bokkyo",
+      "meaning": "choosing a homesite by divination",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
     "id": "w-卜者",
     "word": {
       "id": "w-卜者",
@@ -117839,6 +120351,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-守"
+    ]
+  },
+  {
+    "id": "w-占居",
+    "word": {
+      "id": "w-占居",
+      "japanese": "占居",
+      "furigana": "せんきょ",
+      "romaji": "senkyo",
+      "meaning": "occupying a certain place",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -118969,7 +121495,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-印",
-      "k-刷"
+      "k-刷",
+      "k-版"
     ]
   },
   {
@@ -119193,7 +121720,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-電",
       "k-加",
-      "k-印"
+      "k-印",
+      "k-圧"
     ]
   },
   {
@@ -119267,7 +121795,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-印"
+      "k-印",
+      "k-圧"
     ]
   },
   {
@@ -119543,7 +122072,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-字",
       "k-度",
       "k-印",
-      "k-解"
+      "k-解",
+      "k-像"
     ]
   },
   {
@@ -121141,6 +123671,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-危険",
+    "word": {
+      "id": "w-危険",
+      "japanese": "危険",
+      "furigana": "きけん",
+      "romaji": "kiken",
+      "meaning": "danger; peril",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-険"
+    ]
+  },
+  {
     "id": "w-危険な関係",
     "word": {
       "id": "w-危険な関係",
@@ -121152,7 +123696,64 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-係",
-      "k-関"
+      "k-関",
+      "k-険"
+    ]
+  },
+  {
+    "id": "w-危険にさらす",
+    "word": {
+      "id": "w-危険にさらす",
+      "japanese": "危険にさらす",
+      "furigana": "きけんにさらす",
+      "romaji": "kikennisarasu",
+      "meaning": "to expose to danger; to imperil",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-険"
+    ]
+  },
+  {
+    "id": "w-危険を冒す",
+    "word": {
+      "id": "w-危険を冒す",
+      "japanese": "危険を冒す",
+      "furigana": "きけんをおかす",
+      "romaji": "kiken'ookasu",
+      "meaning": "to brave a danger; to take a risk",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-険"
+    ]
+  },
+  {
+    "id": "w-危険を顧みず",
+    "word": {
+      "id": "w-危険を顧みず",
+      "japanese": "危険を顧みず",
+      "furigana": "きけんをかえりみず",
+      "romaji": "kiken'okaerimizu",
+      "meaning": "heedless of danger; braving dangers",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-険"
+    ]
+  },
+  {
+    "id": "w-危険ドラッグ",
+    "word": {
+      "id": "w-危険ドラッグ",
+      "japanese": "危険ドラッグ",
+      "furigana": "きけんドラッグ",
+      "romaji": "kikendoraggu",
+      "meaning": "designer drug; synthetic drug",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-険"
     ]
   },
   {
@@ -121169,7 +123770,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-知",
       "k-予",
       "k-練",
-      "k-訓"
+      "k-訓",
+      "k-険"
     ]
   },
   {
@@ -121184,7 +123786,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-物"
+      "k-物",
+      "k-険"
     ]
   },
   {
@@ -121199,7 +123802,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-号",
-      "k-信"
+      "k-信",
+      "k-険"
     ]
   },
   {
@@ -121214,7 +123818,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-分"
+      "k-分",
+      "k-険"
     ]
   },
   {
@@ -121228,7 +123833,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-回"
+      "k-回",
+      "k-険"
     ]
   },
   {
@@ -121243,7 +123849,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-因"
+      "k-因",
+      "k-険"
     ]
   },
   {
@@ -121257,7 +123864,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-険"
     ]
   },
   {
@@ -121272,7 +123880,22 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-帯"
+      "k-帯",
+      "k-険"
+    ]
+  },
+  {
+    "id": "w-危険域",
+    "word": {
+      "id": "w-危険域",
+      "japanese": "危険域",
+      "furigana": "きけんいき",
+      "romaji": "kiken'iki",
+      "meaning": "critical section",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-険"
     ]
   },
   {
@@ -121286,7 +123909,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-度"
+      "k-度",
+      "k-険"
     ]
   },
   {
@@ -121301,7 +123925,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-思",
-      "k-想"
+      "k-想",
+      "k-険"
     ]
   },
   {
@@ -121315,7 +123940,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-険"
     ]
   },
   {
@@ -121330,7 +123956,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-報",
-      "k-情"
+      "k-情",
+      "k-険"
     ]
   },
   {
@@ -121345,7 +123972,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-手",
-      "k-当"
+      "k-当",
+      "k-険"
     ]
   },
   {
@@ -121359,7 +123987,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-日"
+      "k-日",
+      "k-険"
     ]
   },
   {
@@ -121373,7 +124002,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-極"
+      "k-極",
+      "k-険"
     ]
   },
   {
@@ -121388,7 +124018,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-無",
-      "k-極"
+      "k-極",
+      "k-険"
     ]
   },
   {
@@ -121402,7 +124033,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-極"
+      "k-極",
+      "k-険"
     ]
   },
   {
@@ -121416,7 +124048,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-水"
+      "k-水",
+      "k-険"
     ]
   },
   {
@@ -121430,7 +124063,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-物"
+      "k-物",
+      "k-険"
     ]
   },
   {
@@ -121444,7 +124078,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-率"
+      "k-率",
+      "k-険"
+    ]
+  },
+  {
+    "id": "w-危険視",
+    "word": {
+      "id": "w-危険視",
+      "japanese": "危険視",
+      "furigana": "きけんし",
+      "romaji": "kikenshi",
+      "meaning": "regarding as dangerous; identifying as a threat",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-険"
     ]
   },
   {
@@ -121459,7 +124108,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-角",
-      "k-度"
+      "k-度",
+      "k-険"
     ]
   },
   {
@@ -121473,7 +124123,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-負"
+      "k-負",
+      "k-険"
     ]
   },
   {
@@ -121488,7 +124139,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-運",
-      "k-転"
+      "k-転",
+      "k-険"
     ]
   },
   {
@@ -121504,7 +124156,9 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-死",
       "k-運",
-      "k-転"
+      "k-転",
+      "k-険",
+      "k-罪"
     ]
   },
   {
@@ -121519,7 +124173,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-止",
-      "k-防"
+      "k-防",
+      "k-険"
     ]
   },
   {
@@ -121533,7 +124188,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-領"
+      "k-領",
+      "k-険"
     ]
   },
   {
@@ -121652,7 +124308,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-入",
-      "k-可"
+      "k-可",
+      "k-居"
     ]
   },
   {
@@ -122110,7 +124767,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-時",
-      "k-戦"
+      "k-戦",
+      "k-停"
     ]
   },
   {
@@ -122339,6 +124997,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-即興",
+    "word": {
+      "id": "w-即興",
+      "japanese": "即興",
+      "furigana": "そっきょう",
+      "romaji": "sokkyou",
+      "meaning": "improvisation; improvised",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-興"
+    ]
+  },
+  {
     "id": "w-即興曲",
     "word": {
       "id": "w-即興曲",
@@ -122349,7 +125021,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-曲"
+      "k-曲",
+      "k-興"
     ]
   },
   {
@@ -122363,7 +125036,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-演"
+      "k-演",
+      "k-興"
     ]
   },
   {
@@ -122377,7 +125051,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-的"
+      "k-的",
+      "k-興"
     ]
   },
   {
@@ -122391,7 +125066,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-詩"
+      "k-詩",
+      "k-興"
     ]
   },
   {
@@ -122406,7 +125082,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-詩"
+      "k-詩",
+      "k-興"
     ]
   },
   {
@@ -122476,7 +125153,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-身"
+      "k-身",
+      "k-仏"
     ]
   },
   {
@@ -122491,7 +125169,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-身",
-      "k-成"
+      "k-成",
+      "k-仏"
     ]
   },
   {
@@ -123943,6 +126622,76 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-厚",
+    "word": {
+      "id": "w-厚",
+      "japanese": "厚",
+      "furigana": "あつ",
+      "romaji": "atsu",
+      "meaning": "thickness",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚々",
+    "word": {
+      "id": "w-厚々",
+      "japanese": "厚々",
+      "furigana": "あつあつ",
+      "romaji": "atsuatsu",
+      "meaning": "thick; dense",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚い",
+    "word": {
+      "id": "w-厚い",
+      "japanese": "厚い",
+      "furigana": "あつい",
+      "romaji": "atsui",
+      "meaning": "thick; deep",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚い壁",
+    "word": {
+      "id": "w-厚い壁",
+      "japanese": "厚い壁",
+      "furigana": "あついかべ",
+      "romaji": "atsuikabe",
+      "meaning": "hard-to-overcome obstacle; high hurdle",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚かましい",
+    "word": {
+      "id": "w-厚かましい",
+      "japanese": "厚かましい",
+      "furigana": "あつかましい",
+      "romaji": "atsukamashii",
+      "meaning": "impudent; shameless",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
     "id": "w-厚く礼を述べる",
     "word": {
       "id": "w-厚く礼を述べる",
@@ -123954,7 +126703,50 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-礼",
-      "k-述"
+      "k-述",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚さ",
+    "word": {
+      "id": "w-厚さ",
+      "japanese": "厚さ",
+      "furigana": "あつさ",
+      "romaji": "atsusa",
+      "meaning": "thickness",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚ぼったい",
+    "word": {
+      "id": "w-厚ぼったい",
+      "japanese": "厚ぼったい",
+      "furigana": "あつぼったい",
+      "romaji": "atsubottai",
+      "meaning": "very thick; heavy",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚み",
+    "word": {
+      "id": "w-厚み",
+      "japanese": "厚み",
+      "furigana": "あつみ",
+      "romaji": "atsumi",
+      "meaning": "thickness; profundity",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -123969,7 +126761,22 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-方",
-      "k-向"
+      "k-向",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚め",
+    "word": {
+      "id": "w-厚め",
+      "japanese": "厚め",
+      "furigana": "あつめ",
+      "romaji": "atsume",
+      "meaning": "somewhat thick; relatively thick",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -123983,7 +126790,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-切"
+      "k-切",
+      "k-厚"
     ]
   },
   {
@@ -123997,7 +126805,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-切"
+      "k-切",
+      "k-厚"
     ]
   },
   {
@@ -124011,7 +126820,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-利"
+      "k-利",
+      "k-厚"
     ]
   },
   {
@@ -124026,7 +126836,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-相",
-      "k-労"
+      "k-労",
+      "k-厚"
     ]
   },
   {
@@ -124041,7 +126852,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-労",
-      "k-省"
+      "k-省",
+      "k-厚"
     ]
   },
   {
@@ -124055,7 +126867,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-化"
+      "k-化",
+      "k-厚"
     ]
   },
   {
@@ -124069,7 +126882,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-口"
+      "k-口",
+      "k-厚"
     ]
   },
   {
@@ -124083,7 +126897,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-司"
+      "k-司",
+      "k-厚"
     ]
   },
   {
@@ -124101,7 +126916,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-味"
+      "k-味",
+      "k-厚"
     ]
   },
   {
@@ -124115,7 +126931,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚塗り",
+    "word": {
+      "id": "w-厚塗り",
+      "japanese": "厚塗り",
+      "furigana": "あつぬり",
+      "romaji": "atsunuri",
+      "meaning": "thickly painted; thickly lacquered",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -124129,7 +126960,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-細"
+      "k-細",
+      "k-厚"
     ]
   },
   {
@@ -124143,7 +126975,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-子"
+      "k-子",
+      "k-厚"
     ]
   },
   {
@@ -124158,7 +126991,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-草",
-      "k-岸"
+      "k-岸",
+      "k-厚"
     ]
   },
   {
@@ -124172,7 +127006,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-底"
+      "k-底",
+      "k-厚"
     ]
   },
   {
@@ -124186,7 +127021,37 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-底"
+      "k-底",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚志",
+    "word": {
+      "id": "w-厚志",
+      "japanese": "厚志",
+      "furigana": "こうし",
+      "romaji": "koushi",
+      "meaning": "kind intention; kind thought",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚",
+      "k-志"
+    ]
+  },
+  {
+    "id": "w-厚恩",
+    "word": {
+      "id": "w-厚恩",
+      "japanese": "厚恩",
+      "furigana": "こうおん",
+      "romaji": "kouon",
+      "meaning": "great favor; great favour",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -124200,7 +127065,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-情"
+      "k-情",
+      "k-厚"
     ]
   },
   {
@@ -124214,7 +127080,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-意"
+      "k-意",
+      "k-厚"
     ]
   },
   {
@@ -124228,7 +127095,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-手"
+      "k-手",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚揚げ",
+    "word": {
+      "id": "w-厚揚げ",
+      "japanese": "厚揚げ",
+      "furigana": "あつあげ",
+      "romaji": "atsuage",
+      "meaning": "thick fried tofu",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚朴",
+    "word": {
+      "id": "w-厚朴",
+      "japanese": "厚朴",
+      "furigana": "こうぼく",
+      "romaji": "kouboku",
+      "meaning": "Japanese bigleaf magnolia bark (used in Chinese medicine)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -124242,7 +127138,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-板"
+      "k-板",
+      "k-厚"
     ]
   },
   {
@@ -124256,7 +127153,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-様"
+      "k-様",
+      "k-厚"
     ]
   },
   {
@@ -124270,7 +127168,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-焼"
+      "k-焼",
+      "k-厚"
     ]
   },
   {
@@ -124286,7 +127185,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-玉",
-      "k-焼"
+      "k-焼",
+      "k-厚"
     ]
   },
   {
@@ -124300,7 +127200,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-生"
+      "k-生",
+      "k-厚"
     ]
   },
   {
@@ -124318,7 +127219,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-生",
       "k-労",
       "k-働",
-      "k-臣"
+      "k-臣",
+      "k-厚"
     ]
   },
   {
@@ -124335,7 +127237,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-生",
       "k-相",
       "k-労",
-      "k-働"
+      "k-働",
+      "k-厚"
     ]
   },
   {
@@ -124352,7 +127255,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-生",
       "k-労",
       "k-働",
-      "k-省"
+      "k-省",
+      "k-厚"
     ]
   },
   {
@@ -124368,7 +127272,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-生",
-      "k-臣"
+      "k-臣",
+      "k-厚"
     ]
   },
   {
@@ -124384,7 +127289,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-年",
       "k-生",
-      "k-金"
+      "k-金",
+      "k-厚"
     ]
   },
   {
@@ -124401,7 +127307,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-年",
       "k-生",
       "k-金",
-      "k-保"
+      "k-保",
+      "k-険",
+      "k-厚"
     ]
   },
   {
@@ -124416,7 +127324,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-設"
+      "k-設",
+      "k-厚"
     ]
   },
   {
@@ -124431,7 +127340,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-省"
+      "k-省",
+      "k-厚"
     ]
   },
   {
@@ -124447,7 +127357,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-学",
-      "k-経"
+      "k-経",
+      "k-厚"
     ]
   },
   {
@@ -124462,7 +127373,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-連"
+      "k-連",
+      "k-厚"
     ]
   },
   {
@@ -124476,7 +127388,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-皮"
+      "k-皮",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚盛り",
+    "word": {
+      "id": "w-厚盛り",
+      "japanese": "厚盛り",
+      "furigana": "あつもり",
+      "romaji": "atsumori",
+      "meaning": "laying on thickly; thick layer",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -124493,7 +127420,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-目"
+      "k-目",
+      "k-厚"
     ]
   },
   {
@@ -124507,7 +127435,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-相"
+      "k-相",
+      "k-厚"
     ]
   },
   {
@@ -124521,7 +127450,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-着"
+      "k-着",
+      "k-厚"
     ]
   },
   {
@@ -124535,7 +127465,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-礼"
+      "k-礼",
+      "k-厚"
     ]
   },
   {
@@ -124549,7 +127480,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-紙"
+      "k-紙",
+      "k-厚"
     ]
   },
   {
@@ -124563,7 +127495,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-紙"
+      "k-紙",
+      "k-厚"
     ]
   },
   {
@@ -124577,7 +127510,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-細"
+      "k-細",
+      "k-厚"
     ]
   },
   {
@@ -124591,7 +127525,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-子"
+      "k-子",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚臼",
+    "word": {
+      "id": "w-厚臼",
+      "japanese": "厚臼",
+      "furigana": "あつうす",
+      "romaji": "atsuusu",
+      "meaning": "stone hand mill",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -124605,7 +127554,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-葉"
+      "k-葉",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚葬",
+    "word": {
+      "id": "w-厚葬",
+      "japanese": "厚葬",
+      "furigana": "こうそう",
+      "romaji": "kousou",
+      "meaning": "lavish burial; lavish funeral",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚薄",
+    "word": {
+      "id": "w-厚薄",
+      "japanese": "厚薄",
+      "furigana": "こうはく",
+      "romaji": "kouhaku",
+      "meaning": "thickness; partiality",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -124620,7 +127598,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-紙",
-      "k-表"
+      "k-表",
+      "k-厚"
     ]
   },
   {
@@ -124635,7 +127614,50 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-細",
-      "k-角"
+      "k-角",
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚誼",
+    "word": {
+      "id": "w-厚誼",
+      "japanese": "厚誼",
+      "furigana": "こうぎ",
+      "romaji": "kougi",
+      "meaning": "kindnesses; friendship",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚謝",
+    "word": {
+      "id": "w-厚謝",
+      "japanese": "厚謝",
+      "furigana": "こうしゃ",
+      "romaji": "kousha",
+      "meaning": "deep gratitude",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
+    "id": "w-厚遇",
+    "word": {
+      "id": "w-厚遇",
+      "japanese": "厚遇",
+      "furigana": "こうぐう",
+      "romaji": "kouguu",
+      "meaning": "cordial welcome; hearty welcome",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -124649,7 +127671,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-顔"
+      "k-顔",
+      "k-厚"
     ]
   },
   {
@@ -124663,7 +127686,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-顔"
+      "k-顔",
+      "k-厚"
     ]
   },
   {
@@ -124678,7 +127702,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-顔",
-      "k-無"
+      "k-無",
+      "k-厚"
     ]
   },
   {
@@ -125029,7 +128054,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-原"
+      "k-原",
+      "k-像"
     ]
   },
   {
@@ -125059,7 +128085,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-原",
-      "k-典"
+      "k-典",
+      "k-版"
     ]
   },
   {
@@ -125120,7 +128147,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-原"
+      "k-原",
+      "k-則"
     ]
   },
   {
@@ -125134,7 +128162,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-原"
+      "k-原",
+      "k-則"
     ]
   },
   {
@@ -125149,7 +128178,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-原",
-      "k-的"
+      "k-的",
+      "k-則"
     ]
   },
   {
@@ -125163,7 +128193,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-原"
+      "k-原",
+      "k-禁",
+      "k-則"
     ]
   },
   {
@@ -125401,7 +128433,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-原",
       "k-告",
-      "k-格"
+      "k-格",
+      "k-適"
     ]
   },
   {
@@ -125763,7 +128796,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-教",
       "k-原",
-      "k-始"
+      "k-始",
+      "k-仏"
     ]
   },
   {
@@ -126014,7 +129048,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-原",
       "k-始",
       "k-要",
-      "k-型"
+      "k-型",
+      "k-素"
     ]
   },
   {
@@ -126315,7 +129350,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-子",
       "k-原",
       "k-法",
-      "k-害"
+      "k-害",
+      "k-損"
     ]
   },
   {
@@ -126598,7 +129634,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-原",
       "k-産",
       "k-保",
-      "k-財"
+      "k-財",
+      "k-険"
     ]
   },
   {
@@ -128131,7 +131168,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-原"
+      "k-原",
+      "k-版"
     ]
   },
   {
@@ -128317,7 +131355,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-理",
-      "k-原"
+      "k-原",
+      "k-則"
     ]
   },
   {
@@ -128672,7 +131711,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-原",
-      "k-画"
+      "k-画",
+      "k-像"
     ]
   },
   {
@@ -128912,7 +131952,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-原",
       "k-発",
       "k-血",
-      "k-性"
+      "k-性",
+      "k-圧"
     ]
   },
   {
@@ -129092,7 +132133,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-原"
+      "k-原",
+      "k-寄"
     ]
   },
   {
@@ -129300,7 +132342,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-原",
-      "k-級"
+      "k-級",
+      "k-留"
     ]
   },
   {
@@ -129316,7 +132359,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-原",
       "k-級",
-      "k-置"
+      "k-置",
+      "k-留"
     ]
   },
   {
@@ -129333,7 +132377,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-原"
+      "k-原",
+      "k-素"
     ]
   },
   {
@@ -129419,7 +132464,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-原"
+      "k-原",
+      "k-罪"
     ]
   },
   {
@@ -129525,7 +132571,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-原",
       "k-色",
       "k-真",
-      "k-写"
+      "k-写",
+      "k-版"
     ]
   },
   {
@@ -129540,7 +132587,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-原",
-      "k-色"
+      "k-色",
+      "k-版"
     ]
   },
   {
@@ -130616,6 +133664,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-父"
+    ]
+  },
+  {
+    "id": "w-厳禁",
+    "word": {
+      "id": "w-厳禁",
+      "japanese": "厳禁",
+      "furigana": "げんきん",
+      "romaji": "genkin",
+      "meaning": "strict prohibition; ban",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-禁"
     ]
   },
   {
@@ -132148,7 +135210,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-参"
+      "k-参",
+      "k-河"
     ]
   },
   {
@@ -132432,7 +135495,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-参",
       "k-照",
-      "k-可"
+      "k-可",
+      "k-許"
     ]
   },
   {
@@ -132645,7 +135709,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-考",
-      "k-参"
+      "k-参",
+      "k-招"
     ]
   },
   {
@@ -133971,7 +137036,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-海",
       "k-友",
       "k-商",
-      "k-好"
+      "k-好",
+      "k-航"
     ]
   },
   {
@@ -134631,6 +137697,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-十",
       "k-節"
+    ]
+  },
+  {
+    "id": "w-双喜",
+    "word": {
+      "id": "w-双喜",
+      "japanese": "双喜",
+      "furigana": "そうき",
+      "romaji": "souki",
+      "meaning": "double happiness (Chinese ornamental symbol)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-喜"
     ]
   },
   {
@@ -136651,7 +139731,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-反",
-      "k-神"
+      "k-神",
+      "k-精"
     ]
   },
   {
@@ -136774,7 +139855,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-反"
+      "k-反",
+      "k-則"
     ]
   },
   {
@@ -136788,7 +139870,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-反"
+      "k-反",
+      "k-則"
     ]
   },
   {
@@ -136803,7 +139886,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-勝",
-      "k-反"
+      "k-反",
+      "k-則"
     ]
   },
   {
@@ -136818,7 +139902,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-反",
-      "k-負"
+      "k-負",
+      "k-則"
     ]
   },
   {
@@ -136833,7 +139918,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-金",
-      "k-反"
+      "k-反",
+      "k-則"
     ]
   },
   {
@@ -138477,7 +141563,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-反",
-      "k-復"
+      "k-復",
+      "k-測"
     ]
   },
   {
@@ -138595,7 +141682,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-多",
       "k-反",
       "k-過",
-      "k-復"
+      "k-復",
+      "k-損"
     ]
   },
   {
@@ -139267,7 +142355,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-反",
       "k-養",
-      "k-栄"
+      "k-栄",
+      "k-素"
     ]
   },
   {
@@ -140560,7 +143649,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-数",
       "k-反",
       "k-係",
-      "k-転"
+      "k-転",
+      "k-布"
     ]
   },
   {
@@ -140609,7 +143699,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-反",
       "k-転",
-      "k-現"
+      "k-現",
+      "k-像"
     ]
   },
   {
@@ -140640,7 +143731,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-反"
+      "k-反",
+      "k-逆"
     ]
   },
   {
@@ -140655,7 +143747,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-反"
+      "k-反",
+      "k-逆"
     ]
   },
   {
@@ -140670,7 +143763,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-反",
-      "k-児"
+      "k-児",
+      "k-逆"
     ]
   },
   {
@@ -140686,7 +143780,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-分",
-      "k-反"
+      "k-反",
+      "k-逆"
     ]
   },
   {
@@ -140700,7 +143795,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-反"
+      "k-反",
+      "k-逆",
+      "k-罪"
     ]
   },
   {
@@ -140715,7 +143812,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-反"
+      "k-反",
+      "k-逆"
     ]
   },
   {
@@ -141000,7 +144098,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-反",
-      "k-神"
+      "k-神",
+      "k-精"
     ]
   },
   {
@@ -141015,7 +144114,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-反",
-      "k-神"
+      "k-神",
+      "k-精"
     ]
   },
   {
@@ -141677,6 +144777,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-収益",
+    "word": {
+      "id": "w-収益",
+      "japanese": "収益",
+      "furigana": "しゅうえき",
+      "romaji": "shuueki",
+      "meaning": "earnings; proceeds",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-益"
+    ]
+  },
+  {
     "id": "w-収益化",
     "word": {
       "id": "w-収益化",
@@ -141687,7 +144801,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-化"
+      "k-化",
+      "k-益"
     ]
   },
   {
@@ -141701,7 +144816,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-基"
+      "k-基",
+      "k-益"
     ]
   },
   {
@@ -141716,7 +144832,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-報",
-      "k-告"
+      "k-告",
+      "k-益"
     ]
   },
   {
@@ -141730,7 +144847,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-益"
     ]
   },
   {
@@ -141746,7 +144864,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-長",
       "k-成",
-      "k-率"
+      "k-率",
+      "k-益"
     ]
   },
   {
@@ -141761,7 +144880,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-物",
-      "k-件"
+      "k-件",
+      "k-益"
     ]
   },
   {
@@ -141775,7 +144895,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-率"
+      "k-率",
+      "k-益"
     ]
   },
   {
@@ -141790,7 +144911,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-理",
-      "k-管"
+      "k-管",
+      "k-益"
     ]
   },
   {
@@ -141804,7 +144926,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-金"
+      "k-金",
+      "k-益"
     ]
   },
   {
@@ -142034,7 +145157,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-法",
-      "k-減"
+      "k-減",
+      "k-則"
     ]
   },
   {
@@ -142207,7 +145331,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-期",
-      "k-血"
+      "k-血",
+      "k-圧"
     ]
   },
   {
@@ -142251,6 +145376,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-事",
       "k-件"
+    ]
+  },
+  {
+    "id": "w-収賄罪",
+    "word": {
+      "id": "w-収賄罪",
+      "japanese": "収賄罪",
+      "furigana": "しゅうわいざい",
+      "romaji": "shuuwaizai",
+      "meaning": "(the crime of) bribery",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-罪"
     ]
   },
   {
@@ -143969,7 +147108,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-囲"
     ]
   },
   {
@@ -144077,7 +147217,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-寄"
     ]
   },
   {
@@ -144527,7 +147668,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-損"
     ]
   },
   {
@@ -144541,7 +147683,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-損"
     ]
   },
   {
@@ -144918,7 +148061,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-混"
     ]
   },
   {
@@ -145003,7 +148147,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-留"
     ]
   },
   {
@@ -145017,7 +148162,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-留"
     ]
   },
   {
@@ -145035,7 +148181,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-取",
-      "k-無"
+      "k-無",
+      "k-留"
     ]
   },
   {
@@ -145049,7 +148196,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-留"
     ]
   },
   {
@@ -145067,7 +148215,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-取",
-      "k-無"
+      "k-無",
+      "k-留"
     ]
   },
   {
@@ -145081,7 +148230,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-留"
     ]
   },
   {
@@ -146720,7 +149870,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-取"
+      "k-取",
+      "k-永"
     ]
   },
   {
@@ -148325,7 +151476,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-数",
       "k-受",
       "k-係",
-      "k-働"
+      "k-働",
+      "k-圧"
     ]
   },
   {
@@ -148339,7 +151491,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-受"
+      "k-受",
+      "k-像"
     ]
   },
   {
@@ -148354,7 +151507,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-受",
-      "k-機"
+      "k-機",
+      "k-像"
     ]
   },
   {
@@ -148401,7 +151555,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-光",
-      "k-受"
+      "k-受",
+      "k-素"
     ]
   },
   {
@@ -148652,7 +151807,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-動",
-      "k-受"
+      "k-受",
+      "k-素"
     ]
   },
   {
@@ -148989,7 +152145,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-受"
+      "k-受",
+      "k-寄"
     ]
   },
   {
@@ -149340,7 +152497,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-受"
+      "k-受",
+      "k-益"
     ]
   },
   {
@@ -149354,7 +152512,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-受"
+      "k-受",
+      "k-益"
     ]
   },
   {
@@ -149368,7 +152527,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-受"
+      "k-受",
+      "k-益"
     ]
   },
   {
@@ -149383,7 +152543,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-受"
+      "k-受",
+      "k-益"
     ]
   },
   {
@@ -149398,7 +152559,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-受",
-      "k-証"
+      "k-証",
+      "k-益"
     ]
   },
   {
@@ -149441,7 +152603,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-受"
+      "k-受",
+      "k-精"
     ]
   },
   {
@@ -149455,7 +152618,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-受"
+      "k-受",
+      "k-精"
     ]
   },
   {
@@ -149727,7 +152891,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-受"
+      "k-受",
+      "k-罪"
     ]
   },
   {
@@ -149945,7 +153110,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-受"
+      "k-受",
+      "k-講"
     ]
   },
   {
@@ -149960,7 +153126,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-受",
-      "k-料"
+      "k-料",
+      "k-講"
     ]
   },
   {
@@ -149975,7 +153142,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-受"
+      "k-受",
+      "k-講"
     ]
   },
   {
@@ -149990,7 +153158,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-受"
+      "k-受",
+      "k-講"
     ]
   },
   {
@@ -154171,7 +157340,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-口"
+      "k-口",
+      "k-寄"
     ]
   },
   {
@@ -155138,7 +158308,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-口",
-      "k-念"
+      "k-念",
+      "k-仏"
     ]
   },
   {
@@ -156064,6 +159235,21 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-口",
       "k-言",
       "k-葉"
+    ]
+  },
+  {
+    "id": "w-口許",
+    "word": {
+      "id": "w-口許",
+      "japanese": "口許",
+      "furigana": "くちもと",
+      "romaji": "kuchimoto",
+      "meaning": "mouth; lips",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-口",
+      "k-許"
     ]
   },
   {
@@ -157190,7 +160376,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-古",
       "k-根",
       "k-建",
-      "k-設"
+      "k-設",
+      "k-久"
     ]
   },
   {
@@ -157469,7 +160656,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-古"
+      "k-古",
+      "k-仏"
     ]
   },
   {
@@ -158988,7 +162176,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-川",
       "k-水",
-      "k-古"
+      "k-古",
+      "k-絶"
     ]
   },
   {
@@ -159035,7 +162224,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-古"
+      "k-古",
+      "k-布"
     ]
   },
   {
@@ -159843,6 +163033,21 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-古河",
+    "word": {
+      "id": "w-古河",
+      "japanese": "古河",
+      "furigana": "ふるかわ",
+      "romaji": "furukawa",
+      "meaning": "old river",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-古",
+      "k-河"
+    ]
+  },
+  {
     "id": "w-古法",
     "word": {
       "id": "w-古法",
@@ -159940,7 +163145,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-古"
+      "k-古",
+      "k-版"
     ]
   },
   {
@@ -159955,7 +163161,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-本",
-      "k-古"
+      "k-古",
+      "k-版"
     ]
   },
   {
@@ -161282,7 +164489,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-古"
+      "k-古",
+      "k-雑"
     ]
   },
   {
@@ -161546,7 +164754,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-構",
       "k-規",
-      "k-造"
+      "k-造",
+      "k-則"
     ]
   },
   {
@@ -162330,6 +165539,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-取"
+    ]
+  },
+  {
+    "id": "w-召し寄せる",
+    "word": {
+      "id": "w-召し寄せる",
+      "japanese": "召し寄せる",
+      "furigana": "めしよせる",
+      "romaji": "meshiyoseru",
+      "meaning": "to call (someone) to you; to call together",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -163163,7 +166386,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-性",
-      "k-可"
+      "k-可",
+      "k-圧"
     ]
   },
   {
@@ -163363,7 +166587,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-変",
       "k-器",
-      "k-可"
+      "k-可",
+      "k-圧"
     ]
   },
   {
@@ -163786,7 +167011,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-百",
       "k-倍",
       "k-愛",
-      "k-可"
+      "k-可",
+      "k-余"
     ]
   },
   {
@@ -164948,7 +168174,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-量",
       "k-観",
-      "k-可"
+      "k-可",
+      "k-測"
     ]
   },
   {
@@ -165009,7 +168236,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165023,7 +168251,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165037,7 +168266,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165053,7 +168283,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-反",
       "k-応",
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165067,7 +168298,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-可"
+      "k-可",
+      "k-逆",
+      "k-圧"
     ]
   },
   {
@@ -165083,7 +168316,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-化",
       "k-変",
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165098,7 +168332,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-性",
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165114,7 +168349,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-関",
       "k-機",
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165129,7 +168365,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-的",
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165146,7 +168383,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-数",
       "k-計",
       "k-器",
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165162,7 +168400,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-電",
       "k-池",
-      "k-可"
+      "k-可",
+      "k-逆"
     ]
   },
   {
@@ -165552,7 +168791,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-台"
+      "k-台",
+      "k-布"
     ]
   },
   {
@@ -165991,7 +169231,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-台",
-      "k-波"
+      "k-波",
+      "k-布"
     ]
   },
   {
@@ -166100,7 +169341,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-台",
-      "k-食"
+      "k-食",
+      "k-素"
     ]
   },
   {
@@ -167272,7 +170514,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-史"
+      "k-史",
+      "k-略"
     ]
   },
   {
@@ -167678,6 +170921,26 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-右に出る者は居ない",
+    "word": {
+      "id": "w-右に出る者は居ない",
+      "japanese": "右に出る者は居ない",
+      "furigana": "みぎにでるものはいない",
+      "romaji": "miginiderumonohainai",
+      "meaning": "being second to none; being in a league of one's own",
+      "common": false,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-出",
+      "k-右",
+      "k-者",
+      "k-居"
+    ]
+  },
+  {
     "id": "w-右に同じ",
     "word": {
       "id": "w-右に同じ",
@@ -167734,7 +170997,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-右",
-      "k-法"
+      "k-法",
+      "k-則"
     ]
   },
   {
@@ -168379,7 +171643,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-右"
+      "k-右",
+      "k-寄"
     ]
   },
   {
@@ -168393,7 +171658,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-右"
+      "k-右",
+      "k-寄"
     ]
   },
   {
@@ -168589,7 +171855,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-手",
       "k-右",
-      "k-法"
+      "k-法",
+      "k-則"
     ]
   },
   {
@@ -168681,7 +171948,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-右",
       "k-止",
-      "k-折"
+      "k-折",
+      "k-禁"
     ]
   },
   {
@@ -169184,7 +172452,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-右",
-      "k-法"
+      "k-法",
+      "k-則"
     ]
   },
   {
@@ -170095,7 +173364,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-司",
       "k-性",
       "k-判",
-      "k-断"
+      "k-断",
+      "k-適"
     ]
   },
   {
@@ -170509,6 +173779,23 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-吃逆",
+    "word": {
+      "id": "w-吃逆",
+      "japanese": "吃逆",
+      "furigana": "しゃっくり",
+      "romaji": "shakkuri",
+      "meaning": "hiccup; hiccough",
+      "common": true,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-逆"
+    ]
+  },
+  {
     "id": "w-吃音",
     "word": {
       "id": "w-吃音",
@@ -170714,7 +174001,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-各"
+      "k-各",
+      "k-停"
     ]
   },
   {
@@ -171438,7 +174726,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-車",
       "k-駅",
-      "k-各"
+      "k-各",
+      "k-停"
     ]
   },
   {
@@ -172899,7 +176188,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-同",
       "k-合",
-      "k-酒"
+      "k-酒",
+      "k-精"
     ]
   },
   {
@@ -173253,7 +176543,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-合",
-      "k-宿"
+      "k-宿",
+      "k-許"
     ]
   },
   {
@@ -173899,7 +177190,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-合",
       "k-戦",
-      "k-成"
+      "k-成",
+      "k-略"
     ]
   },
   {
@@ -173930,7 +177222,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-合",
-      "k-成"
+      "k-成",
+      "k-像"
     ]
   },
   {
@@ -174043,7 +177336,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-合",
       "k-画",
-      "k-成"
+      "k-成",
+      "k-像"
     ]
   },
   {
@@ -174218,7 +177512,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-合",
-      "k-成"
+      "k-成",
+      "k-素"
     ]
   },
   {
@@ -175421,7 +178716,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-名",
-      "k-合"
+      "k-合",
+      "k-略"
     ]
   },
   {
@@ -175744,7 +179040,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-合",
-      "k-羽"
+      "k-羽",
+      "k-版"
     ]
   },
   {
@@ -176729,7 +180026,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-本",
-      "k-業"
+      "k-業",
+      "k-興"
     ]
   },
   {
@@ -177681,7 +180979,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-一",
       "k-同",
-      "k-分"
+      "k-分",
+      "k-布"
     ]
   },
   {
@@ -178044,7 +181343,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-同"
+      "k-同",
+      "k-雑"
     ]
   },
   {
@@ -178196,7 +181496,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-同",
       "k-元",
-      "k-位"
+      "k-位",
+      "k-素"
     ]
   },
   {
@@ -178802,7 +182103,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-同",
       "k-海",
       "k-和",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -178864,7 +182166,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-同",
-      "k-線"
+      "k-線",
+      "k-圧"
     ]
   },
   {
@@ -179417,7 +182720,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-同"
+      "k-同",
+      "k-居"
     ]
   },
   {
@@ -179432,7 +182736,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-同"
+      "k-同",
+      "k-居"
     ]
   },
   {
@@ -179447,7 +182752,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-同",
-      "k-者"
+      "k-者",
+      "k-居"
     ]
   },
   {
@@ -179461,7 +182767,24 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-同"
+      "k-同",
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-同属嫌悪",
+    "word": {
+      "id": "w-同属嫌悪",
+      "japanese": "同属嫌悪",
+      "furigana": "どうぞくけんお",
+      "romaji": "douzokuken'o",
+      "meaning": "disliking people similar to oneself",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-同",
+      "k-悪",
+      "k-属"
     ]
   },
   {
@@ -179846,7 +183169,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-同"
+      "k-同",
+      "k-志"
     ]
   },
   {
@@ -179861,7 +183185,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-会",
-      "k-同"
+      "k-同",
+      "k-志"
     ]
   },
   {
@@ -179876,7 +183201,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-同"
+      "k-同",
+      "k-志"
     ]
   },
   {
@@ -179891,7 +183217,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-同",
-      "k-愛"
+      "k-愛",
+      "k-志"
     ]
   },
   {
@@ -179906,7 +183233,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-同",
-      "k-的"
+      "k-的",
+      "k-志"
     ]
   },
   {
@@ -179923,7 +183251,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-大",
       "k-学",
       "k-同",
-      "k-社"
+      "k-社",
+      "k-志"
     ]
   },
   {
@@ -179942,7 +183271,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-子",
       "k-女",
       "k-同",
-      "k-社"
+      "k-社",
+      "k-志"
     ]
   },
   {
@@ -182408,7 +185738,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-同",
       "k-相",
-      "k-写"
+      "k-写",
+      "k-像"
     ]
   },
   {
@@ -182441,7 +185772,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-同",
       "k-電",
-      "k-相"
+      "k-相",
+      "k-圧"
     ]
   },
   {
@@ -182821,7 +186153,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-同",
-      "k-体"
+      "k-体",
+      "k-素"
     ]
   },
   {
@@ -182866,7 +186199,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-同"
+      "k-同",
+      "k-罪"
     ]
   },
   {
@@ -183337,7 +186671,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-力",
       "k-同",
-      "k-調"
+      "k-調",
+      "k-圧"
     ]
   },
   {
@@ -183383,7 +186718,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-同",
-      "k-質"
+      "k-質",
+      "k-像"
     ]
   },
   {
@@ -186408,7 +189744,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-名"
+      "k-名",
+      "k-寄"
     ]
   },
   {
@@ -186423,7 +189760,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-名",
-      "k-理"
+      "k-理",
+      "k-寄"
     ]
   },
   {
@@ -186441,7 +189779,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-立",
       "k-学",
       "k-名",
-      "k-市"
+      "k-市",
+      "k-寄"
     ]
   },
   {
@@ -188633,7 +191972,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-名"
+      "k-名",
+      "k-損"
     ]
   },
   {
@@ -188647,7 +191987,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-名"
+      "k-名",
+      "k-罪",
+      "k-損"
     ]
   },
   {
@@ -190198,7 +193540,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-向",
-      "k-岸"
+      "k-岸",
+      "k-河"
     ]
   },
   {
@@ -190661,7 +194004,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-向",
       "k-神",
-      "k-薬"
+      "k-薬",
+      "k-精"
     ]
   },
   {
@@ -191124,7 +194468,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-近",
-      "k-君"
+      "k-君",
+      "k-寄"
     ]
   },
   {
@@ -191861,7 +195206,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-定"
+      "k-定",
+      "k-素"
     ]
   },
   {
@@ -191945,7 +195291,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-子",
       "k-理",
       "k-定",
-      "k-和"
+      "k-和",
+      "k-素"
     ]
   },
   {
@@ -192140,6 +195487,34 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-含み損",
+    "word": {
+      "id": "w-含み損",
+      "japanese": "含み損",
+      "furigana": "ふくみそん",
+      "romaji": "fukumison",
+      "meaning": "unrealized loss; paper loss",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-損"
+    ]
+  },
+  {
+    "id": "w-含み益",
+    "word": {
+      "id": "w-含み益",
+      "japanese": "含み益",
+      "furigana": "ふくみえき",
+      "romaji": "fukumieki",
+      "meaning": "unrealized profit; paper profit",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-益"
+    ]
+  },
+  {
     "id": "w-含み笑い",
     "word": {
       "id": "w-含み笑い",
@@ -192264,7 +195639,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-意"
+      "k-意",
+      "k-素"
     ]
   },
   {
@@ -192354,7 +195730,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-水",
-      "k-炭"
+      "k-炭",
+      "k-素"
     ]
   },
   {
@@ -192597,6 +195974,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-容"
+    ]
+  },
+  {
+    "id": "w-吸い寄せる",
+    "word": {
+      "id": "w-吸い寄せる",
+      "japanese": "吸い寄せる",
+      "furigana": "すいよせる",
+      "romaji": "suiyoseru",
+      "meaning": "to draw in; to attract",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -193554,6 +196945,34 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-吹き寄せ",
+    "word": {
+      "id": "w-吹き寄せ",
+      "japanese": "吹き寄せ",
+      "furigana": "ふきよせ",
+      "romaji": "fukiyose",
+      "meaning": "medley (of food, songs, etc.); (snow or sand) drift",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-吹き寄せる",
+    "word": {
+      "id": "w-吹き寄せる",
+      "japanese": "吹き寄せる",
+      "furigana": "ふきよせる",
+      "romaji": "fukiyoseru",
+      "meaning": "to drift; to blow together",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
     "id": "w-吹き散らす",
     "word": {
       "id": "w-吹き散らす",
@@ -193565,6 +196984,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-散"
+    ]
+  },
+  {
+    "id": "w-吹き替え版",
+    "word": {
+      "id": "w-吹き替え版",
+      "japanese": "吹き替え版",
+      "furigana": "ふきかえばん",
+      "romaji": "fukikaeban",
+      "meaning": "dubbed version (of a film, etc.)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-版"
     ]
   },
   {
@@ -194129,6 +197562,34 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-吾が仏",
+    "word": {
+      "id": "w-吾が仏",
+      "japanese": "吾が仏",
+      "furigana": "あがほとけ",
+      "romaji": "agahotoke",
+      "meaning": "my dear; my Buddha",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-仏"
+    ]
+  },
+  {
+    "id": "w-吾が仏尊し",
+    "word": {
+      "id": "w-吾が仏尊し",
+      "japanese": "吾が仏尊し",
+      "furigana": "あがほとけとうとし",
+      "romaji": "agahotoketoutoshi",
+      "meaning": "putting one's own beliefs on a pedestal; being narrow-minded",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-仏"
+    ]
+  },
+  {
     "id": "w-吾が身",
     "word": {
       "id": "w-吾が身",
@@ -194215,6 +197676,48 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-吾妻",
+    "word": {
+      "id": "w-吾妻",
+      "japanese": "吾妻",
+      "furigana": "あずま",
+      "romaji": "azuma",
+      "meaning": "eastern Japan (esp. Kamakura or Edo, from perspective of Kyoto or Nara); eastern provinces",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-吾妻しい",
+    "word": {
+      "id": "w-吾妻しい",
+      "japanese": "吾妻しい",
+      "furigana": "あずましい",
+      "romaji": "azumashii",
+      "meaning": "feeling good; feeling comfortable",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-吾妻コート",
+    "word": {
+      "id": "w-吾妻コート",
+      "japanese": "吾妻コート",
+      "furigana": "あずまコート",
+      "romaji": "azumakooto",
+      "meaning": "Azuma coat; type of coat worn over a kimono; popular in the middle of the Meiji era",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妻"
+    ]
+  },
+  {
     "id": "w-吾妻下駄",
     "word": {
       "id": "w-吾妻下駄",
@@ -194225,7 +197728,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-下"
+      "k-下",
+      "k-妻"
     ]
   },
   {
@@ -194239,7 +197743,39 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-山"
+      "k-山",
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-吾妻琴",
+    "word": {
+      "id": "w-吾妻琴",
+      "japanese": "吾妻琴",
+      "furigana": "あずまごと",
+      "romaji": "azumagoto",
+      "meaning": "wagon; yamatogoto",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-吾妻菊",
+    "word": {
+      "id": "w-吾妻菊",
+      "japanese": "吾妻菊",
+      "furigana": "アズマギク",
+      "romaji": "azumagiku",
+      "meaning": "Erigeron thunbergii (species of flowering plant)",
+      "common": false,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-妻"
     ]
   },
   {
@@ -194253,7 +197789,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-鏡"
+      "k-鏡",
+      "k-妻"
     ]
   },
   {
@@ -195576,7 +199113,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-周"
+      "k-周",
+      "k-囲"
     ]
   },
   {
@@ -195592,7 +199130,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-度",
       "k-温",
-      "k-周"
+      "k-周",
+      "k-囲"
     ]
   },
   {
@@ -195607,7 +199146,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-長",
-      "k-周"
+      "k-周",
+      "k-囲"
     ]
   },
   {
@@ -195940,7 +199480,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-神",
       "k-病",
       "k-周",
-      "k-性"
+      "k-性",
+      "k-精"
     ]
   },
   {
@@ -196003,7 +199544,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-氷",
-      "k-周"
+      "k-周",
+      "k-河"
     ]
   },
   {
@@ -196680,7 +200222,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-周"
+      "k-周",
+      "k-航"
     ]
   },
   {
@@ -196840,7 +200383,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-辺",
       "k-周",
       "k-確",
-      "k-率"
+      "k-率",
+      "k-布"
     ]
   },
   {
@@ -197194,6 +200738,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-呪禁",
+    "word": {
+      "id": "w-呪禁",
+      "japanese": "呪禁",
+      "furigana": "じゅごん",
+      "romaji": "jugon",
+      "meaning": "vanquishing monsters, spirits, etc. with charms",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-禁"
+    ]
+  },
+  {
     "id": "w-呪術",
     "word": {
       "id": "w-呪術",
@@ -197481,7 +201039,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-味"
+      "k-味",
+      "k-素"
     ]
   },
   {
@@ -197510,7 +201069,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-気",
-      "k-味"
+      "k-味",
+      "k-素"
     ]
   },
   {
@@ -197526,7 +201086,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-気",
       "k-味",
-      "k-無"
+      "k-無",
+      "k-素"
     ]
   },
   {
@@ -199092,6 +202653,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-呼び寄せる",
+    "word": {
+      "id": "w-呼び寄せる",
+      "japanese": "呼び寄せる",
+      "furigana": "よびよせる",
+      "romaji": "yobiyoseru",
+      "meaning": "to call; to summon",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
     "id": "w-呼び屋",
     "word": {
       "id": "w-呼び屋",
@@ -199176,6 +202751,23 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-物"
+    ]
+  },
+  {
+    "id": "w-呼び留める",
+    "word": {
+      "id": "w-呼び留める",
+      "japanese": "呼び留める",
+      "furigana": "よびとめる",
+      "romaji": "yobitomeru",
+      "meaning": "to (call and) stop; to call (someone) to stop",
+      "common": true,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-留"
     ]
   },
   {
@@ -199462,7 +203054,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-止"
+      "k-止",
+      "k-停"
     ]
   },
   {
@@ -199656,6 +203249,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-呼吸酵素",
+    "word": {
+      "id": "w-呼吸酵素",
+      "japanese": "呼吸酵素",
+      "furigana": "こきゅうこうそ",
+      "romaji": "kokyuukouso",
+      "meaning": "respiratory enzyme",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-素"
+    ]
+  },
+  {
     "id": "w-呼吸音",
     "word": {
       "id": "w-呼吸音",
@@ -199738,7 +203345,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-率"
+      "k-率",
+      "k-損"
     ]
   },
   {
@@ -200150,7 +203758,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-取",
-      "k-命"
+      "k-命",
+      "k-留"
     ]
   },
   {
@@ -200293,7 +203902,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-命"
+      "k-命",
+      "k-絶"
     ]
   },
   {
@@ -200400,7 +204010,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-中",
       "k-度",
-      "k-命"
+      "k-命",
+      "k-精"
     ]
   },
   {
@@ -201043,7 +204654,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-名",
       "k-命",
-      "k-規"
+      "k-規",
+      "k-則"
     ]
   },
   {
@@ -201073,7 +204685,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-命"
+      "k-命",
+      "k-婦"
     ]
   },
   {
@@ -201887,7 +205500,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-和"
+      "k-和",
+      "k-仏"
     ]
   },
   {
@@ -201903,7 +205517,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-和",
       "k-辞",
-      "k-典"
+      "k-典",
+      "k-仏"
     ]
   },
   {
@@ -202294,7 +205909,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-和"
+      "k-和",
+      "k-妻"
     ]
   },
   {
@@ -202519,7 +206135,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-和"
+      "k-和",
+      "k-布"
     ]
   },
   {
@@ -202536,7 +206153,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-和"
+      "k-和",
+      "k-布"
     ]
   },
   {
@@ -203569,7 +207187,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-文",
       "k-交",
       "k-和",
-      "k-漢"
+      "k-漢",
+      "k-混"
     ]
   },
   {
@@ -203585,7 +207204,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-文",
       "k-和",
-      "k-漢"
+      "k-漢",
+      "k-混"
     ]
   },
   {
@@ -205104,6 +208724,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-咸豊",
+    "word": {
+      "id": "w-咸豊",
+      "japanese": "咸豊",
+      "furigana": "かんぽう",
+      "romaji": "kampou",
+      "meaning": "Xianfeng era (of emperor Wenzong of Qing; 1850-1861)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-豊"
+    ]
+  },
+  {
     "id": "w-咽喉頭異常感症",
     "word": {
       "id": "w-咽喉頭異常感症",
@@ -205131,7 +208765,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-頭",
-      "k-流"
+      "k-流",
+      "k-逆"
     ]
   },
   {
@@ -205278,7 +208913,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-頭",
-      "k-流"
+      "k-流",
+      "k-逆"
     ]
   },
   {
@@ -205489,6 +209125,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-泣"
+    ]
+  },
+  {
+    "id": "w-哀絶",
+    "word": {
+      "id": "w-哀絶",
+      "japanese": "哀絶",
+      "furigana": "あいぜつ",
+      "romaji": "aizetsu",
+      "meaning": "extremely sad (event, occurrence); great pity",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-絶"
     ]
   },
   {
@@ -209216,7 +212866,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-人",
       "k-商",
       "k-建",
-      "k-倉"
+      "k-倉",
+      "k-損"
     ]
   },
   {
@@ -210578,7 +214229,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-業",
-      "k-商"
+      "k-商",
+      "k-版"
     ]
   },
   {
@@ -211434,7 +215086,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-用",
-      "k-商"
+      "k-商",
+      "k-版"
     ]
   },
   {
@@ -211500,7 +215153,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-商"
+      "k-商",
+      "k-略"
     ]
   },
   {
@@ -212532,7 +216186,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-答",
       "k-問",
-      "k-無"
+      "k-無",
+      "k-益"
     ]
   },
   {
@@ -212546,7 +216201,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-問"
+      "k-問",
+      "k-罪"
     ]
   },
   {
@@ -213360,7 +217016,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-対",
       "k-主",
-      "k-君"
+      "k-君",
+      "k-絶"
     ]
   },
   {
@@ -214445,6 +218102,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-喉仏",
+    "word": {
+      "id": "w-喉仏",
+      "japanese": "喉仏",
+      "furigana": "のどぼとけ",
+      "romaji": "nodobotoke",
+      "meaning": "Adam's apple; laryngeal prominence",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-仏"
+    ]
+  },
+  {
     "id": "w-喉元",
     "word": {
       "id": "w-喉元",
@@ -214516,6 +218187,23 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-笛"
+    ]
+  },
+  {
+    "id": "w-喉許",
+    "word": {
+      "id": "w-喉許",
+      "japanese": "喉許",
+      "furigana": "のどもと",
+      "romaji": "nodomoto",
+      "meaning": "throat; important part",
+      "common": false,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-許"
     ]
   },
   {
@@ -214936,6 +218624,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-喜々",
+    "word": {
+      "id": "w-喜々",
+      "japanese": "喜々",
+      "furigana": "きき",
+      "romaji": "kiki",
+      "meaning": "merry; joyful",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-喜"
+    ]
+  },
+  {
     "id": "w-喜の字",
     "word": {
       "id": "w-喜の字",
@@ -214946,7 +218648,64 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-字"
+      "k-字",
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜ばしい",
+    "word": {
+      "id": "w-喜ばしい",
+      "japanese": "喜ばしい",
+      "furigana": "よろこばしい",
+      "romaji": "yorokobashii",
+      "meaning": "joyful (news, event, etc.); joyous",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜ばす",
+    "word": {
+      "id": "w-喜ばす",
+      "japanese": "喜ばす",
+      "furigana": "よろこばす",
+      "romaji": "yorokobasu",
+      "meaning": "to delight; to please",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜び",
+    "word": {
+      "id": "w-喜び",
+      "japanese": "喜び",
+      "furigana": "よろこび",
+      "romaji": "yorokobi",
+      "meaning": "joy; delight",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜びごと",
+    "word": {
+      "id": "w-喜びごと",
+      "japanese": "喜びごと",
+      "furigana": "よろこびごと",
+      "romaji": "yorokobigoto",
+      "meaning": "auspicious event; celebration",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-喜"
     ]
   },
   {
@@ -214960,7 +218719,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-声"
+      "k-声",
+      "k-喜"
     ]
   },
   {
@@ -214974,7 +218734,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-事"
+      "k-事",
+      "k-喜"
     ]
   },
   {
@@ -214988,7 +218749,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-勇"
+      "k-勇",
+      "k-喜"
     ]
   },
   {
@@ -215002,7 +218764,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-歌"
+      "k-歌",
+      "k-喜"
     ]
   },
   {
@@ -215016,7 +218779,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-泣"
+      "k-泣",
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜ぶ",
+    "word": {
+      "id": "w-喜ぶ",
+      "japanese": "喜ぶ",
+      "furigana": "よろこぶ",
+      "romaji": "yorokobu",
+      "meaning": "to be delighted; to be glad",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜んで",
+    "word": {
+      "id": "w-喜んで",
+      "japanese": "喜んで",
+      "furigana": "よろこんで",
+      "romaji": "yorokonde",
+      "meaning": "with pleasure; gladly",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-喜"
     ]
   },
   {
@@ -215034,7 +218826,22 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-古",
-      "k-佐"
+      "k-佐",
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜劇",
+    "word": {
+      "id": "w-喜劇",
+      "japanese": "喜劇",
+      "furigana": "きげき",
+      "romaji": "kigeki",
+      "meaning": "comedy",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-喜"
     ]
   },
   {
@@ -215049,7 +218856,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-役"
+      "k-役",
+      "k-喜"
     ]
   },
   {
@@ -215063,7 +218871,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-画"
+      "k-画",
+      "k-喜"
     ]
   },
   {
@@ -215077,7 +218886,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-的"
+      "k-的",
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜寿",
+    "word": {
+      "id": "w-喜寿",
+      "japanese": "喜寿",
+      "furigana": "きじゅ",
+      "romaji": "kiju",
+      "meaning": "77th birthday",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜怒",
+    "word": {
+      "id": "w-喜怒",
+      "japanese": "喜怒",
+      "furigana": "きど",
+      "romaji": "kido",
+      "meaning": "joy and anger; human emotions",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-喜"
     ]
   },
   {
@@ -215091,7 +218929,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-楽"
+      "k-楽",
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜悦",
+    "word": {
+      "id": "w-喜悦",
+      "japanese": "喜悦",
+      "furigana": "きえつ",
+      "romaji": "kietsu",
+      "meaning": "joy",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜捨",
+    "word": {
+      "id": "w-喜捨",
+      "japanese": "喜捨",
+      "furigana": "きしゃ",
+      "romaji": "kisha",
+      "meaning": "almsgiving",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-喜"
     ]
   },
   {
@@ -215105,7 +218972,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-望"
+      "k-望",
+      "k-喜"
     ]
   },
   {
@@ -215119,7 +218987,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-歌"
+      "k-歌",
+      "k-喜"
     ]
   },
   {
@@ -215134,7 +219003,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-知",
-      "k-次"
+      "k-次",
+      "k-喜"
     ]
   },
   {
@@ -215148,7 +219018,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-色"
+      "k-色",
+      "k-喜"
     ]
   },
   {
@@ -215164,7 +219035,24 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-色",
       "k-面",
-      "k-満"
+      "k-満",
+      "k-喜"
+    ]
+  },
+  {
+    "id": "w-喜遊曲",
+    "word": {
+      "id": "w-喜遊曲",
+      "japanese": "喜遊曲",
+      "furigana": "きゆうきょく",
+      "romaji": "kiyuukyoku",
+      "meaning": "divertimento; divertissement",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-曲",
+      "k-遊",
+      "k-喜"
     ]
   },
   {
@@ -215178,7 +219066,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-雨"
+      "k-雨",
+      "k-喜"
     ]
   },
   {
@@ -215902,6 +219791,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-喬志",
+    "word": {
+      "id": "w-喬志",
+      "japanese": "喬志",
+      "furigana": "きょうし",
+      "romaji": "kyoushi",
+      "meaning": "pride; self-conceit",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-志"
+    ]
+  },
+  {
     "id": "w-喬木",
     "word": {
       "id": "w-喬木",
@@ -216093,7 +219996,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-利",
       "k-保",
-      "k-営"
+      "k-営",
+      "k-険"
     ]
   },
   {
@@ -216487,7 +220391,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-業",
       "k-保",
-      "k-営"
+      "k-営",
+      "k-険"
     ]
   },
   {
@@ -216503,7 +220408,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-止",
       "k-業",
-      "k-営"
+      "k-営",
+      "k-停"
     ]
   },
   {
@@ -216535,7 +220441,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-業",
       "k-税",
-      "k-営"
+      "k-営",
+      "k-許"
     ]
   },
   {
@@ -216568,7 +220475,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-業",
       "k-利",
-      "k-営"
+      "k-営",
+      "k-益"
     ]
   },
   {
@@ -216751,7 +220659,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-業",
       "k-成",
-      "k-営"
+      "k-営",
+      "k-績"
     ]
   },
   {
@@ -216800,7 +220709,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-業",
       "k-失",
-      "k-営"
+      "k-営",
+      "k-損"
     ]
   },
   {
@@ -216981,7 +220891,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-書",
       "k-業",
       "k-営",
-      "k-可"
+      "k-可",
+      "k-許"
     ]
   },
   {
@@ -216999,7 +220910,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-業",
       "k-申",
       "k-営",
-      "k-可"
+      "k-可",
+      "k-許"
     ]
   },
   {
@@ -217016,7 +220928,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-業",
       "k-営",
       "k-証",
-      "k-可"
+      "k-可",
+      "k-許"
     ]
   },
   {
@@ -217901,6 +221814,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-嘉永",
+    "word": {
+      "id": "w-嘉永",
+      "japanese": "嘉永",
+      "furigana": "かえい",
+      "romaji": "kaei",
+      "meaning": "Kaei era (1848.2.28-1854.11.27)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-永"
+    ]
+  },
+  {
     "id": "w-嘉留太",
     "word": {
       "id": "w-嘉留太",
@@ -217915,7 +221842,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-太"
+      "k-太",
+      "k-留"
     ]
   },
   {
@@ -219250,7 +223178,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-物",
-      "k-器"
+      "k-器",
+      "k-損"
     ]
   },
   {
@@ -219265,7 +223194,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-物",
-      "k-器"
+      "k-器",
+      "k-罪",
+      "k-損"
     ]
   },
   {
@@ -219281,7 +223212,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-物",
       "k-器",
-      "k-破"
+      "k-破",
+      "k-損"
     ]
   },
   {
@@ -219408,7 +223340,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-害",
       "k-器",
       "k-性",
-      "k-質"
+      "k-質",
+      "k-精"
     ]
   },
   {
@@ -221034,7 +224967,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-四",
-      "k-不"
+      "k-不",
+      "k-像"
     ]
   },
   {
@@ -221322,6 +225256,22 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-四六版",
+    "word": {
+      "id": "w-四六版",
+      "japanese": "四六版",
+      "furigana": "しろくばん",
+      "romaji": "shirokuban",
+      "meaning": "shirokuban (paper size of 127x188mm); duodecimo",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-四",
+      "k-六",
+      "k-版"
+    ]
+  },
+  {
     "id": "w-四六駢儷体",
     "word": {
       "id": "w-四六駢儷体",
@@ -221488,7 +225438,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-四"
+      "k-四",
+      "k-則"
     ]
   },
   {
@@ -221504,7 +225455,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-四",
       "k-算",
-      "k-演"
+      "k-演",
+      "k-則"
     ]
   },
   {
@@ -221740,7 +225692,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-四",
       "k-半",
-      "k-世"
+      "k-世",
+      "k-紀"
     ]
   },
   {
@@ -221788,7 +225741,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-四",
       "k-半",
-      "k-期"
+      "k-期",
+      "k-益"
     ]
   },
   {
@@ -221806,7 +225760,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-半",
       "k-発",
       "k-表",
-      "k-期"
+      "k-期",
+      "k-益"
     ]
   },
   {
@@ -221951,7 +225906,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-四"
+      "k-四",
+      "k-囲"
     ]
   },
   {
@@ -222298,7 +226254,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-四",
       "k-化",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -222331,7 +226288,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-四",
       "k-化",
       "k-炭",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -222394,7 +226352,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-四",
-      "k-元"
+      "k-元",
+      "k-素"
     ]
   },
   {
@@ -222566,7 +226525,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-教",
       "k-寺",
-      "k-際"
+      "k-際",
+      "k-仏"
     ]
   },
   {
@@ -224205,7 +228165,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-四",
       "k-百",
-      "k-州"
+      "k-州",
+      "k-余"
     ]
   },
   {
@@ -225400,7 +229361,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-四",
-      "k-重"
+      "k-重",
+      "k-禁"
     ]
   },
   {
@@ -227107,7 +231069,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-回",
-      "k-折"
+      "k-折",
+      "k-損"
     ]
   },
   {
@@ -227867,7 +231830,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-回",
       "k-線",
       "k-制",
-      "k-規"
+      "k-規",
+      "k-則"
     ]
   },
   {
@@ -228125,7 +232089,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-回"
+      "k-回",
+      "k-航"
     ]
   },
   {
@@ -228390,7 +232355,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-路",
       "k-要",
       "k-成",
-      "k-構"
+      "k-構",
+      "k-素"
     ]
   },
   {
@@ -228423,7 +232389,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-回",
-      "k-路"
+      "k-路",
+      "k-素"
     ]
   },
   {
@@ -230131,6 +234098,24 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-因幡の素兎",
+    "word": {
+      "id": "w-因幡の素兎",
+      "japanese": "因幡の素兎",
+      "furigana": "いなばのしろうさぎ",
+      "romaji": "inabanoshirousagi",
+      "meaning": "White Hare of Inaba",
+      "common": false,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-因",
+      "k-素"
+    ]
+  },
+  {
     "id": "w-因循",
     "word": {
       "id": "w-因循",
@@ -230345,7 +234330,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-法",
       "k-果",
-      "k-因"
+      "k-因",
+      "k-則"
     ]
   },
   {
@@ -230610,7 +234596,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-神",
-      "k-団"
+      "k-団",
+      "k-精"
     ]
   },
   {
@@ -230702,7 +234689,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-体",
       "k-保",
-      "k-団"
+      "k-団",
+      "k-険"
     ]
   },
   {
@@ -230722,7 +234710,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-命",
       "k-信",
       "k-保",
-      "k-団"
+      "k-団",
+      "k-険"
     ]
   },
   {
@@ -230853,7 +234842,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-体",
       "k-神",
-      "k-団"
+      "k-団",
+      "k-精"
     ]
   },
   {
@@ -231045,7 +235035,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-団"
+      "k-団",
+      "k-妻"
     ]
   },
   {
@@ -231278,7 +235269,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-団"
+      "k-団",
+      "k-居"
     ]
   },
   {
@@ -231846,6 +235838,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-囲い",
+    "word": {
+      "id": "w-囲い",
+      "japanese": "囲い",
+      "furigana": "かこい",
+      "romaji": "kakoi",
+      "meaning": "enclosure; fence",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
     "id": "w-囲い女",
     "word": {
       "id": "w-囲い女",
@@ -231856,7 +235862,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-女"
+      "k-女",
+      "k-囲"
     ]
   },
   {
@@ -231870,7 +235877,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-手"
+      "k-手",
+      "k-囲"
     ]
   },
   {
@@ -231884,7 +235892,78 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-者"
+      "k-者",
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲い込み",
+    "word": {
+      "id": "w-囲い込み",
+      "japanese": "囲い込み",
+      "furigana": "かこいこみ",
+      "romaji": "kakoikomi",
+      "meaning": "enclosure; coralling",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲い込む",
+    "word": {
+      "id": "w-囲い込む",
+      "japanese": "囲い込む",
+      "furigana": "かこいこむ",
+      "romaji": "kakoikomu",
+      "meaning": "to enclose; to corral",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲う",
+    "word": {
+      "id": "w-囲う",
+      "japanese": "囲う",
+      "furigana": "かこう",
+      "romaji": "kakou",
+      "meaning": "to enclose; to surround",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲まう",
+    "word": {
+      "id": "w-囲まう",
+      "japanese": "囲まう",
+      "furigana": "かくまう",
+      "romaji": "kakumau",
+      "meaning": "to shelter (e.g. a fugitive); to harbour",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲み",
+    "word": {
+      "id": "w-囲み",
+      "japanese": "囲み",
+      "furigana": "かこみ",
+      "romaji": "kakomi",
+      "meaning": "enclosure; box",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-囲"
     ]
   },
   {
@@ -231898,7 +235977,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-破"
+      "k-破",
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲みクラス",
+    "word": {
+      "id": "w-囲みクラス",
+      "japanese": "囲みクラス",
+      "furigana": "かこみクラス",
+      "romaji": "kakomikurasu",
+      "meaning": "enclosing class",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
     ]
   },
   {
@@ -231913,7 +236007,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-取",
-      "k-材"
+      "k-材",
+      "k-囲"
     ]
   },
   {
@@ -231927,7 +236022,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-手"
+      "k-手",
+      "k-囲"
     ]
   },
   {
@@ -231942,7 +236038,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-文",
-      "k-字"
+      "k-字",
+      "k-囲"
     ]
   },
   {
@@ -231957,7 +236054,95 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-記",
-      "k-事"
+      "k-事",
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲む",
+    "word": {
+      "id": "w-囲む",
+      "japanese": "囲む",
+      "furigana": "かこむ",
+      "romaji": "kakomu",
+      "meaning": "to surround; to encircle",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲壁",
+    "word": {
+      "id": "w-囲壁",
+      "japanese": "囲壁",
+      "furigana": "いへき",
+      "romaji": "iheki",
+      "meaning": "surrounding wall; enclosing wall",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲炉裏",
+    "word": {
+      "id": "w-囲炉裏",
+      "japanese": "囲炉裏",
+      "furigana": "いろり",
+      "romaji": "irori",
+      "meaning": "sunken hearth; sunken fireplace",
+      "common": false,
+      "wordTags": [
+        "ateji"
+      ]
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲炉裏端",
+    "word": {
+      "id": "w-囲炉裏端",
+      "japanese": "囲炉裏端",
+      "furigana": "いろりばた",
+      "romaji": "iroribata",
+      "meaning": "fireside; hearth",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲碁",
+    "word": {
+      "id": "w-囲碁",
+      "japanese": "囲碁",
+      "furigana": "いご",
+      "romaji": "igo",
+      "meaning": "go (board game)",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲繞",
+    "word": {
+      "id": "w-囲繞",
+      "japanese": "囲繞",
+      "furigana": "いじょう",
+      "romaji": "ijou",
+      "meaning": "surrounding; enclosure",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
     ]
   },
   {
@@ -231971,7 +236156,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-村"
+      "k-村",
+      "k-囲"
+    ]
+  },
+  {
+    "id": "w-囲障",
+    "word": {
+      "id": "w-囲障",
+      "japanese": "囲障",
+      "furigana": "いしょう",
+      "romaji": "ishou",
+      "meaning": "fence (esp. between buildings)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-囲"
     ]
   },
   {
@@ -232208,7 +236408,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-図"
+      "k-図",
+      "k-像"
     ]
   },
   {
@@ -232223,7 +236424,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-学",
-      "k-図"
+      "k-図",
+      "k-像"
     ]
   },
   {
@@ -232536,7 +236738,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-形",
       "k-図",
-      "k-要"
+      "k-要",
+      "k-素"
     ]
   },
   {
@@ -232947,7 +237150,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-書",
       "k-図",
-      "k-館"
+      "k-館",
+      "k-版"
     ]
   },
   {
@@ -233103,7 +237307,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-図"
+      "k-図",
+      "k-版"
     ]
   },
   {
@@ -233705,7 +237910,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-体",
-      "k-固"
+      "k-固",
+      "k-像"
     ]
   },
   {
@@ -234346,7 +238552,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-固",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -235916,7 +240123,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-事"
+      "k-事",
+      "k-犯"
     ]
   },
   {
@@ -235979,7 +240187,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-国",
       "k-交",
-      "k-断"
+      "k-断",
+      "k-絶"
     ]
   },
   {
@@ -236125,7 +240334,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-会"
+      "k-会",
+      "k-招"
     ]
   },
   {
@@ -236681,7 +240891,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-内"
+      "k-内",
+      "k-均"
     ]
   },
   {
@@ -236831,7 +241042,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-国",
-      "k-内"
+      "k-内",
+      "k-留"
     ]
   },
   {
@@ -238834,7 +243046,9 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-国",
       "k-家",
-      "k-反"
+      "k-反",
+      "k-逆",
+      "k-罪"
     ]
   },
   {
@@ -239050,7 +243264,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-家",
       "k-区",
       "k-戦",
-      "k-特"
+      "k-特",
+      "k-略"
     ]
   },
   {
@@ -240049,7 +244264,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-山",
       "k-国",
-      "k-敗"
+      "k-敗",
+      "k-河"
     ]
   },
   {
@@ -240671,7 +244887,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-民",
       "k-健",
       "k-康",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -240691,7 +244908,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-健",
       "k-康",
       "k-制",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -241300,7 +245518,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-国",
       "k-民",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -241693,7 +245912,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-空",
-      "k-国"
+      "k-国",
+      "k-航"
     ]
   },
   {
@@ -242045,7 +246265,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-国"
+      "k-国",
+      "k-益"
     ]
   },
   {
@@ -242076,7 +246297,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-山",
       "k-国",
-      "k-破"
+      "k-破",
+      "k-河"
     ]
   },
   {
@@ -242093,7 +246315,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-山",
       "k-国",
       "k-在",
-      "k-破"
+      "k-破",
+      "k-河"
     ]
   },
   {
@@ -242121,7 +246344,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-国"
+      "k-国",
+      "k-禁"
     ]
   },
   {
@@ -242219,7 +246443,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-取",
       "k-法",
-      "k-税"
+      "k-税",
+      "k-則",
+      "k-犯"
     ]
   },
   {
@@ -242236,7 +246462,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-通",
       "k-法",
-      "k-税"
+      "k-税",
+      "k-則"
     ]
   },
   {
@@ -242374,7 +246601,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-中",
       "k-立",
       "k-学",
-      "k-国"
+      "k-国",
+      "k-興"
     ]
   },
   {
@@ -242860,7 +247088,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-橋",
       "k-法",
       "k-術",
-      "k-技"
+      "k-技",
+      "k-豊"
     ]
   },
   {
@@ -243483,7 +247712,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-少",
       "k-育",
       "k-機",
-      "k-構"
+      "k-構",
+      "k-興"
     ]
   },
   {
@@ -243730,7 +247960,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-行",
       "k-法",
-      "k-規"
+      "k-規",
+      "k-則"
     ]
   },
   {
@@ -243745,7 +247976,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-保"
+      "k-保",
+      "k-留"
     ]
   },
   {
@@ -244110,6 +248342,21 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-国許",
+    "word": {
+      "id": "w-国許",
+      "japanese": "国許",
+      "furigana": "くにもと",
+      "romaji": "kunimoto",
+      "meaning": "one's home; hometown",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-国",
+      "k-許"
+    ]
+  },
+  {
     "id": "w-国訳",
     "word": {
       "id": "w-国訳",
@@ -244362,7 +248609,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-生",
       "k-学",
       "k-国",
-      "k-費"
+      "k-費",
+      "k-留"
     ]
   },
   {
@@ -244498,7 +248746,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-民",
       "k-連",
       "k-関",
-      "k-機"
+      "k-機",
+      "k-救"
     ]
   },
   {
@@ -245418,7 +249667,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-所",
       "k-薬",
       "k-連",
-      "k-務"
+      "k-務",
+      "k-罪",
+      "k-犯"
     ]
   },
   {
@@ -245591,7 +249842,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-民",
       "k-連",
       "k-関",
-      "k-機"
+      "k-機",
+      "k-救"
     ]
   },
   {
@@ -246597,7 +250849,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-教",
       "k-院",
-      "k-際"
+      "k-際",
+      "k-仏"
     ]
   },
   {
@@ -246688,7 +250941,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-健",
       "k-保",
       "k-際",
-      "k-規"
+      "k-規",
+      "k-則"
     ]
   },
   {
@@ -246777,7 +251031,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-際"
+      "k-際",
+      "k-許"
     ]
   },
   {
@@ -246906,7 +251161,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-合",
       "k-連",
-      "k-際"
+      "k-際",
+      "k-版"
     ]
   },
   {
@@ -247755,7 +252011,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-国",
-      "k-際"
+      "k-際",
+      "k-婦"
     ]
   },
   {
@@ -247842,7 +252099,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-空",
       "k-国",
       "k-会",
-      "k-際"
+      "k-際",
+      "k-航"
     ]
   },
   {
@@ -248572,7 +252830,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-際"
+      "k-際",
+      "k-像"
     ]
   },
   {
@@ -248804,7 +253063,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-号",
       "k-標",
       "k-際",
-      "k-準"
+      "k-準",
+      "k-刊"
     ]
   },
   {
@@ -249226,7 +253486,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-会",
       "k-協",
       "k-特",
-      "k-際"
+      "k-際",
+      "k-許"
     ]
   },
   {
@@ -249241,7 +253502,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-際"
+      "k-際",
+      "k-罪",
+      "k-犯"
     ]
   },
   {
@@ -249734,7 +253997,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-科",
       "k-際",
       "k-団",
-      "k-財"
+      "k-財",
+      "k-興"
     ]
   },
   {
@@ -249935,7 +254199,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-組",
       "k-際",
-      "k-織"
+      "k-織",
+      "k-罪",
+      "k-犯"
     ]
   },
   {
@@ -250312,7 +254578,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-空",
       "k-国",
       "k-連",
-      "k-際"
+      "k-際",
+      "k-航"
     ]
   },
   {
@@ -250332,7 +254599,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-協",
       "k-標",
       "k-際",
-      "k-識"
+      "k-識",
+      "k-航"
     ]
   },
   {
@@ -250403,7 +254671,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-国",
       "k-色",
-      "k-際"
+      "k-際",
+      "k-豊"
     ]
   },
   {
@@ -250619,7 +254888,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-機",
       "k-観",
       "k-際",
-      "k-構"
+      "k-構",
+      "k-興"
     ]
   },
   {
@@ -251039,7 +255309,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-行",
       "k-物",
       "k-次",
-      "k-際"
+      "k-際",
+      "k-刊"
     ]
   },
   {
@@ -251635,7 +255906,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-国",
       "k-運",
-      "k-際"
+      "k-際",
+      "k-河"
     ]
   },
   {
@@ -251653,7 +255925,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-運",
       "k-転",
       "k-際",
-      "k-証"
+      "k-証",
+      "k-許"
     ]
   },
   {
@@ -251942,7 +256215,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-会",
       "k-民",
       "k-協",
-      "k-際"
+      "k-際",
+      "k-救"
     ]
   },
   {
@@ -252312,7 +256586,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-会",
       "k-高",
       "k-血",
-      "k-際"
+      "k-際",
+      "k-圧"
     ]
   },
   {
@@ -252946,7 +257221,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-古",
       "k-平",
-      "k-佐"
+      "k-佐",
+      "k-喜"
     ]
   },
   {
@@ -253118,7 +257394,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-土"
+      "k-土",
+      "k-均"
     ]
   },
   {
@@ -253934,7 +258211,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-土"
+      "k-土",
+      "k-圧"
     ]
   },
   {
@@ -254138,7 +258416,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-台",
       "k-図",
       "k-帳",
-      "k-付"
+      "k-付",
+      "k-属"
     ]
   },
   {
@@ -254782,7 +259061,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-土"
+      "k-土",
+      "k-寄"
     ]
   },
   {
@@ -255290,7 +259570,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-書",
       "k-図",
       "k-館",
-      "k-付"
+      "k-付",
+      "k-属"
     ]
   },
   {
@@ -255376,7 +259657,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-土",
       "k-木",
-      "k-建"
+      "k-建",
+      "k-築"
     ]
   },
   {
@@ -255589,7 +259871,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-土"
+      "k-土",
+      "k-版"
     ]
   },
   {
@@ -255936,6 +260219,21 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-土留め",
+    "word": {
+      "id": "w-土留め",
+      "japanese": "土留め",
+      "furigana": "どどめ",
+      "romaji": "dodome",
+      "meaning": "retaining wall; sheathing",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-土",
+      "k-留"
+    ]
+  },
+  {
     "id": "w-土百姓",
     "word": {
       "id": "w-土百姓",
@@ -256150,7 +260448,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-土"
+      "k-土",
+      "k-禁"
     ]
   },
   {
@@ -256697,7 +260996,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-土",
-      "k-足"
+      "k-足",
+      "k-禁"
     ]
   },
   {
@@ -256713,7 +261013,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-土",
       "k-足",
-      "k-止"
+      "k-止",
+      "k-禁"
     ]
   },
   {
@@ -256891,7 +261192,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-金",
       "k-土",
-      "k-類"
+      "k-類",
+      "k-属"
     ]
   },
   {
@@ -256954,6 +261256,67 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-圧",
+    "word": {
+      "id": "w-圧",
+      "japanese": "圧",
+      "furigana": "あつ",
+      "romaji": "atsu",
+      "meaning": "pressure; force",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧さえる",
+    "word": {
+      "id": "w-圧さえる",
+      "japanese": "圧さえる",
+      "furigana": "おさえる",
+      "romaji": "osaeru",
+      "meaning": "to pin down; to hold down",
+      "common": true,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧され気味",
+    "word": {
+      "id": "w-圧され気味",
+      "japanese": "圧され気味",
+      "furigana": "おされぎみ",
+      "romaji": "osaregimi",
+      "meaning": "being on the ropes; losing ground",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-気",
+      "k-味",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧し",
+    "word": {
+      "id": "w-圧し",
+      "japanese": "圧し",
+      "furigana": "おし",
+      "romaji": "oshi",
+      "meaning": "push; pushing",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
     "id": "w-圧し合う",
     "word": {
       "id": "w-圧し合う",
@@ -256964,7 +261327,90 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧し折る",
+    "word": {
+      "id": "w-圧し折る",
+      "japanese": "圧し折る",
+      "furigana": "へしおる",
+      "romaji": "heshioru",
+      "meaning": "to smash; to break",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-折",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧し掛かる",
+    "word": {
+      "id": "w-圧し掛かる",
+      "japanese": "圧し掛かる",
+      "furigana": "おしかかる",
+      "romaji": "oshikakaru",
+      "meaning": "to lean over (someone); to bend over",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧し曲げる",
+    "word": {
+      "id": "w-圧し曲げる",
+      "japanese": "圧し曲げる",
+      "furigana": "へしまげる",
+      "romaji": "heshimageru",
+      "meaning": "to bend",
+      "common": false,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-曲",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧し殺す",
+    "word": {
+      "id": "w-圧し殺す",
+      "japanese": "圧し殺す",
+      "furigana": "おしころす",
+      "romaji": "oshikorosu",
+      "meaning": "to crush to death; to press to death",
+      "common": false,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-殺",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧し潰す",
+    "word": {
+      "id": "w-圧し潰す",
+      "japanese": "圧し潰す",
+      "furigana": "おしつぶす",
+      "romaji": "oshitsubusu",
+      "meaning": "to crush; to squash",
+      "common": true,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -256978,7 +261424,67 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-石"
+      "k-石",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧し込む",
+    "word": {
+      "id": "w-圧し込む",
+      "japanese": "圧し込む",
+      "furigana": "へしこむ",
+      "romaji": "heshikomu",
+      "meaning": "to push into",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧す",
+    "word": {
+      "id": "w-圧す",
+      "japanese": "圧す",
+      "furigana": "おす",
+      "romaji": "osu",
+      "meaning": "to push; to thrust",
+      "common": true,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧する",
+    "word": {
+      "id": "w-圧する",
+      "japanese": "圧する",
+      "furigana": "あっする",
+      "romaji": "assuru",
+      "meaning": "to press; to oppress",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧伏",
+    "word": {
+      "id": "w-圧伏",
+      "japanese": "圧伏",
+      "furigana": "あっぷく",
+      "romaji": "appuku",
+      "meaning": "overpower; subdue",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -256992,7 +261498,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-器"
+      "k-器",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧倒",
+    "word": {
+      "id": "w-圧倒",
+      "japanese": "圧倒",
+      "furigana": "あっとう",
+      "romaji": "attou",
+      "meaning": "to overwhelm (e.g. an opponent); to overpower",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257006,7 +261527,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-的"
+      "k-的",
+      "k-圧"
     ]
   },
   {
@@ -257022,7 +261544,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-多",
       "k-数",
-      "k-的"
+      "k-的",
+      "k-圧"
     ]
   },
   {
@@ -257036,7 +261559,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-入"
+      "k-入",
+      "k-圧"
     ]
   },
   {
@@ -257050,7 +261574,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-出"
+      "k-出",
+      "k-圧"
     ]
   },
   {
@@ -257064,7 +261589,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-制"
+      "k-制",
+      "k-圧"
     ]
   },
   {
@@ -257079,7 +261605,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-的",
-      "k-制"
+      "k-制",
+      "k-圧"
     ]
   },
   {
@@ -257094,7 +261621,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-制"
+      "k-制",
+      "k-圧"
     ]
   },
   {
@@ -257108,7 +261636,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-力"
+      "k-力",
+      "k-圧"
     ]
   },
   {
@@ -257122,7 +261651,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-力"
+      "k-力",
+      "k-圧"
     ]
   },
   {
@@ -257137,7 +261667,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-加"
+      "k-加",
+      "k-圧"
     ]
   },
   {
@@ -257153,7 +261684,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-力",
       "k-体",
-      "k-団"
+      "k-団",
+      "k-圧"
     ]
   },
   {
@@ -257169,7 +261701,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-力",
       "k-器",
-      "k-容"
+      "k-容",
+      "k-圧"
     ]
   },
   {
@@ -257184,7 +261717,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-差"
+      "k-差",
+      "k-圧"
     ]
   },
   {
@@ -257199,7 +261733,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-制"
+      "k-制",
+      "k-圧"
     ]
   },
   {
@@ -257214,7 +261749,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-制"
+      "k-制",
+      "k-圧"
     ]
   },
   {
@@ -257230,7 +261766,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-力",
       "k-室",
-      "k-制"
+      "k-制",
+      "k-圧"
     ]
   },
   {
@@ -257245,7 +261782,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-波"
+      "k-波",
+      "k-圧"
     ]
   },
   {
@@ -257260,7 +261798,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-計"
+      "k-計",
+      "k-圧"
     ]
   },
   {
@@ -257277,7 +261816,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-力",
       "k-調",
       "k-整",
-      "k-器"
+      "k-器",
+      "k-圧"
     ]
   },
   {
@@ -257291,7 +261831,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-力"
+      "k-力",
+      "k-圧"
     ]
   },
   {
@@ -257305,7 +261846,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-力"
+      "k-力",
+      "k-圧"
     ]
   },
   {
@@ -257319,7 +261861,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-勝"
+      "k-勝",
+      "k-圧"
     ]
   },
   {
@@ -257336,7 +261879,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-体",
       "k-受",
       "k-反",
-      "k-容"
+      "k-容",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧壊",
+    "word": {
+      "id": "w-圧壊",
+      "japanese": "圧壊",
+      "furigana": "あっかい",
+      "romaji": "akkai",
+      "meaning": "crushing; breaking by applying pressure",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧密",
+    "word": {
+      "id": "w-圧密",
+      "japanese": "圧密",
+      "furigana": "あつみつ",
+      "romaji": "atsumitsu",
+      "meaning": "consolidation",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257351,7 +261923,36 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-応"
+      "k-応",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧巻",
+    "word": {
+      "id": "w-圧巻",
+      "japanese": "圧巻",
+      "furigana": "あっかん",
+      "romaji": "akkan",
+      "meaning": "highlight; best part",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧延",
+    "word": {
+      "id": "w-圧延",
+      "japanese": "圧延",
+      "furigana": "あつえん",
+      "romaji": "atsuen",
+      "meaning": "rolling; extending by applying pressure",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257366,7 +261967,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-場",
-      "k-工"
+      "k-工",
+      "k-圧"
     ]
   },
   {
@@ -257380,7 +261982,50 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-機"
+      "k-機",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧延鋼",
+    "word": {
+      "id": "w-圧延鋼",
+      "japanese": "圧延鋼",
+      "furigana": "あつえんこう",
+      "romaji": "atsuenkou",
+      "meaning": "rolled steel",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧抑",
+    "word": {
+      "id": "w-圧抑",
+      "japanese": "圧抑",
+      "furigana": "あつよく",
+      "romaji": "atsuyoku",
+      "meaning": "check; restraint",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧排",
+    "word": {
+      "id": "w-圧排",
+      "japanese": "圧排",
+      "furigana": "あっぱい",
+      "romaji": "appai",
+      "meaning": "exclusion; retraction",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257394,7 +262039,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-接"
+      "k-接",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧搾",
+    "word": {
+      "id": "w-圧搾",
+      "japanese": "圧搾",
+      "furigana": "あっさく",
+      "romaji": "assaku",
+      "meaning": "pressure; compression",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧搾ポンプ",
+    "word": {
+      "id": "w-圧搾ポンプ",
+      "japanese": "圧搾ポンプ",
+      "furigana": "あっさくポンプ",
+      "romaji": "assakupompu",
+      "meaning": "compression pump",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257408,7 +262082,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-器"
+      "k-器",
+      "k-圧"
     ]
   },
   {
@@ -257422,7 +262097,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-機"
+      "k-機",
+      "k-圧"
     ]
   },
   {
@@ -257437,7 +262113,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-気",
-      "k-空"
+      "k-空",
+      "k-圧"
     ]
   },
   {
@@ -257451,7 +262128,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-政"
+      "k-政",
+      "k-圧"
     ]
   },
   {
@@ -257465,7 +262143,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-服"
+      "k-服",
+      "k-圧"
     ]
   },
   {
@@ -257479,7 +262158,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-条"
+      "k-条",
+      "k-圧"
     ]
   },
   {
@@ -257493,7 +262173,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-死"
+      "k-死",
+      "k-圧"
     ]
   },
   {
@@ -257507,7 +262188,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-殺"
+      "k-殺",
+      "k-圧"
     ]
   },
   {
@@ -257521,7 +262203,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-注"
+      "k-注",
+      "k-圧"
     ]
   },
   {
@@ -257535,7 +262218,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-器"
+      "k-器",
+      "k-圧"
     ]
   },
   {
@@ -257549,7 +262233,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-点"
+      "k-点",
+      "k-圧"
     ]
   },
   {
@@ -257563,7 +262248,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-状"
+      "k-状",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧痕",
+    "word": {
+      "id": "w-圧痕",
+      "japanese": "圧痕",
+      "furigana": "あっこん",
+      "romaji": "akkon",
+      "meaning": "impression; indentation",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧痛",
+    "word": {
+      "id": "w-圧痛",
+      "japanese": "圧痛",
+      "furigana": "あっつう",
+      "romaji": "attsuu",
+      "meaning": "oppressive pain; tenderness",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257577,7 +262291,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-点"
+      "k-点",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧盤",
+    "word": {
+      "id": "w-圧盤",
+      "japanese": "圧盤",
+      "furigana": "あつばん",
+      "romaji": "atsuban",
+      "meaning": "platen; platten",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257591,7 +262320,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-着"
+      "k-着",
+      "k-圧"
     ]
   },
   {
@@ -257605,7 +262335,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-着"
+      "k-着",
+      "k-圧"
     ]
   },
   {
@@ -257620,7 +262351,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-着"
+      "k-着",
+      "k-圧"
     ]
   },
   {
@@ -257635,7 +262367,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-肉",
-      "k-着"
+      "k-着",
+      "k-圧"
     ]
   },
   {
@@ -257651,7 +262384,22 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-書",
       "k-着",
-      "k-葉"
+      "k-葉",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧砕",
+    "word": {
+      "id": "w-圧砕",
+      "japanese": "圧砕",
+      "furigana": "あっさい",
+      "romaji": "assai",
+      "meaning": "crushing",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257665,7 +262413,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-機"
+      "k-機",
+      "k-圧"
     ]
   },
   {
@@ -257679,7 +262428,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-神"
+      "k-神",
+      "k-圧"
     ]
   },
   {
@@ -257693,7 +262443,92 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-心"
+      "k-心",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮",
+    "word": {
+      "id": "w-圧縮",
+      "japanese": "圧縮",
+      "furigana": "あっしゅく",
+      "romaji": "asshuku",
+      "meaning": "compression; condensing",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮アルゴリズム",
+    "word": {
+      "id": "w-圧縮アルゴリズム",
+      "japanese": "圧縮アルゴリズム",
+      "furigana": "あっしゅくアルゴリズム",
+      "romaji": "asshukuarugorizumu",
+      "meaning": "compression algorithm",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮アーカイバ",
+    "word": {
+      "id": "w-圧縮アーカイバ",
+      "japanese": "圧縮アーカイバ",
+      "furigana": "あっしゅくアーカイバ",
+      "romaji": "asshukuaakaiba",
+      "meaning": "data compression archiver",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮タオル",
+    "word": {
+      "id": "w-圧縮タオル",
+      "japanese": "圧縮タオル",
+      "furigana": "あっしゅくタオル",
+      "romaji": "asshukutaoru",
+      "meaning": "compressed towel; compress towel",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮ファイル",
+    "word": {
+      "id": "w-圧縮ファイル",
+      "japanese": "圧縮ファイル",
+      "furigana": "あっしゅくファイル",
+      "romaji": "asshukufairu",
+      "meaning": "compressed file",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮モード",
+    "word": {
+      "id": "w-圧縮モード",
+      "japanese": "圧縮モード",
+      "furigana": "あっしゅくモード",
+      "romaji": "asshukumoodo",
+      "meaning": "compress mode",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257707,7 +262542,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-力"
+      "k-力",
+      "k-圧"
     ]
   },
   {
@@ -257722,7 +262558,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-果",
-      "k-効"
+      "k-効",
+      "k-圧"
     ]
   },
   {
@@ -257737,7 +262574,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-率",
-      "k-効"
+      "k-効",
+      "k-圧"
     ]
   },
   {
@@ -257751,7 +262589,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-器"
+      "k-器",
+      "k-圧"
     ]
   },
   {
@@ -257765,7 +262604,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-圧"
     ]
   },
   {
@@ -257780,7 +262620,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-成",
-      "k-型"
+      "k-型",
+      "k-圧"
     ]
   },
   {
@@ -257795,7 +262636,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-形",
-      "k-成"
+      "k-成",
+      "k-圧"
     ]
   },
   {
@@ -257810,7 +262652,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-術",
-      "k-技"
+      "k-技",
+      "k-圧"
     ]
   },
   {
@@ -257825,7 +262668,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-木",
-      "k-材"
+      "k-材",
+      "k-圧"
     ]
   },
   {
@@ -257839,7 +262683,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-機"
+      "k-機",
+      "k-圧"
     ]
   },
   {
@@ -257853,7 +262698,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-率"
+      "k-率",
+      "k-圧"
     ]
   },
   {
@@ -257868,7 +262714,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-気",
-      "k-空"
+      "k-空",
+      "k-圧"
     ]
   },
   {
@@ -257885,7 +262732,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-気",
       "k-空",
       "k-機",
-      "k-械"
+      "k-械",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮袋",
+    "word": {
+      "id": "w-圧縮袋",
+      "japanese": "圧縮袋",
+      "furigana": "あっしゅくぶくろ",
+      "romaji": "asshukubukuro",
+      "meaning": "vacuum bag (used to make clothes, futons, etc. easier to store)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257900,7 +262762,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-試",
-      "k-験"
+      "k-験",
+      "k-圧"
     ]
   },
   {
@@ -257916,7 +262779,51 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-機",
       "k-試",
-      "k-験"
+      "k-験",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮酸素",
+    "word": {
+      "id": "w-圧縮酸素",
+      "japanese": "圧縮酸素",
+      "furigana": "あっしゅくさんそ",
+      "romaji": "asshukusanso",
+      "meaning": "compressed oxygen",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-素",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧縮Ｔシャツ",
+    "word": {
+      "id": "w-圧縮Ｔシャツ",
+      "japanese": "圧縮Ｔシャツ",
+      "furigana": "あっしゅくティーシャツ",
+      "romaji": "asshukutiishatsu",
+      "meaning": "compressed T-shirt (packaging technique)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧胴",
+    "word": {
+      "id": "w-圧胴",
+      "japanese": "圧胴",
+      "furigana": "あつどう",
+      "romaji": "atsudou",
+      "meaning": "impression cylinder",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257930,7 +262837,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-覚"
+      "k-覚",
+      "k-圧"
     ]
   },
   {
@@ -257947,7 +262855,22 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-観"
+      "k-観",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧迫",
+    "word": {
+      "id": "w-圧迫",
+      "japanese": "圧迫",
+      "furigana": "あっぱく",
+      "romaji": "appaku",
+      "meaning": "pressure; oppression",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-圧"
     ]
   },
   {
@@ -257962,7 +262885,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-帯",
-      "k-包"
+      "k-包",
+      "k-圧"
     ]
   },
   {
@@ -257976,7 +262900,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-圧"
     ]
   },
   {
@@ -257990,7 +262915,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-感"
+      "k-感",
+      "k-圧"
     ]
   },
   {
@@ -258005,7 +262931,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-面",
-      "k-接"
+      "k-接",
+      "k-圧"
     ]
   },
   {
@@ -258019,7 +262946,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-雪"
+      "k-雪",
+      "k-圧"
     ]
   },
   {
@@ -258034,7 +262962,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-車",
-      "k-雪"
+      "k-雪",
+      "k-圧"
     ]
   },
   {
@@ -258048,7 +262977,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-電"
+      "k-電",
+      "k-圧"
     ]
   },
   {
@@ -258064,7 +262994,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-電",
       "k-果",
-      "k-効"
+      "k-効",
+      "k-圧"
     ]
   },
   {
@@ -258080,7 +263011,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-電",
-      "k-動"
+      "k-動",
+      "k-圧"
     ]
   },
   {
@@ -258095,7 +263027,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-気",
-      "k-電"
+      "k-電",
+      "k-圧"
     ]
   },
   {
@@ -258110,7 +263043,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-電"
+      "k-電",
+      "k-素",
+      "k-圧"
     ]
   },
   {
@@ -258124,7 +263059,23 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-面"
+      "k-面",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-圧麦",
+    "word": {
+      "id": "w-圧麦",
+      "japanese": "圧麦",
+      "furigana": "おしむぎ",
+      "romaji": "oshimugi",
+      "meaning": "rolled barley; rolled oats",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-麦",
+      "k-圧"
     ]
   },
   {
@@ -259353,7 +264304,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-在"
+      "k-在",
+      "k-居"
     ]
   },
   {
@@ -259776,7 +264728,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-国",
       "k-民",
       "k-在",
-      "k-団"
+      "k-団",
+      "k-留",
+      "k-居"
     ]
   },
   {
@@ -260176,7 +265130,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -260190,7 +265145,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -260207,7 +265163,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-人",
       "k-国",
       "k-外",
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -260221,7 +265178,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -260237,7 +265195,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-間",
       "k-期",
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -260255,7 +265214,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-新",
       "k-期",
       "k-在",
-      "k-可"
+      "k-可",
+      "k-許",
+      "k-留"
     ]
   },
   {
@@ -260270,7 +265231,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-民",
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -260287,7 +265249,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-別",
       "k-特",
       "k-在",
-      "k-可"
+      "k-可",
+      "k-許",
+      "k-留"
     ]
   },
   {
@@ -260302,7 +265266,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -260318,7 +265283,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-資",
       "k-在",
-      "k-格"
+      "k-格",
+      "k-留"
     ]
   },
   {
@@ -260337,7 +265303,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-保",
       "k-資",
       "k-在",
-      "k-格"
+      "k-格",
+      "k-留"
     ]
   },
   {
@@ -260357,7 +265324,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-資",
       "k-在",
       "k-格",
-      "k-証"
+      "k-証",
+      "k-留"
     ]
   },
   {
@@ -260372,7 +265340,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-在"
+      "k-在",
+      "k-留"
     ]
   },
   {
@@ -260726,7 +265695,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-野",
       "k-神",
-      "k-在"
+      "k-在",
+      "k-精"
     ]
   },
   {
@@ -261083,7 +266053,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-均"
     ]
   },
   {
@@ -261561,7 +266532,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-下",
-      "k-地"
+      "k-地",
+      "k-版"
     ]
   },
   {
@@ -262248,7 +267220,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-節"
+      "k-節",
+      "k-久"
     ]
   },
   {
@@ -262880,7 +267853,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-厚"
     ]
   },
   {
@@ -263289,6 +268263,21 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-地均し",
+    "word": {
+      "id": "w-地均し",
+      "japanese": "地均し",
+      "furigana": "じならし",
+      "romaji": "jinarashi",
+      "meaning": "ground levelling (leveling); laying the groundwork",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-地",
+      "k-均"
+    ]
+  },
+  {
     "id": "w-地坪",
     "word": {
       "id": "w-地坪",
@@ -263659,7 +268648,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-興"
     ]
   },
   {
@@ -263673,7 +268663,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-興"
     ]
   },
   {
@@ -263691,7 +268682,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-公",
       "k-整",
       "k-団",
-      "k-備"
+      "k-備",
+      "k-興"
     ]
   },
   {
@@ -263752,7 +268744,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-気",
       "k-地",
       "k-観",
-      "k-象"
+      "k-象",
+      "k-測"
     ]
   },
   {
@@ -263829,7 +268822,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-分",
       "k-地",
-      "k-的"
+      "k-的",
+      "k-布"
     ]
   },
   {
@@ -263909,6 +268903,21 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-経"
+    ]
+  },
+  {
+    "id": "w-地域興し",
+    "word": {
+      "id": "w-地域興し",
+      "japanese": "地域興し",
+      "furigana": "ちいきおこし",
+      "romaji": "chiikiokoshi",
+      "meaning": "regional revitalization; local revitalization",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-地",
+      "k-興"
     ]
   },
   {
@@ -264000,7 +269009,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-便",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -264417,7 +269427,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-重",
-      "k-法"
+      "k-法",
+      "k-則"
     ]
   },
   {
@@ -264694,7 +269705,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-形",
-      "k-量"
+      "k-量",
+      "k-測"
     ]
   },
   {
@@ -265444,7 +270456,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-方"
+      "k-方",
+      "k-版"
     ]
   },
   {
@@ -265637,7 +270650,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-空",
       "k-地",
       "k-方",
-      "k-局"
+      "k-局",
+      "k-航"
     ]
   },
   {
@@ -266148,7 +271162,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-均"
     ]
   },
   {
@@ -266163,7 +271178,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-説"
+      "k-説",
+      "k-均"
     ]
   },
   {
@@ -266580,7 +271596,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-熱"
+      "k-熱",
+      "k-留"
     ]
   },
   {
@@ -266653,7 +271670,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-会",
-      "k-地"
+      "k-地",
+      "k-仏"
     ]
   },
   {
@@ -266697,7 +271715,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-仏"
     ]
   },
   {
@@ -267528,7 +272547,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-球",
       "k-変",
       "k-観",
-      "k-境"
+      "k-境",
+      "k-測"
     ]
   },
   {
@@ -267616,7 +272636,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-球",
-      "k-観"
+      "k-観",
+      "k-測"
     ]
   },
   {
@@ -267634,7 +272655,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-星",
       "k-球",
       "k-観",
-      "k-衛"
+      "k-衛",
+      "k-測"
     ]
   },
   {
@@ -268139,7 +273161,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-気",
       "k-地",
-      "k-転"
+      "k-転",
+      "k-逆"
     ]
   },
   {
@@ -268548,7 +273571,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-居"
     ]
   },
   {
@@ -269613,7 +274637,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -269889,7 +274914,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-観"
+      "k-観",
+      "k-測"
     ]
   },
   {
@@ -269904,7 +274930,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-観"
+      "k-観",
+      "k-測"
     ]
   },
   {
@@ -270291,6 +275318,79 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-均し",
+    "word": {
+      "id": "w-均し",
+      "japanese": "均し",
+      "furigana": "ならし",
+      "romaji": "narashi",
+      "meaning": "average; leveling",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-均"
+    ]
+  },
+  {
+    "id": "w-均しい",
+    "word": {
+      "id": "w-均しい",
+      "japanese": "均しい",
+      "furigana": "ひとしい",
+      "romaji": "hitoshii",
+      "meaning": "equal; identical",
+      "common": true,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-均"
+    ]
+  },
+  {
+    "id": "w-均しく",
+    "word": {
+      "id": "w-均しく",
+      "japanese": "均しく",
+      "furigana": "ひとしく",
+      "romaji": "hitoshiku",
+      "meaning": "equally; evenly",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-均"
+    ]
+  },
+  {
+    "id": "w-均す",
+    "word": {
+      "id": "w-均す",
+      "japanese": "均す",
+      "furigana": "ならす",
+      "romaji": "narasu",
+      "meaning": "to make even; to make smooth",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-均"
+    ]
+  },
+  {
+    "id": "w-均てん",
+    "word": {
+      "id": "w-均てん",
+      "japanese": "均てん",
+      "furigana": "きんてん",
+      "romaji": "kinten",
+      "meaning": "dividing (profits, etc.) equally; gaining equally",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-均"
+    ]
+  },
+  {
     "id": "w-均一",
     "word": {
       "id": "w-均一",
@@ -270301,7 +275401,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-一"
+      "k-一",
+      "k-均"
     ]
   },
   {
@@ -270317,7 +275418,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-一",
       "k-価",
-      "k-格"
+      "k-格",
+      "k-均"
     ]
   },
   {
@@ -270332,7 +275434,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-一",
-      "k-化"
+      "k-化",
+      "k-均"
     ]
   },
   {
@@ -270348,7 +275451,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-一",
       "k-金",
-      "k-料"
+      "k-料",
+      "k-均"
     ]
   },
   {
@@ -270362,7 +275466,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-分"
+      "k-分",
+      "k-均"
     ]
   },
   {
@@ -270376,7 +275481,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-勢"
+      "k-勢",
+      "k-均"
     ]
   },
   {
@@ -270390,7 +275496,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-整"
+      "k-整",
+      "k-均"
     ]
   },
   {
@@ -270404,7 +275511,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-整"
+      "k-整",
+      "k-均"
     ]
   },
   {
@@ -270419,7 +275527,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-取",
-      "k-整"
+      "k-整",
+      "k-均"
     ]
   },
   {
@@ -270434,7 +275543,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-時",
-      "k-差"
+      "k-差",
+      "k-均"
     ]
   },
   {
@@ -270449,7 +275559,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-田",
-      "k-制"
+      "k-制",
+      "k-均"
     ]
   },
   {
@@ -270464,7 +275575,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-田",
-      "k-法"
+      "k-法",
+      "k-均"
     ]
   },
   {
@@ -270478,7 +275590,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-等"
+      "k-等",
+      "k-均"
     ]
   },
   {
@@ -270492,7 +275605,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-等"
+      "k-等",
+      "k-均"
     ]
   },
   {
@@ -270507,7 +275621,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-等",
-      "k-付"
+      "k-付",
+      "k-均"
     ]
   },
   {
@@ -270522,7 +275637,22 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-化",
-      "k-等"
+      "k-等",
+      "k-均"
+    ]
+  },
+  {
+    "id": "w-均衡",
+    "word": {
+      "id": "w-均衡",
+      "japanese": "均衡",
+      "furigana": "きんこう",
+      "romaji": "kinkou",
+      "meaning": "balance; equilibrium",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-均"
     ]
   },
   {
@@ -270537,7 +275667,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-算",
-      "k-予"
+      "k-予",
+      "k-均"
     ]
   },
   {
@@ -270554,7 +275685,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-数",
       "k-算",
       "k-予",
-      "k-乗"
+      "k-乗",
+      "k-均"
     ]
   },
   {
@@ -270569,7 +275701,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-価",
-      "k-格"
+      "k-格",
+      "k-均"
     ]
   },
   {
@@ -270583,7 +275716,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-経"
+      "k-経",
+      "k-均"
     ]
   },
   {
@@ -270597,7 +275731,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-質"
+      "k-質",
+      "k-均"
     ]
   },
   {
@@ -270612,7 +275747,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-化",
-      "k-質"
+      "k-質",
+      "k-均"
     ]
   },
   {
@@ -270627,7 +275763,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-性",
-      "k-質"
+      "k-質",
+      "k-均"
     ]
   },
   {
@@ -270872,6 +276009,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-作",
       "k-進"
+    ]
+  },
+  {
+    "id": "w-坐像",
+    "word": {
+      "id": "w-坐像",
+      "japanese": "坐像",
+      "furigana": "ざぞう",
+      "romaji": "zazou",
+      "meaning": "seated figure (e.g. of Buddha); sedentary statue",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-像"
     ]
   },
   {
@@ -271203,6 +276354,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-垂れ布",
+    "word": {
+      "id": "w-垂れ布",
+      "japanese": "垂れ布",
+      "furigana": "たれぬの",
+      "romaji": "tarenuno",
+      "meaning": "hanging curtain used in place of a wall (Heian period)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-布"
+    ]
+  },
+  {
     "id": "w-垂れ板",
     "word": {
       "id": "w-垂れ板",
@@ -271528,7 +276693,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-直"
+      "k-直",
+      "k-布"
     ]
   },
   {
@@ -273688,7 +278854,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-外",
-      "k-用"
+      "k-用",
+      "k-適"
     ]
   },
   {
@@ -275271,7 +280438,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-本",
       "k-原",
-      "k-基"
+      "k-基",
+      "k-則"
     ]
   },
   {
@@ -275723,7 +280891,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-定",
       "k-位",
       "k-単",
-      "k-基"
+      "k-基",
+      "k-測"
     ]
   },
   {
@@ -275964,7 +281133,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-様",
       "k-要",
       "k-示",
-      "k-基"
+      "k-基",
+      "k-素"
     ]
   },
   {
@@ -277271,7 +282441,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-調",
       "k-基",
-      "k-演"
+      "k-演",
+      "k-講"
     ]
   },
   {
@@ -277915,7 +283086,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-持"
+      "k-持",
+      "k-久"
+    ]
+  },
+  {
+    "id": "w-堅志",
+    "word": {
+      "id": "w-堅志",
+      "japanese": "堅志",
+      "furigana": "けんし",
+      "romaji": "kenshi",
+      "meaning": "iron purpose",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-志"
     ]
   },
   {
@@ -278278,6 +283464,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-堕罪",
+    "word": {
+      "id": "w-堕罪",
+      "japanese": "堕罪",
+      "furigana": "だざい",
+      "romaji": "dazai",
+      "meaning": "sinking into sin",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-罪"
+    ]
+  },
+  {
     "id": "w-堕胎医",
     "word": {
       "id": "w-堕胎医",
@@ -278289,6 +283489,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-医"
+    ]
+  },
+  {
+    "id": "w-堕胎罪",
+    "word": {
+      "id": "w-堕胎罪",
+      "japanese": "堕胎罪",
+      "furigana": "だたいざい",
+      "romaji": "dataizai",
+      "meaning": "illegal abortion",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-罪"
     ]
   },
   {
@@ -278350,6 +283564,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-堤を築く",
+    "word": {
+      "id": "w-堤を築く",
+      "japanese": "堤を築く",
+      "furigana": "つつみをきずく",
+      "romaji": "tsutsumiokizuku",
+      "meaning": "to build an embankment",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-築"
+    ]
+  },
+  {
     "id": "w-堤体",
     "word": {
       "id": "w-堤体",
@@ -278388,7 +283616,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-防"
+      "k-防",
+      "k-築"
     ]
   },
   {
@@ -278434,7 +283663,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-能"
+      "k-能",
+      "k-航"
     ]
   },
   {
@@ -279377,7 +284607,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-報"
+      "k-報",
+      "k-講"
     ]
   },
   {
@@ -280423,7 +285654,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-場",
       "k-所",
-      "k-団"
+      "k-団",
+      "k-布"
     ]
   },
   {
@@ -281025,6 +286257,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-塑像",
+    "word": {
+      "id": "w-塑像",
+      "japanese": "塑像",
+      "furigana": "そぞう",
+      "romaji": "sozou",
+      "meaning": "plaster image; clay figure",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-像"
+    ]
+  },
+  {
     "id": "w-塑弾性",
     "word": {
       "id": "w-塑弾性",
@@ -281424,6 +286670,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-塗仏",
+    "word": {
+      "id": "w-塗仏",
+      "japanese": "塗仏",
+      "furigana": "ぬりぼとけ",
+      "romaji": "nuribotoke",
+      "meaning": "nuribotoke; monster resembling a corpse with dangling eyeballs",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-仏"
+    ]
+  },
+  {
     "id": "w-塗工",
     "word": {
       "id": "w-塗工",
@@ -281450,6 +286710,34 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-工",
       "k-紙"
+    ]
+  },
+  {
+    "id": "w-塗布",
+    "word": {
+      "id": "w-塗布",
+      "japanese": "塗布",
+      "furigana": "とふ",
+      "romaji": "tofu",
+      "meaning": "application (of ointment, etc.); coating",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-布"
+    ]
+  },
+  {
+    "id": "w-塗布剤",
+    "word": {
+      "id": "w-塗布剤",
+      "japanese": "塗布剤",
+      "furigana": "とふざい",
+      "romaji": "tofuzai",
+      "meaning": "liniment; ointment",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-布"
     ]
   },
   {
@@ -281564,6 +286852,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-香"
+    ]
+  },
+  {
+    "id": "w-塚を築く",
+    "word": {
+      "id": "w-塚を築く",
+      "japanese": "塚を築く",
+      "furigana": "つかをきずく",
+      "romaji": "tsukaokizuku",
+      "meaning": "to pile up a mound",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-築"
     ]
   },
   {
@@ -282292,7 +287594,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-水",
       "k-化",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -282986,7 +288289,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-塩"
+      "k-塩",
+      "k-布"
     ]
   },
   {
@@ -283400,7 +288704,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283415,7 +288720,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-中",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283430,7 +288736,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-理",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283446,7 +288753,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-水",
       "k-理",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283461,7 +288769,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-水",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283476,7 +288785,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-消",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283492,7 +288802,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-気",
       "k-鳴",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283506,7 +288817,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283521,7 +288833,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-白",
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283535,7 +288848,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283549,7 +288863,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283563,7 +288878,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -283577,7 +288893,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-塩"
+      "k-塩",
+      "k-素"
     ]
   },
   {
@@ -284346,6 +289663,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-塾講",
+    "word": {
+      "id": "w-塾講",
+      "japanese": "塾講",
+      "furigana": "じゅくこう",
+      "romaji": "jukukou",
+      "meaning": "cram school teacher; teaching at a cram school",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-講"
+    ]
+  },
+  {
     "id": "w-塾講師",
     "word": {
       "id": "w-塾講師",
@@ -284356,7 +289687,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-師"
+      "k-師",
+      "k-講"
     ]
   },
   {
@@ -284765,7 +290097,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-界",
       "k-法",
       "k-要",
-      "k-境"
+      "k-境",
+      "k-素"
     ]
   },
   {
@@ -284826,7 +290159,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-着",
-      "k-団"
+      "k-団",
+      "k-布"
     ]
   },
   {
@@ -285398,7 +290732,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-増"
+      "k-増",
+      "k-刊"
     ]
   },
   {
@@ -285413,7 +290748,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-号",
-      "k-増"
+      "k-増",
+      "k-刊"
     ]
   },
   {
@@ -285552,7 +290888,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-増"
+      "k-増",
+      "k-益"
     ]
   },
   {
@@ -285760,7 +291097,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-改",
-      "k-増"
+      "k-増",
+      "k-築"
     ]
   },
   {
@@ -285967,7 +291305,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-増"
+      "k-増",
+      "k-益"
     ]
   },
   {
@@ -286012,7 +291351,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-増"
+      "k-増",
+      "k-築"
     ]
   },
   {
@@ -286177,7 +291517,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-改",
-      "k-増"
+      "k-増",
+      "k-版"
     ]
   },
   {
@@ -286221,7 +291562,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-増"
+      "k-増",
+      "k-版"
     ]
   },
   {
@@ -286810,6 +292152,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-墨版",
+    "word": {
+      "id": "w-墨版",
+      "japanese": "墨版",
+      "furigana": "すみはん",
+      "romaji": "sumihan",
+      "meaning": "key block (in woodblock printmaking); key plate (in 4 colors process printing)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-版"
+    ]
+  },
+  {
     "id": "w-墨画",
     "word": {
       "id": "w-墨画",
@@ -286951,7 +292307,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-発"
+      "k-発",
+      "k-罪"
     ]
   },
   {
@@ -286985,6 +292342,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-田"
+    ]
+  },
+  {
+    "id": "w-壁に寄り掛かる",
+    "word": {
+      "id": "w-壁に寄り掛かる",
+      "japanese": "壁に寄り掛かる",
+      "furigana": "かべによりかかる",
+      "romaji": "kabeniyorikakaru",
+      "meaning": "to rest against the wall; to lean against a wall",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -288251,6 +293622,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-壮志",
+    "word": {
+      "id": "w-壮志",
+      "japanese": "壮志",
+      "furigana": "そうし",
+      "romaji": "soushi",
+      "meaning": "great ambition; lofty aspiration",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-志"
+    ]
+  },
+  {
     "id": "w-壮挙",
     "word": {
       "id": "w-壮挙",
@@ -288262,6 +293647,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-挙"
+    ]
+  },
+  {
+    "id": "w-壮絶",
+    "word": {
+      "id": "w-壮絶",
+      "japanese": "壮絶",
+      "furigana": "そうぜつ",
+      "romaji": "souzetsu",
+      "meaning": "heroic; fierce",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-絶"
     ]
   },
   {
@@ -288594,7 +293993,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-声",
-      "k-法"
+      "k-法",
+      "k-仏"
     ]
   },
   {
@@ -289880,7 +295280,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-売"
+      "k-売",
+      "k-圧"
     ]
   },
   {
@@ -289894,7 +295295,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-売"
+      "k-売",
+      "k-圧"
     ]
   },
   {
@@ -290826,7 +296228,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-上",
       "k-売",
       "k-利",
-      "k-率"
+      "k-率",
+      "k-益"
     ]
   },
   {
@@ -290925,7 +296328,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-上",
       "k-売",
       "k-利",
-      "k-総"
+      "k-総",
+      "k-益"
     ]
   },
   {
@@ -291154,7 +296558,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-売"
+      "k-売",
+      "k-損"
     ]
   },
   {
@@ -291168,7 +296573,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-売"
+      "k-売",
+      "k-益"
     ]
   },
   {
@@ -291410,7 +296816,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-売",
-      "k-春"
+      "k-春",
+      "k-婦"
     ]
   },
   {
@@ -291614,7 +297021,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-売",
-      "k-笑"
+      "k-笑",
+      "k-婦"
     ]
   },
   {
@@ -292858,7 +298266,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-変"
+      "k-変",
+      "k-則"
     ]
   },
   {
@@ -292873,7 +298282,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-変",
-      "k-務"
+      "k-務",
+      "k-則"
     ]
   },
   {
@@ -292888,7 +298298,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-的",
-      "k-変"
+      "k-変",
+      "k-則"
     ]
   },
   {
@@ -292903,7 +298314,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-道",
-      "k-変"
+      "k-変",
+      "k-則"
     ]
   },
   {
@@ -293257,7 +298669,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-変"
+      "k-変",
+      "k-圧"
     ]
   },
   {
@@ -293272,7 +298685,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-変",
-      "k-器"
+      "k-器",
+      "k-圧"
     ]
   },
   {
@@ -293287,7 +298701,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-所",
-      "k-変"
+      "k-変",
+      "k-圧"
     ]
   },
   {
@@ -293694,7 +299109,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-形",
       "k-変",
-      "k-規"
+      "k-規",
+      "k-則"
     ]
   },
   {
@@ -294285,7 +299701,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-止",
-      "k-変"
+      "k-変",
+      "k-禁"
     ]
   },
   {
@@ -294300,7 +299717,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-度",
-      "k-変"
+      "k-変",
+      "k-精"
     ]
   },
   {
@@ -295573,7 +300991,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-変",
       "k-保",
-      "k-額"
+      "k-額",
+      "k-険"
     ]
   },
   {
@@ -296119,7 +301538,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-夏",
-      "k-安"
+      "k-安",
+      "k-居"
     ]
   },
   {
@@ -296200,7 +301620,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-夏",
-      "k-団"
+      "k-団",
+      "k-布"
     ]
   },
   {
@@ -296786,7 +302207,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夏"
+      "k-夏",
+      "k-居"
     ]
   },
   {
@@ -297281,7 +302703,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-夕"
+      "k-夕",
+      "k-刊"
     ]
   },
   {
@@ -297296,7 +302719,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-夕",
-      "k-紙"
+      "k-紙",
+      "k-刊"
     ]
   },
   {
@@ -297635,7 +303059,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-夕",
-      "k-岸"
+      "k-岸",
+      "k-河"
     ]
   },
   {
@@ -299183,7 +304608,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-外"
+      "k-外",
+      "k-妻"
     ]
   },
   {
@@ -299662,7 +305088,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-外",
-      "k-止"
+      "k-止",
+      "k-禁"
     ]
   },
   {
@@ -299679,7 +305106,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-出",
       "k-外",
       "k-止",
-      "k-令"
+      "k-令",
+      "k-禁"
     ]
   },
   {
@@ -299727,7 +305155,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-外",
-      "k-可"
+      "k-可",
+      "k-許"
     ]
   },
   {
@@ -300213,7 +305642,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-間",
       "k-外",
       "k-失",
-      "k-因"
+      "k-因",
+      "k-損"
     ]
   },
   {
@@ -300243,7 +305673,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-外"
+      "k-外",
+      "k-囲"
     ]
   },
   {
@@ -300257,7 +305688,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-外"
+      "k-外",
+      "k-囲"
     ]
   },
   {
@@ -300570,7 +306002,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-生",
       "k-学",
       "k-国",
-      "k-外"
+      "k-外",
+      "k-留"
     ]
   },
   {
@@ -301193,7 +306626,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-国",
       "k-外",
-      "k-路"
+      "k-路",
+      "k-航"
     ]
   },
   {
@@ -301377,7 +306811,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-外"
+      "k-外",
+      "k-圧"
     ]
   },
   {
@@ -302249,7 +307684,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-外"
+      "k-外",
+      "k-罪"
     ]
   },
   {
@@ -302905,7 +308341,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-外"
+      "k-外",
+      "k-素"
     ]
   },
   {
@@ -304205,7 +309642,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-外"
+      "k-外",
+      "k-航"
     ]
   },
   {
@@ -304220,7 +309658,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-外",
-      "k-船"
+      "k-船",
+      "k-航"
     ]
   },
   {
@@ -304540,7 +309979,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-外",
       "k-建",
       "k-貨",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -304977,7 +310417,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-外",
-      "k-応"
+      "k-応",
+      "k-適"
     ]
   },
   {
@@ -305479,7 +310920,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-外",
-      "k-部"
+      "k-部",
+      "k-寄"
     ]
   },
   {
@@ -305674,7 +311116,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-外",
       "k-部",
-      "k-要"
+      "k-要",
+      "k-素"
     ]
   },
   {
@@ -306334,6 +311777,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-夙志",
+    "word": {
+      "id": "w-夙志",
+      "japanese": "夙志",
+      "furigana": "しゅくし",
+      "romaji": "shukushi",
+      "meaning": "long-cherished desire",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-志"
+    ]
+  },
+  {
     "id": "w-夙成",
     "word": {
       "id": "w-夙成",
@@ -306387,7 +311844,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-多",
-      "k-弁"
+      "k-弁",
+      "k-益"
     ]
   },
   {
@@ -306872,7 +312330,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-多",
       "k-度",
-      "k-倍"
+      "k-倍",
+      "k-精"
     ]
   },
   {
@@ -306887,7 +312346,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-多",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -307712,7 +313172,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-多"
+      "k-多",
+      "k-妻"
     ]
   },
   {
@@ -308483,7 +313944,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-多",
       "k-心",
-      "k-情"
+      "k-情",
+      "k-仏"
     ]
   },
   {
@@ -308819,7 +314281,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-子",
       "k-多",
       "k-数",
-      "k-決"
+      "k-決",
+      "k-素"
     ]
   },
   {
@@ -309511,7 +314974,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-化",
       "k-族",
       "k-炭",
-      "k-香"
+      "k-香",
+      "k-素"
     ]
   },
   {
@@ -310858,7 +316322,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-多",
       "k-要",
-      "k-証"
+      "k-証",
+      "k-素"
     ]
   },
   {
@@ -311703,7 +317168,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-定",
       "k-決",
       "k-表",
-      "k-重"
+      "k-重",
+      "k-適"
     ]
   },
   {
@@ -312071,7 +317537,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-分",
-      "k-多"
+      "k-多",
+      "k-布"
     ]
   },
   {
@@ -313770,6 +319237,21 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-夜永",
+    "word": {
+      "id": "w-夜永",
+      "japanese": "夜永",
+      "furigana": "よなが",
+      "romaji": "yonaga",
+      "meaning": "long night (esp. of autumn)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-夜",
+      "k-永"
+    ]
+  },
+  {
     "id": "w-夜汽車",
     "word": {
       "id": "w-夜汽車",
@@ -314856,7 +320338,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-外",
       "k-止",
       "k-夜",
-      "k-令"
+      "k-令",
+      "k-禁"
     ]
   },
   {
@@ -315683,6 +321166,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-現"
+    ]
+  },
+  {
+    "id": "w-夢精",
+    "word": {
+      "id": "w-夢精",
+      "japanese": "夢精",
+      "furigana": "むせい",
+      "romaji": "musei",
+      "meaning": "wet dream; nocturnal emission",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-精"
     ]
   },
   {
@@ -317905,7 +323402,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-教",
-      "k-乗"
+      "k-乗",
+      "k-仏"
     ]
   },
   {
@@ -318614,7 +324112,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-大"
+      "k-大",
+      "k-版"
     ]
   },
   {
@@ -318692,7 +324191,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-仏"
     ]
   },
   {
@@ -319686,7 +325186,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-険"
     ]
   },
   {
@@ -320686,7 +326187,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-原"
+      "k-原",
+      "k-則"
     ]
   },
   {
@@ -321189,7 +326691,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-生",
       "k-同",
       "k-命",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -322125,7 +327628,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-喜"
     ]
   },
   {
@@ -322143,7 +327647,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-利"
+      "k-利",
+      "k-喜"
     ]
   },
   {
@@ -322350,7 +327855,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-四"
+      "k-四",
+      "k-喜"
     ]
   },
   {
@@ -322555,7 +328061,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-路"
+      "k-路",
+      "k-航"
     ]
   },
   {
@@ -323130,7 +328637,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-要"
+      "k-要",
+      "k-素"
     ]
   },
   {
@@ -323782,7 +329290,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-大",
       "k-学",
       "k-子",
-      "k-女"
+      "k-女",
+      "k-妻"
     ]
   },
   {
@@ -323802,7 +329311,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-女",
       "k-部",
       "k-期",
-      "k-短"
+      "k-短",
+      "k-妻"
     ]
   },
   {
@@ -324307,7 +329817,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-大",
       "k-学",
       "k-会",
-      "k-協"
+      "k-協",
+      "k-婦"
     ]
   },
   {
@@ -324549,7 +330060,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-学",
-      "k-師"
+      "k-師",
+      "k-講"
     ]
   },
   {
@@ -325181,7 +330693,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-寄"
     ]
   },
   {
@@ -325197,7 +330710,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-会",
-      "k-茶"
+      "k-茶",
+      "k-寄"
     ]
   },
   {
@@ -326389,7 +331903,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-建"
+      "k-建",
+      "k-築"
     ]
   },
   {
@@ -326831,7 +332346,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-志"
     ]
   },
   {
@@ -326860,7 +332376,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-念"
+      "k-念",
+      "k-仏"
     ]
   },
   {
@@ -327357,7 +332874,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-火",
       "k-海",
       "k-成",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -327924,7 +333442,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-損"
     ]
   },
   {
@@ -327939,7 +333458,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-害"
+      "k-害",
+      "k-損"
     ]
   },
   {
@@ -328016,7 +333536,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-会",
-      "k-政"
+      "k-政",
+      "k-賛"
     ]
   },
   {
@@ -328078,7 +333599,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-数",
-      "k-法"
+      "k-法",
+      "k-則"
     ]
   },
   {
@@ -328404,7 +333926,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-日",
       "k-大",
       "k-本",
-      "k-秋"
+      "k-秋",
+      "k-豊"
     ]
   },
   {
@@ -328632,7 +334155,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-暴"
     ]
   },
   {
@@ -328647,7 +334171,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-落"
+      "k-落",
+      "k-暴"
     ]
   },
   {
@@ -329027,7 +334552,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-東",
       "k-京",
       "k-海",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -329557,7 +335083,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-犯"
     ]
   },
   {
@@ -330038,7 +335565,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-成",
       "k-加",
       "k-変",
-      "k-経"
+      "k-経",
+      "k-仏"
     ]
   },
   {
@@ -330198,7 +335726,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-気"
+      "k-気",
+      "k-圧"
     ]
   },
   {
@@ -330422,7 +335951,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-永"
     ]
   },
   {
@@ -330466,7 +335996,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-河"
     ]
   },
   {
@@ -330480,7 +336011,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-河"
     ]
   },
   {
@@ -330496,7 +336028,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-小",
-      "k-説"
+      "k-説",
+      "k-河"
     ]
   },
   {
@@ -331067,7 +336600,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-混"
     ]
   },
   {
@@ -331848,7 +337382,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-石",
-      "k-理"
+      "k-理",
+      "k-像"
     ]
   },
   {
@@ -331999,7 +337534,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-略"
     ]
   },
   {
@@ -333398,7 +338934,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-元"
+      "k-元",
+      "k-紀"
     ]
   },
   {
@@ -333632,7 +339169,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-大",
       "k-統",
       "k-領",
-      "k-告"
+      "k-告",
+      "k-布"
     ]
   },
   {
@@ -333755,7 +339293,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-絶"
     ]
   },
   {
@@ -333769,7 +339308,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-絶"
     ]
   },
   {
@@ -333783,7 +339323,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-絶",
+      "k-賛"
     ]
   },
   {
@@ -333869,7 +339411,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-罪"
     ]
   },
   {
@@ -333884,7 +339427,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-大"
+      "k-大",
+      "k-罪"
     ]
   },
   {
@@ -334776,7 +340320,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-大",
       "k-時",
       "k-海",
-      "k-代"
+      "k-代",
+      "k-航"
     ]
   },
   {
@@ -334881,7 +340426,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-居"
     ]
   },
   {
@@ -336282,7 +341828,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-電",
-      "k-規"
+      "k-規",
+      "k-停"
     ]
   },
   {
@@ -336299,7 +341846,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-大",
       "k-公",
       "k-開",
-      "k-規"
+      "k-規",
+      "k-講"
     ]
   },
   {
@@ -337050,7 +342598,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-建",
-      "k-設"
+      "k-設",
+      "k-豊"
     ]
   },
   {
@@ -337186,7 +342735,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-成"
+      "k-成",
+      "k-賛"
     ]
   },
   {
@@ -337654,7 +343204,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-逆"
     ]
   },
   {
@@ -337670,7 +343221,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-事",
-      "k-件"
+      "k-件",
+      "k-逆"
     ]
   },
   {
@@ -337685,7 +343237,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-手"
+      "k-手",
+      "k-逆"
     ]
   },
   {
@@ -337701,7 +343254,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-道",
-      "k-無"
+      "k-無",
+      "k-逆"
     ]
   },
   {
@@ -337715,7 +343269,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-逆",
+      "k-罪"
     ]
   },
   {
@@ -337730,7 +343286,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-転"
+      "k-転",
+      "k-逆"
     ]
   },
   {
@@ -337746,7 +343303,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-道",
-      "k-非"
+      "k-非",
+      "k-逆"
     ]
   },
   {
@@ -338561,7 +344119,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-量"
+      "k-量",
+      "k-絶"
     ]
   },
   {
@@ -339809,7 +345368,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-池",
       "k-育",
       "k-付",
-      "k-阪"
+      "k-阪",
+      "k-属"
     ]
   },
   {
@@ -339947,7 +345507,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-学",
-      "k-阪"
+      "k-阪",
+      "k-河"
     ]
   },
   {
@@ -340948,7 +346509,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-雑"
     ]
   },
   {
@@ -341191,7 +346753,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-空"
+      "k-空",
+      "k-航"
     ]
   },
   {
@@ -342685,7 +348248,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-川",
       "k-天",
-      "k-銀"
+      "k-銀",
+      "k-河"
     ]
   },
   {
@@ -342715,6 +348279,21 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-天"
+    ]
+  },
+  {
+    "id": "w-天の河",
+    "word": {
+      "id": "w-天の河",
+      "japanese": "天の河",
+      "furigana": "あまのがわ",
+      "romaji": "amanogawa",
+      "meaning": "Milky Way; luminous band corresponding to the plane of the galaxy",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-天",
+      "k-河"
     ]
   },
   {
@@ -342758,7 +348337,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-天"
+      "k-天",
+      "k-益"
     ]
   },
   {
@@ -343419,7 +348999,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-下",
       "k-天",
-      "k-武"
+      "k-武",
+      "k-布"
     ]
   },
   {
@@ -344275,7 +349856,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-天",
       "k-体",
-      "k-観"
+      "k-観",
+      "k-測"
     ]
   },
   {
@@ -344679,7 +350261,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-天"
+      "k-天",
+      "k-則"
     ]
   },
   {
@@ -344922,7 +350505,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-天"
+      "k-天",
+      "k-喜"
     ]
   },
   {
@@ -345160,7 +350744,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-天",
       "k-長",
-      "k-地"
+      "k-地",
+      "k-久"
     ]
   },
   {
@@ -345407,6 +350992,24 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-天"
+    ]
+  },
+  {
+    "id": "w-天婦羅",
+    "word": {
+      "id": "w-天婦羅",
+      "japanese": "天婦羅",
+      "furigana": "てんぷら",
+      "romaji": "tempura",
+      "meaning": "tempura; deep-fried fish and vegetables in a light batter",
+      "common": true,
+      "wordTags": [
+        "ateji"
+      ]
+    },
+    "kanjiIds": [
+      "k-天",
+      "k-婦"
     ]
   },
   {
@@ -346649,7 +352252,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-文",
       "k-天",
-      "k-法"
+      "k-法",
+      "k-航"
     ]
   },
   {
@@ -347384,7 +352988,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-天"
+      "k-天",
+      "k-永"
     ]
   },
   {
@@ -347412,7 +353017,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-天"
+      "k-天",
+      "k-河"
     ]
   },
   {
@@ -347682,7 +353288,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-天"
+      "k-天",
+      "k-測"
     ]
   },
   {
@@ -347697,7 +353304,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-天",
-      "k-法"
+      "k-法",
+      "k-航",
+      "k-測"
     ]
   },
   {
@@ -350361,7 +355970,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-天",
-      "k-草"
+      "k-草",
+      "k-版"
     ]
   },
   {
@@ -350995,6 +356605,24 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-天邪久",
+    "word": {
+      "id": "w-天邪久",
+      "japanese": "天邪久",
+      "furigana": "あまのじゃく",
+      "romaji": "amanojaku",
+      "meaning": "perversity; perverse person",
+      "common": false,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-天",
+      "k-久"
+    ]
+  },
+  {
     "id": "w-天邪鬼",
     "word": {
       "id": "w-天邪鬼",
@@ -351081,7 +356709,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-天",
       "k-長",
-      "k-地"
+      "k-地",
+      "k-久"
     ]
   },
   {
@@ -351127,7 +356756,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-天"
+      "k-天",
+      "k-険"
     ]
   },
   {
@@ -352830,7 +358460,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-高",
       "k-太",
       "k-平",
-      "k-洋"
+      "k-洋",
+      "k-圧"
     ]
   },
   {
@@ -353790,7 +359421,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-光",
       "k-太",
-      "k-陽"
+      "k-陽",
+      "k-圧"
     ]
   },
   {
@@ -354968,7 +360600,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-余"
     ]
   },
   {
@@ -354998,7 +360631,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-夫",
-      "k-唱"
+      "k-唱",
+      "k-婦"
     ]
   },
   {
@@ -355029,7 +360663,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-妻"
     ]
   },
   {
@@ -355043,7 +360678,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355058,7 +360694,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-和",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355074,7 +360711,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-合",
       "k-夫",
-      "k-鏡"
+      "k-鏡",
+      "k-婦"
     ]
   },
   {
@@ -355089,7 +360727,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-夫",
-      "k-仲"
+      "k-仲",
+      "k-婦"
     ]
   },
   {
@@ -355104,7 +360743,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-夫",
-      "k-保"
+      "k-保",
+      "k-婦",
+      "k-険"
     ]
   },
   {
@@ -355120,7 +360761,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-共",
       "k-夫",
-      "k-働"
+      "k-働",
+      "k-婦"
     ]
   },
   {
@@ -355135,7 +360777,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-共",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355151,7 +360794,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-円",
       "k-夫",
-      "k-満"
+      "k-満",
+      "k-婦"
     ]
   },
   {
@@ -355166,7 +360810,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-別",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355181,7 +360826,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-別",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355195,7 +360841,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355211,7 +360858,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-犬",
       "k-食",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355225,7 +360873,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355240,7 +360889,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-岩",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355255,7 +360905,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-夫",
-      "k-愛"
+      "k-愛",
+      "k-婦"
     ]
   },
   {
@@ -355271,7 +360922,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-気",
       "k-取",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355285,7 +360937,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355301,7 +360954,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-活",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355317,7 +360971,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-約",
       "k-夫",
-      "k-束"
+      "k-束",
+      "k-婦"
     ]
   },
   {
@@ -355332,7 +360987,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-茶",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355347,7 +361003,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-連",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355362,7 +361019,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-間",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355377,7 +361035,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-間",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355393,7 +361052,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-係",
       "k-関",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -355409,7 +361069,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-子",
       "k-夫",
-      "k-養"
+      "k-養",
+      "k-婦"
     ]
   },
   {
@@ -356635,7 +362296,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-業",
       "k-失",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -356992,7 +362654,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-失"
+      "k-失",
+      "k-禁"
     ]
   },
   {
@@ -357427,6 +363090,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-夷則",
+    "word": {
+      "id": "w-夷則",
+      "japanese": "夷則",
+      "furigana": "いそく",
+      "romaji": "isoku",
+      "meaning": "(in China) 9th note of the ancient chromatic scale (approx. A sharp); seventh lunar month",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-則"
+    ]
+  },
+  {
     "id": "w-夷国",
     "word": {
       "id": "w-夷国",
@@ -357524,7 +363201,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-物"
+      "k-物",
+      "k-雑"
     ]
   },
   {
@@ -357555,7 +363233,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-空",
       "k-星",
-      "k-美"
+      "k-美",
+      "k-河"
     ]
   },
   {
@@ -358184,7 +363863,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-失",
-      "k-性"
+      "k-性",
+      "k-禁"
     ]
   },
   {
@@ -358255,6 +363935,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-横"
+    ]
+  },
+  {
+    "id": "w-奇絶",
+    "word": {
+      "id": "w-奇絶",
+      "japanese": "奇絶",
+      "furigana": "きぜつ",
+      "romaji": "kizetsu",
+      "meaning": "very rare; exquisite",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-絶"
     ]
   },
   {
@@ -358439,7 +364133,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-貨",
-      "k-可"
+      "k-可",
+      "k-居"
     ]
   },
   {
@@ -358638,7 +364333,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-教",
       "k-良",
-      "k-奈"
+      "k-奈",
+      "k-仏"
     ]
   },
   {
@@ -359719,6 +365415,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-帳",
       "k-賀"
+    ]
+  },
+  {
+    "id": "w-奉賛",
+    "word": {
+      "id": "w-奉賛",
+      "japanese": "奉賛",
+      "furigana": "ほうさん",
+      "romaji": "housan",
+      "meaning": "support given to a temple or shrine",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-賛"
     ]
   },
   {
@@ -361200,6 +366910,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-奥許し",
+    "word": {
+      "id": "w-奥許し",
+      "japanese": "奥許し",
+      "furigana": "おくゆるし",
+      "romaji": "okuyurushi",
+      "meaning": "secret; initiation",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-許"
+    ]
+  },
+  {
     "id": "w-奥都城",
     "word": {
       "id": "w-奥都城",
@@ -361212,6 +366936,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-都",
       "k-城"
+    ]
+  },
+  {
+    "id": "w-奥陶紀",
+    "word": {
+      "id": "w-奥陶紀",
+      "japanese": "奥陶紀",
+      "furigana": "おうとうき",
+      "romaji": "outouki",
+      "meaning": "Ordovician period",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-紀"
     ]
   },
   {
@@ -361472,6 +367210,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-格"
+    ]
+  },
+  {
+    "id": "w-奪略",
+    "word": {
+      "id": "w-奪略",
+      "japanese": "奪略",
+      "furigana": "だつりゃく",
+      "romaji": "datsuryaku",
+      "meaning": "pillage; plunder",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-略"
     ]
   },
   {
@@ -362279,7 +368031,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-三",
-      "k-女"
+      "k-女",
+      "k-寄"
     ]
   },
   {
@@ -362295,7 +368048,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-三",
-      "k-女"
+      "k-女",
+      "k-寄"
     ]
   },
   {
@@ -362492,7 +368246,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-女",
-      "k-成"
+      "k-成",
+      "k-仏"
     ]
   },
   {
@@ -362508,7 +368263,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-女",
-      "k-制"
+      "k-制",
+      "k-禁"
     ]
   },
   {
@@ -363726,6 +369482,21 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-女寡婦",
+    "word": {
+      "id": "w-女寡婦",
+      "japanese": "女寡婦",
+      "furigana": "おんなやもめ",
+      "romaji": "onnayamome",
+      "meaning": "widow",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-女",
+      "k-婦"
+    ]
+  },
+  {
     "id": "w-女将",
     "word": {
       "id": "w-女将",
@@ -364123,7 +369894,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-女",
-      "k-性"
+      "k-性",
+      "k-像"
     ]
   },
   {
@@ -364891,7 +370663,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-女",
       "k-週",
-      "k-性"
+      "k-性",
+      "k-刊"
     ]
   },
   {
@@ -365826,7 +371599,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-女"
+      "k-女",
+      "k-犯"
     ]
   },
   {
@@ -366414,7 +372188,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-女"
+      "k-女",
+      "k-居"
     ]
   },
   {
@@ -366639,7 +372414,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-女",
       "k-売",
-      "k-牛"
+      "k-牛",
+      "k-損"
     ]
   },
   {
@@ -368991,7 +374767,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-成",
-      "k-好"
+      "k-好",
+      "k-績"
     ]
   },
   {
@@ -369252,7 +375029,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-業",
-      "k-好"
+      "k-好",
+      "k-績"
     ]
   },
   {
@@ -370038,7 +375816,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-好"
+      "k-好",
+      "k-適"
     ]
   },
   {
@@ -370893,6 +376672,24 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-如何許り",
+    "word": {
+      "id": "w-如何許り",
+      "japanese": "如何許り",
+      "furigana": "いかばかり",
+      "romaji": "ikabakari",
+      "meaning": "how much",
+      "common": false,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-何",
+      "k-許"
+    ]
+  },
+  {
     "id": "w-如何転んでも",
     "word": {
       "id": "w-如何転んでも",
@@ -371678,7 +377475,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-中"
+      "k-中",
+      "k-絶"
     ]
   },
   {
@@ -371782,7 +377580,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-高",
       "k-血",
       "k-候",
-      "k-群"
+      "k-群",
+      "k-圧"
+    ]
+  },
+  {
+    "id": "w-妊婦",
+    "word": {
+      "id": "w-妊婦",
+      "japanese": "妊婦",
+      "furigana": "にんぷ",
+      "romaji": "nimpu",
+      "meaning": "pregnant woman",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-婦"
     ]
   },
   {
@@ -371796,7 +377609,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-健"
+      "k-健",
+      "k-婦"
     ]
   },
   {
@@ -371810,7 +377624,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-服"
+      "k-服",
+      "k-婦"
     ]
   },
   {
@@ -371880,7 +377695,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-産"
+      "k-産",
+      "k-婦"
     ]
   },
   {
@@ -371896,7 +377712,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-死",
       "k-産",
-      "k-率"
+      "k-率",
+      "k-婦"
     ]
   },
   {
@@ -372002,6 +377819,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-妖婦",
+    "word": {
+      "id": "w-妖婦",
+      "japanese": "妖婦",
+      "furigana": "ようふ",
+      "romaji": "youfu",
+      "meaning": "enchantress; seductress",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-婦"
+    ]
+  },
+  {
     "id": "w-妖怪変化",
     "word": {
       "id": "w-妖怪変化",
@@ -372058,6 +377889,34 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-物"
+    ]
+  },
+  {
+    "id": "w-妖精",
+    "word": {
+      "id": "w-妖精",
+      "japanese": "妖精",
+      "furigana": "ようせい",
+      "romaji": "yousei",
+      "meaning": "fairy; sprite",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-精"
+    ]
+  },
+  {
+    "id": "w-妖精さん",
+    "word": {
+      "id": "w-妖精さん",
+      "japanese": "妖精さん",
+      "furigana": "ようせいさん",
+      "romaji": "youseisan",
+      "meaning": "older employee who does not have much actual work",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-精"
     ]
   },
   {
@@ -372639,7 +378498,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-害"
+      "k-害",
+      "k-罪"
     ]
   },
   {
@@ -372800,7 +378660,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-妹",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -372875,6 +378736,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-妻",
+    "word": {
+      "id": "w-妻",
+      "japanese": "妻",
+      "furigana": "つま",
+      "romaji": "tsuma",
+      "meaning": "wife; garnish (esp. one served with sashimi)",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-妻"
+    ]
+  },
+  {
     "id": "w-妻の命",
     "word": {
       "id": "w-妻の命",
@@ -372885,7 +378760,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-命"
+      "k-命",
+      "k-妻"
     ]
   },
   {
@@ -372899,7 +378775,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-入"
+      "k-入",
+      "k-妻"
     ]
   },
   {
@@ -372913,7 +378790,26 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻君",
+    "word": {
+      "id": "w-妻君",
+      "japanese": "妻君",
+      "furigana": "さいくん",
+      "romaji": "saikun",
+      "meaning": "(one's) wife; wife (of a peer or subordinate)",
+      "common": false,
+      "wordTags": [
+        "ateji"
+      ]
+    },
+    "kanjiIds": [
+      "k-君",
+      "k-妻"
     ]
   },
   {
@@ -372927,7 +378823,40 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-問"
+      "k-問",
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻壁",
+    "word": {
+      "id": "w-妻壁",
+      "japanese": "妻壁",
+      "furigana": "つまかべ",
+      "romaji": "tsumakabe",
+      "meaning": "gable wall",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻夫",
+    "word": {
+      "id": "w-妻夫",
+      "japanese": "妻夫",
+      "furigana": "めおと",
+      "romaji": "meoto",
+      "meaning": "married couple; husband and wife",
+      "common": false,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-夫",
+      "k-妻"
     ]
   },
   {
@@ -372941,7 +378870,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-女"
+      "k-女",
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻妾",
+    "word": {
+      "id": "w-妻妾",
+      "japanese": "妻妾",
+      "furigana": "さいしょう",
+      "romaji": "saishou",
+      "meaning": "one's wife and mistress(es)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妻"
     ]
   },
   {
@@ -372955,7 +378899,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-子"
+      "k-子",
+      "k-妻"
     ]
   },
   {
@@ -372969,7 +378914,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-子"
+      "k-子",
+      "k-妻"
     ]
   },
   {
@@ -372984,7 +378930,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-持"
+      "k-持",
+      "k-妻"
     ]
   },
   {
@@ -372998,7 +378945,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-子"
+      "k-子",
+      "k-妻",
+      "k-属"
     ]
   },
   {
@@ -373013,7 +378962,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-族"
+      "k-族",
+      "k-妻"
     ]
   },
   {
@@ -373027,7 +378977,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-室"
+      "k-室",
+      "k-妻"
     ]
   },
   {
@@ -373041,7 +378992,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-帯"
+      "k-帯",
+      "k-妻"
     ]
   },
   {
@@ -373056,7 +379008,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-帯"
+      "k-帯",
+      "k-妻"
     ]
   },
   {
@@ -373070,7 +379023,102 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-戸"
+      "k-戸",
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻楊枝",
+    "word": {
+      "id": "w-妻楊枝",
+      "japanese": "妻楊枝",
+      "furigana": "つまようじ",
+      "romaji": "tsumayouji",
+      "meaning": "toothpick",
+      "common": true,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻白",
+    "word": {
+      "id": "w-妻白",
+      "japanese": "妻白",
+      "furigana": "ツマジロ",
+      "romaji": "tsumajiro",
+      "meaning": "silvertip shark (Carcharhinus albimarginatus)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-白",
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻神",
+    "word": {
+      "id": "w-妻神",
+      "japanese": "妻神",
+      "furigana": "めがみ",
+      "romaji": "megami",
+      "meaning": "goddess",
+      "common": true,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-神",
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻者者",
+    "word": {
+      "id": "w-妻者者",
+      "japanese": "妻者者",
+      "furigana": "めじゃもの",
+      "romaji": "mejamono",
+      "meaning": "wife",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-者",
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻鈍ジー",
+    "word": {
+      "id": "w-妻鈍ジー",
+      "japanese": "妻鈍ジー",
+      "furigana": "さいのろジー",
+      "romaji": "sainorojii",
+      "meaning": "uxoriousness; being easy on one's wife",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妻"
+    ]
+  },
+  {
+    "id": "w-妻黒",
+    "word": {
+      "id": "w-妻黒",
+      "japanese": "妻黒",
+      "furigana": "ツマグロ",
+      "romaji": "tsumaguro",
+      "meaning": "blacktip reef shark (Carcharhinus melanopterus); black tip",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-黒",
+      "k-妻"
     ]
   },
   {
@@ -373257,7 +379305,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-姉",
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -375366,7 +381415,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-婦"
+    ]
+  },
+  {
+    "id": "w-姦婦",
+    "word": {
+      "id": "w-姦婦",
+      "japanese": "姦婦",
+      "furigana": "かんぷ",
+      "romaji": "kampu",
+      "meaning": "adulteress",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-婦"
     ]
   },
   {
@@ -375381,6 +381445,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-悪"
+    ]
+  },
+  {
+    "id": "w-姦淫罪",
+    "word": {
+      "id": "w-姦淫罪",
+      "japanese": "姦淫罪",
+      "furigana": "かんいんざい",
+      "romaji": "kan'inzai",
+      "meaning": "sex crimes",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-罪"
     ]
   },
   {
@@ -375422,7 +381500,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-通"
+      "k-通",
+      "k-罪"
     ]
   },
   {
@@ -375829,7 +381908,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-波"
+      "k-波",
+      "k-布"
     ]
   },
   {
@@ -377022,6 +383102,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-威圧",
+    "word": {
+      "id": "w-威圧",
+      "japanese": "威圧",
+      "furigana": "いあつ",
+      "romaji": "iatsu",
+      "meaning": "coercion; overpowering",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
     "id": "w-威圧感",
     "word": {
       "id": "w-威圧感",
@@ -377032,7 +383126,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-感"
+      "k-感",
+      "k-圧"
     ]
   },
   {
@@ -377046,7 +383141,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-的"
+      "k-的",
+      "k-圧"
     ]
   },
   {
@@ -377372,7 +383468,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-夫"
+      "k-夫",
+      "k-婦"
     ]
   },
   {
@@ -377591,7 +383688,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-楽"
+      "k-楽",
+      "k-雑"
     ]
   },
   {
@@ -377606,6 +383704,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-遊"
+    ]
+  },
+  {
+    "id": "w-娼婦",
+    "word": {
+      "id": "w-娼婦",
+      "japanese": "娼婦",
+      "furigana": "しょうふ",
+      "romaji": "shoufu",
+      "meaning": "prostitute",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-婦"
     ]
   },
   {
@@ -378101,6 +384213,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-婚姻適齢",
+    "word": {
+      "id": "w-婚姻適齢",
+      "japanese": "婚姻適齢",
+      "furigana": "こんいんてきれい",
+      "romaji": "kon'intekirei",
+      "meaning": "legal age of marriage",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-適"
+    ]
+  },
+  {
     "id": "w-婚姻関係",
     "word": {
       "id": "w-婚姻関係",
@@ -378331,6 +384457,23 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-婦",
+    "word": {
+      "id": "w-婦",
+      "japanese": "婦",
+      "furigana": "よめ",
+      "romaji": "yome",
+      "meaning": "bride; (one's) daughter-in-law",
+      "common": true,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-婦"
+    ]
+  },
+  {
     "id": "w-婦人",
     "word": {
       "id": "w-婦人",
@@ -378341,7 +384484,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-人"
+      "k-人",
+      "k-婦"
     ]
   },
   {
@@ -378356,7 +384500,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-会"
+      "k-会",
+      "k-婦"
     ]
   },
   {
@@ -378372,7 +384517,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-参",
-      "k-政"
+      "k-政",
+      "k-婦"
     ]
   },
   {
@@ -378388,7 +384534,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-問",
-      "k-題"
+      "k-題",
+      "k-婦"
     ]
   },
   {
@@ -378403,7 +384550,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-席"
+      "k-席",
+      "k-婦"
     ]
   },
   {
@@ -378418,7 +384566,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-服"
+      "k-服",
+      "k-婦"
     ]
   },
   {
@@ -378433,7 +384582,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-病"
+      "k-病",
+      "k-婦"
     ]
   },
   {
@@ -378448,7 +384598,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-科"
+      "k-科",
+      "k-婦"
     ]
   },
   {
@@ -378464,7 +384615,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-科",
-      "k-医"
+      "k-医",
+      "k-婦"
     ]
   },
   {
@@ -378480,7 +384632,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-学",
-      "k-科"
+      "k-科",
+      "k-婦"
     ]
   },
   {
@@ -378495,7 +384648,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-官"
+      "k-官",
+      "k-婦"
     ]
   },
   {
@@ -378511,7 +384665,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-官",
-      "k-察"
+      "k-察",
+      "k-婦"
     ]
   },
   {
@@ -378527,7 +384682,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-動",
-      "k-運"
+      "k-運",
+      "k-婦"
     ]
   },
   {
@@ -378543,7 +384699,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-選",
-      "k-挙"
+      "k-挙",
+      "k-婦"
     ]
   },
   {
@@ -378557,7 +384714,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-人"
+      "k-人",
+      "k-婦",
+      "k-雑"
     ]
   },
   {
@@ -378571,7 +384730,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-人"
+      "k-人",
+      "k-婦"
     ]
   },
   {
@@ -378585,7 +384745,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-女"
+      "k-女",
+      "k-婦"
     ]
   },
   {
@@ -378600,7 +384761,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-女"
+      "k-女",
+      "k-婦"
     ]
   },
   {
@@ -378615,7 +384777,26 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-女",
-      "k-行"
+      "k-行",
+      "k-婦",
+      "k-暴"
+    ]
+  },
+  {
+    "id": "w-婦婦",
+    "word": {
+      "id": "w-婦婦",
+      "japanese": "婦婦",
+      "furigana": "ふうふ",
+      "romaji": "fuufu",
+      "meaning": "female married couple; lesbian married couple",
+      "common": false,
+      "wordTags": [
+        "gikun"
+      ]
+    },
+    "kanjiIds": [
+      "k-婦"
     ]
   },
   {
@@ -378629,7 +384810,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-徳"
+      "k-徳",
+      "k-婦"
+    ]
+  },
+  {
+    "id": "w-婦警",
+    "word": {
+      "id": "w-婦警",
+      "japanese": "婦警",
+      "furigana": "ふけい",
+      "romaji": "fukei",
+      "meaning": "policewoman",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-婦"
     ]
   },
   {
@@ -378643,7 +384839,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-道"
+      "k-道",
+      "k-婦"
     ]
   },
   {
@@ -378657,7 +384854,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-選"
+      "k-選",
+      "k-婦"
     ]
   },
   {
@@ -378671,7 +384869,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-長"
+      "k-長",
+      "k-婦"
     ]
   },
   {
@@ -379911,6 +386110,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-女"
+    ]
+  },
+  {
+    "id": "w-嫡妻",
+    "word": {
+      "id": "w-嫡妻",
+      "japanese": "嫡妻",
+      "furigana": "ちゃくさい",
+      "romaji": "chakusai",
+      "meaning": "one's legal wife; legitimate wife",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-妻"
     ]
   },
   {
@@ -381281,7 +387494,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -382749,7 +388963,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-子",
-      "k-持"
+      "k-持",
+      "k-布"
     ]
   },
   {
@@ -383138,7 +389353,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-子"
+      "k-子",
+      "k-婦"
     ]
   },
   {
@@ -383846,6 +390062,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-孔版",
+    "word": {
+      "id": "w-孔版",
+      "japanese": "孔版",
+      "furigana": "こうはん",
+      "romaji": "kouhan",
+      "meaning": "mimeograph",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-版"
+    ]
+  },
+  {
     "id": "w-孔版印刷",
     "word": {
       "id": "w-孔版印刷",
@@ -383857,7 +390087,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-印",
-      "k-刷"
+      "k-刷",
+      "k-版"
     ]
   },
   {
@@ -383976,6 +390207,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-孕婦",
+    "word": {
+      "id": "w-孕婦",
+      "japanese": "孕婦",
+      "furigana": "ようふ",
+      "romaji": "youfu",
+      "meaning": "pregnant woman",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-婦"
+    ]
+  },
+  {
     "id": "w-字",
     "word": {
       "id": "w-字",
@@ -384075,7 +390320,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-字"
+      "k-字",
+      "k-余"
     ]
   },
   {
@@ -384269,7 +390515,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-字"
+      "k-字",
+      "k-版"
     ]
   },
   {
@@ -385661,7 +391908,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-季"
+      "k-季",
+      "k-刊"
     ]
   },
   {
@@ -385675,7 +391923,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-季"
+      "k-季",
+      "k-刊"
     ]
   },
   {
@@ -385689,7 +391938,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-季"
+      "k-季",
+      "k-雑",
+      "k-刊"
     ]
   },
   {
@@ -385733,7 +391984,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-季"
+      "k-季",
+      "k-寄"
     ]
   },
   {
@@ -386703,6 +392955,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-孤絶",
+    "word": {
+      "id": "w-孤絶",
+      "japanese": "孤絶",
+      "furigana": "こぜつ",
+      "romaji": "kozetsu",
+      "meaning": "being isolated; being separated",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-絶"
+    ]
+  },
+  {
     "id": "w-孤軍",
     "word": {
       "id": "w-孤軍",
@@ -386887,7 +393153,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-学",
-      "k-思"
+      "k-思",
+      "k-則"
     ]
   },
   {
@@ -387228,7 +393495,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-学"
+      "k-学",
+      "k-則"
     ]
   },
   {
@@ -388524,7 +394792,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-業",
-      "k-成"
+      "k-成",
+      "k-績"
     ]
   },
   {
@@ -389563,7 +395832,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-学"
+      "k-学",
+      "k-績"
     ]
   },
   {
@@ -390443,7 +396713,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-学",
-      "k-術"
+      "k-術",
+      "k-雑"
     ]
   },
   {
@@ -390568,7 +396839,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-保",
-      "k-資"
+      "k-資",
+      "k-険"
     ]
   },
   {
@@ -391704,6 +397976,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-宇宙像",
+    "word": {
+      "id": "w-宇宙像",
+      "japanese": "宇宙像",
+      "furigana": "うちゅうぞう",
+      "romaji": "uchuuzou",
+      "meaning": "cosmology",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-像"
+    ]
+  },
+  {
     "id": "w-宇宙公害",
     "word": {
       "id": "w-宇宙公害",
@@ -392474,7 +398760,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-線",
       "k-所",
-      "k-観"
+      "k-観",
+      "k-測"
     ]
   },
   {
@@ -392509,7 +398796,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-研",
       "k-究",
       "k-機",
-      "k-構"
+      "k-構",
+      "k-航"
     ]
   },
   {
@@ -392523,7 +398811,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-行"
+      "k-行",
+      "k-航"
     ]
   },
   {
@@ -392835,7 +399124,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-電",
       "k-所",
       "k-波",
-      "k-観"
+      "k-観",
+      "k-測"
     ]
   },
   {
@@ -393524,7 +399814,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-守",
-      "k-備"
+      "k-備",
+      "k-囲"
     ]
   },
   {
@@ -393584,7 +399875,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-守"
+      "k-守",
+      "k-則"
     ]
   },
   {
@@ -396092,7 +402384,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-安",
-      "k-向"
+      "k-向",
+      "k-志"
     ]
   },
   {
@@ -396404,7 +402697,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-安"
+      "k-安",
+      "k-居"
     ]
   },
   {
@@ -396592,7 +402886,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-心",
       "k-毛",
-      "k-安"
+      "k-安",
+      "k-布"
     ]
   },
   {
@@ -397066,7 +403361,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-安"
+      "k-安",
+      "k-永"
     ]
   },
   {
@@ -397258,7 +403554,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-火",
       "k-海",
       "k-安",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -397273,7 +403570,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-田",
-      "k-安"
+      "k-安",
+      "k-講"
     ]
   },
   {
@@ -398623,7 +404921,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-全",
-      "k-完"
+      "k-完",
+      "k-版"
     ]
   },
   {
@@ -398638,7 +404937,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-全",
-      "k-完"
+      "k-完",
+      "k-罪",
+      "k-犯"
     ]
   },
   {
@@ -399151,7 +405452,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-成",
-      "k-完"
+      "k-完",
+      "k-版"
     ]
   },
   {
@@ -399842,7 +406144,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-太"
+      "k-太",
+      "k-属"
     ]
   },
   {
@@ -401036,7 +407339,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-官"
+      "k-官",
+      "k-罪"
     ]
   },
   {
@@ -401338,7 +407642,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-出",
       "k-物",
-      "k-官"
+      "k-官",
+      "k-版"
     ]
   },
   {
@@ -401773,7 +408078,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-官"
+      "k-官",
+      "k-版"
     ]
   },
   {
@@ -401921,7 +408227,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-官"
+      "k-官",
+      "k-紀"
     ]
   },
   {
@@ -401935,7 +408242,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-官"
+      "k-官",
+      "k-紀"
     ]
   },
   {
@@ -402263,7 +408571,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-官"
+      "k-官",
+      "k-許"
     ]
   },
   {
@@ -402309,7 +408618,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-官",
-      "k-費"
+      "k-費",
+      "k-留"
     ]
   },
   {
@@ -402326,7 +408636,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-生",
       "k-学",
       "k-官",
-      "k-費"
+      "k-費",
+      "k-留"
     ]
   },
   {
@@ -403001,7 +409312,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-定"
+      "k-定",
+      "k-則"
     ]
   },
   {
@@ -403175,7 +409487,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-定"
+      "k-定",
+      "k-圧"
     ]
   },
   {
@@ -404071,7 +410384,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-期",
-      "k-保"
+      "k-保",
+      "k-険"
     ]
   },
   {
@@ -404137,7 +410451,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-行",
       "k-定",
       "k-期",
-      "k-物"
+      "k-物",
+      "k-刊"
     ]
   },
   {
@@ -404488,7 +410803,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-定",
       "k-法",
       "k-例",
-      "k-比"
+      "k-比",
+      "k-則"
     ]
   },
   {
@@ -404612,7 +410928,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-点",
       "k-定",
-      "k-観"
+      "k-観",
+      "k-測"
     ]
   },
   {
@@ -405429,7 +411746,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-定",
       "k-波",
       "k-置",
-      "k-周"
+      "k-周",
+      "k-圧"
     ]
   },
   {
@@ -405491,7 +411809,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-保",
-      "k-額"
+      "k-額",
+      "k-険"
     ]
   },
   {
@@ -406188,6 +412507,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-宝永",
+    "word": {
+      "id": "w-宝永",
+      "japanese": "宝永",
+      "furigana": "ほうえい",
+      "romaji": "houei",
+      "meaning": "Hōei era (1704.3.13-1711.4.25)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-永"
+    ]
+  },
+  {
     "id": "w-宝永地震",
     "word": {
       "id": "w-宝永地震",
@@ -406198,7 +412531,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-永"
     ]
   },
   {
@@ -406213,7 +412547,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-大",
-      "k-火"
+      "k-火",
+      "k-永"
     ]
   },
   {
@@ -406228,7 +412563,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-小",
-      "k-判"
+      "k-判",
+      "k-永"
     ]
   },
   {
@@ -406242,7 +412578,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-通"
+      "k-通",
+      "k-永"
     ]
   },
   {
@@ -407721,7 +414058,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-実"
+      "k-実",
+      "k-像"
     ]
   },
   {
@@ -410173,7 +416511,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-実"
+      "k-実",
+      "k-測"
     ]
   },
   {
@@ -410187,7 +416526,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-実"
+      "k-実",
+      "k-測"
     ]
   },
   {
@@ -410202,7 +416542,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-図",
-      "k-実"
+      "k-実",
+      "k-測"
     ]
   },
   {
@@ -410852,7 +417193,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-実"
+      "k-実",
+      "k-益"
     ]
   },
   {
@@ -410964,6 +417306,21 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-実紀",
+    "word": {
+      "id": "w-実紀",
+      "japanese": "実紀",
+      "furigana": "じっき",
+      "romaji": "jikki",
+      "meaning": "true account; authentic record",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-実",
+      "k-紀"
+    ]
+  },
+  {
     "id": "w-実経験",
     "word": {
       "id": "w-実経験",
@@ -411005,7 +417362,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-実"
+      "k-実",
+      "k-績"
     ]
   },
   {
@@ -411020,7 +417378,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-実",
-      "k-残"
+      "k-残",
+      "k-績"
     ]
   },
   {
@@ -411034,7 +417393,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-実"
+      "k-実",
+      "k-績"
     ]
   },
   {
@@ -411049,7 +417409,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-実"
+      "k-実",
+      "k-績"
     ]
   },
   {
@@ -411064,7 +417425,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-実",
-      "k-解"
+      "k-解",
+      "k-績"
     ]
   },
   {
@@ -411774,7 +418136,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-行",
-      "k-実"
+      "k-実",
+      "k-犯"
     ]
   },
   {
@@ -411878,7 +418241,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-行",
       "k-実",
-      "k-可"
+      "k-可",
+      "k-許"
     ]
   },
   {
@@ -414146,7 +420510,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-客"
+      "k-客",
+      "k-寄"
     ]
   },
   {
@@ -414160,7 +420525,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-客"
+      "k-客",
+      "k-寄"
     ]
   },
   {
@@ -415094,6 +421460,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-宣布",
+    "word": {
+      "id": "w-宣布",
+      "japanese": "宣布",
+      "furigana": "せんぷ",
+      "romaji": "sempu",
+      "meaning": "proclamation; dissemination",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-布"
+    ]
+  },
+  {
     "id": "w-宣戦",
     "word": {
       "id": "w-宣戦",
@@ -415119,7 +421499,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-戦",
-      "k-告"
+      "k-告",
+      "k-布"
     ]
   },
   {
@@ -415265,7 +421646,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-言",
       "k-有",
-      "k-効"
+      "k-効",
+      "k-囲"
     ]
   },
   {
@@ -416427,7 +422809,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-上",
       "k-古",
-      "k-宮"
+      "k-宮",
+      "k-布"
     ]
   },
   {
@@ -416766,7 +423149,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-宮"
+      "k-宮",
+      "k-居"
     ]
   },
   {
@@ -418079,7 +424463,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-家"
+      "k-家",
+      "k-興"
     ]
   },
   {
@@ -418283,7 +424668,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-家",
       "k-事",
-      "k-調"
+      "k-調",
+      "k-停"
     ]
   },
   {
@@ -418704,7 +425090,9 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-内",
       "k-家",
-      "k-多"
+      "k-多",
+      "k-留",
+      "k-喜"
     ]
   },
   {
@@ -419000,7 +425388,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-入",
-      "k-家"
+      "k-家",
+      "k-罪"
     ]
   },
   {
@@ -419102,7 +425491,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-家"
+      "k-家",
+      "k-居"
     ]
   },
   {
@@ -419356,7 +425746,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-内",
       "k-家",
       "k-庭",
-      "k-別"
+      "k-別",
+      "k-居"
     ]
   },
   {
@@ -419373,7 +425764,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-力",
       "k-内",
       "k-家",
-      "k-庭"
+      "k-庭",
+      "k-暴"
     ]
   },
   {
@@ -419453,7 +425845,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-家",
-      "k-庭"
+      "k-庭",
+      "k-婦"
     ]
   },
   {
@@ -419549,7 +425942,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-家",
-      "k-庭"
+      "k-庭",
+      "k-版"
     ]
   },
   {
@@ -419941,7 +426335,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-家",
-      "k-政"
+      "k-政",
+      "k-婦"
     ]
   },
   {
@@ -420467,7 +426862,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-気",
       "k-家",
       "k-族",
-      "k-的"
+      "k-的",
+      "k-囲"
     ]
   },
   {
@@ -420975,7 +427371,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-家"
+      "k-家",
+      "k-囲"
     ]
   },
   {
@@ -423165,7 +429562,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-宿"
+      "k-宿",
+      "k-志"
     ]
   },
   {
@@ -424014,6 +430412,48 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寄える",
+    "word": {
+      "id": "w-寄える",
+      "japanese": "寄える",
+      "furigana": "よそえる",
+      "romaji": "yosoeru",
+      "meaning": "to compare; to liken",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄す",
+    "word": {
+      "id": "w-寄す",
+      "japanese": "寄す",
+      "furigana": "よす",
+      "romaji": "yosu",
+      "meaning": "to include; to welcome (in a group)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄せ",
+    "word": {
+      "id": "w-寄せ",
+      "japanese": "寄せ",
+      "furigana": "よせ",
+      "romaji": "yose",
+      "meaning": "yose; end game",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
     "id": "w-寄せては返す",
     "word": {
       "id": "w-寄せては返す",
@@ -424024,7 +430464,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-返"
+      "k-返",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄せる",
+    "word": {
+      "id": "w-寄せる",
+      "japanese": "寄せる",
+      "furigana": "よせる",
+      "romaji": "yoseru",
+      "meaning": "to come near; to let someone approach",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424038,7 +430493,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-付"
+      "k-付",
+      "k-寄"
     ]
   },
   {
@@ -424052,7 +430508,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-切"
+      "k-切",
+      "k-寄"
     ]
   },
   {
@@ -424066,7 +430523,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-寄"
     ]
   },
   {
@@ -424080,7 +430538,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-太"
+      "k-太",
+      "k-寄"
     ]
   },
   {
@@ -424094,7 +430553,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-手"
+      "k-手",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄せ掛ける",
+    "word": {
+      "id": "w-寄せ掛ける",
+      "japanese": "寄せ掛ける",
+      "furigana": "よせかける",
+      "romaji": "yosekakeru",
+      "meaning": "to rest or lean against",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424108,7 +430582,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-接"
+      "k-接",
+      "k-寄"
     ]
   },
   {
@@ -424122,7 +430597,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-書"
+      "k-書",
+      "k-寄"
     ]
   },
   {
@@ -424138,7 +430614,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-木",
       "k-工",
-      "k-細"
+      "k-細",
+      "k-寄"
     ]
   },
   {
@@ -424153,7 +430630,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-木",
-      "k-造"
+      "k-造",
+      "k-寄"
     ]
   },
   {
@@ -424167,7 +430645,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-来"
+      "k-来",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄せ棟",
+    "word": {
+      "id": "w-寄せ棟",
+      "japanese": "寄せ棟",
+      "furigana": "よせむね",
+      "romaji": "yosemune",
+      "meaning": "hipped roof; hip roof",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424182,7 +430675,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-屋",
-      "k-根"
+      "k-根",
+      "k-寄"
     ]
   },
   {
@@ -424196,7 +430690,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-造"
+      "k-造",
+      "k-寄"
     ]
   },
   {
@@ -424210,7 +430705,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-植"
+      "k-植",
+      "k-寄"
     ]
   },
   {
@@ -424224,7 +430720,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-波"
+      "k-波",
+      "k-寄"
     ]
   },
   {
@@ -424238,7 +430735,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-物"
+      "k-物",
+      "k-寄"
     ]
   },
   {
@@ -424252,7 +430750,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-算"
+      "k-算",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄せ箸",
+    "word": {
+      "id": "w-寄せ箸",
+      "japanese": "寄せ箸",
+      "furigana": "よせばし",
+      "romaji": "yosebashi",
+      "meaning": "drawing a dish towards oneself using one's chopsticks (a breach of etiquette)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424266,7 +430779,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-豆"
+      "k-豆",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄せ鍋",
+    "word": {
+      "id": "w-寄せ鍋",
+      "japanese": "寄せ鍋",
+      "furigana": "よせなべ",
+      "romaji": "yosenabe",
+      "meaning": "pot of chicken or seafood, and vegetables in a dashi broth, usu. cooked at the table (traditionally a winter meal); seafood and vegetable stew or chowder",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424280,7 +430808,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-集"
+      "k-集",
+      "k-寄"
     ]
   },
   {
@@ -424294,7 +430823,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-集"
+      "k-集",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄っかかる",
+    "word": {
+      "id": "w-寄っかかる",
+      "japanese": "寄っかかる",
+      "furigana": "よっかかる",
+      "romaji": "yokkakaru",
+      "meaning": "to lean against; to recline on",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄ってたかって",
+    "word": {
+      "id": "w-寄ってたかって",
+      "japanese": "寄ってたかって",
+      "furigana": "よってたかって",
+      "romaji": "yottetakatte",
+      "meaning": "in a crowd; ganging up (on)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424308,7 +430866,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-集"
+      "k-集",
+      "k-寄"
     ]
   },
   {
@@ -424322,7 +430881,50 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-大"
+      "k-大",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄り",
+    "word": {
+      "id": "w-寄り",
+      "japanese": "寄り",
+      "furigana": "より",
+      "romaji": "yori",
+      "meaning": "pushing back one's opponent while locked in close quarters; having a tendency towards",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄りかかる",
+    "word": {
+      "id": "w-寄りかかる",
+      "japanese": "寄りかかる",
+      "furigana": "よりかかる",
+      "romaji": "yorikakaru",
+      "meaning": "to lean against; to recline on",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄りすがる",
+    "word": {
+      "id": "w-寄りすがる",
+      "japanese": "寄りすがる",
+      "furigana": "よりすがる",
+      "romaji": "yorisugaru",
+      "meaning": "to cling to; to rely on",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424336,7 +430938,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-付"
+      "k-付",
+      "k-寄"
     ]
   },
   {
@@ -424350,7 +430953,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-付"
+      "k-付",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄り倒し",
+    "word": {
+      "id": "w-寄り倒し",
+      "japanese": "寄り倒し",
+      "furigana": "よりたおし",
+      "romaji": "yoritaoshi",
+      "meaning": "knocking an opponent over while holding his belt",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424364,7 +430982,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-切"
+      "k-切",
+      "k-寄"
     ]
   },
   {
@@ -424378,7 +430997,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-切"
+      "k-切",
+      "k-寄"
     ]
   },
   {
@@ -424392,7 +431012,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-寄"
     ]
   },
   {
@@ -424408,7 +431029,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-合",
       "k-所",
-      "k-帯"
+      "k-帯",
+      "k-寄"
     ]
   },
   {
@@ -424422,7 +431044,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄り寄り",
+    "word": {
+      "id": "w-寄り寄り",
+      "japanese": "寄り寄り",
+      "furigana": "よりより",
+      "romaji": "yoriyori",
+      "meaning": "sometimes",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄り添う",
+    "word": {
+      "id": "w-寄り添う",
+      "japanese": "寄り添う",
+      "furigana": "よりそう",
+      "romaji": "yorisou",
+      "meaning": "to get close; to cuddle close together",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424436,7 +431087,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-目"
+      "k-目",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄り藻",
+    "word": {
+      "id": "w-寄り藻",
+      "japanese": "寄り藻",
+      "furigana": "よりも",
+      "romaji": "yorimo",
+      "meaning": "washed-up seaweed; stranded seaweed",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424450,7 +431116,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-身"
+      "k-身",
+      "k-寄"
     ]
   },
   {
@@ -424464,7 +431131,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-道"
+      "k-道",
+      "k-寄"
     ]
   },
   {
@@ -424478,7 +431146,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-集"
+      "k-集",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄る",
+    "word": {
+      "id": "w-寄る",
+      "japanese": "寄る",
+      "furigana": "よる",
+      "romaji": "yoru",
+      "meaning": "to approach; to draw near",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄ると触ると",
+    "word": {
+      "id": "w-寄ると触ると",
+      "japanese": "寄ると触ると",
+      "furigana": "よるとさわると",
+      "romaji": "yorutosawaruto",
+      "meaning": "whenever they come together",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424493,7 +431190,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-年",
-      "k-波"
+      "k-波",
+      "k-寄"
     ]
   },
   {
@@ -424509,7 +431207,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-年",
       "k-勝",
-      "k-波"
+      "k-波",
+      "k-寄"
     ]
   },
   {
@@ -424526,7 +431225,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-方"
+      "k-方",
+      "k-寄"
     ]
   },
   {
@@ -424540,7 +431240,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-辺"
+      "k-辺",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄与",
+    "word": {
+      "id": "w-寄与",
+      "japanese": "寄与",
+      "furigana": "きよ",
+      "romaji": "kiyo",
+      "meaning": "contribution; service",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424554,7 +431269,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-主"
+      "k-主",
+      "k-寄"
     ]
   },
   {
@@ -424568,7 +431284,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-付"
+      "k-付",
+      "k-寄"
     ]
   },
   {
@@ -424583,7 +431300,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-行",
-      "k-付"
+      "k-付",
+      "k-寄"
     ]
   },
   {
@@ -424598,7 +431316,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-金",
-      "k-付"
+      "k-付",
+      "k-寄"
     ]
   },
   {
@@ -424613,7 +431332,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-金",
-      "k-付"
+      "k-付",
+      "k-寄"
     ]
   },
   {
@@ -424628,7 +431348,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-金",
-      "k-付"
+      "k-付",
+      "k-寄"
     ]
   },
   {
@@ -424642,7 +431363,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-信"
+      "k-信",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄坐",
+    "word": {
+      "id": "w-寄坐",
+      "japanese": "寄坐",
+      "furigana": "よりまし",
+      "romaji": "yorimashi",
+      "meaning": "child or doll used as a vessel for a spirit invoked by a shaman or miko",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424656,7 +431392,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-場"
+      "k-場",
+      "k-寄"
     ]
   },
   {
@@ -424670,7 +431407,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-宿"
+      "k-宿",
+      "k-寄"
     ]
   },
   {
@@ -424686,7 +431424,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-校",
-      "k-宿"
+      "k-宿",
+      "k-寄"
     ]
   },
   {
@@ -424700,7 +431439,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-宿"
+      "k-宿",
+      "k-寄"
     ]
   },
   {
@@ -424715,7 +431455,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-宿",
-      "k-料"
+      "k-料",
+      "k-寄"
     ]
   },
   {
@@ -424730,7 +431471,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-宿"
+      "k-宿",
+      "k-寄"
     ]
   },
   {
@@ -424744,7 +431486,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-宿"
+      "k-宿",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄寓",
+    "word": {
+      "id": "w-寄寓",
+      "japanese": "寄寓",
+      "furigana": "きぐう",
+      "romaji": "kiguu",
+      "meaning": "living with (someone) temporarily; staying with",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -424761,7 +431518,9 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-虫"
+      "k-虫",
+      "k-寄",
+      "k-居"
     ]
   },
   {
@@ -424775,7 +431534,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-席"
+      "k-席",
+      "k-寄"
     ]
   },
   {
@@ -424789,7 +431549,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-書"
+      "k-書",
+      "k-寄"
     ]
   },
   {
@@ -424803,7 +431564,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-木"
+      "k-木",
+      "k-寄"
     ]
   },
   {
@@ -424817,7 +431579,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-港"
+      "k-港",
+      "k-寄"
     ]
   },
   {
@@ -424832,7 +431595,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-港"
+      "k-港",
+      "k-寄"
     ]
   },
   {
@@ -424846,7 +431610,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-生"
+      "k-生",
+      "k-寄"
     ]
   },
   {
@@ -424863,7 +431628,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-生",
       "k-地",
       "k-主",
-      "k-制"
+      "k-制",
+      "k-寄"
     ]
   },
   {
@@ -424878,7 +431644,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-木"
+      "k-木",
+      "k-寄"
     ]
   },
   {
@@ -424894,7 +431661,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-養",
-      "k-栄"
+      "k-栄",
+      "k-寄"
     ]
   },
   {
@@ -424909,7 +431677,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-根"
+      "k-根",
+      "k-寄"
     ]
   },
   {
@@ -424925,7 +431694,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-物",
-      "k-植"
+      "k-植",
+      "k-寄"
     ]
   },
   {
@@ -424941,7 +431711,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-山",
-      "k-火"
+      "k-火",
+      "k-寄"
     ]
   },
   {
@@ -424956,7 +431727,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-物"
+      "k-物",
+      "k-寄"
     ]
   },
   {
@@ -424975,7 +431747,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-体",
       "k-頭",
       "k-的",
-      "k-結"
+      "k-結",
+      "k-寄"
     ]
   },
   {
@@ -424990,7 +431763,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-者"
+      "k-者",
+      "k-寄"
     ]
   },
   {
@@ -425005,7 +431779,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-虫"
+      "k-虫",
+      "k-寄"
     ]
   },
   {
@@ -425021,7 +431796,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-学",
-      "k-虫"
+      "k-虫",
+      "k-寄"
     ]
   },
   {
@@ -425037,7 +431813,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-虫",
-      "k-病"
+      "k-病",
+      "k-寄"
     ]
   },
   {
@@ -425052,7 +431829,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-生",
-      "k-虫"
+      "k-虫",
+      "k-寄"
     ]
   },
   {
@@ -425066,7 +431844,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-生"
+      "k-生",
+      "k-寄"
     ]
   },
   {
@@ -425080,7 +431859,23 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-生"
+      "k-生",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄留",
+    "word": {
+      "id": "w-寄留",
+      "japanese": "寄留",
+      "furigana": "きりゅう",
+      "romaji": "kiryuu",
+      "meaning": "temporary residence; sojourn",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-寄",
+      "k-留"
     ]
   },
   {
@@ -425094,7 +431889,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-寄",
+      "k-留"
     ]
   },
   {
@@ -425108,7 +431905,23 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-者"
+      "k-者",
+      "k-寄",
+      "k-留"
+    ]
+  },
+  {
+    "id": "w-寄稿",
+    "word": {
+      "id": "w-寄稿",
+      "japanese": "寄稿",
+      "furigana": "きこう",
+      "romaji": "kikou",
+      "meaning": "contribution (e.g. to newspaper)",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -425122,7 +431935,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-家"
+      "k-家",
+      "k-寄"
     ]
   },
   {
@@ -425136,7 +431950,56 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-者"
+      "k-者",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄航",
+    "word": {
+      "id": "w-寄航",
+      "japanese": "寄航",
+      "furigana": "きこう",
+      "romaji": "kikou",
+      "meaning": "calling at a port; making an intermediate stop at an airport",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-航",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄航地",
+    "word": {
+      "id": "w-寄航地",
+      "japanese": "寄航地",
+      "furigana": "きこうち",
+      "romaji": "kikouchi",
+      "meaning": "port of call",
+      "common": false,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-地",
+      "k-航",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄託",
+    "word": {
+      "id": "w-寄託",
+      "japanese": "寄託",
+      "furigana": "きたく",
+      "romaji": "kitaku",
+      "meaning": "deposit; entrusting",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -425152,7 +432015,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-書",
       "k-図",
-      "k-館"
+      "k-館",
+      "k-寄"
     ]
   },
   {
@@ -425166,7 +432030,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-語"
+      "k-語",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄贈",
+    "word": {
+      "id": "w-寄贈",
+      "japanese": "寄贈",
+      "furigana": "きぞう",
+      "romaji": "kizou",
+      "meaning": "donation; presentation",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -425180,7 +432059,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-品"
+      "k-品",
+      "k-寄"
     ]
   },
   {
@@ -425194,7 +432074,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-者"
+      "k-者",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄越す",
+    "word": {
+      "id": "w-寄越す",
+      "japanese": "寄越す",
+      "furigana": "よこす",
+      "romaji": "yokosu",
+      "meaning": "to send; to forward",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -425208,7 +432103,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-進"
+      "k-進",
+      "k-寄"
     ]
   },
   {
@@ -425222,7 +432118,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-金"
+      "k-金",
+      "k-寄"
     ]
   },
   {
@@ -425236,7 +432133,25 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-食"
+      "k-食",
+      "k-寄"
+    ]
+  },
+  {
+    "id": "w-寄騎",
+    "word": {
+      "id": "w-寄騎",
+      "japanese": "寄騎",
+      "furigana": "よりき",
+      "romaji": "yoriki",
+      "meaning": "police sergeant (Edo period); low-ranking samurai who assisted daimyo or prominent military commanders (Muromachi period)",
+      "common": false,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-寄"
     ]
   },
   {
@@ -425585,7 +432500,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-力",
-      "k-室"
+      "k-室",
+      "k-暴"
     ]
   },
   {
@@ -425923,6 +432839,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-密航",
+    "word": {
+      "id": "w-密航",
+      "japanese": "密航",
+      "furigana": "みっこう",
+      "romaji": "mikkou",
+      "meaning": "stowing away; smuggling oneself",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-航"
+    ]
+  },
+  {
     "id": "w-密航者",
     "word": {
       "id": "w-密航者",
@@ -425933,7 +432863,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-者"
+      "k-者",
+      "k-航"
     ]
   },
   {
@@ -426654,7 +433585,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-海",
       "k-富",
       "k-保",
-      "k-士"
+      "k-士",
+      "k-険"
     ]
   },
   {
@@ -426757,7 +433689,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-富",
-      "k-士"
+      "k-士",
+      "k-講"
     ]
   },
   {
@@ -427794,7 +434727,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-気",
       "k-高",
       "k-寒",
-      "k-冷"
+      "k-冷",
+      "k-圧"
     ]
   },
   {
@@ -429093,6 +436027,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寓居",
+    "word": {
+      "id": "w-寓居",
+      "japanese": "寓居",
+      "furigana": "ぐうきょ",
+      "romaji": "guukyo",
+      "meaning": "temporary abode; staying on a temporary basis",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
     "id": "w-寓意",
     "word": {
       "id": "w-寓意",
@@ -429237,6 +436185,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寛厚",
+    "word": {
+      "id": "w-寛厚",
+      "japanese": "寛厚",
+      "furigana": "かんこう",
+      "romaji": "kankou",
+      "meaning": "kindness; largeheartedness",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
+    ]
+  },
+  {
     "id": "w-寛和",
     "word": {
       "id": "w-寛和",
@@ -429248,6 +436210,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-和"
+    ]
+  },
+  {
+    "id": "w-寛喜",
+    "word": {
+      "id": "w-寛喜",
+      "japanese": "寛喜",
+      "furigana": "かんぎ",
+      "romaji": "kangi",
+      "meaning": "Kangi era (1229.3.5-1232.4.2); Kanki era",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-喜"
     ]
   },
   {
@@ -429364,6 +436340,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寛永",
+    "word": {
+      "id": "w-寛永",
+      "japanese": "寛永",
+      "furigana": "かんえい",
+      "romaji": "kan'ei",
+      "meaning": "Kan'ei era (1624.2.30-1644.12.16)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-永"
+    ]
+  },
+  {
     "id": "w-寛永通宝",
     "word": {
       "id": "w-寛永通宝",
@@ -429374,7 +436364,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-通"
+      "k-通",
+      "k-永"
     ]
   },
   {
@@ -429710,6 +436701,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寝仏",
+    "word": {
+      "id": "w-寝仏",
+      "japanese": "寝仏",
+      "furigana": "ねぼとけ",
+      "romaji": "nebotoke",
+      "meaning": "image of the Buddha entering nirvana",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-仏"
+    ]
+  },
+  {
     "id": "w-寝付き",
     "word": {
       "id": "w-寝付き",
@@ -430015,6 +437020,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寝圧し",
+    "word": {
+      "id": "w-寝圧し",
+      "japanese": "寝圧し",
+      "furigana": "ねおし",
+      "romaji": "neoshi",
+      "meaning": "pressing clothes, etc. by placing them under the bedding while one sleeps",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-圧"
+    ]
+  },
+  {
     "id": "w-寝坊助",
     "word": {
       "id": "w-寝坊助",
@@ -430185,6 +437204,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-技"
+    ]
+  },
+  {
+    "id": "w-寝損なう",
+    "word": {
+      "id": "w-寝損なう",
+      "japanese": "寝損なう",
+      "furigana": "ねそこなう",
+      "romaji": "nesokonau",
+      "meaning": "to miss a chance to sleep; to be wakeful",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-損"
     ]
   },
   {
@@ -431074,7 +438107,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-察"
+      "k-察",
+      "k-余"
     ]
   },
   {
@@ -431178,6 +438212,34 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寡婦",
+    "word": {
+      "id": "w-寡婦",
+      "japanese": "寡婦",
+      "furigana": "かふ",
+      "romaji": "kafu",
+      "meaning": "widow; divorced woman not remarried",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-婦"
+    ]
+  },
+  {
+    "id": "w-寡婦暮らし",
+    "word": {
+      "id": "w-寡婦暮らし",
+      "japanese": "寡婦暮らし",
+      "furigana": "やもめぐらし",
+      "romaji": "yamomegurashi",
+      "meaning": "widowhood; widowerhood",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-婦"
+    ]
+  },
+  {
     "id": "w-寡少",
     "word": {
       "id": "w-寡少",
@@ -431189,6 +438251,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-少"
+    ]
+  },
+  {
+    "id": "w-寡居",
+    "word": {
+      "id": "w-寡居",
+      "japanese": "寡居",
+      "furigana": "かきょ",
+      "romaji": "kakyo",
+      "meaning": "widowhood",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -431863,6 +438939,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寮則",
+    "word": {
+      "id": "w-寮則",
+      "japanese": "寮則",
+      "furigana": "りょうそく",
+      "romaji": "ryousoku",
+      "meaning": "dormitory rules",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-則"
+    ]
+  },
+  {
     "id": "w-寮歌",
     "word": {
       "id": "w-寮歌",
@@ -432231,6 +439321,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地"
+    ]
+  },
+  {
+    "id": "w-寸志",
+    "word": {
+      "id": "w-寸志",
+      "japanese": "寸志",
+      "furigana": "すんし",
+      "romaji": "sunshi",
+      "meaning": "small present; small token of appreciation",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-志"
     ]
   },
   {
@@ -432777,7 +439881,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-社",
-      "k-寺"
+      "k-寺",
+      "k-仏"
     ]
   },
   {
@@ -433259,7 +440364,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-中",
       "k-対",
-      "k-戦"
+      "k-戦",
+      "k-略"
     ]
   },
   {
@@ -433405,7 +440511,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-大",
       "k-同",
-      "k-対"
+      "k-対",
+      "k-仏"
     ]
   },
   {
@@ -434354,7 +441461,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-対",
-      "k-応"
+      "k-応",
+      "k-版"
     ]
   },
   {
@@ -434512,7 +441620,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-対",
       "k-戦",
-      "k-成"
+      "k-成",
+      "k-績"
     ]
   },
   {
@@ -434989,7 +442098,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-分",
       "k-数",
       "k-対",
-      "k-規"
+      "k-規",
+      "k-布"
     ]
   },
   {
@@ -435198,7 +442308,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-対",
       "k-和",
       "k-約",
-      "k-条"
+      "k-条",
+      "k-講"
     ]
   },
   {
@@ -436344,7 +443455,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-対"
+      "k-対",
+      "k-講"
     ]
   },
   {
@@ -436532,7 +443644,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-空",
       "k-対",
-      "k-機"
+      "k-機",
+      "k-航"
     ]
   },
   {
@@ -437131,7 +444244,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-対",
-      "k-象"
+      "k-象",
+      "k-囲"
     ]
   },
   {
@@ -437564,6 +444678,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寿像",
+    "word": {
+      "id": "w-寿像",
+      "japanese": "寿像",
+      "furigana": "じゅぞう",
+      "romaji": "juzou",
+      "meaning": "statue (of a living person)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-像"
+    ]
+  },
+  {
     "id": "w-寿司",
     "word": {
       "id": "w-寿司",
@@ -437769,6 +444897,25 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寿喜焼",
+    "word": {
+      "id": "w-寿喜焼",
+      "japanese": "寿喜焼",
+      "furigana": "すきやき",
+      "romaji": "sukiyaki",
+      "meaning": "sukiyaki; thin slices of beef, cooked with various vegetables in a table-top cast-iron pan",
+      "common": true,
+      "wordTags": [
+        "ateji",
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-焼",
+      "k-喜"
+    ]
+  },
+  {
     "id": "w-寿府",
     "word": {
       "id": "w-寿府",
@@ -437816,6 +444963,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-寿永",
+    "word": {
+      "id": "w-寿永",
+      "japanese": "寿永",
+      "furigana": "じゅえい",
+      "romaji": "juei",
+      "meaning": "Juei era (1182.5.27-1184.4.16)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-永"
+    ]
+  },
+  {
     "id": "w-寿留女",
     "word": {
       "id": "w-寿留女",
@@ -437829,7 +444990,8 @@ export const WORDS_PART_2: WordEntry[] = [
       ]
     },
     "kanjiIds": [
-      "k-女"
+      "k-女",
+      "k-留"
     ]
   },
   {
@@ -438491,7 +445653,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-任",
-      "k-師"
+      "k-師",
+      "k-講"
     ]
   },
   {
@@ -438588,7 +445751,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-念",
-      "k-修"
+      "k-修",
+      "k-仏"
     ]
   },
   {
@@ -438877,7 +446041,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-売",
-      "k-特"
+      "k-特",
+      "k-許"
     ]
   },
   {
@@ -438893,7 +446058,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-売",
       "k-品",
-      "k-特"
+      "k-特",
+      "k-許"
     ]
   },
   {
@@ -438910,6 +446076,34 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-守",
       "k-防",
       "k-衛"
+    ]
+  },
+  {
+    "id": "w-専属",
+    "word": {
+      "id": "w-専属",
+      "japanese": "専属",
+      "furigana": "せんぞく",
+      "romaji": "senzoku",
+      "meaning": "exclusive; attached to",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-専属モデル",
+    "word": {
+      "id": "w-専属モデル",
+      "japanese": "専属モデル",
+      "furigana": "せんぞくモデル",
+      "romaji": "senzokumoderu",
+      "meaning": "in-house model; company model",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-属"
     ]
   },
   {
@@ -439158,7 +446352,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-業",
-      "k-主"
+      "k-主",
+      "k-婦"
     ]
   },
   {
@@ -440072,7 +447267,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-門"
+      "k-門",
+      "k-雑"
     ]
   },
   {
@@ -440308,6 +447504,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-射損なう",
+    "word": {
+      "id": "w-射損なう",
+      "japanese": "射損なう",
+      "furigana": "いそこなう",
+      "romaji": "isokonau",
+      "meaning": "to shoot and miss",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-損"
+    ]
+  },
+  {
     "id": "w-射撃会",
     "word": {
       "id": "w-射撃会",
@@ -440347,7 +447557,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-止"
+      "k-止",
+      "k-禁"
     ]
   },
   {
@@ -440507,6 +447718,37 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-射精",
+    "word": {
+      "id": "w-射精",
+      "japanese": "射精",
+      "furigana": "しゃせい",
+      "romaji": "shasei",
+      "meaning": "ejaculation",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-精"
+    ]
+  },
+  {
+    "id": "w-射精る",
+    "word": {
+      "id": "w-射精る",
+      "japanese": "射精る",
+      "furigana": "でる",
+      "romaji": "deru",
+      "meaning": "to ejaculate; to cum",
+      "common": false,
+      "wordTags": [
+        "gikun"
+      ]
+    },
+    "kanjiIds": [
+      "k-精"
+    ]
+  },
+  {
     "id": "w-射精管",
     "word": {
       "id": "w-射精管",
@@ -440517,7 +447759,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-管"
+      "k-管",
+      "k-精"
     ]
   },
   {
@@ -440770,7 +448013,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-来"
+      "k-来",
+      "k-像"
     ]
   },
   {
@@ -441063,6 +448307,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-尊像",
+    "word": {
+      "id": "w-尊像",
+      "japanese": "尊像",
+      "furigana": "そんぞう",
+      "romaji": "sonzou",
+      "meaning": "statue of a noble character; your picture",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-像"
+    ]
+  },
+  {
     "id": "w-尊兄",
     "word": {
       "id": "w-尊兄",
@@ -441247,6 +448505,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-尊属",
+    "word": {
+      "id": "w-尊属",
+      "japanese": "尊属",
+      "furigana": "そんぞく",
+      "romaji": "sonzoku",
+      "meaning": "direct ancestors; ascendant",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-属"
+    ]
+  },
+  {
     "id": "w-尊属殺",
     "word": {
       "id": "w-尊属殺",
@@ -441257,7 +448529,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-殺"
+      "k-殺",
+      "k-属"
     ]
   },
   {
@@ -441272,7 +448545,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-殺"
+      "k-殺",
+      "k-属"
     ]
   },
   {
@@ -443499,7 +450773,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-小",
       "k-教",
-      "k-乗"
+      "k-乗",
+      "k-仏"
     ]
   },
   {
@@ -443724,7 +450999,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-小",
-      "k-馬"
+      "k-馬",
+      "k-河"
     ]
   },
   {
@@ -443801,7 +451077,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-小"
+      "k-小",
+      "k-居"
     ]
   },
   {
@@ -443817,7 +451094,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-小",
-      "k-不"
+      "k-不",
+      "k-居"
     ]
   },
   {
@@ -444343,7 +451621,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-小"
+      "k-小",
+      "k-像"
     ]
   },
   {
@@ -445719,7 +452998,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-四",
-      "k-小"
+      "k-小",
+      "k-喜"
     ]
   },
   {
@@ -446052,7 +453332,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-小",
-      "k-型"
+      "k-型",
+      "k-版"
     ]
   },
   {
@@ -446726,7 +454007,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-小"
+      "k-小",
+      "k-精"
     ]
   },
   {
@@ -447506,6 +454788,21 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-小",
       "k-市",
       "k-民"
+    ]
+  },
+  {
+    "id": "w-小布",
+    "word": {
+      "id": "w-小布",
+      "japanese": "小布",
+      "furigana": "こぎれ",
+      "romaji": "kogire",
+      "meaning": "small piece (e.g. of cloth)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-小",
+      "k-布"
     ]
   },
   {
@@ -451525,7 +458822,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-小"
+      "k-小",
+      "k-河"
     ]
   },
   {
@@ -451700,7 +458998,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-小"
+      "k-小",
+      "k-罪"
     ]
   },
   {
@@ -452350,7 +459649,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-小"
+      "k-小",
+      "k-居"
     ]
   },
   {
@@ -456483,7 +463783,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-年",
       "k-大",
-      "k-少"
+      "k-少",
+      "k-志"
     ]
   },
   {
@@ -456761,7 +464062,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-年",
-      "k-少"
+      "k-少",
+      "k-罪",
+      "k-犯"
     ]
   },
   {
@@ -456777,7 +464080,9 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-年",
       "k-少",
-      "k-者"
+      "k-者",
+      "k-罪",
+      "k-犯"
     ]
   },
   {
@@ -457103,7 +464408,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-数",
-      "k-少"
+      "k-少",
+      "k-精"
     ]
   },
   {
@@ -457431,7 +464737,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-少"
+      "k-少",
+      "k-許"
     ]
   },
   {
@@ -457639,7 +464946,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-期",
       "k-短",
       "k-保",
-      "k-額"
+      "k-額",
+      "k-険"
     ]
   },
   {
@@ -458519,7 +465827,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-学",
       "k-証",
-      "k-可"
+      "k-可",
+      "k-許"
     ]
   },
   {
@@ -458770,7 +466079,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-業",
-      "k-規"
+      "k-規",
+      "k-則"
     ]
   },
   {
@@ -458938,7 +466248,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-期",
       "k-氷",
-      "k-職"
+      "k-職",
+      "k-河"
     ]
   },
   {
@@ -459033,6 +466344,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-就航",
+    "word": {
+      "id": "w-就航",
+      "japanese": "就航",
+      "furigana": "しゅうこう",
+      "romaji": "shuukou",
+      "meaning": "entering service (on a route; of a plane or ship); going into commission",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-航"
+    ]
+  },
+  {
     "id": "w-就農",
     "word": {
       "id": "w-就農",
@@ -459071,7 +466396,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-位"
+      "k-位",
+      "k-素"
     ]
   },
   {
@@ -460667,7 +467993,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-失"
+      "k-失",
+      "k-禁"
     ]
   },
   {
@@ -460786,6 +468113,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-尿素",
+    "word": {
+      "id": "w-尿素",
+      "japanese": "尿素",
+      "furigana": "にょうそ",
+      "romaji": "nyouso",
+      "meaning": "urea; carbamide",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-素"
+    ]
+  },
+  {
     "id": "w-尿素回路",
     "word": {
       "id": "w-尿素回路",
@@ -460797,7 +468138,22 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-回",
-      "k-路"
+      "k-路",
+      "k-素"
+    ]
+  },
+  {
+    "id": "w-尿素樹脂",
+    "word": {
+      "id": "w-尿素樹脂",
+      "japanese": "尿素樹脂",
+      "furigana": "にょうそじゅし",
+      "romaji": "nyousojushi",
+      "meaning": "urea resin",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-素"
     ]
   },
   {
@@ -461578,7 +468934,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-所",
       "k-局",
-      "k-要"
+      "k-要",
+      "k-素"
     ]
   },
   {
@@ -461595,7 +468952,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-所",
       "k-局",
       "k-銀",
-      "k-群"
+      "k-群",
+      "k-河"
     ]
   },
   {
@@ -461655,7 +469013,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-局"
+      "k-局",
+      "k-留"
     ]
   },
   {
@@ -461796,7 +469155,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-部",
       "k-局",
       "k-銀",
-      "k-群"
+      "k-群",
+      "k-河"
     ]
   },
   {
@@ -461990,7 +469350,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-童"
+      "k-童",
+      "k-河"
     ]
   },
   {
@@ -462139,6 +469500,178 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-居",
+    "word": {
+      "id": "w-居",
+      "japanese": "居",
+      "furigana": "い",
+      "romaji": "i",
+      "meaning": "being (somewhere); sitting",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居すくむ",
+    "word": {
+      "id": "w-居すくむ",
+      "japanese": "居すくむ",
+      "furigana": "いすくむ",
+      "romaji": "isukumu",
+      "meaning": "to be unable to move while seated (because of fear, surprise, etc.); to freeze in one's seat",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居たたまれない",
+    "word": {
+      "id": "w-居たたまれない",
+      "japanese": "居たたまれない",
+      "furigana": "いたたまれない",
+      "romaji": "itatamarenai",
+      "meaning": "unable to stay (on); unable to endure being somewhere a second longer",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居た堪らない",
+    "word": {
+      "id": "w-居た堪らない",
+      "japanese": "居た堪らない",
+      "furigana": "いたたまらない",
+      "romaji": "itatamaranai",
+      "meaning": "unable to stay (on); unable to endure being somewhere a second longer",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居づらい",
+    "word": {
+      "id": "w-居づらい",
+      "japanese": "居づらい",
+      "furigana": "いづらい",
+      "romaji": "izurai",
+      "meaning": "difficult to be (in a place); not feeling like staying",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居ても立ってもいられない",
+    "word": {
+      "id": "w-居ても立ってもいられない",
+      "japanese": "居ても立ってもいられない",
+      "furigana": "いてもたってもいられない",
+      "romaji": "itemotattemoirarenai",
+      "meaning": "unable to contain oneself; itching to do something",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-立",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居ながら",
+    "word": {
+      "id": "w-居ながら",
+      "japanese": "居ながら",
+      "furigana": "いながら",
+      "romaji": "inagara",
+      "meaning": "from one's home; while sitting at home",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居ながらにして",
+    "word": {
+      "id": "w-居ながらにして",
+      "japanese": "居ながらにして",
+      "furigana": "いながらにして",
+      "romaji": "inagaranishite",
+      "meaning": "from one's home; while sitting at home",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居なくなる",
+    "word": {
+      "id": "w-居なくなる",
+      "japanese": "居なくなる",
+      "furigana": "いなくなる",
+      "romaji": "inakunaru",
+      "meaning": "to disappear (of people or animals); to go (away)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居もしない",
+    "word": {
+      "id": "w-居もしない",
+      "japanese": "居もしない",
+      "furigana": "いもしない",
+      "romaji": "imoshinai",
+      "meaning": "invisible; unseen",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居らっしゃる",
+    "word": {
+      "id": "w-居らっしゃる",
+      "japanese": "居らっしゃる",
+      "furigana": "いらっしゃる",
+      "romaji": "irassharu",
+      "meaning": "to come; to go",
+      "common": true,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居られる",
+    "word": {
+      "id": "w-居られる",
+      "japanese": "居られる",
+      "furigana": "いられる",
+      "romaji": "irareru",
+      "meaning": "can be; can exist",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
     "id": "w-居り所",
     "word": {
       "id": "w-居り所",
@@ -462149,7 +469682,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-所"
+      "k-所",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居る",
+    "word": {
+      "id": "w-居る",
+      "japanese": "居る",
+      "furigana": "おる",
+      "romaji": "oru",
+      "meaning": "to be (animate); to be",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -462163,7 +469711,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-定"
+      "k-定",
+      "k-居"
     ]
   },
   {
@@ -462177,7 +469726,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-構"
+      "k-構",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居グセ",
+    "word": {
+      "id": "w-居グセ",
+      "japanese": "居グセ",
+      "furigana": "いグセ",
+      "romaji": "iguse",
+      "meaning": "aural highlight of a noh play in which the main actor remains seated",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -462191,7 +469755,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-高"
+      "k-高",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居並ぶ",
+    "word": {
+      "id": "w-居並ぶ",
+      "japanese": "居並ぶ",
+      "furigana": "いならぶ",
+      "romaji": "inarabu",
+      "meaning": "to sit in a row; to be arrayed",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -462205,7 +469784,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-中"
+      "k-中",
+      "k-居"
     ]
   },
   {
@@ -462220,7 +469800,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-中",
-      "k-調"
+      "k-調",
+      "k-停",
+      "k-居"
     ]
   },
   {
@@ -462234,7 +469816,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-付"
+      "k-付",
+      "k-居"
     ]
   },
   {
@@ -462248,7 +469831,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462262,7 +469846,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462277,7 +469862,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-正",
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462291,7 +469877,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462306,7 +469893,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-区",
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462321,7 +469909,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462336,7 +469925,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462352,7 +469942,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-区",
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462368,7 +469959,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-国",
       "k-地",
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462383,7 +469975,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-住",
-      "k-性"
+      "k-性",
+      "k-居"
     ]
   },
   {
@@ -462397,7 +469990,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462413,7 +470007,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-水",
       "k-住",
-      "k-準"
+      "k-準",
+      "k-居"
     ]
   },
   {
@@ -462429,7 +470024,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-空",
       "k-間",
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462444,7 +470040,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-者",
-      "k-住"
+      "k-住",
+      "k-居"
     ]
   },
   {
@@ -462459,7 +470056,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-住",
-      "k-可"
+      "k-可",
+      "k-許",
+      "k-居"
     ]
   },
   {
@@ -462475,7 +470074,9 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-書",
       "k-住",
-      "k-可"
+      "k-可",
+      "k-許",
+      "k-居"
     ]
   },
   {
@@ -462492,7 +470093,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-明",
       "k-書",
       "k-住",
-      "k-証"
+      "k-証",
+      "k-居"
     ]
   },
   {
@@ -462506,7 +470108,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-候"
+      "k-候",
+      "k-居"
     ]
   },
   {
@@ -462523,7 +470126,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-出",
       "k-三",
       "k-目",
-      "k-候"
+      "k-候",
+      "k-居"
     ]
   },
   {
@@ -462539,7 +470143,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-生",
       "k-活",
-      "k-候"
+      "k-候",
+      "k-居"
     ]
   },
   {
@@ -462553,7 +470158,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-候"
+      "k-候",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居催促",
+    "word": {
+      "id": "w-居催促",
+      "japanese": "居催促",
+      "furigana": "いざいそく",
+      "romaji": "izaisoku",
+      "meaning": "refusal to leave",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居処",
+    "word": {
+      "id": "w-居処",
+      "japanese": "居処",
+      "furigana": "いど",
+      "romaji": "ido",
+      "meaning": "one's seat; buttocks",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -462567,7 +470201,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-反"
+      "k-反",
+      "k-居"
     ]
   },
   {
@@ -462581,7 +470216,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-居"
     ]
   },
   {
@@ -462595,7 +470231,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-居"
     ]
   },
   {
@@ -462609,7 +470246,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-居"
     ]
   },
   {
@@ -462623,7 +470261,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-合"
+      "k-合",
+      "k-居"
     ]
   },
   {
@@ -462638,7 +470277,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-合",
-      "k-刀"
+      "k-刀",
+      "k-居"
     ]
   },
   {
@@ -462653,7 +470293,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-合",
-      "k-道"
+      "k-道",
+      "k-居"
     ]
   },
   {
@@ -462667,7 +470308,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-子"
+      "k-子",
+      "k-居"
     ]
   },
   {
@@ -462681,7 +470323,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-回"
+      "k-回",
+      "k-居"
     ]
   },
   {
@@ -462695,7 +470338,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-回"
+      "k-回",
+      "k-居"
     ]
   },
   {
@@ -462709,7 +470353,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-在"
+      "k-在",
+      "k-居"
     ]
   },
   {
@@ -462723,7 +470368,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-城"
+      "k-城",
+      "k-居"
     ]
   },
   {
@@ -462738,7 +470384,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-場",
-      "k-所"
+      "k-所",
+      "k-居"
     ]
   },
   {
@@ -462752,7 +470399,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-士"
+      "k-士",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居宅",
+    "word": {
+      "id": "w-居宅",
+      "japanese": "居宅",
+      "furigana": "きょたく",
+      "romaji": "kyotaku",
+      "meaning": "residence; dwelling",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -462766,7 +470428,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-室"
+      "k-室",
+      "k-居"
     ]
   },
   {
@@ -462780,7 +470443,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-常"
+      "k-常",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居座り",
+    "word": {
+      "id": "w-居座り",
+      "japanese": "居座り",
+      "furigana": "いすわり",
+      "romaji": "isuwari",
+      "meaning": "remaining",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居座る",
+    "word": {
+      "id": "w-居座る",
+      "japanese": "居座る",
+      "furigana": "いすわる",
+      "romaji": "isuwaru",
+      "meaning": "to remain; to stay (somewhere)",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -462794,7 +470486,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-待"
+      "k-待",
+      "k-居"
     ]
   },
   {
@@ -462809,7 +470502,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-月",
-      "k-待"
+      "k-待",
+      "k-居"
     ]
   },
   {
@@ -462824,7 +470518,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-心"
+      "k-心",
+      "k-居"
     ]
   },
   {
@@ -462839,7 +470534,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-心"
+      "k-心",
+      "k-居"
     ]
   },
   {
@@ -462854,7 +470550,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-地",
-      "k-心"
+      "k-心",
+      "k-居"
     ]
   },
   {
@@ -462870,7 +470567,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-心",
-      "k-悪"
+      "k-悪",
+      "k-居"
     ]
   },
   {
@@ -462886,7 +470584,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-心",
-      "k-良"
+      "k-良",
+      "k-居"
     ]
   },
   {
@@ -462902,7 +470601,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-心",
-      "k-良"
+      "k-良",
+      "k-居"
     ]
   },
   {
@@ -462918,7 +470618,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-心",
-      "k-良"
+      "k-良",
+      "k-居"
     ]
   },
   {
@@ -462932,7 +470633,36 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-所"
+      "k-所",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居抜き",
+    "word": {
+      "id": "w-居抜き",
+      "japanese": "居抜き",
+      "furigana": "いぬき",
+      "romaji": "inuki",
+      "meaning": "going concern; stocks and all",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居敷",
+    "word": {
+      "id": "w-居敷",
+      "japanese": "居敷",
+      "furigana": "いしき",
+      "romaji": "ishiki",
+      "meaning": "kimono seat lining",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -462946,7 +470676,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-曲"
+      "k-曲",
+      "k-居"
     ]
   },
   {
@@ -462960,7 +470691,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-木"
+      "k-木",
+      "k-居"
     ]
   },
   {
@@ -462974,7 +470706,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-残"
+      "k-残",
+      "k-居"
     ]
   },
   {
@@ -462990,7 +470723,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-手",
       "k-当",
-      "k-残"
+      "k-残",
+      "k-居"
     ]
   },
   {
@@ -463004,7 +470738,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-残"
+      "k-残",
+      "k-居"
     ]
   },
   {
@@ -463018,7 +470753,25 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-流"
+      "k-流",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居炉裏",
+    "word": {
+      "id": "w-居炉裏",
+      "japanese": "居炉裏",
+      "furigana": "いろり",
+      "romaji": "irori",
+      "meaning": "sunken hearth; sunken fireplace",
+      "common": false,
+      "wordTags": [
+        "sk"
+      ]
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -463032,7 +470785,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-然"
+      "k-然",
+      "k-居"
     ]
   },
   {
@@ -463046,7 +470800,23 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-玉"
+      "k-玉",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居留",
+    "word": {
+      "id": "w-居留",
+      "japanese": "居留",
+      "furigana": "きょりゅう",
+      "romaji": "kyoryuu",
+      "meaning": "residence; reside",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-留",
+      "k-居"
     ]
   },
   {
@@ -463060,7 +470830,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-区"
+      "k-区",
+      "k-留",
+      "k-居"
     ]
   },
   {
@@ -463074,7 +470846,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-留",
+      "k-居"
     ]
   },
   {
@@ -463088,7 +470862,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-守"
+      "k-守",
+      "k-留",
+      "k-居"
     ]
   },
   {
@@ -463103,7 +470879,9 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-使",
-      "k-守"
+      "k-守",
+      "k-留",
+      "k-居"
     ]
   },
   {
@@ -463117,7 +470895,9 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-民"
+      "k-民",
+      "k-留",
+      "k-居"
     ]
   },
   {
@@ -463132,7 +470912,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-強",
-      "k-直"
+      "k-直",
+      "k-居"
     ]
   },
   {
@@ -463146,7 +470927,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-直"
+      "k-直",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居眠り",
+    "word": {
+      "id": "w-居眠り",
+      "japanese": "居眠り",
+      "furigana": "いねむり",
+      "romaji": "inemuri",
+      "meaning": "nodding off (while sitting); dozing",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -463161,7 +470957,22 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-運",
-      "k-転"
+      "k-転",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居眠る",
+    "word": {
+      "id": "w-居眠る",
+      "japanese": "居眠る",
+      "furigana": "いねむる",
+      "romaji": "inemuru",
+      "meaning": "to doze off; to nod off",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -463175,7 +470986,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-着"
+      "k-着",
+      "k-居"
     ]
   },
   {
@@ -463189,7 +471001,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-空"
+      "k-空",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居竦まる",
+    "word": {
+      "id": "w-居竦まる",
+      "japanese": "居竦まる",
+      "furigana": "いすくまる",
+      "romaji": "isukumaru",
+      "meaning": "to be unable to move while seated (because of fear, surprise, etc.)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
     ]
   },
   {
@@ -463203,7 +471030,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-続"
+      "k-続",
+      "k-居"
     ]
   },
   {
@@ -463217,7 +471045,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-職"
+      "k-職",
+      "k-居"
     ]
   },
   {
@@ -463232,7 +471061,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-屋",
-      "k-酒"
+      "k-酒",
+      "k-居"
     ]
   },
   {
@@ -463246,7 +471076,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-間"
+      "k-間",
+      "k-居"
     ]
   },
   {
@@ -463261,7 +471092,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-間",
-      "k-室"
+      "k-室",
+      "k-居"
     ]
   },
   {
@@ -463276,7 +471108,23 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-間",
-      "k-食"
+      "k-食",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居風呂",
+    "word": {
+      "id": "w-居風呂",
+      "japanese": "居風呂",
+      "furigana": "すえふろ",
+      "romaji": "suefuro",
+      "meaning": "Edo-period bathtub heated from below",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-風",
+      "k-居"
     ]
   },
   {
@@ -463291,7 +471139,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-車",
-      "k-飛"
+      "k-飛",
+      "k-居"
     ]
   },
   {
@@ -463305,7 +471154,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-食"
+      "k-食",
+      "k-居"
     ]
   },
   {
@@ -463320,7 +471170,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-食",
-      "k-屋"
+      "k-屋",
+      "k-居"
     ]
   },
   {
@@ -463334,7 +471185,23 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-館"
+      "k-館",
+      "k-居"
+    ]
+  },
+  {
+    "id": "w-居高",
+    "word": {
+      "id": "w-居高",
+      "japanese": "居高",
+      "furigana": "いたか",
+      "romaji": "itaka",
+      "meaning": "arrogant; haughty",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-高",
+      "k-居"
     ]
   },
   {
@@ -463435,7 +471302,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-法",
-      "k-折"
+      "k-折",
+      "k-則"
     ]
   },
   {
@@ -464041,7 +471909,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-屋"
+      "k-屋",
+      "k-久"
     ]
   },
   {
@@ -464055,7 +471924,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-屋"
+      "k-屋",
+      "k-久"
     ]
   },
   {
@@ -464073,7 +471943,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-子",
       "k-葉",
       "k-屋",
-      "k-種"
+      "k-種",
+      "k-久"
     ]
   },
   {
@@ -464088,7 +471959,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-屋",
-      "k-鹿"
+      "k-鹿",
+      "k-久"
     ]
   },
   {
@@ -464748,7 +472620,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-山",
-      "k-血"
+      "k-血",
+      "k-河"
     ]
   },
   {
@@ -464781,6 +472654,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-屏居",
+    "word": {
+      "id": "w-屏居",
+      "japanese": "屏居",
+      "furigana": "へいきょ",
+      "romaji": "heikyo",
+      "meaning": "living in retirement",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-居"
+    ]
+  },
+  {
     "id": "w-屏息",
     "word": {
       "id": "w-屏息",
@@ -464792,6 +472679,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-息"
+    ]
+  },
+  {
+    "id": "w-屏禁",
+    "word": {
+      "id": "w-屏禁",
+      "japanese": "屏禁",
+      "furigana": "へいきん",
+      "romaji": "heikin",
+      "meaning": "solitary confinement",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-禁"
     ]
   },
   {
@@ -465020,7 +472921,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-望"
+      "k-望",
+      "k-絶"
     ]
   },
   {
@@ -465290,6 +473192,48 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-属",
+    "word": {
+      "id": "w-属",
+      "japanese": "属",
+      "furigana": "ぞく",
+      "romaji": "zoku",
+      "meaning": "genus",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-属す",
+    "word": {
+      "id": "w-属す",
+      "japanese": "属す",
+      "furigana": "しょくす",
+      "romaji": "shokusu",
+      "meaning": "to entrust (someone) with; to pin one's hopes on (someone's future)",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-属する",
+    "word": {
+      "id": "w-属する",
+      "japanese": "属する",
+      "furigana": "ぞくする",
+      "romaji": "zokusuru",
+      "meaning": "to belong to; to come under",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-属"
+    ]
+  },
+  {
     "id": "w-属七",
     "word": {
       "id": "w-属七",
@@ -465300,7 +473244,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-七"
+      "k-七",
+      "k-属"
     ]
   },
   {
@@ -465314,7 +473259,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-人"
+      "k-人",
+      "k-属"
     ]
   },
   {
@@ -465330,7 +473276,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-人",
       "k-主",
-      "k-義"
+      "k-義",
+      "k-属"
     ]
   },
   {
@@ -465345,7 +473292,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-化"
+      "k-化",
+      "k-属"
     ]
   },
   {
@@ -465360,7 +473308,22 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-人",
-      "k-法"
+      "k-法",
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-属僚",
+    "word": {
+      "id": "w-属僚",
+      "japanese": "属僚",
+      "furigana": "ぞくりょう",
+      "romaji": "zokuryou",
+      "meaning": "subordinate official",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-属"
     ]
   },
   {
@@ -465374,7 +473337,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-具"
+      "k-具",
+      "k-属"
     ]
   },
   {
@@ -465388,7 +473352,22 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-名"
+      "k-名",
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-属吏",
+    "word": {
+      "id": "w-属吏",
+      "japanese": "属吏",
+      "furigana": "ぞくり",
+      "romaji": "zokuri",
+      "meaning": "subordinate official; petty official",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-属"
     ]
   },
   {
@@ -465403,7 +473382,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-音",
-      "k-和"
+      "k-和",
+      "k-属"
     ]
   },
   {
@@ -465417,7 +473397,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-国"
+      "k-国",
+      "k-属"
     ]
   },
   {
@@ -465432,7 +473413,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-国",
-      "k-化"
+      "k-化",
+      "k-属"
     ]
   },
   {
@@ -465446,7 +473428,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-地"
+      "k-地",
+      "k-属"
     ]
   },
   {
@@ -465462,7 +473445,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-地",
       "k-主",
-      "k-義"
+      "k-義",
+      "k-属"
     ]
   },
   {
@@ -465476,7 +473460,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-官"
+      "k-官",
+      "k-属"
     ]
   },
   {
@@ -465490,7 +473475,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-島"
+      "k-島",
+      "k-属"
     ]
   },
   {
@@ -465504,7 +473490,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-州"
+      "k-州",
+      "k-属"
     ]
   },
   {
@@ -465518,7 +473505,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-差"
+      "k-差",
+      "k-属"
     ]
   },
   {
@@ -465532,7 +473520,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465546,7 +473535,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465560,7 +473550,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465575,7 +473566,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-言",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465589,7 +473581,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465603,7 +473596,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465619,7 +473613,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-行",
       "k-列",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465635,7 +473630,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-表",
       "k-現",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465651,7 +473647,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-選",
       "k-節",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465667,7 +473664,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-化",
       "k-性",
-      "k-領"
+      "k-領",
+      "k-属"
     ]
   },
   {
@@ -465682,7 +473680,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-性",
-      "k-型"
+      "k-型",
+      "k-属"
     ]
   },
   {
@@ -465698,7 +473697,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-名",
       "k-性",
-      "k-型"
+      "k-型",
+      "k-属"
     ]
   },
   {
@@ -465714,7 +473714,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-性",
-      "k-義"
+      "k-義",
+      "k-属"
     ]
   },
   {
@@ -465730,7 +473731,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-性",
-      "k-義"
+      "k-義",
+      "k-属"
     ]
   },
   {
@@ -465747,7 +473749,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-言",
       "k-定",
       "k-性",
-      "k-義"
+      "k-義",
+      "k-属"
     ]
   },
   {
@@ -465763,7 +473766,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-指",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465779,7 +473783,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-定",
       "k-指",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465794,7 +473799,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-表",
-      "k-性"
+      "k-性",
+      "k-属"
     ]
   },
   {
@@ -465809,7 +473815,24 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-要",
-      "k-性"
+      "k-性",
+      "k-素",
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-属望",
+    "word": {
+      "id": "w-属望",
+      "japanese": "属望",
+      "furigana": "しょくぼう",
+      "romaji": "shokubou",
+      "meaning": "having great hopes for (someone's future); expecting much of",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-望",
+      "k-属"
     ]
   },
   {
@@ -465823,7 +473846,23 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-格"
+      "k-格",
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-属目",
+    "word": {
+      "id": "w-属目",
+      "japanese": "属目",
+      "furigana": "しょくもく",
+      "romaji": "shokumoku",
+      "meaning": "paying attention to; taking note of",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-目",
+      "k-属"
     ]
   },
   {
@@ -465839,7 +473878,25 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-係",
       "k-関",
-      "k-種"
+      "k-種",
+      "k-属"
+    ]
+  },
+  {
+    "id": "w-属託",
+    "word": {
+      "id": "w-属託",
+      "japanese": "属託",
+      "furigana": "しょくたく",
+      "romaji": "shokutaku",
+      "meaning": "commission; entrusting with (work)",
+      "common": true,
+      "wordTags": [
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-属"
     ]
   },
   {
@@ -465853,7 +473910,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-音"
+      "k-音",
+      "k-属"
     ]
   },
   {
@@ -465867,7 +473925,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-領"
+      "k-領",
+      "k-属"
     ]
   },
   {
@@ -466124,6 +474183,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-気",
       "k-分"
+    ]
+  },
+  {
+    "id": "w-層が厚い",
+    "word": {
+      "id": "w-層が厚い",
+      "japanese": "層が厚い",
+      "furigana": "そうがあつい",
+      "romaji": "sougaatsui",
+      "meaning": "having a deep pool (of talent, candidates, etc.); having great depth",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-厚"
     ]
   },
   {
@@ -468592,7 +476665,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-山"
+      "k-山",
+      "k-居"
     ]
   },
   {
@@ -470142,7 +478216,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-山"
+      "k-山",
+      "k-損"
     ]
   },
   {
@@ -470156,7 +478231,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-山"
+      "k-山",
+      "k-河"
     ]
   },
   {
@@ -476519,7 +484595,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-図",
       "k-島",
       "k-館",
-      "k-根"
+      "k-根",
+      "k-属"
     ]
   },
   {
@@ -476928,6 +485005,20 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-別"
+    ]
+  },
+  {
+    "id": "w-峻険",
+    "word": {
+      "id": "w-峻険",
+      "japanese": "峻険",
+      "furigana": "しゅんけん",
+      "romaji": "shunken",
+      "meaning": "steep; precipitous",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-険"
     ]
   },
   {
@@ -477444,6 +485535,20 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-野",
       "k-線"
+    ]
+  },
+  {
+    "id": "w-嶄絶",
+    "word": {
+      "id": "w-嶄絶",
+      "japanese": "嶄絶",
+      "furigana": "ざんぜつ",
+      "romaji": "zanzetsu",
+      "meaning": "sheer; precipitous",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-絶"
     ]
   },
   {
@@ -480125,6 +488230,34 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-巡航",
+    "word": {
+      "id": "w-巡航",
+      "japanese": "巡航",
+      "furigana": "じゅんこう",
+      "romaji": "junkou",
+      "meaning": "cruise; cruising",
+      "common": true
+    },
+    "kanjiIds": [
+      "k-航"
+    ]
+  },
+  {
+    "id": "w-巡航ミサイル",
+    "word": {
+      "id": "w-巡航ミサイル",
+      "japanese": "巡航ミサイル",
+      "furigana": "じゅんこうミサイル",
+      "romaji": "junkoumisairu",
+      "meaning": "cruise missile",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-航"
+    ]
+  },
+  {
     "id": "w-巡航客船",
     "word": {
       "id": "w-巡航客船",
@@ -480136,7 +488269,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-船",
-      "k-客"
+      "k-客",
+      "k-航"
     ]
   },
   {
@@ -480150,7 +488284,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-船"
+      "k-船",
+      "k-航"
     ]
   },
   {
@@ -480165,7 +488300,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-度",
-      "k-速"
+      "k-速",
+      "k-航"
     ]
   },
   {
@@ -481655,7 +489791,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-工",
-      "k-業"
+      "k-業",
+      "k-興"
     ]
   },
   {
@@ -483197,7 +491334,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-右",
-      "k-左"
+      "k-左",
+      "k-逆"
     ]
   },
   {
@@ -483398,7 +491536,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-左"
+      "k-左",
+      "k-寄"
     ]
   },
   {
@@ -483412,7 +491551,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-左"
+      "k-左",
+      "k-寄"
     ]
   },
   {
@@ -483629,7 +491769,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-手",
       "k-左",
-      "k-法"
+      "k-法",
+      "k-則"
     ]
   },
   {
@@ -483768,7 +491909,8 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-左",
       "k-止",
-      "k-折"
+      "k-折",
+      "k-禁"
     ]
   },
   {
@@ -484890,6 +493032,20 @@ export const WORDS_PART_2: WordEntry[] = [
     ]
   },
   {
+    "id": "w-巨像",
+    "word": {
+      "id": "w-巨像",
+      "japanese": "巨像",
+      "furigana": "きょぞう",
+      "romaji": "kyozou",
+      "meaning": "gigantic statue; colossus",
+      "common": false
+    },
+    "kanjiIds": [
+      "k-像"
+    ]
+  },
+  {
     "id": "w-巨億",
     "word": {
       "id": "w-巨億",
@@ -485710,7 +493866,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-女"
+      "k-女",
+      "k-寄"
     ]
   },
   {
@@ -486486,7 +494643,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-差"
+      "k-差",
+      "k-招"
     ]
   },
   {
@@ -486955,7 +495113,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-差"
+      "k-差",
+      "k-許"
     ]
   },
   {
@@ -487481,7 +495640,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-化",
       "k-戦",
       "k-別",
-      "k-差"
+      "k-差",
+      "k-略"
     ]
   },
   {
@@ -487825,7 +495985,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-差"
+      "k-差",
+      "k-損"
     ]
   },
   {
@@ -487917,7 +496078,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": false
     },
     "kanjiIds": [
-      "k-差"
+      "k-差",
+      "k-略"
     ]
   },
   {
@@ -487960,7 +496122,8 @@ export const WORDS_PART_2: WordEntry[] = [
       "common": true
     },
     "kanjiIds": [
-      "k-差"
+      "k-差",
+      "k-益"
     ]
   },
   {
@@ -488431,6 +496594,24 @@ export const WORDS_PART_2: WordEntry[] = [
     "kanjiIds": [
       "k-馬",
       "k-奈"
+    ]
+  },
+  {
+    "id": "w-巴布",
+    "word": {
+      "id": "w-巴布",
+      "japanese": "巴布",
+      "furigana": "パップ",
+      "romaji": "pappu",
+      "meaning": "poultice",
+      "common": false,
+      "wordTags": [
+        "ateji",
+        "rK"
+      ]
+    },
+    "kanjiIds": [
+      "k-布"
     ]
   },
   {
@@ -490418,7 +498599,8 @@ export const WORDS_PART_2: WordEntry[] = [
     },
     "kanjiIds": [
       "k-市",
-      "k-場"
+      "k-場",
+      "k-均"
     ]
   },
   {
@@ -490451,401 +498633,6 @@ export const WORDS_PART_2: WordEntry[] = [
       "k-市",
       "k-場",
       "k-性"
-    ]
-  },
-  {
-    "id": "w-市場成長",
-    "word": {
-      "id": "w-市場成長",
-      "japanese": "市場成長",
-      "furigana": "しじょうせいちょう",
-      "romaji": "shijouseichou",
-      "meaning": "market growth",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-長",
-      "k-市",
-      "k-場",
-      "k-成"
-    ]
-  },
-  {
-    "id": "w-市場拡大",
-    "word": {
-      "id": "w-市場拡大",
-      "japanese": "市場拡大",
-      "furigana": "しじょうかくだい",
-      "romaji": "shijoukakudai",
-      "meaning": "market expansion",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-大",
-      "k-市",
-      "k-場"
-    ]
-  },
-  {
-    "id": "w-市場撤退",
-    "word": {
-      "id": "w-市場撤退",
-      "japanese": "市場撤退",
-      "furigana": "しじょうてったい",
-      "romaji": "shijoutettai",
-      "meaning": "pulling out of a market; withdrawing from a market",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場"
-    ]
-  },
-  {
-    "id": "w-市場操作",
-    "word": {
-      "id": "w-市場操作",
-      "japanese": "市場操作",
-      "furigana": "しじょうそうさ",
-      "romaji": "shijousousa",
-      "meaning": "market manipulation",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-作"
-    ]
-  },
-  {
-    "id": "w-市場改革",
-    "word": {
-      "id": "w-市場改革",
-      "japanese": "市場改革",
-      "furigana": "しじょうかいかく",
-      "romaji": "shijoukaikaku",
-      "meaning": "market reform",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-改"
-    ]
-  },
-  {
-    "id": "w-市場構造",
-    "word": {
-      "id": "w-市場構造",
-      "japanese": "市場構造",
-      "furigana": "しじょうこうぞう",
-      "romaji": "shijoukouzou",
-      "meaning": "market structure",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-構",
-      "k-造"
-    ]
-  },
-  {
-    "id": "w-市場機構",
-    "word": {
-      "id": "w-市場機構",
-      "japanese": "市場機構",
-      "furigana": "しじょうきこう",
-      "romaji": "shijoukikou",
-      "meaning": "market mechanism",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-機",
-      "k-構"
-    ]
-  },
-  {
-    "id": "w-市場浸透",
-    "word": {
-      "id": "w-市場浸透",
-      "japanese": "市場浸透",
-      "furigana": "しじょうしんとう",
-      "romaji": "shijoushintou",
-      "meaning": "market penetration",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場"
-    ]
-  },
-  {
-    "id": "w-市場環境",
-    "word": {
-      "id": "w-市場環境",
-      "japanese": "市場環境",
-      "furigana": "しじょうかんきょう",
-      "romaji": "shijoukankyou",
-      "meaning": "market environment",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-境"
-    ]
-  },
-  {
-    "id": "w-市場経済",
-    "word": {
-      "id": "w-市場経済",
-      "japanese": "市場経済",
-      "furigana": "しじょうけいざい",
-      "romaji": "shijoukeizai",
-      "meaning": "market economy",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-経"
-    ]
-  },
-  {
-    "id": "w-市場経済化",
-    "word": {
-      "id": "w-市場経済化",
-      "japanese": "市場経済化",
-      "furigana": "しじょうけいざいか",
-      "romaji": "shijoukeizaika",
-      "meaning": "moving to a market-oriented economy; market-oriented economic reform",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-化",
-      "k-経"
-    ]
-  },
-  {
-    "id": "w-市場統合",
-    "word": {
-      "id": "w-市場統合",
-      "japanese": "市場統合",
-      "furigana": "しじょうとうごう",
-      "romaji": "shijoutougou",
-      "meaning": "market integration; market consolidation",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-合",
-      "k-市",
-      "k-場",
-      "k-統"
-    ]
-  },
-  {
-    "id": "w-市場自由化",
-    "word": {
-      "id": "w-市場自由化",
-      "japanese": "市場自由化",
-      "furigana": "しじょうじゆうか",
-      "romaji": "shijoujiyuuka",
-      "meaning": "market liberalization; market liberalisation",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-自",
-      "k-市",
-      "k-場",
-      "k-化",
-      "k-由"
-    ]
-  },
-  {
-    "id": "w-市場規模",
-    "word": {
-      "id": "w-市場規模",
-      "japanese": "市場規模",
-      "furigana": "しじょうきぼ",
-      "romaji": "shijoukibo",
-      "meaning": "market scale",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-規"
-    ]
-  },
-  {
-    "id": "w-市場調査",
-    "word": {
-      "id": "w-市場調査",
-      "japanese": "市場調査",
-      "furigana": "しじょうちょうさ",
-      "romaji": "shijouchousa",
-      "meaning": "market research",
-      "common": true
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-調",
-      "k-査"
-    ]
-  },
-  {
-    "id": "w-市場調査機関",
-    "word": {
-      "id": "w-市場調査機関",
-      "japanese": "市場調査機関",
-      "furigana": "しじょうちょうさきかん",
-      "romaji": "shijouchousakikan",
-      "meaning": "market research organization; market research organisation",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-調",
-      "k-関",
-      "k-機",
-      "k-査"
-    ]
-  },
-  {
-    "id": "w-市場調査研究所",
-    "word": {
-      "id": "w-市場調査研究所",
-      "japanese": "市場調査研究所",
-      "furigana": "しじょうちょうさけんきゅうじょ",
-      "romaji": "shijouchousakenkyuujo",
-      "meaning": "British Market Research Bureau",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-調",
-      "k-所",
-      "k-研",
-      "k-究",
-      "k-査"
-    ]
-  },
-  {
-    "id": "w-市場開拓",
-    "word": {
-      "id": "w-市場開拓",
-      "japanese": "市場開拓",
-      "furigana": "しじょうかいたく",
-      "romaji": "shijoukaitaku",
-      "meaning": "market development",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-開"
-    ]
-  },
-  {
-    "id": "w-市場開放",
-    "word": {
-      "id": "w-市場開放",
-      "japanese": "市場開放",
-      "furigana": "しじょうかいほう",
-      "romaji": "shijoukaihou",
-      "meaning": "opening up of a market; market liberalization",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-場",
-      "k-開",
-      "k-放"
-    ]
-  },
-  {
-    "id": "w-市塵",
-    "word": {
-      "id": "w-市塵",
-      "japanese": "市塵",
-      "furigana": "しじん",
-      "romaji": "shijin",
-      "meaning": "city dust; city confusion",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市"
-    ]
-  },
-  {
-    "id": "w-市壁",
-    "word": {
-      "id": "w-市壁",
-      "japanese": "市壁",
-      "furigana": "しへき",
-      "romaji": "shiheki",
-      "meaning": "city walls; town walls",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市"
-    ]
-  },
-  {
-    "id": "w-市外",
-    "word": {
-      "id": "w-市外",
-      "japanese": "市外",
-      "furigana": "しがい",
-      "romaji": "shigai",
-      "meaning": "outside the city; suburbs",
-      "common": true
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-外"
-    ]
-  },
-  {
-    "id": "w-市外局番",
-    "word": {
-      "id": "w-市外局番",
-      "japanese": "市外局番",
-      "furigana": "しがいきょくばん",
-      "romaji": "shigaikyokuban",
-      "meaning": "(telephone) area code (non-local)",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-外",
-      "k-番",
-      "k-局"
-    ]
-  },
-  {
-    "id": "w-市外通話",
-    "word": {
-      "id": "w-市外通話",
-      "japanese": "市外通話",
-      "furigana": "しがいつうわ",
-      "romaji": "shigaitsuuwa",
-      "meaning": "toll call",
-      "common": false
-    },
-    "kanjiIds": [
-      "k-市",
-      "k-通",
-      "k-外",
-      "k-話"
     ]
   }
 ];

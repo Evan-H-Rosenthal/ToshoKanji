@@ -148,7 +148,19 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-型",
       "k-財",
       "k-師",
-      "k-編"
+      "k-編",
+      "k-講",
+      "k-河",
+      "k-寄",
+      "k-益",
+      "k-余",
+      "k-妻",
+      "k-暴",
+      "k-停",
+      "k-興",
+      "k-豊",
+      "k-像",
+      "k-布"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-1",
@@ -215,7 +227,10 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-勢",
       "k-術",
       "k-述",
-      "k-殺"
+      "k-殺",
+      "k-救",
+      "k-築",
+      "k-永"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-3",
@@ -233,7 +248,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "丿",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-乗"
+      "k-乗",
+      "k-久"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-4",
@@ -255,7 +271,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-電",
       "k-礼",
       "k-札",
-      "k-縄"
+      "k-縄",
+      "k-犯"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-5",
@@ -294,7 +311,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-減",
       "k-可",
       "k-義",
-      "k-財"
+      "k-財",
+      "k-河",
+      "k-寄",
+      "k-余",
+      "k-停"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-6",
@@ -374,7 +395,15 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-規",
       "k-評",
       "k-型",
-      "k-責"
+      "k-責",
+      "k-素",
+      "k-余",
+      "k-禁",
+      "k-暴",
+      "k-均",
+      "k-精",
+      "k-績",
+      "k-賛"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-7",
@@ -433,7 +462,14 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-率",
       "k-製",
       "k-効",
-      "k-責"
+      "k-責",
+      "k-素",
+      "k-航",
+      "k-適",
+      "k-停",
+      "k-精",
+      "k-績",
+      "k-賛"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-8",
@@ -467,7 +503,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-塩",
       "k-検",
       "k-規",
-      "k-復"
+      "k-復",
+      "k-険",
+      "k-賛"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-9",
@@ -533,7 +571,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-入",
-      "k-全"
+      "k-全",
+      "k-久"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-11",
@@ -594,7 +633,10 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-再",
       "k-過",
       "k-構",
-      "k-編"
+      "k-編",
+      "k-講",
+      "k-適",
+      "k-興"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-13",
@@ -631,7 +673,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-常",
       "k-営",
       "k-賞",
-      "k-授"
+      "k-授",
+      "k-婦",
+      "k-停"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-14",
@@ -659,7 +703,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-兆",
       "k-茨",
       "k-資",
-      "k-率"
+      "k-率",
+      "k-均"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-15",
@@ -680,7 +725,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-投",
       "k-役",
       "k-設",
-      "k-殺"
+      "k-殺",
+      "k-航",
+      "k-築"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-16",
@@ -729,7 +776,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-辺",
       "k-照",
       "k-解",
-      "k-貿"
+      "k-貿",
+      "k-留",
+      "k-招"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-18",
@@ -804,7 +853,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-縄",
       "k-潟",
       "k-象",
-      "k-易"
+      "k-易",
+      "k-均",
+      "k-像"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-20",
@@ -929,7 +980,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-準",
       "k-技",
       "k-個",
-      "k-故"
+      "k-故",
+      "k-講",
+      "k-適",
+      "k-許",
+      "k-居"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-24",
@@ -976,7 +1031,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-令",
       "k-節",
       "k-領",
-      "k-報"
+      "k-報",
+      "k-犯"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-26",
@@ -1008,7 +1064,10 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-飯",
       "k-栃",
       "k-備",
-      "k-歴"
+      "k-歴",
+      "k-圧",
+      "k-厚",
+      "k-版"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-27",
@@ -1052,7 +1111,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-能",
       "k-態",
       "k-弁",
-      "k-貿"
+      "k-貿",
+      "k-留",
+      "k-仏"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-28",
@@ -1101,7 +1162,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-技",
       "k-授",
       "k-殺",
-      "k-破"
+      "k-破",
+      "k-版"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-29",
@@ -1249,7 +1311,20 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-程",
       "k-師",
       "k-破",
-      "k-故"
+      "k-故",
+      "k-河",
+      "k-適",
+      "k-寄",
+      "k-険",
+      "k-停",
+      "k-興",
+      "k-豊",
+      "k-喜",
+      "k-略",
+      "k-損",
+      "k-居",
+      "k-招",
+      "k-像"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-30",
@@ -1275,7 +1350,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-固",
       "k-団",
       "k-個",
-      "k-因"
+      "k-因",
+      "k-囲"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-31",
@@ -1348,7 +1424,12 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-規",
       "k-造",
       "k-型",
-      "k-責"
+      "k-責",
+      "k-素",
+      "k-均",
+      "k-圧",
+      "k-精",
+      "k-績"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-32",
@@ -1376,7 +1457,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-続",
       "k-結",
       "k-任",
-      "k-士"
+      "k-士",
+      "k-喜",
+      "k-志"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-33",
@@ -1410,7 +1493,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-格",
       "k-条",
       "k-額",
-      "k-復"
+      "k-復",
+      "k-略"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-34",
@@ -1495,7 +1579,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-笑",
       "k-埼",
       "k-規",
-      "k-因"
+      "k-因",
+      "k-寄",
+      "k-賛"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-37",
@@ -1525,7 +1611,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-好",
       "k-努",
       "k-媛",
-      "k-接"
+      "k-接",
+      "k-婦",
+      "k-妻"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-38",
@@ -1550,7 +1638,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-遊",
       "k-好",
       "k-季",
-      "k-孫"
+      "k-孫",
+      "k-厚"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-39",
@@ -1594,7 +1683,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-確",
       "k-容",
       "k-演",
-      "k-額"
+      "k-額",
+      "k-寄"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-40",
@@ -1684,7 +1774,13 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-際",
       "k-示",
       "k-編",
-      "k-織"
+      "k-織",
+      "k-素",
+      "k-余",
+      "k-禁",
+      "k-紀",
+      "k-絶",
+      "k-績"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-42",
@@ -1712,7 +1808,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-民",
       "k-倉",
       "k-刷",
-      "k-編"
+      "k-編",
+      "k-居",
+      "k-属"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-44",
@@ -1724,6 +1822,24 @@ export const COMPONENTS: ComponentEntry[] = [
     ],
     "forms": [
       "尸"
+    ]
+  },
+  {
+    "id": "c-r-45",
+    "char": "屮",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-逆"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-45",
+    "radicalNumber": 45,
+    "meanings": [
+      "left hand",
+      "old grass radical (no. 45)"
+    ],
+    "forms": [
+      "屮"
     ]
   },
   {
@@ -1784,7 +1900,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-試",
       "k-差",
       "k-佐",
-      "k-功"
+      "k-功",
+      "k-築"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-48",
@@ -1814,7 +1931,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-制",
       "k-常",
       "k-製",
-      "k-師"
+      "k-師",
+      "k-婦",
+      "k-布"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-50",
@@ -1839,7 +1958,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-平",
       "k-岸",
       "k-幸",
-      "k-幹"
+      "k-幹",
+      "k-許",
+      "k-刊"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-51",
@@ -1883,7 +2004,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-総",
       "k-率",
       "k-編",
-      "k-織"
+      "k-織",
+      "k-素",
+      "k-紀",
+      "k-絶",
+      "k-績"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-52",
@@ -2109,7 +2234,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-徳",
       "k-総",
       "k-応",
-      "k-態"
+      "k-態",
+      "k-志"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-61",
@@ -2233,7 +2359,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-敗",
       "k-散",
       "k-政",
-      "k-故"
+      "k-故",
+      "k-救"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-66",
@@ -2410,7 +2537,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-識",
       "k-旧",
       "k-易",
-      "k-織"
+      "k-織",
+      "k-暴",
+      "k-豊",
+      "k-厚",
+      "k-混"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-72",
@@ -2472,7 +2603,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-情",
       "k-能",
       "k-態",
-      "k-輸"
+      "k-輸",
+      "k-精"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-74",
@@ -2553,7 +2685,10 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-述",
       "k-殺",
       "k-採",
-      "k-歴"
+      "k-歴",
+      "k-禁",
+      "k-築",
+      "k-雑"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-75",
@@ -2690,7 +2825,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "kanjiIds": [
       "k-階",
       "k-鹿",
-      "k-比"
+      "k-比",
+      "k-混"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-81",
@@ -2779,7 +2915,10 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-氷",
       "k-求",
       "k-録",
-      "k-康"
+      "k-康",
+      "k-暴",
+      "k-救",
+      "k-永"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-85",
@@ -2876,6 +3015,25 @@ export const COMPONENTS: ComponentEntry[] = [
     ],
     "forms": [
       "爿"
+    ]
+  },
+  {
+    "id": "c-r-91",
+    "char": "片",
+    "kind": "canonical-radical",
+    "kanjiIds": [
+      "k-版"
+    ],
+    "source": "Kangxi radical",
+    "radicalId": "r-91",
+    "radicalNumber": 91,
+    "meanings": [
+      "one-sided",
+      "leaf",
+      "sheet"
+    ],
+    "forms": [
+      "片"
     ]
   },
   {
@@ -3087,7 +3245,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-勇",
       "k-巣",
       "k-増",
-      "k-演"
+      "k-演",
+      "k-留",
+      "k-略"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-102",
@@ -3215,7 +3375,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-血",
       "k-温",
       "k-皿",
-      "k-塩"
+      "k-塩",
+      "k-益"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-108",
@@ -3279,7 +3440,12 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-賞",
       "k-財",
       "k-責",
-      "k-貿"
+      "k-貿",
+      "k-則",
+      "k-測",
+      "k-損",
+      "k-績",
+      "k-賛"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-109",
@@ -3370,7 +3536,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-標",
       "k-奈",
       "k-際",
-      "k-示"
+      "k-示",
+      "k-余",
+      "k-禁"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-113",
@@ -3469,7 +3637,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-境",
       "k-識",
       "k-接",
-      "k-織"
+      "k-織",
+      "k-適"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-117",
@@ -3513,7 +3682,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-歯",
       "k-料",
       "k-類",
-      "k-断"
+      "k-断",
+      "k-精"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-119",
@@ -3553,7 +3723,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-統",
       "k-総",
       "k-編",
-      "k-織"
+      "k-織",
+      "k-素",
+      "k-紀",
+      "k-絶",
+      "k-績"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-120",
@@ -3571,7 +3745,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "网",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-置"
+      "k-置",
+      "k-罪"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-122",
@@ -3802,7 +3977,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "臼",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-潟"
+      "k-潟",
+      "k-興"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-134",
@@ -3840,7 +4016,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "舟",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-船"
+      "k-船",
+      "k-航"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-137",
@@ -3881,7 +4058,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "char": "色",
     "kind": "canonical-radical",
     "kanjiIds": [
-      "k-色"
+      "k-色",
+      "k-絶"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-139",
@@ -4085,7 +4263,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-証",
       "k-護",
       "k-評",
-      "k-識"
+      "k-識",
+      "k-講",
+      "k-許"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-149",
@@ -4126,7 +4306,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-頭",
       "k-登",
       "k-短",
-      "k-豆"
+      "k-豆",
+      "k-豊",
+      "k-喜"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-151",
@@ -4147,7 +4329,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "kanjiIds": [
       "k-家",
       "k-隊",
-      "k-象"
+      "k-象",
+      "k-像"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-152",
@@ -4189,7 +4372,12 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-賞",
       "k-財",
       "k-責",
-      "k-貿"
+      "k-貿",
+      "k-則",
+      "k-測",
+      "k-損",
+      "k-績",
+      "k-賛"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-154",
@@ -4529,7 +4717,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-阜",
       "k-際",
       "k-防",
-      "k-限"
+      "k-限",
+      "k-険"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-170",
@@ -4576,7 +4765,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-観",
       "k-確",
       "k-護",
-      "k-準"
+      "k-準",
+      "k-雑"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-172",
@@ -4618,7 +4808,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-晴",
       "k-清",
       "k-静",
-      "k-情"
+      "k-情",
+      "k-精"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-174",
@@ -4637,7 +4828,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "canonical-radical",
     "kanjiIds": [
       "k-悲",
-      "k-非"
+      "k-非",
+      "k-罪"
     ],
     "source": "Kangxi radical",
     "radicalId": "r-175",
@@ -5071,7 +5263,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-価",
       "k-備",
       "k-個",
-      "k-修"
+      "k-修",
+      "k-余",
+      "k-停",
+      "k-仏",
+      "k-像"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-9",
@@ -5106,7 +5302,10 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-判",
       "k-輸",
       "k-型",
-      "k-製"
+      "k-製",
+      "k-則",
+      "k-測",
+      "k-刊"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-18",
@@ -5159,7 +5358,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-性",
       "k-情",
       "k-応",
-      "k-態"
+      "k-態",
+      "k-志"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-61",
@@ -5191,7 +5391,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-技",
       "k-接",
       "k-授",
-      "k-採"
+      "k-採",
+      "k-損",
+      "k-招"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-64",
@@ -5244,7 +5446,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-滋",
       "k-減",
       "k-演",
-      "k-準"
+      "k-準",
+      "k-河",
+      "k-測",
+      "k-混",
+      "k-永"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-85",
@@ -5298,7 +5504,8 @@ export const COMPONENTS: ComponentEntry[] = [
     "kind": "radical-variant",
     "kanjiIds": [
       "k-状",
-      "k-独"
+      "k-独",
+      "k-犯"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-94",
@@ -5387,7 +5594,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-祭",
       "k-礼",
       "k-票",
-      "k-祝"
+      "k-祝",
+      "k-禁"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-113",
@@ -5417,7 +5625,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-笛",
       "k-管",
       "k-笑",
-      "k-節"
+      "k-節",
+      "k-築"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-118",
@@ -5453,7 +5662,11 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-統",
       "k-総",
       "k-編",
-      "k-織"
+      "k-織",
+      "k-素",
+      "k-紀",
+      "k-絶",
+      "k-績"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-120",
@@ -5546,7 +5759,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-証",
       "k-護",
       "k-評",
-      "k-識"
+      "k-識",
+      "k-講",
+      "k-許"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-149",
@@ -5602,7 +5817,9 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-過",
       "k-導",
       "k-述",
-      "k-造"
+      "k-造",
+      "k-適",
+      "k-逆"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-162",
@@ -5649,7 +5866,8 @@ export const COMPONENTS: ComponentEntry[] = [
       "k-阜",
       "k-際",
       "k-防",
-      "k-限"
+      "k-限",
+      "k-険"
     ],
     "source": "Kangxi radical variant metadata",
     "radicalId": "r-170",

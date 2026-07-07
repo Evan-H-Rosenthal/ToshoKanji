@@ -157,7 +157,19 @@ export const RADICALS: RadicalEntry[] = [
       "k-型",
       "k-財",
       "k-師",
-      "k-編"
+      "k-編",
+      "k-講",
+      "k-河",
+      "k-寄",
+      "k-益",
+      "k-余",
+      "k-妻",
+      "k-暴",
+      "k-停",
+      "k-興",
+      "k-豊",
+      "k-像",
+      "k-布"
     ],
     "radicalNumber": 1,
     "variants": [],
@@ -231,7 +243,10 @@ export const RADICALS: RadicalEntry[] = [
       "k-勢",
       "k-術",
       "k-述",
-      "k-殺"
+      "k-殺",
+      "k-救",
+      "k-築",
+      "k-永"
     ],
     "radicalNumber": 3,
     "variants": [],
@@ -251,7 +266,8 @@ export const RADICALS: RadicalEntry[] = [
     ],
     "strokes": 1,
     "kanjiIds": [
-      "k-乗"
+      "k-乗",
+      "k-久"
     ],
     "radicalNumber": 4,
     "variants": [],
@@ -281,7 +297,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-電",
       "k-礼",
       "k-札",
-      "k-縄"
+      "k-縄",
+      "k-犯"
     ],
     "radicalNumber": 5,
     "variants": [],
@@ -321,7 +338,11 @@ export const RADICALS: RadicalEntry[] = [
       "k-減",
       "k-可",
       "k-義",
-      "k-財"
+      "k-財",
+      "k-河",
+      "k-寄",
+      "k-余",
+      "k-停"
     ],
     "radicalNumber": 6,
     "variants": [],
@@ -405,7 +426,15 @@ export const RADICALS: RadicalEntry[] = [
       "k-規",
       "k-評",
       "k-型",
-      "k-責"
+      "k-責",
+      "k-素",
+      "k-余",
+      "k-禁",
+      "k-暴",
+      "k-均",
+      "k-精",
+      "k-績",
+      "k-賛"
     ],
     "radicalNumber": 7,
     "variants": [],
@@ -464,7 +493,14 @@ export const RADICALS: RadicalEntry[] = [
       "k-率",
       "k-製",
       "k-効",
-      "k-責"
+      "k-責",
+      "k-素",
+      "k-航",
+      "k-適",
+      "k-停",
+      "k-精",
+      "k-績",
+      "k-賛"
     ],
     "radicalNumber": 8,
     "variants": [],
@@ -545,7 +581,13 @@ export const RADICALS: RadicalEntry[] = [
       "k-備",
       "k-復",
       "k-個",
-      "k-修"
+      "k-修",
+      "k-余",
+      "k-険",
+      "k-停",
+      "k-仏",
+      "k-像",
+      "k-賛"
     ],
     "radicalNumber": 9,
     "variants": [
@@ -622,7 +664,8 @@ export const RADICALS: RadicalEntry[] = [
     "strokes": 2,
     "kanjiIds": [
       "k-入",
-      "k-全"
+      "k-全",
+      "k-久"
     ],
     "radicalNumber": 11,
     "variants": [],
@@ -687,7 +730,10 @@ export const RADICALS: RadicalEntry[] = [
       "k-再",
       "k-過",
       "k-構",
-      "k-編"
+      "k-編",
+      "k-講",
+      "k-適",
+      "k-興"
     ],
     "radicalNumber": 13,
     "variants": [],
@@ -730,7 +776,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-常",
       "k-営",
       "k-賞",
-      "k-授"
+      "k-授",
+      "k-婦",
+      "k-停"
     ],
     "radicalNumber": 14,
     "variants": [],
@@ -762,7 +810,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-兆",
       "k-茨",
       "k-資",
-      "k-率"
+      "k-率",
+      "k-均"
     ],
     "radicalNumber": 15,
     "variants": [],
@@ -790,7 +839,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-投",
       "k-役",
       "k-設",
-      "k-殺"
+      "k-殺",
+      "k-航",
+      "k-築"
     ],
     "radicalNumber": 16,
     "variants": [],
@@ -864,7 +915,12 @@ export const RADICALS: RadicalEntry[] = [
       "k-輸",
       "k-型",
       "k-製",
-      "k-貿"
+      "k-貿",
+      "k-留",
+      "k-則",
+      "k-測",
+      "k-招",
+      "k-刊"
     ],
     "radicalNumber": 18,
     "variants": [
@@ -947,7 +1003,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-縄",
       "k-潟",
       "k-象",
-      "k-易"
+      "k-易",
+      "k-均",
+      "k-像"
     ],
     "radicalNumber": 20,
     "variants": [],
@@ -1084,7 +1142,11 @@ export const RADICALS: RadicalEntry[] = [
       "k-準",
       "k-技",
       "k-個",
-      "k-故"
+      "k-故",
+      "k-講",
+      "k-適",
+      "k-許",
+      "k-居"
     ],
     "radicalNumber": 24,
     "variants": [],
@@ -1137,7 +1199,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-令",
       "k-節",
       "k-領",
-      "k-報"
+      "k-報",
+      "k-犯"
     ],
     "radicalNumber": 26,
     "variants": [],
@@ -1174,7 +1237,10 @@ export const RADICALS: RadicalEntry[] = [
       "k-飯",
       "k-栃",
       "k-備",
-      "k-歴"
+      "k-歴",
+      "k-圧",
+      "k-厚",
+      "k-版"
     ],
     "radicalNumber": 27,
     "variants": [],
@@ -1224,7 +1290,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-能",
       "k-態",
       "k-弁",
-      "k-貿"
+      "k-貿",
+      "k-留",
+      "k-仏"
     ],
     "radicalNumber": 28,
     "variants": [],
@@ -1278,7 +1346,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-技",
       "k-授",
       "k-殺",
-      "k-破"
+      "k-破",
+      "k-版"
     ],
     "radicalNumber": 29,
     "variants": [],
@@ -1425,7 +1494,20 @@ export const RADICALS: RadicalEntry[] = [
       "k-程",
       "k-師",
       "k-破",
-      "k-故"
+      "k-故",
+      "k-河",
+      "k-適",
+      "k-寄",
+      "k-険",
+      "k-停",
+      "k-興",
+      "k-豊",
+      "k-喜",
+      "k-略",
+      "k-損",
+      "k-居",
+      "k-招",
+      "k-像"
     ],
     "radicalNumber": 30,
     "variants": [],
@@ -1454,7 +1536,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-固",
       "k-団",
       "k-個",
-      "k-因"
+      "k-因",
+      "k-囲"
     ],
     "radicalNumber": 31,
     "variants": [],
@@ -1533,7 +1616,12 @@ export const RADICALS: RadicalEntry[] = [
       "k-規",
       "k-造",
       "k-型",
-      "k-責"
+      "k-責",
+      "k-素",
+      "k-均",
+      "k-圧",
+      "k-精",
+      "k-績"
     ],
     "radicalNumber": 32,
     "variants": [],
@@ -1564,7 +1652,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-続",
       "k-結",
       "k-任",
-      "k-士"
+      "k-士",
+      "k-喜",
+      "k-志"
     ],
     "radicalNumber": 33,
     "variants": [],
@@ -1603,7 +1693,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-格",
       "k-条",
       "k-額",
-      "k-復"
+      "k-復",
+      "k-略"
     ],
     "radicalNumber": 34,
     "variants": [],
@@ -1695,7 +1786,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-笑",
       "k-埼",
       "k-規",
-      "k-因"
+      "k-因",
+      "k-寄",
+      "k-賛"
     ],
     "radicalNumber": 37,
     "variants": [],
@@ -1727,7 +1820,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-好",
       "k-努",
       "k-媛",
-      "k-接"
+      "k-接",
+      "k-婦",
+      "k-妻"
     ],
     "radicalNumber": 38,
     "variants": [],
@@ -1756,7 +1851,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-遊",
       "k-好",
       "k-季",
-      "k-孫"
+      "k-孫",
+      "k-厚"
     ],
     "radicalNumber": 39,
     "variants": [],
@@ -1801,7 +1897,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-確",
       "k-容",
       "k-演",
-      "k-額"
+      "k-額",
+      "k-寄"
     ],
     "radicalNumber": 40,
     "variants": [],
@@ -1898,7 +1995,13 @@ export const RADICALS: RadicalEntry[] = [
       "k-際",
       "k-示",
       "k-編",
-      "k-織"
+      "k-織",
+      "k-素",
+      "k-余",
+      "k-禁",
+      "k-紀",
+      "k-絶",
+      "k-績"
     ],
     "radicalNumber": 42,
     "variants": [],
@@ -1930,13 +2033,37 @@ export const RADICALS: RadicalEntry[] = [
       "k-民",
       "k-倉",
       "k-刷",
-      "k-編"
+      "k-編",
+      "k-居",
+      "k-属"
     ],
     "radicalNumber": 44,
     "variants": [],
     "names": [
       "しかばね",
       "しかばねかんむり"
+    ]
+  },
+  {
+    "id": "r-45",
+    "componentId": "c-r-45",
+    "char": "屮",
+    "meanings": [
+      "left hand",
+      "old grass radical (no. 45)"
+    ],
+    "kanjiMeanings": [
+      "left hand",
+      "old grass radical (no. 45)"
+    ],
+    "strokes": 3,
+    "kanjiIds": [
+      "k-逆"
+    ],
+    "radicalNumber": 45,
+    "variants": [],
+    "names": [
+      "ふるくさ"
     ]
   },
   {
@@ -2012,7 +2139,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-試",
       "k-差",
       "k-佐",
-      "k-功"
+      "k-功",
+      "k-築"
     ],
     "radicalNumber": 48,
     "variants": [],
@@ -2047,7 +2175,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-制",
       "k-常",
       "k-製",
-      "k-師"
+      "k-師",
+      "k-婦",
+      "k-布"
     ],
     "radicalNumber": 50,
     "variants": [],
@@ -2077,7 +2207,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-平",
       "k-岸",
       "k-幸",
-      "k-幹"
+      "k-幹",
+      "k-許",
+      "k-刊"
     ],
     "radicalNumber": 51,
     "variants": [],
@@ -2120,7 +2252,11 @@ export const RADICALS: RadicalEntry[] = [
       "k-総",
       "k-率",
       "k-編",
-      "k-織"
+      "k-織",
+      "k-素",
+      "k-紀",
+      "k-絶",
+      "k-績"
     ],
     "radicalNumber": 52,
     "variants": [],
@@ -2388,7 +2524,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-総",
       "k-情",
       "k-応",
-      "k-態"
+      "k-態",
+      "k-志"
     ],
     "radicalNumber": 61,
     "variants": [
@@ -2491,7 +2628,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-技",
       "k-接",
       "k-授",
-      "k-採"
+      "k-採",
+      "k-損",
+      "k-招"
     ],
     "radicalNumber": 64,
     "variants": [
@@ -2553,7 +2692,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-敗",
       "k-散",
       "k-政",
-      "k-故"
+      "k-故",
+      "k-救"
     ],
     "radicalNumber": 66,
     "variants": [],
@@ -2755,7 +2895,11 @@ export const RADICALS: RadicalEntry[] = [
       "k-識",
       "k-旧",
       "k-易",
-      "k-織"
+      "k-織",
+      "k-暴",
+      "k-豊",
+      "k-厚",
+      "k-混"
     ],
     "radicalNumber": 72,
     "variants": [],
@@ -2823,7 +2967,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-情",
       "k-能",
       "k-態",
-      "k-輸"
+      "k-輸",
+      "k-精"
     ],
     "radicalNumber": 74,
     "variants": [],
@@ -2906,7 +3051,10 @@ export const RADICALS: RadicalEntry[] = [
       "k-述",
       "k-殺",
       "k-採",
-      "k-歴"
+      "k-歴",
+      "k-禁",
+      "k-築",
+      "k-雑"
     ],
     "radicalNumber": 75,
     "variants": [],
@@ -3072,7 +3220,8 @@ export const RADICALS: RadicalEntry[] = [
     "kanjiIds": [
       "k-階",
       "k-鹿",
-      "k-比"
+      "k-比",
+      "k-混"
     ],
     "radicalNumber": 81,
     "variants": [],
@@ -3203,7 +3352,13 @@ export const RADICALS: RadicalEntry[] = [
       "k-滋",
       "k-減",
       "k-演",
-      "k-準"
+      "k-準",
+      "k-河",
+      "k-暴",
+      "k-測",
+      "k-救",
+      "k-混",
+      "k-永"
     ],
     "radicalNumber": 85,
     "variants": [
@@ -3328,6 +3483,28 @@ export const RADICALS: RadicalEntry[] = [
     ]
   },
   {
+    "id": "r-91",
+    "componentId": "c-r-91",
+    "char": "片",
+    "meanings": [
+      "one-sided",
+      "leaf",
+      "sheet"
+    ],
+    "kanjiMeanings": [
+      "one-sided",
+      "leaf",
+      "sheet"
+    ],
+    "strokes": 4,
+    "kanjiIds": [
+      "k-版"
+    ],
+    "radicalNumber": 91,
+    "variants": [],
+    "names": []
+  },
+  {
     "id": "r-92",
     "componentId": "c-r-92",
     "char": "牙",
@@ -3391,7 +3568,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-犬",
       "k-然",
       "k-状",
-      "k-独"
+      "k-独",
+      "k-犯"
     ],
     "radicalNumber": 94,
     "variants": [
@@ -3599,7 +3777,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-勇",
       "k-巣",
       "k-増",
-      "k-演"
+      "k-演",
+      "k-留",
+      "k-略"
     ],
     "radicalNumber": 102,
     "variants": [],
@@ -3746,7 +3926,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-血",
       "k-温",
       "k-皿",
-      "k-塩"
+      "k-塩",
+      "k-益"
     ],
     "radicalNumber": 108,
     "variants": [],
@@ -3813,7 +3994,12 @@ export const RADICALS: RadicalEntry[] = [
       "k-賞",
       "k-財",
       "k-責",
-      "k-貿"
+      "k-貿",
+      "k-則",
+      "k-測",
+      "k-損",
+      "k-績",
+      "k-賛"
     ],
     "radicalNumber": 109,
     "variants": [],
@@ -3918,7 +4104,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-奈",
       "k-祝",
       "k-際",
-      "k-示"
+      "k-示",
+      "k-余",
+      "k-禁"
     ],
     "radicalNumber": 113,
     "variants": [
@@ -4031,7 +4219,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-境",
       "k-識",
       "k-接",
-      "k-織"
+      "k-織",
+      "k-適"
     ],
     "radicalNumber": 117,
     "variants": [],
@@ -4059,7 +4248,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-笛",
       "k-管",
       "k-笑",
-      "k-節"
+      "k-節",
+      "k-築"
     ],
     "radicalNumber": 118,
     "variants": [
@@ -4093,7 +4283,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-歯",
       "k-料",
       "k-類",
-      "k-断"
+      "k-断",
+      "k-精"
     ],
     "radicalNumber": 119,
     "variants": [],
@@ -4132,7 +4323,11 @@ export const RADICALS: RadicalEntry[] = [
       "k-統",
       "k-総",
       "k-編",
-      "k-織"
+      "k-織",
+      "k-素",
+      "k-紀",
+      "k-絶",
+      "k-績"
     ],
     "radicalNumber": 120,
     "variants": [
@@ -4157,7 +4352,8 @@ export const RADICALS: RadicalEntry[] = [
     ],
     "strokes": 6,
     "kanjiIds": [
-      "k-置"
+      "k-置",
+      "k-罪"
     ],
     "radicalNumber": 122,
     "variants": [],
@@ -4416,7 +4612,8 @@ export const RADICALS: RadicalEntry[] = [
     ],
     "strokes": 6,
     "kanjiIds": [
-      "k-潟"
+      "k-潟",
+      "k-興"
     ],
     "radicalNumber": 134,
     "variants": [],
@@ -4460,7 +4657,8 @@ export const RADICALS: RadicalEntry[] = [
     ],
     "strokes": 6,
     "kanjiIds": [
-      "k-船"
+      "k-船",
+      "k-航"
     ],
     "radicalNumber": 137,
     "variants": [],
@@ -4506,7 +4704,8 @@ export const RADICALS: RadicalEntry[] = [
     ],
     "strokes": 6,
     "kanjiIds": [
-      "k-色"
+      "k-色",
+      "k-絶"
     ],
     "radicalNumber": 139,
     "variants": [],
@@ -4765,7 +4964,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-証",
       "k-護",
       "k-評",
-      "k-識"
+      "k-識",
+      "k-講",
+      "k-許"
     ],
     "radicalNumber": 149,
     "variants": [
@@ -4815,7 +5016,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-頭",
       "k-登",
       "k-短",
-      "k-豆"
+      "k-豆",
+      "k-豊",
+      "k-喜"
     ],
     "radicalNumber": 151,
     "variants": [],
@@ -4839,7 +5042,8 @@ export const RADICALS: RadicalEntry[] = [
     "kanjiIds": [
       "k-家",
       "k-隊",
-      "k-象"
+      "k-象",
+      "k-像"
     ],
     "radicalNumber": 152,
     "variants": [],
@@ -4882,7 +5086,12 @@ export const RADICALS: RadicalEntry[] = [
       "k-賞",
       "k-財",
       "k-責",
-      "k-貿"
+      "k-貿",
+      "k-則",
+      "k-測",
+      "k-損",
+      "k-績",
+      "k-賛"
     ],
     "radicalNumber": 154,
     "variants": [],
@@ -5082,7 +5291,9 @@ export const RADICALS: RadicalEntry[] = [
       "k-過",
       "k-導",
       "k-述",
-      "k-造"
+      "k-造",
+      "k-適",
+      "k-逆"
     ],
     "radicalNumber": 162,
     "variants": [
@@ -5122,7 +5333,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-阜",
       "k-際",
       "k-防",
-      "k-限"
+      "k-限",
+      "k-険"
     ],
     "radicalNumber": 163,
     "variants": [
@@ -5309,7 +5521,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-阜",
       "k-際",
       "k-防",
-      "k-限"
+      "k-限",
+      "k-険"
     ],
     "radicalNumber": 170,
     "variants": [
@@ -5367,7 +5580,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-観",
       "k-確",
       "k-護",
-      "k-準"
+      "k-準",
+      "k-雑"
     ],
     "radicalNumber": 172,
     "variants": [],
@@ -5414,7 +5628,8 @@ export const RADICALS: RadicalEntry[] = [
       "k-晴",
       "k-清",
       "k-静",
-      "k-情"
+      "k-情",
+      "k-精"
     ],
     "radicalNumber": 174,
     "variants": [],
@@ -5437,7 +5652,8 @@ export const RADICALS: RadicalEntry[] = [
     "strokes": 8,
     "kanjiIds": [
       "k-悲",
-      "k-非"
+      "k-非",
+      "k-罪"
     ],
     "radicalNumber": 175,
     "variants": [],
