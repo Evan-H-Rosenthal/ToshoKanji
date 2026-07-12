@@ -1,9 +1,9 @@
 # Data Validation Report
 
-- Kanji entries: 750
-- Radical entries: 180
-- Component entries: 200
-- Word entries: 159407
+- Kanji entries: 800
+- Radical entries: 182
+- Component entries: 202
+- Word entries: 161527
 - Hard errors: 0
 - Warnings: 0
 
@@ -305,6 +305,31 @@
 - k-修 (修): raw 5 components, visible 3 components
 - k-故 (故): raw 5 components, visible 4 components
 - k-貿 (貿): raw 5 components, visible 4 components
+- k-河 (河): raw 4 components, visible 3 components
+- k-適 (適): raw 8 components, visible 7 components
+- k-寄 (寄): raw 5 components, visible 4 components
+- k-益 (益): raw 4 components, visible 2 components
+- k-余 (余): raw 8 components, visible 5 components
+- k-逆 (逆): raw 3 components, visible 2 components
+- k-久 (久): raw 4 components, visible 3 components
+- k-妻 (妻): raw 4 components, visible 3 components
+- k-暴 (暴): raw 7 components, visible 5 components
+- k-険 (険): raw 5 components, visible 4 components
+- k-許 (許): raw 6 components, visible 4 components
+- k-停 (停): raw 6 components, visible 5 components
+- k-興 (興): raw 5 components, visible 4 components
+- k-則 (則): raw 4 components, visible 3 components
+- k-測 (測): raw 5 components, visible 4 components
+- k-豊 (豊): raw 6 components, visible 4 components
+- k-喜 (喜): raw 4 components, visible 3 components
+- k-救 (救): raw 5 components, visible 3 components
+- k-損 (損): raw 5 components, visible 4 components
+- k-績 (績): raw 10 components, visible 9 components
+- k-築 (築): raw 5 components, visible 4 components
+- k-永 (永): raw 3 components, visible 2 components
+- k-賛 (賛): raw 7 components, visible 6 components
+- k-布 (布): raw 3 components, visible 2 components
+- k-属 (属): raw 3 components, visible 2 components
 
 ## Words With Suspicious IDs
 - None
@@ -601,3 +626,28 @@
 - k-修 (修): filtered `｜`, `乞`
 - k-故 (故): filtered `乞`
 - k-貿 (貿): filtered `ハ`
+- k-河 (河): filtered `亅`
+- k-適 (適): filtered `并`
+- k-寄 (寄): filtered `亅`
+- k-益 (益): filtered `ハ`, `并`
+- k-余 (余): filtered `ハ`, `个`, `亅`
+- k-逆 (逆): filtered `并`
+- k-久 (久): filtered `ノ`
+- k-妻 (妻): filtered `｜`
+- k-暴 (暴): filtered `｜`, `ハ`
+- k-険 (険): filtered `个`
+- k-許 (許): filtered `ノ`, `乞`
+- k-停 (停): filtered `亅`
+- k-興 (興): filtered `ハ`
+- k-則 (則): filtered `ハ`
+- k-測 (測): filtered `ハ`
+- k-豊 (豊): filtered `｜`, `并`
+- k-喜 (喜): filtered `并`
+- k-救 (救): filtered `丶`, `乞`
+- k-損 (損): filtered `ハ`
+- k-績 (績): filtered `ハ`
+- k-築 (築): filtered `丶`
+- k-永 (永): filtered `丶`
+- k-賛 (賛): filtered `ハ`
+- k-布 (布): filtered `ノ`
+- k-属 (属): filtered `ノ`

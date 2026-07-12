@@ -1,472 +1,148 @@
 # ToshoKanji
 
-ToshoKanji is a collectible kanji dictionary: a mobile-first app where users unlock kanji through a playful gacha flow, then browse, search, personalize, and study the collection they build over time.
+ToshoKanji is a mobile-first kanji learning PWA where kanji behave like collectible entries. The app wraps a real kanji/vocabulary reference in a playful capsule-machine loop: unlock kanji, browse the collection, open rich entries, save personal notes, and follow vocabulary/component relationships as the library grows.
 
-The app is not meant to be a full Kanshudo replacement, a complete Japanese dictionary, or a heavy learning management system. Its center of gravity is simpler:
+It is intentionally not a full Japanese dictionary or a heavy learning-management system. The product bet is smaller and more memorable: make kanji feel worth collecting, then make each collected entry useful enough to revisit.
 
-1. Unlock kanji.
-2. Browse a colorful collection.
-3. Open useful, readable entries.
-4. Learn through meanings, readings, components, radicals, words, notes, and practice.
+## Screenshots
 
-## Product Identity
+| Gacha | Collection |
+| --- | --- |
+| ![ToshoKanji gacha screen showing 800 of 800 kanji collected](public/screenshots/gacha.png) | ![ToshoKanji collection grid with colorful kanji cards](public/screenshots/collection.png) |
 
-ToshoKanji should feel like a personal kanji library crossed with a capsule toy machine. The gacha mechanic gives the app momentum and delight. The entry system gives it lasting utility.
+| Kanji Entry | Collection Stats |
+| --- | --- |
+| ![ToshoKanji kanji entry screen with readings, components, and words](public/screenshots/kanji-entry.png) | ![ToshoKanji category progress stats modal](public/screenshots/stats.png) |
 
-The guiding product sentence is:
+| Achievements | Settings |
+| --- | --- |
+| ![ToshoKanji achievements screen](public/screenshots/achievements.png) | ![ToshoKanji settings screen](public/screenshots/settings.png) |
 
-> Kanji are collectible entries. Words and components are supporting entries. Radicals are metadata with occasional entry pages. Raw decomposition is internal data.
+## What It Does
 
-That hierarchy keeps the app focused while still allowing the underlying dataset to contain richer, messier information.
+- **Gacha-driven unlocks:** kanji are pulled from a rarity-weighted pool with a capsule-machine interaction, animated reward reveal, rarity rings, sparkles, and collection handoff states.
+- **800-kanji collection:** the current generated dataset includes 800 kanji, organized by learner-facing categories and rarity tiers.
+- **Collection browsing:** unlocked kanji appear as colorful cards with category colors, favorite stars, match reasons, and sparkle highlights for newly unlocked entries.
+- **Search and filters:** collection search supports kanji, meanings, readings, custom names, components, and optional vocabulary results, with filters for category, rarity, JLPT level, and favorites.
+- **Category stats:** the gacha page opens a capsule-style progress dashboard showing completion by category.
+- **Entry pages:** kanji pages include meanings, readings, visible components, optional raw decomposition, related vocabulary, notes, custom names, favorites, and a contextual chat panel.
+- **Related entries:** component and word pages let users move through the structure around a kanji instead of treating each character as an isolated flashcard.
+- **Achievements:** milestone tracking covers first unlocks, rarity progress, category progress, favorites, notes, and full collection completion.
+- **PWA polish:** install hints, app icons, manifest metadata, standalone viewport handling, and production service-worker caching are configured.
 
-## Core Principles
+## Latest Implementation Highlights
 
-### Collect first, study second
+This branch is more than a data bump. Recent work added:
 
-The gacha unlock mechanic is part of the app's identity, not decoration. Users should feel that they are building a personal collection of kanji over time.
+- **Precomputed entry indexes** in `src/app/data/entryIndexes.ts` for fast lookup by id, rarity, radical, component, and category.
+- **Richer gacha motion** with banked capsule visuals, dispensed capsule states, press-to-open reveal behavior, rarity-specific sparkle timing, and interaction locking so swipes do not fight an active spin.
+- **Improved collection usability** with lazy vocabulary loading, async word search/favorites, filter badges, and better text fitting on dense cards.
+- **Entry-state restoration** so kanji detail pages preserve scroll position, word-search text, and word-list scroll when navigating away and back.
+- **Debounced persistence** with an explicit `pagehide` flush so local progress is saved without writing on every tiny state change.
+- **Expanded achievement generation** from rarity/category metadata instead of only hand-authored one-off achievements.
 
-### Entries are the durable value
+## Dataset
 
-Even without the game layer, ToshoKanji should be useful as a browsable and searchable kanji reference.
+The generated data is built from public dictionary sources:
 
-### Simple by default, deeper on demand
+- **KANJIDIC2** for kanji meanings, readings, grade/frequency/JLPT-style metadata.
+- **JMdict_e** for vocabulary examples and word metadata.
+- **KRADFILE** for component/decomposition signals.
 
-Kanji data is messy. ToshoKanji should show the most useful learner-facing information first and keep technical or raw data out of the default reading path.
+Current validation report:
 
-### Kanji are primary
+- 800 kanji entries
+- 182 radical entries
+- 202 component entries
+- 161,527 word entries
+- 0 hard errors
+- 0 warnings
 
-Kanji are the main collectible objects. Words make them useful. Components explain their visual structure. Official radicals provide classification when helpful.
+The app intentionally stores more than it shows by default. Learner-facing pages foreground readable meanings, readings, components, and vocabulary, while raw decomposition and provenance-oriented details stay available where they help debugging or advanced review.
 
-### Avoid false precision
+## Tech Stack
 
-The app should not pretend uncertain decomposition, etymology, or component relationships are more exact than they are. Labels like "components" or "visible parts" are safer than overconfident claims about what a kanji "really" contains.
+- React 18
+- TypeScript
+- Vite 6
+- `vite-plugin-pwa`
+- `motion`
+- Radix UI primitives
+- Lucide icons
+- Tailwind CSS 4
+- Python data-generation and validation scripts
 
-## Main User Flow
-
-1. The user opens the app on the gacha screen.
-2. The user unlocks a kanji.
-3. The app reveals the unlocked item and optionally jumps to the collection.
-4. The collection highlights the new kanji.
-5. The user opens the kanji entry.
-6. The user reviews meanings, readings, components, radical information, and example words.
-7. The user favorites, renames, or adds notes to the entry.
-8. The user later practices from the kanji they have unlocked.
-
-## Main App Areas
-
-### Gacha
-
-The gacha screen is the emotional engine of the app.
-
-Required features:
-
-- Main gacha machine interaction.
-- Random unlock from the available pool.
-- Clear reveal state for newly unlocked items.
-- Progress summary.
-- Completion state when all available content has been unlocked.
-- Optional auto-jump to the collection after an unlock.
-
-Product recommendation:
-
-- Kanji should be the primary gacha unlock.
-- Components and radicals should become visible through unlocked kanji rather than competing with kanji as equally important collectibles.
-
-### Collection
-
-The collection is the user's browsable shelf of unlocked kanji.
-
-Required features:
-
-- Grid of unlocked kanji.
-- Search by character, meaning, readings, custom names, and example word meanings.
-- Favorites filter.
-- Progress count.
-- Color-coded cards.
-- Recently unlocked highlight.
-
-Future filters:
-
-- Grade.
-- JLPT level.
-- Stroke count.
-- Category or theme.
-- Recently unlocked.
-- Needs practice.
-
-Product rule:
-
-- The collection should feel like a shelf of things the user owns, not a database table.
-
-### Kanji Entry
-
-The kanji entry is the central information page.
-
-Default sections:
-
-1. Hero
-   - Kanji character.
-   - Primary meaning.
-   - Favorite button.
-   - Optional custom name.
-
-2. Meanings
-   - Primary meaning emphasized.
-   - Secondary meanings listed simply.
-   - No oversized dictionary gloss dump.
-
-3. Readings
-   - On'yomi.
-   - Kun'yomi.
-   - Long reading lists collapsed by default.
-
-4. Example Words
-   - Japanese word.
-   - Reading or furigana.
-   - Optional romaji.
-   - English meaning.
-   - Common word marker when available.
-   - Link to word entry.
-
-5. Components
-   - Learner-facing visible components.
-   - Simple meaning when known.
-   - Link to component entry.
-
-6. Official Radical
-   - Official radical when available.
-   - Radical form used in the kanji.
-   - Variant note only when useful.
-
-7. Notes
-   - User notes, mnemonics, and reminders.
-
-8. Ask or Chat
-   - Optional helper for explanations or mnemonic ideas.
-   - Should be treated as assistance, not authoritative dictionary truth.
-
-Advanced or internal data:
-
-- Raw decomposition should not appear in the default learner UI.
-- Source provenance, filtered fragments, and raw component details belong in developer or advanced views.
-- Alternate radicals should not be foregrounded unless they solve a clear learner-facing problem.
-
-### Component Entry
-
-Component entries help users recognize recurring visual parts.
-
-Default sections:
-
-- Component character or form.
-- Simple learner meaning when available.
-- Whether it corresponds to an official radical.
-- Related kanji.
-- Variant relationship only when useful.
-
-Product rule:
-
-- Components are pattern-recognition aids. They do not need the same depth as kanji entries.
-
-### Word Entry
-
-Word entries make kanji useful in real vocabulary.
-
-Default sections:
-
-- Word in Japanese.
-- Reading or furigana.
-- Meaning.
-- Common marker.
-- Kanji used in the word.
-- Links back to kanji entries.
-
-Future additions:
-
-- Example sentences.
-- Audio.
-- Part of speech.
-- Frequency or commonness.
-
-Product rule:
-
-- Words support kanji learning. ToshoKanji should not become a full Japanese dictionary by accident.
-
-### Practice
-
-Practice should create memory pressure from the user's unlocked collection.
-
-Initial modes:
-
-- Meaning recall: show kanji, choose meaning.
-- Reading recognition: show kanji, choose reading.
-- Word recognition: show word, choose meaning.
-- Favorites-only practice.
-- Recently unlocked practice.
-
-Future modes:
-
-- Spaced repetition.
-- Writing or stroke-order practice.
-- Custom decks.
-- Weak-items queue.
-
-Product rule:
-
-- Practice should use unlocked content by default.
-
-### Achievements
-
-Achievements provide light motivation.
-
-Good achievement types:
-
-- First unlock.
-- 10, 25, 50, and 100 kanji unlocked.
-- First favorite.
-- First note.
-- First practice session.
-- Complete a grade, JLPT level, or category group.
-
-Avoid:
-
-- Aggressive daily streak pressure.
-- Achievements that require obscure radical trivia.
-
-## AI Features
-
-AI should make ToshoKanji feel more conversational, personal, and exploratory. It should help the user ask better questions about kanji without replacing the app's curated dictionary data.
-
-The core AI feature is in-entry chat: a user can open a kanji, word, or component entry and ask an AI about that specific item. The chat should have access to the current entry's structured data so answers can be grounded in what the app already knows.
-
-Possible providers:
-
-- Gemini or another free/low-cost API for early development.
-- A provider abstraction so the app is not permanently tied to one model vendor.
-- A mock/local response mode for development, demos, and offline fallback.
-
-Product rule:
-
-- AI is a learning companion, not the canonical data source. Meanings, readings, radicals, components, and word links should come from the app's dataset first.
-
-### Entry Chat
-
-Entry chat is the primary AI experience.
-
-Users should be able to ask about:
-
-- What a kanji means and how its meanings relate.
-- How to remember a kanji.
-- Words that use the kanji.
-- Differences between similar-looking kanji.
-- On'yomi and kun'yomi reading patterns.
-- Pictographic or historical origins when known.
-- How the character may have changed over time.
-- Whether a component is semantic, phonetic, official, or mostly visual.
-
-AI responses should:
-
-- Prefer concise, learner-friendly explanations.
-- Mention uncertainty when discussing etymology, historical evolution, or component roles.
-- Avoid inventing facts when the app does not have enough context.
-- Invite follow-up questions when a topic is naturally deeper.
-- Use the user's notes or custom names only when relevant.
-
-Useful default prompts:
-
-- "Explain this kanji simply."
-- "Give me a mnemonic."
-- "Why is this reading used?"
-- "Show me useful words with this kanji."
-- "Compare this to a similar kanji."
-- "What is known about its origin?"
-
-### Personalized Practice Generation
-
-AI may generate short practice lessons from the user's unlocked collection.
-
-Possible lesson types:
-
-- Quick review of recently unlocked kanji.
-- Mini-lesson around a theme, such as numbers, school, nature, or directions.
-- Favorites-only review.
-- Weak-item review once practice history exists.
-- Example-word quiz using unlocked kanji.
-- Custom explanation after a missed answer.
-
-Product rule:
-
-- AI can assemble and explain practice, but quiz answers should be checked against structured app data whenever possible.
-
-### Notes Assistance
-
-AI may help users improve their notes.
-
-Possible note tools:
-
-- Summarize long notes.
-- Expand a short note into a clearer mnemonic.
-- Turn notes into flashcard-style prompts.
-- Suggest a memory hook based on the user's wording.
-- Clean up spelling or formatting.
-
-Product rule:
-
-- Notes are personal. AI should suggest edits, not silently replace the user's writing.
-
-### AI Boundaries
-
-AI features should avoid:
-
-- Presenting speculative etymology as fact.
-- Overwriting curated entry data.
-- Generating unsupported readings, meanings, radicals, or example words.
-- Making the app dependent on network access for core browsing.
-- Sending unnecessary personal data to external APIs.
-
-The app should remain useful without AI. AI should deepen the experience when available.
-
-## Data Philosophy
-
-ToshoKanji should store more data than it shows.
-
-### Core learner data
-
-- Character.
-- Meanings.
-- On'yomi and kun'yomi.
-- Stroke count.
-- Grade, JLPT, or frequency when available.
-- Example words.
-- Official radical.
-- Learner-facing components.
-
-### Advanced optional data
-
-- Full reading lists.
-- Etymology summary, only when sourced and confidence-labeled.
-- Frequency and grade metadata.
-- Stroke count.
-
-### Developer or debug data
-
-- Raw decomposition.
-- Source provenance.
-- Filtered raw fragments.
-- Alternate extraction details.
-
-This approach keeps the app honest without making the user wade through the full mess of kanji reference data.
-
-## Non-Goals
-
-ToshoKanji should not initially try to be:
-
-- A complete Kanshudo replacement.
-- A full Japanese dictionary.
-- A grammar app.
-- A sentence mining tool.
-- A stroke-order handwriting tutor.
-- A full spaced-repetition system with complex scheduling.
-- A scholarly kanji etymology database.
-- A comprehensive radical variant database.
-
-These may become future features, but they should not define the first stable architecture.
-
-## MVP Definition
-
-The first complete version of ToshoKanji should include:
-
-- Gacha unlock flow.
-- Persistent unlocked kanji.
-- Collection grid.
-- Search and favorites.
-- Kanji entries.
-- Word entries.
-- Component entries.
-- Entry chat powered by an AI provider or development mock.
-- Notes and custom names.
-- Basic achievements.
-- One simple practice mode.
-- Generated dataset with stable IDs and validated references.
-
-The app is successful if a user can open it daily, unlock a few kanji, browse their growing library, and find the entries pleasant enough to revisit.
-
-## Original Design Source
-
-The prototype began from the original Figma design:
-
-https://www.figma.com/design/2oZvSayfYzcQBdNLDGOxhJ/Kanji-Dictionary-App-Design
-
-## Windows Setup
-
-Install Node.js for Windows from https://nodejs.org/. Use the LTS installer unless you have a reason to use another version.
-
-If PowerShell blocks `npm` with a script execution policy error, approve locally signed or remote-signed scripts for your Windows account:
-
-```powershell
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-```
-
-Close and reopen PowerShell after changing the execution policy.
-
-## Running The App
-
-From the project folder:
-
-```powershell
-npm install
-npm rebuild
-npm run dev
-```
-
-Then open the local URL printed by Vite, usually:
+## Architecture
 
 ```text
-http://localhost:5173/
+src/app/
+  App.tsx                       # app shell, tabs, navigation, unlock flow, persistence wiring
+  persistence.ts                # versioned localStorage load/save with debounced flush
+  search/kanjiSearch.ts         # collection search index and scoring
+  data/entryIndexes.ts          # precomputed maps/groupings over generated entries
+  data/generated/               # generated kanji, radical, component, and word modules
+  data/ui/                      # achievements, category colors, prompts, mock AI replies
+  components/                   # gacha machine, cards, stats modal, chat, PWA hint
+  screens/                      # collection, entries, achievements, settings, practice placeholder
+scripts/
+  build-kanji-data.py           # source-data ingestion and TypeScript generation
+  validate-data.py              # generated-data integrity report
+  generate-icons.mjs            # PWA icon/favicon generation
 ```
 
-## Testing The PWA Build
+Most product state currently lives in `App.tsx` and is passed down to screen components. Generated data and lookup/search helpers are split out so the UI can stay focused on interaction logic.
 
-Service workers are generated for production builds. To test offline caching locally:
+## Deployment
+
+ToshoKanji builds as a static Vite PWA:
+
+1. `npm run build` compiles the React app into `dist/`.
+2. `vite-plugin-pwa` generates the manifest/service-worker assets.
+3. The resulting `dist/` directory can be deployed to any static host.
+
+Local production preview:
 
 ```powershell
 npm run build
 npm run preview
 ```
 
-Open the preview URL printed by Vite, usually:
+## Running Locally
 
-```text
-http://localhost:4173/
-```
-
-In Chrome DevTools, open Application > Service Workers to inspect the registered worker, and Application > Cache Storage to inspect cached app assets.
-
-## Regenerating App Icons
-
-The source app icon lives at:
-
-```text
-public/icons/toshokanji-icon.svg
-```
-
-After replacing that SVG, regenerate the PWA, iOS, and favicon assets with:
+Install Node.js LTS, then run:
 
 ```powershell
-npm run icons
+npm install
+npm run dev
 ```
 
-## Regenerating Kanji Data
-
-The current app dataset is generated from public dictionary sources instead of being hand-authored. To rebuild it:
-
-```powershell
-npm run data:kanji
-```
-
-The script downloads source files into `.cache/datasets/` and writes generated TypeScript data to:
+Vite usually serves the app at:
 
 ```text
-src/app/data/generated/
+http://localhost:5173/
 ```
 
-For this milestone, the generator creates a starter set of 100 kanji: all grade 1 kanji plus the most frequent grade 2 kanji needed to reach 100 total entries. It also generates the radical entries used by those kanji, a distinct component catalog where every radical is also a component, learner-facing and raw component data from KRADFILE, and vocabulary examples from JMdict_e.
+If PowerShell blocks npm scripts on Windows:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+Close and reopen PowerShell afterward.
+
+## Useful Scripts
+
+```powershell
+npm run dev            # start Vite dev server
+npm run build          # create production PWA build
+npm run preview        # serve the production build locally
+npm run data:kanji     # regenerate kanji/radical/component/word data
+npm run data:validate  # validate generated data references and update reports/data-validation.md
+npm run icons          # regenerate PWA, iOS, and favicon assets
+```
+
+## Design Source
+
+The prototype began from this Figma design:
+
+https://www.figma.com/design/2oZvSayfYzcQBdNLDGOxhJ/Kanji-Dictionary-App-Design
