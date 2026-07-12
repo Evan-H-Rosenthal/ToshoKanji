@@ -4,19 +4,17 @@ ToshoKanji is a mobile-first kanji learning PWA where kanji behave like collecti
 
 It is intentionally not a full Japanese dictionary or a heavy learning-management system. The product bet is smaller and more memorable: make kanji feel worth collecting, then make each collected entry useful enough to revisit.
 
-## Screenshots
+## App Walkthroughs
 
-| Gacha | Collection |
+| Gachapon-inspired Kanji Discovery | 800 and counting Kanji to discover |
 | --- | --- |
-| ![ToshoKanji gacha screen showing 800 of 800 kanji collected](public/screenshots/gacha.png) | ![ToshoKanji collection grid with colorful kanji cards](public/screenshots/collection.png) |
+| ![Gachapon-inspired Kanji Discovery](public/gifs/GachaFlow.gif) | ![800 and counting Kanji to discover](public/gifs/CollectionScroll.gif) |
+| Pull the handle and get Kanji Capsules to add them to your collection. | New Kanji are being continuously added, with the goal of adding all 2136 Joyo Kanji. |
 
-| Kanji Entry | Collection Stats |
+| Intuitive exploration system | Filtering System |
 | --- | --- |
-| ![ToshoKanji kanji entry screen with readings, components, and words](public/screenshots/kanji-entry.png) | ![ToshoKanji category progress stats modal](public/screenshots/stats.png) |
-
-| Achievements | Settings |
-| --- | --- |
-| ![ToshoKanji achievements screen](public/screenshots/achievements.png) | ![ToshoKanji settings screen](public/screenshots/settings.png) |
+| ![Intuitive exploration system](public/gifs/ExplorationFlow.gif) | ![Filtering System](public/gifs/Filtering.gif) |
+| Seamlessly jump from Kanji, to word, to Kanji, to Radical, and back again. Discover patterns and build your understanding at your own pace. | Filter through all the Kanji with an intuitive filtering system which lets you start small and grow big. |
 
 ## What It Does
 
