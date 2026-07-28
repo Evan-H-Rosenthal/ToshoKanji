@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { KANJI_BY_ID, RADICAL_BY_ID, RADICAL_INDEX_BY_ID } from "../data/entryIndexes";
 import { getKanjiRarityInfo, type KanjiRarity } from "../data/kanjiRarity";
 import { getLearningCategoryColors, RAD_COLORS } from "../data/ui/categoryColors";
@@ -80,10 +80,12 @@ function RewardSparkle({
   sparkle: { x: number[]; y: number[]; size: number; delay: number };
   timing: { minPauseMs: number; maxPauseMs: number; stepMs: number };
 }) {
+  const reduceMotion = useReducedMotion();
   const [locationIndex, setLocationIndex] = useState(0);
   const [characterIndex, setCharacterIndex] = useState(-1);
 
   useEffect(() => {
+    if (reduceMotion) return;
     let timeoutId: number;
     const startDelay = sparkle.delay * 1000 + randomBetween(timing.minPauseMs * 0.25, timing.maxPauseMs * 0.5);
 
@@ -111,7 +113,7 @@ function RewardSparkle({
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [sparkle.delay, sparkle.x.length, timing.maxPauseMs, timing.minPauseMs, timing.stepMs]);
+  }, [reduceMotion, sparkle.delay, sparkle.x.length, timing.maxPauseMs, timing.minPauseMs, timing.stepMs]);
 
   const character = characterIndex >= 0 ? SPARKLE_CHARACTERS[characterIndex] : "";
 
@@ -159,6 +161,7 @@ function CircularRarityText({
   delay?: number;
   duration: number;
 }) {
+  const reduceMotion = useReducedMotion();
   const ringWidth = radius > 90 ? 20 : 18;
   const orbitRadius = radius - ringWidth / 2;
   const ringCharacters = Array.from({ length: copyCount }, () => [
@@ -172,13 +175,15 @@ function CircularRarityText({
     <motion.div
       aria-hidden
       initial={false}
-      animate={
-        visible
+      animate={reduceMotion
+        ? { opacity: visible ? 1 : 0, scale: 1 }
+        : visible
           ? { opacity: [0, 1, 1], scale: [0.42, 1.1, 1] }
           : { opacity: 0, scale: 0.42 }
       }
-      transition={
-        visible
+      transition={reduceMotion
+        ? { duration: 0 }
+        : visible
           ? { duration: 0.64, delay, times: [0, 0.74, 1], ease: [0.19, 1, 0.22, 1] }
           : { duration: 0.18 }
       }
@@ -198,8 +203,8 @@ function CircularRarityText({
       }}
     >
       <motion.div
-        animate={{ rotate: reverse ? -360 : 360 }}
-        transition={{ duration, repeat: Infinity, ease: "linear" }}
+        animate={reduceMotion ? undefined : { rotate: reverse ? -360 : 360 }}
+        transition={reduceMotion ? { duration: 0 } : { duration, repeat: Infinity, ease: "linear" }}
         style={{ position: "absolute", inset: 0, borderRadius: "50%" }}
       >
         {ringCharacters.map((character, index) => {
@@ -311,6 +316,7 @@ export function GachaMachine({
   onSpinStart?: () => void;
   scale?: number;
 }) {
+  const reduceMotion = useReducedMotion();
   const [knobDeg, setKnobDeg] = useState(0);
   const [spinning, setSpinning] = useState(false);
   const [capsule, setCapsule] = useState<{ type: "kanji" | "radical"; id: string } | null>(null);
@@ -491,7 +497,7 @@ export function GachaMachine({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "var(--ui-font)",
+              fontFamily: "var(--font-machine-rodin)",
               fontWeight: 1000,
               fontSize: 11,
               lineHeight: 0.9,
@@ -506,7 +512,7 @@ export function GachaMachine({
               right: 15,
               top: 10,
               color: "#1d5f9f",
-              fontFamily: "var(--ui-font)",
+              fontFamily: "var(--jp-font)",
               fontSize: 15,
               fontWeight: 1000,
               letterSpacing: "0.02em",
@@ -572,7 +578,7 @@ export function GachaMachine({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "var(--ui-font), var(--jp-font), sans-serif",
+              fontFamily: "var(--jp-font)",
               fontSize: 13,
               fontWeight: 1000,
               letterSpacing: "0.02em",
@@ -616,10 +622,10 @@ export function GachaMachine({
                 zIndex: 4,
               }}
             >
-              <span style={{ fontFamily: "var(--ui-font)", fontSize: 13, fontWeight: 800, lineHeight: 1.05, opacity: 0.92 }}>
+              <span style={{ fontFamily: "var(--jp-font)", fontSize: 13, fontWeight: 800, lineHeight: 1.05, opacity: 0.92 }}>
                 カプセルが売り切れです。
               </span>
-              <span style={{ fontFamily: "var(--ui-font)", fontSize: 14, fontWeight: 1000, lineHeight: 1.05, textTransform: "uppercase", letterSpacing: "0.02em" }}>
+              <span style={{ fontFamily: "var(--font-machine-rodin)", fontSize: 14, fontWeight: 1000, lineHeight: 1.05, textTransform: "uppercase", letterSpacing: "0.02em" }}>
                 Out of stock
               </span>
             </motion.div>
@@ -676,7 +682,7 @@ export function GachaMachine({
               alignItems: "center",
               justifyContent: "center",
               color: "#c8102e",
-              fontFamily: "var(--ui-font)",
+              fontFamily: "var(--font-machine-nunito)",
               fontSize: 15,
               fontWeight: 1000,
             }}
@@ -808,7 +814,7 @@ export function GachaMachine({
               borderRadius: 7,
               background: "#064fae",
               color: "#fff",
-              fontFamily: "var(--ui-font)",
+              fontFamily: "var(--font-machine-rodin)",
               fontSize: 10,
               fontWeight: 900,
               display: "flex",
@@ -835,7 +841,7 @@ export function GachaMachine({
               alignItems: "center",
               justifyContent: "center",
               color: "rgba(255,255,255,0.08)",
-              fontFamily: "var(--ui-font)",
+              fontFamily: "var(--font-machine-rodin)",
               fontSize: 19,
               fontWeight: 1000,
               overflow: "hidden",
@@ -979,8 +985,8 @@ export function GachaMachine({
           </p>
         ) : spinning ? (
           <motion.p
-            animate={{ opacity: [1, 0.45, 1] }}
-            transition={{ duration: 0.6, repeat: Infinity }}
+            animate={reduceMotion ? { opacity: 1 } : { opacity: [1, 0.45, 1] }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.6, repeat: Infinity }}
             style={{ fontFamily: "var(--ui-font)", fontWeight: 800, fontSize: 13 }}
             className="text-muted-foreground"
           >
@@ -1092,7 +1098,9 @@ export function GachaMachine({
                   rewardStage === "center"
                     ? capsulePressing
                       ? { x: 0, y: 0, rotate: 0, scaleX: 0.78, scaleY: 1 }
-                      : {
+                      : reduceMotion
+                        ? { x: 0, y: 0, rotate: 0, scaleX: 1, scaleY: 1 }
+                        : {
                           x: [0, -2, 2, -1, 1, 0, 2, -2, 0],
                           y: [0, 1, -2, 2, -1, 0, -1, 1, 0],
                           rotate: [0, -1.4, 1.1, -0.7, 1.3, 0, -1, 0.8, 0],
@@ -1102,7 +1110,7 @@ export function GachaMachine({
                     : { x: 0, y: 0, rotate: 0, scaleX: 1, scaleY: 1, opacity: 1 }
                 }
                 transition={
-                  rewardStage === "center" && !capsulePressing
+                  rewardStage === "center" && !capsulePressing && !reduceMotion
                     ? {
                         x: { duration: 0.42, repeat: Infinity, ease: "linear" },
                         y: { duration: 0.42, repeat: Infinity, ease: "linear" },

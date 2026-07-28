@@ -156,7 +156,7 @@ export default defineConfig({
       workbox: {
         cleanupOutdatedCaches: true,
         navigateFallback: '/index.html',
-        globPatterns: ['**/*.{js,css,html,ico}'],
+        globPatterns: ['**/*.{js,css,html,ico,woff,woff2,png,svg}'],
         globIgnores: ['**/words.part-*.generated-*.js'],
         maximumFileSizeToCacheInBytes: WORKBOX_PRECACHE_LIMIT_BYTES,
         runtimeCaching: [

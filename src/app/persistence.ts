@@ -13,6 +13,7 @@ export interface PersistedAppState {
   favorites: string[];
   customNames: Record<string, string>;
   notes: Record<string, string>;
+  chatInteractionCount?: number;
   settings: {
     darkMode: boolean;
     volume: number;
@@ -29,6 +30,7 @@ export interface HydratedAppState {
   favorites: Set<string>;
   customNames: Record<string, string>;
   notes: Record<string, string>;
+  chatInteractionCount: number;
   settings: PersistedAppState["settings"];
 }
 
@@ -57,6 +59,7 @@ export function loadPersistedAppState(): HydratedAppState {
       favorites: new Set(readStringArray(parsed.favorites)),
       customNames: readStringRecord(parsed.customNames),
       notes: readStringRecord(parsed.notes),
+      chatInteractionCount: readNonNegativeInteger(parsed.chatInteractionCount),
       settings: {
         darkMode: typeof parsed.settings?.darkMode === "boolean" ? parsed.settings.darkMode : DEFAULT_SETTINGS.darkMode,
         volume: readVolume(parsed.settings?.volume),
@@ -85,6 +88,7 @@ export function savePersistedAppState(state: HydratedAppState) {
     favorites: Array.from(state.favorites),
     customNames: state.customNames,
     notes: state.notes,
+    chatInteractionCount: state.chatInteractionCount,
     settings: state.settings,
   };
 
@@ -125,6 +129,7 @@ function emptyHydratedState(): HydratedAppState {
     favorites: new Set(),
     customNames: {},
     notes: {},
+    chatInteractionCount: 0,
     settings: DEFAULT_SETTINGS,
   };
 }
@@ -151,10 +156,18 @@ function readVolume(value: unknown) {
     : DEFAULT_SETTINGS.volume;
 }
 
+function readNonNegativeInteger(value: unknown) {
+  return typeof value === "number" && Number.isInteger(value) && value >= 0 ? value : 0;
+}
+
 function readUiFontChoice(value: unknown): UiFontChoice {
-  return value === "system" || value === "nunito" ? value : DEFAULT_SETTINGS.uiFontChoice;
+  return value === "system" || value === "nunito" || value === "new-rodin" || value === "two-weekend"
+    ? value
+    : DEFAULT_SETTINGS.uiFontChoice;
 }
 
 function readCharacterFontChoice(value: unknown): CharacterFontChoice {
-  return value === "modern" || value === "traditional" ? value : DEFAULT_SETTINGS.characterFontChoice;
+  return value === "modern" || value === "traditional" || value === "noto-sans"
+    ? value
+    : DEFAULT_SETTINGS.characterFontChoice;
 }

@@ -1,45 +1,58 @@
 import type { Tab } from "../types";
 
 const PAGES: { id: Tab; label: string }[] = [
-  { id: "collection", label: "Collection" },
-  { id: "gacha", label: "Gacha" },
-  { id: "practice", label: "Practice" },
+  { id: "collection", label: "景品 · Prizes" },
+  { id: "gacha", label: "抽選 · Gacha" },
+  { id: "practice", label: "練習 · Practice" },
 ];
 
-export function PageIndicator({ active }: { active: Tab }) {
+export function PageIndicator({ active, onSelect }: { active: Tab; onSelect: (tab: Tab) => void }) {
   return (
-    <div
+    <nav
+      className="app-tab-switcher"
       style={{
-        height: "calc(24px + var(--app-bottom-safe, 0px))",
-        paddingBottom: "var(--app-bottom-safe, 0px)",
+        minHeight: "calc(48px + var(--app-bottom-safe, 0px))",
+        padding: "6px 10px var(--app-bottom-safe, 0px)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: 8,
+        gap: 5,
         flexShrink: 0,
-        background: "linear-gradient(180deg, transparent, rgba(20,16,44,0.34))",
+        background: "linear-gradient(180deg, transparent, color-mix(in srgb, var(--background) 76%, transparent))",
       }}
-      aria-label="Page position"
+      aria-label="Main sections"
     >
       {PAGES.map((page) => {
         const isActive = page.id === active;
-
         return (
-          <div
+          <button
             key={page.id}
+            type="button"
+            onClick={() => onSelect(page.id)}
+            aria-current={isActive ? "page" : undefined}
+            className="app-reactive"
             style={{
-              width: isActive ? 26 : 7,
-              height: 7,
-              borderRadius: 999,
-              background: isActive ? "var(--primary)" : "var(--muted-foreground)",
-              opacity: isActive ? 1 : 0.36,
-              boxShadow: isActive ? "0 0 14px color-mix(in srgb, var(--primary) 64%, transparent)" : "none",
-              transition: "width 0.22s ease, opacity 0.22s ease, background 0.22s ease",
+              minWidth: 0,
+              flex: "1 1 0",
+              maxWidth: 132,
+              height: 32,
+              padding: "0 7px",
+              borderRadius: 11,
+              border: `1px solid ${isActive ? "color-mix(in srgb, var(--primary) 65%, transparent)" : "var(--border)"}`,
+              background: isActive ? "color-mix(in srgb, var(--primary) 18%, var(--card))" : "var(--card)",
+              color: isActive ? "var(--primary)" : "var(--muted-foreground)",
+              boxShadow: isActive ? "0 0 14px color-mix(in srgb, var(--primary) 22%, transparent)" : "none",
+              fontFamily: "var(--ui-font)",
+              fontSize: 10,
+              fontWeight: 900,
+              whiteSpace: "nowrap",
+              cursor: "pointer",
             }}
-            title={page.label}
-          />
+          >
+            {page.label}
+          </button>
         );
       })}
-    </div>
+    </nav>
   );
 }

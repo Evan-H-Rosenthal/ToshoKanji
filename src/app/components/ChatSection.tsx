@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { MessageCircle, Send } from "lucide-react";
 import { QUICK_PROMPTS } from "../data/ui/aiPrompts";
 import { getAIReply } from "../data/ui/mockAiReplies";
@@ -8,11 +8,12 @@ import type { ChatMsg } from "../types";
 export function ChatSection({ entryKey, msgs, onSend, contextLabel = "kanji" }: {
   entryKey: string; msgs: ChatMsg[]; onSend: (key:string, text:string, reply:string) => void; contextLabel?: string;
 }) {
+  const reduceMotion = useReducedMotion();
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior:"smooth" }); }, [msgs, thinking]);
+  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior:reduceMotion ? "auto" : "smooth" }); }, [msgs, thinking, reduceMotion]);
 
   const send = useCallback((text: string) => {
     if (!text.trim() || thinking) return;
@@ -47,7 +48,7 @@ export function ChatSection({ entryKey, msgs, onSend, contextLabel = "kanji" }: 
           {thinking && (
             <div style={{ display:"flex", justifyContent:"flex-start" }}>
               <div style={{ padding:"8px 14px", borderRadius:"16px 16px 16px 4px", background:"var(--secondary)" }}>
-                <motion.span animate={{ opacity:[1,0.3,1] }} transition={{ duration:1, repeat:Infinity }} style={{ fontFamily:"var(--ui-font)", fontSize:18, letterSpacing:4 }}>...</motion.span>
+                <motion.span aria-label="AI is thinking" animate={reduceMotion ? { opacity:1 } : { opacity:[1,0.3,1] }} transition={reduceMotion ? { duration:0 } : { duration:1, repeat:Infinity }} style={{ fontFamily:"var(--ui-font)", fontSize:18, letterSpacing:4 }}>...</motion.span>
               </div>
             </div>
           )}
@@ -58,7 +59,7 @@ export function ChatSection({ entryKey, msgs, onSend, contextLabel = "kanji" }: 
       {/* Quick prompts */}
       <div className="flex flex-wrap gap-2">
         {QUICK_PROMPTS.map(p => (
-          <button key={p} onClick={()=>send(p)} disabled={thinking}
+          <button key={p} className="app-reactive" onClick={()=>send(p)} disabled={thinking}
             style={{
               fontFamily:"var(--ui-font)", fontSize:11, fontWeight:700,
               padding:"5px 10px", borderRadius:20,
@@ -80,7 +81,7 @@ export function ChatSection({ entryKey, msgs, onSend, contextLabel = "kanji" }: 
             padding:"8px 12px", fontFamily:"var(--ui-font)", fontSize:13,
             border:"1px solid var(--border)", outline:"none", color:"var(--foreground)",
           }} />
-        <button onClick={()=>send(input)} disabled={!input.trim()||thinking}
+        <button aria-label="Send message" className="app-reactive" onClick={()=>send(input)} disabled={!input.trim()||thinking}
           style={{
             width:36, height:36, borderRadius:10, border:"none", cursor:"pointer",
             background: "var(--primary)", display:"flex", alignItems:"center", justifyContent:"center",

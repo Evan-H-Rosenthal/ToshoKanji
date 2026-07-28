@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Lock, Star } from "lucide-react";
 import type { KanjiRarity } from "../data/kanjiRarity";
 import { getReadableTextColor } from "../data/ui/categoryColors";
@@ -38,10 +38,12 @@ function CardSparkle({
   sparkle: { x: number[]; y: number[]; size: number; delay: number };
   timing: { minPauseMs: number; maxPauseMs: number; stepMs: number };
 }) {
+  const reduceMotion = useReducedMotion();
   const [locationIndex, setLocationIndex] = useState(0);
   const [characterIndex, setCharacterIndex] = useState(-1);
 
   useEffect(() => {
+    if (reduceMotion) return;
     let timeoutId: number;
     const startDelay = sparkle.delay * 1000 + randomBetween(timing.minPauseMs * 0.25, timing.maxPauseMs * 0.5);
 
@@ -69,7 +71,7 @@ function CardSparkle({
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [sparkle.delay, sparkle.x.length, timing.maxPauseMs, timing.minPauseMs, timing.stepMs]);
+  }, [reduceMotion, sparkle.delay, sparkle.x.length, timing.maxPauseMs, timing.minPauseMs, timing.stepMs]);
 
   const character = characterIndex >= 0 ? CARD_SPARKLE_CHARACTERS[characterIndex] : "";
 
@@ -100,6 +102,7 @@ export function CollectionCard({ char, label, matchReason, color1, color2, textC
   char: string; label: string; color1: string; color2: string; textColor?: string;
   matchReason?: string; starred: boolean; highlighted?: boolean; sparkleRarity?: KanjiRarity; wordCard?: boolean; onStar: (e: React.MouseEvent) => void; onClick: () => void;
 }) {
+  const reduceMotion = useReducedMotion();
   const charLength = Array.from(char).length;
   const wordCharSize = charLength > 16 ? 14 : charLength > 10 ? 16 : charLength > 6 ? 20 : 28;
   const labelSize = wordCard ? 12 : 20;
@@ -117,8 +120,8 @@ export function CollectionCard({ char, label, matchReason, color1, color2, textC
           onClick();
         }
       }}
-      animate={highlighted ? { scale: [1, 1.06, 1], y: [0, -3, 0] } : { scale: 1, y: 0 }}
-      transition={highlighted ? { duration: 1.15, repeat: Infinity, ease: "easeInOut" } : { duration: 0.18 }}
+      animate={highlighted && !reduceMotion ? { scale: [1, 1.06, 1], y: [0, -3, 0] } : { scale: 1, y: 0 }}
+      transition={highlighted && !reduceMotion ? { duration: 1.15, repeat: Infinity, ease: "easeInOut" } : { duration: reduceMotion ? 0 : 0.18 }}
       whileHover={{ scale: 1.04, y: -2 }}
       whileTap={{ scale: 0.97 }}
       className="relative rounded-2xl overflow-hidden text-left"

@@ -1,18 +1,27 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { SideSwipeHints, StatsSwipeHint } from "./DirectionalSwipeHints";
 import { GachaMachine } from "./GachaMachine";
-import { GachaStatsButton } from "./GachaStatsButton";
 
 const BASE_MACHINE_HEIGHT = 522;
 const BASE_MACHINE_WIDTH = 270;
-const STATS_HEIGHT = 64;
-const PANEL_GAP = 10;
+const SIDE_HINT_GUTTER_WIDTH = 44;
+const BOTTOM_HINT_HEIGHT = 72;
+const PANEL_GAP = 8;
 const PANEL_VERTICAL_PADDING = 8;
+
+// GACHA MACHINE TUNING
+// scaleMultiplier: 0.9 is 10% smaller; 1.1 is 10% larger.
+// offsetX: positive moves right; offsetY: positive moves down (values are pixels).
+export const GACHA_MACHINE_TUNING = {
+  scaleMultiplier: 1,
+  offsetX: 0,
+  offsetY: 0,
+} as const;
 
 export function GachaPanel({
   onUnlock,
   getItem,
   allUnlocked,
-  unlockedKanji,
   onInteractionLockChange,
   onSpinStart,
 }: {
@@ -51,11 +60,14 @@ export function GachaPanel({
   }, []);
 
   const machineScale = useMemo(() => {
-    const widthLimit = bounds.width ? (bounds.width - 28) / BASE_MACHINE_WIDTH : 1;
-    const heightBudget = bounds.height - STATS_HEIGHT - PANEL_GAP - PANEL_VERTICAL_PADDING * 2;
+    const widthLimit = bounds.width
+      ? (bounds.width - SIDE_HINT_GUTTER_WIDTH * 2) / BASE_MACHINE_WIDTH
+      : 1;
+    const heightBudget = bounds.height - BOTTOM_HINT_HEIGHT - PANEL_GAP - PANEL_VERTICAL_PADDING * 2;
     const heightLimit = heightBudget > 0 ? heightBudget / BASE_MACHINE_HEIGHT : 1;
+    const fittedScale = Math.max(0.66, Math.min(1.08, widthLimit, heightLimit));
 
-    return Math.max(0.72, Math.min(1.08, widthLimit, heightLimit));
+    return fittedScale * GACHA_MACHINE_TUNING.scaleMultiplier;
   }, [bounds.height, bounds.width]);
 
   const isMeasured = bounds.width > 0 && bounds.height > 0;
@@ -79,15 +91,25 @@ export function GachaPanel({
         transition: "opacity 0.2s ease",
       }}
     >
-      <GachaMachine
-        onUnlock={onUnlock}
-        getItem={getItem}
-        allUnlocked={allUnlocked}
-        onInteractionLockChange={onInteractionLockChange}
-        onSpinStart={onSpinStart}
-        scale={machineScale}
-      />
-      <GachaStatsButton unlockedKanji={unlockedKanji} />
+      <div className="gacha-stage">
+        <SideSwipeHints />
+        <div
+          className="gacha-machine-positioner"
+          style={{
+            transform: `translate(${GACHA_MACHINE_TUNING.offsetX}px, ${GACHA_MACHINE_TUNING.offsetY}px)`,
+          }}
+        >
+          <GachaMachine
+            onUnlock={onUnlock}
+            getItem={getItem}
+            allUnlocked={allUnlocked}
+            onInteractionLockChange={onInteractionLockChange}
+            onSpinStart={onSpinStart}
+            scale={machineScale}
+          />
+        </div>
+      </div>
+      <StatsSwipeHint />
     </div>
   );
 }

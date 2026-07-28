@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { Check, ChevronLeft, Moon, RotateCcw, Sun, Volume2, VolumeX, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { CharacterFontChoice, UiFontChoice } from "../types";
 
 const UI_FONT_OPTIONS: { value: UiFontChoice; label: string; sub: string; preview: string; fontFamily: string }[] = [
-  { value: "nunito", label: "Nunito", sub: "Current rounded UI default", preview: "ToshoKanji", fontFamily: '"Nunito", sans-serif' },
-  { value: "system", label: "System Japanese Sans", sub: "Native Japanese UI fallback stack", preview: "ToshoKanji", fontFamily: '"Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif' },
+  { value: "nunito", label: "Nunito", sub: "Rounded and friendly", preview: "ToshoKanji", fontFamily: "var(--font-ui-nunito)" },
+  { value: "system", label: "System fallback", sub: "Uses your device's native interface font", preview: "ToshoKanji", fontFamily: "var(--font-ui-system)" },
+  { value: "new-rodin", label: "New Rodin", sub: "Bold Japanese arcade signage character", preview: "ToshoKanji", fontFamily: "var(--font-ui-new-rodin)" },
+  { value: "two-weekend", label: "Two Weekend Go", sub: "A crisp Shin Go-inspired option", preview: "ToshoKanji", fontFamily: "var(--font-ui-two-weekend)" },
 ];
 
 const CHARACTER_FONT_OPTIONS: { value: CharacterFontChoice; label: string; sub: string; preview: string; fontFamily: string }[] = [
-  { value: "traditional", label: "Traditional Serif", sub: "Calligraphic Noto Serif JP", preview: "図書漢字", fontFamily: '"Noto Serif JP", serif' },
-  { value: "modern", label: "Modern Mono/Sans", sub: "Cleaner element-reading style", preview: "図書漢字", fontFamily: '"Noto Sans Mono CJK JP", "Yu Gothic", "Meiryo", monospace' },
+  { value: "traditional", label: "Traditional Serif", sub: "Calligraphic Noto Serif JP", preview: "\u56F3\u66F8\u6F22\u5B57", fontFamily: "var(--font-jp-serif)" },
+  { value: "modern", label: "Modern Mono/Sans", sub: "Native Japanese mono/sans stack", preview: "\u56F3\u66F8\u6F22\u5B57", fontFamily: "var(--font-jp-modern)" },
+  { value: "noto-sans", label: "Noto Sans JP", sub: "Modern Google Japanese sans", preview: "\u56F3\u66F8\u6F22\u5B57", fontFamily: "var(--font-jp-sans)" },
 ];
 
 const DATASET_ATTRIBUTIONS = [
@@ -36,33 +39,34 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
   onDark:(v:boolean)=>void; onVolume:(v:number)=>void; onDisableAutoJump:(v:boolean)=>void; onImprovePerformance:(v:boolean)=>void; onUiFontChoice:(v:UiFontChoice)=>void; onCharacterFontChoice:(v:CharacterFontChoice)=>void;
   onResetProgress:()=>void; onResetAll:()=>void; onUnlockAll:()=>void; onBack:()=>void;
 }) {
+  const reduceMotion = useReducedMotion();
   const [confirmReset, setConfirmReset] = useState<"progress"|"all"|null>(null);
   const [fontPicker, setFontPicker] = useState<"ui"|"character"|null>(null);
   const uiFontLabel = UI_FONT_OPTIONS.find(option => option.value === uiFontChoice)?.label ?? "Nunito";
   const characterFontLabel = CHARACTER_FONT_OPTIONS.find(option => option.value === characterFontChoice)?.label ?? "Traditional Serif";
   return (
-    <div className="flex flex-col h-full overflow-y-auto">
+    <div className="settings-page flex flex-col h-full overflow-y-auto">
       <div className="flex items-center gap-3 px-4 pt-3 pb-4 shrink-0">
-        <button onClick={onBack} className="text-muted-foreground"><ChevronLeft size={22} /></button>
+        <button type="button" onClick={onBack} aria-label="Back" className="text-muted-foreground app-reactive"><ChevronLeft size={22} /></button>
         <h2 style={{ fontFamily:"var(--ui-font)", fontWeight:900, fontSize:20 }} className="text-foreground">Settings</h2>
       </div>
 
       <div className="flex flex-col gap-3 px-4 pb-8">
         {/* Appearance */}
         <div className="rounded-2xl overflow-hidden" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, textTransform:"uppercase", letterSpacing:"0.08em", padding:"12px 16px 4px" }} className="text-muted-foreground">Appearance</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, padding:"12px 16px 4px" }} className="text-muted-foreground">Appearance</p>
           <div className="flex items-center justify-between px-4 py-3">
             <div className="flex items-center gap-3">
               {darkMode ? <Moon size={18} className="text-primary" /> : <Sun size={18} className="text-primary" />}
               <span style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15 }} className="text-foreground">{darkMode ? "Dark Mode" : "Light Mode"}</span>
             </div>
-            <button onClick={()=>onDark(!darkMode)}
+            <button type="button" onClick={()=>onDark(!darkMode)} aria-label="Toggle dark mode" aria-pressed={darkMode}
               style={{
                 width:48, height:28, borderRadius:14,
                 background: darkMode ? "var(--primary)" : "var(--muted)",
                 position:"relative", transition:"background 0.3s", cursor:"pointer", border:"none",
               }}>
-              <motion.div animate={{ x: darkMode ? 20 : 0 }} transition={{ type:"spring", stiffness:500, damping:30 }}
+              <motion.div animate={{ x: darkMode ? 20 : 0 }} transition={reduceMotion ? { duration:0 } : { type:"spring", stiffness:500, damping:30 }}
                 style={{ position:"absolute", top:3, left:4, width:22, height:22, borderRadius:"50%", background:"#fff", boxShadow:"0 1px 4px rgba(0,0,0,0.2)" }} />
             </button>
           </div>
@@ -86,10 +90,10 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
 
         {/* Sound */}
         <div className="rounded-2xl overflow-hidden" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, textTransform:"uppercase", letterSpacing:"0.08em", padding:"12px 16px 4px" }} className="text-muted-foreground">Sound</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, padding:"12px 16px 4px" }} className="text-muted-foreground">Sound</p>
           <div className="flex items-center gap-3 px-4 py-3">
             {volume === 0 ? <VolumeX size={18} className="text-muted-foreground" /> : <Volume2 size={18} className="text-primary" />}
-            <input type="range" min={0} max={1} step={0.05} value={volume} onChange={e=>onVolume(parseFloat(e.target.value))}
+            <input aria-label="Sound volume" type="range" min={0} max={1} step={0.05} value={volume} onChange={e=>onVolume(parseFloat(e.target.value))}
               style={{ flex:1, accentColor:"var(--primary)", cursor:"pointer" }} />
             <span style={{ fontFamily:"var(--ui-font)", fontSize:13, fontWeight:700, minWidth:32, textAlign:"right" }} className="text-muted-foreground">{Math.round(volume*100)}%</span>
           </div>
@@ -97,20 +101,20 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
 
         {/* Gameplay */}
         <div className="rounded-2xl overflow-hidden" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, textTransform:"uppercase", letterSpacing:"0.08em", padding:"12px 16px 4px" }} className="text-muted-foreground">Gameplay</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, padding:"12px 16px 4px" }} className="text-muted-foreground">Gameplay</p>
           <div className="flex items-center justify-between px-4 py-3">
             <div>
               <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15 }} className="text-foreground">Disable auto-jump</p>
               <p style={{ fontFamily:"var(--ui-font)", fontSize:11 }} className="text-muted-foreground">Stay on gacha after collecting a capsule</p>
             </div>
-            <button onClick={()=>onDisableAutoJump(!disableAutoJump)}
+            <button type="button" onClick={()=>onDisableAutoJump(!disableAutoJump)} aria-label="Disable auto-jump"
               aria-pressed={disableAutoJump}
               style={{
                 width:48, height:28, borderRadius:14,
                 background: disableAutoJump ? "var(--primary)" : "var(--muted)",
                 position:"relative", transition:"background 0.3s", cursor:"pointer", border:"none", flexShrink:0,
               }}>
-              <motion.div animate={{ x: disableAutoJump ? 20 : 0 }} transition={{ type:"spring", stiffness:500, damping:30 }}
+              <motion.div animate={{ x: disableAutoJump ? 20 : 0 }} transition={reduceMotion ? { duration:0 } : { type:"spring", stiffness:500, damping:30 }}
                 style={{ position:"absolute", top:3, left:4, width:22, height:22, borderRadius:"50%", background:"#fff", boxShadow:"0 1px 4px rgba(0,0,0,0.2)" }} />
             </button>
           </div>
@@ -119,14 +123,14 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
               <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15 }} className="text-foreground">Improve Performance</p>
               <p style={{ fontFamily:"var(--ui-font)", fontSize:11 }} className="text-muted-foreground">Use lighter fade transitions between tabs</p>
             </div>
-            <button onClick={()=>onImprovePerformance(!improvePerformance)}
+            <button type="button" onClick={()=>onImprovePerformance(!improvePerformance)} aria-label="Improve performance"
               aria-pressed={improvePerformance}
               style={{
                 width:48, height:28, borderRadius:14,
                 background: improvePerformance ? "var(--primary)" : "var(--muted)",
                 position:"relative", transition:"background 0.3s", cursor:"pointer", border:"none", flexShrink:0,
               }}>
-              <motion.div animate={{ x: improvePerformance ? 20 : 0 }} transition={{ type:"spring", stiffness:500, damping:30 }}
+              <motion.div animate={{ x: improvePerformance ? 20 : 0 }} transition={reduceMotion ? { duration:0 } : { type:"spring", stiffness:500, damping:30 }}
                 style={{ position:"absolute", top:3, left:4, width:22, height:22, borderRadius:"50%", background:"#fff", boxShadow:"0 1px 4px rgba(0,0,0,0.2)" }} />
             </button>
           </div>
@@ -134,19 +138,19 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
 
         {/* Stats */}
         <div className="rounded-2xl overflow-hidden" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, textTransform:"uppercase", letterSpacing:"0.08em", padding:"12px 16px 4px" }} className="text-muted-foreground">Data</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, padding:"12px 16px 4px" }} className="text-muted-foreground">Data</p>
           <div className="flex items-center justify-between px-4 py-3 border-t border-border">
             <div>
-              <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15, color:"#22c55e" }}>Debug: unlock everything</p>
+              <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15, color:"var(--success)" }}>Debug: unlock everything</p>
               <p style={{ fontFamily:"var(--ui-font)", fontSize:11 }} className="text-muted-foreground">Temporarily reveal every kanji and radical for review</p>
             </div>
-            <button onClick={onUnlockAll}
-              style={{ padding:"7px 12px", borderRadius:10, background:"rgba(34,197,94,0.14)", color:"#22c55e", fontFamily:"var(--ui-font)", fontWeight:900, fontSize:11, border:"1px solid rgba(34,197,94,0.32)", cursor:"pointer" }}>
+            <button type="button" aria-label="Unlock all entries" onClick={onUnlockAll}
+              style={{ padding:"7px 12px", borderRadius:10, background:"color-mix(in srgb, var(--success) 14%, transparent)", color:"var(--success)", fontFamily:"var(--ui-font)", fontWeight:900, fontSize:11, border:"1px solid color-mix(in srgb, var(--success) 32%, transparent)", cursor:"pointer" }}>
               Unlock
             </button>
           </div>
           {[
-            { label:"Reset unlock progress", sub:"Keeps notes & custom names", action:"progress" as const, color:"#f97316" },
+            { label:"Reset unlock progress", sub:"Keeps notes & custom names", action:"progress" as const, color:"var(--warning)" },
             { label:"Reset all progress", sub:"Erases everything including notes", action:"all" as const, color:"var(--destructive)" },
           ].map(item => (
             <div key={item.action} className="px-4 py-3 border-t border-border">
@@ -164,7 +168,7 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
                     <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15, color:item.color }}>{item.label}</p>
                     <p style={{ fontFamily:"var(--ui-font)", fontSize:11 }} className="text-muted-foreground">{item.sub}</p>
                   </div>
-                  <button onClick={()=>setConfirmReset(item.action)}
+                  <button type="button" aria-label={item.label} onClick={()=>setConfirmReset(item.action)}
                     style={{ padding:"6px 14px", borderRadius:10, background:`${item.color}18`, color:item.color, fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, border:`1px solid ${item.color}33`, cursor:"pointer" }}>
                     <RotateCcw size={13} />
                   </button>
@@ -172,9 +176,12 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
               )}
             </div>
           ))}
-          <div className="px-4 py-3 border-t border-border">
-            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:13, marginBottom:8 }} className="text-foreground">Dataset attributions</p>
-            <div className="flex flex-col gap-2">
+        </div>
+
+        <div className="rounded-2xl overflow-hidden" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, padding:"12px 16px 6px" }} className="text-muted-foreground">Dataset attributions</p>
+          <div className="px-4 pb-4 pt-1">
+            <div className="flex flex-col gap-2.5">
               {DATASET_ATTRIBUTIONS.map(source => (
                 <div key={source.name}>
                   <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, lineHeight:1.25 }} className="text-foreground">{source.name}</p>
@@ -184,7 +191,6 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
             </div>
           </div>
         </div>
-
         {/* About */}
         <div className="rounded-2xl p-4 text-center" style={{ background:"var(--muted)" }}>
           <p style={{ fontFamily:"var(--jp-font)", fontSize:22, fontWeight:700 }} className="text-foreground">図書漢字</p>
@@ -269,6 +275,7 @@ function FontPickerOverlay({
   onSelect: (value: string) => void;
   onClose: () => void;
 }) {
+  const reduceMotion = useReducedMotion();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -288,14 +295,16 @@ function FontPickerOverlay({
       }}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.94, y: 8 }}
-        transition={{ type: "spring", stiffness: 430, damping: 28 }}
+        initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.9, y: 10 }}
+        animate={reduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
+        exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.94, y: 8 }}
+        transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 430, damping: 28 }}
         onClick={(event) => event.stopPropagation()}
         style={{
           width: "100%",
           maxWidth: 290,
+          maxHeight: "calc(100% - 12px)",
+          overflowY: "auto",
           borderRadius: 22,
           background: "var(--card)",
           border: "1px solid var(--border)",

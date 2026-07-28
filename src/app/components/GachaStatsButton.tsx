@@ -1,5 +1,5 @@
 import { X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useMemo, useState } from "react";
 import { KANJI_IDS, KANJI_IDS_BY_CATEGORY } from "../data/entryIndexes";
 import { LEARNING_CATEGORIES } from "../data/ui/categoryColors";
@@ -18,6 +18,7 @@ export function GachaStatsButton({
 }: {
   unlockedKanji: Set<string>;
 }) {
+  const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const categoryStats = useMemo(() => {
     return CATEGORY_TOTALS.map((category) => {
@@ -58,8 +59,8 @@ export function GachaStatsButton({
       >
         <motion.div
           aria-hidden
-          animate={{ x: ["-115%", "115%"] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.1 }}
+          animate={reduceMotion ? { x: "-115%" } : { x: ["-115%", "115%"] }}
+          transition={reduceMotion ? { duration: 0 } : { duration: 2.4, repeat: Infinity, ease: "easeInOut", repeatDelay: 1.1 }}
           style={{
             position: "absolute",
             inset: 0,

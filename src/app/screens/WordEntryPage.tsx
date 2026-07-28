@@ -208,7 +208,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, customNames, notes
         )}
       </div>
 
-      <div className="flex flex-col gap-4 px-4 pb-8">
+      <div className="entry-section-stack flex flex-col px-4 pb-8">
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Meaning</p>
           <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>

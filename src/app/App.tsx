@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type PointerEvent } from "react";
-import { AnimatePresence, animate, motion, useMotionValue, type PanInfo } from "motion/react";
+import { AnimatePresence, MotionConfig, animate, motion, useMotionValue, useReducedMotion, type PanInfo } from "motion/react";
 import { Settings, Trophy } from "lucide-react";
 import { KANJI_BY_RARITY, KANJI_IDS, RADICAL_IDS } from "./data/entryIndexes";
 import { GachaPanel } from "./components/GachaPanel";
@@ -19,13 +19,16 @@ import { flushPersistedAppStateSave, loadPersistedAppState, schedulePersistedApp
 import type { CharacterFontChoice, ChatMsg, KanjiEntryViewState, ScreenState, Tab, UiFontChoice } from "./types";
 
 const UI_FONT_STACKS: Record<UiFontChoice, string> = {
-  nunito: '"Nunito", sans-serif',
-  system: '"Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Nunito", sans-serif',
+  nunito: "var(--font-ui-nunito)",
+  system: "var(--font-ui-system)",
+  "new-rodin": "var(--font-ui-new-rodin)",
+  "two-weekend": "var(--font-ui-two-weekend)",
 };
 
 const CHARACTER_FONT_STACKS: Record<CharacterFontChoice, string> = {
-  traditional: '"Noto Serif JP", serif',
-  modern: '"Noto Sans Mono CJK JP", "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic ProN", ui-monospace, monospace',
+  traditional: "var(--font-jp-serif)",
+  modern: "var(--font-jp-modern)",
+  "noto-sans": "var(--font-jp-sans)",
 };
 
 const TAB_ORDER: Record<Tab, number> = {
@@ -46,10 +49,12 @@ const isStandalonePwa = () => {
 
 export default function App() {
   const initialPersistedState = useMemo(() => loadPersistedAppState(), []);
+  const prefersReducedMotion = useReducedMotion();
   const [darkMode, setDarkMode] = useState(initialPersistedState.settings.darkMode);
   const [volume, setVolume] = useState(initialPersistedState.settings.volume);
   const [disableAutoJump, setDisableAutoJump] = useState(initialPersistedState.settings.disableAutoJump);
   const [improvePerformance, setImprovePerformance] = useState(initialPersistedState.settings.improvePerformance);
+  const useSimpleTransitions = improvePerformance || prefersReducedMotion;
   const [uiFontChoice, setUiFontChoice] = useState<UiFontChoice>(initialPersistedState.settings.uiFontChoice);
   const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>(initialPersistedState.settings.characterFontChoice);
   const [activeTab, setActiveTab] = useState<Tab>("gacha");
@@ -72,6 +77,7 @@ export default function App() {
   const [customNames, setCustomNames] = useState<Record<string,string>>(initialPersistedState.customNames);
   const [notes, setNotes] = useState<Record<string,string>>(initialPersistedState.notes);
   const [chatMsgs, setChatMsgs] = useState<Record<string,ChatMsg[]>>({});
+  const [chatInteractionCount, setChatInteractionCount] = useState(initialPersistedState.chatInteractionCount);
   const [unlockPrompt, setUnlockPrompt] = useState<{type:"kanji"|"radical";id:string}|null>(null);
   const [highlightedUnlock, setHighlightedUnlock] = useState<{type:"kanji"|"radical";id:string}|null>(null);
   const msgIdRef = useRef(0);
@@ -126,19 +132,19 @@ export default function App() {
   }, [screen.type]);
 
   useLayoutEffect(() => {
-    if (!pageWidth || improvePerformance || screen.type !== "main") return;
+    if (!pageWidth || useSimpleTransitions || screen.type !== "main") return;
     pageX.set(-TAB_ORDER[activeTab] * pageWidth);
-  }, [improvePerformance, pageWidth, pageX, screen.type]);
+  }, [pageWidth, pageX, screen.type, useSimpleTransitions]);
 
   useEffect(() => {
-    if (!pageWidth || improvePerformance || screen.type !== "main") return;
+    if (!pageWidth || useSimpleTransitions || screen.type !== "main") return;
 
     const controls = animate(pageX, -TAB_ORDER[activeTab] * pageWidth, hasChangedTabs
       ? { type: "spring", stiffness: 380, damping: 38, mass: 0.78 }
       : { duration: 0 });
 
     return () => controls.stop();
-  }, [activeTab, hasChangedTabs, improvePerformance, pageWidth, pageX, screen.type]);
+  }, [activeTab, hasChangedTabs, pageWidth, pageX, screen.type, useSimpleTransitions]);
 
   useEffect(() => {
     schedulePersistedAppStateSave({
@@ -147,6 +153,7 @@ export default function App() {
       favorites,
       customNames,
       notes,
+      chatInteractionCount,
       settings: {
         darkMode,
         volume,
@@ -158,6 +165,7 @@ export default function App() {
     });
   }, [
     characterFontChoice,
+    chatInteractionCount,
     customNames,
     darkMode,
     disableAutoJump,
@@ -192,14 +200,14 @@ export default function App() {
   }, [activeTab, changeActiveTab]);
 
   const handleSwipeStart = useCallback((event: PointerEvent<HTMLDivElement>) => {
-    if (screen.type !== "main" || !improvePerformance || gachaInteractionLocked) return;
+    if (screen.type !== "main" || !useSimpleTransitions || gachaInteractionLocked) return;
     swipeStartRef.current = { x: event.clientX, y: event.clientY };
-  }, [gachaInteractionLocked, improvePerformance, screen.type]);
+  }, [gachaInteractionLocked, screen.type, useSimpleTransitions]);
 
   const handleSwipeEnd = useCallback((event: PointerEvent<HTMLDivElement>) => {
     const start = swipeStartRef.current;
     swipeStartRef.current = null;
-    if (!start || screen.type !== "main" || !improvePerformance || gachaInteractionLocked) return;
+    if (!start || screen.type !== "main" || !useSimpleTransitions || gachaInteractionLocked) return;
 
     const dx = event.clientX - start.x;
     const dy = event.clientY - start.y;
@@ -207,10 +215,10 @@ export default function App() {
     if (!isHorizontalSwipe) return;
 
     stepActiveTab(dx < 0 ? 1 : -1);
-  }, [gachaInteractionLocked, improvePerformance, screen.type, stepActiveTab]);
+  }, [gachaInteractionLocked, screen.type, stepActiveTab, useSimpleTransitions]);
 
   const handleDragEnd = useCallback((_: MouseEvent | TouchEvent | globalThis.PointerEvent, info: PanInfo) => {
-    if (screen.type !== "main" || improvePerformance || gachaInteractionLocked) return;
+    if (screen.type !== "main" || useSimpleTransitions || gachaInteractionLocked) return;
 
     const currentIndex = TAB_SEQUENCE.indexOf(activeTab);
     const currentX = -currentIndex * pageWidth;
@@ -230,7 +238,7 @@ export default function App() {
     }
 
     animate(pageX, currentX, { type: "spring", stiffness: 420, damping: 34, mass: 0.74 });
-  }, [activeTab, gachaInteractionLocked, improvePerformance, pageWidth, pageX, screen.type, stepActiveTab]);
+  }, [activeTab, gachaInteractionLocked, pageWidth, pageX, screen.type, stepActiveTab, useSimpleTransitions]);
 
   const availableKanjiByRarity = useMemo(() => {
     const next = new Map(KANJI_RARITIES.map((rarity) => [rarity.id, [] as string[]]));
@@ -301,6 +309,7 @@ export default function App() {
     const userMsg: ChatMsg = { role:"user", text:q, id:++msgIdRef.current };
     const aiMsg: ChatMsg = { role:"ai", text:a, id:++msgIdRef.current };
     setChatMsgs(p=>({...p,[key]:[...(p[key]||[]), userMsg, aiMsg]}));
+    setChatInteractionCount((count) => count + 1);
   }, []);
 
   const handleKanjiEntryViewStateChange = useCallback((id: string, viewState: KanjiEntryViewState) => {
@@ -353,7 +362,7 @@ export default function App() {
   };
 
   const resetProgress = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); };
-  const resetAll = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); setFavorites(new Set()); setCustomNames({}); setNotes({}); setChatMsgs({}); };
+  const resetAll = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); setFavorites(new Set()); setCustomNames({}); setNotes({}); setChatMsgs({}); setChatInteractionCount(0); };
   const unlockAll = () => {
     setUnlockedKanji(new Set(KANJI_IDS));
     setUnlockedRadicals(new Set(RADICAL_IDS));
@@ -444,7 +453,7 @@ export default function App() {
           )}
           {screen.type === "achievements" && (
             <AchievementsPage unlockedKanji={unlockedKanji} unlockedRadicals={unlockedRadicals}
-              favorites={favorites} notes={notes} onBack={closeUtilityScreen} />
+              favorites={favorites} notes={notes} chatInteractionCount={chatInteractionCount} onBack={closeUtilityScreen} />
           )}
           {screen.type === "settings" && (
             <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} improvePerformance={improvePerformance} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
@@ -461,7 +470,7 @@ export default function App() {
                   display:"flex", alignItems:"center", justifyContent:"space-between",
                   padding:"14px 18px 8px",
                 }}>
-                  <button onClick={()=>openUtilityScreen({type:"achievements"})}
+                  <button aria-label="Achievements" className="app-reactive" onClick={()=>openUtilityScreen({type:"achievements"})}
                     style={{ width:48, height:48, borderRadius:14, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
                     <Trophy size={23} className="text-foreground" />
                   </button>
@@ -469,7 +478,7 @@ export default function App() {
                     <p style={{ fontFamily:"var(--jp-font)", fontWeight:700, fontSize:16 }} className="text-foreground">図書漢字</p>
                     <p style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:700 }} className="text-muted-foreground">ToshoKanji</p>
                   </div>
-                  <button onClick={()=>openUtilityScreen({type:"settings"})}
+                  <button aria-label="Settings" className="app-reactive" onClick={()=>openUtilityScreen({type:"settings"})}
                     style={{ width:48, height:48, borderRadius:14, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
                     <Settings size={23} className="text-foreground" />
                   </button>
@@ -478,7 +487,7 @@ export default function App() {
               {/* Non-gacha headers show settings icon */}
               {activeTab !== "gacha" && (
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"14px 18px 8px" }}>
-                  <button onClick={()=>openUtilityScreen({type:"achievements"})}
+                  <button aria-label="Achievements" className="app-reactive" onClick={()=>openUtilityScreen({type:"achievements"})}
                     style={{ width:48, height:48, borderRadius:14, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
                     <Trophy size={23} className="text-foreground" />
                   </button>
@@ -486,7 +495,7 @@ export default function App() {
                     <p style={{ fontFamily:"var(--jp-font)", fontWeight:700, fontSize:16 }} className="text-foreground">図書漢字</p>
                     <p style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:700 }} className="text-muted-foreground">ToshoKanji</p>
                   </div>
-                  <button onClick={()=>openUtilityScreen({type:"settings"})}
+                  <button aria-label="Settings" className="app-reactive" onClick={()=>openUtilityScreen({type:"settings"})}
                     style={{ width:48, height:48, borderRadius:14, background:"var(--card)", border:"1px solid var(--border)", display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
                     <Settings size={23} className="text-foreground" />
                   </button>
@@ -500,14 +509,14 @@ export default function App() {
                 onPointerUp={handleSwipeEnd}
                 onPointerCancel={() => { swipeStartRef.current = null; }}
                 style={{ flex:1, minHeight:0, overflow:"hidden", display:"flex", flexDirection:"column", position:"relative", touchAction:gachaInteractionLocked ? "none" : "pan-y" }}>
-                {improvePerformance ? (
+                {useSimpleTransitions ? (
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={`fade-${activeTab}`}
-                      initial={{ opacity:0, y:8 }}
-                      animate={{ opacity:1, y:0 }}
-                      exit={{ opacity:0, y:-8 }}
-                      transition={{ duration:0.24, ease:"easeOut" }}
+                      initial={prefersReducedMotion ? { opacity:0 } : { opacity:0, y:8 }}
+                      animate={prefersReducedMotion ? { opacity:1 } : { opacity:1, y:0 }}
+                      exit={prefersReducedMotion ? { opacity:0 } : { opacity:0, y:-8 }}
+                      transition={{ duration:prefersReducedMotion ? 0.12 : 0.24, ease:"easeOut" }}
                       style={{ position:"absolute", inset:0, overflow:"hidden", display:"flex", flexDirection:"column" }}>
                       {renderTabPanel(activeTab)}
                     </motion.div>
@@ -540,7 +549,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Page indicator (hidden on sub-screens) */}
-      {screen.type === "main" && <PageIndicator active={activeTab} />}
+      {screen.type === "main" && <PageIndicator active={activeTab} onSelect={changeActiveTab} />}
 
       {/* Unlock prompt overlay */}
       <AnimatePresence>
@@ -557,7 +566,8 @@ export default function App() {
   );
 
   return (
-    <div className={darkMode ? "dark" : ""} style={{ fontFamily:"var(--ui-font)", minHeight:"var(--app-height, 100dvh)", background: darkMode ? "#050411" : "#e8e0f0" }}>
+    <MotionConfig reducedMotion="user">
+      <div className={darkMode ? "dark" : ""} style={{ fontFamily:"var(--ui-font)", minHeight:"var(--app-height, 100dvh)", background:"var(--app-shell-background)" }}>
       <style>{`
         :root {
           --app-height: 100dvh;
@@ -569,11 +579,12 @@ export default function App() {
           width: 100%;
           height: 100%;
           min-height: var(--app-height, 100dvh);
-          overflow: hidden;
-          background: ${darkMode ? "#050411" : "#e8e0f0"};
+          overflow-x: clip;
+          overflow-y: hidden;
+          background: var(--app-shell-background);
         }
         body {
-          background: ${darkMode ? "#050411" : "#e8e0f0"};
+          background: var(--app-shell-background);
           overscroll-behavior: none;
         }
         @media (display-mode: standalone) {
@@ -598,7 +609,7 @@ export default function App() {
             right: 0;
             bottom: 0;
             height: var(--app-bottom-safe);
-            background: ${darkMode ? "#050411" : "#e8e0f0"};
+            background: var(--app-shell-background);
             pointer-events: none;
             z-index: 0;
           }
@@ -609,6 +620,7 @@ export default function App() {
       <PhoneFrame darkMode={darkMode}>
         {mainContent}
       </PhoneFrame>
-    </div>
+      </div>
+    </MotionConfig>
   );
 }

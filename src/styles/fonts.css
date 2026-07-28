@@ -1,1 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Noto+Serif+JP:wght@400;700&display=swap');
+@font-face {
+  font-family: "TK Nunito";
+  src: url("/fonts/nunito-latin.woff") format("woff");
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TK New Rodin";
+  src: url("/fonts/new-rodin-300.woff") format("woff");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face { font-family: "TK New Rodin"; src: url("/fonts/new-rodin-400.woff") format("woff"); font-style: normal; font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "TK New Rodin"; src: url("/fonts/new-rodin-600.woff") format("woff"); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: "TK New Rodin"; src: url("/fonts/new-rodin-700.woff") format("woff"); font-style: normal; font-weight: 700; font-display: swap; }
+@font-face { font-family: "TK New Rodin"; src: url("/fonts/new-rodin-800.woff") format("woff"); font-style: normal; font-weight: 800; font-display: swap; }
+@font-face { font-family: "TK New Rodin"; src: url("/fonts/new-rodin-900.woff") format("woff"); font-style: normal; font-weight: 900 1000; font-display: swap; }
+
+@font-face {
+  font-family: "TK Two Weekend Go";
+  src: url("/fonts/two-weekend-400.woff") format("woff");
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TK Two Weekend Go";
+  src: url("/fonts/two-weekend-700.woff") format("woff");
+  font-style: normal;
+  font-weight: 700 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TK Noto Serif JP";
+  src: url("/fonts/noto-serif-jp.woff") format("woff");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TK Noto Sans JP";
+  src: url("/fonts/noto-sans-jp.woff") format("woff");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}

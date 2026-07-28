@@ -1,6 +1,6 @@
 export type Tab = "collection" | "gacha" | "practice";
-export type UiFontChoice = "nunito" | "system";
-export type CharacterFontChoice = "traditional" | "modern";
+export type UiFontChoice = "nunito" | "system" | "new-rodin" | "two-weekend";
+export type CharacterFontChoice = "traditional" | "modern" | "noto-sans";
 export interface ScreenState { type: "main" | "kanji-entry" | "component-entry" | "word-entry" | "achievements" | "settings"; id?: string; }
 export interface KanjiEntryViewState {
   scrollTop: number;
@@ -105,4 +105,12 @@ export interface WordEntry {
   kanjiIds: string[];
 }
 export interface ChatMsg { role: "user" | "ai"; text: string; id: number; }
-export interface Achievement { id: string; name: string; desc: string; icon: string; check: (uk: Set<string>, ur: Set<string>, fav: Set<string>, notes: Record<string, string>) => boolean; }
+export type AchievementCategory = "rarity" | "category" | "favorites" | "notes" | "ai-chat";
+export interface Achievement {
+  id: string;
+  name: string;
+  desc: string;
+  icon: string;
+  category: AchievementCategory;
+  check: (uk: Set<string>, ur: Set<string>, fav: Set<string>, notes: Record<string, string>, chatInteractions: number) => boolean;
+}

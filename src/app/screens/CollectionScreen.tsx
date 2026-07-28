@@ -257,7 +257,7 @@ export function CollectionScreen({
   const kanjiCountLabel = hasActiveFilters || query ? `${kanjiItems.length}/${unlockedTotal}` : `${unlockedTotal}/${fullTotal}`;
 
   return (
-    <div className="flex flex-col h-full" style={{ position: "relative" }}>
+    <div className="collection-screen flex flex-col h-full" style={{ position: "relative" }}>
       <div className="px-4 pt-3 pb-2 shrink-0">
         <div className="flex items-center justify-between mb-2">
           <h2 style={{ fontFamily: "var(--ui-font)", fontWeight: 900, fontSize: 20 }} className="text-foreground">
@@ -267,8 +267,8 @@ export function CollectionScreen({
             {unlockedTotal}/{fullTotal}
           </span>
         </div>
-        <div className="flex gap-2">
-          <div className="flex-1 flex items-center gap-2 rounded-xl px-3 py-2" style={{ background: "var(--input-background)" }}>
+        <div className="collection-search-rail flex">
+          <div className="collection-search-box flex-1 flex items-center gap-2 rounded-xl px-3 py-2" style={{ background: "var(--input-background)" }}>
             <button
               type="button"
               onClick={() => runSearch(draftQuery)}
@@ -287,7 +287,7 @@ export function CollectionScreen({
                 }
               }}
               placeholder="Search collection..."
-              className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground"
+              className="flex-1 min-w-0 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground"
               style={{ fontFamily: "var(--ui-font)" }}
             />
             {(draftQuery || query) && (
@@ -306,7 +306,7 @@ export function CollectionScreen({
           <button
             type="button"
             onClick={() => setFiltersOpen(true)}
-            className="rounded-xl px-3 py-2 flex items-center gap-1 transition-colors"
+            className="collection-rail-button app-reactive rounded-xl flex items-center transition-colors"
             style={{
               background: hasActiveFilters ? "var(--primary)" : "var(--input-background)",
               color: hasActiveFilters ? "#fff" : "var(--muted-foreground)",
@@ -342,7 +342,7 @@ export function CollectionScreen({
           <button
             type="button"
             onClick={() => onFavOnlyChange(!favOnly)}
-            className="rounded-xl px-3 py-2 flex items-center gap-1 transition-colors"
+            className="collection-rail-button app-reactive rounded-xl flex items-center transition-colors"
             style={{ background: favOnly ? "var(--primary)" : "var(--input-background)" }}
             aria-label="Show favorites only"
           >
