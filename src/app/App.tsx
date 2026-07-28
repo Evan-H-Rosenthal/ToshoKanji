@@ -64,6 +64,7 @@ export default function App() {
   const [collectionFavOnly, setCollectionFavOnly] = useState(false);
   const collectionScrollTopRef = useRef(0);
   const kanjiEntryViewStateRef = useRef<Record<string, KanjiEntryViewState>>({});
+  const ignoredKanjiEntryViewStateIdsRef = useRef<Set<string>>(new Set());
 
   const [unlockedKanji, setUnlockedKanji] = useState<Set<string>>(initialPersistedState.unlockedKanji);
   const [unlockedRadicals, setUnlockedRadicals] = useState<Set<string>>(initialPersistedState.unlockedRadicals);
@@ -303,10 +304,14 @@ export default function App() {
   }, []);
 
   const handleKanjiEntryViewStateChange = useCallback((id: string, viewState: KanjiEntryViewState) => {
+    if (ignoredKanjiEntryViewStateIdsRef.current.has(id)) return;
     kanjiEntryViewStateRef.current[id] = viewState;
   }, []);
 
   const pushScreen = useCallback((nextScreen: ScreenState) => {
+    if (nextScreen.type === "kanji-entry" && nextScreen.id) {
+      ignoredKanjiEntryViewStateIdsRef.current.delete(nextScreen.id);
+    }
     setScreenStack((stack) => [...stack, screen]);
     setScreen(nextScreen);
   }, [screen]);
@@ -320,6 +325,10 @@ export default function App() {
     });
   }, []);
   const handleBackToCollection = () => {
+    const ignoredIds = new Set(Object.keys(kanjiEntryViewStateRef.current));
+    if (screen.type === "kanji-entry" && screen.id) ignoredIds.add(screen.id);
+    ignoredKanjiEntryViewStateIdsRef.current = ignoredIds;
+    kanjiEntryViewStateRef.current = {};
     setScreenStack([]);
     setScreen({ type:"main" });
     changeActiveTab("collection");
@@ -351,7 +360,7 @@ export default function App() {
   };
 
   const previousScreen = screenStack[screenStack.length - 1];
-  const entryBackLabel = previousScreen?.type === "main" ? "Back to collection" : "Back one step";
+  const entryBackLabel = previousScreen?.type === "main" ? "Back to Collection" : "Back one step";
   const showBackToCollection = screenStack.length >= 2;
   const renderTabPanel = (tab: Tab) => {
     if (tab === "collection") {
@@ -418,7 +427,7 @@ export default function App() {
           )}
           {screen.type === "component-entry" && screen.id && (
             <ComponentEntryPage id={screen.id} unlockedKanji={unlockedKanji}
-              favorites={favorites} notes={notes} chatMsgs={chatMsgs}
+              favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs}
               onBack={popScreen} backLabel={entryBackLabel}
               onToggleFav={handleToggleFav}
               onSetNote={handleSetNote} onChat={handleChat}
@@ -427,7 +436,7 @@ export default function App() {
           )}
           {screen.type === "word-entry" && screen.id && (
             <WordEntryPage id={screen.id} unlockedKanji={unlockedKanji}
-              favorites={favorites} notes={notes} chatMsgs={chatMsgs} darkMode={darkMode}
+              favorites={favorites} customNames={customNames} notes={notes} chatMsgs={chatMsgs} darkMode={darkMode}
               onBack={popScreen} backLabel={entryBackLabel} onToggleFav={handleToggleFav}
               onSetNote={handleSetNote} onChat={handleChat}
               onBackToCollection={showBackToCollection ? handleBackToCollection : undefined}

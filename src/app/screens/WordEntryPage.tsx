@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { ChevronLeft, HelpCircle, Lock, Star } from "lucide-react";
+import { HelpCircle, Lock, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
+import { EntryNavigationButtons } from "../components/EntryNavigationButtons";
+import { getKanjiDisplayName } from "../data/displayNames";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import { getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor } from "../data/ui/categoryColors";
 import { findWordEntry, getWordEntryColors, type WordEntry } from "../data/wordData";
@@ -37,10 +39,11 @@ function getWordClassification(wordTags: WordMetadataTag[] = []) {
   return WORD_CLASSIFICATIONS.find((classification) => classification.tags.some((tag) => wordTags.includes(tag)));
 }
 
-export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, darkMode, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
+export function WordEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, darkMode, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
   id: string;
   unlockedKanji: Set<string>;
   favorites: Set<string>;
+  customNames: Record<string, string>;
   notes: Record<string, string>;
   chatMsgs: Record<string, ChatMsg[]>;
   darkMode: boolean;
@@ -79,9 +82,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, d
     return (
       <div className="flex flex-col h-full overflow-y-auto">
         <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
-          <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> {backLabel}
-          </button>
+          <EntryNavigationButtons backLabel={backLabel} onBack={onBack} onBackToCollection={onBackToCollection} />
         </div>
         <div className="flex flex-col items-center justify-center flex-1 px-6 text-center">
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:18 }} className="text-foreground">{loading ? "Loading word..." : "Word not found"}</p>
@@ -119,34 +120,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, d
   return (
     <div className="flex flex-col h-full overflow-y-auto">
       <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
-        <div className="flex flex-col items-start gap-1">
-          <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> {backLabel}
-          </button>
-          {onBackToCollection && (
-            <button
-              onClick={onBackToCollection}
-              style={{
-                marginLeft: 20,
-                padding: "7px 11px 7px 8px",
-                borderRadius: 999,
-                border: "1px solid var(--border)",
-                background: "var(--muted)",
-                color: "var(--muted-foreground)",
-                fontFamily: "var(--ui-font)",
-                fontSize: 12,
-                fontWeight: 800,
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 3,
-                minHeight: 34,
-              }}
-            >
-              <ChevronLeft size={16} /> Back to Collection
-            </button>
-          )}
-        </div>
+        <EntryNavigationButtons backLabel={backLabel} onBack={onBack} onBackToCollection={onBackToCollection} />
         <button onClick={() => onToggleFav(key)}>
           <Star size={22} fill={isFav ? "#ffd700" : "none"} color={isFav ? "#ffd700" : "var(--muted-foreground)"} />
         </button>
@@ -286,7 +260,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, d
                   >
                   {!isUnlocked && <Lock size={11} className="text-muted-foreground" />}
                   <span style={{ fontFamily:"var(--jp-font)", fontSize:23, color: darkMode ? (isUnlocked ? kc1 : "var(--muted-foreground)") : "#111827" }}>{kanji.char}</span>
-                  <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: darkMode ? (isUnlocked ? kc1 : "var(--muted-foreground)") : "#111827" }}>{kanji.meanings[0]}</span>
+                  <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: darkMode ? (isUnlocked ? kc1 : "var(--muted-foreground)") : "#111827" }}>{getKanjiDisplayName(kanji, customNames)}</span>
                 </button>
               );
             })}

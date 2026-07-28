@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import { ChevronLeft, Lock, RefreshCw, Star } from "lucide-react";
+import { Lock, RefreshCw, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
+import { EntryNavigationButtons } from "../components/EntryNavigationButtons";
 import { COMPONENT_BY_ID, COMPONENT_VARIANTS_BY_CANONICAL_ID, KANJI_BY_ID } from "../data/entryIndexes";
+import { getKanjiDisplayName } from "../data/displayNames";
 import { getLearningCategoryColors } from "../data/ui/categoryColors";
 import type { ChatMsg, ComponentEntry } from "../types";
 
@@ -21,10 +23,11 @@ function getComponentGroup(component: ComponentEntry) {
   return { primary, forms, kanjiIds };
 }
 
-export function ComponentEntryPage({ id, unlockedKanji, favorites, notes, chatMsgs, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
+export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, onBack, backLabel, onBackToCollection, onToggleFav, onSetNote, onChat, onNavKanji }: {
   id: string;
   unlockedKanji: Set<string>;
   favorites: Set<string>;
+  customNames: Record<string, string>;
   notes: Record<string, string>;
   chatMsgs: Record<string, ChatMsg[]>;
   onBack: () => void;
@@ -50,9 +53,7 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, notes, chatMs
     return (
       <div className="flex flex-col h-full overflow-y-auto">
         <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
-          <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> {backLabel}
-          </button>
+          <EntryNavigationButtons backLabel={backLabel} onBack={onBack} onBackToCollection={onBackToCollection} />
         </div>
         <div className="px-4 py-6">
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800 }} className="text-foreground">Component not found.</p>
@@ -77,34 +78,7 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, notes, chatMs
   return (
     <div className="flex flex-col h-full overflow-y-auto">
       <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
-        <div className="flex flex-col items-start gap-1">
-          <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> {backLabel}
-          </button>
-          {onBackToCollection && (
-            <button
-              onClick={onBackToCollection}
-              style={{
-                marginLeft: 20,
-                padding: "7px 11px 7px 8px",
-                borderRadius: 999,
-                border: "1px solid var(--border)",
-                background: "var(--muted)",
-                color: "var(--muted-foreground)",
-                fontFamily: "var(--ui-font)",
-                fontSize: 12,
-                fontWeight: 800,
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 3,
-                minHeight: 34,
-              }}
-            >
-              <ChevronLeft size={16} /> Back to Collection
-            </button>
-          )}
-        </div>
+        <EntryNavigationButtons backLabel={backLabel} onBack={onBack} onBackToCollection={onBackToCollection} />
         {radicalFavoriteKey && (
           <button onClick={() => onToggleFav(radicalFavoriteKey)}>
             <Star size={22} fill={favorites.has(radicalFavoriteKey) ? "#ffd700" : "none"} color={favorites.has(radicalFavoriteKey) ? "#ffd700" : "var(--muted-foreground)"} />
@@ -239,7 +213,7 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, notes, chatMs
                   >
                     {!isUnlocked && <Lock size={10} className="text-muted-foreground" />}
                     <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color: isUnlocked ? kc1 : "var(--muted-foreground)" }}>{kanji.char}</span>
-                    <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:700, color: isUnlocked ? kc1 : "var(--muted-foreground)" }}>{kanji.meanings[0]}</span>
+                    <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:700, color: isUnlocked ? kc1 : "var(--muted-foreground)" }}>{getKanjiDisplayName(kanji, customNames)}</span>
                   </button>
                 );
               })}

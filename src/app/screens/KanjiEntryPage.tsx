@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Check, ChevronLeft, Info, Pencil, Search, Star, Tags, X } from "lucide-react";
+import { Check, Info, Pencil, Search, Star, Tags, X } from "lucide-react";
+import { EntryNavigationButtons } from "../components/EntryNavigationButtons";
 import { COMPONENT_BY_ID, KANJI_BY_ID, RADICAL_BY_ID } from "../data/entryIndexes";
+import { getComponentDisplayName } from "../data/displayNames";
 import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
 import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getWordsForKanji } from "../data/wordData";
@@ -175,34 +177,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
     >
       {/* Header */}
       <div className="flex items-center justify-between px-4 pt-3 pb-2 shrink-0">
-        <div className="flex flex-col items-start gap-1">
-          <button onClick={onBack} className="flex items-center gap-1 text-muted-foreground" style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:14 }}>
-            <ChevronLeft size={20} /> {backLabel}
-          </button>
-          {onBackToCollection && (
-            <button
-              onClick={onBackToCollection}
-              style={{
-                marginLeft: 20,
-                padding: "7px 11px 7px 8px",
-                borderRadius: 999,
-                border: "1px solid var(--border)",
-                background: "var(--muted)",
-                color: "var(--muted-foreground)",
-                fontFamily: "var(--ui-font)",
-                fontSize: 12,
-                fontWeight: 800,
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 3,
-                minHeight: 34,
-              }}
-            >
-              <ChevronLeft size={16} /> Back to Collection
-            </button>
-          )}
-        </div>
+        <EntryNavigationButtons backLabel={backLabel} onBack={onBack} onBackToCollection={onBackToCollection} />
         <button onClick={()=>onToggleFav(key)}>
           <Star size={22} fill={isFav?"#ffd700":"none"} color={isFav?"#ffd700":"var(--muted-foreground)"} />
         </button>
@@ -539,7 +514,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                     <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color:c }}>{part.char}</span>
                     <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
                       <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: darkMode ? c : "#111827" }}>
-                        {rad?.meanings[0] ?? "component"}
+                        {getComponentDisplayName(component, part.radicalId, rad?.meanings[0] ?? "component", customNames)}
                       </span>
                       <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color: darkMode ? "var(--muted-foreground)" : "#111827" }}>
                         {component?.kind.replace("-", " ") ?? part.role}
