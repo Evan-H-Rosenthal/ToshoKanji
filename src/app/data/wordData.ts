@@ -30,10 +30,32 @@ const WORD_PART_START_IDS: Array<[WordPartNumber, string]> = [
 const loadedWordParts = new Map<WordPartNumber, Promise<GeneratedWordEntry[]>>();
 const wordById = new Map<string, GeneratedWordEntry>();
 
+function orderKanjiBySpelling(kanji: KanjiEntry[], spelling: string) {
+  const kanjiByChar = new Map(kanji.map((entry) => [entry.char, entry]));
+  const seenIds = new Set<string>();
+  const ordered: KanjiEntry[] = [];
+
+  for (const char of Array.from(spelling)) {
+    const entry = kanjiByChar.get(char);
+    if (!entry || seenIds.has(entry.id)) continue;
+    ordered.push(entry);
+    seenIds.add(entry.id);
+  }
+
+  for (const entry of kanji) {
+    if (seenIds.has(entry.id)) continue;
+    ordered.push(entry);
+    seenIds.add(entry.id);
+  }
+
+  return ordered;
+}
+
 function resolveWordEntry(entry: GeneratedWordEntry): WordEntry {
-  const kanji = entry.kanjiIds
+  const resolvedKanji = entry.kanjiIds
     .map((kanjiId) => KANJI_BY_ID.get(kanjiId))
     .filter((value): value is KanjiEntry => Boolean(value));
+  const kanji = orderKanjiBySpelling(resolvedKanji, entry.word.japanese);
 
   return { id: entry.id, word: entry.word, kanji };
 }

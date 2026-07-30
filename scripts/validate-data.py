@@ -15,42 +15,11 @@ REPORT_FILE = ROOT / "reports" / "data-validation.md"
 ROMAJI_PLACEHOLDER = "Romaji Placeholder"
 ROMAJI_RE = re.compile(r"^[a-zA-Z0-9 '\-.,()/]+$")
 
-FORBIDDEN_VISIBLE_COMPONENTS = {
-    "\u4e36",
-    "\u30ce",
-    "\u4e3f",
-    "\u4e28",
-    "\uff5c",
-    "\u4e85",
-    "\u4e40",
-    "\u4e41",
-    "\u30cf",
-    "\u4e2a",
-    "\u5e76",
-    "\u4e5e",
-}
+VALID_COMPONENT_KINDS = {"canonical-radical", "radical-variant", "visual-component", "raw-fragment"}
 
-VISIBLE_COMPONENT_ALLOWLIST: set[str] = set()
+PAGE_COMPONENT_KINDS = {"canonical-radical", "radical-variant", "visual-component"}
 
-VALID_COMPONENT_KINDS = {
-    "canonical-radical",
-    "radical-variant",
-    "learner-component",
-    "raw-fragment",
-}
-
-PAGE_COMPONENT_KINDS = {
-    "canonical-radical",
-    "radical-variant",
-    "learner-component",
-}
-
-VALID_LEARNER_PART_ROLES = {
-    "official-radical",
-    "semantic",
-    "phonetic",
-    "learner-component",
-}
+VALID_LEARNER_PART_ROLES = {"official-radical", "radical-variant", "visual-component"}
 
 VALID_RAW_PART_ROLES = {
     "raw-fragment",
@@ -125,6 +94,8 @@ def main() -> int:
     for duplicate in duplicate_values(word_ids):
         errors.append(f"Duplicate word id `{duplicate}`")
 
+    component_resolution_by_source: dict[str, tuple] = {}
+
     for entry in kanji:
         label = f"{entry['id']} ({entry['char']})"
         official_radical = entry.get("officialRadical")
@@ -159,14 +130,35 @@ def main() -> int:
                 errors.append(f"{label} references missing component `{component_id}`")
 
         for part in learner_parts:
-            if part.get("role") not in VALID_LEARNER_PART_ROLES:
-                errors.append(f"{label} learner part `{part.get('char')}` has invalid role `{part.get('role')}`")
+            role = part.get("role")
+            if role not in VALID_LEARNER_PART_ROLES:
+                errors.append(f"{label} learner part `{part.get('char')}` has invalid role `{role}`")
+
             component_id = part.get("componentId")
-            if component_id and component_id not in component_id_set:
-                errors.append(f"{label} learner part `{part.get('char')}` references missing component `{component_id}`")
+            if not component_id:
+                errors.append(f"{label} visible part `{part.get('char')}` has no componentId")
+                component_entry = None
+            else:
+                component_entry = component_by_id.get(component_id)
+                if not component_entry:
+                    errors.append(f"{label} learner part `{part.get('char')}` references missing component `{component_id}`")
+
             radical_id = part.get("radicalId")
             if radical_id and radical_id not in radical_id_set:
                 errors.append(f"{label} learner part `{part.get('char')}` references missing radical `{radical_id}`")
+
+            if role == "radical-variant" and component_entry and component_entry.get("kind") != "radical-variant":
+                errors.append(f"{label} marks `{part.get('char')}` as a radical variant but resolves to `{component_entry.get('kind')}`")
+            if part.get("source") == "radk-resolved" and part.get("representation", "direct") == "direct" and part.get("char") == entry.get("char"):
+                errors.append(f"{label} displays redundant direct KRAD self-membership `{part.get('char')}`")
+
+            source_char = part.get("sourceChar") or (part.get("char") if part.get("source") == "radk-resolved" else None)
+            if source_char:
+                resolution = (part.get("char"), component_id, part.get("representation", "direct"), radical_id)
+                previous = component_resolution_by_source.get(source_char)
+                if previous and previous != resolution:
+                    errors.append(f"KRAD source `{source_char}` resolves inconsistently: {previous} versus {resolution}")
+                component_resolution_by_source[source_char] = resolution
 
         for part in raw_parts:
             if part.get("role") not in VALID_RAW_PART_ROLES:
@@ -179,21 +171,8 @@ def main() -> int:
             radical_id = part.get("radicalId")
             if radical_id and radical_id not in radical_id_set:
                 errors.append(f"{label} raw decomposition part `{part.get('char')}` references missing radical `{radical_id}`")
-
-        for part in learner_parts:
-            component = part.get("char")
-            component_entry = component_by_id.get(part.get("componentId"))
-            official_form = official_radical.get("form") if official_radical else None
-            if component in FORBIDDEN_VISIBLE_COMPONENTS and component != official_form and component not in VISIBLE_COMPONENT_ALLOWLIST:
-                errors.append(f"{label} learnerParts displays forbidden raw stroke fragment `{component}`")
-            if part.get("role") == "raw-fragment":
-                errors.append(f"{label} learnerParts includes raw-fragment role for `{component}`")
-            if component_entry and component_entry.get("kind") == "raw-fragment":
-                errors.append(f"{label} learnerParts references raw-fragment component `{component_entry['id']}`")
-            if component_entry and not component_entry.get("meanings"):
-                warnings.append(
-                    f"{label} displays component `{component_entry['id']}` ({component_entry['char']}) with no meanings"
-                )
+            if part.get("missingRadkMetadata"):
+                errors.append(f"{label} raw decomposition part `{part.get('char')}` has no RADKFILE metadata")
 
         for word_id in entry.get("wordIds") or []:
             if word_id not in word_id_set:
@@ -235,7 +214,7 @@ def main() -> int:
                 errors.append(f"{component_id} points to missing canonical component `{canonical_component_id}`")
             if not radical_id:
                 errors.append(f"{component_id} is a radical variant with no radicalId")
-        if component_kind in {"canonical-radical", "radical-variant", "learner-component"} and not component.get("meanings"):
+        if component_kind in {"canonical-radical", "radical-variant"} and not component.get("meanings"):
             warnings.append(f"{component_id} ({component.get('char')}) has no meanings")
         if radical_id and radical_id not in radical_id_set:
             errors.append(f"{component_id} points to missing radical `{radical_id}`")
@@ -261,6 +240,13 @@ def main() -> int:
             elif kanji_entry["char"] not in japanese:
                 errors.append(f"{word_id} links to `{kanji_id}` but `{japanese}` does not contain `{kanji_entry['char']}`")
 
+    component_kind_counts = Counter(component.get("kind") for component in components)
+    learner_role_counts = Counter(
+        part.get("role")
+        for entry in kanji
+        for part in entry.get("learnerParts") or []
+    )
+    hidden_self_count = sum(len((entry.get("rawDecomposition") or {}).get("hiddenSelfParts") or []) for entry in kanji)
     REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
     report = [
         "# Data Validation Report",
@@ -269,6 +255,12 @@ def main() -> int:
         f"- Radical entries: {len(radicals)}",
         f"- Component entries: {len(components)}",
         f"- Word entries: {len(words)}",
+        f"- Canonical radical components: {component_kind_counts['canonical-radical']}",
+        f"- Radical variant components: {component_kind_counts['radical-variant']}",
+        f"- Visual lookup components: {component_kind_counts['visual-component']}",
+        f"- Visible parts without component IDs: {sum(1 for entry in kanji for part in entry.get('learnerParts') or [] if not part.get('componentId'))}",
+        f"- Direct self-memberships hidden from learner display: {hidden_self_count}",
+        f"- Learner-facing part roles: {dict(sorted(learner_role_counts.items()))}",
         f"- Hard errors: {len(errors)}",
         f"- Warnings: {len(warnings)}",
         "",

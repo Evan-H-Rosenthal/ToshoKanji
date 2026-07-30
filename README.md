@@ -45,7 +45,7 @@ The generated data is built from public dictionary sources:
 
 - **KANJIDIC2** for kanji meanings, readings, grade/frequency/JLPT-style metadata.
 - **JMdict_e** for vocabulary examples and word metadata.
-- **KRADFILE** for component/decomposition signals.
+- **RADKFILE/KRADFILE** for visual lookup groups, source display forms, and decomposition signals.
 
 Current validation report:
 

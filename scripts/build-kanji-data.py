@@ -37,10 +37,12 @@ WORD_METADATA_TAG_ALIASES = {
 KANJIDIC2_URL = "https://www.edrdg.org/kanjidic/kanjidic2.xml.gz"
 JMDICT_E_URL = "http://ftp.edrdg.org/pub/Nihongo/JMdict_e.gz"
 KRADFILE_URL = "http://ftp.edrdg.org/pub/Nihongo/kradfile.gz"
+RADKFILE_URL = "http://ftp.edrdg.org/pub/Nihongo/radkfile.gz"
 
 KANJIDIC2_GZ = CACHE_DIR / "kanjidic2.xml.gz"
 JMDICT_E_GZ = CACHE_DIR / "JMdict_e.gz"
 KRADFILE_GZ = CACHE_DIR / "kradfile.gz"
+RADKFILE_GZ = CACHE_DIR / "radkfile.gz"
 
 KANGXI_RADICALS = list(
     "一丨丶丿乙亅二亠人儿入八冂冖冫几凵刀力勹匕匚匸十卜卩厂厶又口囗土士夂夊夕大女子宀寸小尢尸屮山巛工己巾干幺广廴廾弋弓彐彡彳心戈戸手支攴文斗斤方无日曰月木欠止歹殳毋比毛氏气水火爪父爻爿片牙牛犬玄玉瓜瓦甘生用田疋疒癶白皮皿目矛矢石示禸禾穴立竹米糸缶网羊羽老而耒耳聿肉臣自至臼舌舛舟艮色艸虍虫血行衣襾見角言谷豆豕豸貝赤走足身車辛辰辵邑酉釆里金長門阜隶隹雨青非面革韋韭音頁風飛食首香馬骨高髟鬥鬯鬲鬼魚鳥鹵鹿麥麻黃黍黑黹黽鼎鼓鼠鼻齊齒龍龜龠"
@@ -65,8 +67,12 @@ LEARNING_CATEGORY_ALIASES = {"WeatherEnvironment": "Colors", "Weather & Environm
 RADICAL_METADATA = {
     9: {"variants": ["亻"], "names": ["ひと", "にんべん"]},
     18: {"variants": ["刂"], "names": ["かたな", "りっとう"]},
+    47: {"variants": ["\u5ddd"]},
+    49: {"variants": ["\u5df2"]},
     61: {"variants": ["忄", "㣺"], "names": ["こころ", "りっしんべん", "したごころ"]},
     64: {"variants": ["扌"], "names": ["て", "てへん"]},
+    66: {"variants": ["\u6535"]},
+    80: {"variants": ["\u6bcd"]},
     85: {"variants": ["氵"], "names": ["みず", "さんずい"]},
     86: {"variants": ["灬"], "names": ["ひ", "れっか"]},
     94: {"variants": ["犭"], "names": ["いぬ", "けものへん"]},
@@ -74,12 +80,17 @@ RADICAL_METADATA = {
     113: {"variants": ["礻", "⺭"], "names": ["しめす", "しめすへん"]},
     118: {"variants": ["⺮"], "names": ["たけ", "たけかんむり"]},
     120: {"variants": ["糹"], "names": ["いと", "いとへん"]},
+    122: {"variants": ["\u7f52"]},
     140: {"variants": ["艹"], "names": ["くさ", "くさかんむり"]},
     145: {"variants": ["衤"], "names": ["ころも", "ころもへん"]},
+    146: {"variants": ["\u897f"]},
     149: {"variants": ["訁"], "names": ["ことば", "ごんべん"]},
     162: {"variants": ["⻌", "辶"], "names": ["しんにょう"]},
     170: {"variants": ["阝"], "names": ["おか", "こざとへん"]},
     163: {"variants": ["阝"], "names": ["むら", "おおざと"]},
+    199: {"variants": ["\u9ea6"]},
+    201: {"variants": ["\u9ec4"]},
+    203: {"variants": ["\u9ed2"]},
 }
 
 RAD_NAME_TO_FORM = {
@@ -124,7 +135,7 @@ RADICAL_LEARNER_MEANINGS = {
     113: ["altar", "festival", "religious service"],
 }
 
-KRAD_COMPONENT_ALIASES = {
+CURATED_KRAD_DISPLAY_FORMS = {
     "化": "亻",
     "刈": "刂",
     "忙": "忄",
@@ -138,6 +149,25 @@ KRAD_COMPONENT_ALIASES = {
     "初": "衤",
     "込": "辶",
     "阡": "阝",
+}
+
+# RADKFILE predates Unicode support for several lookup glyphs and names image
+# assets instead. These mappings keep the source group while choosing a modern
+# text glyph for learner-facing display.
+RADK_IMAGE_DISPLAY_FORMS = {
+    "js01": "\u4ebb",
+    "js03": "\u8279",
+    "js04": "\u2e8c",
+    "js05": "\u8002",
+    "kozatoL": "\u961d",
+    "kozatoR": "\u961d",
+}
+
+# The same U+961D glyph represents two distinct radical families. RADKFILE's
+# image name disambiguates the source group.
+RADK_RADICAL_NUMBER_OVERRIDES = {
+    "\u90a6": 163,
+    "\u9621": 170,
 }
 
 SMALL_YOON = {
@@ -306,8 +336,6 @@ FORBIDDEN_VISIBLE_COMPONENTS = {
 }
 
 VISIBLE_COMPONENT_ALLOWLIST: set[str] = set()
-
-APPROVED_LEARNER_COMPONENTS: dict[str, dict] = {}
 
 
 def download_if_missing(url: str, destination: Path) -> None:
@@ -662,10 +690,73 @@ def parse_kradfile() -> dict[str, list[str]]:
                 continue
 
             literal, raw_components = line.split(" : ", 1)
-            components = [KRAD_COMPONENT_ALIASES.get(component, component) for component in raw_components.split()]
+            components = raw_components.split()
             components_by_literal[literal] = unique_values(components)
 
     return components_by_literal
+
+def decode_radk_alternate_glyph(code: str) -> str | None:
+    if not re.fullmatch(r"[0-9A-Fa-f]{4}", code):
+        return None
+    try:
+        row = int(code[:2], 16) + 0x80
+        cell = int(code[2:], 16) + 0x80
+        return bytes([0x8F, row, cell]).decode("euc-jp")
+    except (ValueError, UnicodeDecodeError):
+        return None
+
+
+def parse_radkfile() -> dict[str, dict]:
+    metadata_by_source_char: dict[str, dict] = {}
+
+    with gzip.open(RADKFILE_GZ, "rt", encoding="euc-jp") as file:
+        for line_number, line in enumerate(file, start=1):
+            line = line.strip()
+            if not line.startswith("$"):
+                continue
+
+            fields = line.split()
+            if len(fields) < 3:
+                continue
+
+            source_char = fields[1]
+            try:
+                stroke_count = int(fields[2])
+            except ValueError:
+                continue
+
+            alternate = fields[3] if len(fields) > 3 else None
+            alternate_glyph = decode_radk_alternate_glyph(alternate) if alternate else None
+            image_name = alternate if alternate and not alternate_glyph else None
+            display_char = (
+                alternate_glyph
+                or (RADK_IMAGE_DISPLAY_FORMS.get(image_name) if image_name else None)
+                or CURATED_KRAD_DISPLAY_FORMS.get(source_char)
+                or source_char
+            )
+            if alternate_glyph:
+                representation = "alternate-glyph"
+            elif image_name and image_name in RADK_IMAGE_DISPLAY_FORMS:
+                representation = "image-glyph"
+            elif image_name:
+                representation = "image-label"
+            elif display_char != source_char:
+                representation = "curated-display"
+            else:
+                representation = "direct"
+
+            metadata_by_source_char[source_char] = {
+                "sourceChar": source_char,
+                "char": display_char,
+                "strokeCount": stroke_count,
+                "representation": representation,
+                "radkLine": line_number,
+                **({"alternateCode": alternate, "alternateChar": alternate_glyph} if alternate_glyph else {}),
+                **({"sourceImage": image_name} if image_name else {}),
+            }
+
+    return metadata_by_source_char
+
 
 
 def pick_milestone_kanji(entries: dict[str, dict], count: int = 100) -> list[dict]:
@@ -703,9 +794,10 @@ def unique_values(values: list[str]) -> list[str]:
     return unique
 
 
-def component_id_for_char(component: str) -> str:
-    codepoints = "-".join(f"{ord(char):x}" for char in component)
-    return f"c-u{codepoints}"
+def krad_component_id(source_char: str) -> str:
+    codepoints = "-".join(f"{ord(char):x}" for char in source_char)
+    return f"c-k-u{codepoints}"
+
 
 
 def radical_component_id(radical_id: str) -> str:
@@ -728,34 +820,6 @@ def visible_radical_form(entry: dict, radical_char: str) -> str | None:
     return None
 
 
-def build_component_radical_lookup() -> dict[str, str]:
-    lookup: dict[str, str] = {}
-    for index, radical_char in enumerate(KANGXI_RADICALS, start=1):
-        radical_id = f"r-{index}"
-        lookup[radical_char] = radical_id
-        metadata = RADICAL_METADATA.get(index, {})
-        for variant in metadata.get("variants", []):
-            lookup[variant] = radical_id
-        preferred = PREFERRED_VISIBLE_VARIANT.get(index)
-        if preferred:
-            lookup[preferred] = radical_id
-    return lookup
-
-
-def build_component_id_lookup() -> dict[str, str]:
-    lookup: dict[str, str] = {}
-    for index, radical_char in enumerate(KANGXI_RADICALS, start=1):
-        radical_id = f"r-{index}"
-        lookup[radical_char] = radical_component_id(radical_id)
-        metadata = RADICAL_METADATA.get(index, {})
-        for variant in metadata.get("variants", []):
-            lookup[variant] = radical_variant_component_id(radical_id, variant)
-        preferred = PREFERRED_VISIBLE_VARIANT.get(index)
-        if preferred:
-            lookup[preferred] = radical_variant_component_id(radical_id, preferred)
-    for component in APPROVED_LEARNER_COMPONENTS:
-        lookup[component] = component_id_for_char(component)
-    return lookup
 
 
 def radical_number_for_component(component: str) -> int | None:
@@ -766,83 +830,168 @@ def radical_number_for_component(component: str) -> int | None:
     return None
 
 
-def build_kanji_parts(
-    literal: str,
-    components: list[str],
-    official_radical_id: str,
-    official_radical_form: str,
-    component_to_radical_id: dict[str, str],
-    component_to_component_id: dict[str, str],
-) -> list[dict]:
-    parts = []
+def build_krad_component_registry(radk_metadata: dict[str, dict]) -> dict[str, dict]:
+    registry: dict[str, dict] = {}
+    for source_char, metadata in radk_metadata.items():
+        char = metadata["char"]
+        radical_number = RADK_RADICAL_NUMBER_OVERRIDES.get(source_char) or radical_number_for_component(char)
+        descriptor = {**metadata}
+        if radical_number:
+            radical_id = f"r-{radical_number}"
+            canonical_char = KANGXI_RADICALS[radical_number - 1]
+            descriptor["radicalId"] = radical_id
+            descriptor["radicalNumber"] = radical_number
+            if char == canonical_char:
+                descriptor["componentKind"] = "canonical-radical"
+                descriptor["componentId"] = radical_component_id(radical_id)
+            else:
+                descriptor["componentKind"] = "radical-variant"
+                descriptor["componentId"] = radical_variant_component_id(radical_id, char)
+                descriptor["canonicalComponentId"] = radical_component_id(radical_id)
+        else:
+            descriptor["componentKind"] = "visual-component"
+            descriptor["componentId"] = krad_component_id(source_char)
+        registry[source_char] = descriptor
+    return registry
+
+
+def resolve_krad_component(source_char: str, registry: dict[str, dict]) -> dict:
+    resolved = registry.get(source_char)
+    if resolved:
+        return dict(resolved)
+    display_char = CURATED_KRAD_DISPLAY_FORMS.get(source_char, source_char)
+    return {
+        "sourceChar": source_char,
+        "char": display_char,
+        "representation": "curated-display" if display_char != source_char else "direct",
+        "componentKind": "visual-component",
+        "componentId": krad_component_id(source_char),
+        "missingRadkMetadata": True,
+    }
+
+
+def unique_component_descriptors(components: list[dict]) -> list[dict]:
+    seen: set[str] = set()
+    unique: list[dict] = []
     for component in components:
-        radical_id = component_to_radical_id.get(component)
-        component_id = component_to_component_id.get(component)
-        if radical_id == official_radical_id and component == official_radical_form:
+        key = component.get("componentId") or f"{component.get('sourceChar')}:{component.get('char')}"
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(component)
+    return unique
+
+
+def build_kanji_parts(components: list[dict]) -> list[dict]:
+    parts = []
+    for descriptor in components:
+        visible = descriptor.get("visible", True)
+        if descriptor.get("official"):
             role = "official"
-        elif component in FORBIDDEN_VISIBLE_COMPONENTS and component not in VISIBLE_COMPONENT_ALLOWLIST:
+        elif not visible:
             role = "raw-fragment"
         else:
             role = "component"
+
         part = {
-            "component": component,
+            "component": descriptor["char"],
             "role": role,
+            "componentKind": descriptor["componentKind"],
+            "representation": descriptor.get("representation", "direct"),
         }
-        if component_id:
-            part["componentId"] = component_id
-        if radical_id:
-            part["radicalId"] = radical_id
+        source_char = descriptor.get("sourceChar")
+        if source_char and source_char != descriptor["char"]:
+            part["sourceComponent"] = source_char
+        if visible and descriptor.get("componentId"):
+            part["componentId"] = descriptor["componentId"]
+        if descriptor.get("radicalId"):
+            part["radicalId"] = descriptor["radicalId"]
+        if descriptor.get("canonicalComponentId"):
+            part["canonicalComponentId"] = descriptor["canonicalComponentId"]
+        if descriptor.get("sourceImage"):
+            part["sourceImage"] = descriptor["sourceImage"]
+        if descriptor.get("alternateCode"):
+            part["alternateCode"] = descriptor["alternateCode"]
+        if descriptor.get("strokeCount") is not None:
+            part["sourceStrokeCount"] = descriptor["strokeCount"]
+        if descriptor.get("hiddenReason"):
+            part["hiddenReason"] = descriptor["hiddenReason"]
+        if descriptor.get("missingRadkMetadata"):
+            part["missingRadkMetadata"] = True
         parts.append(part)
     return parts
 
 
-def is_allowed_visible_component(component: str, official_radical_form: str) -> bool:
-    if component == official_radical_form:
+
+def public_kanji_parts(parts: list[dict]) -> list[dict]:
+    public_keys = {"component", "role", "componentId", "radicalId"}
+    return [
+        {key: value for key, value in part.items() if key in public_keys}
+        for part in parts
+    ]
+
+def is_allowed_visible_component(descriptor: dict, official_radical_form: str) -> bool:
+    component = descriptor["char"]
+    source_component = descriptor.get("sourceChar", component)
+    if descriptor.get("official") or component == official_radical_form:
         return True
-    if component in VISIBLE_COMPONENT_ALLOWLIST:
+    if component in VISIBLE_COMPONENT_ALLOWLIST or source_component in VISIBLE_COMPONENT_ALLOWLIST:
         return True
-    return component not in FORBIDDEN_VISIBLE_COMPONENTS
+    return component not in FORBIDDEN_VISIBLE_COMPONENTS and source_component not in FORBIDDEN_VISIBLE_COMPONENTS
 
 
-def build_component_provenance(raw_components: list[str], visible_parts: list[dict], filtered_components: list[str]) -> dict:
+def build_component_provenance(
+    raw_components: list[str],
+    visible_parts: list[dict],
+    filtered_components: list[str],
+    hidden_self_components: list[str],
+) -> dict:
     return {
-        "source": "KRADFILE",
-        "extractionMethod": "kradfile components with radical alias normalization and learner-facing stroke-fragment filtering",
-        "confidence": "medium",
+        "source": "RADKFILE/KRADFILE",
+        "extractionMethod": "KRADFILE lookup groups resolved with RADKFILE display metadata and radical-family normalization",
+        "confidence": "high",
         "rawComponentCount": len(raw_components),
         "visibleComponentCount": len(visible_parts),
         "filteredComponents": filtered_components,
+        "hiddenSelfComponents": hidden_self_components,
     }
 
 
-def build_learner_parts(literal: str, visible_parts: list[dict], official_radical_id: str, official_radical_form: str) -> list[dict]:
+def build_learner_parts(visible_parts: list[dict]) -> list[dict]:
     learner_parts = []
     for part in visible_parts:
-        old_role = part.get("role")
-        if old_role == "official":
+        if part.get("role") == "official":
             role = "official-radical"
-        else:
-            role = "learner-component"
-
-        if part.get("radicalId") == official_radical_id and part.get("component") == official_radical_form:
             source = "radical-metadata"
+        elif part.get("componentKind") == "radical-variant":
+            role = "radical-variant"
+            source = "radk-resolved"
         else:
-            source = "normalized-krad"
+            role = "visual-component"
+            source = "radk-resolved"
 
         learner_part = {
             "char": part["component"],
             "role": role,
             "source": source,
+            "componentId": part["componentId"],
         }
-        if part.get("componentId"):
-            learner_part["componentId"] = part["componentId"]
-        if part.get("radicalId"):
-            learner_part["radicalId"] = part["radicalId"]
+        representation = part.get("representation", "direct")
+        if representation not in {"direct", "official-radical"}:
+            learner_part["representation"] = representation
+        for source_key, output_key in (
+            ("sourceComponent", "sourceChar"),
+            ("radicalId", "radicalId"),
+            ("sourceImage", "sourceImage"),
+            ("alternateCode", "alternateCode"),
+        ):
+            if part.get(source_key):
+                learner_part[output_key] = part[source_key]
         learner_parts.append(learner_part)
     return learner_parts
 
 
-def build_raw_decomposition(raw_parts: list[dict], filtered_components: list[str]) -> dict:
+def build_raw_decomposition(raw_parts: list[dict], filtered_components: list[str], hidden_self_components: list[str]) -> dict:
     parts = []
     for part in raw_parts:
         if part.get("role") == "raw-fragment":
@@ -852,33 +1001,50 @@ def build_raw_decomposition(raw_parts: list[dict], filtered_components: list[str
         else:
             role = "source-component"
 
+        source_char = part.get("sourceComponent") or part["component"]
         raw_part = {
-            "char": part["component"],
+            "char": source_char,
             "role": role,
             "debugOnly": True,
         }
+        if part["component"] != source_char:
+            raw_part["displayChar"] = part["component"]
+        representation = part.get("representation", "direct")
+        if representation not in {"direct", "official-radical"}:
+            raw_part["representation"] = representation
         if part.get("componentId"):
             raw_part["componentId"] = part["componentId"]
         if part.get("radicalId"):
             raw_part["radicalId"] = part["radicalId"]
+        if part.get("sourceImage"):
+            raw_part["sourceImage"] = part["sourceImage"]
+        if part.get("hiddenReason"):
+            raw_part["hiddenReason"] = part["hiddenReason"]
+        if part.get("missingRadkMetadata"):
+            raw_part["missingRadkMetadata"] = True
         parts.append(raw_part)
 
     return {
-        "source": "KRADFILE",
+        "source": "RADKFILE/KRADFILE",
         "parts": parts,
         "filteredParts": filtered_components,
-        "confidence": "medium",
+        "hiddenSelfParts": hidden_self_components,
+        "confidence": "high",
     }
 
-
-def build_radicals(selected_kanji: list[dict], all_entries: dict[str, dict], components_by_literal: dict[str, list[str]]) -> list[dict]:
+def build_radicals(
+    selected_kanji: list[dict],
+    all_entries: dict[str, dict],
+    components_by_literal: dict[str, list[str]],
+    component_registry: dict[str, dict],
+) -> list[dict]:
     selected_ids = {entry["literal"]: f"k-{entry['literal']}" for entry in selected_kanji}
     official_radical_numbers = {entry["radicalNumber"] for entry in selected_kanji if entry["radicalNumber"]}
     component_radical_numbers = {
         number
         for entry in selected_kanji
         for component in components_by_literal.get(entry["literal"], [])
-        for number in [radical_number_for_component(component)]
+        for number in [component_registry.get(component, {}).get("radicalNumber")]
         if number
     }
     radical_numbers = sorted(official_radical_numbers | component_radical_numbers)
@@ -897,7 +1063,7 @@ def build_radicals(selected_kanji: list[dict], all_entries: dict[str, dict], com
             selected_ids[entry["literal"]]
             for entry in selected_kanji
             if entry["radicalNumber"] == number
-            or any(radical_number_for_component(component) == number for component in components_by_literal.get(entry["literal"], []))
+            or any(component_registry.get(component, {}).get("radicalNumber") == number for component in components_by_literal.get(entry["literal"], []))
         ]
 
         radical_entries.append({
@@ -945,39 +1111,73 @@ def build_kanji(
     words_by_literal: dict[str, list[dict]],
     components_by_literal: dict[str, list[str]],
     existing_learning_categories: dict[str, str],
+    component_registry: dict[str, dict],
 ) -> list[dict]:
     kanji_entries = []
-    component_to_radical_id = build_component_radical_lookup()
-    component_to_component_id = build_component_id_lookup()
     for entry in selected_kanji:
         literal = entry["literal"]
         kanji_id = f"k-{literal}"
-        radical_id = f"r-{entry['radicalNumber']}" if entry["radicalNumber"] else "r-unknown"
-        radical_char = KANGXI_RADICALS[entry["radicalNumber"] - 1] if entry["radicalNumber"] and 0 < entry["radicalNumber"] <= len(KANGXI_RADICALS) else ""
+        radical_number = entry["radicalNumber"]
+        radical_id = f"r-{radical_number}" if radical_number else "r-unknown"
+        radical_char = KANGXI_RADICALS[radical_number - 1] if radical_number and 0 < radical_number <= len(KANGXI_RADICALS) else ""
         visible_form = visible_radical_form(entry, radical_char) if radical_char else None
         official_radical_form = visible_form or radical_char
-        krad_components = components_by_literal.get(literal, [])
-        components = unique_values([official_radical_form, *krad_components]) if official_radical_form else krad_components
-        filtered_components = [component for component in components if not is_allowed_visible_component(component, official_radical_form)]
-        learner_components = [component for component in components if is_allowed_visible_component(component, official_radical_form)]
-        visible_components = build_kanji_parts(
-            literal,
-            learner_components,
-            radical_id,
-            official_radical_form,
-            component_to_radical_id,
-            component_to_component_id,
-        )
-        raw_component_parts = build_kanji_parts(
-            literal,
-            components,
-            radical_id,
-            official_radical_form,
-            component_to_radical_id,
-            component_to_component_id,
-        )
-        component_ids = unique_values([part["componentId"] for part in visible_components if part.get("componentId")])
+
+        official_kind = "canonical-radical" if official_radical_form == radical_char else "radical-variant"
+        official_descriptor = {
+            "char": official_radical_form,
+            "official": True,
+            "visible": True,
+            "representation": "official-radical",
+            "componentKind": official_kind,
+            "componentId": (
+                radical_component_id(radical_id)
+                if official_kind == "canonical-radical"
+                else radical_variant_component_id(radical_id, official_radical_form)
+            ),
+            "radicalId": radical_id,
+            **(
+                {"canonicalComponentId": radical_component_id(radical_id)}
+                if official_kind == "radical-variant"
+                else {}
+            ),
+        }
+
+        raw_krad_components = components_by_literal.get(literal, [])
+        resolved_krad_components = [
+            resolve_krad_component(source_char, component_registry)
+            for source_char in raw_krad_components
+        ]
+        filtered_components: list[str] = []
+        hidden_self_components: list[str] = []
+        visible_krad_components: list[dict] = []
+        raw_krad_descriptors: list[dict] = []
+
+        for descriptor in resolved_krad_components:
+            descriptor = dict(descriptor)
+            source_char = descriptor.get("sourceChar", descriptor["char"])
+            allowed = is_allowed_visible_component(descriptor, official_radical_form)
+            direct_self = descriptor.get("representation") == "direct" and descriptor["char"] == literal
+            if not allowed:
+                descriptor["visible"] = False
+                descriptor["hiddenReason"] = "source-fragment"
+                filtered_components.append(source_char)
+            elif direct_self:
+                descriptor["visible"] = False
+                descriptor["hiddenReason"] = "direct-self-membership"
+                hidden_self_components.append(source_char)
+            else:
+                descriptor["visible"] = True
+                visible_krad_components.append(descriptor)
+            raw_krad_descriptors.append(descriptor)
+
+        visible_descriptors = unique_component_descriptors([official_descriptor, *visible_krad_components])
+        raw_descriptors = unique_component_descriptors([official_descriptor, *raw_krad_descriptors])
+        visible_components = build_kanji_parts(visible_descriptors)
+        raw_component_parts = build_kanji_parts(raw_descriptors)
+        component_ids = unique_values([part["componentId"] for part in visible_components])
         words = words_by_literal.get(literal, [])
+        raw_components = unique_values([official_radical_form, *raw_krad_components]) if official_radical_form else raw_krad_components
 
         kanji_entries.append({
             "id": kanji_id,
@@ -993,22 +1193,26 @@ def build_kanji(
             "officialRadical": {"id": radical_id, "form": official_radical_form, "char": radical_char} if radical_char else None,
             "radicalIds": [radical_id],
             "radicalForms": {radical_id: visible_form} if visible_form else {},
-            "learnerParts": build_learner_parts(literal, visible_components, radical_id, official_radical_form),
-            "rawDecomposition": build_raw_decomposition(raw_component_parts, filtered_components),
-            "visibleComponents": visible_components,
-            "rawComponents": components,
-            "componentProvenance": build_component_provenance(components, visible_components, filtered_components),
+            "learnerParts": build_learner_parts(visible_components),
+            "rawDecomposition": build_raw_decomposition(raw_component_parts, filtered_components, hidden_self_components),
+            "visibleComponents": public_kanji_parts(visible_components),
+            "rawComponents": raw_components,
+            "componentProvenance": build_component_provenance(
+                raw_components,
+                visible_components,
+                filtered_components,
+                hidden_self_components,
+            ),
             "components": [part["component"] for part in visible_components],
             "componentIds": component_ids,
-            "kanjiParts": visible_components,
-            "rawKanjiParts": raw_component_parts,
+            "kanjiParts": public_kanji_parts(visible_components),
+            "rawKanjiParts": public_kanji_parts(raw_component_parts),
             "wordIds": [word["id"] for word in words if word.get("id")],
             "category": GRADE_CATEGORY.get(entry["grade"], "joyo"),
             "learningCategory": existing_learning_categories.get(kanji_id, DEFAULT_LEARNING_CATEGORY),
         })
 
     return kanji_entries
-
 
 def build_words(kanji_entries: list[dict], words_by_literal: dict[str, list[dict]]) -> list[dict]:
     kanji_by_literal = {entry["char"]: entry["id"] for entry in kanji_entries}
@@ -1017,11 +1221,11 @@ def build_words(kanji_entries: list[dict], words_by_literal: dict[str, list[dict
     for kanji in kanji_entries:
         for word in words_by_literal.get(kanji["char"], []):
             word_id = word.get("id") or f"w-{word['japanese']}"
-            kanji_ids = [
-                kanji_id
-                for literal, kanji_id in kanji_by_literal.items()
-                if literal in word["japanese"]
-            ]
+            kanji_ids = unique_values([
+                kanji_by_literal[char]
+                for char in word["japanese"]
+                if char in kanji_by_literal
+            ])
             if not kanji_ids:
                 kanji_ids = [kanji["id"]]
 
@@ -1107,28 +1311,35 @@ def build_components(kanji_entries: list[dict], radical_entries: list[dict]) -> 
                 forms=[variant],
             )
 
-    for component_char, metadata in APPROVED_LEARNER_COMPONENTS.items():
-        ensure_component(
-            component_id_for_char(component_char),
-            component_char,
-            "learner-component",
-            metadata.get("source", "learner component metadata"),
-            forms=metadata.get("forms", [component_char]),
-            meanings=metadata.get("meanings", []),
-        )
-
     for kanji in kanji_entries:
-        for part in kanji.get("rawKanjiParts", []):
+        for part in kanji.get("learnerParts", []):
             component_id = part.get("componentId")
-            if not component_id or component_id not in components_by_id:
+            if not component_id:
                 continue
-            component = components_by_id[component_id]
+            component = components_by_id.get(component_id)
+            if not component:
+                if part.get("role") != "visual-component":
+                    continue
+                component = ensure_component(
+                    component_id,
+                    part["char"],
+                    "visual-component",
+                    "RADKFILE/KRADFILE lookup element",
+                    forms=[part["char"]],
+                )
+                if part.get("sourceChar"):
+                    component["sourceChar"] = part["sourceChar"]
+                component["representation"] = part.get("representation", "direct")
+                if part.get("sourceImage"):
+                    component["sourceImage"] = part["sourceImage"]
+                if part.get("alternateCode"):
+                    component["alternateCode"] = part["alternateCode"]
             component["kanjiIds"] = unique_values([*component["kanjiIds"], kanji["id"]])
 
     return sorted(
         components_by_id.values(),
         key=lambda component: (
-            {"canonical-radical": 0, "radical-variant": 1, "learner-component": 2, "raw-fragment": 3}.get(component["kind"], 9),
+            {"canonical-radical": 0, "radical-variant": 1, "visual-component": 2}.get(component["kind"], 9),
             component.get("radicalNumber") or 999,
             component["char"],
             component["id"],
@@ -1150,7 +1361,7 @@ def write_generated_files(kanji_entries: list[dict], radical_entries: list[dict]
 
     kanji_output = f"""import type {{ KanjiEntry }} from "../../types";
 
-// Generated by scripts/build-kanji-data.py from KANJIDIC2, JMdict_e, and KRADFILE.
+// Generated by scripts/build-kanji-data.py from KANJIDIC2, JMdict_e, and RADKFILE/KRADFILE.
 // Do not hand-edit this file; update the generator or source data instead.
 
 export const KANJI: KanjiEntry[] = {ts_literal(kanji_entries)};
@@ -1158,7 +1369,7 @@ export const KANJI: KanjiEntry[] = {ts_literal(kanji_entries)};
 
     radicals_output = f"""import type {{ RadicalEntry }} from "../../types";
 
-// Generated by scripts/build-kanji-data.py from KANJIDIC2 and KRADFILE.
+// Generated by scripts/build-kanji-data.py from KANJIDIC2 and RADKFILE/KRADFILE.
 // Do not hand-edit this file; update the generator or source data instead.
 
 export const RADICALS: RadicalEntry[] = {ts_literal(radical_entries)};
@@ -1166,7 +1377,7 @@ export const RADICALS: RadicalEntry[] = {ts_literal(radical_entries)};
 
     components_output = f"""import type {{ ComponentEntry }} from "../../types";
 
-// Generated by scripts/build-kanji-data.py from Kangxi radical metadata and KRADFILE.
+// Generated by scripts/build-kanji-data.py from Kangxi radical metadata and RADKFILE/KRADFILE.
 // Do not hand-edit this file; update the generator or source data instead.
 
 export const COMPONENTS: ComponentEntry[] = {ts_literal(component_entries)};
@@ -1214,6 +1425,7 @@ def main() -> None:
     download_if_missing(KANJIDIC2_URL, KANJIDIC2_GZ)
     download_if_missing(JMDICT_E_URL, JMDICT_E_GZ)
     download_if_missing(KRADFILE_URL, KRADFILE_GZ)
+    download_if_missing(RADKFILE_URL, RADKFILE_GZ)
 
     all_entries = parse_kanjidic2()
     selected_kanji = pick_milestone_kanji(all_entries, 800)
@@ -1221,9 +1433,17 @@ def main() -> None:
     existing_learning_categories = read_existing_learning_categories()
     words_by_literal = parse_jmdict_words(target_literals)
     components_by_literal = parse_kradfile()
+    radk_metadata = parse_radkfile()
+    component_registry = build_krad_component_registry(radk_metadata)
 
-    radicals = build_radicals(selected_kanji, all_entries, components_by_literal)
-    kanji = build_kanji(selected_kanji, words_by_literal, components_by_literal, existing_learning_categories)
+    radicals = build_radicals(selected_kanji, all_entries, components_by_literal, component_registry)
+    kanji = build_kanji(
+        selected_kanji,
+        words_by_literal,
+        components_by_literal,
+        existing_learning_categories,
+        component_registry,
+    )
     components = build_components(kanji, radicals)
     words = build_words(kanji, words_by_literal)
 

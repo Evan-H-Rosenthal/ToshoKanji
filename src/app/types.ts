@@ -1,35 +1,62 @@
 export type Tab = "collection" | "gacha" | "practice";
 export type UiFontChoice = "nunito" | "system" | "new-rodin" | "two-weekend";
 export type CharacterFontChoice = "traditional" | "modern" | "noto-sans";
+export type WordReadingType = "on" | "kun" | "unusual";
 export interface ScreenState { type: "main" | "kanji-entry" | "component-entry" | "word-entry" | "achievements" | "settings"; id?: string; }
 export interface KanjiEntryViewState {
   scrollTop: number;
   wordBrowserScrollTop: number;
   wordQuery: string;
+  wordReadingFilters: WordReadingType[];
 }
 export type WordMetadataTag = "ateji" | "gikun" | "iK" | "ik" | "io" | "oK" | "ok" | "rK" | "rk" | "sk";
 export interface Word { id?: string; japanese: string; furigana: string; romaji: string; meaning: string; common?: boolean; wordTags?: WordMetadataTag[]; }
-export interface KanjiPart { component: string; role: string; componentId?: string; radicalId?: string; }
+export type ComponentKind = "canonical-radical" | "radical-variant" | "visual-component" | "raw-fragment";
+export type ComponentRepresentation = "official-radical" | "direct" | "alternate-glyph" | "image-glyph" | "image-label" | "curated-display";
+export interface KanjiPart {
+  component: string;
+  role: "official" | "component" | "raw-fragment";
+  componentKind?: ComponentKind;
+  componentId?: string;
+  canonicalComponentId?: string;
+  radicalId?: string;
+  sourceComponent?: string;
+  representation?: ComponentRepresentation;
+  sourceImage?: string;
+  alternateCode?: string;
+  sourceStrokeCount?: number;
+  hiddenReason?: "source-fragment" | "direct-self-membership" | string;
+}
 export interface OfficialRadical { id: string; form: string; char: string; }
 export interface LearnerPart {
   char: string;
   label?: string;
-  role: "official-radical" | "semantic" | "phonetic" | "learner-component";
-  componentId?: string;
+  role: "official-radical" | "radical-variant" | "visual-component";
+  componentId: string;
   radicalId?: string;
-  source: "manual" | "radical-metadata" | "normalized-krad" | string;
+  source: "radical-metadata" | "radk-resolved" | string;
+  sourceChar?: string;
+  representation?: ComponentRepresentation;
+  sourceImage?: string;
+  alternateCode?: string;
 }
 export interface RawPart {
   char: string;
   role: "raw-fragment" | "source-component" | "source-radical";
   radicalId?: string;
   componentId?: string;
+  displayChar?: string;
+  representation?: ComponentRepresentation;
+  sourceImage?: string;
+  hiddenReason?: "source-fragment" | "direct-self-membership" | string;
+  missingRadkMetadata?: boolean;
   debugOnly: true;
 }
 export interface RawDecomposition {
   source: "KRADFILE" | "KanjiVG" | string;
   parts: RawPart[];
   filteredParts: string[];
+  hiddenSelfParts?: string[];
   confidence: "low" | "medium" | "high" | string;
 }
 export interface EtymologyNote {
@@ -45,6 +72,7 @@ export interface ComponentProvenance {
   rawComponentCount?: number;
   visibleComponentCount?: number;
   filteredComponents?: string[];
+  hiddenSelfComponents?: string[];
 }
 export interface KanjiEntry {
   id: string;
@@ -90,7 +118,7 @@ export interface RadicalEntry {
 export interface ComponentEntry {
   id: string;
   char: string;
-  kind: "canonical-radical" | "radical-variant" | "learner-component" | "raw-fragment";
+  kind: ComponentKind;
   canonicalComponentId?: string;
   radicalId?: string;
   radicalNumber?: number;
@@ -98,6 +126,10 @@ export interface ComponentEntry {
   forms?: string[];
   kanjiIds: string[];
   source: string;
+  sourceChar?: string;
+  representation?: ComponentRepresentation;
+  sourceImage?: string;
+  alternateCode?: string;
 }
 export interface WordEntry {
   id: string;

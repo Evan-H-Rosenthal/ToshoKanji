@@ -28,9 +28,9 @@ const DATASET_ATTRIBUTIONS = [
       "Vocabulary examples from the Electronic Dictionary Research and Development Group. Distributed under the EDRDG licence.",
   },
   {
-    name: "KRADFILE",
+    name: "RADKFILE/KRADFILE",
     detail:
-      "Visible kanji component data from Michael Raine, Jim Breen, and the Electronic Dictionary Research and Development Group. Distributed under the EDRDG licence.",
+      "Visual lookup-group and display-form data from Michael Raine, Jim Breen, and the Electronic Dictionary Research and Development Group. Distributed under the EDRDG licence.",
   },
 ];
 

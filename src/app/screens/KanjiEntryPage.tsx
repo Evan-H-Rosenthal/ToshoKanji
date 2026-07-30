@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, Info, Pencil, Search, Star, Tags, X } from "lucide-react";
 import { EntryNavigationButtons } from "../components/EntryNavigationButtons";
 import { COMPONENT_BY_ID, KANJI_BY_ID, RADICAL_BY_ID } from "../data/entryIndexes";
 import { getComponentDisplayName } from "../data/displayNames";
 import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
+import { getKanjiWordReadingType } from "../data/kanjiWordReading";
 import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getWordsForKanji } from "../data/wordData";
 import { ChatSection } from "../components/ChatSection";
@@ -16,7 +17,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../components/ui/dialog";
-import type { ChatMsg, KanjiEntryViewState, Word } from "../types";
+import type { ChatMsg, KanjiEntryViewState, Word, WordReadingType } from "../types";
+
+function getComponentKindLabel(role: string, kind?: string) {
+  if (role === "official-radical") return "Official radical";
+  if (kind === "canonical-radical") return "Canonical radical";
+  if (kind === "radical-variant") return "Radical variant";
+  return "Visual component";
+}
+
+const WORD_READING_TYPES: Array<{ type: WordReadingType; label: string; color: string }> = [
+  { type: "on", label: "On", color: "var(--primary)" },
+  { type: "kun", label: "Kun", color: "var(--success)" },
+  { type: "unusual", label: "Unusual", color: "var(--warning)" },
+];
+
+const getWordReadingMeta = (type: WordReadingType) => WORD_READING_TYPES.find((option) => option.type === type)!;
 
 export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, notes, chatMsgs, darkMode, onBack, backLabel, initialViewState, onViewStateChange, onBackToCollection, onToggleFav, onSetName, onSetNote, onChat, onNavKanji, onNavComponent, onNavWord }: {
   id: string; unlockedKanji: Set<string>;
@@ -36,6 +52,9 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const [showAllKunyomi, setShowAllKunyomi] = useState(false);
   const [showRawComponents, setShowRawComponents] = useState(false);
   const [wordQuery, setWordQuery] = useState(initialViewState?.wordQuery ?? "");
+  const [wordReadingFilters, setWordReadingFilters] = useState<Set<WordReadingType>>(
+    () => new Set(initialViewState?.wordReadingFilters ?? []),
+  );
   const [categoryPickerOpen, setCategoryPickerOpen] = useState(false);
   const [currentLearningCategory, setCurrentLearningCategory] = useState(k.learningCategory);
   const [savingCategory, setSavingCategory] = useState<string | null>(null);
@@ -50,9 +69,11 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
     scrollTop: initialViewState?.scrollTop ?? 0,
     wordBrowserScrollTop: initialViewState?.wordBrowserScrollTop ?? 0,
     wordQuery: initialViewState?.wordQuery ?? "",
+    wordReadingFilters: initialViewState?.wordReadingFilters ?? [],
   });
   const wordQueryRef = useRef(wordQuery);
   useEffect(() => { if (editingName) nameRef.current?.focus(); }, [editingName]);
+  const wordReadingFiltersRef = useRef(wordReadingFilters);
   const emitViewState = useCallback((overrides: Partial<KanjiEntryViewState> = {}) => {
     const previous = latestViewStateRef.current;
     const next = {
@@ -61,6 +82,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
         ? wordBrowserScrollRef.current?.scrollTop ?? previous.wordBrowserScrollTop
         : previous.wordBrowserScrollTop,
       wordQuery: wordQueryRef.current,
+      wordReadingFilters: Array.from(wordReadingFiltersRef.current),
       ...overrides,
     };
     latestViewStateRef.current = next;
@@ -72,6 +94,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
       scrollTop: initialViewState?.scrollTop ?? 0,
       wordBrowserScrollTop: initialViewState?.wordBrowserScrollTop ?? 0,
       wordQuery: initialViewState?.wordQuery ?? "",
+      wordReadingFilters: initialViewState?.wordReadingFilters ?? [],
     };
     const pageScroll = pageScrollRef.current;
     if (!pageScroll) return;
@@ -82,6 +105,9 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
     const nextWordQuery = initialViewState?.wordQuery ?? "";
     wordQueryRef.current = nextWordQuery;
     setWordQuery(nextWordQuery);
+    const nextWordReadingFilters = new Set(initialViewState?.wordReadingFilters ?? []);
+    wordReadingFiltersRef.current = nextWordReadingFilters;
+    setWordReadingFilters(nextWordReadingFilters);
   }, [id, initialViewState]);
 
   useEffect(() => {
@@ -150,14 +176,30 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
   const alternateMeanings = k.meanings.slice(1);
   const normalizedWordQuery = wordQuery.trim().toLowerCase();
-  const filteredWords = normalizedWordQuery
-    ? words.filter((word) => (
-      word.japanese.includes(normalizedWordQuery)
+  const classifiedWords = useMemo(() => words.map((word) => ({
+    word,
+    readingType: getKanjiWordReadingType(k, word),
+  })), [k, words]);
+  const filteredWords = classifiedWords.filter(({ word, readingType }) => (
+    (wordReadingFilters.size === 0 || wordReadingFilters.has(readingType))
+    && (!normalizedWordQuery
+      || word.japanese.includes(normalizedWordQuery)
       || word.furigana.includes(normalizedWordQuery)
       || word.romaji.toLowerCase().includes(normalizedWordQuery)
-      || word.meaning.toLowerCase().includes(normalizedWordQuery)
-    ))
-    : words;
+      || word.meaning.toLowerCase().includes(normalizedWordQuery))
+  ));
+  const toggleWordReadingFilter = (readingType: WordReadingType) => {
+    const next = new Set(wordReadingFilters);
+    if (next.has(readingType)) next.delete(readingType);
+    else next.add(readingType);
+    wordReadingFiltersRef.current = next;
+    setWordReadingFilters(next);
+    if (wordBrowserScrollRef.current) wordBrowserScrollRef.current.scrollTop = 0;
+    emitViewState({
+      wordBrowserScrollTop: 0,
+      wordReadingFilters: Array.from(next),
+    });
+  };
   useLayoutEffect(() => {
     const wordBrowser = wordBrowserScrollRef.current;
     if (!wordBrowser || restoredWordBrowserScrollRef.current || loadingWords) return;
@@ -463,7 +505,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                     <DialogHeader>
                       <DialogTitle>About component decompositions</DialogTitle>
                       <DialogDescription style={{ fontFamily:"var(--ui-font)", lineHeight:1.55 }}>
-                        The components shown here come from a verified dataset (KRADFILE). However, these components might not be the ones that are the most useful for learning. I encourage you to use the notes section, as well as other methods such as speaking with a teacher, native speaker, or an AI to build your own understanding of this Kanji.
+                        These visual lookup elements come from KRADFILE and are resolved with RADKFILE display metadata. They describe recurring visible shapes, not necessarily semantic, phonetic, or etymological parts. The official radical is identified separately from the lookup elements.
                       </DialogDescription>
                     </DialogHeader>
                   </DialogContent>
@@ -494,33 +536,48 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                 const rad = part.radicalId ? RADICAL_BY_ID.get(part.radicalId) : undefined;
                 const component = part.componentId ? COMPONENT_BY_ID.get(part.componentId) : undefined;
                 const c = RAD_COLORS[i % RAD_COLORS.length];
-                return (
-                  <button
-                    key={`${part.char}-${i}`}
-                    onClick={() => part.componentId && onNavComponent(part.componentId)}
-                    disabled={!part.componentId}
-                    style={{
-                      display:"flex",
-                      alignItems:"center",
-                      gap:7,
-                      padding:"6px 12px",
-                      borderRadius:12,
-                      background: `${c}22`,
-                      border:`1px solid ${c}44`,
-                      cursor: part.componentId ? "pointer" : "default",
-                      opacity: part.componentId ? 1 : 0.82,
-                    }}
-                  >
+                const kindLabel = getComponentKindLabel(part.role, component?.kind);
+                const componentLabel = component?.meanings?.[0]
+                  ?? rad?.meanings[0]
+                  ?? (component?.sourceChar && component.sourceChar !== part.char
+                    ? `RADK label ${component.sourceChar}`
+                    : "Lookup shape");
+                const content = (
+                  <>
                     <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color:c }}>{part.char}</span>
                     <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
                       <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: darkMode ? c : "#111827" }}>
-                        {getComponentDisplayName(component, part.radicalId, rad?.meanings[0] ?? "component", customNames)}
+                        {getComponentDisplayName(component, part.radicalId, componentLabel, customNames)}
                       </span>
                       <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color: darkMode ? "var(--muted-foreground)" : "#111827" }}>
-                        {component?.kind.replace("-", " ") ?? part.role}
+                        {kindLabel}
                       </span>
                     </span>
+                  </>
+                );
+                const chipStyle = {
+                  display:"flex",
+                  alignItems:"center",
+                  gap:7,
+                  padding:"6px 12px",
+                  borderRadius:12,
+                  background: `${c}22`,
+                  border:`1px solid ${c}44`,
+                } as const;
+                return component ? (
+                  <button
+                    key={`${part.char}-${i}`}
+                    type="button"
+                    aria-label={`${part.char}, ${kindLabel}`}
+                    onClick={() => onNavComponent(component.id)}
+                    style={{ ...chipStyle, cursor:"pointer" }}
+                  >
+                    {content}
                   </button>
+                ) : (
+                  <span key={`${part.char}-${i}`} aria-label={`${part.char}, unavailable visual component`} style={chipStyle}>
+                    {content}
+                  </span>
                 );
               })}
             </div>
@@ -556,7 +613,39 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
 
         {/* Words */}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Words using this Kanji</p>
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", gap:10, flexWrap:"wrap", marginBottom:12 }}>
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground">Words using this Kanji</p>
+            <div role="group" aria-label="Filter words by this Kanji's reading type" style={{ display:"flex", gap:5, flexWrap:"wrap" }}>
+              {WORD_READING_TYPES.map((option) => {
+                const active = wordReadingFilters.has(option.type);
+                return (
+                  <button
+                    key={option.type}
+                    type="button"
+                    aria-label={`Show ${option.label} reading words`}
+                    aria-pressed={active}
+                    onClick={() => toggleWordReadingFilter(option.type)}
+                    className="app-reactive"
+                    style={{
+                      height:27,
+                      padding:"0 9px",
+                      borderRadius:999,
+                      border:`1px solid ${active ? option.color : "var(--border)"}`,
+                      background: active ? `color-mix(in srgb, ${option.color} 16%, var(--card))` : "var(--muted)",
+                      color: active ? option.color : "var(--muted-foreground)",
+                      fontFamily:"var(--ui-font)",
+                      fontSize:10,
+                      fontWeight:900,
+                      cursor:"pointer",
+                      whiteSpace:"nowrap",
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
           <div
             style={{
               position:"relative",
@@ -628,7 +717,9 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
               >
                 Loading words...
               </div>
-            ) : filteredWords.map((w,i) => (
+            ) : filteredWords.map(({ word: w, readingType }, i) => {
+              const readingMeta = getWordReadingMeta(readingType);
+              return (
               <button
                 key={w.id || `${w.japanese}-${i}`}
                 onClick={() => {
@@ -647,7 +738,8 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                   boxShadow:"0 4px 12px rgba(0,0,0,0.05)",
                   overflow:"hidden",
                 }}>
-                <div className="flex items-baseline gap-2" style={{ minWidth:0 }}>
+                <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", gap:8, minWidth:0 }}>
+                  <div className="flex items-baseline gap-2" style={{ minWidth:0, flex:1 }}>
                   <span
                     title={w.japanese}
                     style={{
@@ -685,6 +777,25 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                     ({w.furigana})
                   </span>
                 </div>
+                  <span
+                    title={`${readingMeta.label} reading for ${k.char}`}
+                    style={{
+                      flex:"0 0 auto",
+                      padding:"3px 7px",
+                      borderRadius:999,
+                      border:`1px solid color-mix(in srgb, ${readingMeta.color} 42%, transparent)`,
+                      background:`color-mix(in srgb, ${readingMeta.color} 14%, var(--card))`,
+                      color:readingMeta.color,
+                      fontFamily:"var(--ui-font)",
+                      fontSize:9,
+                      fontWeight:900,
+                      lineHeight:1.2,
+                      whiteSpace:"nowrap",
+                    }}
+                  >
+                    {readingMeta.label}
+                  </span>
+                </div>
                 <div
                   title={w.romaji}
                   style={{ fontFamily:"var(--ui-font)", fontSize:11, fontStyle:"italic", overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}
@@ -711,7 +822,8 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                   {w.meaning}
                 </div>
               </button>
-            ))}
+              );
+            })}
             {!loadingWords && filteredWords.length === 0 && (
               <div
                 style={{

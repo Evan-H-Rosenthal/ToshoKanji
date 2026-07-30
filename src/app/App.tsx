@@ -9,12 +9,12 @@ import { PhoneFrame } from "./components/PhoneFrame";
 import { UnlockPrompt } from "./components/UnlockPrompt";
 import { AchievementsPage } from "./screens/AchievementsPage";
 import { ComponentEntryPage } from "./screens/ComponentEntryPage";
-import { CollectionScreen } from "./screens/CollectionScreen";
+import { CollectionScreen, type CollectionFilterState } from "./screens/CollectionScreen";
 import { KanjiEntryPage } from "./screens/KanjiEntryPage";
 import { PracticeScreen } from "./screens/PracticeScreen";
 import { SettingsPage } from "./screens/SettingsPage";
 import { WordEntryPage } from "./screens/WordEntryPage";
-import { KANJI_RARITIES } from "./data/kanjiRarity";
+import { KANJI_RARITIES, type KanjiRarity } from "./data/kanjiRarity";
 import { flushPersistedAppStateSave, loadPersistedAppState, schedulePersistedAppStateSave } from "./persistence";
 import type { CharacterFontChoice, ChatMsg, KanjiEntryViewState, ScreenState, Tab, UiFontChoice } from "./types";
 
@@ -67,6 +67,11 @@ export default function App() {
   const [collectionIncludeWords, setCollectionIncludeWords] = useState(false);
   const [collectionIncludeComponents, setCollectionIncludeComponents] = useState(false);
   const [collectionFavOnly, setCollectionFavOnly] = useState(false);
+  const [collectionFilters, setCollectionFilters] = useState<CollectionFilterState>({
+    selectedCategories: new Set<string>(),
+    selectedRarities: new Set<KanjiRarity>(),
+    selectedJlptLevels: new Set<number>(),
+  });
   const collectionScrollTopRef = useRef(0);
   const kanjiEntryViewStateRef = useRef<Record<string, KanjiEntryViewState>>({});
   const ignoredKanjiEntryViewStateIdsRef = useRef<Set<string>>(new Set());
@@ -384,6 +389,8 @@ export default function App() {
           includeComponents={collectionIncludeComponents}
           favOnly={collectionFavOnly}
           scrollTop={collectionScrollTopRef.current}
+          filterState={collectionFilters}
+          onFilterStateChange={setCollectionFilters}
           onQueryChange={setCollectionQuery}
           onIncludeWordsChange={setCollectionIncludeWords}
           onIncludeComponentsChange={setCollectionIncludeComponents}

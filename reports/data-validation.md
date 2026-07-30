@@ -1,9 +1,15 @@
 # Data Validation Report
 
 - Kanji entries: 800
-- Radical entries: 182
-- Component entries: 202
+- Radical entries: 184
+- Component entries: 232
 - Word entries: 161527
+- Canonical radical components: 184
+- Radical variant components: 29
+- Visual lookup components: 19
+- Visible parts without component IDs: 0
+- Direct self-memberships hidden from learner display: 109
+- Learner-facing part roles: {'official-radical': 800, 'radical-variant': 115, 'visual-component': 1511}
 - Hard errors: 0
 - Warnings: 0
 
@@ -17,7 +23,9 @@
 - k-年 (年): raw 4 components, visible 2 components
 - k-中 (中): raw 3 components, visible 2 components
 - k-出 (出): raw 3 components, visible 2 components
+- k-五 (五): raw 2 components, visible 1 components
 - k-金 (金): raw 5 components, visible 2 components
+- k-九 (九): raw 2 components, visible 1 components
 - k-円 (円): raw 4 components, visible 3 components
 - k-八 (八): raw 2 components, visible 1 components
 - k-六 (六): raw 3 components, visible 2 components
@@ -25,11 +33,13 @@
 - k-気 (気): raw 4 components, visible 1 components
 - k-七 (七): raw 4 components, visible 3 components
 - k-先 (先): raw 3 components, visible 2 components
+- k-川 (川): raw 2 components, visible 1 components
 - k-千 (千): raw 2 components, visible 1 components
 - k-町 (町): raw 3 components, visible 2 components
 - k-竹 (竹): raw 3 components, visible 2 components
 - k-右 (右): raw 3 components, visible 2 components
 - k-左 (左): raw 3 components, visible 2 components
+- k-王 (王): raw 2 components, visible 1 components
 - k-玉 (玉): raw 3 components, visible 2 components
 - k-犬 (犬): raw 3 components, visible 2 components
 - k-貝 (貝): raw 3 components, visible 2 components
@@ -48,14 +58,17 @@
 - k-野 (野): raw 3 components, visible 2 components
 - k-数 (数): raw 6 components, visible 5 components
 - k-午 (午): raw 4 components, visible 2 components
+- k-心 (心): raw 2 components, visible 1 components
 - k-教 (教): raw 5 components, visible 4 components
 - k-活 (活): raw 5 components, visible 4 components
+- k-元 (元): raw 3 components, visible 2 components
 - k-海 (海): raw 4 components, visible 3 components
 - k-知 (知): raw 3 components, visible 2 components
 - k-道 (道): raw 4 components, visible 3 components
 - k-引 (引): raw 2 components, visible 1 components
 - k-半 (半): raw 4 components, visible 2 components
 - k-直 (直): raw 4 components, visible 3 components
+- k-西 (西): raw 2 components, visible 1 components
 - k-少 (少): raw 2 components, visible 1 components
 - k-何 (何): raw 4 components, visible 3 components
 - k-南 (南): raw 4 components, visible 3 components
@@ -72,6 +85,8 @@
 - k-太 (太): raw 2 components, visible 1 components
 - k-歩 (歩): raw 3 components, visible 2 components
 - k-風 (風): raw 4 components, visible 3 components
+- k-母 (母): raw 2 components, visible 1 components
+- k-黒 (黒): raw 4 components, visible 3 components
 - k-友 (友): raw 3 components, visible 2 components
 - k-顔 (顔): raw 8 components, visible 7 components
 - k-船 (船): raw 3 components, visible 2 components
@@ -81,10 +96,11 @@
 - k-昼 (昼): raw 4 components, visible 3 components
 - k-茶 (茶): raw 3 components, visible 2 components
 - k-弟 (弟): raw 4 components, visible 1 components
-- k-黄 (黄): raw 4 components, visible 3 components
+- k-黄 (黄): raw 4 components, visible 2 components
 - k-矢 (矢): raw 5 components, visible 3 components
 - k-妹 (妹): raw 6 components, visible 4 components
 - k-才 (才): raw 4 components, visible 2 components
+- k-麦 (麦): raw 6 components, visible 5 components
 - k-汽 (汽): raw 3 components, visible 2 components
 - k-業 (業): raw 7 components, visible 5 components
 - k-員 (員): raw 4 components, visible 3 components
@@ -94,7 +110,7 @@
 - k-題 (題): raw 6 components, visible 5 components
 - k-期 (期): raw 3 components, visible 2 components
 - k-平 (平): raw 2 components, visible 1 components
-- k-世 (世): raw 3 components, visible 2 components
+- k-世 (世): raw 3 components, visible 1 components
 - k-区 (区): raw 4 components, visible 2 components
 - k-界 (界): raw 3 components, visible 2 components
 - k-第 (第): raw 3 components, visible 2 components
@@ -102,6 +118,7 @@
 - k-重 (重): raw 5 components, visible 3 components
 - k-物 (物): raw 4 components, visible 3 components
 - k-使 (使): raw 4 components, visible 3 components
+- k-品 (品): raw 2 components, visible 1 components
 - k-係 (係): raw 5 components, visible 4 components
 - k-感 (感): raw 5 components, visible 4 components
 - k-打 (打): raw 2 components, visible 1 components
@@ -154,6 +171,7 @@
 - k-遊 (遊): raw 4 components, visible 3 components
 - k-君 (君): raw 4 components, visible 3 components
 - k-秒 (秒): raw 3 components, visible 2 components
+- k-歯 (歯): raw 4 components, visible 3 components
 - k-柱 (柱): raw 3 components, visible 2 components
 - k-祭 (祭): raw 6 components, visible 5 components
 - k-筆 (筆): raw 3 components, visible 2 components
@@ -188,10 +206,10 @@
 - k-挙 (挙): raw 4 components, visible 3 components
 - k-果 (果): raw 3 components, visible 2 components
 - k-必 (必): raw 3 components, visible 2 components
-- k-無 (無): raw 6 components, visible 3 components
+- k-無 (無): raw 6 components, visible 2 components
 - k-置 (置): raw 6 components, visible 5 components
 - k-説 (説): raw 5 components, visible 4 components
-- k-井 (井): raw 5 components, visible 3 components
+- k-井 (井): raw 5 components, visible 2 components
 - k-念 (念): raw 5 components, visible 3 components
 - k-験 (験): raw 5 components, visible 4 components
 - k-働 (働): raw 6 components, visible 4 components
@@ -200,7 +218,7 @@
 - k-差 (差): raw 5 components, visible 3 components
 - k-末 (末): raw 5 components, visible 3 components
 - k-種 (種): raw 5 components, visible 3 components
-- k-岡 (岡): raw 5 components, visible 4 components
+- k-岡 (岡): raw 5 components, visible 3 components
 - k-松 (松): raw 3 components, visible 2 components
 - k-佐 (佐): raw 4 components, visible 3 components
 - k-観 (観): raw 4 components, visible 3 components
@@ -311,7 +329,7 @@
 - k-益 (益): raw 4 components, visible 2 components
 - k-余 (余): raw 8 components, visible 5 components
 - k-逆 (逆): raw 3 components, visible 2 components
-- k-久 (久): raw 4 components, visible 3 components
+- k-久 (久): raw 4 components, visible 2 components
 - k-妻 (妻): raw 4 components, visible 3 components
 - k-暴 (暴): raw 7 components, visible 5 components
 - k-険 (険): raw 5 components, visible 4 components

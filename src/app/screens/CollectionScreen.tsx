@@ -18,6 +18,12 @@ const JLPT_LABELS: Record<number, string> = {
   1: "N2+ (Hardest)",
 };
 
+export interface CollectionFilterState {
+  selectedCategories: Set<string>;
+  selectedRarities: Set<KanjiRarity>;
+  selectedJlptLevels: Set<number>;
+}
+
 export function CollectionScreen({
   unlockedKanji,
   favorites,
@@ -28,6 +34,8 @@ export function CollectionScreen({
   includeComponents,
   favOnly,
   scrollTop,
+  filterState,
+  onFilterStateChange,
   onQueryChange,
   onIncludeWordsChange,
   onIncludeComponentsChange,
@@ -48,6 +56,8 @@ export function CollectionScreen({
   includeComponents: boolean;
   favOnly: boolean;
   scrollTop: number;
+  filterState: CollectionFilterState;
+  onFilterStateChange: (filterState: CollectionFilterState) => void;
   onQueryChange: (query: string) => void;
   onIncludeWordsChange: (includeWords: boolean) => void;
   onIncludeComponentsChange: (includeComponents: boolean) => void;
@@ -62,9 +72,7 @@ export function CollectionScreen({
   const scrollRef = useRef<HTMLDivElement>(null);
   const searchTimerRef = useRef<number | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
-  const [selectedRarities, setSelectedRarities] = useState<Set<KanjiRarity>>(new Set());
-  const [selectedJlptLevels, setSelectedJlptLevels] = useState<Set<number>>(new Set());
+  const { selectedCategories, selectedRarities, selectedJlptLevels } = filterState;
   const [draftQuery, setDraftQuery] = useState(query);
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState(() => ({ kanjiResults: [], wordResults: [] } as ReturnType<typeof searchKanjiIndex>));
@@ -185,33 +193,29 @@ export function CollectionScreen({
   const activeFilterCount = selectedCategories.size + selectedRarities.size + selectedJlptLevels.size;
   const hasActiveFilters = activeFilterCount > 0;
   const toggleCategory = (category: string) => {
-    setSelectedCategories((current) => {
-      const next = new Set(current);
-      if (next.has(category)) next.delete(category);
-      else next.add(category);
-      return next;
-    });
+    const next = new Set(selectedCategories);
+    if (next.has(category)) next.delete(category);
+    else next.add(category);
+    onFilterStateChange({ ...filterState, selectedCategories: next });
   };
   const toggleJlptLevel = (level: number) => {
-    setSelectedJlptLevels((current) => {
-      const next = new Set(current);
-      if (next.has(level)) next.delete(level);
-      else next.add(level);
-      return next;
-    });
+    const next = new Set(selectedJlptLevels);
+    if (next.has(level)) next.delete(level);
+    else next.add(level);
+    onFilterStateChange({ ...filterState, selectedJlptLevels: next });
   };
   const toggleRarity = (rarity: KanjiRarity) => {
-    setSelectedRarities((current) => {
-      const next = new Set(current);
-      if (next.has(rarity)) next.delete(rarity);
-      else next.add(rarity);
-      return next;
-    });
+    const next = new Set(selectedRarities);
+    if (next.has(rarity)) next.delete(rarity);
+    else next.add(rarity);
+    onFilterStateChange({ ...filterState, selectedRarities: next });
   };
   const clearFilters = () => {
-    setSelectedCategories(new Set());
-    setSelectedRarities(new Set());
-    setSelectedJlptLevels(new Set());
+    onFilterStateChange({
+      selectedCategories: new Set(),
+      selectedRarities: new Set(),
+      selectedJlptLevels: new Set(),
+    });
   };
 
   const kanjiItems = (hasQuery

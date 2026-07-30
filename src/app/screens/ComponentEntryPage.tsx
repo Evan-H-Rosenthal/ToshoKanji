@@ -4,7 +4,7 @@ import { ChatSection } from "../components/ChatSection";
 import { EntryNavigationButtons } from "../components/EntryNavigationButtons";
 import { COMPONENT_BY_ID, COMPONENT_VARIANTS_BY_CANONICAL_ID, KANJI_BY_ID } from "../data/entryIndexes";
 import { getKanjiDisplayName } from "../data/displayNames";
-import { getLearningCategoryColors } from "../data/ui/categoryColors";
+import { compareLearningCategories, getLearningCategoryColors } from "../data/ui/categoryColors";
 import type { ChatMsg, ComponentEntry } from "../types";
 
 function uniqueValues(values: string[]) {
@@ -41,6 +41,17 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
 }) {
   const selectedComponent = COMPONENT_BY_ID.get(id);
   const group = useMemo(() => selectedComponent ? getComponentGroup(selectedComponent) : undefined, [selectedComponent]);
+  const sortedKanji = useMemo(() => {
+    if (!group) return [];
+    return group.kanjiIds
+      .flatMap((kanjiId) => {
+        const kanji = KANJI_BY_ID.get(kanjiId);
+        return kanji ? [kanji] : [];
+      })
+      .sort((a, b) => compareLearningCategories(a.learningCategory, b.learningCategory)
+        || (a.frequency ?? 99999) - (b.frequency ?? 99999)
+        || a.char.localeCompare(b.char, "ja"));
+  }, [group]);
   const initialForm = selectedComponent?.char ?? group?.primary.char ?? "";
   const initialVariantIndex = group ? Math.max(0, group.forms.indexOf(initialForm)) : 0;
   const [variantIndex, setVariantIndex] = useState(initialVariantIndex);
@@ -65,8 +76,10 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
   const variantForms = group.forms.length > 0 ? group.forms : [group.primary.char];
   const currentVariant = variantForms[Math.min(variantIndex, variantForms.length - 1)];
   const key = `component:${group.primary.id}`;
-  const componentName = group.primary.meanings?.[0] ?? "Component";
   const isCanonicalRadical = group.primary.kind === "canonical-radical";
+  const isVisualComponent = group.primary.kind === "visual-component";
+  const componentName = group.primary.meanings?.[0] ?? (isVisualComponent ? "Visual component" : "Component");
+  const componentKindLabel = isCanonicalRadical ? "Canonical radical" : isVisualComponent ? "Visual component" : "Radical variant";
   const radicalFavoriteKey = isCanonicalRadical && group.primary.radicalId ? `radical:${group.primary.radicalId}` : undefined;
 
   const cycleVariant = () => {
@@ -128,12 +141,15 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
         <div className="flex flex-col items-center gap-1 text-center">
           <div className="flex items-center justify-center gap-2 flex-wrap">
             <h1 style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:22 }} className="text-foreground">{componentName}</h1>
-            {isCanonicalRadical && (
-              <span style={{ padding:"3px 8px", borderRadius:999, background:"var(--muted)", border:"1px solid var(--border)", fontFamily:"var(--ui-font)", fontSize:10, fontWeight:900, color:"var(--muted-foreground)", textTransform:"uppercase" }}>
-                {group.primary.radicalNumber ? `Radical ${group.primary.radicalNumber}` : "Canonical radical"}
-              </span>
-            )}
+            <span style={{ padding:"3px 8px", borderRadius:999, background:"var(--muted)", border:"1px solid var(--border)", fontFamily:"var(--ui-font)", fontSize:10, fontWeight:900, color:"var(--muted-foreground)", textTransform:"uppercase" }}>
+              {isCanonicalRadical && group.primary.radicalNumber ? `Radical ${group.primary.radicalNumber}` : componentKindLabel}
+            </span>
           </div>
+          {selectedComponent.sourceChar && selectedComponent.sourceChar !== selectedComponent.char && (
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:11, maxWidth:280 }} className="text-muted-foreground">
+              RADKFILE displays the KRADFILE lookup label {selectedComponent.sourceChar} using the form {selectedComponent.char}.
+            </p>
+          )}
         </div>
       </div>
 
@@ -149,7 +165,7 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
               ))}
             </div>
           ) : (
-            <p style={{ fontFamily:"var(--ui-font)", fontSize:13 }} className="text-muted-foreground">No learner meaning available yet.</p>
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:13 }} className="text-muted-foreground">RADKFILE/KRADFILE identifies this as a recurring visual lookup element but does not assign it a learner meaning.</p>
           )}
         </div>
 
@@ -191,9 +207,8 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
             <p style={{ fontFamily:"var(--ui-font)", fontSize:13 }} className="text-muted-foreground">No kanji entries yet.</p>
           ) : (
             <div className="flex flex-wrap gap-2">
-              {group.kanjiIds.map((kanjiId) => {
-                const kanji = KANJI_BY_ID.get(kanjiId);
-                if (!kanji) return null;
+              {sortedKanji.map((kanji) => {
+                const kanjiId = kanji.id;
                 const isUnlocked = unlockedKanji.has(kanjiId);
                 const [kc1] = getLearningCategoryColors(kanji.learningCategory);
                 return (
