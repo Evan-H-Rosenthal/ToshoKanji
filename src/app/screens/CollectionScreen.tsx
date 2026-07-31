@@ -4,7 +4,9 @@ import { KANJI } from "../data/generated/kanji.generated";
 import { RADICALS } from "../data/generated/radicals.generated";
 import { KANJI_RARITIES, getKanjiRarity, type KanjiRarity } from "../data/kanjiRarity";
 import { LEARNING_CATEGORIES, compareLearningCategories, getLearningCategoryColors, getLearningCategoryTextColor } from "../data/ui/categoryColors";
-import { getFavoriteWordEntries, getWordEntries, getWordEntryColors, type WordEntry } from "../data/wordData";
+import { getFavoriteWordEntries, getWordEntryColors, resolveStoredWordEntry, type WordEntry } from "../data/wordData";
+import { KANJI_BY_ID } from "../data/entryIndexes";
+import { searchStoredWords } from "../wordSearchClient";
 import { buildKanjiSearchIndex, normalizeSearchText, searchKanjiIndex, type SearchMatchReason } from "../search/kanjiSearch";
 import { CollectionCard } from "../components/CollectionCard";
 
@@ -76,9 +78,9 @@ export function CollectionScreen({
   const [draftQuery, setDraftQuery] = useState(query);
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState(() => ({ kanjiResults: [], wordResults: [] } as ReturnType<typeof searchKanjiIndex>));
-  const [wordEntries, setWordEntries] = useState<WordEntry[]>([]);
   const [loadingWords, setLoadingWords] = useState(false);
   const [favoriteWordEntries, setFavoriteWordEntries] = useState<WordEntry[]>([]);
+  const [visibleKanjiLimit, setVisibleKanjiLimit] = useState(90);
   const searchRunIdRef = useRef(0);
   const favoriteWordRunIdRef = useRef(0);
 
@@ -90,7 +92,7 @@ export function CollectionScreen({
 
   const normalizedQuery = normalizeSearchText(query);
   const hasQuery = normalizedQuery.length > 0;
-  const searchIndex = useMemo(() => buildKanjiSearchIndex(KANJI, wordEntries), [wordEntries]);
+  const searchIndex = useMemo(() => buildKanjiSearchIndex(KANJI, []), []);
 
   useEffect(() => {
     setDraftQuery(query);
@@ -99,19 +101,6 @@ export function CollectionScreen({
   useEffect(() => () => {
     if (searchTimerRef.current !== null) window.clearTimeout(searchTimerRef.current);
   }, []);
-
-  const loadWordsForSearch = useCallback(async () => {
-    if (wordEntries.length > 0) return wordEntries;
-
-    setLoadingWords(true);
-    try {
-      const entries = await getWordEntries();
-      setWordEntries(entries);
-      return entries;
-    } finally {
-      setLoadingWords(false);
-    }
-  }, [wordEntries]);
 
   const runSearch = useCallback((nextQuery: string) => {
     const trimmedQuery = nextQuery.trim();
@@ -129,21 +118,34 @@ export function CollectionScreen({
     searchTimerRef.current = window.setTimeout(async () => {
       try {
         const normalizedNextQuery = normalizeSearchText(trimmedQuery);
-        const nextWordEntries = includeWords ? await loadWordsForSearch() : wordEntries;
-        if (runId !== searchRunIdRef.current) return;
-        const nextSearchIndex = includeWords && nextWordEntries !== wordEntries
-          ? buildKanjiSearchIndex(KANJI, nextWordEntries)
-          : searchIndex;
-        const nextResults = searchKanjiIndex(nextSearchIndex, trimmedQuery, {
+        const baseResults = searchKanjiIndex(searchIndex, trimmedQuery, {
           unlockedKanji,
           favorites,
           customNames,
-          includeWords,
+          includeWords: false,
           includeComponents,
           maxKanjiResults: 120,
-          maxWordResults: 60,
+          maxWordResults: 0,
         });
-
+        const storedWordResults = includeWords ? await searchStoredWords(trimmedQuery, unlockedKanji, favorites, 60) : [];
+        if (runId !== searchRunIdRef.current) return;
+        const kanjiById = new Map(baseResults.kanjiResults.map((result) => [result.kanji.id, result]));
+        const wordResults = storedWordResults.map((result) => {
+          const entry = resolveStoredWordEntry(result.entry);
+          for (const kanji of entry.kanji) {
+            if (!unlockedKanji.has(kanji.id)) continue;
+            const existing = kanjiById.get(kanji.id);
+            const propagatedScore = result.score - 24;
+            if (!existing || propagatedScore > existing.score) {
+              kanjiById.set(kanji.id, { kanji: KANJI_BY_ID.get(kanji.id) ?? kanji, score: propagatedScore, reason: result.reason });
+            }
+          }
+          return { entry, score: result.score, reason: result.reason };
+        });
+        const nextResults = {
+          kanjiResults: Array.from(kanjiById.values()).sort((a, b) => b.score - a.score).slice(0, 120),
+          wordResults,
+        };
         setSearchResults(nextResults);
         onQueryChange(normalizedNextQuery ? trimmedQuery : "");
       } catch {
@@ -155,7 +157,7 @@ export function CollectionScreen({
         }
       }
     }, 90);
-  }, [customNames, favorites, includeComponents, includeWords, loadWordsForSearch, onQueryChange, searchIndex, unlockedKanji, wordEntries]);
+  }, [customNames, favorites, includeComponents, includeWords, onQueryChange, searchIndex, unlockedKanji]);
 
   useEffect(() => {
     if (!query) return;
@@ -189,6 +191,8 @@ export function CollectionScreen({
         if (runId === favoriteWordRunIdRef.current) setLoadingWords(false);
       });
   }, [favorites, favOnly, hasQuery]);
+
+  useEffect(() => { setVisibleKanjiLimit(90); }, [query, favOnly, selectedCategories, selectedRarities, selectedJlptLevels]);
 
   const activeFilterCount = selectedCategories.size + selectedRarities.size + selectedJlptLevels.size;
   const hasActiveFilters = activeFilterCount > 0;
@@ -590,7 +594,7 @@ export function CollectionScreen({
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {kanjiItems.length > 0 && (
               <CollectionSection title="Kanji" count={favOnly ? `${kanjiItems.length}` : kanjiCountLabel}>
-                {kanjiItems.map(({ kanji, reason }) => {
+                {kanjiItems.slice(0, visibleKanjiLimit).map(({ kanji, reason }) => {
                   const key = `kanji:${kanji.id}`;
                   const [color1, color2] = getLearningCategoryColors(kanji.learningCategory);
                   return (
@@ -617,6 +621,12 @@ export function CollectionScreen({
                   );
                 })}
               </CollectionSection>
+            )}
+            {kanjiItems.length > visibleKanjiLimit && (
+              <button type="button" className="app-reactive" onClick={() => setVisibleKanjiLimit((limit) => limit + 90)}
+                style={{ alignSelf:"center", padding:"9px 16px", borderRadius:999, background:"var(--muted)", border:"1px solid var(--border)", color:"var(--foreground)", fontFamily:"var(--ui-font)", fontWeight:900, fontSize:12 }}>
+                Show 90 more Kanji
+              </button>
             )}
 
             {radicalItems.length > 0 && (

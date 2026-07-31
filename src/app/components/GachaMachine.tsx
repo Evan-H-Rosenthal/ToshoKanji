@@ -326,6 +326,14 @@ export function GachaMachine({
   const [capsulePressing, setCapsulePressing] = useState(false);
   const [rewardStage, setRewardStage] = useState<"idle" | "dispensed" | "center" | "opened" | "collecting">("idle");
   const capsuleOpenedAtRef = useRef(0);
+  const actionTimersRef = useRef<Set<number>>(new Set());
+  const scheduleAction = useCallback((callback: () => void, delay: number) => {
+    const timer = window.setTimeout(() => {
+      actionTimersRef.current.delete(timer);
+      callback();
+    }, delay);
+    actionTimersRef.current.add(timer);
+  }, []);
 
   useEffect(() => {
     onInteractionLockChange?.(spinning || Boolean(capsule) || rewardStage !== "idle");
@@ -333,6 +341,8 @@ export function GachaMachine({
 
   useEffect(() => {
     return () => {
+      for (const timer of actionTimersRef.current) window.clearTimeout(timer);
+      actionTimersRef.current.clear();
       onInteractionLockChange?.(false);
     };
   }, [onInteractionLockChange]);
@@ -349,7 +359,7 @@ export function GachaMachine({
     setSpinning(true);
     setKnobDeg((degrees) => degrees + 360);
 
-    setTimeout(() => {
+    scheduleAction(() => {
       const item = getItem();
       if (item) {
         const entry =
@@ -361,13 +371,13 @@ export function GachaMachine({
         setCapsuleRotation(Math.round(Math.random() * 70 - 35));
         setCapsule(item);
         setRewardStage("dispensed");
-        setTimeout(() => {
+        scheduleAction(() => {
           setRewardStage("center");
         }, 1650);
       }
       setSpinning(false);
     }, 1350);
-  }, [spinning, capsule, rewardStage, allUnlocked, getItem, onInteractionLockChange, onSpinStart]);
+  }, [spinning, capsule, rewardStage, allUnlocked, getItem, onInteractionLockChange, onSpinStart, scheduleAction]);
 
   const releaseCapsulePointer = (event: PointerEvent<HTMLDivElement>) => {
     if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
@@ -401,7 +411,7 @@ export function GachaMachine({
     if (window.performance.now() - capsuleOpenedAtRef.current < COLLECT_TAP_GRACE_MS) return;
 
     setRewardStage("collecting");
-    setTimeout(() => {
+    scheduleAction(() => {
       onUnlock(capsule.type, capsule.id);
       setCapsule(null);
       setCapsuleOpen(false);

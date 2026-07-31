@@ -61,6 +61,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const [categorySaveError, setCategorySaveError] = useState("");
   const [words, setWords] = useState<Word[]>([]);
   const [loadingWords, setLoadingWords] = useState(false);
+  const [visibleWordLimit, setVisibleWordLimit] = useState(80);
   const nameRef = useRef<HTMLInputElement>(null);
   const pageScrollRef = useRef<HTMLDivElement>(null);
   const wordBrowserScrollRef = useRef<HTMLDivElement>(null);
@@ -140,6 +141,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
     };
   }, [k.id]);
   useEffect(() => {
+    setVisibleWordLimit(80);
     setCurrentLearningCategory(k.learningCategory);
     setCategoryPickerOpen(false);
     setSavingCategory(null);
@@ -194,6 +196,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
     else next.add(readingType);
     wordReadingFiltersRef.current = next;
     setWordReadingFilters(next);
+    setVisibleWordLimit(80);
     if (wordBrowserScrollRef.current) wordBrowserScrollRef.current.scrollTop = 0;
     emitViewState({
       wordBrowserScrollTop: 0,
@@ -669,6 +672,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                 const nextWordQuery = event.target.value;
                 wordQueryRef.current = nextWordQuery;
                 setWordQuery(nextWordQuery);
+                setVisibleWordLimit(80);
                 emitViewState({ wordQuery: nextWordQuery });
               }}
               placeholder="Search words"
@@ -717,7 +721,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
               >
                 Loading words...
               </div>
-            ) : filteredWords.map(({ word: w, readingType }, i) => {
+            ) : filteredWords.slice(0, visibleWordLimit).map(({ word: w, readingType }, i) => {
               const readingMeta = getWordReadingMeta(readingType);
               return (
               <button
@@ -824,6 +828,12 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
               </button>
               );
             })}
+            {!loadingWords && filteredWords.length > visibleWordLimit && (
+              <button type="button" onClick={() => setVisibleWordLimit((limit) => limit + 80)}
+                style={{ minHeight:44, borderRadius:12, background:"var(--muted)", border:"1px solid var(--border)", color:"var(--foreground)", fontFamily:"var(--ui-font)", fontSize:12, fontWeight:900 }}>
+                Show 80 more words
+              </button>
+            )}
             {!loadingWords && filteredWords.length === 0 && (
               <div
                 style={{

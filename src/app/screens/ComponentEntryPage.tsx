@@ -55,9 +55,11 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
   const initialForm = selectedComponent?.char ?? group?.primary.char ?? "";
   const initialVariantIndex = group ? Math.max(0, group.forms.indexOf(initialForm)) : 0;
   const [variantIndex, setVariantIndex] = useState(initialVariantIndex);
+  const [visibleKanjiLimit, setVisibleKanjiLimit] = useState(60);
 
   useEffect(() => {
     setVariantIndex(initialVariantIndex);
+    setVisibleKanjiLimit(60);
   }, [initialVariantIndex, id]);
 
   if (!selectedComponent || !group) {
@@ -207,7 +209,7 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
             <p style={{ fontFamily:"var(--ui-font)", fontSize:13 }} className="text-muted-foreground">No kanji entries yet.</p>
           ) : (
             <div className="flex flex-wrap gap-2">
-              {sortedKanji.map((kanji) => {
+              {sortedKanji.slice(0, visibleKanjiLimit).map((kanji) => {
                 const kanjiId = kanji.id;
                 const isUnlocked = unlockedKanji.has(kanjiId);
                 const [kc1] = getLearningCategoryColors(kanji.learningCategory);
@@ -233,6 +235,12 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
                 );
               })}
             </div>
+          )}
+          {sortedKanji.length > visibleKanjiLimit && (
+            <button type="button" onClick={() => setVisibleKanjiLimit((limit) => limit + 60)}
+              style={{ marginTop:12, padding:"8px 12px", borderRadius:999, background:"var(--muted)", border:"1px solid var(--border)", color:"var(--foreground)", fontFamily:"var(--ui-font)", fontSize:11, fontWeight:900 }}>
+              Show 60 more Kanji
+            </button>
           )}
         </div>
 

@@ -16,6 +16,7 @@ import { SettingsPage } from "./screens/SettingsPage";
 import { WordEntryPage } from "./screens/WordEntryPage";
 import { KANJI_RARITIES, type KanjiRarity } from "./data/kanjiRarity";
 import { flushPersistedAppStateSave, loadPersistedAppState, schedulePersistedAppStateSave } from "./persistence";
+import { flushPersonalContentSave, loadPersonalContent, schedulePersonalContentSave } from "./personalStore";
 import type { CharacterFontChoice, ChatMsg, KanjiEntryViewState, ScreenState, Tab, UiFontChoice } from "./types";
 
 const UI_FONT_STACKS: Record<UiFontChoice, string> = {
@@ -54,7 +55,7 @@ export default function App() {
   const [volume, setVolume] = useState(initialPersistedState.settings.volume);
   const [disableAutoJump, setDisableAutoJump] = useState(initialPersistedState.settings.disableAutoJump);
   const [improvePerformance, setImprovePerformance] = useState(initialPersistedState.settings.improvePerformance);
-  const useSimpleTransitions = improvePerformance || prefersReducedMotion;
+  const useSimpleTransitions = improvePerformance;
   const [uiFontChoice, setUiFontChoice] = useState<UiFontChoice>(initialPersistedState.settings.uiFontChoice);
   const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>(initialPersistedState.settings.characterFontChoice);
   const [activeTab, setActiveTab] = useState<Tab>("gacha");
@@ -81,6 +82,7 @@ export default function App() {
   const [favorites, setFavorites] = useState<Set<string>>(initialPersistedState.favorites);
   const [customNames, setCustomNames] = useState<Record<string,string>>(initialPersistedState.customNames);
   const [notes, setNotes] = useState<Record<string,string>>(initialPersistedState.notes);
+  const [personalContentReady, setPersonalContentReady] = useState(false);
   const [chatMsgs, setChatMsgs] = useState<Record<string,ChatMsg[]>>({});
   const [chatInteractionCount, setChatInteractionCount] = useState(initialPersistedState.chatInteractionCount);
   const [unlockPrompt, setUnlockPrompt] = useState<{type:"kanji"|"radical";id:string}|null>(null);
@@ -152,6 +154,21 @@ export default function App() {
   }, [activeTab, hasChangedTabs, pageWidth, pageX, screen.type, useSimpleTransitions]);
 
   useEffect(() => {
+    let cancelled = false;
+    loadPersonalContent().then((content) => {
+      if (cancelled) return;
+      setCustomNames((legacy) => ({ ...legacy, ...content.customNames }));
+      setNotes((legacy) => ({ ...legacy, ...content.notes }));
+      setPersonalContentReady(true);
+    });
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    if (personalContentReady) schedulePersonalContentSave({ customNames, notes });
+  }, [customNames, notes, personalContentReady]);
+
+  useEffect(() => {
     schedulePersistedAppStateSave({
       unlockedKanji,
       unlockedRadicals,
@@ -184,10 +201,14 @@ export default function App() {
   ]);
 
   useEffect(() => {
-    window.addEventListener("pagehide", flushPersistedAppStateSave);
-    return () => {
-      window.removeEventListener("pagehide", flushPersistedAppStateSave);
+    const flushAll = () => {
       flushPersistedAppStateSave();
+      void flushPersonalContentSave();
+    };
+    window.addEventListener("pagehide", flushAll);
+    return () => {
+      window.removeEventListener("pagehide", flushAll);
+      flushAll();
     };
   }, []);
 
@@ -295,8 +316,8 @@ export default function App() {
     swipeStartRef.current = null;
     setGachaInteractionLocked(true);
     changeActiveTab("gacha");
-    if (pageWidth) pageX.set(-TAB_ORDER.gacha * pageWidth);
-  }, [changeActiveTab, pageWidth, pageX]);
+    if (pageWidth && !useSimpleTransitions) pageX.set(-TAB_ORDER.gacha * pageWidth);
+  }, [changeActiveTab, pageWidth, pageX, useSimpleTransitions]);
 
   const handleToggleFav = useCallback((key:string) => {
     setFavorites(s=>{ const n=new Set(s); n.has(key)?n.delete(key):n.add(key); return n; });
@@ -313,20 +334,28 @@ export default function App() {
   const handleChat = useCallback((key:string, q:string, a:string) => {
     const userMsg: ChatMsg = { role:"user", text:q, id:++msgIdRef.current };
     const aiMsg: ChatMsg = { role:"ai", text:a, id:++msgIdRef.current };
-    setChatMsgs(p=>({...p,[key]:[...(p[key]||[]), userMsg, aiMsg]}));
+    setChatMsgs((previous) => {
+      const nextMessages = [...(previous[key] || []), userMsg, aiMsg].slice(-40);
+      const next = { ...previous, [key]: nextMessages };
+      const keys = Object.keys(next);
+      if (keys.length > 100) delete next[keys[0]];
+      return next;
+    });
     setChatInteractionCount((count) => count + 1);
   }, []);
 
   const handleKanjiEntryViewStateChange = useCallback((id: string, viewState: KanjiEntryViewState) => {
     if (ignoredKanjiEntryViewStateIdsRef.current.has(id)) return;
     kanjiEntryViewStateRef.current[id] = viewState;
+    const savedIds = Object.keys(kanjiEntryViewStateRef.current);
+    if (savedIds.length > 100) delete kanjiEntryViewStateRef.current[savedIds[0]];
   }, []);
 
   const pushScreen = useCallback((nextScreen: ScreenState) => {
     if (nextScreen.type === "kanji-entry" && nextScreen.id) {
       ignoredKanjiEntryViewStateIdsRef.current.delete(nextScreen.id);
     }
-    setScreenStack((stack) => [...stack, screen]);
+    setScreenStack((stack) => [...stack.slice(-63), screen]);
     setScreen(nextScreen);
   }, [screen]);
 
@@ -519,11 +548,11 @@ export default function App() {
                 {useSimpleTransitions ? (
                   <AnimatePresence mode="wait">
                     <motion.div
-                      key={`fade-${activeTab}`}
-                      initial={prefersReducedMotion ? { opacity:0 } : { opacity:0, y:8 }}
-                      animate={prefersReducedMotion ? { opacity:1 } : { opacity:1, y:0 }}
-                      exit={prefersReducedMotion ? { opacity:0 } : { opacity:0, y:-8 }}
-                      transition={{ duration:prefersReducedMotion ? 0.12 : 0.24, ease:"easeOut" }}
+                      key={"fade-" + activeTab}
+                      initial={{ opacity:0 }}
+                      animate={{ opacity:1 }}
+                      exit={{ opacity:0 }}
+                      transition={{ duration:prefersReducedMotion ? 0.08 : 0.14, ease:"easeOut" }}
                       style={{ position:"absolute", inset:0, overflow:"hidden", display:"flex", flexDirection:"column" }}>
                       {renderTabPanel(activeTab)}
                     </motion.div>
@@ -535,16 +564,16 @@ export default function App() {
                     dragDirectionLock
                     dragElastic={0.08}
                     dragMomentum={false}
-                    dragConstraints={{ left: pageWidth ? -pageWidth * 2 : 0, right: 0 }}
+                    dragConstraints={{ left:pageWidth ? -pageWidth * 2 : 0, right:0 }}
                     onDragEnd={handleDragEnd}
-                    style={{ x: pageX, width:"300%", height:"100%", display:"flex", willChange:"transform", touchAction:gachaInteractionLocked ? "none" : "pan-y", backfaceVisibility:"hidden" }}>
-                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "collection" ? "auto" : "none", contain:"layout paint" }}>
+                    style={{ x:pageX, width:"300%", height:"100%", display:"flex", willChange:"transform", touchAction:gachaInteractionLocked ? "none" : "pan-y", backfaceVisibility:"hidden" }}>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents:activeTab === "collection" ? "auto" : "none", contain:"layout paint" }}>
                       {renderTabPanel("collection")}
                     </div>
-                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "gacha" ? "auto" : "none", contain:"layout paint" }}>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents:activeTab === "gacha" ? "auto" : "none", contain:"layout paint" }}>
                       {renderTabPanel("gacha")}
                     </div>
-                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents: activeTab === "practice" ? "auto" : "none", contain:"layout paint" }}>
+                    <div style={{ width:"33.333333%", height:"100%", overflow:"hidden", display:"flex", flexDirection:"column", pointerEvents:activeTab === "practice" ? "auto" : "none", contain:"layout paint" }}>
                       {renderTabPanel("practice")}
                     </div>
                   </motion.div>

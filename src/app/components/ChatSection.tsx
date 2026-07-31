@@ -12,16 +12,19 @@ export function ChatSection({ entryKey, msgs, onSend, contextLabel = "kanji" }: 
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const replyTimerRef = useRef<number | null>(null);
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior:reduceMotion ? "auto" : "smooth" }); }, [msgs, thinking, reduceMotion]);
+  useEffect(() => () => { if (replyTimerRef.current !== null) window.clearTimeout(replyTimerRef.current); }, []);
 
   const send = useCallback((text: string) => {
     if (!text.trim() || thinking) return;
     setInput("");
     setThinking(true);
-    setTimeout(() => {
+    replyTimerRef.current = window.setTimeout(() => {
       onSend(entryKey, text, getAIReply(text.toLowerCase()));
       setThinking(false);
+      replyTimerRef.current = null;
     }, 900 + Math.random() * 600);
   }, [thinking, entryKey, onSend]);
 

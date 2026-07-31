@@ -135,6 +135,7 @@ export interface WordEntry {
   id: string;
   word: Word;
   kanjiIds: string[];
+  kanjiRanks?: number[];
 }
 export interface ChatMsg { role: "user" | "ai"; text: string; id: number; }
 export type AchievementCategory = "rarity" | "category" | "favorites" | "notes" | "ai-chat";

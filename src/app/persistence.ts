@@ -4,6 +4,7 @@ const STORAGE_KEY = "toshokanji:app-state";
 const CURRENT_VERSION = 1;
 const SAVE_DEBOUNCE_MS = 250;
 let pendingSaveTimer: number | null = null;
+let pendingSaveIdleCallback: number | null = null;
 let pendingSaveState: HydratedAppState | null = null;
 
 export interface PersistedAppState {
@@ -11,8 +12,8 @@ export interface PersistedAppState {
   unlockedKanji: string[];
   unlockedRadicals: string[];
   favorites: string[];
-  customNames: Record<string, string>;
-  notes: Record<string, string>;
+  customNames?: Record<string, string>;
+  notes?: Record<string, string>;
   chatInteractionCount?: number;
   settings: {
     darkMode: boolean;
@@ -86,8 +87,6 @@ export function savePersistedAppState(state: HydratedAppState) {
     unlockedKanji: Array.from(state.unlockedKanji),
     unlockedRadicals: Array.from(state.unlockedRadicals),
     favorites: Array.from(state.favorites),
-    customNames: state.customNames,
-    notes: state.notes,
     chatInteractionCount: state.chatInteractionCount,
     settings: state.settings,
   };
@@ -104,10 +103,20 @@ export function schedulePersistedAppStateSave(state: HydratedAppState) {
 
   pendingSaveState = state;
   if (pendingSaveTimer !== null) window.clearTimeout(pendingSaveTimer);
+  const idleWindow = window as Window & {
+    requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
+    cancelIdleCallback?: (handle: number) => void;
+  };
+  if (pendingSaveIdleCallback !== null) idleWindow.cancelIdleCallback?.(pendingSaveIdleCallback);
 
-  pendingSaveTimer = window.setTimeout(() => {
-    flushPersistedAppStateSave();
-  }, SAVE_DEBOUNCE_MS);
+  if (idleWindow.requestIdleCallback) {
+    pendingSaveIdleCallback = idleWindow.requestIdleCallback(() => {
+      pendingSaveIdleCallback = null;
+      flushPersistedAppStateSave();
+    }, { timeout: 1000 });
+  } else {
+    pendingSaveTimer = window.setTimeout(flushPersistedAppStateSave, SAVE_DEBOUNCE_MS);
+  }
 }
 
 export function flushPersistedAppStateSave() {
@@ -119,6 +128,9 @@ export function flushPersistedAppStateSave() {
     window.clearTimeout(pendingSaveTimer);
   }
   pendingSaveTimer = null;
+  const idleWindow = window as Window & { cancelIdleCallback?: (handle: number) => void };
+  if (pendingSaveIdleCallback !== null) idleWindow.cancelIdleCallback?.(pendingSaveIdleCallback);
+  pendingSaveIdleCallback = null;
   savePersistedAppState(state);
 }
 

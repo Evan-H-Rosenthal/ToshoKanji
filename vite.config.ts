@@ -157,18 +157,23 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         navigateFallback: '/index.html',
         globPatterns: ['**/*.{js,css,html,ico,woff,woff2,png,svg}'],
-        globIgnores: ['**/words.part-*.generated-*.js'],
         maximumFileSizeToCacheInBytes: WORKBOX_PRECACHE_LIMIT_BYTES,
         runtimeCaching: [
           {
-            urlPattern: /\/assets\/words\.part-\d+\.generated-.*\.js$/,
+            urlPattern: /\/data\/words\/manifest\.json$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'word-data-manifest',
+              networkTimeoutSeconds: 4,
+              expiration: { maxEntries: 2, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+          {
+            urlPattern: /\/data\/words\/part-\d+\.json(?:\?.*)?$/,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'word-data-chunks',
-              expiration: {
-                maxEntries: 5,
-                maxAgeSeconds: 60 * 60 * 24 * 365,
-              },
+              cacheName: 'word-data-shards',
+              expiration: { maxEntries: 64, maxAgeSeconds: 60 * 60 * 24 * 365 },
             },
           },
         ],
@@ -193,8 +198,6 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           const normalizedId = id.replace(/\\/g, '/')
-          const wordPartMatch = normalizedId.match(/\/words\.part-(\d+)\.generated\.ts$/)
-          if (wordPartMatch) return `words-part-${wordPartMatch[1]}`
           if (normalizedId.endsWith('/kanji.generated.ts')) return 'kanji-data'
           if (normalizedId.endsWith('/components.generated.ts')) return 'component-data'
           if (normalizedId.endsWith('/radicals.generated.ts')) return 'radical-data'

@@ -75,10 +75,14 @@ The app intentionally stores more than it shows by default. Learner-facing pages
 ```text
 src/app/
   App.tsx                       # app shell, tabs, navigation, unlock flow, persistence wiring
-  persistence.ts                # versioned localStorage load/save with debounced flush
+  persistence.ts                # idle-scheduled, versioned progress/settings persistence
+  personalStore.ts              # IndexedDB-backed notes and custom names
+  data/wordStore.ts             # sharded dictionary installation and indexed queries
+  wordSearch.worker.ts           # off-main-thread vocabulary search
   search/kanjiSearch.ts         # collection search index and scoring
   data/entryIndexes.ts          # precomputed maps/groupings over generated entries
-  data/generated/               # generated kanji, radical, component, and word modules
+  data/generated/               # compact generated kanji, radical, and component modules
+public/data/words/              # versioned JSON vocabulary shards installed into IndexedDB
   data/ui/                      # achievements, category colors, prompts, mock AI replies
   components/                   # gacha machine, cards, stats modal, chat, PWA hint
   screens/                      # collection, entries, achievements, settings, practice placeholder
@@ -89,6 +93,8 @@ scripts/
 ```
 
 Most product state currently lives in `App.tsx` and is passed down to screen components. Generated data and lookup/search helpers are split out so the UI can stay focused on interaction logic.
+
+Vocabulary is stored as 32 versioned JSON shards rather than executable JavaScript. The browser installs those shards incrementally into IndexedDB, queries kanji vocabulary through a multi-entry index, and scans for full vocabulary search in a Web Worker. Runtime word objects use a bounded cache, large lists are paginated, and only the active main tab remains mounted.
 
 ## Deployment
 

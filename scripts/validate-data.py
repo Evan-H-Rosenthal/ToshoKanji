@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED_DIR = ROOT / "src" / "app" / "data" / "generated"
+WORD_DATA_DIR = ROOT / "public" / "data" / "words"
 REPORT_FILE = ROOT / "reports" / "data-validation.md"
 
 ROMAJI_PLACEHOLDER = "Romaji Placeholder"
@@ -40,16 +41,11 @@ def read_exported_json(path: Path, export_name: str):
 
 
 def read_generated_words() -> list[dict]:
-    word_part_paths = sorted(
-        GENERATED_DIR.glob("words.part-*.generated.ts"),
-        key=lambda path: int(re.search(r"part-(\d+)", path.name).group(1)),
-    )
-    if not word_part_paths:
-        return read_exported_json(GENERATED_DIR / "words.generated.ts", "WORDS")
-
+    manifest = json.loads((WORD_DATA_DIR / "manifest.json").read_text(encoding="utf-8"))
     words: list[dict] = []
-    for index, path in enumerate(word_part_paths, start=1):
-        words.extend(read_exported_json(path, f"WORDS_PART_{index}"))
+    for part_url in manifest["parts"]:
+        relative_path = part_url.split("?", 1)[0].removeprefix("/")
+        words.extend(json.loads((ROOT / "public" / relative_path).read_text(encoding="utf-8")))
     return words
 
 
@@ -107,7 +103,7 @@ def main() -> int:
         filtered_components = raw_decomposition.get("filteredParts") or provenance.get("filteredComponents") or []
 
         if "words" in entry:
-            errors.append(f"{label} embeds word objects; generated kanji should reference words by `wordIds`")
+            errors.append(f"{label} embeds word objects; generated kanji must keep vocabulary in dictionary shards")
         if "learnerParts" not in entry:
             errors.append(f"{label} is missing learnerParts")
         if "rawDecomposition" not in entry:
@@ -174,10 +170,6 @@ def main() -> int:
             if part.get("missingRadkMetadata"):
                 errors.append(f"{label} raw decomposition part `{part.get('char')}` has no RADKFILE metadata")
 
-        for word_id in entry.get("wordIds") or []:
-            if word_id not in word_id_set:
-                errors.append(f"{label} references missing word `{word_id}`")
-
         if filtered_components:
             filtered_examples.append(f"{label}: filtered {', '.join(f'`{component}`' for component in filtered_components)}")
 
@@ -233,7 +225,13 @@ def main() -> int:
             errors.append(f"{word_id} has invalid romaji `{romaji}`")
         if not word_id.startswith("w-") or any(ch.isspace() for ch in word_id):
             suspicious_word_ids.append(f"`{word_id}`")
-        for kanji_id in word.get("kanjiIds") or []:
+        kanji_ids = word.get("kanjiIds") or []
+        kanji_ranks = word.get("kanjiRanks") or []
+        if len(kanji_ranks) != len(kanji_ids):
+            errors.append(f"{word_id} has {len(kanji_ranks)} kanji ranks for {len(kanji_ids)} kanji IDs")
+        elif any(not isinstance(rank, int) or rank < 0 for rank in kanji_ranks):
+            errors.append(f"{word_id} has invalid per-kanji learner ranks")
+        for kanji_id in kanji_ids:
             kanji_entry = next((entry for entry in kanji if entry["id"] == kanji_id), None)
             if not kanji_entry:
                 errors.append(f"{word_id} points to missing kanji `{kanji_id}`")

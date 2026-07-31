@@ -1,6 +1,7 @@
 import { KANJI_BY_ID } from "./entryIndexes";
+import { getStoredWord, getStoredWords, getStoredWordsForKanji } from "./wordStore";
 import { getLearningCategoryColors } from "./ui/categoryColors";
-import type { KanjiEntry, Word, WordEntry as GeneratedWordEntry } from "../types";
+import type { KanjiEntry, Word, WordEntry as StoredWordEntry } from "../types";
 
 export interface WordEntry {
   id: string;
@@ -8,137 +9,82 @@ export interface WordEntry {
   kanji: KanjiEntry[];
 }
 
-type WordPartNumber = 1 | 2 | 3 | 4 | 5;
-type RawWordPartModule = { default: string };
-
-const WORD_PART_LOADERS: Record<WordPartNumber, () => Promise<RawWordPartModule>> = {
-  1: () => import("./generated/words.part-1.generated?raw"),
-  2: () => import("./generated/words.part-2.generated?raw"),
-  3: () => import("./generated/words.part-3.generated?raw"),
-  4: () => import("./generated/words.part-4.generated?raw"),
-  5: () => import("./generated/words.part-5.generated?raw"),
-};
-
-const WORD_PART_START_IDS: Array<[WordPartNumber, string]> = [
-  [1, "w-2.5次元"],
-  [2, "w-再洗礼"],
-  [3, "w-市外電話"],
-  [4, "w-法楽"],
-  [5, "w-花虎の尾"],
-];
-
-const loadedWordParts = new Map<WordPartNumber, Promise<GeneratedWordEntry[]>>();
-const wordById = new Map<string, GeneratedWordEntry>();
+const RESOLVED_CACHE_LIMIT = 256;
+const resolvedCache = new Map<string, WordEntry>();
 
 function orderKanjiBySpelling(kanji: KanjiEntry[], spelling: string) {
   const kanjiByChar = new Map(kanji.map((entry) => [entry.char, entry]));
   const seenIds = new Set<string>();
   const ordered: KanjiEntry[] = [];
-
   for (const char of Array.from(spelling)) {
     const entry = kanjiByChar.get(char);
     if (!entry || seenIds.has(entry.id)) continue;
     ordered.push(entry);
     seenIds.add(entry.id);
   }
-
   for (const entry of kanji) {
     if (seenIds.has(entry.id)) continue;
     ordered.push(entry);
     seenIds.add(entry.id);
   }
-
   return ordered;
 }
 
-function resolveWordEntry(entry: GeneratedWordEntry): WordEntry {
+export function resolveStoredWordEntry(entry: StoredWordEntry): WordEntry {
+  const cached = resolvedCache.get(entry.id);
+  if (cached) {
+    resolvedCache.delete(entry.id);
+    resolvedCache.set(entry.id, cached);
+    return cached;
+  }
   const resolvedKanji = entry.kanjiIds
     .map((kanjiId) => KANJI_BY_ID.get(kanjiId))
     .filter((value): value is KanjiEntry => Boolean(value));
-  const kanji = orderKanjiBySpelling(resolvedKanji, entry.word.japanese);
-
-  return { id: entry.id, word: entry.word, kanji };
-}
-
-function getWordPartForId(id: string): WordPartNumber {
-  let selectedPart: WordPartNumber = 1;
-  for (const [part, startId] of WORD_PART_START_IDS) {
-    if (id >= startId) selectedPart = part;
-    else break;
+  const resolved = { id: entry.id, word: entry.word, kanji: orderKanjiBySpelling(resolvedKanji, entry.word.japanese) };
+  resolvedCache.set(entry.id, resolved);
+  if (resolvedCache.size > RESOLVED_CACHE_LIMIT) {
+    const oldest = resolvedCache.keys().next().value;
+    if (oldest) resolvedCache.delete(oldest);
   }
-  return selectedPart;
-}
-
-function parseWordPart(rawSource: string): GeneratedWordEntry[] {
-  const match = rawSource.match(/export const WORDS_PART_\d+: WordEntry\[\] = (\[[\s\S]*\]);\s*$/);
-  if (!match) throw new Error("Could not parse generated word part");
-  return JSON.parse(match[1]) as GeneratedWordEntry[];
-}
-
-async function loadWordPart(part: WordPartNumber) {
-  const existing = loadedWordParts.get(part);
-  if (existing) return existing;
-
-  const promise = WORD_PART_LOADERS[part]().then((module) => {
-    const entries = parseWordPart(module.default);
-    for (const entry of entries) wordById.set(entry.id, entry);
-    return entries;
-  });
-  loadedWordParts.set(part, promise);
-  return promise;
-}
-
-async function loadWordPartsForIds(ids: string[]) {
-  const parts = Array.from(new Set(ids.map(getWordPartForId)));
-  await Promise.all(parts.map(loadWordPart));
-}
-
-export async function getWordEntries(): Promise<WordEntry[]> {
-  const parts = await Promise.all(([1, 2, 3, 4, 5] as WordPartNumber[]).map(loadWordPart));
-  return parts.flat().map(resolveWordEntry);
+  return resolved;
 }
 
 export async function getFavoriteWordEntries(favorites: Set<string>): Promise<WordEntry[]> {
   const ids = Array.from(favorites, (key) => key.startsWith("word:") ? key.slice(5) : "").filter(Boolean);
-  await loadWordPartsForIds(ids);
-  return ids
-    .map((id) => wordById.get(id))
-    .filter((value): value is GeneratedWordEntry => Boolean(value))
-    .map(resolveWordEntry);
+  return (await getStoredWords(ids)).map(resolveStoredWordEntry);
 }
 
 export async function findWordEntry(id: string): Promise<WordEntry | undefined> {
-  await loadWordPart(getWordPartForId(id));
+  const cached = resolvedCache.get(id);
+  if (cached) return cached;
+  const entry = await getStoredWord(id);
+  return entry ? resolveStoredWordEntry(entry) : undefined;
+}
 
-  let entry = wordById.get(id);
-  if (!entry) {
-    const unloadedParts = ([1, 2, 3, 4, 5] as WordPartNumber[]).filter((part) => !loadedWordParts.has(part));
-    for (const part of unloadedParts) {
-      await loadWordPart(part);
-      entry = wordById.get(id);
-      if (entry) break;
-    }
-  }
+function storedKanjiRank(entry: StoredWordEntry, kanjiId: string): number {
+  const kanjiIndex = entry.kanjiIds.indexOf(kanjiId);
+  const rank = kanjiIndex >= 0 ? entry.kanjiRanks?.[kanjiIndex] : undefined;
+  return Number.isInteger(rank) ? rank! : Number.MAX_SAFE_INTEGER;
+}
 
-  return entry ? resolveWordEntry(entry) : undefined;
+function compareFallbackLearnerOrder(a: StoredWordEntry, b: StoredWordEntry): number {
+  return Number(Boolean(b.word.common)) - Number(Boolean(a.word.common))
+    || Array.from(a.word.japanese).length - Array.from(b.word.japanese).length
+    || Number(Boolean(a.word.wordTags?.length)) - Number(Boolean(b.word.wordTags?.length))
+    || a.word.japanese.localeCompare(b.word.japanese, "ja");
 }
 
 export async function getWordsForKanji(kanjiId: string): Promise<Word[]> {
-  const kanji = KANJI_BY_ID.get(kanjiId);
-  const wordIds = kanji?.wordIds ?? [];
-  await loadWordPartsForIds(wordIds);
-
-  return wordIds
-    .map((wordId) => wordById.get(wordId)?.word)
-    .filter((value): value is Word => Boolean(value));
+  const entries = await getStoredWordsForKanji(kanjiId);
+  entries.sort((a, b) => storedKanjiRank(a, kanjiId) - storedKanjiRank(b, kanjiId)
+    || compareFallbackLearnerOrder(a, b));
+  return entries.map((entry) => entry.word);
 }
 
 export function getWordEntryColors(entry: WordEntry): [string, string] {
   const categoryColors = entry.kanji.map((kanji) => getLearningCategoryColors(kanji.learningCategory));
   const uniqueColors = Array.from(new Set(categoryColors.flat()));
-
   if (uniqueColors.length === 0) return ["#6b7280", "#4b5563"];
   if (uniqueColors.length === 1) return [uniqueColors[0], uniqueColors[0]];
-
   return [uniqueColors[0], uniqueColors[uniqueColors.length - 1]];
 }
