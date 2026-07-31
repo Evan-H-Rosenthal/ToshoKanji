@@ -34,10 +34,10 @@ const DATASET_ATTRIBUTIONS = [
   },
 ];
 
-export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerformance, uiFontChoice, characterFontChoice, onDark, onVolume, onDisableAutoJump, onImprovePerformance, onUiFontChoice, onCharacterFontChoice, onResetProgress, onResetAll, onUnlockAll, onBack }: {
+export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerformance, uiFontChoice, characterFontChoice, onDark, onVolume, onDisableAutoJump, onImprovePerformance, onUiFontChoice, onCharacterFontChoice, onReloadDictionaries, onResetProgress, onResetAll, onUnlockAll, onBack }: {
   darkMode:boolean; volume:number; disableAutoJump:boolean; improvePerformance:boolean; uiFontChoice:UiFontChoice; characterFontChoice:CharacterFontChoice;
   onDark:(v:boolean)=>void; onVolume:(v:number)=>void; onDisableAutoJump:(v:boolean)=>void; onImprovePerformance:(v:boolean)=>void; onUiFontChoice:(v:UiFontChoice)=>void; onCharacterFontChoice:(v:CharacterFontChoice)=>void;
-  onResetProgress:()=>void; onResetAll:()=>void; onUnlockAll:()=>void; onBack:()=>void;
+  onReloadDictionaries:()=>void; onResetProgress:()=>void; onResetAll:()=>void; onUnlockAll:()=>void; onBack:()=>void;
 }) {
   const reduceMotion = useReducedMotion();
   const [confirmReset, setConfirmReset] = useState<"progress"|"all"|null>(null);
@@ -139,6 +139,16 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
         {/* Stats */}
         <div className="rounded-2xl overflow-hidden" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:11, padding:"12px 16px 4px" }} className="text-muted-foreground">Data</p>
+          <div className="flex items-center justify-between px-4 py-3 border-t border-border">
+            <div>
+              <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15 }} className="text-foreground">Reload dictionaries</p>
+              <p style={{ fontFamily:"var(--ui-font)", fontSize:11 }} className="text-muted-foreground">Rebuild the local word database and replay the loader</p>
+            </div>
+            <button type="button" aria-label="Reload dictionaries" onClick={onReloadDictionaries}
+              style={{ padding:"7px 12px", borderRadius:10, background:"color-mix(in srgb, var(--primary) 14%, transparent)", color:"var(--primary)", fontFamily:"var(--ui-font)", fontWeight:900, fontSize:11, border:"1px solid color-mix(in srgb, var(--primary) 32%, transparent)", cursor:"pointer" }}>
+              Reload
+            </button>
+          </div>
           <div className="flex items-center justify-between px-4 py-3 border-t border-border">
             <div>
               <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15, color:"var(--success)" }}>Debug: unlock everything</p>

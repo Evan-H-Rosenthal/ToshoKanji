@@ -3,6 +3,7 @@ import { AnimatePresence, MotionConfig, animate, motion, useMotionValue, useRedu
 import { Settings, Trophy } from "lucide-react";
 import { KANJI_BY_RARITY, KANJI_IDS, RADICAL_IDS } from "./data/entryIndexes";
 import { GachaPanel } from "./components/GachaPanel";
+import { DictionaryLoadingScreen } from "./components/DictionaryLoadingScreen";
 import { InstallPwaHint } from "./components/InstallPwaHint";
 import { PageIndicator } from "./components/PageIndicator";
 import { PhoneFrame } from "./components/PhoneFrame";
@@ -17,6 +18,7 @@ import { WordEntryPage } from "./screens/WordEntryPage";
 import { KANJI_RARITIES, type KanjiRarity } from "./data/kanjiRarity";
 import { flushPersistedAppStateSave, loadPersistedAppState, schedulePersistedAppStateSave } from "./persistence";
 import { flushPersonalContentSave, loadPersonalContent, schedulePersonalContentSave } from "./personalStore";
+import { ensureWordDatabase, reloadWordDatabase, subscribeWordDatabaseProgress, type WordDatabaseProgress } from "./data/wordStore";
 import type { CharacterFontChoice, ChatMsg, KanjiEntryViewState, ScreenState, Tab, UiFontChoice } from "./types";
 
 const UI_FONT_STACKS: Record<UiFontChoice, string> = {
@@ -52,6 +54,16 @@ export default function App() {
   const initialPersistedState = useMemo(() => loadPersistedAppState(), []);
   const prefersReducedMotion = useReducedMotion();
   const [darkMode, setDarkMode] = useState(initialPersistedState.settings.darkMode);
+  const [wordDatabaseProgress, setWordDatabaseProgress] = useState<WordDatabaseProgress>({
+    phase: "checking",
+    progress: 0,
+    loadedParts: 0,
+    totalParts: 0,
+    loadedWords: 0,
+    totalWords: 0,
+  });
+  const [wordDatabaseAttempt, setWordDatabaseAttempt] = useState(0);
+  const dictionaryLoaderWasVisibleRef = useRef(false);
   const [volume, setVolume] = useState(initialPersistedState.settings.volume);
   const [disableAutoJump, setDisableAutoJump] = useState(initialPersistedState.settings.disableAutoJump);
   const [improvePerformance, setImprovePerformance] = useState(initialPersistedState.settings.improvePerformance);
@@ -95,6 +107,14 @@ export default function App() {
   const allUnlocked = unlockedKanji.size >= KANJI_IDS.length;
 
   useEffect(() => {
+    const unsubscribe = subscribeWordDatabaseProgress(setWordDatabaseProgress);
+    void ensureWordDatabase().catch(() => {
+      // The loading screen exposes the failure and retry action.
+    });
+    return unsubscribe;
+  }, [wordDatabaseAttempt]);
+
+  useEffect(() => {
     const updateViewportHeight = () => {
       if (isStandalonePwa()) {
         document.documentElement.style.setProperty("--app-height", "100vh");
@@ -123,7 +143,10 @@ export default function App() {
     const viewport = pageViewportRef.current;
     if (!viewport) return;
 
-    const updatePageWidth = () => setPageWidth(viewport.clientWidth);
+    const updatePageWidth = () => {
+      const nextWidth = viewport.clientWidth;
+      if (nextWidth > 0) setPageWidth(nextWidth);
+    };
     updatePageWidth();
 
     const observer = new ResizeObserver(updatePageWidth);
@@ -136,22 +159,22 @@ export default function App() {
       window.visualViewport?.removeEventListener("resize", updatePageWidth);
       window.removeEventListener("orientationchange", updatePageWidth);
     };
-  }, [screen.type]);
+  }, [screen.type, wordDatabaseProgress.phase]);
 
   useLayoutEffect(() => {
-    if (!pageWidth || useSimpleTransitions || screen.type !== "main") return;
+    if (wordDatabaseProgress.phase !== "ready" || !pageWidth || useSimpleTransitions || screen.type !== "main") return;
     pageX.set(-TAB_ORDER[activeTab] * pageWidth);
-  }, [pageWidth, pageX, screen.type, useSimpleTransitions]);
+  }, [pageWidth, pageX, screen.type, useSimpleTransitions, wordDatabaseProgress.phase]);
 
   useEffect(() => {
-    if (!pageWidth || useSimpleTransitions || screen.type !== "main") return;
+    if (wordDatabaseProgress.phase !== "ready" || !pageWidth || useSimpleTransitions || screen.type !== "main") return;
 
     const controls = animate(pageX, -TAB_ORDER[activeTab] * pageWidth, hasChangedTabs
       ? { type: "spring", stiffness: 380, damping: 38, mass: 0.78 }
       : { duration: 0 });
 
     return () => controls.stop();
-  }, [activeTab, hasChangedTabs, pageWidth, pageX, screen.type, useSimpleTransitions]);
+  }, [activeTab, hasChangedTabs, pageWidth, pageX, screen.type, useSimpleTransitions, wordDatabaseProgress.phase]);
 
   useEffect(() => {
     let cancelled = false;
@@ -395,6 +418,14 @@ export default function App() {
     pushScreen({type:"word-entry",id});
   };
 
+  const reloadDictionaries = () => {
+    setScreenStack([]);
+    setScreen({ type:"main" });
+    changeActiveTab("gacha");
+    void reloadWordDatabase().catch(() => {
+      // The loading screen exposes the failure and retry action.
+    });
+  };
   const resetProgress = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); };
   const resetAll = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); setFavorites(new Set()); setCustomNames({}); setNotes({}); setChatMsgs({}); setChatInteractionCount(0); };
   const unlockAll = () => {
@@ -494,7 +525,7 @@ export default function App() {
           {screen.type === "settings" && (
             <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} improvePerformance={improvePerformance} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
               onDark={setDarkMode} onVolume={setVolume} onDisableAutoJump={setDisableAutoJump} onImprovePerformance={setImprovePerformance} onUiFontChoice={setUiFontChoice} onCharacterFontChoice={setCharacterFontChoice}
-              onResetProgress={resetProgress} onResetAll={resetAll} onUnlockAll={unlockAll} onBack={closeUtilityScreen} />
+              onReloadDictionaries={reloadDictionaries} onResetProgress={resetProgress} onResetAll={resetAll} onUnlockAll={unlockAll} onBack={closeUtilityScreen} />
           )}
 
           {/* Main tabs */}
@@ -601,6 +632,9 @@ export default function App() {
     </div>
   );
 
+  const dictionaryBootstrapVisible = wordDatabaseProgress.phase === "loading" || wordDatabaseProgress.phase === "error";
+  if (dictionaryBootstrapVisible) dictionaryLoaderWasVisibleRef.current = true;
+
   return (
     <MotionConfig reducedMotion="user">
       <div className={darkMode ? "dark" : ""} style={{ fontFamily:"var(--ui-font)", minHeight:"var(--app-height, 100dvh)", background:"var(--app-shell-background)" }}>
@@ -654,7 +688,33 @@ export default function App() {
         * { -webkit-tap-highlight-color: transparent; }
       `}</style>
       <PhoneFrame darkMode={darkMode}>
-        {mainContent}
+        <AnimatePresence mode="wait" initial={false}>
+          {wordDatabaseProgress.phase === "ready" ? (
+            <motion.div
+              key="dictionary-ready"
+              initial={{ opacity:dictionaryLoaderWasVisibleRef.current ? 0 : 1 }}
+              animate={{ opacity:1 }}
+              transition={{ duration:prefersReducedMotion || !dictionaryLoaderWasVisibleRef.current ? 0 : 0.42, ease:"easeOut" }}
+              style={{ width:"100%", height:"100%", display:"flex", flexDirection:"column" }}
+            >
+              {mainContent}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="dictionary-bootstrap"
+              initial={{ opacity:1 }}
+              animate={{ opacity:1 }}
+              exit={{ opacity:0 }}
+              transition={{ duration:prefersReducedMotion || !dictionaryLoaderWasVisibleRef.current ? 0 : 0.3, ease:"easeOut" }}
+              style={{ position:"absolute", inset:0, background:"var(--background)" }}
+            >
+              <DictionaryLoadingScreen
+                state={wordDatabaseProgress}
+                onRetry={() => setWordDatabaseAttempt((attempt) => attempt + 1)}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </PhoneFrame>
       </div>
     </MotionConfig>

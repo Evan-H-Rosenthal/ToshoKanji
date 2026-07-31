@@ -240,7 +240,7 @@ function CircularRarityText({
   );
 }
 
-function CapsuleBall({ color, size, rotate = 0 }: { color: string; size: number; rotate?: number }) {
+export function CapsuleBall({ color, size, rotate = 0 }: { color: string; size: number; rotate?: number }) {
   const halfHeight = Math.max(5, size * 0.48);
 
   return (
@@ -297,6 +297,70 @@ function CapsuleBall({ color, size, rotate = 0 }: { color: string; size: number;
           }}
         />
       </div>
+    </div>
+  );
+}
+
+export function RewardCapsuleShell({
+  primary,
+  secondary,
+  size,
+}: {
+  primary: string;
+  secondary: string;
+  size: number;
+}) {
+  const half = size / 2;
+  const centerCorner = Math.max(4, size * 0.055);
+
+  return (
+    <div style={{ width: size, height: size, position: "relative" }}>
+      <div
+        style={{
+          position: "absolute",
+          width: size,
+          height: half,
+          top: 0,
+          borderRadius: `${half}px ${half}px ${centerCorner}px ${centerCorner}px`,
+          background: "linear-gradient(145deg, rgba(255,255,255,0.9), rgba(232,238,244,0.58) 56%, rgba(210,220,230,0.46))",
+          boxShadow: `0 ${size * 0.083}px ${size * 0.153}px rgba(0,0,0,0.2)`,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          width: size,
+          height: half,
+          bottom: 0,
+          borderRadius: `${centerCorner}px ${centerCorner}px ${half}px ${half}px`,
+          background: `linear-gradient(145deg, ${primary}, ${secondary})`,
+          boxShadow: `0 ${size * 0.083}px ${size * 0.153}px rgba(0,0,0,0.2)`,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: half - size * 0.014,
+          height: Math.max(4, size * 0.049),
+          background: "rgba(0,0,0,0.16)",
+          zIndex: 2,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: size * 0.167,
+          left: size * 0.194,
+          width: size * 0.292,
+          height: size * 0.125,
+          borderRadius: "50%",
+          background: "rgba(255,255,255,0.52)",
+          transform: "rotate(-25deg)",
+          zIndex: 3,
+        }}
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-﻿import type { WordEntry } from "../types";
+import type { WordEntry } from "../types";
 
 const DATABASE_NAME = "toshokanji-dictionary";
 const DATABASE_VERSION = 1;
@@ -10,6 +10,39 @@ interface WordManifest {
   version: string;
   count: number;
   parts: string[];
+}
+
+export interface WordDatabaseProgress {
+  phase: "checking" | "loading" | "ready" | "error";
+  progress: number;
+  loadedParts: number;
+  totalParts: number;
+  loadedWords: number;
+  totalWords: number;
+  error?: string;
+}
+
+const progressListeners = new Set<(progress: WordDatabaseProgress) => void>();
+let latestProgress: WordDatabaseProgress = {
+  phase: "checking",
+  progress: 0,
+  loadedParts: 0,
+  totalParts: 0,
+  loadedWords: 0,
+  totalWords: 0,
+};
+
+function emitProgress(progress: WordDatabaseProgress) {
+  latestProgress = progress;
+  for (const listener of progressListeners) listener(progress);
+}
+
+export function subscribeWordDatabaseProgress(listener: (progress: WordDatabaseProgress) => void) {
+  progressListeners.add(listener);
+  listener(latestProgress);
+  return () => {
+    progressListeners.delete(listener);
+  };
 }
 
 let databasePromise: Promise<IDBDatabase> | undefined;
@@ -56,18 +89,38 @@ async function fetchManifest(): Promise<WordManifest> {
   return response.json() as Promise<WordManifest>;
 }
 
-async function seedDatabase(database: IDBDatabase, manifest: WordManifest) {
+async function seedDatabase(database: IDBDatabase, manifest: WordManifest, forceReload = false) {
   const currentVersion = await requestResult(
     database.transaction(META_STORE, "readonly").objectStore(META_STORE).get(DATASET_VERSION_KEY),
   );
-  if (currentVersion === manifest.version) return;
+  if (!forceReload && currentVersion === manifest.version) {
+    emitProgress({
+      phase: "ready",
+      progress: 1,
+      loadedParts: manifest.parts.length,
+      totalParts: manifest.parts.length,
+      loadedWords: manifest.count,
+      totalWords: manifest.count,
+    });
+    return;
+  }
+
+  emitProgress({
+    phase: "loading",
+    progress: 0,
+    loadedParts: 0,
+    totalParts: manifest.parts.length,
+    loadedWords: 0,
+    totalWords: manifest.count,
+  });
 
   const clearTransaction = database.transaction([WORD_STORE, META_STORE], "readwrite");
   clearTransaction.objectStore(WORD_STORE).clear();
   clearTransaction.objectStore(META_STORE).clear();
   await transactionDone(clearTransaction);
 
-  for (const partUrl of manifest.parts) {
+  let loadedWords = 0;
+  for (const [partIndex, partUrl] of manifest.parts.entries()) {
     const response = await fetch(partUrl);
     if (!response.ok) throw new Error(`Could not load dictionary shard (${response.status})`);
     const entries = await response.json() as WordEntry[];
@@ -75,26 +128,79 @@ async function seedDatabase(database: IDBDatabase, manifest: WordManifest) {
     const store = transaction.objectStore(WORD_STORE);
     for (const entry of entries) store.put(entry);
     await transactionDone(transaction);
+    loadedWords += entries.length;
+    emitProgress({
+      phase: "loading",
+      progress: (partIndex + 1) / manifest.parts.length,
+      loadedParts: partIndex + 1,
+      totalParts: manifest.parts.length,
+      loadedWords,
+      totalWords: manifest.count,
+    });
   }
 
   const metaTransaction = database.transaction(META_STORE, "readwrite");
   metaTransaction.objectStore(META_STORE).put(manifest.version, DATASET_VERSION_KEY);
   metaTransaction.objectStore(META_STORE).put(manifest.count, "word-count");
   await transactionDone(metaTransaction);
+  emitProgress({
+    phase: "ready",
+    progress: 1,
+    loadedParts: manifest.parts.length,
+    totalParts: manifest.parts.length,
+    loadedWords: manifest.count,
+    totalWords: manifest.count,
+  });
+}
+
+function loadWordDatabase(forceReload: boolean): Promise<IDBDatabase> {
+  if (forceReload) {
+    emitProgress({
+      phase: "loading",
+      progress: 0,
+      loadedParts: 0,
+      totalParts: latestProgress.totalParts,
+      loadedWords: 0,
+      totalWords: latestProgress.totalWords,
+    });
+  } else {
+    emitProgress({
+      phase: "checking",
+      progress: 0,
+      loadedParts: 0,
+      totalParts: 0,
+      loadedWords: 0,
+      totalWords: 0,
+    });
+  }
+
+  return Promise.all([openDatabase(), fetchManifest()])
+    .then(async ([database, manifest]) => {
+      await seedDatabase(database, manifest, forceReload);
+      return database;
+    })
+    .catch((error) => {
+      readyPromise = undefined;
+      emitProgress({
+        phase: "error",
+        progress: 0,
+        loadedParts: 0,
+        totalParts: 0,
+        loadedWords: 0,
+        totalWords: 0,
+        error: error instanceof Error ? error.message : "Could not load dictionaries",
+      });
+      throw error;
+    });
 }
 
 export function ensureWordDatabase(): Promise<IDBDatabase> {
-  if (!readyPromise) {
-    readyPromise = Promise.all([openDatabase(), fetchManifest()])
-      .then(async ([database, manifest]) => {
-        await seedDatabase(database, manifest);
-        return database;
-      })
-      .catch((error) => {
-        readyPromise = undefined;
-        throw error;
-      });
-  }
+  if (!readyPromise) readyPromise = loadWordDatabase(false);
+  return readyPromise;
+}
+
+export function reloadWordDatabase(): Promise<IDBDatabase> {
+  readyPromise = loadWordDatabase(true);
   return readyPromise;
 }
 
