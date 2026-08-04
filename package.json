@@ -6,6 +6,9 @@
   "scripts": {
     "build": "vite build",
     "data:kanji": "node scripts/run-python-script.mjs scripts/build-kanji-data.py",
+    "data:check": "node scripts/run-python-script.mjs scripts/build-kanji-data.py --check",
+    "data:refresh": "node scripts/run-python-script.mjs scripts/build-kanji-data.py --refresh-sources --update-source-lock",
+    "data:test": "node scripts/run-python-script.mjs scripts/tests/test_data_pipeline.py && node --test --experimental-test-isolation=none scripts/tests/romanize-kana.test.mjs",
     "data:validate": "node scripts/run-python-script.mjs scripts/validate-data.py",
     "dev": "vite",
     "icons": "node scripts/generate-icons.mjs",
@@ -66,7 +69,8 @@
     "sonner": "2.0.3",
     "tailwind-merge": "3.2.0",
     "tw-animate-css": "1.3.8",
-    "vaul": "1.1.2"
+    "vaul": "1.1.2",
+    "wanakana": "5.3.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",

@@ -48,10 +48,11 @@ self.onmessage = async (event: MessageEvent<SearchRequest>) => {
   try {
     await scanStoredWords((entry) => {
       if (!entry.kanjiIds.some((id) => unlocked.has(id))) return;
+      const glosses = entry.word.senses?.flatMap((sense) => sense.glosses) ?? [entry.word.meaning];
       const fields: Array<[SearchReason["kind"], string, number, number]> = [
         ["word", entry.word.japanese, 880, 390],
         ["reading", entry.word.furigana, 760, 430],
-        ["meaning", entry.word.meaning, 640, 330],
+        ...glosses.map((gloss): [SearchReason["kind"], string, number, number] => ["meaning", gloss, 640, 330]),
       ];
       let best: { score: number; reason: SearchReason } | undefined;
       for (const [kind, value, exact, partial] of fields) {

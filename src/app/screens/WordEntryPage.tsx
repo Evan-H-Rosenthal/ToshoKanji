@@ -15,23 +15,23 @@ const WORD_CLASSIFICATIONS: {
 }[] = [
   {
     tags: ["ateji"],
-    label: "🔊 Ateji",
-    description: "This word's Kanji may not necessarily be used for their meaning, but rather for their sound.",
+    label: "Ateji",
+    description: "JMdict marks this spelling as ateji: the Kanji are used primarily for their sound.",
   },
   {
     tags: ["gikun"],
-    label: "📖 Special Reading",
-    description: "This word has a reading that may not be able to be discerned from its Kanji. The true reading of the word can be found by reading its Furigana or Romaji.",
+    label: "Special reading",
+    description: "JMdict marks this as gikun or jukujikun, where the word-level reading is not composed in the usual way from each Kanji.",
   },
   {
     tags: ["iK", "ik", "io"],
-    label: "⚠️ Irregular Usage",
-    description: "This word may use its Kanji or Kana in a way that is not consistent with how those Kanji are used in other words.",
+    label: "Irregular usage",
+    description: "JMdict marks the Kanji, Kana, or okurigana usage as irregular.",
   },
   {
-    tags: ["oK", "ok", "rK", "rk"],
-    label: "🕰️ Rare/Old Form",
-    description: "This spelling is rare or historical, and may not be commonly used in modern Japanese anymore.",
+    tags: ["oK", "ok", "rK", "rk", "sk"],
+    label: "Rare or old form",
+    description: "JMdict marks this spelling or reading as outdated, rare, or search-only.",
   },
 ];
 
@@ -103,10 +103,9 @@ export function WordEntryPage({ id, unlockedKanji, favorites, customNames, notes
     ? c1
     : `linear-gradient(135deg, ${c1}, ${c2})`;
   const heroTextColor = categories.length === 1 ? getLearningCategoryTextColor(categories[0]) : getReadableTextColor(c1, c2);
-  const meaningParts = entry.word.meaning
-    .split(";")
-    .map((meaning) => meaning.trim())
-    .filter(Boolean);
+  const wordSenses = entry.word.senses?.length
+    ? entry.word.senses
+    : [{ index: 1, glosses: entry.word.meaning.split(";").map((meaning) => meaning.trim()).filter(Boolean) }];
   const meaningPillBackground = c1 === c2
     ? `${c1}24`
     : `linear-gradient(135deg, ${c1}26, ${c2}26)`;
@@ -144,7 +143,11 @@ export function WordEntryPage({ id, unlockedKanji, favorites, customNames, notes
         >
           <span style={{ fontFamily:"var(--jp-font)", fontSize:15, fontWeight:700, color:heroTextColor, marginBottom:6 }}>{entry.word.furigana}</span>
           <span style={{ fontFamily:"var(--jp-font)", fontSize:42, fontWeight:800, color:heroTextColor, lineHeight:1.1 }}>{entry.word.japanese}</span>
-          <span style={{ fontFamily:"var(--ui-font)", fontSize:14, fontWeight:800, color:heroTextColor, marginTop:7 }}>{entry.word.romaji}</span>
+          {entry.word.romaji ? (
+            <span style={{ fontFamily:"var(--ui-font)", fontSize:14, fontWeight:800, color:heroTextColor, marginTop:7 }}>{entry.word.romaji}</span>
+          ) : (
+            <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color:heroTextColor, marginTop:7 }}>Romanization unavailable</span>
+          )}
         </div>
 
         <div style={{ display:"flex", gap:7, flexWrap:"wrap", justifyContent:"center" }}>
@@ -210,30 +213,38 @@ export function WordEntryPage({ id, unlockedKanji, favorites, customNames, notes
 
       <div className="entry-section-stack flex flex-col px-4 pb-8">
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Meaning</p>
-          <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
-            {meaningParts.map((meaning) => (
-              <span
-                key={meaning}
-                style={{
-                  maxWidth:"100%",
-                  padding:"7px 11px",
-                  borderRadius:999,
-                  background:meaningPillBackground,
-                  border:`1px solid ${meaningPillBorder}`,
-                  color: darkMode ? meaningPillColor : "#111827",
-                  fontFamily:"var(--ui-font)",
-                  fontSize:14,
-                  fontWeight:850,
-                  lineHeight:1.25,
-                }}
-              >
-                {meaning}
-              </span>
-            ))}
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Dictionary Senses</p>
+          <div style={{ display:"grid", gap:12 }}>
+            {wordSenses.map((sense) => {
+              const detailTags = [
+                ...(sense.partsOfSpeech ?? []),
+                ...(sense.fields ?? []),
+                ...(sense.usageLabels ?? []),
+                ...(sense.dialects ?? []),
+              ];
+              return (
+                <div key={sense.index} style={{ paddingTop:sense.index === wordSenses[0]?.index ? 0 : 12, borderTop:sense.index === wordSenses[0]?.index ? "none" : "1px solid var(--border)" }}>
+                  {wordSenses.length > 1 && <p style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:900, marginBottom:6 }} className="text-muted-foreground">SENSE {sense.index}</p>}
+                  <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
+                    {sense.glosses.map((meaning) => (
+                      <span key={meaning} style={{ maxWidth:"100%", padding:"7px 11px", borderRadius:999, background:meaningPillBackground, border:`1px solid ${meaningPillBorder}`, color: darkMode ? meaningPillColor : "#111827", fontFamily:"var(--ui-font)", fontSize:14, fontWeight:850, lineHeight:1.25 }}>
+                        {meaning}
+                      </span>
+                    ))}
+                  </div>
+                  {detailTags.length > 0 && <p style={{ fontFamily:"var(--ui-font)", fontSize:11, marginTop:7, lineHeight:1.45 }} className="text-muted-foreground">{detailTags.join(" / ")}</p>}
+                  {sense.notes?.length ? <p style={{ fontFamily:"var(--ui-font)", fontSize:11, marginTop:5, lineHeight:1.45 }} className="text-muted-foreground">{sense.notes.join("; ")}</p> : null}
+                </div>
+              );
+            })}
           </div>
           {entry.word.common && (
-            <p style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:800, marginTop:10, color:c1 }}>Common word</p>
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:800, marginTop:10, color:c1 }}>Priority-listed in JMdict</p>
+          )}
+          {entry.word.source && (
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:11, marginTop:8 }} className="text-muted-foreground">
+              Source: JMdict entry {entry.word.source.entryId}, spelling {entry.word.source.spellingIndex}, reading {entry.word.source.readingIndex}
+            </p>
           )}
         </div>
 

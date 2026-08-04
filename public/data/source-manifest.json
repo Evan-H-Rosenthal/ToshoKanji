@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "sources": {
+    "kanjidic2": {
+      "url": "https://www.edrdg.org/kanjidic/kanjidic2.xml.gz",
+      "file": ".cache/datasets/kanjidic2.xml.gz",
+      "sha256": "58cd5bafd7078c27859653ba96d2d35dd0e5b869e8949ecdb96e128faa940293",
+      "bytes": 1488564,
+      "gzipTimestamp": "2026-07-30T02:35:03+00:00",
+      "database": {
+        "file_version": "4",
+        "database_version": "2026-211",
+        "date_of_creation": "2026-07-30"
+      }
+    },
+    "jmdict_e": {
+      "url": "https://ftp.edrdg.org/pub/Nihongo/JMdict_e.gz",
+      "file": ".cache/datasets/JMdict_e.gz",
+      "sha256": "b1806a2a669bf32445f06ae6931788c6b514e7dc390cf9c83b47813a32855cfb",
+      "bytes": 10527247,
+      "gzipTimestamp": "2026-07-30T02:16:37+00:00"
+    },
+    "kradfile": {
+      "url": "https://ftp.edrdg.org/pub/Nihongo/kradfile.gz",
+      "file": ".cache/datasets/kradfile.gz",
+      "sha256": "0c5487c1de77e36ffb5bde652f469f2de9c52efc8320137c115506f3500e9c5f",
+      "bytes": 47301,
+      "gzipTimestamp": "2023-08-09T08:02:29+00:00"
+    },
+    "radkfile": {
+      "url": "https://ftp.edrdg.org/pub/Nihongo/radkfile.gz",
+      "file": ".cache/datasets/radkfile.gz",
+      "sha256": "20baf276a98173466c29c373668e044719809f510487695fe40abfd0269a004e",
+      "bytes": 40887,
+      "gzipTimestamp": "2023-08-09T08:02:28+00:00"
+    }
+  },
+  "curatedInputs": {
+    "milestone": {
+      "file": "data/curated/kanji-milestone.json",
+      "sha256": "81dd3b9f16f5245fa2739739aabad86e37d5d00e89f39899900c0dd647a6454c"
+    },
+    "learningCategories": {
+      "file": "data/curated/learning-categories.json",
+      "sha256": "8cb9765e86a1b80d2dc226bb7d44f676bb95af0c2e5b77d2b75027e5cc0ab826"
+    }
+  },
+  "counts": {
+    "kanji": 800,
+    "radicals": 183,
+    "components": 230,
+    "words": 208402
+  },
+  "jmdictProcessing": {
+    "entriesMatched": 156803,
+    "entriesScanned": 218228,
+    "excludedNoKanjiReadings": 6803,
+    "literalMemberships": 428921,
+    "pairsGenerated": 208402,
+    "restrictedReadingsApplied": 4900,
+    "restrictedReadingsSkipped": 5077,
+    "restrictedSensesSkipped": 1825,
+    "uniqueRecords": 208402
+  }
+}

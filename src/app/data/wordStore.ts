@@ -1,15 +1,68 @@
-import type { WordEntry } from "../types";
+import type { Word, WordEntry, WordMetadataTag, WordSense } from "../types";
 
 const DATABASE_NAME = "toshokanji-dictionary";
-const DATABASE_VERSION = 1;
+const DATABASE_VERSION = 2;
 const WORD_STORE = "words";
 const META_STORE = "meta";
 const DATASET_VERSION_KEY = "dataset-version";
 
 interface WordManifest {
+  schemaVersion: 3;
+  encoding: "tosho-word-array-v1";
   version: string;
   count: number;
   parts: string[];
+}
+
+type EncodedSense = [number, string[], string[]?, string[]?, string[]?, string[]?, string[]?];
+type EncodedWord = [
+  string, string, string, string, 0 | 1, EncodedSense[], string, number, number,
+  WordMetadataTag[]?, string[]?, string[]?, string[]?, "unavailable"?,
+];
+type EncodedWordRecord = [string, EncodedWord, string[], number[]];
+interface StoredCompactWord {
+  id: string;
+  japanese: string;
+  encoded: EncodedWord;
+  kanjiIds: string[];
+  kanjiRanks: number[];
+}
+
+function decodeSense(value: EncodedSense): WordSense {
+  return {
+    index: value[0],
+    glosses: value[1],
+    ...(value[2] ? { partsOfSpeech: value[2] } : {}),
+    ...(value[3] ? { fields: value[3] } : {}),
+    ...(value[4] ? { usageLabels: value[4] } : {}),
+    ...(value[5] ? { dialects: value[5] } : {}),
+    ...(value[6] ? { notes: value[6] } : {}),
+  };
+}
+
+function decodeStoredWord(value: StoredCompactWord | WordEntry): WordEntry {
+  if ("word" in value) return value;
+  const encoded = value.encoded;
+  const word: Word = {
+    id: value.id,
+    japanese: encoded[0],
+    furigana: encoded[1],
+    romaji: encoded[2],
+    meaning: encoded[3],
+    common: Boolean(encoded[4]),
+    senses: encoded[5].map(decodeSense),
+    source: { dataset: "JMdict_e", entryId: encoded[6], spellingIndex: encoded[7], readingIndex: encoded[8] },
+    ...(encoded[9] ? { wordTags: encoded[9] } : {}),
+    ...(encoded[10] ? { priorityTags: encoded[10] } : {}),
+    ...(encoded[11] ? { information: encoded[11] } : {}),
+    ...(encoded[12] ? { usageLabels: encoded[12] } : {}),
+    ...(encoded[13] ? { romanizationStatus: encoded[13] } : {}),
+  };
+  return { id: value.id, word, kanjiIds: value.kanjiIds, kanjiRanks: value.kanjiRanks };
+}
+
+function compactForStorage(value: EncodedWordRecord): StoredCompactWord {
+  return { id: value[0], japanese: value[1][0], encoded: value[1], kanjiIds: value[2], kanjiRanks: value[3] };
 }
 
 export interface WordDatabaseProgress {
@@ -69,13 +122,16 @@ function openDatabase(): Promise<IDBDatabase> {
     const request = indexedDB.open(DATABASE_NAME, DATABASE_VERSION);
     request.onupgradeneeded = () => {
       const database = request.result;
-      if (!database.objectStoreNames.contains(WORD_STORE)) {
-        const words = database.createObjectStore(WORD_STORE, { keyPath: "id" });
-        words.createIndex("kanjiIds", "kanjiIds", { multiEntry: true });
-      }
-      if (!database.objectStoreNames.contains(META_STORE)) {
-        database.createObjectStore(META_STORE);
-      }
+      const transaction = request.transaction!;
+      const words = database.objectStoreNames.contains(WORD_STORE)
+        ? transaction.objectStore(WORD_STORE)
+        : database.createObjectStore(WORD_STORE, { keyPath: "id" });
+      if (!words.indexNames.contains("kanjiIds")) words.createIndex("kanjiIds", "kanjiIds", { multiEntry: true });
+      if (!words.indexNames.contains("japanese")) words.createIndex("japanese", "japanese");
+      const meta = database.objectStoreNames.contains(META_STORE)
+        ? transaction.objectStore(META_STORE)
+        : database.createObjectStore(META_STORE);
+      if (request.oldVersion < 2) meta.delete(DATASET_VERSION_KEY);
     };
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error ?? new Error("Could not open the dictionary database"));
@@ -86,7 +142,11 @@ function openDatabase(): Promise<IDBDatabase> {
 async function fetchManifest(): Promise<WordManifest> {
   const response = await fetch("/data/words/manifest.json");
   if (!response.ok) throw new Error(`Could not load dictionary manifest (${response.status})`);
-  return response.json() as Promise<WordManifest>;
+  const manifest = await response.json() as WordManifest;
+  if (manifest.schemaVersion !== 3 || manifest.encoding !== "tosho-word-array-v1") {
+    throw new Error("This dictionary uses an unsupported storage schema");
+  }
+  return manifest;
 }
 
 async function seedDatabase(database: IDBDatabase, manifest: WordManifest, forceReload = false) {
@@ -123,10 +183,10 @@ async function seedDatabase(database: IDBDatabase, manifest: WordManifest, force
   for (const [partIndex, partUrl] of manifest.parts.entries()) {
     const response = await fetch(partUrl);
     if (!response.ok) throw new Error(`Could not load dictionary shard (${response.status})`);
-    const entries = await response.json() as WordEntry[];
+    const entries = await response.json() as EncodedWordRecord[];
     const transaction = database.transaction(WORD_STORE, "readwrite");
     const store = transaction.objectStore(WORD_STORE);
-    for (const entry of entries) store.put(entry);
+    for (const entry of entries) store.put(compactForStorage(entry));
     await transactionDone(transaction);
     loadedWords += entries.length;
     emitProgress({
@@ -206,22 +266,34 @@ export function reloadWordDatabase(): Promise<IDBDatabase> {
 
 export async function getStoredWord(id: string): Promise<WordEntry | undefined> {
   const database = await ensureWordDatabase();
-  return requestResult(database.transaction(WORD_STORE, "readonly").objectStore(WORD_STORE).get(id));
+  const store = database.transaction(WORD_STORE, "readonly").objectStore(WORD_STORE);
+  const value = await requestResult<StoredCompactWord | WordEntry | undefined>(store.get(id));
+  if (value) return decodeStoredWord(value);
+
+  // Before source identities were introduced, word keys were only `w-{spelling}`.
+  const spelling = id.startsWith("w-") && !/^w-\d+-\d+-\d+$/.test(id) ? id.slice(2) : "";
+  if (!spelling) return undefined;
+  const legacyIndex = database.transaction(WORD_STORE, "readonly").objectStore(WORD_STORE).index("japanese");
+  const candidates = await requestResult<Array<StoredCompactWord | WordEntry>>(legacyIndex.getAll(spelling));
+  if (!candidates.length) return undefined;
+  const resolved = candidates.map(decodeStoredWord).sort((a, b) =>
+    Number(Boolean(b.word.common)) - Number(Boolean(a.word.common))
+    || Number(Boolean(a.word.wordTags?.length)) - Number(Boolean(b.word.wordTags?.length))
+    || a.word.furigana.localeCompare(b.word.furigana, "ja")
+    || a.id.localeCompare(b.id));
+  return { ...resolved[0], id, word: { ...resolved[0].word, id } };
 }
 
 export async function getStoredWords(ids: string[]): Promise<WordEntry[]> {
-  const database = await ensureWordDatabase();
-  const transaction = database.transaction(WORD_STORE, "readonly");
-  const store = transaction.objectStore(WORD_STORE);
-  const values = await Promise.all(ids.map((id) => requestResult(store.get(id))));
-  await transactionDone(transaction);
+  const values = await Promise.all(ids.map(getStoredWord));
   return values.filter((value): value is WordEntry => Boolean(value));
 }
 
 export async function getStoredWordsForKanji(kanjiId: string): Promise<WordEntry[]> {
   const database = await ensureWordDatabase();
   const index = database.transaction(WORD_STORE, "readonly").objectStore(WORD_STORE).index("kanjiIds");
-  return requestResult(index.getAll(kanjiId));
+  const values = await requestResult<Array<StoredCompactWord | WordEntry>>(index.getAll(kanjiId));
+  return values.map(decodeStoredWord);
 }
 
 export async function scanStoredWords(
@@ -239,7 +311,7 @@ export async function scanStoredWords(
         resolve();
         return;
       }
-      visit(cursor.value as WordEntry);
+      visit(decodeStoredWord(cursor.value as StoredCompactWord | WordEntry));
       cursor.continue();
     };
   });

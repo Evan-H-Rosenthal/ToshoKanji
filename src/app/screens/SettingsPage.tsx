@@ -34,9 +34,9 @@ const DATASET_ATTRIBUTIONS = [
   },
 ];
 
-export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerformance, uiFontChoice, characterFontChoice, onDark, onVolume, onDisableAutoJump, onImprovePerformance, onUiFontChoice, onCharacterFontChoice, onReloadDictionaries, onResetProgress, onResetAll, onUnlockAll, onBack }: {
-  darkMode:boolean; volume:number; disableAutoJump:boolean; improvePerformance:boolean; uiFontChoice:UiFontChoice; characterFontChoice:CharacterFontChoice;
-  onDark:(v:boolean)=>void; onVolume:(v:number)=>void; onDisableAutoJump:(v:boolean)=>void; onImprovePerformance:(v:boolean)=>void; onUiFontChoice:(v:UiFontChoice)=>void; onCharacterFontChoice:(v:CharacterFontChoice)=>void;
+export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerformance, showAllCollectionKanji, uiFontChoice, characterFontChoice, onDark, onVolume, onDisableAutoJump, onImprovePerformance, onShowAllCollectionKanji, onUiFontChoice, onCharacterFontChoice, onReloadDictionaries, onResetProgress, onResetAll, onUnlockAll, onBack }: {
+  darkMode:boolean; volume:number; disableAutoJump:boolean; improvePerformance:boolean; showAllCollectionKanji:boolean; uiFontChoice:UiFontChoice; characterFontChoice:CharacterFontChoice;
+  onDark:(v:boolean)=>void; onVolume:(v:number)=>void; onDisableAutoJump:(v:boolean)=>void; onImprovePerformance:(v:boolean)=>void; onShowAllCollectionKanji:(v:boolean)=>void; onUiFontChoice:(v:UiFontChoice)=>void; onCharacterFontChoice:(v:CharacterFontChoice)=>void;
   onReloadDictionaries:()=>void; onResetProgress:()=>void; onResetAll:()=>void; onUnlockAll:()=>void; onBack:()=>void;
 }) {
   const reduceMotion = useReducedMotion();
@@ -131,6 +131,22 @@ export function SettingsPage({ darkMode, volume, disableAutoJump, improvePerform
                 position:"relative", transition:"background 0.3s", cursor:"pointer", border:"none", flexShrink:0,
               }}>
               <motion.div animate={{ x: improvePerformance ? 20 : 0 }} transition={reduceMotion ? { duration:0 } : { type:"spring", stiffness:500, damping:30 }}
+                style={{ position:"absolute", top:3, left:4, width:22, height:22, borderRadius:"50%", background:"#fff", boxShadow:"0 1px 4px rgba(0,0,0,0.2)" }} />
+            </button>
+          </div>
+          <div className="flex items-center justify-between px-4 py-3 border-t border-border">
+            <div>
+              <p style={{ fontFamily:"var(--ui-font)", fontWeight:700, fontSize:15 }} className="text-foreground">Show full collection</p>
+              <p style={{ fontFamily:"var(--ui-font)", fontSize:11 }} className="text-muted-foreground">Load every unlocked Kanji in one long list</p>
+            </div>
+            <button type="button" onClick={()=>onShowAllCollectionKanji(!showAllCollectionKanji)} aria-label="Show full collection"
+              aria-pressed={showAllCollectionKanji}
+              style={{
+                width:48, height:28, borderRadius:14,
+                background: showAllCollectionKanji ? "var(--primary)" : "var(--muted)",
+                position:"relative", transition:"background 0.3s", cursor:"pointer", border:"none", flexShrink:0,
+              }}>
+              <motion.div animate={{ x: showAllCollectionKanji ? 20 : 0 }} transition={reduceMotion ? { duration:0 } : { type:"spring", stiffness:500, damping:30 }}
                 style={{ position:"absolute", top:3, left:4, width:22, height:22, borderRadius:"50%", background:"#fff", boxShadow:"0 1px 4px rgba(0,0,0,0.2)" }} />
             </button>
           </div>

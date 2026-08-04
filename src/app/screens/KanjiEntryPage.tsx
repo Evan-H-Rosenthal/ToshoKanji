@@ -3,8 +3,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { Check, Info, Pencil, Search, Star, Tags, X } from "lucide-react";
 import { EntryNavigationButtons } from "../components/EntryNavigationButtons";
 import { COMPONENT_BY_ID, KANJI_BY_ID, RADICAL_BY_ID } from "../data/entryIndexes";
-import { getComponentDisplayName } from "../data/displayNames";
-import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor, RAD_COLORS } from "../data/ui/categoryColors";
+import { getComponentDisplayName, getComponentMeanings } from "../data/displayNames";
+import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor } from "../data/ui/categoryColors";
 import { getKanjiWordReadingType } from "../data/kanjiWordReading";
 import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getWordsForKanji } from "../data/wordData";
@@ -19,12 +19,11 @@ import {
 } from "../components/ui/dialog";
 import type { ChatMsg, KanjiEntryViewState, Word, WordReadingType } from "../types";
 
-function getComponentKindLabel(role: string, kind?: string) {
-  if (role === "official-radical") return "Official radical";
-  if (kind === "canonical-radical") return "Canonical radical";
-  if (kind === "radical-variant") return "Radical variant";
-  return "Visual component";
-}
+const COMPONENT_ROLE_COLORS = {
+  radical: "#3b82f6",
+  character: "#16a36a",
+  lookup: "#8b5cf6",
+} as const;
 
 const WORD_READING_TYPES: Array<{ type: WordReadingType; label: string; color: string }> = [
   { type: "on", label: "On", color: "var(--primary)" },
@@ -188,7 +187,8 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
       || word.japanese.includes(normalizedWordQuery)
       || word.furigana.includes(normalizedWordQuery)
       || word.romaji.toLowerCase().includes(normalizedWordQuery)
-      || word.meaning.toLowerCase().includes(normalizedWordQuery))
+      || word.meaning.toLowerCase().includes(normalizedWordQuery)
+      || word.senses?.some((sense) => sense.glosses.some((gloss) => gloss.toLowerCase().includes(normalizedWordQuery))))
   ));
   const toggleWordReadingFilter = (readingType: WordReadingType) => {
     const next = new Set(wordReadingFilters);
@@ -212,6 +212,19 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   }, [filteredWords.length, id, initialViewState, loadingWords]);
   const learnerParts = k.learnerParts ?? [];
   const rawParts = k.rawDecomposition?.parts ?? [];
+  const officialRadical = k.officialRadical;
+  const officialRadicalEntry = officialRadical ? RADICAL_BY_ID.get(officialRadical.id) : undefined;
+  const officialRadicalComponent = officialRadicalEntry?.componentId
+    ? COMPONENT_BY_ID.get(officialRadicalEntry.componentId)
+    : undefined;
+  const officialRadicalName = officialRadical
+    ? getComponentDisplayName(
+      officialRadicalComponent,
+      officialRadical.id,
+      officialRadicalEntry?.radicalNumber ? `Radical ${officialRadicalEntry.radicalNumber}` : "Official radical",
+      customNames,
+    )
+    : "";
 
   return (
     <div
@@ -478,16 +491,16 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
         </div>
 
         {/* Components */}
-        {learnerParts.length > 0 && (
+        {(officialRadical || learnerParts.length > 0) && (
           <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
             <div className="flex items-center justify-between gap-3 mb-3">
               <div className="flex items-center gap-1.5">
-                <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground">Visible Components</p>
+                <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground">Radical &amp; Components</p>
                 <Dialog>
                   <DialogTrigger asChild>
                     <button
                       type="button"
-                      aria-label="About component decompositions"
+                      aria-label="About radicals and component colors"
                       className="text-muted-foreground"
                       style={{
                         width:24,
@@ -506,9 +519,9 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
-                      <DialogTitle>About component decompositions</DialogTitle>
+                      <DialogTitle>About radicals and components</DialogTitle>
                       <DialogDescription style={{ fontFamily:"var(--ui-font)", lineHeight:1.55 }}>
-                        These visual lookup elements come from KRADFILE and are resolved with RADKFILE display metadata. They describe recurring visible shapes, not necessarily semantic, phonetic, or etymological parts. The official radical is identified separately from the lookup elements.
+                        Blue identifies the official dictionary radical. Green identifies a visible shape that is also a KANJIDIC2 character with its own meaning. Purple identifies a visual lookup shape. A green component is explorable as a character, but its standalone meaning is not automatically its meaning or function inside this Kanji. KRADFILE and RADKFILE do not identify semantic, phonetic, or pictorial roles.
                       </DialogDescription>
                     </DialogHeader>
                   </DialogContent>
@@ -534,56 +547,129 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                 </button>
               )}
             </div>
-            <div className="flex flex-wrap gap-2">
-              {learnerParts.map((part,i) => {
-                const rad = part.radicalId ? RADICAL_BY_ID.get(part.radicalId) : undefined;
-                const component = part.componentId ? COMPONENT_BY_ID.get(part.componentId) : undefined;
-                const c = RAD_COLORS[i % RAD_COLORS.length];
-                const kindLabel = getComponentKindLabel(part.role, component?.kind);
-                const componentLabel = component?.meanings?.[0]
-                  ?? rad?.meanings[0]
-                  ?? (component?.sourceChar && component.sourceChar !== part.char
-                    ? `RADK label ${component.sourceChar}`
-                    : "Lookup shape");
-                const content = (
-                  <>
-                    <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color:c }}>{part.char}</span>
-                    <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
-                      <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color: darkMode ? c : "#111827" }}>
-                        {getComponentDisplayName(component, part.radicalId, componentLabel, customNames)}
-                      </span>
-                      <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color: darkMode ? "var(--muted-foreground)" : "#111827" }}>
-                        {kindLabel}
-                      </span>
+
+            {officialRadical && (
+              <div>
+                <p style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:900, textTransform:"uppercase", letterSpacing:"0.07em", marginBottom:7 }} className="text-muted-foreground">
+                  Radical classification
+                </p>
+                <button
+                  type="button"
+                  disabled={!officialRadicalComponent}
+                  onClick={() => officialRadicalComponent && onNavComponent(officialRadicalComponent.id)}
+                  aria-label={`${officialRadical.char}, canonical radical${officialRadicalEntry?.radicalNumber ? ` ${officialRadicalEntry.radicalNumber}` : ""}`}
+                  style={{
+                    display:"inline-flex",
+                    alignItems:"center",
+                    gap:8,
+                    padding:"7px 12px",
+                    borderRadius:12,
+                    background:`${COMPONENT_ROLE_COLORS.radical}22`,
+                    border:`1px solid ${COMPONENT_ROLE_COLORS.radical}55`,
+                    cursor:officialRadicalComponent ? "pointer" : "default",
+                    textAlign:"left",
+                  }}
+                >
+                  <span style={{ fontFamily:"var(--jp-font)", fontSize:24, color:COMPONENT_ROLE_COLORS.radical }}>{officialRadical.char}</span>
+                  <span style={{ display:"flex", flexDirection:"column", lineHeight:1.1 }}>
+                    <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:900, color:darkMode ? COMPONENT_ROLE_COLORS.radical : "#111827" }}>
+                      {officialRadicalName}
                     </span>
-                  </>
-                );
-                const chipStyle = {
-                  display:"flex",
-                  alignItems:"center",
-                  gap:7,
-                  padding:"6px 12px",
-                  borderRadius:12,
-                  background: `${c}22`,
-                  border:`1px solid ${c}44`,
-                } as const;
-                return component ? (
-                  <button
-                    key={`${part.char}-${i}`}
-                    type="button"
-                    aria-label={`${part.char}, ${kindLabel}`}
-                    onClick={() => onNavComponent(component.id)}
-                    style={{ ...chipStyle, cursor:"pointer" }}
-                  >
-                    {content}
-                  </button>
-                ) : (
-                  <span key={`${part.char}-${i}`} aria-label={`${part.char}, unavailable visual component`} style={chipStyle}>
-                    {content}
+                    <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color:"var(--muted-foreground)" }}>
+                      {officialRadicalEntry?.radicalNumber ? `Radical ${officialRadicalEntry.radicalNumber} · canonical form` : "Canonical form"}
+                    </span>
                   </span>
-                );
-              })}
+                </button>
+                <p style={{ marginTop:7, fontFamily:"var(--ui-font)", fontSize:10, lineHeight:1.4 }} className="text-muted-foreground">
+                  {officialRadical.positionedFormKnown && officialRadical.form
+                    ? <>Source-established visible form: <span style={{ fontFamily:"var(--jp-font)", fontWeight:900 }}>{officialRadical.form}</span></>
+                    : "The current decomposition sources do not establish this canonical form as a visible shape in the Kanji."}
+                </p>
+              </div>
+            )}
+
+            <div className={officialRadical ? "mt-4 pt-3" : ""} style={officialRadical ? { borderTop:"1px solid var(--border)" } : undefined}>
+              <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", gap:8, flexWrap:"wrap", marginBottom:8 }}>
+                <p style={{ fontFamily:"var(--ui-font)", fontSize:10, fontWeight:900, textTransform:"uppercase", letterSpacing:"0.07em" }} className="text-muted-foreground">
+                  Visible source shapes
+                </p>
+                <div aria-label="Component color legend" style={{ display:"flex", gap:9, flexWrap:"wrap", fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color:"var(--muted-foreground)" }}>
+                  {[
+                    [COMPONENT_ROLE_COLORS.radical, "Radical"],
+                    [COMPONENT_ROLE_COLORS.character, "Character with meaning"],
+                    [COMPONENT_ROLE_COLORS.lookup, "Lookup shape"],
+                  ].map(([color, label]) => (
+                    <span key={label} style={{ display:"inline-flex", alignItems:"center", gap:4 }}>
+                      <span aria-hidden="true" style={{ width:7, height:7, borderRadius:999, background:color }} />{label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              {learnerParts.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {learnerParts.map((part,i) => {
+                    const rad = part.radicalId ? RADICAL_BY_ID.get(part.radicalId) : undefined;
+                    const component = part.componentId ? COMPONENT_BY_ID.get(part.componentId) : undefined;
+                    const isOfficialForm = part.role === "official-radical";
+                    const componentMeanings = getComponentMeanings(component);
+                    const hasStandaloneMeaning = !isOfficialForm && componentMeanings.length > 0;
+                    const presentation = isOfficialForm
+                      ? { color:COMPONENT_ROLE_COLORS.radical, label:"Visible radical form" }
+                      : hasStandaloneMeaning
+                        ? { color:COMPONENT_ROLE_COLORS.character, label:"Character with meaning" }
+                        : { color:COMPONENT_ROLE_COLORS.lookup, label:"Lookup shape" };
+                    const componentLabel = componentMeanings[0]
+                      ?? (isOfficialForm && rad?.radicalNumber
+                        ? `Radical ${rad.radicalNumber}`
+                        : component?.sourceChar && component.sourceChar !== part.char
+                          ? `RADK label ${component.sourceChar}`
+                          : "Lookup shape");
+                    const content = (
+                      <>
+                        <span style={{ fontFamily:"var(--jp-font)", fontSize:22, color:presentation.color }}>{part.char}</span>
+                        <span style={{ display:"flex", flexDirection:"column", alignItems:"flex-start", lineHeight:1.1 }}>
+                          <span style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color:darkMode ? presentation.color : "#111827" }}>
+                            {getComponentDisplayName(component, part.radicalId, componentLabel, customNames)}
+                          </span>
+                          <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:800, color:"var(--muted-foreground)" }}>
+                            {presentation.label}
+                          </span>
+                        </span>
+                      </>
+                    );
+                    const chipStyle = {
+                      display:"flex",
+                      alignItems:"center",
+                      gap:7,
+                      padding:"6px 12px",
+                      borderRadius:12,
+                      background:`${presentation.color}22`,
+                      border:`1px solid ${presentation.color}55`,
+                    } as const;
+                    return component ? (
+                      <button
+                        key={`${part.char}-${i}`}
+                        type="button"
+                        aria-label={`${part.char}, ${presentation.label}`}
+                        onClick={() => onNavComponent(component.id)}
+                        style={{ ...chipStyle, cursor:"pointer" }}
+                      >
+                        {content}
+                      </button>
+                    ) : (
+                      <span key={`${part.char}-${i}`} aria-label={`${part.char}, unavailable visual component`} style={chipStyle}>
+                        {content}
+                      </span>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p style={{ fontFamily:"var(--ui-font)", fontSize:11, lineHeight:1.45 }} className="text-muted-foreground">
+                  No additional visible lookup shapes are established by the current sources.
+                </p>
+              )}
             </div>
+
             {showRawComponents && rawParts.length > 0 && (
               <div className="mt-3 pt-3" style={{ borderTop:"1px solid var(--border)" }}>
                 <div className="flex flex-wrap gap-2">

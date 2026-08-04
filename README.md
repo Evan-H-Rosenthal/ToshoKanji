@@ -50,13 +50,13 @@ The generated data is built from public dictionary sources:
 Current validation report:
 
 - 800 kanji entries
-- 182 radical entries
-- 202 component entries
-- 161,527 word entries
-- 0 hard errors
-- 0 warnings
+- 800 curated Kanji entries
+- 183 represented radical families
+- 230 explorable radical/lookup-component pages
+- 208,402 source-distinct JMdict spelling/reading records
+- whole-dataset source validation passing
 
-The app intentionally stores more than it shows by default. Learner-facing pages foreground readable meanings, readings, components, and vocabulary, while raw decomposition and provenance-oriented details stay available where they help debugging or advanced review.
+The app intentionally stores more than it shows by default. Kanji pages separate canonical radical classification from source-established visible shapes, and color visible shapes by evidence-backed role: official radical form, standalone KANJIDIC2 character, or lookup-only shape. A standalone character meaning is never presented as proof of that component's semantic role inside the larger Kanji. Raw decomposition and provenance-oriented details stay available where they help debugging or advanced review.
 
 ## Tech Stack
 
@@ -86,15 +86,21 @@ public/data/words/              # versioned JSON vocabulary shards installed int
   data/ui/                      # achievements, category colors, prompts, mock AI replies
   components/                   # gacha machine, cards, stats modal, chat, PWA hint
   screens/                      # collection, entries, achievements, settings, practice placeholder
+data/
+  curated/                      # human-owned milestone membership and learning categories
+  source-lock.json              # reviewed upstream URLs, hashes, sizes, and dates
 scripts/
-  build-kanji-data.py           # source-data ingestion and TypeScript generation
-  validate-data.py              # generated-data integrity report
+  build-kanji-data.py           # thin command-line entry point
+  data_pipeline/                # modular KANJIDIC2/JMdict/RADK/KRAD parsing and generation
+  validate-data.py              # pinned-source whole-dataset validation
   generate-icons.mjs            # PWA icon/favicon generation
 ```
 
 Most product state currently lives in `App.tsx` and is passed down to screen components. Generated data and lookup/search helpers are split out so the UI can stay focused on interaction logic.
 
-Vocabulary is stored as 32 versioned JSON shards rather than executable JavaScript. The browser installs those shards incrementally into IndexedDB, queries kanji vocabulary through a multi-entry index, and scans for full vocabulary search in a Web Worker. Runtime word objects use a bounded cache, large lists are paginated, and only the active main tab remains mounted.
+Vocabulary is stored as 32 versioned JSON shards rather than executable JavaScript. A versioned compact storage codec avoids repeating field names and provenance labels in every record; the app decodes it at the IndexedDB boundary into the same explicit source model used by the UI. The browser installs the shards incrementally, queries Kanji vocabulary through a multi-entry index, and scans full vocabulary search in a Web Worker.
+
+Dataset membership and learning categories are deliberately separate from upstream dictionary facts. `data/curated/kanji-milestone.json` is the explicit list of ready characters, while `data/curated/learning-categories.json` preserves the author's hand-assigned categories. The development category picker writes only to that curated category file, and the generated Kanji module imports it directly for hot updates.
 
 ## Deployment
 
@@ -140,8 +146,11 @@ Close and reopen PowerShell afterward.
 npm run dev            # start Vite dev server
 npm run build          # create production PWA build
 npm run preview        # serve the production build locally
-npm run data:kanji     # regenerate kanji/radical/component/word data
-npm run data:validate  # validate generated data references and update reports/data-validation.md
+npm run data:kanji     # regenerate from already pinned source files
+npm run data:check     # rebuild in memory without changing generated files
+npm run data:test      # run parser, restriction, codec, and romanization tests
+npm run data:validate  # compare every generated record with a pinned-source rebuild
+npm run data:refresh   # fetch current upstream files and intentionally update the source lock
 npm run icons          # regenerate PWA, iOS, and favicon assets
 ```
 

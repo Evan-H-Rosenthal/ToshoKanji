@@ -10,9 +10,38 @@ export interface KanjiEntryViewState {
   wordReadingFilters: WordReadingType[];
 }
 export type WordMetadataTag = "ateji" | "gikun" | "iK" | "ik" | "io" | "oK" | "ok" | "rK" | "rk" | "sk";
-export interface Word { id?: string; japanese: string; furigana: string; romaji: string; meaning: string; common?: boolean; wordTags?: WordMetadataTag[]; }
+export interface WordSense {
+  index: number;
+  glosses: string[];
+  partsOfSpeech?: string[];
+  fields?: string[];
+  usageLabels?: string[];
+  dialects?: string[];
+  notes?: string[];
+}
+export interface WordSource {
+  dataset: "JMdict_e";
+  entryId: string;
+  spellingIndex: number;
+  readingIndex: number;
+}
+export interface Word {
+  id?: string;
+  japanese: string;
+  furigana: string;
+  romaji: string;
+  romanizationStatus?: "unavailable";
+  meaning: string;
+  common?: boolean;
+  wordTags?: WordMetadataTag[];
+  priorityTags?: string[];
+  information?: string[];
+  usageLabels?: string[];
+  senses?: WordSense[];
+  source?: WordSource;
+}
 export type ComponentKind = "canonical-radical" | "radical-variant" | "visual-component" | "raw-fragment";
-export type ComponentRepresentation = "official-radical" | "direct" | "alternate-glyph" | "image-glyph" | "image-label" | "curated-display";
+export type ComponentRepresentation = "official-radical" | "direct" | "alternate-glyph" | "image-glyph" | "image-label";
 export interface KanjiPart {
   component: string;
   role: "official" | "component" | "raw-fragment";
@@ -25,9 +54,9 @@ export interface KanjiPart {
   sourceImage?: string;
   alternateCode?: string;
   sourceStrokeCount?: number;
-  hiddenReason?: "source-fragment" | "direct-self-membership" | string;
+  hiddenReason?: "source-image-required" | "direct-self-membership" | string;
 }
-export interface OfficialRadical { id: string; form: string; char: string; }
+export interface OfficialRadical { id: string; char: string; form?: string; formSource?: string; positionedFormKnown?: boolean; }
 export interface LearnerPart {
   char: string;
   label?: string;
@@ -39,6 +68,8 @@ export interface LearnerPart {
   representation?: ComponentRepresentation;
   sourceImage?: string;
   alternateCode?: string;
+  positionedFormKnown?: boolean;
+  radicalFormEvidence?: string;
 }
 export interface RawPart {
   char: string;
@@ -48,16 +79,20 @@ export interface RawPart {
   displayChar?: string;
   representation?: ComponentRepresentation;
   sourceImage?: string;
-  hiddenReason?: "source-fragment" | "direct-self-membership" | string;
+  alternateCode?: string;
+  hiddenReason?: "source-image-required" | "direct-self-membership" | string;
   missingRadkMetadata?: boolean;
   debugOnly: true;
 }
 export interface RawDecomposition {
   source: "KRADFILE" | "KanjiVG" | string;
   parts: RawPart[];
-  filteredParts: string[];
+  filteredParts?: string[];
+  sourceComponents?: string[];
+  unrenderableParts?: string[];
   hiddenSelfParts?: string[];
-  confidence: "low" | "medium" | "high" | string;
+  interpretation?: string;
+  confidence: "source-backed" | "low" | "medium" | "high" | string;
 }
 export interface EtymologyNote {
   summary: string;
@@ -100,7 +135,6 @@ export interface KanjiEntry {
   rawKanjiParts?: KanjiPart[];
   wordIds?: string[];
   words?: Word[];
-  category: string;
   learningCategory: string;
 }
 export interface RadicalEntry {
@@ -109,11 +143,20 @@ export interface RadicalEntry {
   char: string;
   meanings: string[];
   kanjiMeanings?: string[];
+  characterMeanings?: string[];
   strokes: number;
   kanjiIds: string[];
   radicalNumber?: number;
   variants?: string[];
   names?: string[];
+  source?: string;
+}
+export interface SourceCharacterInfo {
+  char: string;
+  meanings: string[];
+  onyomi: string[];
+  kunyomi: string[];
+  grade?: number;
 }
 export interface ComponentEntry {
   id: string;
@@ -123,10 +166,15 @@ export interface ComponentEntry {
   radicalId?: string;
   radicalNumber?: number;
   meanings?: string[];
+  characterMeanings?: string[];
+  characterOnyomi?: string[];
+  characterKunyomi?: string[];
+  characterGrade?: number;
   forms?: string[];
   kanjiIds: string[];
   source: string;
   sourceChar?: string;
+  sourceCharacter?: SourceCharacterInfo;
   representation?: ComponentRepresentation;
   sourceImage?: string;
   alternateCode?: string;

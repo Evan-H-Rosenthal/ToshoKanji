@@ -6,4 +6,6 @@ The generated kanji data uses KANJIDIC2 from the Electronic Dictionary Research 
 
 The generated vocabulary examples use JMdict_e from the Electronic Dictionary Research and Development Group. JMdict_e is distributed under the Electronic Dictionaries Research Group licence.
 
-The generated visible kanji component data uses KRADFILE from Michael Raine, Jim Breen, and the Electronic Dictionary Research and Development Group. KRADFILE is distributed under the Electronic Dictionaries Research Group licence.
+The generated visual lookup-component data uses RADKFILE and KRADFILE from Michael Raine, Jim Breen, and the Electronic Dictionary Research and Development Group. RADKFILE/KRADFILE are distributed under the Electronic Dictionaries Research Group licence.
+
+The exact upstream URLs and SHA-256 hashes used for a build are recorded in `data/source-lock.json` and published with the app in `public/data/source-manifest.json`.

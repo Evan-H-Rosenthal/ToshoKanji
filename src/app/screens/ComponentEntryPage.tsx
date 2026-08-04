@@ -3,12 +3,20 @@ import { Lock, RefreshCw, Star } from "lucide-react";
 import { ChatSection } from "../components/ChatSection";
 import { EntryNavigationButtons } from "../components/EntryNavigationButtons";
 import { COMPONENT_BY_ID, COMPONENT_VARIANTS_BY_CANONICAL_ID, KANJI_BY_ID } from "../data/entryIndexes";
-import { getKanjiDisplayName } from "../data/displayNames";
+import { getComponentDisplayName, getComponentMeanings, getKanjiDisplayName } from "../data/displayNames";
 import { compareLearningCategories, getLearningCategoryColors } from "../data/ui/categoryColors";
 import type { ChatMsg, ComponentEntry } from "../types";
 
 function uniqueValues(values: string[]) {
   return Array.from(new Set(values.filter(Boolean)));
+}
+
+function getCharacterGradeLabel(grade?: number) {
+  if (grade && grade >= 1 && grade <= 6) return `School grade ${grade}`;
+  if (grade === 8) return "Joyo Kanji (secondary school)";
+  if (grade === 9) return "Jinmeiyo Kanji";
+  if (grade === 10) return "Jinmeiyo variant";
+  return undefined;
 }
 
 function getComponentGroup(component: ComponentEntry) {
@@ -80,8 +88,15 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
   const key = `component:${group.primary.id}`;
   const isCanonicalRadical = group.primary.kind === "canonical-radical";
   const isVisualComponent = group.primary.kind === "visual-component";
-  const componentName = group.primary.meanings?.[0] ?? (isVisualComponent ? "Visual component" : "Component");
-  const componentKindLabel = isCanonicalRadical ? "Canonical radical" : isVisualComponent ? "Visual component" : "Radical variant";
+  const standaloneMeanings = getComponentMeanings(group.primary);
+  const secondaryMeanings = standaloneMeanings.slice(1);
+  const characterGradeLabel = getCharacterGradeLabel(group.primary.characterGrade);
+  const fallbackName = isCanonicalRadical && group.primary.radicalNumber
+    ? `Radical ${group.primary.radicalNumber}`
+    : isVisualComponent ? "Lookup component" : "Radical variant";
+  const componentName = getComponentDisplayName(group.primary, group.primary.radicalId, fallbackName, customNames);
+  const componentKindLabel = isCanonicalRadical ? "Canonical radical" : isVisualComponent ? "Lookup component" : "Radical variant";
+  const sourceCharacter = selectedComponent.sourceCharacter;
   const radicalFavoriteKey = isCanonicalRadical && group.primary.radicalId ? `radical:${group.primary.radicalId}` : undefined;
 
   const cycleVariant = () => {
@@ -147,9 +162,14 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
               {isCanonicalRadical && group.primary.radicalNumber ? `Radical ${group.primary.radicalNumber}` : componentKindLabel}
             </span>
           </div>
+          {secondaryMeanings.length > 0 && (
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:12, maxWidth:300, lineHeight:1.4 }} className="text-muted-foreground">
+              {secondaryMeanings.join(", ")}
+            </p>
+          )}
           {selectedComponent.sourceChar && selectedComponent.sourceChar !== selectedComponent.char && (
             <p style={{ fontFamily:"var(--ui-font)", fontSize:11, maxWidth:280 }} className="text-muted-foreground">
-              RADKFILE displays the KRADFILE lookup label {selectedComponent.sourceChar} using the form {selectedComponent.char}.
+              The lookup files use {selectedComponent.sourceChar} as the source label for the displayed shape {selectedComponent.char}.
             </p>
           )}
         </div>
@@ -157,19 +177,51 @@ export function ComponentEntryPage({ id, unlockedKanji, favorites, customNames, 
 
       <div className="entry-section-stack flex flex-col px-4 pb-8">
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Meanings</p>
-          {group.primary.meanings && group.primary.meanings.length > 0 ? (
-            <div className="flex flex-wrap gap-2">
-              {group.primary.meanings.map((meaning) => (
-                <span key={meaning} style={{ padding:"4px 10px", borderRadius:20, background:"var(--muted)", border:"1px solid var(--border)", color:"var(--foreground)", fontFamily:"var(--ui-font)", fontWeight:700, fontSize:13 }}>
-                  {meaning}
-                </span>
-              ))}
-            </div>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Standalone Character Information</p>
+          {standaloneMeanings.length > 0 ? (
+            <>
+              {characterGradeLabel && <p style={{ fontFamily:"var(--ui-font)", fontSize:12, fontWeight:800 }} className="text-muted-foreground">{characterGradeLabel}</p>}
+              {(group.primary.characterOnyomi?.length || group.primary.characterKunyomi?.length) && (
+                <div style={{ marginTop:characterGradeLabel ? 10 : 0, display:"grid", gap:4 }}>
+                  {group.primary.characterOnyomi?.length ? <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground"><strong>On:</strong> {group.primary.characterOnyomi.join(", ")}</p> : null}
+                  {group.primary.characterKunyomi?.length ? <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground"><strong>Kun:</strong> {group.primary.characterKunyomi.join(", ")}</p> : null}
+                </div>
+              )}
+              <p style={{ fontFamily:"var(--ui-font)", fontSize:12, marginTop:10, lineHeight:1.5 }} className="text-muted-foreground">
+                KANJIDIC2 records this information for {group.primary.char} as a standalone character. It does not assert that these meanings describe the shape's role inside another Kanji.
+              </p>
+            </>
           ) : (
-            <p style={{ fontFamily:"var(--ui-font)", fontSize:13 }} className="text-muted-foreground">RADKFILE/KRADFILE identifies this as a recurring visual lookup element but does not assign it a learner meaning.</p>
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:13, lineHeight:1.5 }} className="text-muted-foreground">RADKFILE/KRADFILE identifies this as a recurring visual lookup element. No standalone character meaning is recorded in KANJIDIC2, so ToshoKanji does not invent one.</p>
           )}
+          <p style={{ fontFamily:"var(--ui-font)", fontSize:11, marginTop:10 }} className="text-muted-foreground">Source: {group.primary.source}</p>
         </div>
+
+        {sourceCharacter && selectedComponent.sourceChar !== selectedComponent.char && (
+          <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Source Label Character</p>
+            <div style={{ display:"flex", alignItems:"baseline", gap:9, flexWrap:"wrap" }}>
+              <span style={{ fontFamily:"var(--jp-font)", fontSize:30, fontWeight:800 }} className="text-foreground">{sourceCharacter.char}</span>
+              <span style={{ fontFamily:"var(--ui-font)", fontSize:16, fontWeight:900 }} className="text-foreground">
+                {sourceCharacter.meanings[0] ?? "No recorded meaning"}
+              </span>
+            </div>
+            {sourceCharacter.meanings.length > 1 && (
+              <p style={{ fontFamily:"var(--ui-font)", fontSize:12, marginTop:2 }} className="text-muted-foreground">
+                {sourceCharacter.meanings.slice(1).join(", ")}
+              </p>
+            )}
+            {(sourceCharacter.onyomi.length > 0 || sourceCharacter.kunyomi.length > 0) && (
+              <div style={{ marginTop:9, display:"grid", gap:4 }}>
+                {sourceCharacter.onyomi.length > 0 && <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground"><strong>On:</strong> {sourceCharacter.onyomi.join(", ")}</p>}
+                {sourceCharacter.kunyomi.length > 0 && <p style={{ fontFamily:"var(--ui-font)", fontSize:12 }} className="text-muted-foreground"><strong>Kun:</strong> {sourceCharacter.kunyomi.join(", ")}</p>}
+              </div>
+            )}
+            <p style={{ fontFamily:"var(--ui-font)", fontSize:12, marginTop:10, lineHeight:1.5 }} className="text-muted-foreground">
+              These meanings and readings belong to {sourceCharacter.char} as a character. KRADFILE uses it as a lookup label for {selectedComponent.char}; it does not assign those meanings to the displayed shape.
+            </p>
+          </div>
+        )}
 
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Variants</p>

@@ -36,6 +36,8 @@ export function CollectionScreen({
   includeComponents,
   favOnly,
   scrollTop,
+  showAllKanji,
+  visibleKanjiLimit,
   filterState,
   onFilterStateChange,
   onQueryChange,
@@ -43,6 +45,7 @@ export function CollectionScreen({
   onIncludeComponentsChange,
   onFavOnlyChange,
   onScrollTopChange,
+  onVisibleKanjiLimitChange,
   onSelectKanji,
   onSelectRadical,
   onSelectWord,
@@ -58,6 +61,8 @@ export function CollectionScreen({
   includeComponents: boolean;
   favOnly: boolean;
   scrollTop: number;
+  showAllKanji: boolean;
+  visibleKanjiLimit: number;
   filterState: CollectionFilterState;
   onFilterStateChange: (filterState: CollectionFilterState) => void;
   onQueryChange: (query: string) => void;
@@ -65,6 +70,7 @@ export function CollectionScreen({
   onIncludeComponentsChange: (includeComponents: boolean) => void;
   onFavOnlyChange: (favOnly: boolean) => void;
   onScrollTopChange: (scrollTop: number) => void;
+  onVisibleKanjiLimitChange: (limit: number) => void;
   onSelectKanji: (id: string) => void;
   onSelectRadical: (id: string) => void;
   onSelectWord: (id: string) => void;
@@ -80,7 +86,6 @@ export function CollectionScreen({
   const [searchResults, setSearchResults] = useState(() => ({ kanjiResults: [], wordResults: [] } as ReturnType<typeof searchKanjiIndex>));
   const [loadingWords, setLoadingWords] = useState(false);
   const [favoriteWordEntries, setFavoriteWordEntries] = useState<WordEntry[]>([]);
-  const [visibleKanjiLimit, setVisibleKanjiLimit] = useState(90);
   const searchRunIdRef = useRef(0);
   const favoriteWordRunIdRef = useRef(0);
 
@@ -192,7 +197,6 @@ export function CollectionScreen({
       });
   }, [favorites, favOnly, hasQuery]);
 
-  useEffect(() => { setVisibleKanjiLimit(90); }, [query, favOnly, selectedCategories, selectedRarities, selectedJlptLevels]);
 
   const activeFilterCount = selectedCategories.size + selectedRarities.size + selectedJlptLevels.size;
   const hasActiveFilters = activeFilterCount > 0;
@@ -253,7 +257,7 @@ export function CollectionScreen({
       if (!favorites.has(key)) return false;
       if (!query) return true;
       return radical.char.includes(query)
-        || radical.meanings.some((meaning) => normalizeSearchText(meaning).includes(normalizedQuery))
+        || radical.characterMeanings?.some((meaning) => normalizeSearchText(meaning).includes(normalizedQuery))
         || radical.names?.some((name) => name.includes(query) || normalizeSearchText(name).includes(normalizedQuery))
         || String(radical.radicalNumber ?? "").includes(query);
     })
@@ -594,7 +598,7 @@ export function CollectionScreen({
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {kanjiItems.length > 0 && (
               <CollectionSection title="Kanji" count={favOnly ? `${kanjiItems.length}` : kanjiCountLabel}>
-                {kanjiItems.slice(0, visibleKanjiLimit).map(({ kanji, reason }) => {
+                {(showAllKanji ? kanjiItems : kanjiItems.slice(0, visibleKanjiLimit)).map(({ kanji, reason }) => {
                   const key = `kanji:${kanji.id}`;
                   const [color1, color2] = getLearningCategoryColors(kanji.learningCategory);
                   return (
@@ -622,10 +626,10 @@ export function CollectionScreen({
                 })}
               </CollectionSection>
             )}
-            {kanjiItems.length > visibleKanjiLimit && (
-              <button type="button" className="app-reactive" onClick={() => setVisibleKanjiLimit((limit) => limit + 90)}
+            {!showAllKanji && kanjiItems.length > visibleKanjiLimit && (
+              <button type="button" className="app-reactive" onClick={() => onVisibleKanjiLimitChange(visibleKanjiLimit + 90)}
                 style={{ alignSelf:"center", padding:"9px 16px", borderRadius:999, background:"var(--muted)", border:"1px solid var(--border)", color:"var(--foreground)", fontFamily:"var(--ui-font)", fontWeight:900, fontSize:12 }}>
-                Show 90 more Kanji
+                Show {Math.min(90, kanjiItems.length - visibleKanjiLimit)} more Kanji
               </button>
             )}
 
@@ -637,7 +641,7 @@ export function CollectionScreen({
                     <CollectionCard
                       key={radical.id}
                       char={radical.char}
-                      label={radical.meanings[0] ?? "Radical"}
+                      label={radical.radicalNumber ? `Radical ${radical.radicalNumber}` : "Radical"}
                       color1="#6b7280"
                       color2="#4b5563"
                       starred={favorites.has(key)}

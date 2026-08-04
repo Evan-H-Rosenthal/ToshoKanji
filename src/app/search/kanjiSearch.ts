@@ -173,10 +173,11 @@ function buildKanjiComponentFields(kanji: KanjiEntry): SearchField[] {
 }
 
 function buildWordFields(word: Word): SearchField[] {
+  const glosses = word.senses?.flatMap((sense) => sense.glosses) ?? [word.meaning];
   return [
     makeField("word", word.japanese, SCORE.exactWord),
     makeField("reading", word.furigana, SCORE.exactReading),
-    makeField("meaning", word.meaning, SCORE.exactMeaning),
+    ...glosses.map((gloss) => makeField("meaning", gloss, SCORE.exactMeaning)),
   ];
 }
 

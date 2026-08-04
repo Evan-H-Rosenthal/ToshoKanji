@@ -67,6 +67,7 @@ export default function App() {
   const [volume, setVolume] = useState(initialPersistedState.settings.volume);
   const [disableAutoJump, setDisableAutoJump] = useState(initialPersistedState.settings.disableAutoJump);
   const [improvePerformance, setImprovePerformance] = useState(initialPersistedState.settings.improvePerformance);
+  const [showAllCollectionKanji, setShowAllCollectionKanji] = useState(initialPersistedState.settings.showAllCollectionKanji);
   const useSimpleTransitions = improvePerformance;
   const [uiFontChoice, setUiFontChoice] = useState<UiFontChoice>(initialPersistedState.settings.uiFontChoice);
   const [characterFontChoice, setCharacterFontChoice] = useState<CharacterFontChoice>(initialPersistedState.settings.characterFontChoice);
@@ -86,6 +87,7 @@ export default function App() {
     selectedJlptLevels: new Set<number>(),
   });
   const collectionScrollTopRef = useRef(0);
+  const [collectionVisibleKanjiLimit, setCollectionVisibleKanjiLimit] = useState(90);
   const kanjiEntryViewStateRef = useRef<Record<string, KanjiEntryViewState>>({});
   const ignoredKanjiEntryViewStateIdsRef = useRef<Set<string>>(new Set());
 
@@ -204,6 +206,7 @@ export default function App() {
         volume,
         disableAutoJump,
         improvePerformance,
+        showAllCollectionKanji,
         uiFontChoice,
         characterFontChoice,
       },
@@ -216,6 +219,7 @@ export default function App() {
     disableAutoJump,
     favorites,
     improvePerformance,
+    showAllCollectionKanji,
     notes,
     uiFontChoice,
     unlockedKanji,
@@ -449,6 +453,8 @@ export default function App() {
           includeComponents={collectionIncludeComponents}
           favOnly={collectionFavOnly}
           scrollTop={collectionScrollTopRef.current}
+          showAllKanji={showAllCollectionKanji}
+          visibleKanjiLimit={collectionVisibleKanjiLimit}
           filterState={collectionFilters}
           onFilterStateChange={setCollectionFilters}
           onQueryChange={setCollectionQuery}
@@ -458,6 +464,7 @@ export default function App() {
           onScrollTopChange={(scrollTop) => {
             collectionScrollTopRef.current = scrollTop;
           }}
+          onVisibleKanjiLimitChange={setCollectionVisibleKanjiLimit}
           onSelectKanji={id=>pushScreen({type:"kanji-entry",id})}
           onSelectRadical={id=>pushScreen({type:"component-entry",id})}
           onSelectWord={id=>pushScreen({type:"word-entry",id})}
@@ -523,8 +530,8 @@ export default function App() {
               favorites={favorites} notes={notes} chatInteractionCount={chatInteractionCount} onBack={closeUtilityScreen} />
           )}
           {screen.type === "settings" && (
-            <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} improvePerformance={improvePerformance} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
-              onDark={setDarkMode} onVolume={setVolume} onDisableAutoJump={setDisableAutoJump} onImprovePerformance={setImprovePerformance} onUiFontChoice={setUiFontChoice} onCharacterFontChoice={setCharacterFontChoice}
+            <SettingsPage darkMode={darkMode} volume={volume} disableAutoJump={disableAutoJump} improvePerformance={improvePerformance} showAllCollectionKanji={showAllCollectionKanji} uiFontChoice={uiFontChoice} characterFontChoice={characterFontChoice}
+              onDark={setDarkMode} onVolume={setVolume} onDisableAutoJump={setDisableAutoJump} onImprovePerformance={setImprovePerformance} onShowAllCollectionKanji={setShowAllCollectionKanji} onUiFontChoice={setUiFontChoice} onCharacterFontChoice={setCharacterFontChoice}
               onReloadDictionaries={reloadDictionaries} onResetProgress={resetProgress} onResetAll={resetAll} onUnlockAll={unlockAll} onBack={closeUtilityScreen} />
           )}
 

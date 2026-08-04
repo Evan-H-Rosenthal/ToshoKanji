@@ -20,6 +20,7 @@ export interface PersistedAppState {
     volume: number;
     disableAutoJump: boolean;
     improvePerformance: boolean;
+    showAllCollectionKanji: boolean;
     uiFontChoice: UiFontChoice;
     characterFontChoice: CharacterFontChoice;
   };
@@ -40,6 +41,7 @@ const DEFAULT_SETTINGS: PersistedAppState["settings"] = {
   volume: 0.7,
   disableAutoJump: false,
   improvePerformance: false,
+  showAllCollectionKanji: false,
   uiFontChoice: "nunito",
   characterFontChoice: "traditional",
 };
@@ -70,6 +72,9 @@ export function loadPersistedAppState(): HydratedAppState {
         improvePerformance: typeof parsed.settings?.improvePerformance === "boolean"
           ? parsed.settings.improvePerformance
           : DEFAULT_SETTINGS.improvePerformance,
+        showAllCollectionKanji: typeof parsed.settings?.showAllCollectionKanji === "boolean"
+          ? parsed.settings.showAllCollectionKanji
+          : DEFAULT_SETTINGS.showAllCollectionKanji,
         uiFontChoice: readUiFontChoice(parsed.settings?.uiFontChoice),
         characterFontChoice: readCharacterFontChoice(parsed.settings?.characterFontChoice),
       },

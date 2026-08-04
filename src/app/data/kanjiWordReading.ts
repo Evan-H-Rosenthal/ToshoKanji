@@ -13,6 +13,7 @@ const UNUSUAL_WORD_TAGS = new Set<WordMetadataTag>([
   "rk",
   "sk",
 ]);
+const UNUSUAL_USAGE_LABELS = /archaism|obsolete|outdated|dated term|rare term|historical term/i;
 
 const RENDAKU = new Map([
   ["\u304b", "\u304c"], ["\u304d", "\u304e"], ["\u304f", "\u3050"], ["\u3051", "\u3052"], ["\u3053", "\u3054"],
@@ -121,17 +122,12 @@ function classifyByReading(kanji: KanjiEntry, word: Word): WordReadingType {
   if (combinedMask === 1) return "on";
   if (combinedMask === 2) return "kun";
 
-  const targetCandidates = readingCandidates(kanji);
-  let fallbackMask = 0;
-  for (const [candidate, mask] of targetCandidates) {
-    if (reading.includes(candidate)) fallbackMask |= mask;
-  }
-  if (fallbackMask === 1) return "on";
-  if (fallbackMask === 2) return "kun";
   return "unusual";
 }
 
 export function getKanjiWordReadingType(kanji: KanjiEntry, word: Word): WordReadingType {
   if (word.wordTags?.some((tag) => UNUSUAL_WORD_TAGS.has(tag))) return "unusual";
+  if (word.senses?.length && word.senses.every((sense) =>
+    sense.usageLabels?.some((label) => UNUSUAL_USAGE_LABELS.test(label)))) return "unusual";
   return classifyByReading(kanji, word);
 }
