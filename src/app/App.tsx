@@ -18,7 +18,7 @@ import { WordEntryPage } from "./screens/WordEntryPage";
 import { KANJI_RARITIES, type KanjiRarity } from "./data/kanjiRarity";
 import { flushPersistedAppStateSave, loadPersistedAppState, schedulePersistedAppStateSave } from "./persistence";
 import { flushPersonalContentSave, loadPersonalContent, schedulePersonalContentSave } from "./personalStore";
-import { ensureWordDatabase, reloadWordDatabase, subscribeWordDatabaseProgress, type WordDatabaseProgress } from "./data/wordStore";
+import { ensureWordDatabase, reloadWordDatabase, resumeCachedWordDatabase, retryWordDatabaseLoad, subscribeWordDatabaseProgress, type WordDatabaseProgress } from "./data/wordStore";
 import type { CharacterFontChoice, ChatMsg, KanjiEntryViewState, ScreenState, Tab, UiFontChoice } from "./types";
 
 const UI_FONT_STACKS: Record<UiFontChoice, string> = {
@@ -62,7 +62,6 @@ export default function App() {
     loadedWords: 0,
     totalWords: 0,
   });
-  const [wordDatabaseAttempt, setWordDatabaseAttempt] = useState(0);
   const dictionaryLoaderWasVisibleRef = useRef(false);
   const [volume, setVolume] = useState(initialPersistedState.settings.volume);
   const [disableAutoJump, setDisableAutoJump] = useState(initialPersistedState.settings.disableAutoJump);
@@ -114,7 +113,7 @@ export default function App() {
       // The loading screen exposes the failure and retry action.
     });
     return unsubscribe;
-  }, [wordDatabaseAttempt]);
+  }, []);
 
   useEffect(() => {
     const updateViewportHeight = () => {
@@ -423,11 +422,8 @@ export default function App() {
   };
 
   const reloadDictionaries = () => {
-    setScreenStack([]);
-    setScreen({ type:"main" });
-    changeActiveTab("gacha");
     void reloadWordDatabase().catch(() => {
-      // The loading screen exposes the failure and retry action.
+      // The loading screen exposes the failure, retry, and safe cached-copy actions.
     });
   };
   const resetProgress = () => { setUnlockedKanji(new Set()); setUnlockedRadicals(new Set()); };
@@ -717,7 +713,18 @@ export default function App() {
             >
               <DictionaryLoadingScreen
                 state={wordDatabaseProgress}
-                onRetry={() => setWordDatabaseAttempt((attempt) => attempt + 1)}
+                onRetry={() => {
+                  void retryWordDatabaseLoad().catch(() => {
+                    // The loading screen remains visible if all retry attempts fail.
+                  });
+                }}
+                onBack={wordDatabaseProgress.canContinueWithCache
+                  ? () => {
+                      void resumeCachedWordDatabase().catch(() => {
+                        // Cache availability is verified before this action is offered.
+                      });
+                    }
+                  : undefined}
               />
             </motion.div>
           )}

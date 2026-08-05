@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, useAnimationControls, useReducedMotion } from "motion/react";
 import { KANJI_RARITIES } from "../data/kanjiRarity";
 import type { WordDatabaseProgress } from "../data/wordStore";
-import { RewardCapsuleShell } from "./GachaMachine";
+import { RedCross, RewardCapsuleShell } from "./GachaMachine";
 
 const CAPSULE_PALETTES = KANJI_RARITIES.map((rarity) => ({
   primary: rarity.color,
@@ -33,31 +33,39 @@ function nextColorIndex(current: number) {
 export function DictionaryLoadingScreen({
   state,
   onRetry,
+  onBack,
 }: {
   state: WordDatabaseProgress;
   onRetry: () => void;
+  onBack?: () => void;
 }) {
   const controls = useAnimationControls();
   const reduceMotion = useReducedMotion();
   const [colorIndex, setColorIndex] = useState(() => Math.floor(Math.random() * CAPSULE_PALETTES.length));
   const visible = state.phase !== "checking";
+  const failed = state.phase === "error";
   const percentage = Math.round(Math.max(0, Math.min(1, state.progress)) * 100);
 
   useEffect(() => {
-    if (reduceMotion || !visible || state.phase === "error") return;
+    if (failed) {
+      controls.stop();
+      controls.set({ x: 0, y: 0, rotate: 0, scaleX: 1, scaleY: 1, originY: 0.5 });
+      return;
+    }
+    if (reduceMotion || !visible) return;
 
     let cancelled = false;
     const run = async () => {
       while (!cancelled) {
-        controls.set({ x: 0, y: 0, rotate: 0, scaleX: 1, scaleY: 1 });
+        controls.set({ x: 0, y: 0, rotate: 0, scaleX: 1, scaleY: 1, originY: 0.5 });
 
         await controls.start(
-          { rotate: 360*3 },
+          { rotate: 360 * 3 },
           { duration: LOADER_ANIMATION.rotationDuration, ease: "easeInOut" },
         );
         if (cancelled) return;
 
-        controls.set({ originY: 1 }); 
+        controls.set({ originY: 1 });
 
         await controls.start(
           { scaleX: LOADER_ANIMATION.squashScaleX, scaleY: LOADER_ANIMATION.squashScaleY },
@@ -81,9 +89,7 @@ export function DictionaryLoadingScreen({
         if (cancelled) return;
 
         await controls.start(
-          {
-            y: [0, -LOADER_ANIMATION.jumpHeight, 0],
-          },
+          { y: [0, -LOADER_ANIMATION.jumpHeight, 0] },
           {
             duration: LOADER_ANIMATION.jumpDuration,
             times: [0, 0.4, 1],
@@ -107,7 +113,7 @@ export function DictionaryLoadingScreen({
             ease: ["easeOut", "easeIn", "easeOut", "easeIn"],
           },
         );
-        controls.set({ originY: 0.5 }); 
+        controls.set({ originY: 0.5 });
       }
     };
 
@@ -116,7 +122,13 @@ export function DictionaryLoadingScreen({
       cancelled = true;
       controls.stop();
     };
-  }, [controls, reduceMotion, state.phase, visible]);
+  }, [controls, failed, reduceMotion, visible]);
+
+  const heading = failed
+    ? state.errorKind === "offline-first-load" || state.errorKind === "offline-reload"
+      ? "Internet needed"
+      : "Dictionary loading failed"
+    : "Loading Dictionaries...";
 
   return (
     <div
@@ -148,19 +160,28 @@ export function DictionaryLoadingScreen({
       >
         <div style={{ height: 168, display: "flex", alignItems: "flex-end", justifyContent: "center", position: "relative" }}>
           <motion.div
-            animate={reduceMotion
-              ? { scale: [1, 0.97, 1], opacity: [1, 0.82, 1] }
-              : controls}
-            transition={reduceMotion
+            animate={failed
+              ? { x: 0, y: 0, rotate: 0, scaleX: 1, scaleY: 1, opacity: 1 }
+              : reduceMotion
+                ? { scale: [1, 0.97, 1], opacity: [1, 0.82, 1] }
+                : controls}
+            transition={!failed && reduceMotion
               ? { duration: 1.8, repeat: Infinity, ease: "easeInOut" }
               : undefined}
-            style={{ width: LOADER_ANIMATION.capsuleSize, height: LOADER_ANIMATION.capsuleSize, transformOrigin: "50% 50%", position: "relative", zIndex: 2 }}
+            style={{
+              width: LOADER_ANIMATION.capsuleSize,
+              height: LOADER_ANIMATION.capsuleSize,
+              transformOrigin: "50% 50%",
+              position: "relative",
+              zIndex: 2,
+            }}
           >
             <RewardCapsuleShell
               primary={CAPSULE_PALETTES[colorIndex].primary}
               secondary={CAPSULE_PALETTES[colorIndex].secondary}
               size={LOADER_ANIMATION.capsuleSize}
             />
+            {failed && <RedCross pulse inset={-5} />}
           </motion.div>
           <div
             aria-hidden="true"
@@ -185,33 +206,54 @@ export function DictionaryLoadingScreen({
             color: "var(--foreground)",
           }}
         >
-          {state.phase === "error" ? "Dictionary loading failed" : "Loading Dictionaries..."}
+          {heading}
         </h1>
 
-        {state.phase === "error" ? (
+        {failed ? (
           <>
             <p style={{ margin: 0, fontFamily: "var(--ui-font)", fontSize: 13, lineHeight: 1.55, color: "var(--muted-foreground)" }}>
               {state.error || "ToshoKanji could not prepare its dictionaries."}
             </p>
-            <button
-              type="button"
-              onClick={onRetry}
-              className="app-reactive"
-              style={{
-                marginTop: 20,
-                border: 0,
-                borderRadius: 14,
-                padding: "11px 22px",
-                background: "var(--primary)",
-                color: "var(--primary-foreground)",
-                fontFamily: "var(--ui-font)",
-                fontSize: 14,
-                fontWeight: 900,
-                cursor: "pointer",
-              }}
-            >
-              Try again
-            </button>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginTop: 20 }}>
+              {onBack && (
+                <button
+                  type="button"
+                  onClick={onBack}
+                  className="app-reactive"
+                  style={{
+                    border: "1px solid var(--border)",
+                    borderRadius: 14,
+                    padding: "11px 18px",
+                    background: "var(--card)",
+                    color: "var(--foreground)",
+                    fontFamily: "var(--ui-font)",
+                    fontSize: 14,
+                    fontWeight: 900,
+                    cursor: "pointer",
+                  }}
+                >
+                  Use saved dictionaries
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={onRetry}
+                className="app-reactive"
+                style={{
+                  border: 0,
+                  borderRadius: 14,
+                  padding: "11px 22px",
+                  background: "var(--primary)",
+                  color: "var(--primary-foreground)",
+                  fontFamily: "var(--ui-font)",
+                  fontSize: 14,
+                  fontWeight: 900,
+                  cursor: "pointer",
+                }}
+              >
+                Try again
+              </button>
+            </div>
           </>
         ) : (
           <>
@@ -227,7 +269,7 @@ export function DictionaryLoadingScreen({
             >
               <span lang="ja">少々お待ちください...</span>
               <br />
-              ToshoKanji is loading dictionaries. This won't happen the next time you open the app.
+              ToshoKanji is loading dictionaries. This won&apos;t happen the next time you open the app.
             </p>
 
             <div style={{ width: "100%", marginTop: 22 }}>

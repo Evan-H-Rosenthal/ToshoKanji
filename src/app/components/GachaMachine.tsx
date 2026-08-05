@@ -73,6 +73,52 @@ function randomBetween(min: number, max: number) {
   return min + Math.random() * (max - min);
 }
 
+export function RedCross({
+  pulse = false,
+  inset = -7,
+}: {
+  pulse?: boolean;
+  inset?: number;
+}) {
+  const reduceMotion = useReducedMotion();
+  return (
+    <motion.div
+      aria-hidden="true"
+      initial={false}
+      animate={pulse && !reduceMotion
+        ? { opacity: [0.62, 1, 0.62], scale: [0.94, 1.04, 0.94] }
+        : { opacity: 1, scale: 1 }}
+      transition={pulse && !reduceMotion
+        ? { duration: 1.65, repeat: Infinity, ease: "easeInOut" }
+        : undefined}
+      style={{
+        position: "absolute",
+        inset,
+        pointerEvents: "none",
+        transformOrigin: "50% 50%",
+      }}
+    >
+      {[45, -45].map((rotation) => (
+        <div
+          key={rotation}
+          style={{
+            position: "absolute",
+            left: 3,
+            right: 3,
+            top: "50%",
+            height: 8,
+            marginTop: -4,
+            borderRadius: 8,
+            background: "#dc143c",
+            boxShadow: "0 1px 0 rgba(255,255,255,0.4)",
+            transform: `rotate(${rotation}deg)`,
+          }}
+        />
+      ))}
+    </motion.div>
+  );
+}
+
 function RewardSparkle({
   sparkle,
   timing,
@@ -779,38 +825,7 @@ export function GachaMachine({
             }}
           >
             <div style={{ position: "absolute", left: 19, top: 5, width: 4, height: 32, background: "#1f2937", borderRadius: 4 }} />
-            {allUnlocked && (
-              <div style={{ position: "absolute", inset: -7, pointerEvents: "none" }}>
-                <div
-                  style={{
-                    position: "absolute",
-                    left: 3,
-                    right: 3,
-                    top: "50%",
-                    height: 8,
-                    marginTop: -4,
-                    borderRadius: 8,
-                    background: "#dc143c",
-                    boxShadow: "0 1px 0 rgba(255,255,255,0.4)",
-                    transform: "rotate(45deg)",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    left: 3,
-                    right: 3,
-                    top: "50%",
-                    height: 8,
-                    marginTop: -4,
-                    borderRadius: 8,
-                    background: "#dc143c",
-                    boxShadow: "0 1px 0 rgba(255,255,255,0.4)",
-                    transform: "rotate(-45deg)",
-                  }}
-                />
-              </div>
-            )}
+            {allUnlocked && <RedCross />}
           </div>
 
           <div
