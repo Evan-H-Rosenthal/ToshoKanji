@@ -1,12 +1,18 @@
 import { KANJI_BY_ID } from "./entryIndexes";
-import { getStoredWord, getStoredWords, getStoredWordsForKanji } from "./wordStore";
+import { getStoredWord, getStoredWordsForEntry, getStoredWordsForKanji } from "./wordStore";
 import { getLearningCategoryColors } from "./ui/categoryColors";
+import { groupWordsIntoFamilies, isCollapsibleWordFamily, selectPrimaryWord, type WordFamily } from "./wordFamily";
 import type { KanjiEntry, Word, WordEntry as StoredWordEntry } from "../types";
 
-export interface WordEntry {
+export interface WordVariantEntry {
   id: string;
   word: Word;
   kanji: KanjiEntry[];
+}
+
+export interface WordEntry extends WordVariantEntry {
+  variants: WordVariantEntry[];
+  selectedVariantId?: string;
 }
 
 const RESOLVED_CACHE_LIMIT = 256;
@@ -40,7 +46,8 @@ export function resolveStoredWordEntry(entry: StoredWordEntry): WordEntry {
   const resolvedKanji = entry.kanjiIds
     .map((kanjiId) => KANJI_BY_ID.get(kanjiId))
     .filter((value): value is KanjiEntry => Boolean(value));
-  const resolved = { id: entry.id, word: entry.word, kanji: orderKanjiBySpelling(resolvedKanji, entry.word.japanese) };
+  const variant = { id: entry.id, word: entry.word, kanji: orderKanjiBySpelling(resolvedKanji, entry.word.japanese) };
+  const resolved: WordEntry = { ...variant, variants: [variant] };
   resolvedCache.set(entry.id, resolved);
   if (resolvedCache.size > RESOLVED_CACHE_LIMIT) {
     const oldest = resolvedCache.keys().next().value;
@@ -51,14 +58,35 @@ export function resolveStoredWordEntry(entry: StoredWordEntry): WordEntry {
 
 export async function getFavoriteWordEntries(favorites: Set<string>): Promise<WordEntry[]> {
   const ids = Array.from(favorites, (key) => key.startsWith("word:") ? key.slice(5) : "").filter(Boolean);
-  return (await getStoredWords(ids)).map(resolveStoredWordEntry);
+  const entries = await Promise.all(ids.map(findWordEntry));
+  return entries.filter((entry): entry is WordEntry => Boolean(entry));
 }
 
 export async function findWordEntry(id: string): Promise<WordEntry | undefined> {
-  const cached = resolvedCache.get(id);
-  if (cached) return cached;
   const entry = await getStoredWord(id);
-  return entry ? resolveStoredWordEntry(entry) : undefined;
+  if (!entry) return undefined;
+
+  const sourceEntryId = entry.word.source?.entryId;
+  const sourceFamily = sourceEntryId ? await getStoredWordsForEntry(sourceEntryId) : [entry];
+  const family = isCollapsibleWordFamily(sourceFamily.map((member) => member.word)) ? sourceFamily : [entry];
+  const primary = selectPrimaryWord(family) ?? entry;
+  const orderedFamily = [primary, ...family.filter((member) => member.id !== primary.id)];
+  const resolvedVariants = orderedFamily.map(resolveStoredWordEntry).map(({ id: variantId, word, kanji }) => ({
+    id: variantId,
+    word,
+    kanji,
+  }));
+  const resolvedPrimary = resolvedVariants.find((variant) => variant.id === primary.id) ?? resolvedVariants[0];
+  const familyKanji = Array.from(new Map(
+    resolvedVariants.flatMap((variant) => variant.kanji).map((kanji) => [kanji.id, kanji] as const),
+  ).values());
+  return {
+    ...resolvedPrimary,
+    id,
+    kanji: familyKanji,
+    variants: resolvedVariants,
+    selectedVariantId: id,
+  };
 }
 
 function storedKanjiRank(entry: StoredWordEntry, kanjiId: string): number {
@@ -74,11 +102,11 @@ function compareFallbackLearnerOrder(a: StoredWordEntry, b: StoredWordEntry): nu
     || a.word.japanese.localeCompare(b.word.japanese, "ja");
 }
 
-export async function getWordsForKanji(kanjiId: string): Promise<Word[]> {
+export async function getWordsForKanji(kanjiId: string): Promise<WordFamily[]> {
   const entries = await getStoredWordsForKanji(kanjiId);
   entries.sort((a, b) => storedKanjiRank(a, kanjiId) - storedKanjiRank(b, kanjiId)
     || compareFallbackLearnerOrder(a, b));
-  return entries.map((entry) => entry.word);
+  return groupWordsIntoFamilies(entries.map((entry) => entry.word));
 }
 
 export function getWordEntryColors(entry: WordEntry): [string, string] {

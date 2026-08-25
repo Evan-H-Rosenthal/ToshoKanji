@@ -6,6 +6,7 @@ import { getKanjiDisplayName } from "../data/displayNames";
 import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import { getLearningCategoryColors, getLearningCategoryLabel, getLearningCategoryTextColor, getReadableTextColor } from "../data/ui/categoryColors";
 import { findWordEntry, getWordEntryColors, type WordEntry } from "../data/wordData";
+import { getWordVariantLabel } from "../data/wordFamily";
 import type { ChatMsg, WordMetadataTag } from "../types";
 
 const WORD_CLASSIFICATIONS: {
@@ -212,6 +213,33 @@ export function WordEntryPage({ id, unlockedKanji, favorites, customNames, notes
       </div>
 
       <div className="entry-section-stack flex flex-col px-4 pb-8">
+        {entry.variants.length > 1 && (
+          <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
+            <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Forms and readings</p>
+            <div style={{ display:"grid", gap:8 }}>
+              {entry.variants.map((variant, index) => {
+                const label = index === 0 ? "Preferred form" : getWordVariantLabel(variant.word, entry.word);
+                const sensesDiffer = JSON.stringify(variant.word.senses ?? []) !== JSON.stringify(entry.word.senses ?? []);
+                const selected = variant.id === entry.selectedVariantId;
+                return (
+                  <div key={variant.id} style={{ padding:"9px 10px", borderRadius:12, background:selected ? "color-mix(in srgb, var(--primary) 10%, var(--muted))" : "var(--muted)", border:`1px solid ${selected ? "color-mix(in srgb, var(--primary) 42%, var(--border))" : "var(--border)"}` }}>
+                    <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", gap:10 }}>
+                      <div style={{ minWidth:0 }}>
+                        <span style={{ fontFamily:"var(--jp-font)", fontSize:18, fontWeight:800 }} className="text-foreground">{variant.word.japanese}</span>
+                        <span style={{ fontFamily:"var(--jp-font)", fontSize:12, marginLeft:7 }} className="text-muted-foreground">({variant.word.furigana})</span>
+                      </div>
+                      <div style={{ display:"flex", alignItems:"center", gap:5, flexWrap:"wrap", justifyContent:"flex-end" }}>
+                        {selected && <span style={{ fontFamily:"var(--ui-font)", fontSize:9, fontWeight:900, color:"var(--primary)" }}>OPENED FORM</span>}
+                        <span style={{ padding:"3px 7px", borderRadius:999, background:"var(--card)", border:"1px solid var(--border)", fontFamily:"var(--ui-font)", fontSize:9, fontWeight:900, whiteSpace:"nowrap" }}>{label}</span>
+                      </div>
+                    </div>
+                    {sensesDiffer && <p style={{ fontFamily:"var(--ui-font)", fontSize:11, lineHeight:1.4, marginTop:5 }} className="text-muted-foreground">Meaning for this form: {variant.word.meaning}</p>}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
           <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-2">Dictionary Senses</p>
           <div style={{ display:"grid", gap:12 }}>
@@ -249,7 +277,7 @@ export function WordEntryPage({ id, unlockedKanji, favorites, customNames, notes
         </div>
 
         <div className="rounded-2xl p-4" style={{ background:"var(--card)", border:"1px solid var(--border)" }}>
-          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">Kanji in this word</p>
+          <p style={{ fontFamily:"var(--ui-font)", fontWeight:800, fontSize:12, textTransform:"uppercase", letterSpacing:"0.08em" }} className="text-muted-foreground mb-3">{entry.variants.length > 1 ? "Kanji in these forms" : "Kanji in this word"}</p>
           <div className="flex flex-wrap gap-2">
             {entry.kanji.map((kanji) => {
               const [kc1] = getLearningCategoryColors(kanji.learningCategory);

@@ -1,5 +1,6 @@
 ﻿/// <reference lib="webworker" />
-import { scanStoredWords } from "./data/wordStore";
+import { getStoredWordsForEntry, scanStoredWords } from "./data/wordStore";
+import { isCollapsibleWordFamily, selectPrimaryWord } from "./data/wordFamily";
 import type { WordEntry } from "./types";
 
 type SearchRequest = {
@@ -43,7 +44,7 @@ self.onmessage = async (event: MessageEvent<SearchRequest>) => {
   const kanaQuery = normalizeKana(normalizedQuery);
   const unlocked = new Set(unlockedKanji);
   const favoriteSet = new Set(favorites);
-  const results: SearchResult[] = [];
+  const resultsByFamily = new Map<string, SearchResult>();
 
   try {
     await scanStoredWords((entry) => {
@@ -61,11 +62,32 @@ self.onmessage = async (event: MessageEvent<SearchRequest>) => {
       }
       if (!best) return;
       const score = best.score + (entry.word.common ? 8 : 0) + (favoriteSet.has(`word:${entry.id}`) ? 18 : 0);
-      results.push({ entry, score, reason: best.reason });
-      results.sort((a, b) => b.score - a.score || a.entry.word.japanese.localeCompare(b.entry.word.japanese));
-      if (results.length > maxResults) results.pop();
+      const familyId = entry.word.source?.entryId ?? entry.id;
+      const existing = resultsByFamily.get(familyId);
+      if (!existing || score > existing.score) resultsByFamily.set(familyId, { entry, score, reason: best.reason });
     }, () => activeRunId !== runId);
 
+    const candidates = Array.from(resultsByFamily.values())
+      .sort((a, b) => b.score - a.score || a.entry.word.japanese.localeCompare(b.entry.word.japanese))
+      .slice(0, maxResults);
+    const results = await Promise.all(candidates.map(async (result) => {
+      const entryId = result.entry.word.source?.entryId;
+      if (!entryId) return result;
+      const sourceFamily = await getStoredWordsForEntry(entryId);
+      if (!isCollapsibleWordFamily(sourceFamily.map((member) => member.word))) return result;
+      const primary = selectPrimaryWord(sourceFamily);
+      if (!primary) return result;
+      const kanjiIds = Array.from(new Set(sourceFamily.flatMap((member) => member.kanjiIds)));
+      return {
+        ...result,
+        entry: {
+          ...primary,
+          id: result.entry.id,
+          kanjiIds,
+          kanjiRanks: [],
+        },
+      };
+    }));
     if (activeRunId === runId) self.postMessage({ type: "results", runId, results });
   } catch (error) {
     if (activeRunId === runId) self.postMessage({ type: "error", runId, message: error instanceof Error ? error.message : "Word search failed" });

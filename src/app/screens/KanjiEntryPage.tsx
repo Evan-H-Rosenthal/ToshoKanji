@@ -8,6 +8,7 @@ import { LEARNING_CATEGORIES, getLearningCategoryColors, getLearningCategoryLabe
 import { getKanjiWordReadingType } from "../data/kanjiWordReading";
 import { getKanjiRarityInfo } from "../data/kanjiRarity";
 import { getWordsForKanji } from "../data/wordData";
+import { formatWordVariant, type WordFamily } from "../data/wordFamily";
 import { ChatSection } from "../components/ChatSection";
 import {
   Dialog,
@@ -17,7 +18,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../components/ui/dialog";
-import type { ChatMsg, KanjiEntryViewState, Word, WordReadingType } from "../types";
+import type { ChatMsg, KanjiEntryViewState, WordReadingType } from "../types";
 
 const COMPONENT_ROLE_COLORS = {
   radical: "#3b82f6",
@@ -58,7 +59,7 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const [currentLearningCategory, setCurrentLearningCategory] = useState(k.learningCategory);
   const [savingCategory, setSavingCategory] = useState<string | null>(null);
   const [categorySaveError, setCategorySaveError] = useState("");
-  const [words, setWords] = useState<Word[]>([]);
+  const [words, setWords] = useState<WordFamily[]>([]);
   const [loadingWords, setLoadingWords] = useState(false);
   const [visibleWordLimit, setVisibleWordLimit] = useState(80);
   const nameRef = useRef<HTMLInputElement>(null);
@@ -177,19 +178,27 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
   const hiddenKunyomiCount = Math.max(0, k.kunyomi.length - visibleKunyomi.length);
   const alternateMeanings = k.meanings.slice(1);
   const normalizedWordQuery = wordQuery.trim().toLowerCase();
-  const classifiedWords = useMemo(() => words.map((word) => ({
-    word,
-    readingType: getKanjiWordReadingType(k, word),
-  })), [k, words]);
-  const filteredWords = classifiedWords.filter(({ word, readingType }) => (
-    (wordReadingFilters.size === 0 || wordReadingFilters.has(readingType))
-    && (!normalizedWordQuery
-      || word.japanese.includes(normalizedWordQuery)
-      || word.furigana.includes(normalizedWordQuery)
-      || word.romaji.toLowerCase().includes(normalizedWordQuery)
-      || word.meaning.toLowerCase().includes(normalizedWordQuery)
-      || word.senses?.some((sense) => sense.glosses.some((gloss) => gloss.toLowerCase().includes(normalizedWordQuery))))
-  ));
+  const filteredWords = useMemo(() => words.flatMap((family) => {
+    const matches = family.variants.map((word) => ({
+      word,
+      readingType: getKanjiWordReadingType(k, word),
+    })).filter(({ word, readingType }) => (
+      (wordReadingFilters.size === 0 || wordReadingFilters.has(readingType))
+      && (!normalizedWordQuery
+        || word.japanese.toLowerCase().includes(normalizedWordQuery)
+        || word.furigana.toLowerCase().includes(normalizedWordQuery)
+        || word.romaji.toLowerCase().includes(normalizedWordQuery)
+        || word.meaning.toLowerCase().includes(normalizedWordQuery)
+        || word.senses?.some((sense) => sense.glosses.some((gloss) => gloss.toLowerCase().includes(normalizedWordQuery))))
+    ));
+    if (!matches.length) return [];
+    const matched = matches.find(({ word }) => word.id === family.primary.id) ?? matches[0];
+    return [{
+      family,
+      matchedWord: matched.word,
+      readingType: matched.readingType,
+    }];
+  }), [k, normalizedWordQuery, wordReadingFilters, words]);
   const toggleWordReadingFilter = (readingType: WordReadingType) => {
     const next = new Set(wordReadingFilters);
     if (next.has(readingType)) next.delete(readingType);
@@ -807,18 +816,25 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
               >
                 Loading words...
               </div>
-            ) : filteredWords.slice(0, visibleWordLimit).map(({ word: w, readingType }, i) => {
+            ) : filteredWords.slice(0, visibleWordLimit).map(({ family, matchedWord, readingType }, i) => {
+              const w = family.primary;
               const readingMeta = getWordReadingMeta(readingType);
+              const alternates = family.variants.filter((variant) => variant.id !== w.id);
+              const variantSummary = matchedWord.id !== w.id
+                ? `Matching variant: ${formatWordVariant(w, matchedWord)}`
+                : alternates.length
+                  ? `Also: ${alternates.slice(0, 2).map((variant) => formatWordVariant(w, variant)).join(" / ")}${alternates.length > 2 ? ` / +${alternates.length - 2}` : ""}`
+                  : "";
               return (
               <button
-                key={w.id || `${w.japanese}-${i}`}
+                key={family.id || `${w.japanese}-${i}`}
                 onClick={() => {
                   emitViewState();
-                  onNavWord(w.id || `w-${w.japanese}`);
+                  onNavWord(matchedWord.id || w.id || `w-${w.japanese}`);
                 }}
                 style={{
                   width:"100%",
-                  minHeight:86,
+                  minHeight:family.variants.length > 1 ? 100 : 86,
                   padding:"9px 11px",
                   borderRadius:12,
                   background:"var(--muted)",
@@ -893,6 +909,14 @@ export function KanjiEntryPage({ id, unlockedKanji, favorites, customNames, note
                 >
                   {w.romaji}
                 </div>
+                {variantSummary && (
+                  <div
+                    title={variantSummary}
+                    style={{ fontFamily:"var(--ui-font)", fontSize:11, fontWeight:800, color:"var(--warning)", overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap", marginTop:2 }}
+                  >
+                    {variantSummary}
+                  </div>
+                )}
                 <div
                   title={w.meaning}
                   style={{

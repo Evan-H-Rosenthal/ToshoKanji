@@ -8,7 +8,7 @@
     "data:kanji": "node scripts/run-python-script.mjs scripts/build-kanji-data.py",
     "data:check": "node scripts/run-python-script.mjs scripts/build-kanji-data.py --check",
     "data:refresh": "node scripts/run-python-script.mjs scripts/build-kanji-data.py --refresh-sources --update-source-lock",
-    "data:test": "node scripts/run-python-script.mjs scripts/tests/test_data_pipeline.py && node --test --experimental-test-isolation=none scripts/tests/romanize-kana.test.mjs",
+    "data:test": "node scripts/run-python-script.mjs scripts/tests/test_data_pipeline.py && node --test --experimental-test-isolation=none scripts/tests/romanize-kana.test.mjs && node --test --experimental-strip-types scripts/tests/word-family.test.ts",
     "data:validate": "node scripts/run-python-script.mjs scripts/validate-data.py",
     "dev": "vite",
     "icons": "node scripts/generate-icons.mjs",

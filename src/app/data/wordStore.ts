@@ -1,7 +1,7 @@
 import type { Word, WordEntry, WordMetadataTag, WordSense } from "../types";
 
 const DATABASE_NAME = "toshokanji-dictionary";
-const DATABASE_VERSION = 4;
+const DATABASE_VERSION = 5;
 const WORD_STORE = "words";
 const STAGING_WORD_STORE = "words-staging";
 const META_STORE = "meta";
@@ -26,6 +26,7 @@ type EncodedWord = [
 ];
 interface StoredCompactWord {
   id: string;
+  entryId: string;
   japanese: string;
   encoded: EncodedWord;
   kanjiIds: string[];
@@ -113,6 +114,7 @@ function compactForStorage(value: unknown, location: string): StoredCompactWord 
     || typeof encoded[0] !== "string"
     || !encoded[0]
     || !Array.isArray(encoded[5])
+    || typeof encoded[6] !== "string"
     || !Array.isArray(value[2])
     || !value[2].every((id) => typeof id === "string")
     || !Array.isArray(value[3])
@@ -122,6 +124,7 @@ function compactForStorage(value: unknown, location: string): StoredCompactWord 
   }
   return {
     id: value[0],
+    entryId: encoded[6],
     japanese: encoded[0],
     encoded: encoded as EncodedWord,
     kanjiIds: value[2],
@@ -176,6 +179,7 @@ function transactionDone(transaction: IDBTransaction): Promise<void> {
 function configureWordStore(store: IDBObjectStore) {
   if (!store.indexNames.contains("kanjiIds")) store.createIndex("kanjiIds", "kanjiIds", { multiEntry: true });
   if (!store.indexNames.contains("japanese")) store.createIndex("japanese", "japanese");
+  if (!store.indexNames.contains("entryId")) store.createIndex("entryId", "entryId");
 }
 
 function openDatabase(): Promise<IDBDatabase> {
@@ -203,7 +207,7 @@ function openDatabase(): Promise<IDBDatabase> {
       const meta = database.objectStoreNames.contains(META_STORE)
         ? transaction.objectStore(META_STORE)
         : database.createObjectStore(META_STORE);
-      if (request.oldVersion < 2) meta.delete(DATASET_VERSION_KEY);
+      if (request.oldVersion < 5) meta.delete(DATASET_VERSION_KEY);
     };
     request.onsuccess = () => {
       if (settled) {
@@ -635,6 +639,13 @@ export async function getStoredWordsForKanji(kanjiId: string): Promise<WordEntry
   const database = await ensureWordDatabase();
   const index = database.transaction(activeWordStoreName, "readonly").objectStore(activeWordStoreName).index("kanjiIds");
   const values = await requestResult<Array<StoredCompactWord | WordEntry>>(index.getAll(kanjiId));
+  return values.map(decodeStoredWord);
+}
+
+export async function getStoredWordsForEntry(entryId: string): Promise<WordEntry[]> {
+  const database = await ensureWordDatabase();
+  const index = database.transaction(activeWordStoreName, "readonly").objectStore(activeWordStoreName).index("entryId");
+  const values = await requestResult<Array<StoredCompactWord | WordEntry>>(index.getAll(entryId));
   return values.map(decodeStoredWord);
 }
 
